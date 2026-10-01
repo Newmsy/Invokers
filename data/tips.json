@@ -1,0 +1,1623 @@
+{
+ "gameVersion": "0.61.0",
+ "extractedAt": "2026-10-01",
+ "source": "Installed game files (localization table and UI asset bundles); nothing comes from the server.",
+ "unconfirmed": [
+  "Whether every loading hint can appear for every player (the database has no unlock fields this script reads).",
+  "Campaign and dungeon 'Tips & Strategy' (Do / Don't) lines: built from keys at runtime (md-{0}-{1}-Do-{2}), not resolved yet."
+ ],
+ "tips": [
+  {
+   "key": "ui-faq-hint-1",
+   "titleKey": "ui-faq-hint-title-1",
+   "title": "Auto-Selecting XP Potions is the the best way to Level Up",
+   "text": "It will automatically select the right XP Potions to level you up with as little waste as possible. Efficient and instant.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 1,
+   "illustration": "S_FAQRewards_Illustration_01"
+  },
+  {
+   "key": "ui-faq-hint-2",
+   "titleKey": "ui-faq-hint-title-2",
+   "title": "Elements Are Key",
+   "text": "Invokers and all Enemies have an Element.<br><br><color=#FFE606>Elemental advantage means </color><color=#2EB4FF>+30%</color><color=#FFE606> more damage dealt, </color><color=#2EB4FF>-30%</color><color=#FFE606> damage taken</color>, and more consistent debuffs. A weak Element matchup does the opposite.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 2,
+   "illustration": "S_FAQRewards_Illustration_02"
+  },
+  {
+   "key": "ui-faq-hint-3",
+   "titleKey": "ui-faq-hint-title-3",
+   "title": "Relics = Power",
+   "text": "<color=#FFE606>Relics provide huge Stat boosts</color> to your Invokers - along with <color=#FFE606>special effects</color> if you equip <color=#FFE606>multiple of the same Set</color>.<br><br>Make sure each Invoker is fully equipped to maximize their power.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 3,
+   "illustration": "S_FAQRewards_Illustration_03"
+  },
+  {
+   "key": "ui-faq-hint-4",
+   "titleKey": "ui-faq-hint-title-4",
+   "title": "Relic Upgrades, Memorium, Gold",
+   "text": "Upgrading Relics improves their Stats, making Invokers even stronger.<br><br><color=#FFE606>Sell</color> or <color=#8B5CF6>Crush</color> unwanted Relics to get the <color=#FFE606>Gold</color> and <color=#8B5CF6>Memorium</color> you need to upgrade your best Relics.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 4,
+   "illustration": "S_FAQRewards_Illustration_04"
+  },
+  {
+   "key": "ui-faq-hint-5",
+   "titleKey": "ui-faq-hint-title-5",
+   "title": "Ascend To Higher Levels",
+   "text": "Ascending your Invokers increases their level cap, which lets you keep levelling up. <br><br>Ascension also allows you to Awaken them - for even better stats and more power.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 5,
+   "illustration": "S_FAQRewards_Illustration_05"
+  },
+  {
+   "key": "ui-faq-hint-6",
+   "titleKey": "ui-faq-hint-title-6",
+   "title": "Don't Forget Daily Quests",
+   "text": "Completing your Daily Quests every day gives you lots of daily rewards and helps guide and maintain your early game progress.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 6,
+   "illustration": "S_FAQRewards_Illustration_06"
+  },
+  {
+   "key": "ui-faq-hint-7",
+   "titleKey": "ui-faq-hint-title-7",
+   "title": "Progress Fast With Progress Quests",
+   "text": "<color=#FFE606>Progress Quests</color> are specially designed to help streamline your progress as quickly and efficiently as possible - with huge rewards on offer",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 7,
+   "illustration": "S_FAQRewards_Illustration_07"
+  },
+  {
+   "key": "ui-faq-hint-8",
+   "titleKey": "ui-faq-hint-title-8",
+   "title": "Debuffers Need Accuracy",
+   "text": "You need more Accuracy than the enemy's Resistance to land debuffs consistently. <br><br>When applying a debuff, the caster's ACC Stat is pitted against the target's RES stat.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 8,
+   "illustration": "S_FAQRewards_Illustration_08"
+  },
+  {
+   "key": "ui-faq-hint-9",
+   "titleKey": "ui-faq-hint-title-9",
+   "title": "Buffs Don't Need Accuracy",
+   "text": "Unlike casting debuffs on enemies, casting buffs on your team doesn't require any Accuracy at all.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 9,
+   "illustration": "S_FAQRewards_Illustration_09"
+  },
+  {
+   "key": "ui-faq-hint-10",
+   "titleKey": "ui-faq-hint-title-10",
+   "title": "Relic Rarity",
+   "text": "A Relic's Rarity decides how many Substats it has at Level 0. <br><br>When upgrading a Relic, at Levels 5, 10, 15, and 20, it will either unlock a new Substat, or upgrade an existing one - until it has a total of 4 Substats.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 10,
+   "illustration": "S_FAQRewards_Illustration_10"
+  },
+  {
+   "key": "ui-faq-hint-11",
+   "titleKey": "ui-faq-hint-title-11",
+   "title": "Star Power: Relic Rank",
+   "text": "Indicated by the Stars on the Relic, a Relic's Rank <color=#FFE606>dictates the values of the Main Stat and its Substats.</color><br><br>Stats on higher-Rank Relics will be higher than on lower-Rank Relics - even when upgraded.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 11,
+   "illustration": "S_FAQRewards_Illustration_11"
+  },
+  {
+   "key": "ui-faq-hint-12",
+   "titleKey": "ui-faq-hint-title-12",
+   "title": "Equip Full Relic Sets For Full Power",
+   "text": "Every Relic brings Stat Boosts - but they also belong to a specific Set. <br><br>Equip 3 or 5 Relics from the same Set to get a Set Bonus - either an extra stat boost, or a powerful special effect.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 12,
+   "illustration": "S_FAQRewards_Illustration_12"
+  },
+  {
+   "key": "ui-faq-hint-13",
+   "titleKey": "ui-faq-hint-title-13",
+   "title": "Upgrading Skills Unlocks New Strength",
+   "text": "<color=#FFE606>Level Up Skills with Codexes</color> to increase their damage or unlock entirely new effects - making the Skill even stronger.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 13,
+   "illustration": "S_FAQRewards_Illustration_13"
+  },
+  {
+   "key": "ui-faq-hint-14",
+   "titleKey": "ui-faq-hint-title-14",
+   "title": "Codexes: Knowledge is Power",
+   "text": "Upgrading Invoker's Skills makes them stronger and more effective - through increasing the damage, upgrading Buffs and Debuffs, or modifying a Skill's effects entirely.<br><br>Codexes are rare, but very powerful - use them wisely.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 14,
+   "illustration": "S_FAQRewards_Illustration_14"
+  },
+  {
+   "key": "ui-faq-hint-15",
+   "titleKey": "ui-faq-hint-title-15",
+   "title": "Titans Don't Have Elements",
+   "text": "<color=#FFE606>Titans don't have their own Element.</color> When Invoked in battle, Titans behave like they have the <color=#FFE606>same Element of the Invoker they are bound to</color>.<br><br>This means each Titan can be used any time, anywhere.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 15,
+   "illustration": "S_FAQRewards_Illustration_15"
+  },
+  {
+   "key": "ui-faq-hint-16",
+   "titleKey": "ui-faq-hint-title-16",
+   "title": "Titans, Factions, Invokers",
+   "text": "<color=#FFE606>Invokers can only use Titans from their own Faction.</color><br><br>The only exception to this is <color=#FFE606>Litria</color> - a Guardian Titan. Litria is a special, universal Titan and can be used by any Invoker from any Faction.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 16,
+   "illustration": "S_FAQRewards_Illustration_16"
+  },
+  {
+   "key": "ui-faq-hint-17",
+   "titleKey": "ui-faq-hint-title-17",
+   "title": "Empower Titans For More... Power",
+   "text": "Empowering Titans using Titanhearts increases their level cap and keep levelling them up.<br><br>It also increases the Stat Bonus that an Invoker receives during battle from having the Titan bound to them.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 17,
+   "illustration": "S_FAQRewards_Illustration_17"
+  },
+  {
+   "key": "ui-faq-hint-18",
+   "titleKey": "ui-faq-hint-title-18",
+   "title": "Titan Invokation",
+   "text": "Invoking a Titan lets an Invoker fight as a Titan for a short time – but that's not all.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 18,
+   "illustration": "S_FAQRewards_Illustration_18"
+  },
+  {
+   "key": "ui-faq-hint-19",
+   "titleKey": "ui-faq-hint-title-19",
+   "title": "Titan Prisms",
+   "text": "<color=#FFE606>Titan Prisms are used to upgrade Titan Skills</color>, increasing damage, upgrading buffs and debuffs, or unlocking new effects.<br><br>Just like Codexes, you'll need all Rarities of<color=#FFE606> Titan Prisms to upgrade a Titan's Skills.</color>",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 19,
+   "illustration": "S_FAQRewards_Illustration_19"
+  },
+  {
+   "key": "ui-faq-hint-20",
+   "titleKey": "ui-faq-hint-title-20",
+   "title": "Did You Know?",
+   "text": "<color=#FFE606>Combo Attacks have no cooldown.</color> They're always available to use.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 20,
+   "illustration": "S_FAQRewards_Illustration_20"
+  },
+  {
+   "key": "ui-faq-hint-21",
+   "titleKey": "ui-faq-hint-title-21",
+   "title": "Manage Your Active Skills",
+   "text": "Active Skills have cooldowns. <color=#FFE606>You need to wait a while after you use an Active Skill before you can use it again.</color><br><br>Using them or saving them for the right moment can make a huge difference.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 21,
+   "illustration": "S_FAQRewards_Illustration_21"
+  },
+  {
+   "key": "ui-faq-hint-22",
+   "titleKey": "ui-faq-hint-title-22",
+   "title": "Ultimate Mana for Ultimate Power",
+   "text": "Using <color=#FFE606>Combo Attacks and Skills during combat generates Ultimate Mana</color> for that Invoker and unlocks their Ultimate Skill.<br><br><color=#2EB4FF>Pro Tip:</color> Attacking while out of combat doesn't generate Mana.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 22,
+   "illustration": "S_FAQRewards_Illustration_22"
+  },
+  {
+   "key": "ui-faq-hint-23",
+   "titleKey": "ui-faq-hint-title-23",
+   "title": "Titan Mana",
+   "text": "Combo Attacks and Skills generate <color=#FFE606>Titan Mana, which is shared by the whole team.</color> When a Titan is Invoked, Titan Mana is spent from the team's supply.<br><br>Attacking while out of combat doesn't generate Mana.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 23,
+   "illustration": "S_FAQRewards_Illustration_23"
+  },
+  {
+   "key": "ui-faq-hint-24",
+   "titleKey": "ui-faq-hint-title-24",
+   "title": "Need A Specific Relic? Hunt The Campaign",
+   "text": "Each <color=#FFE606>Campaign Chapter drops Relics from a specific Set.</color> Each <color=#FFE606>Level in a Chapter drops a certain kind of Relic</color> – like Boots or Shields.<br><br>Hunting the Campaign is the fastest way to complete a Relic Set.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 24,
+   "illustration": "S_FAQRewards_Illustration_24"
+  },
+  {
+   "key": "ui-faq-hint-25",
+   "titleKey": "ui-faq-hint-title-25",
+   "title": "Tactics – The Front Line",
+   "text": "Invokers in the Front Line of any Tactic will be targeted by more enemies than those in the Mid and Back Lines. <br><br>Ensure your Front Line Invokers have enough HP and DEF to survive. Tanks are a safe choice.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 25,
+   "illustration": "S_FAQRewards_Illustration_25"
+  },
+  {
+   "key": "ui-faq-hint-26",
+   "titleKey": "ui-faq-hint-title-26",
+   "title": "Relic Bosses & Best Relics",
+   "text": "Fight Relic Bosses on Boss Mode to win the strongest Relics. The highest Rarity, highest Rank, and Sets that can't be found anywhere else.<br><br>Beat Relic Bosses on higher Stages to win the best Relics.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 26,
+   "illustration": "S_FAQRewards_Illustration_26"
+  },
+  {
+   "key": "ui-faq-hint-27",
+   "titleKey": "ui-faq-hint-title-27",
+   "title": "One Titan at a Time",
+   "text": "You can only Invoke a single Titan at a time, so plan accordingly!<br><br>Timing your Invokation can be key to winning a battle, or even simply keeping an Invoker alive.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 27,
+   "illustration": "S_FAQRewards_Illustration_27"
+  },
+  {
+   "key": "ui-faq-hint-28",
+   "titleKey": "ui-faq-hint-title-28",
+   "title": "Invokation Time",
+   "text": "Titan Invokation lasts 12 seconds - enough time to have serious impact on a battle.<br><br>But... Awakening Invokers can extend Invokation Time, making your Titans even more impactful.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 28,
+   "illustration": "S_FAQRewards_Illustration_28"
+  },
+  {
+   "key": "ui-faq-hint-29",
+   "titleKey": "ui-faq-hint-title-29",
+   "title": "XP Boosts",
+   "text": "Activating an XP Boost increases the number and value of XP Potions you win from battles.<br><br>50% More XP means 50% faster levelling and 50% faster progress. Don't sleep on it.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 29,
+   "illustration": "S_FAQRewards_Illustration_29"
+  },
+  {
+   "key": "ui-faq-hint-30",
+   "titleKey": "ui-faq-hint-title-30",
+   "title": "The Spires Don't Cost Energy",
+   "text": "The Spires give huge daily rewards for zero Energy.<br><br>You get <color=#FFE606>30 free Spire Keys every day – 5 per Element.</color><br><br>And you don't lose a Key unless you win a Battle – so you can keep trying until you win.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 30,
+   "illustration": "S_FAQRewards_Illustration_30"
+  },
+  {
+   "key": "ui-faq-hint-31",
+   "titleKey": "ui-faq-hint-title-31",
+   "title": "Tags",
+   "text": "Invoker Tags, shown in your Collection and when summoning a new Invoker, indicate <color=#FFE606>what type of skills an Invoker has</color>.<br><br>Check out an Invoker's Tags to quickly see what they're all about at a glance.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 31,
+   "illustration": "S_FAQRewards_Illustration_31"
+  },
+  {
+   "key": "ui-faq-hint-32",
+   "titleKey": "ui-faq-hint-title-32",
+   "title": "Invoker Classes",
+   "text": "In Invoker's Class decides which Crests they need for Awakening and how their Base Stats are distributed.<br><br>There are four Classes – Support, Tank, Ranged Attacker, Melee Attacker.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 32,
+   "illustration": "S_FAQRewards_Illustration_32"
+  },
+  {
+   "key": "ui-faq-hint-33",
+   "titleKey": "ui-faq-hint-title-33",
+   "title": "Invoker Tolerances & Boss Corruptions",
+   "text": "Each Boss has two different Corruptions - one <color=#8B5CF6>Damage Corruption</color> and one <color=#8B5CF6>Control Corruption</color>.<br><br>Each Invoker has one or two <color=#FFE606>Tolerances that directly mitigate the effects of these Corruptions</color>.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 33,
+   "illustration": "S_FAQRewards_Illustration_33"
+  },
+  {
+   "key": "ui-faq-hint-34",
+   "titleKey": "ui-faq-hint-title-34",
+   "title": "Need Essences? Beat the Garuda",
+   "text": "Beating the Elemental Garuda on Boss Mode is the main way to <color=#FFE606>get the Essences you need to Awaken your Invokers.</color><br><br>There are 7 different Elements of the Garuda – each dropping a different type of Essence.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 34,
+   "illustration": "S_FAQRewards_Illustration_34"
+  },
+  {
+   "key": "ui-faq-hint-35",
+   "titleKey": "ui-faq-hint-title-35",
+   "title": "Did You Know? You Can Play Invokers Offline",
+   "text": "Even if you don't have internet access, you can <color=#FFE606>keep playing Invokers</color> while offline and keep making progress.<br><br>Never be bored on a flight, or at the bottom of the ocean ever again.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 35,
+   "illustration": "S_FAQRewards_Illustration_35"
+  },
+  {
+   "key": "ui-faq-hint-36",
+   "titleKey": "ui-faq-hint-title-36",
+   "title": "Invoker Rarity AoE Limits",
+   "text": "There is a limit to how many enemies each Invoker can attack with their AoE skills, according to their Rarity.<br><br><color=#ABB0B2>Common</color>, <color=#88CC66>Uncommon</color>: 7 enemies. <color=#2EB4FF>Rare</color>: 8 enemies. <color=#C852CC>Epic</color>: 9 enemies. <color=#FF9933>Legendary</color>: 10 enemies.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 36,
+   "illustration": "S_FAQRewards_Illustration_36"
+  },
+  {
+   "key": "ui-faq-hint-37",
+   "titleKey": "ui-faq-hint-title-37",
+   "title": "Boss Control Corruptions",
+   "text": "Control Corruptions limit what your team can do, such as stunning or freezing them, or blocking or disabling their skills.<br><br>Corruptions usually have more dangerous effects than normal Debuffs.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 37,
+   "illustration": "S_FAQRewards_Illustration_37"
+  },
+  {
+   "key": "ui-faq-hint-38",
+   "titleKey": "ui-faq-hint-title-38",
+   "title": "Tolerances by Rarity",
+   "text": "Tolerances directly <color=#FFE606>mitigate</color> the effects of Boss Corruptions.<br><br><color=#CECECE>Common</color>, <color=#5EEF2C>Uncommon</color>, and <color=#5CA8CC>Rare</color> Invokers each have one Tolerance.<br><br><color=#C852CC>Epic</color> and <color=#FF9933>Legendary</color> Invokers have two Tolerances.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 38,
+   "illustration": "S_FAQRewards_Illustration_38"
+  },
+  {
+   "key": "ui-faq-hint-39",
+   "titleKey": "ui-faq-hint-title-39",
+   "title": "Boss Damage Corruptions",
+   "text": "Damage Corruptions are a secondary source of damage that the Boss outputs - usually Damage-Over-Time - along with extra effects that hinder your team. Damage Corruptions have infinite duration.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 39,
+   "illustration": "S_FAQRewards_Illustration_39"
+  },
+  {
+   "key": "ui-faq-hint-40",
+   "titleKey": "ui-faq-hint-title-40",
+   "title": "Increasing Tolerance",
+   "text": "You can also gain or increase Tolerances with certain Relic Sets.<br><br>Equip Relics and use Invokers with the right Tolerances to give yourself an easier time against the Bosses.",
+   "context": "loading",
+   "screen": "Loading screen hints (also listed in the FAQ)",
+   "order": 40,
+   "illustration": "S_FAQRewards_Illustration_40"
+  },
+  {
+   "key": "ui-arena-pvp-leagues-tutorial-arena-points",
+   "text": "The number of Arena Points you have determines your League.<br>Higher Leagues means better Trophies and better Weekly Rewards.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-leagues-tutorial-description",
+   "text": "Earn Arena Points to climb the Leagues and win Trophies and huge rewards.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-leagues-tutorial-inactivity",
+   "text": "You will be considered Inactive if you do not carry out 1 Arena Battle within a week.<br>While Inactive, you will be demoted by 1 Arena League per week.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-leagues-tutorial-required-battles-description",
+   "text": "Take part in {0} Arena Offense Battles in a week to qualify for Weekly League Rewards.<br><br>Earn more Arena Points to climb the Leagues for better rewards.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-leagues-tutorial-rewards-case",
+   "text": "You'll win Weekly Rewards according to which League you finish the week in.<br><br>Arena Rankings are set and rewards are given at 11:00 UTC every Monday.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-offense-tutorial-arena-points-description",
+   "text": "Each win also gives you Arena Points and Arena Coins.<br><br>Earn more Arena Points to climb to higher Leagues, with even better rewards.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-offense-tutorial-battle-costs-description",
+   "text": "Each Arena Battle costs 1 Arena Token - you will fight against other players' Arena Defense teams.<br><br>You get 1 Arena Token per hour (up to a limit of 10), so make sure you use them every day.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-offense-tutorial-trophy-gives-description",
+   "text": "Every Arena Offense win gives you a Trophy depending your League.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-offense-tutorial-trophy-reward-description",
+   "text": "Bronze Trophies from the Bronze League, Silver from Silver, and Gold Trophies from the Gold League.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-description",
+   "text": "In the Arena, Invoker and Titan Stats are modified to ensure fast Battles, more Titans, and better balance.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-affects",
+   "text": "The Diminishing Duration Window affects:",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-example",
+   "text": "Example: The first Control debuff placed was a 10 second Stun. During those 10 seconds, 4 more Control debuffs were placed on the target, each for 5 seconds. The 7-second immunity window only begins once the initial 10-second Stun debuff expires.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-first",
+   "text": "The next Control debuff placed within the 10-second window will have a diminished duration",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-last",
+   "text": "The target is now effectively immune to Control debuffs for 7 seconds once the last active Control debuff expires",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-mid",
+   "text": "The timer starts as soon as the Control debuff is placed",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-diminishing-title",
+   "text": "Whenever someone receives a Control debuff, a 10-second timer starts: the Diminishing Durations Window. Subsequent Control debuffs placed within this 10-second window will have Diminished Durations.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-effects-scaling-title",
+   "text": "Certain buffs and debuffs will have their durations modified, based on the Skill they are applied by and the number of targets they affect.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-skills-cooldown",
+   "text": "All Active Skills start at {0} Cooldown.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-titan-bound-effet",
+   "text": "Bound Effects work as normal.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-titan-cooldowns",
+   "text": "Titan Cooldowns are {0} instead of {1}",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-titan-increase",
+   "text": "{0}x Titan Mana Gen",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-titan-stats",
+   "text": "All Titan Stats are decreased by {0} when Invoked",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-titan-tap-to-target",
+   "text": "You can target the enemy team directly from the HUD.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-title",
+   "text": "ARENA BATTLES - STAT MODIFICATIONS",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-team-selection-tutorial-ultimate-increase",
+   "text": "{0}x Ultimate Mana Gen",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-dark-description",
+   "text": "Fill your Dark Trophy Room to boost the Stats of all <color=#8B5CF6>Dark</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-dark-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#8B5CF6>Dark</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-earth-description",
+   "text": "Fill your Earth Trophy Room to boost the Stats of all <color=#88CC66>Earth</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-earth-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#88CC66>Earth</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-fire-description",
+   "text": "Fill your Fire Trophy Room to boost the Stats of all <color=#FF3232>Fire</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-fire-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#FF3232>Fire</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-light-description",
+   "text": "Fill your Light Trophy Room to boost the Stats of all <color=#F8D962>Light</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-light-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#F8D962>Light</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-dark-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#8B5CF6>Dark</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>.",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-earth-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#88CC66>Earth</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-fire-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#FF3232>Fire</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-light-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#F8D962>Light</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>.",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-water-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#5CA8CC>Water</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-max-wind-description",
+   "text": "The <color=#FFE606>{0}</color> Stat of your <color=#5CA8CC>Wind</color> Invokers is being boosted by <color=#5EEF2C>+{1}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-water-description",
+   "text": "Fill your Water Trophy Room to boost the Stats of all <color=#2EB4FF>Water</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-water-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#2EB4FF>Water</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-wind-description",
+   "text": "Fill your Wind Trophy Room to boost the Stats of all <color=#5CA8CC>Wind</color> Invokers in every Battle",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-element-wind-upgrade-description",
+   "text": "Install Trophies to boost the <color=#FFE606>{0}</color> Stat of your <color=#5CA8CC>Wind</color> Invokers from <color=#5EEF2C>+{1} </color>to<color=#5EEF2C> +{2}</color>",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-stats-upgrade-tutorial-description",
+   "text": "Win Trophies in Arena Battles, then fill your Trophy Room to permanently boost the Stats of your Invokers in every Battle Mode.<br><br>Each Element and each Stat must be upgraded individually, so you can choose how you'd like to progress.",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-stats-upgrade-tutorial-read-stats-description-cta",
+   "text": "Read how each Stat works in-battle below.",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-pvp-trophy-room-stats-upgrade-tutorial-title",
+   "text": "STAT UPGRADES & REWARDS",
+   "context": "tutorial",
+   "screen": "Arena trophy room"
+  },
+  {
+   "key": "ui-arena-shop-tutorial-coins-description",
+   "text": "You win Arena Coins from every Battle, but you can also Melt Arena Trophies to get more.",
+   "context": "tutorial",
+   "screen": "Arena bazaar"
+  },
+  {
+   "key": "ui-arena-shop-tutorial-medals-convertion-description",
+   "text": "Exchange your Arena Coins for some exclusive items.<br><br>Some items have daily, weekly, or monthly limits - so make sure to grab items while you can!",
+   "context": "tutorial",
+   "screen": "Arena bazaar"
+  },
+  {
+   "key": "ui-arena-shop-tutorial-refresh-description",
+   "text": "Daily: 00:00 UTC every day.<br>Weekly: 00:00 UTC every Monday.<br>Monthly: 00:00 UTC on the 1st of each Month.",
+   "context": "tutorial",
+   "screen": "Arena bazaar"
+  },
+  {
+   "key": "ui-arena-shop-tutorial-refresh-tiltle",
+   "text": "The Bazaar refreshes at the same time time for everyone:",
+   "context": "tutorial",
+   "screen": "Arena bazaar"
+  },
+  {
+   "key": "ui-arena-shop-tutorial-tab-description",
+   "text": "Use Arena Coins and get exclusive, valuable items from the Bazaar.",
+   "context": "tutorial",
+   "screen": "Arena bazaar"
+  },
+  {
+   "key": "ui-ascend-tab-insert-resources-tip-label",
+   "text": "Select Invokers or Echoes",
+   "context": "help",
+   "screen": "Ascension"
+  },
+  {
+   "key": "ui-ascend-tab-insert-titan-resources-tip-label",
+   "text": "Select Titans or Dragonsouls",
+   "context": "help",
+   "screen": "Ascension"
+  },
+  {
+   "key": "ui-battle-result-tutorial-booster-active-boost-description",
+   "text": "<b>Active Boost.</b><br>Your rewards are increased.",
+   "context": "tutorial",
+   "screen": "Battle results"
+  },
+  {
+   "key": "ui-battle-result-tutorial-booster-description",
+   "text": "Activating Reward Boosts increases your rewards.",
+   "context": "tutorial",
+   "screen": "Battle results"
+  },
+  {
+   "key": "ui-battle-result-tutorial-booster-inactive-boost-description",
+   "text": "<b>Inactive Boost.</b><br><color=#5EEF2C>Tap to activate and claim</color> your extra rewards <b>immediately</b>.",
+   "context": "tutorial",
+   "screen": "Battle results"
+  },
+  {
+   "key": "ui-battle-result-tutorial-booster-inactive-boost-indications",
+   "text": "The Boost indicators show which Boosts are currently active or inactive.",
+   "context": "tutorial",
+   "screen": "Battle results"
+  },
+  {
+   "key": "ui-battle-result-tutorial-stats-breakdown",
+   "text": "For a full breakdown",
+   "context": "tutorial",
+   "screen": "Battle results"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-rank-info",
+   "text": "Drop Info shows the chance of dropping Relics of each Rank and Rarity.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-rank-range-info",
+   "text": "Stage Selection shows the highest possible Rank and Rarity of the Relics that drop from that Stage.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-rarity-drop-rate-1",
+   "text": "This shows the chance of getting a certain Rarity of Relic within each Rank.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-rarity-drop-rate-2",
+   "text": "In this example, if you hit the 14% chance of a 4<sprite name=\"TMP_TextIcons_Atlas_0\"> Relic, you have 50% chance of it being Uncommon, 40% Rare, and 10% Epic.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-rarity-info",
+   "text": "Higher Rank means higher Stat value.<br>Higher Rarity means more innate Substats at Level 1.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-set-bonus-info",
+   "text": "You can see each Sets Bonuses (and their Contents) by tapping individual Set Icon.<br>Each successful fight will drop ONE random Relic.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-boss-relic-tutorial-set-info",
+   "text": "Relic Bosses drop different sets of Relics at random. Each Relic Boss <color=#FFE606>(Ulgorim, Althar </color>and<color=#FFE606> Sakiel)</color> drops different Sets of Relics.",
+   "context": "tutorial",
+   "screen": "Relic bosses"
+  },
+  {
+   "key": "ui-chat-tutorial-chat-rules",
+   "text": "1. Be respectful<br>We're all here to have fun, so treat all players with respect. Friendly debates and constructive discussions are encouraged, but personal attacks, insults, or discrimination will not be tolerated.<br><br>2. Keep it light, keep it clean, keep it focused<br>The chat is a place for everyone to discuss Invokers, so refrain from using profanity, explicit, or otherwise inappropriate language, or derailing conversations to discuss unrelated topics. Our automated system will automatically censor certain words and phrases, but we reserve the right to delete or block messages that are not appropriate. Sharing violent, sexually explicit, politically inflammatory, or abusive content is strictly prohibitied.<br><br>3. No spamming<br>Spamming a channel with repeated messages, posting the same message across multiple channels, repeating posting copy-paste text, or excessive symbols makes it harder for everyone to communicate. Spam messages will be deleted and players may be muted or banned for repeated violations.<br><br>4. No advertising<br>Promoting or advertising unrelated third-party products, services, other games, or websites is forbidden, along with posting links to said services. This includes account buying, selling, or trading services.<br><br>5. No sharing of in-game exploits, cheats, or leaked material<br>Discussion and/or sharing of cheats or in-game exploits that give an unfair advantage to other players is strictly prohibited, alongside the sharing of unreleased content accessed via illegal means. If you have encountered issues or bugs in-game, please report them via Support.<br><br>6. Use the correct language channels<br>Each chat channel is organized by language, so please communicate in the relevant channel language.<br><br>7. Follow moderator instructions<br>Chat moderators are here to keep chat safe and fun for all. When a moderator tells you to stop, stop. Ignoring or arguing with moderator actions may lead to longer mutes or chat bans.<br><br>Violations of the above rules may result in a temporary mute or further, more decisive action, depending on the severity or number of the offense. Moderators have the final word for resolving issues in chat.<br><br>Remember - chat is shared by multiple players and is a place for everyone to discuss Invokers. Help keep it fun and friendly for everyone!",
+   "context": "tutorial",
+   "screen": "Chat"
+  },
+  {
+   "key": "ui-chat-tutorial-step-channel",
+   "text": "Select your language, then enter a channel number.",
+   "context": "tutorial",
+   "screen": "Chat"
+  },
+  {
+   "key": "ui-chat-tutorial-step-moderator",
+   "text": "Moderators may delete problematic messages and ban players from Chat.",
+   "context": "tutorial",
+   "screen": "Chat"
+  },
+  {
+   "key": "ui-chat-tutorial-step-profile-tap",
+   "text": "The \"M\" icon helps identify moderators.",
+   "context": "tutorial",
+   "screen": "Chat"
+  },
+  {
+   "key": "ui-chat-tutorial-step-rules-title",
+   "text": "CHAT RULES & CONDUCT",
+   "context": "tutorial",
+   "screen": "Chat"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-chest-refresh",
+   "text": "IMPORTANT! <color=#FFE606>Progress towards this Chest resets daily</color>, with rewards being calculated at 00:00 UTC, based on the total <color=#FFE606>Stars collected from the previous day</color>.",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-contributors-button",
+   "text": "Tap to view each Clan Member's contribution for today and yesterday.",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-progression-chests",
+   "text": "The day's Star total determines the Chest's quality. All Clan Members can then claim <color=#FFE606>2 random rewards from the Chest the following day.</color>",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-stars",
+   "text": "<color=#FFE606>Each Clan Member earns Activity Stars by completing Clan Quests.</color> A Clan's collective Stars add up throughout the day and unlock a random Chest for the following day.",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-stars-value",
+   "text": "Stars earned by your Clan today.",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-activity-tutorial-dialog-timer",
+   "text": "Time until rewards are available.",
+   "context": "tutorial",
+   "screen": "Clan"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-chest-chest-refresh",
+   "text": "IMPORTANT! <color=#FFE606>Progress towards this Chest resets daily</color>, with rewards being calculated at 00:00 UTC, based on the <color=#FFE606>Ruby total from the previous day</color>. You need to have contributed at least 1 Ruby to the total to receive the Chest.",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-chest-next-day",
+   "text": "The more Rubies your Clan collects in a day, the better the Chest you receive!",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-drops-accessories",
+   "text": "<color=#FFE606>Sorgott</color> drops <color=#FFE606>Accessories</color>, Gear that can only be equipped by <color=#FFE606>Invokers of a specific Faction</color>. Upgrade them just like Relics!",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-matching-factions",
+   "text": "<color=#FFE606>Only Invokers of a matching Faction can equip them.</color>",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-random-faction",
+   "text": "Each Accessory dropped by Sorgott is for a <color=#FFE606>random Faction</color>.",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-text-rubies",
+   "text": "Defeating Sorgott also earn you Rubies. Any <color=#FFE606>Rubies</color> you earn are added to your Clan's daily total.",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-clan-boss-1-tutorial-dialog-title",
+   "text": "Sorgott the Crypt King - Rewards",
+   "context": "tutorial",
+   "screen": "Sorgott (accessory boss)"
+  },
+  {
+   "key": "ui-element-scheme-dialog-1",
+   "text": "An Invoker's Element has a huge impact in battle when attacking or being attacked.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-element-scheme-dialog-2",
+   "text": "Elemental advantage means more damage dealt, less damage taken and more consistent debuffs.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-element-scheme-dialog-3",
+   "text": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50> All Invokers, Enemies, and Bosses have Elements. Titans have no Element - they match the Element of the Invoker they are bound to.</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Neutral Elemental matchups have no penalties or advantages.</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>In PvE, <color=#FFE606>LIGHT</color> and <color=#8B5CF6>DARK</color> will have advantage over each other.</indent>",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-empower-tab-insert-elder-titanhearts-tip-label",
+   "text": "Select Titans or Elder Titanhearts",
+   "context": "help",
+   "screen": "Titan empowerment"
+  },
+  {
+   "key": "ui-empower-tab-insert-titanhearts-tip-label",
+   "text": "Select Titans or Titanhearts",
+   "context": "help",
+   "screen": "Titan empowerment"
+  },
+  {
+   "key": "ui-empowerment-tab-duplicate-titan-tip-label",
+   "text": "Empower Titans using Titanhearts or <color=#FFE606>duplicate</color> Titans",
+   "context": "help",
+   "screen": "Titan empowerment"
+  },
+  {
+   "key": "ui-gear-auto-equip-help-header",
+   "text": "HOW TO AUTO EQUIP",
+   "context": "help",
+   "screen": "Gear auto-equip"
+  },
+  {
+   "key": "ui-gear-auto-equip-help-text",
+   "text": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Add up to 7 Stats to prioritize</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Tap an equipped Relic to Lock it</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Tap to compare suggested Relics to equipped Relics</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Filter Relics to control the search</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Include or exclude Relics equipped on other Invokers</indent>",
+   "context": "help",
+   "screen": "Gear auto-equip"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-1",
+   "text": "Loading...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-10",
+   "text": "Entering...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-2",
+   "text": "Preparing...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-3",
+   "text": "Authenticating...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-4",
+   "text": "Finalizing...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-5",
+   "text": "Authenticating...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-6",
+   "text": "Finalizing...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-7",
+   "text": "Loading...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-8",
+   "text": "Initializing",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-loading-screen-fake-sequence-9",
+   "text": "Preparing...",
+   "context": "loading",
+   "screen": "Loading screen (progress messages)"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-start-background",
+   "text": "Have Multi-Battles run in the background, allowing you to engage in other activites like summoning new Invokers, swapping out Relics and so on. There are some limitations - you cannot fight in other Battles while a Background Battle is ongoing, you cannot watch Battle Replays, and you cannot dismiss Invokers who are currently participating in a Background Battle.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-start-standard",
+   "text": "You can either start Multi-Battles normally, watching your Invokers battle live and being able to take direct control. Or...",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-widget",
+   "text": "The status of your current Background Battle is indicated by a special icon on the home screen.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-widget-done",
+   "text": "Battle Complete<br>Tap to see the battle results and to claim your rewards",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-widget-fail",
+   "text": "Battle Interrupted<br>Tap to see your results, the reason for the interruption, and to take further action",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-battle-widget-in-progress",
+   "text": "Battle In Progress<br>Tap to see your team's progress and the rewards you've earned so far.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-start-background",
+   "text": "Have them run in the background, allowing you to engage in other activites like summoning new Invokers, swapping out Relics and so on. There are some limitations - you cannot fight in other Battles while a Background Battle is ongoing, you cannot watch Battle Replays, and you cannot dismiss Invokers who are currently participating in a Background Battle.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-start-standard",
+   "text": "You can either start Auto Climb Battles normally, watching your Invokers battle live and being able to take direct control. Or...",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-widget",
+   "text": "The status of your current Background Battle is indicated by a special icon on the home screen.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-widget-done",
+   "text": "Battle Complete<br>Tap to see the battle results and to claim your rewards",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-widget-fail",
+   "text": "Battle Interrupted<br>Tap to see your results, the reason for the interruption, and to take further action",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-background-climb-widget-in-progress",
+   "text": "Battle In Progress<br>Tap to see your team's progress and the rewards you've earned so far.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-costs",
+   "text": "Each Battle costs Energy and 1 Multi-Battle Token.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-description-how-to-stop-1",
+   "text": "The Rewards screen will show everything you earned across the whole Multi-Battle run.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-description-how-to-stop-2",
+   "text": "You can also manually stop a Multi-Battle run during or after a Battle. You will keep every reward you earned during that run. <color=#FFE606>Note:</color> All XP gained from Multi-Battles will be granted in XP Potions.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-hit-stop-loss-count",
+   "text": "You hit your Stop Loss Count",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-image-select-multi-battle",
+   "text": "Select how many Battles you want to run.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-refill-description",
+   "text": "Enable Auto-Refill to keep refilling Energy using your Gems until you run out of Gems or you hit your set number of Battles.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-refill-image-text",
+   "text": "Auto-Refill Energy with Gems",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-rewads-finished-battles",
+   "text": "You finish the set number of Battles",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-rewards-description",
+   "text": "A Multi-Battle run will end when:",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-rewards-run-out-resources",
+   "text": "You run out of Energy or Gems",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-setup-slider",
+   "text": "Multi-Battle lets you run multiple battles in a row, without having to step in and hit Replay manually.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-steup-description",
+   "text": "Multi-Battle lets you run multiple battles in a row, without having to step in and hit Replay manually.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-stop-loss-description",
+   "text": "Set your Stop Loss. Multi-Battle will stop automatically if you lose this number of Battles.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-stop-loss-image-text",
+   "text": "Stop Loss: Auto-Stop after 1 Loss(es)",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-multibattle-tutorial-token-description",
+   "text": "You get 10 free Multi-Battle Tokens each day (at 00:00 UTC). Get more from the Shop, Quests, and Playtime Rewards.",
+   "context": "tutorial",
+   "screen": "Multi-Battle"
+  },
+  {
+   "key": "ui-skill-upgrade-tolerance-tutorial-info-panel-description",
+   "text": "On Boss Mode, Invokers receive a Tolerance Bonus or Penalty depending on the Boss Stage, which affects each Invoker's Tolerance to that Boss' Corruptions.",
+   "context": "tutorial",
+   "screen": "Tolerances (skill upgrade)"
+  },
+  {
+   "key": "ui-skill-upgrade-tolerance-tutorial-info-panel-formula-label",
+   "text": "Final Tolerance = Invoker Tolerance % + Tolerance Bonus or - Tolerance Penalty",
+   "context": "tutorial",
+   "screen": "Tolerances (skill upgrade)"
+  },
+  {
+   "key": "ui-skill-upgrade-tolerance-tutorial-info-panel-label",
+   "text": "Tolerance Bonuses & Penalties",
+   "context": "tutorial",
+   "screen": "Tolerances (skill upgrade)"
+  },
+  {
+   "key": "ui-spires-reset-tutorial-description",
+   "text": "Clearing Floors in the Spires is one of the best ways to earn rewards and make fast progress every month. Invokers of a corresponding Element can enter each Spire.<br><br>By clearing Floors in each Spire, you’ll get your hands on a bunch of valuable rewards, such as Gold, Memorium, Stars, Orbs, Titanhearts, Echoes, and Codexes.<br>There are 6 Spires - one for each Element - and you get 5 Spire Keys each day, per Spire.<br><br>You won’t lose a Spire Key if you fail to clear a Floor - you’ll only use up a Key when you win, so you can keep trying and tweaking your approach without any worry.<br><br>The Spires reset every month, so make sure to use your Keys every day to maximize your rewards and grab all the loot you can. Don’t miss out.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-corruptions-2",
+   "text": "Crowd Control + Extra Negative Effect.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-corruptions-4",
+   "text": "Damage-Over-Time + Stat Debuff.<br>Damage Corruptions stack & have infinite duration.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-corruptions-5",
+   "text": "Corruptions & Corruption Stacks are indicated by purple icons in battle.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-filter-1",
+   "text": "Use Invokers with the correct Tolerances to directly counter Bosses.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-filter-2",
+   "text": "Use the Filter in your Collection to find Invokers that have the Tolerances you need.<br><br>Invokers with two Tolerances that perfectly counter a Boss' Corruptions will be incredibly powerful for that fight. ",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-tolerances-1",
+   "text": "Each Invoker has one or two Tolerances that directly mitigate the effects of these Corruptions.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-corruptions-tutorial-tolerances-2",
+   "text": "Increasing an Invoker's Tolerance to a specific Corruption will decrease the effects of that Corruption by their Tolerance percentage.<br><br>You can also add or increase an Invoker's Tolerances with Relics.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-factions-tutorial-description-1",
+   "text": "Each Titan belongs to a Faction, just like Invokers.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-factions-tutorial-description-2",
+   "text": "In Team Selection, you will <color=#FFE606>only see Titans matching the selected Invoker's Faction</color>.<br><br>The strongest available Titan will be automatically bound to your Invokers.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-factions-tutorial-description-3",
+   "text": "Invokers can only use Titans from their own, matching Faction.<br>The only exception to this is <color=#FFE606>Litria</color> - a Guardian Titan. Litria is a special, universal Titan and can be used by any Invoker from any Faction.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-formation-tutorial-1",
+   "text": "Each Tactic provides different Bonuses to Invokers depending on their position in the team – the Front Line, the Mid Line, or the Back Line.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-formation-tutorial-2",
+   "text": "Invokers in the Front Line will be prioritized by enemies and targeted more than Invokers in the Mid and Back Lines.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-formation-tutorial-3",
+   "text": "Some Tactics will provide an extra Class Bonus  if Invokers of a specific Class are used in certain positions.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-formation-tutorial-4",
+   "text": "- Tank<br>- Support<br>- Melee & Ranged Attacker<br>- Melee Attacker<br>- Ranged Attacker ",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-formation-tutorial-5",
+   "text": "Most Bonuses apply to all Invokers. If a Class Icon is shown, only Invokers from that Class will gain the Class Bonus:",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-lead-invoker-tutorial-1",
+   "text": "<b>Your Lead Invoker will lead your team into battle.</b><br><br>When playing on Manual, you will control your Lead Invoker at the start of the Battle.<br><br>On Auto, your Lead Invoker will run at the front of your team – and will be the first to make contact with enemies.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-team-selection-lead-invoker-tutorial-2",
+   "text": "Repeatedly tap this button to cycle through your Lead Invoker.",
+   "context": "tutorial",
+   "screen": "Team selection"
+  },
+  {
+   "key": "ui-titan-ascend-tab-insert-resources-tip-label",
+   "text": "Select Titans or Dragonsouls",
+   "context": "help",
+   "screen": "Ascension"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-costs",
+   "text": "Each Battle costs 1 Spire Key",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-description-how-to-stop-1",
+   "text": "The Rewards screen will show you everything you earned across the whole Auto Climb run.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-description-how-to-stop-2",
+   "text": "You can also manually stop an Auto Climb run during or after a Battle.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-hit-stop-loss-count",
+   "text": "You hit your Stop Loss Count",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-image-select-multi-battle",
+   "text": "Select how many Floors you want to climb.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-rewads-finished-battles",
+   "text": "You climb the set number of Floors",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-rewards-description",
+   "text": "An Auto-Climb run will end when:",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-rewards-run-out-resources",
+   "text": "You run out of Spire Keys",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-setup-slider",
+   "text": "Use Auto Climb to automatically fight through multiple Spire battles in a row, ascending Floor by Floor.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-steup-description",
+   "text": "Use Auto Climb to automatically fight through multiple Spire battles in a row, ascending Floor by Floor.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-stop-loss-description",
+   "text": "Set your Stop Loss. Auto Climb will stop automatically if you lose this number of Battles.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-stop-loss-image-text",
+   "text": "Stop Loss: Auto Stop after 1 Loss(es)",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-towerclimb-tutorial-token-description",
+   "text": "Note: Spire Keys will not be used if you fail to clear a Floor – only when you win.",
+   "context": "tutorial",
+   "screen": "Spires"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-defense-popup-description_0",
+   "text": "Other players will see your Arena Defense in their Offense tab - and will attack your team.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-defense-popup-description_1",
+   "text": "You don't control your team - your Arena Defense will fight automatically on your behalf.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-defense-popup-description_2",
+   "text": "<b>Set a strong Defense team.</b><br><br>Every time your Defense loses, you'll lose Arena Points, which makes it hard to stay in the higher Leagues - and hard to win the best Rewards.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-defense-popup-description_main",
+   "text": "To fight in the Arena, you must set your Arena Defense.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_0",
+   "text": "Fight other players in the Arena to earn Arena Points, Arena Coins, and win Trophies.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_1",
+   "text": "Earn more Arena Points to climb the Leagues for better Rewards and Trophies.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_2",
+   "text": "Then fill your Trophy Room with Trophies to unlock permanent Stat Bonuses for your Invokers.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_3",
+   "text": "Or Melt those Trophies into Arena Coins and get exclusive, valuable items from the Bazaar.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_4",
+   "text": "You'll also receive Weekly Rewards depending on which League you finish in each week.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-arena-pvp-map-popup-description_5",
+   "text": "You get 1 Arena Token per hour (up to a limit of 10), so make sure you use them.",
+   "context": "tutorial",
+   "screen": "Arena PvP"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-frame-indicator",
+   "text": "Fusion Indicator shows which Invokers are used in Fusions.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-fuse-limits",
+   "text": "Fusion Limits show how many times you can fuse each Invoker.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-fuse-ready",
+   "text": "Press Fuse to fuse.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-fuse-result",
+   "text": "Newly fused Invokers start at Level 1, 0<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening.<br><br>Fusion Limit indicator will change. It will show how many more times you can fuse that Invoker.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-list",
+   "text": "The Fusion list shows which Invokers can be fused.<br>Tap the Magnifying Glass icon for more info.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-main",
+   "text": "Fuse lower Rarity Invokers into more powerful, higher Rarity ones.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-minimum-1",
+   "text": "Level, Ascension, and Awakening Requirements are shown.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-minimum-2",
+   "text": "Level, Ascension, and Awakening Requirements are shown.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-removal",
+   "text": "Fusions will disappear from the list once completed.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-state-1",
+   "text": "Invoker not in Collection.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-state-2",
+   "text": "Invoker in Collection.<br>Does not meet Fusion Requirements.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-state-3",
+   "text": "Invoker in Collection.<br>Meets Fusion Requirements.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-fuse-description-state-4",
+   "text": "Invoker selected. Ready for Fusion.",
+   "context": "tutorial",
+   "screen": "Fuse"
+  },
+  {
+   "key": "ui-tutorial-titan-priority-popup-description_0",
+   "text": "You can set the order in which you want your Titans to be Invoked during Battle.",
+   "context": "tutorial",
+   "screen": "Team selection (Titan priority)"
+  },
+  {
+   "key": "ui-tutorial-titan-priority-popup-description_1",
+   "text": "Titan Invokation Order is indicated on their icon.",
+   "context": "tutorial",
+   "screen": "Team selection (Titan priority)"
+  },
+  {
+   "key": "ui-tutorial-titan-priority-popup-description_2",
+   "text": "Press and hold, then drag and drop to adjust Titan Order.",
+   "context": "tutorial",
+   "screen": "Team selection (Titan priority)"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-battle-description",
+   "text": "Gain bonus HP, ATK, and DEF in Campaign and Boss Battles",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-gold-description",
+   "text": "Multiplies the amount of Gold you receive from battles by a specific percentage",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-memorium-description",
+   "text": "Multiplies the amount of Memorium you receive from battles by a specific percentage",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-quest-autocomplete-description",
+   "text": "Automatically completes your Daily Quests as soon as you finish them",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-runes-description",
+   "text": "Increases your chance of getting Rune Drops from Campaign Battles",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-vip-chat-icon-description",
+   "text": "Show off your VIP status with an exclusive VIP Badge other players can see in chat",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-vip-frames-description",
+   "text": "Make your Avatar stand out with exclusive Avatar Frames",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-bonus-tutorial-xp-description",
+   "text": "Multiplies the amount of XP Potions you receive from battles by a specific percentage",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-status-activation-tutorial",
+   "text": "Activate your VIP Pass to unlock game-changing Boosts",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-status-get-chest-tutorial",
+   "text": "Every day, you will get a free VIP Chest - even if your VIP Pass is not active. The higher your VIP Level, the better the Chest rewards!",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-status-levelup-tutorial",
+   "text": "As you progress, you will upgrade your VIP Level. The higher your VIP Level, the better the bonuses you'll have access to.",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-status-points-getting-tutorial",
+   "text": "You get VIP Points for logging in each day. Don't miss a day: the longer your login streak, the more daily Points you receive.",
+   "context": "tutorial",
+   "screen": "VIP"
+  },
+  {
+   "key": "ui-vip-status-points-shop-tutorial",
+   "text": "You also gain VIP Points for each purchase from the in-game Shop, excluding Gem purchases. Larger purchases equal more VIP Points.",
+   "context": "tutorial",
+   "screen": "VIP"
+  }
+ ]
+}
