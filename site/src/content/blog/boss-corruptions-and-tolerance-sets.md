@@ -51,7 +51,7 @@ Every boss in the game has exactly two corruptions: one damage corruption and on
 
 ## A few boss tips worth knowing
 
-These come straight from the game's own boss guides:
+These come from the game's own boss guides:
 
 - **Sakiel** takes 50% less damage from Bleed and Burn, and they lower its skill cooldowns. Invest in Accuracy instead; you'll need it to land debuffs and steal its buffs.
 - **Sorgott** deals most of its damage through Tolerances and your max HP, so stacking DEF won't save you. Mindworm doesn't stop its passive.
@@ -59,4 +59,4 @@ These come straight from the game's own boss guides:
 - **Ulgorim** and **Hyxxis** are immune to crowd control.
 - **Galvos** wants one Tank, not two: a single defender takes its attention and all your buffs.
 
-*Source: the game's boss guides, boss corruption data and gear set descriptions, game version 0.61.1516.*
+*Numbers for game version 0.61.1516.*

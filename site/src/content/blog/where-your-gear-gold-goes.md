@@ -6,7 +6,7 @@ gameVersion: "0.61.1514"
 tags: [gear, gold]
 ---
 
-Taking a 6★ Legendary piece of gear from +0 to +20 costs **2,334,830 gold** and **6,600 Memorium**. The game's upgrade price table shows exactly where that gold goes, and it's not spread evenly.
+Taking a 6★ Legendary piece of gear from +0 to +20 costs **2,334,830 gold** and **6,600 Memorium**. Where that gold goes is not spread evenly.
 
 ## The last five levels are the bill
 
@@ -48,6 +48,5 @@ Memorium is the steeper climb: a 6★ piece takes 33 times the Memorium of a 1�
 
 - **+15 is the cheap stop.** It costs under 20% of the gold of +20. Push to +20 only on pieces you'll keep.
 - **Rarity is the bargain, stars are the cost.** Upgrading a Legendary instead of a Common costs 46% more gold; upgrading a 6★ instead of a 5★ costs 39% more gold and almost twice the Memorium.
-- The game also stores roll coefficients of 0.7, 0.8, 0.9 and 1.0 for gear. They look like substat roll quality, but that's our reading, not something the game states.
 
-*Source: the gear upgrade price table, game version 0.61.1514.*
+*Numbers for game version 0.61.1514.*
