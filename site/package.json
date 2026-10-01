@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "update-notes": "node scripts/update-notes.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

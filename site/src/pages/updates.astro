@@ -1,0 +1,271 @@
+---
+// What changed in each game update, newest first. The notes come from scripts/update-notes.ts.
+import Base from '../layouts/Base.astro';
+import { heroes, heroHref, pack } from '../lib/data';
+import { rarityColor, skillTypeName } from '../lib/format';
+import { changeCount, type SkillChange, type ValueChange } from '../lib/updates/diff';
+import { updateAnchor, updates } from '../lib/updates/notes';
+
+const heroIds = new Set(heroes.map((h) => h.id));
+const date = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+
+/** "levels 2–11" or "levels 3, 7 and 11" for the levels whose text moved. */
+function levelList(c: SkillChange): string {
+  const l = c.levels ?? [];
+  const word = (c.levelWord ?? 'Level').toLowerCase();
+  if (l.length === 1) return `${word} ${l[0]}`;
+  const run = l.every((n, i) => i === 0 || n === l[i - 1] + 1);
+  if (run) return `${word}s ${l[0]}–${l[l.length - 1]}`;
+  return `${word}s ${l.slice(0, -1).join(', ')} and ${l[l.length - 1]}`;
+}
+
+function skillLine(c: SkillChange): string {
+  const slot = skillTypeName(c.type);
+  const name = c.title === slot ? slot : `${c.title} (${slot})`;
+  if (c.status === 'added') return `New skill: ${name}`;
+  if (c.status === 'removed') return `Skill removed: ${name}`;
+  const bits: string[] = [];
+  if (c.renamedFrom) bits.push(`renamed from ${c.renamedFrom}`);
+  if (c.maxLevel) bits.push(`max level ${c.maxLevel.before} → ${c.maxLevel.after}`);
+  if (c.levels) bits.push(`changed at ${levelList(c)}`);
+  return `${name}: ${bits.join(', ')}`;
+}
+
+const sections = updates.map((u) => ({
+  notes: u,
+  count: changeCount(u),
+  summary: [
+    u.heroes.added.length && plural(u.heroes.added.length, 'new Invoker'),
+    u.heroes.changed.length && `${plural(u.heroes.changed.length, 'Invoker')} with new stats`,
+    u.skills.length && `${plural(u.skills.length, 'Invoker')} with skill changes`,
+    u.skillCosts.length && plural(u.skillCosts.length, 'skill cost change'),
+    (u.sets.added.length || u.sets.changed.length) && plural(u.sets.added.length + u.sets.changed.length, 'gear set change'),
+    u.items.added.length && plural(u.items.added.length, 'new item'),
+    u.trophies.length && plural(u.trophies.length, 'trophy change'),
+    (u.bosses.added.length || u.bosses.changed.length) && plural(u.bosses.added.length + u.bosses.changed.length, 'boss change'),
+  ].filter(Boolean) as string[],
+}));
+
+type Change = ValueChange;
+---
+<Base title="Game updates">
+  <h1>Game updates</h1>
+  <p class="lead">
+    What changed in each game update: Invoker stats and skills, upgrade costs, gear sets, the Trophy Room and bosses.
+    Newest update first.
+  </p>
+
+  {sections.length === 0 && (
+    <section class="card empty">
+      <h2>Notes start with version {pack.gameVersion}</h2>
+      <p>Everything on the site matches game version {pack.gameVersion}. When the next update arrives, its changes will be listed here.</p>
+    </section>
+  )}
+
+  {sections.length > 0 && (
+    <nav class="jump" aria-label="Updates">
+      {sections.map(({ notes }) => <a class="chip" href={`#${updateAnchor(notes.to)}`}>{notes.to}</a>)}
+    </nav>
+  )}
+
+  {sections.map(({ notes: u, count, summary }) => (
+    <section class="update" id={updateAnchor(u.to)} aria-labelledby={`${updateAnchor(u.to)}-title`}>
+      <h2 id={`${updateAnchor(u.to)}-title`}>Version {u.to}</h2>
+      <p class="meta">Changes since {u.from} · {date(u.date)}</p>
+      {count === 0 ? (
+        <p class="hint">No changes to Invokers, skills, costs, gear sets, trophies or bosses in this update.</p>
+      ) : (
+        <p class="summary">{summary.join(' · ')}</p>
+      )}
+
+      {u.heroes.added.length > 0 && (
+        <div class="block">
+          <h3>New Invokers</h3>
+          <ul class="tags">
+            {u.heroes.added.map((h) => (
+              <li>
+                {heroIds.has(h.id) ? <a href={heroHref(h.id)} style={`color: ${rarityColor[h.rarity ?? ''] ?? 'inherit'}`}>{h.name}</a> : h.name}
+                <span class="muted"> {[h.rarity, h.element].filter(Boolean).join(' ')}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {u.heroes.removed.length > 0 && (
+        <div class="block">
+          <h3>Invokers no longer in the game</h3>
+          <ul class="tags">{u.heroes.removed.map((h) => <li>{h.name}</li>)}</ul>
+        </div>
+      )}
+
+      {u.heroes.changed.length > 0 && (
+        <div class="block">
+          <h3>Invoker stats</h3>
+          <p class="hint">Max stats are at rank 6, level 60, with no gear.</p>
+          <ul class="cards">
+            {u.heroes.changed.map((h) => (
+              <li class="card small">
+                <h4>{heroIds.has(h.id) ? <a href={heroHref(h.id)}>{h.name}</a> : h.name}</h4>
+                <ul class="changes">
+                  {h.changes.map((c: Change) => (
+                    <li><span class="label">{c.label}</span> <del>{c.before}</del> <span aria-hidden="true">→</span><span class="sr"> to </span> <ins>{c.after}</ins></li>
+                  ))}
+                  {h.growthChanged && <li class="muted">Stats at lower ranks and levels changed too.</li>}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {u.skills.length > 0 && (
+        <div class="block">
+          <h3>Skills</h3>
+          <p class="hint">Text shown is the highest level that changed. Struck-out words are the old text.</p>
+          <ul class="cards">
+            {u.skills.map((h) => (
+              <li class="card small">
+                <h4>
+                  {heroIds.has(h.id) ? <a href={heroHref(h.id)}>{h.name}</a> : h.name}
+                  {h.kind === 'titan' && <span class="muted"> Titan</span>}
+                </h4>
+                <ul class="changes">
+                  {h.changes.map((c) => (
+                    <li>
+                      <span class="label">{skillLine(c)}</span>
+                      {c.top && (
+                        <p class="diff">
+                          <span class="muted">{c.levelWord} {c.top.level}: </span>
+                          {c.top.parts.map((p) =>
+                            'same' in p ? <span>{p.same}</span> : <>{p.before && <del>{p.before}</del>}{p.after && <ins>{p.after}</ins>}</>,
+                          )}
+                        </p>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {u.skillCosts.length > 0 && (
+        <div class="block">
+          <h3>Skill upgrade costs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">Rarity</th><th scope="col">Skill</th><th scope="col">To level</th><th scope="col">Before</th><th scope="col">Now</th></tr></thead>
+              <tbody>
+                {u.skillCosts.map((c) => (
+                  <tr>
+                    <th scope="row" style={`color: ${rarityColor[c.rarity] ?? 'inherit'}`}>{c.rarity}</th>
+                    <td>{skillTypeName(c.skill)}</td>
+                    <td>{c.toLevel}</td>
+                    <td><del>{c.before}</del></td>
+                    <td><ins>{c.after}</ins></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {[
+        { title: 'Gear sets', added: u.sets.added, removed: u.sets.removed, changed: u.sets.changed },
+        { title: 'Trophy Room', added: [], removed: [], changed: u.trophies },
+        { title: 'Bosses', added: u.bosses.added, removed: u.bosses.removed, changed: u.bosses.changed },
+      ]
+        .filter((g) => g.added.length || g.removed.length || g.changed.length)
+        .map((g) => (
+          <div class="block">
+            <h3>{g.title}</h3>
+            {g.added.length > 0 && <p><span class="label">New:</span> {g.added.join(', ')}</p>}
+            {g.removed.length > 0 && <p><span class="label">Removed:</span> {g.removed.join(', ')}</p>}
+            {g.changed.length > 0 && (
+              <ul class="cards">
+                {g.changed.map((x) => (
+                  <li class="card small">
+                    <h4>{x.name}</h4>
+                    <ul class="changes">
+                      {x.changes.map((c: Change) => (
+                        <li><span class="label">{c.label}</span> <del>{c.before}</del> <span aria-hidden="true">→</span><span class="sr"> to </span> <ins>{c.after}</ins></li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+
+      {(u.items.added.length > 0 || u.items.renamed.length > 0 || u.items.removed.length > 0) && (
+        <div class="block">
+          <h3>Items</h3>
+          {u.items.added.length > 0 && <p><span class="label">New:</span> {u.items.added.join(', ')}</p>}
+          {u.items.renamed.length > 0 && (
+            <p><span class="label">Renamed:</span> {u.items.renamed.map((r) => `${r.before} → ${r.after}`).join(', ')}</p>
+          )}
+          {u.items.removed.length > 0 && <p><span class="label">Removed:</span> {u.items.removed.join(', ')}</p>}
+        </div>
+      )}
+    </section>
+  ))}
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--soft); }
+  h4 { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+  p { margin: 0 0 8px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .hint, .meta, .muted { color: var(--muted); font-size: 14px; }
+  .summary { color: var(--text); font-weight: 500; }
+  .card {
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .empty { margin-top: 32px; }
+  .empty p { color: var(--soft); margin: 0; }
+  .card.small { padding: 12px 16px; border-radius: 12px; min-width: 0; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font-size: 14px;
+  }
+  .update { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+  .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .changes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+  .label { color: var(--soft); }
+  .diff { margin: 4px 0 0; font-size: 14px; color: var(--soft); overflow-wrap: anywhere; }
+  del { color: #ff8a8a; text-decoration: line-through; text-decoration-thickness: 1px; }
+  ins { color: #7be0a0; text-decoration: none; font-weight: 600; }
+  .diff del, .diff ins { padding: 0 2px; border-radius: 4px; }
+  .diff del { background: rgba(255, 138, 138, 0.1); }
+  .diff ins { background: rgba(123, 224, 160, 0.12); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  tbody tr:last-child > * { border-bottom: 0; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    h2 { font-size: 19px; }
+    .cards { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

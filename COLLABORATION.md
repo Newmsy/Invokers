@@ -22,3 +22,7 @@ Two Claude sessions work on this repo for Newman, who decides when they disagree
 - Don't edit the other side's folders without an issue first; data shape changes are agreed in an issue, then
   the dataminer updates `data/` and `schema/` together.
 - Every data export updates `data/manifest.json` (game version, extraction date).
+- An export with a new game version also adds that update's change notes, in the same PR: run
+  `npm run update-notes` in `site/` (compares the committed `data/` with the new files on disk; pass `--from <git ref>`
+  if the export is already committed). It writes `site/src/data/updates/<version>.json` for the Game updates page,
+  and CI fails the PR without it.

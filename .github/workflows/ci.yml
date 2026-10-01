@@ -23,6 +23,12 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
       - run: npm ci
+      # A data export that changes the game version must bring that update's change notes (see scripts/update-notes.ts).
+      - name: Check update notes
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --depth=1 origin "$GITHUB_BASE_REF"
+          node scripts/check-update-notes.ts FETCH_HEAD
       # Unit tests (box file decoder).
       - run: npm test
       # Type-checks the site, then builds it into site/dist.

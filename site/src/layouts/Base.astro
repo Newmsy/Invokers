@@ -45,7 +45,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       <slot />
     </main>
     <footer>
-      Game version {pack.gameVersion} · updated {updated}
+      <a href={href('updates')}>Game version {pack.gameVersion}</a> · updated {updated}
       <br />
       Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
     </footer>
