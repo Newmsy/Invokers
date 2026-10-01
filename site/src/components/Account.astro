@@ -1,0 +1,81 @@
+---
+// Header sign-in button and account panel. Rendered only when the build has Supabase keys.
+import { PROVIDER_LABELS, providers } from '../lib/account/config';
+import { href } from '../lib/data';
+---
+<div class="account">
+  <button id="account-button" class="account-button" type="button" aria-haspopup="dialog">Sign in</button>
+  <dialog id="account-dialog" class="account-dialog" aria-labelledby="account-title">
+    <form method="dialog" class="close-row"><button class="close" aria-label="Close">×</button></form>
+
+    <div data-when="signed-out">
+      <h2 id="account-title">Sign in</h2>
+      <p>Save your box to your account and open it on any device. Without an account, your box stays in this browser only.</p>
+      <div class="providers">
+        {providers.map((p) => (
+          <button class="provider" type="button" data-provider={p}>Continue with {PROVIDER_LABELS[p]}</button>
+        ))}
+      </div>
+      <p class="fine">We keep your email address and your saved box, nothing else. <a href={href('privacy')}>Privacy</a></p>
+    </div>
+
+    <div data-when="signed-in" hidden>
+      <h2>Your account</h2>
+      <p>Signed in as <strong id="account-who"></strong></p>
+      <p id="account-sync" class="sync" role="status" aria-live="polite"></p>
+      <div class="row">
+        <button id="account-sync-now" class="action" type="button">Sync now</button>
+        <button id="account-sign-out" class="action" type="button">Sign out</button>
+      </div>
+      <p class="fine">
+        Signing out keeps your box in this browser.
+        <button id="account-delete" class="danger" type="button">Delete my account</button>{' '}
+        removes your saved box and sign-in from our servers. <a href={href('privacy')}>Privacy</a>
+      </p>
+    </div>
+    <p id="account-error" class="error" role="alert"></p>
+  </dialog>
+</div>
+
+<script>
+  import { startWidget } from '../lib/account/widget';
+  startWidget();
+</script>
+
+<style>
+  .account { margin-left: auto; }
+  .account-button {
+    font: inherit; font-weight: 600; cursor: pointer; color: var(--text);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 8px 16px;
+    display: inline-flex; align-items: center; gap: 8px; max-width: 46vw;
+  }
+  .account-button:hover { border-color: var(--accent); }
+  .account-button :global(.avatar) {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--bg);
+    display: inline-grid; place-items: center; font-size: 13px; font-weight: 800; flex: none;
+  }
+  .account-button :global(.label) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .account-button :global(.dot) { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+  .account-button :global(.dot.synced) { background: #7be0a0; }
+  .account-button :global(.dot.error) { background: #ff7a90; }
+  .account-dialog {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 24px; width: min(400px, calc(100vw - 32px));
+  }
+  .account-dialog::backdrop { background: rgb(5 4 16 / 0.7); }
+  .account-dialog h2 { margin: 0 0 8px; font-size: 1.3rem; }
+  .close-row { float: right; margin: -8px -12px 0 0; }
+  .close { background: none; border: 0; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; }
+  .providers { display: grid; gap: 8px; margin: 16px 0; }
+  .provider, .action {
+    font: inherit; font-weight: 600; cursor: pointer; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px;
+  }
+  .provider:hover, .action:hover { border-color: var(--accent); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .sync { color: var(--soft); }
+  .fine { color: var(--muted); font-size: 0.85rem; }
+  .danger { background: none; border: 0; padding: 0; font: inherit; color: #ff7a90; cursor: pointer; text-decoration: underline; }
+  .error { color: #ff7a90; margin: 8px 0 0; min-height: 0; }
+  .error:empty { display: none; }
+</style>

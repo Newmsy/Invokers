@@ -3,6 +3,7 @@ import type { BoxAccessory, BoxGear, BoxHero, StatRoll } from './decode';
 import { ImportError, importBackup, importSnapshots, partFor } from './importer';
 import { clearBox, loadBox, onBoxChange, saveBox, type BoxDoc } from './store';
 import type { HeroRef } from '../data';
+import { getAccountState, onAccountChange } from '../account/state';
 
 interface Refs {
   heroes: Record<string, HeroRef>;
@@ -57,6 +58,14 @@ export function start(): void {
     el.classList.toggle('error', error);
   };
 
+  function savedWhere(): string {
+    const account = getAccountState();
+    if (account.status !== 'signed-in') return 'saved in this browser only';
+    if (account.sync === 'synced') return 'saved in this browser and synced to your account';
+    if (account.sync === 'syncing') return 'saved in this browser, syncing to your account';
+    return 'saved in this browser, not synced to your account yet';
+  }
+
   function renderStatus(): void {
     const has = !!box;
     ($('backup') as HTMLButtonElement).disabled = !has;
@@ -70,7 +79,7 @@ export function start(): void {
     const when = new Date(box.importedAt).toLocaleString();
     $('box-status').textContent =
       `${box.heroes.length} invokers, ${box.gear.length} gear, ${box.accessories.length} accessories · ` +
-      `imported ${when} · saved in this browser only`;
+      `imported ${when} · ${savedWhere()}`;
     for (const part of ['heroes', 'gear', 'accessories'] as const) {
       document.querySelector(`[data-count="${part}"]`)!.textContent = String(box[part].length);
     }
@@ -152,10 +161,14 @@ export function start(): void {
   });
 
   $('delete').addEventListener('click', async () => {
-    if (!confirm('Delete your imported box from this browser?')) return;
+    const signedIn = getAccountState().status === 'signed-in';
+    const question = signedIn
+      ? 'Delete your imported box from this browser and from your account?'
+      : 'Delete your imported box from this browser?';
+    if (!confirm(question)) return;
     await clearBox();
     box = null;
-    message('Your box was deleted from this browser.');
+    message(signedIn ? 'Your box was deleted from this browser and your account.' : 'Your box was deleted from this browser.');
     renderAll();
   });
 
@@ -342,5 +355,6 @@ export function start(): void {
     renderAll();
   };
   onBoxChange(reload);
+  onAccountChange(renderStatus);
   reload();
 }

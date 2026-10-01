@@ -1,5 +1,7 @@
 ---
 import { pack, href } from '../lib/data';
+import Account from '../components/Account.astro';
+import { accountsEnabled } from '../lib/account/config';
 
 interface Props {
   title: string;
@@ -38,6 +40,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
           <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
         ))}
       </nav>
+      {accountsEnabled && <Account />}
     </header>
     <main>
       <slot />
@@ -45,7 +48,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     <footer>
       Game version {pack.gameVersion} · data extracted {pack.extractedAt}
       <br />
-      Unofficial fan site, not affiliated with the game's developer.
+      Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
     </footer>
     <nav class="tab-bar" aria-label="Main" style={`--tabs: ${nav.length}`}>
       {nav.map((n) => (

@@ -3,3 +3,6 @@ node_modules/
 # raw datamining output (large, the game's own text)
 datamine/out/
 __pycache__/
+
+# local build settings (Supabase keys)
+.env
