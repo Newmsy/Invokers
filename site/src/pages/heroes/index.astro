@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import { heroes, href } from '../../lib/data';
+
+const sorted = [...heroes].sort((a, b) => a.name.localeCompare(b.name));
+---
+<Base title="Heroes">
+  <h1>Heroes</h1>
+  {sorted.length === 0 && <p>No hero data yet.</p>}
+  <ul>
+    {sorted.map((h) => <li><a href={href(`heroes/${h.id}`)}>{h.name}</a></li>)}
+  </ul>
+</Base>

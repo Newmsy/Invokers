@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { heroes, events, href } from '../lib/data';
+---
+<Base title="Home">
+  <h1>Invokers Companion</h1>
+  <p>Game data for Invokers, read straight from the game files.</p>
+  <ul>
+    <li><a href={href('heroes')}>Heroes</a> ({heroes.length})</li>
+    <li><a href={href('events')}>Events</a> ({events.length})</li>
+  </ul>
+</Base>

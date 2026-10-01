@@ -1,0 +1,70 @@
+---
+import { pack, href } from '../lib/data';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const nav = [
+  ['heroes', 'Heroes'],
+  ['events', 'Events'],
+  ['about', 'About'],
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Invokers Companion</title>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href={href('/')}>Invokers Companion</a>
+      <nav>
+        {nav.map(([path, label]) => <a href={href(path)}>{label}</a>)}
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      Game version {pack.gameVersion} · data extracted {pack.extractedAt}
+      <br />
+      Unofficial fan site, not affiliated with the game's developer.
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --bg: #111318;
+    --surface: #1a1d24;
+    --text: #e6e8ee;
+    --muted: #9aa1b1;
+    --accent: #7aa2ff;
+    font-family: system-ui, sans-serif;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+  }
+  a { color: var(--accent); }
+  header, main, footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: baseline;
+  }
+  header nav { display: flex; gap: 12px; }
+  .brand { font-weight: 700; color: var(--text); text-decoration: none; }
+  footer { color: var(--muted); font-size: 0.85rem; }
+</style>

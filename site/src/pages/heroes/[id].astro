@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import { heroes, href, type Hero } from '../../lib/data';
+
+export function getStaticPaths() {
+  return heroes.map((hero) => ({ params: { id: hero.id }, props: { hero } }));
+}
+
+const { hero } = Astro.props as { hero: Hero };
+---
+<Base title={hero.name}>
+  <p><a href={href('heroes')}>← All heroes</a></p>
+  <h1>{hero.name}</h1>
+  <pre>{JSON.stringify(hero, null, 2)}</pre>
+</Base>

@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { events } from '../lib/data';
+---
+<Base title="Events">
+  <h1>Events</h1>
+  {events.length === 0 && <p>No event data yet.</p>}
+  <ul>
+    {events.map((e) => <li>{e.name}</li>)}
+  </ul>
+</Base>
