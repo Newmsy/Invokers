@@ -15,6 +15,7 @@ export const nav: NavItem[] = [
   { path: 'trophies', label: 'Trophies', icon: 'trophy', header: true },
   { path: 'bosses', label: 'Bosses', icon: 'skull', header: true },
   { path: 'blog', label: 'Blog', icon: 'book', header: true },
+  { path: 'skill-costs', label: 'Skill costs', icon: 'book' },
   { path: 'my-box', label: 'My box', icon: 'box', tab: true },
   { path: 'about', label: 'About', icon: 'info' },
   { path: 'privacy', label: 'Privacy', icon: 'info' },
