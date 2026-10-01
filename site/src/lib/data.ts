@@ -4,6 +4,9 @@ import manifest from '../../../data/manifest.json';
 import heroesJson from '../../../data/heroes.json';
 import skillsJson from '../../../data/skills.json';
 import eventsJson from '../../../data/events.json';
+import heroesRaw from '../../../data/heroes.json?raw';
+import statsJson from '../../../data/stats.json';
+import setsJson from '../../../data/sets.json';
 // Ratings are the site's own (Newms's scores), so they live under site/.
 import ratingsJson from '../data/ratings.json';
 
@@ -94,3 +97,39 @@ export function href(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   return `${base}/${path.replace(/^\//, '')}`;
 }
+
+// heroes.json stores configId as a bare int64, which JSON.parse rounds. The box import matches on the
+// exact value, so read it from the raw text.
+const exactConfigIds = new Map<string, string>(
+  [...heroesRaw.matchAll(/"id":\s*"([^"]+)",\s*"configId":\s*(\d+)/g)].map((m) => [m[1], m[2]]),
+);
+
+/** What the box pages need to show an owned hero, keyed by exact config id. */
+export interface HeroRef {
+  id: string;
+  name: string;
+  rarity: string;
+  faction: string;
+  element: string;
+  class: string;
+}
+
+export const heroRefsByConfigId: Record<string, HeroRef> = Object.fromEntries(
+  heroes.flatMap((h) => {
+    const configId = exactConfigIds.get(h.id);
+    if (!configId) return [];
+    const { id, name, rarity, faction, element } = h as Hero & Record<string, string>;
+    return [[configId, { id, name, rarity, faction, element, class: String(h.class) }]];
+  }),
+);
+
+/** Gear stat labels by stat id (e.g. AttackPercent -> ATK, percent). */
+export const gearStatLabels: Record<string, { name: string; percent: boolean }> = Object.fromEntries(
+  (statsJson as { id: string; name: string; percent?: boolean }[])
+    .filter((s) => typeof s.percent === 'boolean')
+    .map((s) => [s.id, { name: s.name, percent: s.percent as boolean }]),
+);
+
+export const setNames: Record<string, string> = Object.fromEntries(
+  (setsJson as { id: string; name: string }[]).map((s) => [s.id, s.name]),
+);
