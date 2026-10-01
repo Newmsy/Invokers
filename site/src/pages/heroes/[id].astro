@@ -219,9 +219,12 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     if (!input) continue;
     const out = skill.querySelector('output')!;
     const texts = [...skill.querySelectorAll<HTMLElement>('.skill-text')];
+    // Some skills skip levels (e.g. 1, 2, 6, 8); between them the last listed text still applies.
     input.addEventListener('input', () => {
       out.textContent = input.value;
-      for (const t of texts) t.hidden = t.dataset.level !== input.value;
+      const level = Number(input.value);
+      const shown = texts.filter((t) => Number(t.dataset.level) <= level).pop();
+      for (const t of texts) t.hidden = t !== shown;
     });
   }
 
