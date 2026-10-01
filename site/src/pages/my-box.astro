@@ -58,6 +58,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
   </section>
 
   <div id="box-views" hidden>
+    <p class="plan-link"><a href={href('planner')}>See what your invokers still need in the Planner</a></p>
     <div class="tabs" role="tablist">
       <button role="tab" data-tab="heroes" aria-selected="true">Invokers <span data-count="heroes"></span></button>
       <button role="tab" data-tab="gear" aria-selected="false">Gear <span data-count="gear"></span></button>
@@ -109,6 +110,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
     --uncommon: #7be0a0;
   }
   .status { color: var(--muted); }
+  .plan-link { margin: 16px 0 0; }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .spacer { flex: 1; }
   :global(.button) {
