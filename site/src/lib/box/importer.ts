@@ -1,5 +1,16 @@
 // Turns the files a player picks (the game's snapshot files, or a backup) into a BoxDoc.
-import { BOX_FILES, KNOWN_FORMAT, decodeAccessories, decodeGear, decodeHeroes, type BoxPart } from './decode';
+import {
+  BOX_FILES,
+  KNOWN_FORMAT,
+  decodeAccessories,
+  decodeGear,
+  decodeHeroes,
+  type BoxAccessory,
+  type BoxGear,
+  type BoxHero,
+  type BoxPart,
+  type StatRoll,
+} from './decode';
 import { BOX_SCHEMA, isBoxDoc, type BoxDoc } from './store';
 
 export interface ImportResult {
@@ -76,6 +87,20 @@ export async function importBackup(file: File): Promise<BoxDoc> {
   } catch {
     throw new ImportError(`${file.name} isn't a backup file from this site.`);
   }
-  if (!isBoxDoc(parsed)) throw new ImportError(`${file.name} isn't a backup file from this site.`);
+  if (!isBoxDoc(parsed) || !itemsLookRight(parsed)) throw new ImportError(`${file.name} isn't a backup file from this site.`);
   return parsed;
+}
+
+/** Spot-checks every item's shape, so a hand-edited backup can't break the views. */
+function itemsLookRight(doc: BoxDoc): boolean {
+  const roll = (s: unknown) => !!s && typeof (s as StatRoll).stat === 'string' && typeof (s as StatRoll).value === 'number';
+  const item = (i: BoxGear | BoxAccessory) =>
+    typeof i?.id === 'number' && typeof i.slot === 'string' && typeof i.rank === 'string' &&
+    typeof i.rarity === 'string' && typeof i.level === 'number' &&
+    (i.mainStat === null || roll(i.mainStat)) && Array.isArray(i.subStats) && i.subStats.every(roll);
+  const hero = (h: BoxHero) =>
+    typeof h?.id === 'number' && typeof h.configId === 'string' && typeof h.rank === 'string' &&
+    typeof h.level === 'number' && typeof h.inStorage === 'boolean' && typeof h.awakenLevel === 'number' &&
+    !!h.gearBySlot && typeof h.gearBySlot === 'object';
+  return doc.heroes.every(hero) && doc.gear.every(item) && doc.accessories.every(item);
 }

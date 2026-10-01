@@ -58,7 +58,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <li>Starts at {rankNumber(hero.baseRank)}★</li>
       </ul>
       {rating?.note && <p class="note">{rating.note}</p>}
-      <p id="owned" class="owned" data-config-id={configId} hidden></p>
+      <p id="owned" class="owned" data-config-id={configId} data-box-href={href('my-box')} hidden></p>
     </div>
   </section>
 
@@ -161,8 +161,8 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
 <script>
   // Shows how this invoker looks in the player's imported box, if they have one.
+  // Only import the small store module here: lib/data pulls the whole data pack into the bundle.
   import { loadBox } from '../../lib/box/store';
-  import { href } from '../../lib/data';
 
   const STARS = ['Unknown', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
   const el = document.getElementById('owned')!;
@@ -173,7 +173,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     const extra = copies.length > 1 ? ` (${copies.length} copies)` : '';
     el.replaceChildren(`In your box: ${STARS.indexOf(best.rank)}★, level ${best.level}, awakening ${best.awakenLevel}${extra}. `);
     const link = document.createElement('a');
-    link.href = href('my-box');
+    link.href = el.dataset.boxHref ?? '';
     link.textContent = 'My box';
     el.append(link);
     el.hidden = false;
