@@ -59,7 +59,7 @@ export function startWidget(): void {
   $('account-sign-out').addEventListener('click', () => void signOut().then(() => dialog.close()));
   $('account-delete').addEventListener('click', async () => {
     const ok = confirm(
-      'Delete your account? This removes your saved box and your sign-in from our servers. ' +
+      'Delete your account? This removes your saved box, your share links and your sign-in from our servers. ' +
         'The copy of your box in this browser stays until you delete it on the My box page.',
     );
     if (!ok) return;

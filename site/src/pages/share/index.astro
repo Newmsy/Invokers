@@ -1,0 +1,46 @@
+---
+// Public page for a share link: /share/?id=<id>. The site is static, so the share is fetched in the browser.
+import Base from '../../layouts/Base.astro';
+import { gearStatLabels, heroRefsByConfigId, href, pack, setNames } from '../../lib/data';
+import { accountsEnabled } from '../../lib/account/config';
+
+const refs = { heroes: heroRefsByConfigId, stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
+---
+<Base title="Shared">
+  <h1 id="share-heading">Shared link</h1>
+  <p id="share-meta" class="meta">{accountsEnabled ? 'Loading…' : "Share links aren't switched on for this site yet."}</p>
+  <div id="share-body"></div>
+  <p class="cta">Want your own? <a href={href('my-box')}>Import your box</a>, sign in, and press Share.</p>
+  {accountsEnabled && <script id="share-refs" type="application/json" set:html={JSON.stringify(refs)} />}
+</Base>
+
+{accountsEnabled && (
+  <script>
+    import { startShareView } from '../../lib/share/view';
+    startShareView();
+  </script>
+)}
+
+<style>
+  .meta, .cta { color: var(--muted); }
+  .cta { margin-top: 32px; }
+  #share-body :global(.grid) { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  @media (max-width: 480px) { #share-body :global(.grid) { grid-template-columns: 1fr; } }
+  #share-body :global(.hero-card) {
+    background: var(--surface); border-radius: 12px; padding: 12px; border-left: 3px solid var(--line);
+    display: grid; gap: 4px; min-width: 0; align-content: start;
+  }
+  #share-body :global(.hero-card a) { color: var(--text); font-weight: 700; overflow-wrap: anywhere; }
+  #share-body :global(.sub) { color: var(--muted); font-size: 0.8rem; }
+  #share-body :global(.note) { color: var(--soft); font-size: 0.9rem; }
+  #share-body :global(.stars) { color: #f5c451; letter-spacing: 1px; }
+  #share-body :global(details) { font-size: 0.85rem; }
+  #share-body :global(summary) { cursor: pointer; color: var(--accent); }
+  #share-body :global(details ul) { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 6px; }
+  #share-body :global(details li) { color: var(--soft); }
+  #share-body :global(details li strong) { color: var(--text); }
+  #share-body :global(.r-Legendary) { border-left-color: #f5c451; }
+  #share-body :global(.r-Epic) { border-left-color: #c29bff; }
+  #share-body :global(.r-Rare) { border-left-color: #6fb8ff; }
+  #share-body :global(.r-Uncommon) { border-left-color: #7be0a0; }
+</style>
