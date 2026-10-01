@@ -35,6 +35,10 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
           <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
         ))}
       </nav>
+      <a class="search-link" href={href('search')} aria-label="Search" title="Search (press /)" aria-current={current === 'search' ? 'page' : undefined}>
+        <NavIcon icon="search" size={20} />
+        <span>Search</span>
+      </a>
       <a class="box-button" href={href(myBox.path)} aria-current={current === myBox.path ? 'page' : undefined}>
         <NavIcon icon={myBox.icon} size={18} />
         {myBox.label}
@@ -60,6 +64,18 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
         );
       })}
     </nav>
+    <script>
+      // Press / anywhere (outside a text field) to jump to search.
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+        const el = e.target as HTMLElement;
+        if (el.closest('input, textarea, select, [contenteditable="true"]')) return;
+        const box = document.getElementById('search-input') as HTMLInputElement | null;
+        e.preventDefault();
+        if (box) box.focus();
+        else location.href = (document.querySelector('a.search-link') as HTMLAnchorElement).href;
+      });
+    </script>
   </body>
 </html>
 
@@ -117,8 +133,23 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     border-radius: 22px;
   }
   .top-nav a[aria-current='page'] { color: var(--bg); background: var(--accent); }
-  .box-button {
+  .search-link {
     margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 22px;
+    color: var(--soft);
+    font-weight: 500;
+    white-space: nowrap;
+    flex: none;
+  }
+  .search-link:hover { color: var(--text); background: var(--surface); }
+  .search-link[aria-current='page'] { color: var(--accent); }
+  header.top .account { margin-left: 0; }
+  .box-button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -149,6 +180,8 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   /* Below this width the header links don't fit, so the bottom tab bar takes over. */
   @media (max-width: 1140px) {
     .top-nav, .box-button { display: none; }
+    .search-link { padding: 0 10px; min-width: 44px; justify-content: center; }
+    .search-link span { display: none; }
     footer { padding-bottom: 92px; }
     .tab-bar {
       display: grid;

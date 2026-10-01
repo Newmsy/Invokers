@@ -2,11 +2,13 @@
 // Phone menu: every section, including the ones not in the bottom bar.
 import Base from '../layouts/Base.astro';
 import NavIcon from '../components/NavIcon.astro';
+import SearchForm from '../components/SearchForm.astro';
 import { href } from '../lib/data';
 import { nav } from '../lib/nav';
 ---
 <Base title="More">
   <h1>All sections</h1>
+  <div class="search"><SearchForm /></div>
   <ul class="list">
     {nav.map((n) => (
       <li>
@@ -22,6 +24,7 @@ import { nav } from '../lib/nav';
 
 <style>
   h1 { margin: 16px 0 12px; font-size: 22px; font-weight: 700; }
+  .search { margin-bottom: 12px; }
   .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .list a {
     display: flex;
