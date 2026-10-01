@@ -104,6 +104,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="skills" class="panel" role="tabpanel" aria-labelledby="tab-skills">
     <h2>Skills</h2>
+    <p class="hint"><a href={href(`skill-costs?rarity=${hero.rarity}`)}>Upgrade costs for {hero.rarity} skills</a></p>
     {skills.map((s) => {
       const levels = s.levels!;
       const max = levels[levels.length - 1].level;
