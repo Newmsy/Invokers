@@ -23,7 +23,8 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | 9 | Star summon items with English names | Done | In `data/items.json` (e.g. `SI_WildStar`, `SI_FateStar`). |
 | 10 | Sample of the local box file | Done | `samples/README.md` (location, format, ids, stats) and `samples/box-sample.json`; full reference decoder `scripts/decode_box.py` (heroes, gear, accessories from `aggregate_snapshots/*.dat`, binary MemoryPack). |
 | 11 | Accessory set effects / slot restrictions | Done | Accessories have no set bonuses (no set config exists). Each accessory slot unlocks at a hero Awakening level (in-game text); main and sub stats are limited per slot (`AccessoryData.MainBonusesBySlot`). |
-| - | In-game tips (issue #8) | Done | `data/tips.json` from `scripts/build_tips.py` (offline: localization + UI bundles via UnityPy). 40 loading-screen hints in game order with titles, 10 loading messages, 184 tutorial popup lines, 8 help labels. Campaign/dungeon "Tips & Strategy" Do/Don't lines are built at runtime and still to resolve. |
+| - | In-game tips (issue #8) | Done | `data/tips.json` from `scripts/build_tips.py` (offline: localization + UI bundles via UnityPy). 40 loading-screen hints in game order with titles, 10 loading messages, 184 tutorial popup lines, 8 help labels. Boss Do/Don't lines are in `data/bosses.json`. |
+| - | Boss guides (issue #11) | Done | `data/bosses.json` from `scripts/build_bosses.py`: 16 bosses with their Do/Don't lists, Corruptions and stage energy. The Do/Don't keys are built at runtime; the lists were found by running FNV-1a backwards from the hashes (see the script). Boss skills and stage HP still need a game session. |
 | - | Arena trophy room | Done | `data/trophies.json` (issue #4): 15 levels per stat, bonus and medal cost per level. |
 
 ## Facts worth knowing
