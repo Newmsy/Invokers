@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+import { rarityColor } from '../lib/format';
+import {
+  calculatorData,
+  costBetween,
+  currencies,
+  currencyName,
+  groups,
+  maxAll,
+  maxLevel,
+  rarities,
+  skillName,
+  skillsOf,
+} from '../lib/skillCosts';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+const calc = {
+  currencies: currencies.map((id) => ({ id, name: currencyName(id) })),
+  rarities: calculatorData(),
+};
+---
+<Base title="Skill upgrade costs">
+  <h1>Skill upgrade costs</h1>
+  <p class="lead">
+    What it costs to level an Invoker's skills, by rarity. Every skill starts at level 1. Combo and Ultimate usually cost
+    more codices than the other skills.
+  </p>
+
+  <section aria-labelledby="compare-title">
+    <h2 id="compare-title">Max every skill, by rarity</h2>
+    <p class="hint">From level 1 to max on every skill slot the game prices for that rarity, tolerance skills included.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Rarity</th>
+            <th scope="col">Skills</th>
+            {currencies.map((c) => <th scope="col">{currencyName(c)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {rarities.map((r) => {
+            const total = maxAll(r);
+            return (
+              <tr>
+                <th scope="row" style={`color: ${rarityColor[r]}`}>{r}</th>
+                <td>{skillsOf(r).length}</td>
+                {currencies.map((c) => <td>{total[c] ? fmt(total[c]) : '–'}</td>)}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="calc-title">
+    <h2 id="calc-title">Calculator</h2>
+    <div class="calc">
+      <label>
+        <span>Rarity</span>
+        <select id="c-rarity">{rarities.map((r) => <option value={r}>{r}</option>)}</select>
+      </label>
+      <label>
+        <span>Skill</span>
+        <select id="c-skill"></select>
+      </label>
+      <label>
+        <span>From level</span>
+        <select id="c-from"></select>
+      </label>
+      <label>
+        <span>To level</span>
+        <select id="c-to"></select>
+      </label>
+    </div>
+    <p class="result" id="c-result" aria-live="polite">–</p>
+  </section>
+
+  <h2>Cost per level</h2>
+  <div class="chips" role="group" aria-label="Rarity">
+    {rarities.map((r, i) => (
+      <button type="button" class="chip" data-rarity={r} aria-pressed={i === 0 ? 'true' : 'false'} style={`--rarity: ${rarityColor[r]}`}>{r}</button>
+    ))}
+  </div>
+  {rarities.map((r, i) => {
+    const max = maxLevel(r);
+    return (
+      <section class="rarity" data-rarity-panel={r} hidden={i > 0} aria-label={`${r} skill costs`}>
+        {groups(r).map((g) => {
+          const used = currencies.filter((c) => g.schedule.some((s) => s.cost[c]));
+          const total = costBetween(r, g.skills[0], 1, max);
+          return (
+            <div class="group">
+              <h3>{g.skills.map(skillName).join(', ')}</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">To level</th>
+                      {used.map((c) => <th scope="col">{currencyName(c)}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {g.schedule.map((step) => (
+                      <tr>
+                        <th scope="row">{step.toLevel}</th>
+                        {used.map((c) => <td>{step.cost[c] ? fmt(step.cost[c]) : '–'}</td>)}
+                      </tr>
+                    ))}
+                    <tr class="total">
+                      <th scope="row">1 → {max}</th>
+                      {used.map((c) => <td>{total[c] ? fmt(total[c]) : '–'}</td>)}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+    );
+  })}
+
+  <script type="application/json" id="cost-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  interface Data {
+    currencies: { id: string; name: string }[];
+    rarities: { rarity: string; skills: { id: string; name: string; schedule: { toLevel: number; cost: Record<string, number> }[] }[] }[];
+  }
+  const data: Data = JSON.parse(document.getElementById('cost-data')!.textContent!);
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const rarity = $<HTMLSelectElement>('c-rarity');
+  const skill = $<HTMLSelectElement>('c-skill');
+  const from = $<HTMLSelectElement>('c-from');
+  const to = $<HTMLSelectElement>('c-to');
+  const result = $<HTMLElement>('c-result');
+  const fmt = (n: number) => n.toLocaleString('en-GB');
+
+  const options = (sel: HTMLSelectElement, items: [string, string][], keep?: string) => {
+    sel.replaceChildren(...items.map(([v, label]) => new Option(label, v)));
+    if (keep && items.some(([v]) => v === keep)) sel.value = keep;
+  };
+
+  const ALL = '__all';
+  function current() {
+    return data.rarities.find((r) => r.rarity === rarity.value)!;
+  }
+  function fillSkills() {
+    const r = current();
+    options(skill, [[ALL, 'Every skill'], ...r.skills.map((s): [string, string] => [s.id, s.name])], skill.value);
+    const max = Math.max(...r.skills.flatMap((s) => s.schedule.map((x) => x.toLevel)));
+    const levels = Array.from({ length: max }, (_, i) => String(i + 1));
+    options(from, levels.slice(0, -1).map((l) => [l, l]), from.value || '1');
+    options(to, levels.slice(1).map((l) => [l, l]), to.value || String(max));
+  }
+  function update() {
+    if (Number(to.value) <= Number(from.value)) to.value = String(Math.min(Number(from.value) + 1, Number(to.options[to.options.length - 1].value)));
+    const r = current();
+    const picked = skill.value === ALL ? r.skills : r.skills.filter((s) => s.id === skill.value);
+    const sum: Record<string, number> = {};
+    for (const s of picked) {
+      for (const step of s.schedule) {
+        if (step.toLevel > Number(from.value) && step.toLevel <= Number(to.value)) {
+          for (const [k, v] of Object.entries(step.cost)) sum[k] = (sum[k] ?? 0) + v;
+        }
+      }
+    }
+    const parts = data.currencies.filter((c) => sum[c.id]).map((c) => `${fmt(sum[c.id])} ${c.name}`);
+    result.textContent = parts.length ? parts.join(' + ') : 'Nothing to pay';
+  }
+
+  // Start on the rarity in the URL (hero pages link here with ?rarity=…).
+  const wanted = new URLSearchParams(location.search).get('rarity');
+  if (wanted && data.rarities.some((r) => r.rarity === wanted)) rarity.value = wanted;
+
+  rarity.addEventListener('change', () => {
+    fillSkills();
+    update();
+    showPanel(rarity.value);
+  });
+  for (const sel of [skill, from, to]) sel.addEventListener('change', update);
+
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-rarity]')];
+  function showPanel(r: string) {
+    for (const c of chips) c.setAttribute('aria-pressed', String(c.dataset.rarity === r));
+    for (const p of document.querySelectorAll<HTMLElement>('[data-rarity-panel]')) p.hidden = p.dataset.rarityPanel !== r;
+  }
+  for (const c of chips) c.addEventListener('click', () => showPanel(c.dataset.rarity!));
+
+  fillSkills();
+  update();
+  showPanel(rarity.value);
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
+  .card {
+    margin-top: 32px;
+    padding: 4px 20px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .card h2 { margin-top: 16px; }
+  .calc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .calc label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  select {
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+  }
+  .result { margin: 16px 0 0; font-family: var(--display); font-weight: 600; font-size: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .chip[aria-pressed='true'] { background: var(--surface-2); border-color: var(--rarity); color: var(--text); font-weight: 600; }
+  .rarity[hidden] { display: none; }
+  .rarity:not([hidden]) { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+  .group { min-width: 0; }
+  .group h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; color: var(--soft); }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  thead th:first-child, tbody th { text-align: left; }
+  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  tbody tr:last-child > * { border-bottom: 0; }
+  tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+    .calc { grid-template-columns: 1fr 1fr; }
+    .result { font-size: 17px; }
+    .rarity:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
