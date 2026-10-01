@@ -28,7 +28,12 @@ const providerNames = providers.map((p) => PROVIDER_LABELS[p]).join(' or ');
         <ul>
           <li>your email address and the display name {providerNames} shares, so you can sign in again;</li>
           <li>your saved box: the same invokers, gear and accessories list that's saved in your browser, and when you imported it.</li>
+          <li>any share links you make: a copy of only what you chose to share (your invokers, and the gear they wear if you ticked it, or a team).</li>
         </ul>
+        <p>
+          Anyone with a share link can see what's in it, but not your name or email. Delete a link on My box and it
+          stops working.
+        </p>
         <p>
           We don't get your password, your contacts or anything else from {providerNames}. Your box is stored with
           Supabase, our database provider, and only you can read it. We don't sell it, share it or show ads.
@@ -37,7 +42,7 @@ const providerNames = providers.map((p) => PROVIDER_LABELS[p]).join(' or ');
         <h2>Deleting your data</h2>
         <ul>
           <li>"Delete my box" while signed in removes your box from this browser and from your account.</li>
-          <li>"Delete my account" in the account panel removes your saved box and your sign-in from our servers straight away.</li>
+          <li>"Delete my account" in the account panel removes your saved box, your share links and your sign-in from our servers straight away.</li>
           <li>Signing out keeps your box in this browser only.</li>
         </ul>
       </>

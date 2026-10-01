@@ -5,12 +5,17 @@ the build has `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` (see `site/.e
 
 What's stored: Supabase Auth keeps each player's email and display name from Google or Discord. The `boxes` table
 keeps one row per player with their decoded box (the same JSON the site saves in the browser). Row-level security
-lets a player read and write only their own row. `delete_my_account()` removes the sign-in and, by cascade, the box.
+lets a player read and write only their own row. `delete_my_account()` removes the sign-in and, by cascade, the box
+and share links.
+
+Share links (`shares` table) hold a snapshot of only what the player chose to share: their invokers (with or without
+storage, with or without worn gear) or a team. Anyone with a link can open that one share through `get_share()`,
+which returns no owner details; nobody can list other players' shares.
 
 ## One-time setup
 
-1. **Supabase project.** Create a free project at supabase.com. In **SQL Editor**, run
-   `supabase/migrations/0001_boxes.sql`.
+1. **Supabase project.** Create a free project at supabase.com. In **SQL Editor**, run each file in
+   `supabase/migrations/` in order (`0001_boxes.sql`, then `0002_shares.sql`).
 2. **Google.** In Google Cloud Console, create a project, set up the **OAuth consent screen** (External, app name,
    support email), then **Credentials > Create credentials > OAuth client ID** (Web application). Add the
    authorized redirect URI shown in Supabase under **Authentication > Providers > Google** (it looks like

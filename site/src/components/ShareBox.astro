@@ -1,0 +1,57 @@
+---
+// "Share" on My box: makes a public link to a snapshot of the parts of the box the player picks.
+// Rendered only when the build has accounts; the button shows once the player is signed in.
+---
+<button id="share-open" class="button" type="button" hidden>Share</button>
+<dialog id="share-dialog" class="share-dialog" aria-labelledby="share-title">
+  <form method="dialog" class="close-row"><button class="close" aria-label="Close">×</button></form>
+  <h2 id="share-title">Share your box</h2>
+  <p class="muted">Anyone with the link can see what you tick here, as it is now. Your name and email aren't shown.</p>
+  <label class="field">Title <input id="share-name" maxlength="80" value="My box" /></label>
+  <label class="check"><input id="share-equipment" type="checkbox" checked /> Gear and accessories your invokers are wearing</label>
+  <label class="check"><input id="share-storage" type="checkbox" /> Invokers in storage</label>
+  <p class="muted">Spare gear is never shared.</p>
+  <button id="share-create" class="button primary" type="button">Create link</button>
+  <div id="share-result" class="result" hidden>
+    <input id="share-link" readonly aria-label="Share link" />
+    <button id="share-copy" class="button" type="button">Copy</button>
+  </div>
+  <p id="share-error" class="error" role="alert"></p>
+
+  <h3>Your links</h3>
+  <ul id="share-list" class="links"></ul>
+</dialog>
+
+<script>
+  import { startShareBox } from '../lib/share/ui-box';
+  startShareBox();
+</script>
+
+<style>
+  .share-dialog {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 24px; width: min(460px, calc(100vw - 32px));
+  }
+  .share-dialog::backdrop { background: rgb(5 4 16 / 0.7); }
+  .share-dialog h2 { margin: 0 0 8px; font-size: 1.3rem; }
+  .share-dialog h3 { margin: 20px 0 8px; font-size: 1rem; }
+  .close-row { float: right; margin: -8px -12px 0 0; }
+  .close { background: none; border: 0; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+  .field { display: grid; gap: 4px; margin: 12px 0; }
+  .field input, .result input {
+    background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 10px; font: inherit; min-width: 0;
+  }
+  .check { display: flex; gap: 8px; align-items: flex-start; margin: 8px 0; }
+  .result { display: flex; gap: 8px; margin-top: 12px; }
+  .result input { flex: 1; }
+  .result[hidden] { display: none; }
+  .error { color: #ff7a90; margin: 8px 0 0; }
+  .error:empty { display: none; }
+  .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .links :global(li) { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.9rem; }
+  .links :global(li a) { overflow-wrap: anywhere; }
+  .links :global(.when) { color: var(--muted); }
+  .links :global(.remove) { margin-left: auto; background: none; border: 0; color: #ff7a90; cursor: pointer; font: inherit; }
+</style>
