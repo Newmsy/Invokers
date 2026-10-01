@@ -1,0 +1,303 @@
+---
+import Base from '../layouts/Base.astro';
+import { itemName, trophyRoom, type StatBonus } from '../lib/data';
+
+const { trophies, rooms, unconfirmed } = trophyRoom;
+const maxLevel = Math.max(...trophies.map((t) => t.maxLevel));
+const levelNumbers = Array.from({ length: maxLevel + 1 }, (_, i) => i);
+
+// Every trophy shares one price list in the config; take it from the first.
+const priceList = trophies[0]?.levels ?? [];
+const medals = [...new Set(priceList.flatMap((l) => l.cost.map((c) => c.itemId)))];
+
+// "Bronze Trophy" → "Bronze": the lead already says these are arena trophies.
+const medalName = (id: string) => itemName(id).replace(/ Trophy$/, '');
+
+function bonusText(b: StatBonus | undefined): string {
+  if (!b) return '–';
+  return b.valueType === 'percent' ? `+${Math.round(b.value * 1000) / 10}%` : `+${b.value}`;
+}
+
+// Running totals per medal, so the reference table shows what reaching a level costs from zero.
+const running: Record<string, number> = {};
+const priceRows = priceList.map((l) => {
+  for (const c of l.cost) running[c.itemId] = (running[c.itemId] ?? 0) + c.amount;
+  return { level: l.level, cost: l.cost, total: { ...running } };
+});
+
+// Shape the planner script needs: per trophy, per level, the cost and the bonus label.
+const plannerData = {
+  medals: medals.map((id) => ({ id, name: medalName(id) })),
+  trophies: trophies.map((t) => ({
+    id: t.id,
+    levels: t.levels.map((l) => ({ level: l.level, cost: l.cost, bonus: bonusText(l.bonuses[0]) })),
+  })),
+};
+---
+<Base title="Trophy Room">
+  <h1>Trophy Room</h1>
+  <p class="lead">
+    There is one room per element ({rooms.join(', ')}). A room's trophies boost every Invoker of that element, in every
+    battle. Trophies are bought with the Bronze, Silver and Gold Trophies won in arena battles.
+  </p>
+
+  <section class="card" aria-labelledby="plan-title">
+    <h2 id="plan-title">Plan your upgrades</h2>
+    <p class="hint">Set the level each trophy is at now and the level you want. Costs are for one element room.</p>
+    <div class="plan" id="plan">
+      <div class="plan-head" aria-hidden="true">
+        <span>Trophy</span><span>Now</span><span>Goal</span><span>Bonus</span><span>Cost</span>
+      </div>
+      {trophies.map((t) => (
+        <div class="plan-row" data-trophy={t.id}>
+          <span class="plan-name">{t.name}</span>
+          <label>
+            <span class="plan-label">Now</span>
+            <select data-role="from" aria-label={`${t.name}: level now`}>
+              {levelNumbers.filter((n) => n <= t.maxLevel).map((n) => <option value={n}>{n}</option>)}
+            </select>
+          </label>
+          <label>
+            <span class="plan-label">Goal</span>
+            <select data-role="to" aria-label={`${t.name}: goal level`}>
+              {levelNumbers.filter((n) => n <= t.maxLevel).map((n) => <option value={n}>{n}</option>)}
+            </select>
+          </label>
+          <span class="plan-bonus" data-role="bonus">–</span>
+          <span class="plan-cost" data-role="cost">–</span>
+        </div>
+      ))}
+      <div class="plan-total">
+        <span>Total</span>
+        <span id="total" aria-live="polite">Nothing to buy yet</span>
+      </div>
+    </div>
+    <div class="plan-actions">
+      <button type="button" class="chip" id="all-max">Plan every trophy to {maxLevel}</button>
+      <button type="button" class="chip" id="reset">Reset</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="price-title">
+    <h2 id="price-title">Cost per level</h2>
+    <p class="hint">The same for every trophy. "From 0" is the total to reach that level from nothing.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            <th scope="col">Cost</th>
+            {medals.map((m) => <th scope="col">From 0: {medalName(m)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {priceRows.map((r) => (
+            <tr>
+              <th scope="row">{r.level}</th>
+              <td>{r.cost.map((c) => `${c.amount.toLocaleString('en-GB')} ${medalName(c.itemId)}`).join(' + ')}</td>
+              {medals.map((m) => <td>{(r.total[m] ?? 0).toLocaleString('en-GB')}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="bonus-title">
+    <h2 id="bonus-title">Bonus per level</h2>
+    <p class="hint">Total bonus at each level.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Trophy</th>
+            {priceList.map((l) => <th scope="col">{l.level}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {trophies.map((t) => (
+            <tr>
+              <th scope="row">{t.name}</th>
+              {t.levels.map((l) => <td>{bonusText(l.bonuses[0])}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {unconfirmed.length > 0 && (
+    <section class="caveats" aria-labelledby="caveat-title">
+      <h2 id="caveat-title">Not confirmed yet</h2>
+      <p class="hint">The game config doesn't say these, so the page assumes the simplest reading.</p>
+      <ul>{unconfirmed.map((u) => <li>{u}</li>)}</ul>
+    </section>
+  )}
+
+  <script type="application/json" id="trophy-data" set:html={JSON.stringify(plannerData)} />
+</Base>
+
+<script>
+  interface PlanLevel {
+    level: number;
+    cost: { itemId: string; amount: number }[];
+    bonus: string;
+  }
+  interface PlanData {
+    medals: { id: string; name: string }[];
+    trophies: { id: string; levels: PlanLevel[] }[];
+  }
+
+  const data: PlanData = JSON.parse(document.getElementById('trophy-data')!.textContent!);
+  const rows = [...document.querySelectorAll<HTMLElement>('.plan-row')];
+  const total = document.getElementById('total')!;
+  const fmt = (n: number) => n.toLocaleString('en-GB');
+  const STORE = 'trophy-plan';
+
+  function costText(sums: Record<string, number>): string {
+    const parts = data.medals.filter((m) => sums[m.id]).map((m) => `${fmt(sums[m.id])} ${m.name}`);
+    return parts.length ? parts.join(' + ') : '';
+  }
+
+  function update() {
+    const grand: Record<string, number> = {};
+    const saved: Record<string, [number, number]> = {};
+    for (const row of rows) {
+      const t = data.trophies.find((x) => x.id === row.dataset.trophy)!;
+      const fromSel = row.querySelector<HTMLSelectElement>('[data-role=from]')!;
+      const toSel = row.querySelector<HTMLSelectElement>('[data-role=to]')!;
+      if (Number(toSel.value) < Number(fromSel.value)) toSel.value = fromSel.value;
+      const from = Number(fromSel.value);
+      const to = Number(toSel.value);
+      saved[t.id] = [from, to];
+
+      const sums: Record<string, number> = {};
+      for (const l of t.levels) {
+        if (l.level > from && l.level <= to) {
+          for (const c of l.cost) sums[c.itemId] = (sums[c.itemId] ?? 0) + c.amount;
+        }
+      }
+      for (const [k, v] of Object.entries(sums)) grand[k] = (grand[k] ?? 0) + v;
+
+      const bonusAt = (n: number) => (n === 0 ? '0' : t.levels.find((l) => l.level === n)?.bonus ?? '–');
+      row.querySelector('[data-role=bonus]')!.textContent = to > from ? `${bonusAt(from)} → ${bonusAt(to)}` : bonusAt(to);
+      row.querySelector('[data-role=cost]')!.textContent = costText(sums) || '–';
+      row.classList.toggle('active', to > from);
+    }
+    total.textContent = costText(grand) || 'Nothing to buy yet';
+    try {
+      localStorage.setItem(STORE, JSON.stringify(saved));
+    } catch {
+      // Storage can be unavailable (private mode); the planner still works.
+    }
+  }
+
+  // Restore the last plan in this browser.
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE) ?? '{}') as Record<string, [number, number]>;
+    for (const row of rows) {
+      const s = saved[row.dataset.trophy!];
+      if (!s) continue;
+      row.querySelector<HTMLSelectElement>('[data-role=from]')!.value = String(s[0]);
+      row.querySelector<HTMLSelectElement>('[data-role=to]')!.value = String(s[1]);
+    }
+  } catch {
+    // Ignore unreadable storage.
+  }
+
+  for (const sel of document.querySelectorAll('#plan select')) sel.addEventListener('change', update);
+  document.getElementById('all-max')!.addEventListener('click', () => {
+    for (const row of rows) {
+      const to = row.querySelector<HTMLSelectElement>('[data-role=to]')!;
+      to.value = to.options[to.options.length - 1].value;
+    }
+    update();
+  });
+  document.getElementById('reset')!.addEventListener('click', () => {
+    for (const sel of document.querySelectorAll<HTMLSelectElement>('#plan select')) sel.value = '0';
+    update();
+  });
+  update();
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0 0 8px; }
+  .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
+  .card {
+    margin-top: 24px;
+    padding: 4px 20px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .plan { display: flex; flex-direction: column; }
+  .plan-head, .plan-row, .plan-total {
+    display: grid;
+    grid-template-columns: minmax(110px, 1.2fr) 88px 88px minmax(120px, 1fr) minmax(160px, 1.6fr);
+    gap: 12px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .plan-head { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .plan-name { font-weight: 600; }
+  .plan-label { display: none; }
+  .plan-row.active .plan-cost { color: var(--text); }
+  .plan-bonus, .plan-cost { font-size: 14px; color: var(--soft); font-variant-numeric: tabular-nums; }
+  .plan-row.active .plan-bonus { color: var(--accent); }
+  .plan-total { grid-template-columns: 1fr; border-bottom: 0; font-weight: 600; font-family: var(--display); }
+  .plan-total span:first-child { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: inherit; }
+  select {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+  }
+  .plan-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--text); }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  thead th:first-child, tbody th { text-align: left; }
+  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  tbody tr:last-child > * { border-bottom: 0; }
+  .caveats ul { margin: 0; padding-left: 20px; color: var(--soft); }
+  .caveats li { margin-bottom: 4px; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+    .plan-head { display: none; }
+    .plan-row {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 'name bonus' 'from to' 'cost cost';
+      gap: 6px 12px;
+      padding: 12px 0;
+    }
+    .plan-name { grid-area: name; }
+    .plan-row label:nth-of-type(1) { grid-area: from; }
+    .plan-row label:nth-of-type(2) { grid-area: to; }
+    .plan-bonus { grid-area: bonus; text-align: right; }
+    .plan-cost { grid-area: cost; }
+    .plan-row:not(.active) .plan-cost { display: none; }
+    .plan-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+  }
+</style>

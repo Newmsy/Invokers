@@ -4,6 +4,8 @@ import manifest from '../../../data/manifest.json';
 import heroesJson from '../../../data/heroes.json';
 import skillsJson from '../../../data/skills.json';
 import eventsJson from '../../../data/events.json';
+import trophiesJson from '../../../data/trophies.json';
+import itemsJson from '../../../data/items.json';
 // Ratings are the site's own (Newms's scores), so they live under site/.
 import ratingsJson from '../data/ratings.json';
 
@@ -67,6 +69,45 @@ export interface Rating {
   note?: string;
 }
 
+export interface ItemAmount {
+  itemId: string;
+  amount: number;
+}
+
+export interface StatBonus {
+  stat: string;
+  value: number;
+  valueType: 'percent' | 'flat';
+}
+
+export interface TrophyLevel {
+  level: number;
+  cost: ItemAmount[];
+  /** Total bonus at this level, not the step from the previous one. */
+  bonuses: StatBonus[];
+}
+
+export interface Trophy {
+  id: string;
+  name: string;
+  maxLevel: number;
+  levels: TrophyLevel[];
+}
+
+export interface TrophyRoom {
+  rooms: string[];
+  scope: { type: string; description: string };
+  source: string;
+  unconfirmed: string[];
+  trophies: Trophy[];
+}
+
+export interface Item {
+  id: string;
+  name: string;
+  description?: string;
+}
+
 export interface GameEvent {
   id: string;
   name: string;
@@ -76,6 +117,13 @@ export interface GameEvent {
 export const pack: Manifest = manifest;
 export const heroes: Hero[] = heroesJson as Hero[];
 export const events: GameEvent[] = eventsJson as GameEvent[];
+export const trophyRoom: TrophyRoom = trophiesJson as TrophyRoom;
+
+const itemsById = new Map((itemsJson as Item[]).map((i) => [i.id, i]));
+
+export function itemName(id: string): string {
+  return itemsById.get(id)?.name ?? id;
+}
 
 const skillSets = skillsJson as SkillSet[];
 const skillsByHero = new Map(skillSets.map((s) => [s.heroId, s.skills]));
