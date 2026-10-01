@@ -27,6 +27,11 @@ jobs:
       - run: npm test
       # Type-checks the site, then builds it into site/dist.
       - run: npm run build
+        env:
+          # Public Supabase settings (repo Actions variables). Unset means a browser-only build.
+          PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
+          PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
+          PUBLIC_AUTH_PROVIDERS: ${{ vars.PUBLIC_AUTH_PROVIDERS }}
       - uses: actions/upload-artifact@v4
         with:
           name: site

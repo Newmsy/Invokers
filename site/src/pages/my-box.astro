@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { gearStatLabels, heroRefsByConfigId, href, pack, setNames } from '../lib/data';
 import { BOX_FILES } from '../lib/box/decode';
+import { accountsEnabled } from '../lib/account/config';
 
 const refs = { heroes: heroRefsByConfigId, stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
 const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_snapshots';
@@ -43,7 +44,11 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
         <li>Pick <code>{BOX_FILES.heroes}</code>, <code>{BOX_FILES.gear}</code> and <code>{BOX_FILES.accessories}</code>.</li>
       </ol>
       <p class="muted">
-        Your files are read in this browser and saved only here. Nothing is uploaded. Only those three files are ever
+        Your files are read in this browser and saved here.
+        {accountsEnabled
+          ? 'Nothing is uploaded unless you sign in, and then only the decoded list of invokers and gear goes to your account.'
+          : 'Nothing is uploaded.'}
+        Only those three files are ever
         opened: if you pick the whole folder, the profile file next to them (with your account name) is skipped
         without being read. Re-import whenever you've upgraded gear.
       </p>
