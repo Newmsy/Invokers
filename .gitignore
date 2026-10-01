@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+# raw datamining output (large, the game's own text)
+datamine/out/
+__pycache__/
