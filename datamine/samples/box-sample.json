@@ -1,0 +1,1001 @@
+{
+ "_note": "Decoded with datamine/scripts/decode_box.py. The real files are binary (MemoryPack), not JSON; see README.md. Trimmed to 5 heroes, 10 gear pieces and 3 accessories. These files contain no account ids or names.",
+ "heroes": {
+  "formatVersion": 2,
+  "revision": 379540,
+  "items": [
+   {
+    "id": 1,
+    "configId": 17264861641262248,
+    "heroId": "NOC020",
+    "rank": "Five",
+    "level": 50,
+    "locked": true,
+    "inStorage": false,
+    "marker": "None",
+    "skills": [
+     {
+      "skill": "ActiveSkill1",
+      "level": 5
+     },
+     {
+      "skill": "ActiveSkill2",
+      "level": 5
+     },
+     {
+      "skill": "ActiveSkill3",
+      "level": 5
+     },
+     {
+      "skill": "Ultimate",
+      "level": 4
+     },
+     {
+      "skill": "Combo",
+      "level": 4
+     },
+     {
+      "skill": "Tolerance2",
+      "level": 5
+     }
+    ],
+    "gearBySlot": {
+     "Weapon": 13745,
+     "Shield": 7676,
+     "Helmet": 13177,
+     "Pauldrons": 286,
+     "Gauntlets": 12427,
+     "Chestplate": 11690,
+     "Belt": 7735,
+     "Boots": 6725
+    },
+    "accessoryBySlot": {},
+    "awakenLevel": 3,
+    "awakenNodeIds": [
+     2101,
+     2102,
+     2105,
+     2106,
+     2107,
+     2110,
+     2103,
+     2108,
+     2111,
+     2109,
+     2104,
+     2201,
+     2202,
+     2203,
+     2204,
+     2207,
+     2205,
+     2208,
+     2206,
+     2209,
+     2210,
+     2211,
+     2301,
+     2306,
+     2307,
+     2309,
+     2310,
+     2311,
+     2304
+    ],
+    "chroma": false,
+    "skin": "Normal"
+   },
+   {
+    "id": 2,
+    "configId": 17525758347548838,
+    "heroId": "IRN026",
+    "rank": "Four",
+    "level": 30,
+    "locked": true,
+    "inStorage": false,
+    "marker": "None",
+    "skills": [
+     {
+      "skill": "ActiveSkill1",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill2",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill3",
+      "level": 2
+     },
+     {
+      "skill": "Ultimate",
+      "level": 2
+     },
+     {
+      "skill": "Combo",
+      "level": 0
+     },
+     {
+      "skill": "Tolerance1",
+      "level": 0
+     }
+    ],
+    "gearBySlot": {
+     "Weapon": 6987,
+     "Shield": 5808,
+     "Helmet": 125,
+     "Pauldrons": 5900,
+     "Gauntlets": 141,
+     "Chestplate": 2,
+     "Belt": 97,
+     "Boots": 1781
+    },
+    "accessoryBySlot": {},
+    "awakenLevel": 0,
+    "awakenNodeIds": [],
+    "chroma": false,
+    "skin": "Normal"
+   },
+   {
+    "id": 22,
+    "configId": 17543313698318186,
+    "heroId": "MAG004",
+    "rank": "Six",
+    "level": 60,
+    "locked": true,
+    "inStorage": false,
+    "marker": "None",
+    "skills": [
+     {
+      "skill": "ActiveSkill1",
+      "level": 8
+     },
+     {
+      "skill": "ActiveSkill2",
+      "level": 10
+     },
+     {
+      "skill": "ActiveSkill3",
+      "level": 10
+     },
+     {
+      "skill": "Ultimate",
+      "level": 10
+     },
+     {
+      "skill": "Combo",
+      "level": 8
+     },
+     {
+      "skill": "Tolerance1",
+      "level": 0
+     },
+     {
+      "skill": "Tolerance2",
+      "level": 0
+     }
+    ],
+    "gearBySlot": {
+     "Weapon": 8767,
+     "Shield": 16741,
+     "Helmet": 5816,
+     "Pauldrons": 5849,
+     "Gauntlets": 2906,
+     "Chestplate": 7333,
+     "Belt": 5807,
+     "Boots": 16755
+    },
+    "accessoryBySlot": {
+     "Amulet": 1353,
+     "Earrings": 970,
+     "Banner": 54,
+     "Talisman": 961,
+     "Flasks": 901
+    },
+    "awakenLevel": 6,
+    "awakenNodeIds": [
+     3101,
+     3102,
+     3107,
+     3108,
+     3110,
+     3109,
+     3105,
+     3106,
+     3103,
+     3104,
+     3111,
+     3201,
+     3202,
+     3203,
+     3204,
+     3205,
+     3207,
+     3206,
+     3208,
+     3209,
+     3210,
+     3211,
+     3301,
+     3306,
+     3310,
+     3311,
+     3309,
+     3307,
+     3302,
+     3304,
+     3305,
+     3303,
+     3308,
+     3401,
+     3407,
+     3409,
+     3410,
+     3411,
+     3402,
+     3403,
+     3405,
+     3408,
+     3404,
+     3406,
+     3501,
+     3505,
+     3506,
+     3507,
+     3508,
+     3509,
+     3502,
+     3503,
+     3504,
+     3510,
+     3511,
+     3601,
+     3602,
+     3609,
+     3606,
+     3603
+    ],
+    "chroma": false,
+    "skin": "Normal"
+   },
+   {
+    "id": 23,
+    "configId": 17152594968252143,
+    "heroId": "CAM013",
+    "rank": "Four",
+    "level": 30,
+    "locked": true,
+    "inStorage": false,
+    "marker": "None",
+    "skills": [
+     {
+      "skill": "ActiveSkill1",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill2",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill3",
+      "level": 0
+     },
+     {
+      "skill": "Ultimate",
+      "level": 0
+     },
+     {
+      "skill": "Combo",
+      "level": 0
+     },
+     {
+      "skill": "Tolerance2",
+      "level": 0
+     }
+    ],
+    "gearBySlot": {
+     "Weapon": 325,
+     "Shield": 71,
+     "Helmet": 344,
+     "Pauldrons": 18,
+     "Gauntlets": 171,
+     "Chestplate": 348,
+     "Belt": 84,
+     "Boots": 277
+    },
+    "accessoryBySlot": {},
+    "awakenLevel": 3,
+    "awakenNodeIds": [
+     2101,
+     2107,
+     2108,
+     2110,
+     2111,
+     2109,
+     2102,
+     2105,
+     2106,
+     2103,
+     2104,
+     2201,
+     2207,
+     2208,
+     2209,
+     2210,
+     2211,
+     2202,
+     2203,
+     2204,
+     2205,
+     2206,
+     2301,
+     2306,
+     2310,
+     2311,
+     2309,
+     2307
+    ],
+    "chroma": false,
+    "skin": "Normal"
+   },
+   {
+    "id": 74,
+    "configId": 17333979794832944,
+    "heroId": "NOC021",
+    "rank": "Five",
+    "level": 50,
+    "locked": true,
+    "inStorage": false,
+    "marker": "None",
+    "skills": [
+     {
+      "skill": "ActiveSkill1",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill2",
+      "level": 0
+     },
+     {
+      "skill": "ActiveSkill3",
+      "level": 0
+     },
+     {
+      "skill": "Ultimate",
+      "level": 0
+     },
+     {
+      "skill": "Combo",
+      "level": 0
+     },
+     {
+      "skill": "Tolerance1",
+      "level": 0
+     },
+     {
+      "skill": "Tolerance2",
+      "level": 0
+     }
+    ],
+    "gearBySlot": {
+     "Shield": 269,
+     "Helmet": 1819,
+     "Gauntlets": 262,
+     "Chestplate": 287,
+     "Boots": 7052
+    },
+    "accessoryBySlot": {},
+    "awakenLevel": 3,
+    "awakenNodeIds": [
+     2101,
+     2107,
+     2102,
+     2105,
+     2110,
+     2103,
+     2104,
+     2111,
+     2108,
+     2109,
+     2106,
+     2201,
+     2202,
+     2207,
+     2208,
+     2209,
+     2210,
+     2211,
+     2203,
+     2204,
+     2205,
+     2206,
+     2301,
+     2306
+    ],
+    "chroma": false,
+    "skin": "Normal"
+   }
+  ]
+ },
+ "gear": {
+  "formatVersion": 4,
+  "revision": 379723,
+  "items": [
+   {
+    "id": 13745,
+    "slot": "Weapon",
+    "rank": "Five",
+    "rarity": "Legendary",
+    "set": "Attack",
+    "equippedHeroId": 1,
+    "level": 20,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackFlat",
+     "value": 188.0,
+     "upgrades": 20,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "ResistanceFlat",
+      "value": 29.0,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     },
+     {
+      "id": 3,
+      "stat": "ComboSpeedFlat",
+      "value": 15.0,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     },
+     {
+      "id": 4,
+      "stat": "ManaGenerationFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 5,
+      "stat": "DefensePercent",
+      "value": 0.0809,
+      "upgrades": 2,
+      "rollsSum": 2.7
+     }
+    ]
+   },
+   {
+    "id": 7676,
+    "slot": "Shield",
+    "rank": "Four",
+    "rarity": "Epic",
+    "set": "LifeSteal",
+    "equippedHeroId": 1,
+    "level": 0,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "DefenseFlat",
+     "value": 30.0,
+     "upgrades": 0,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "CriticalRatePercent",
+      "value": 0.0198,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 3,
+      "stat": "SkillRecoveryFlat",
+      "value": 5.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 4,
+      "stat": "ManaGenerationFlat",
+      "value": 4.0,
+      "upgrades": 0,
+      "rollsSum": 0.7
+     }
+    ]
+   },
+   {
+    "id": 6987,
+    "slot": "Weapon",
+    "rank": "Five",
+    "rarity": "Rare",
+    "set": "Defense",
+    "equippedHeroId": 2,
+    "level": 10,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackFlat",
+     "value": 118.0,
+     "upgrades": 10,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "HealthPercent",
+      "value": 0.0243,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 3,
+      "stat": "CriticalRatePercent",
+      "value": 0.032,
+      "upgrades": 0,
+      "rollsSum": 1.0
+     },
+     {
+      "id": 4,
+      "stat": "AttackPercent",
+      "value": 0.0189,
+      "upgrades": 0,
+      "rollsSum": 0.7
+     },
+     {
+      "id": 5,
+      "stat": "AccuracyFlat",
+      "value": 14.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     }
+    ]
+   },
+   {
+    "id": 5808,
+    "slot": "Shield",
+    "rank": "Four",
+    "rarity": "Rare",
+    "set": "SkillRecovery",
+    "equippedHeroId": 2,
+    "level": 20,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "DefenseFlat",
+     "value": 130.0,
+     "upgrades": 20,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "ResistanceFlat",
+      "value": 11.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 3,
+      "stat": "SkillSpeedFlat",
+      "value": 5.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 4,
+      "stat": "ComboSpeedFlat",
+      "value": 10.0,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     },
+     {
+      "id": 5,
+      "stat": "AccuracyFlat",
+      "value": 23.0,
+      "upgrades": 1,
+      "rollsSum": 1.9
+     }
+    ]
+   },
+   {
+    "id": 8767,
+    "slot": "Weapon",
+    "rank": "Five",
+    "rarity": "Rare",
+    "set": "SkillRecovery",
+    "equippedHeroId": 22,
+    "level": 20,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackFlat",
+     "value": 188.0,
+     "upgrades": 20,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "CriticalRatePercent",
+      "value": 0.0224,
+      "upgrades": 0,
+      "rollsSum": 0.7
+     },
+     {
+      "id": 3,
+      "stat": "AttackPercent",
+      "value": 0.0216,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 4,
+      "stat": "ResistanceFlat",
+      "value": 45.0,
+      "upgrades": 2,
+      "rollsSum": 2.5
+     },
+     {
+      "id": 5,
+      "stat": "ManaGenerationFlat",
+      "value": 8.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     }
+    ]
+   },
+   {
+    "id": 16741,
+    "slot": "Shield",
+    "rank": "Five",
+    "rarity": "Rare",
+    "set": "SkillRecovery",
+    "equippedHeroId": 22,
+    "level": 20,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "DefenseFlat",
+     "value": 188.0,
+     "upgrades": 20,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "DefensePercent",
+      "value": 0.0432,
+      "upgrades": 1,
+      "rollsSum": 1.6
+     },
+     {
+      "id": 3,
+      "stat": "CriticalRatePercent",
+      "value": 0.0288,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 4,
+      "stat": "CriticalDamagePercent",
+      "value": 0.0608,
+      "upgrades": 1,
+      "rollsSum": 1.6
+     },
+     {
+      "id": 5,
+      "stat": "SkillRecoveryFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     }
+    ]
+   },
+   {
+    "id": 325,
+    "slot": "Weapon",
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "set": "Attack",
+    "equippedHeroId": 23,
+    "level": 0,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackFlat",
+     "value": 26.0,
+     "upgrades": 0,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "AttackPercent",
+      "value": 0.0135,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     }
+    ]
+   },
+   {
+    "id": 71,
+    "slot": "Shield",
+    "rank": "Three",
+    "rarity": "Rare",
+    "set": "Attack",
+    "equippedHeroId": 23,
+    "level": 10,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "DefenseFlat",
+     "value": 66.0,
+     "upgrades": 10,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "DefensePercent",
+      "value": 0.015,
+      "upgrades": 0,
+      "rollsSum": 1.0
+     },
+     {
+      "id": 3,
+      "stat": "CriticalDamagePercent",
+      "value": 0.0168,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 4,
+      "stat": "SkillSpeedFlat",
+      "value": 2.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 5,
+      "stat": "ComboSpeedFlat",
+      "value": 3.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     }
+    ]
+   },
+   {
+    "id": 1738,
+    "slot": "Weapon",
+    "rank": "Five",
+    "rarity": "Rare",
+    "set": "Health",
+    "equippedHeroId": null,
+    "level": 15,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackFlat",
+     "value": 153.0,
+     "upgrades": 15,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "CriticalDamagePercent",
+      "value": 0.0304,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 3,
+      "stat": "DefensePercent",
+      "value": 0.0189,
+      "upgrades": 0,
+      "rollsSum": 0.7
+     },
+     {
+      "id": 4,
+      "stat": "SkillSpeedFlat",
+      "value": 18.0,
+      "upgrades": 1,
+      "rollsSum": 2.0
+     },
+     {
+      "id": 5,
+      "stat": "ResistanceFlat",
+      "value": 14.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     }
+    ]
+   },
+   {
+    "id": 1752,
+    "slot": "Helmet",
+    "rank": "Five",
+    "rarity": "Rare",
+    "set": "Support",
+    "equippedHeroId": null,
+    "level": 0,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "HealthFlat",
+     "value": 480.0,
+     "upgrades": 0,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "SkillRecoveryFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 3,
+      "stat": "AttackPercent",
+      "value": 0.0216,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     }
+    ]
+   }
+  ]
+ },
+ "accessories": {
+  "formatVersion": 5,
+  "revision": 379542,
+  "items": [
+   {
+    "id": 22,
+    "slot": "Banner",
+    "rank": "Five",
+    "rarity": "Rare",
+    "faction": "Lightseekers",
+    "equippedHeroId": 3138,
+    "level": 10,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "AttackPercent",
+     "value": 0.135,
+     "upgrades": 10,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "SkillSpeedFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 3,
+      "stat": "ResistanceFlat",
+      "value": 17.0,
+      "upgrades": 0,
+      "rollsSum": 1.0
+     },
+     {
+      "id": 4,
+      "stat": "InstinctRatingFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 5,
+      "stat": "AccuracyFlat",
+      "value": 15.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     }
+    ]
+   },
+   {
+    "id": 17,
+    "slot": "Amulet",
+    "rank": "Three",
+    "rarity": "Epic",
+    "faction": "Eldrin",
+    "equippedHeroId": null,
+    "level": 15,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "DefenseFlat",
+     "value": 86.0,
+     "upgrades": 15,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "InstinctRatingFlat",
+      "value": 5.0,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     },
+     {
+      "id": 3,
+      "stat": "AttackPercent",
+      "value": 0.015,
+      "upgrades": 0,
+      "rollsSum": 1.0
+     },
+     {
+      "id": 4,
+      "stat": "CriticalRatePercent",
+      "value": 0.0162,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 5,
+      "stat": "ManaGenerationFlat",
+      "value": 5.0,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     }
+    ]
+   },
+   {
+    "id": 20,
+    "slot": "Flasks",
+    "rank": "Five",
+    "rarity": "Rare",
+    "faction": "Nocturna",
+    "equippedHeroId": null,
+    "level": 20,
+    "seen": true,
+    "mainStat": {
+     "id": 1,
+     "stat": "ResistanceFlat",
+     "value": 150.0,
+     "upgrades": 20,
+     "rollsSum": 0.0
+    },
+    "subStats": [
+     {
+      "id": 2,
+      "stat": "ComboSpeedFlat",
+      "value": 7.0,
+      "upgrades": 0,
+      "rollsSum": 0.8
+     },
+     {
+      "id": 3,
+      "stat": "DefensePercent",
+      "value": 0.0459,
+      "upgrades": 1,
+      "rollsSum": 1.7
+     },
+     {
+      "id": 4,
+      "stat": "AccuracyFlat",
+      "value": 15.0,
+      "upgrades": 0,
+      "rollsSum": 0.9
+     },
+     {
+      "id": 5,
+      "stat": "HealthPercent",
+      "value": 0.0378,
+      "upgrades": 1,
+      "rollsSum": 1.4
+     }
+    ]
+   }
+  ]
+ }
+}

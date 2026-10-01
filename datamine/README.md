@@ -21,7 +21,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | 7 | Live event catalog, re-captured | Found on disk | The game caches it at `AppData/LocalLow/Hit_Zone/Invokers/tournament_catalog.dat` (MemoryPack). Decoder to write. |
 | 8 | Exact mercy (pity) rules | Not started | Summons are server-side; rules come from summon config plus in-game text. |
 | 9 | Star summon items with English names | Done | In `data/items.json` (e.g. `SI_WildStar`, `SI_FateStar`). |
-| 10 | Sample of the local box file | Found | The game keeps player snapshots at `AppData/LocalLow/Hit_Zone/Invokers/aggregate_snapshots/` (`PlayerRelicsModel.dat`, `PlayerAccessoriesModel.dat`, `PlayerHeroesModel.dat`), raw MemoryPack. Format notes and a scrubbed sample to come. |
+| 10 | Sample of the local box file | Done | `samples/README.md` (location, format, ids, stats) and `samples/box-sample.json`; full reference decoder `scripts/decode_box.py` (heroes, gear, accessories from `aggregate_snapshots/*.dat`, binary MemoryPack). |
 | 11 | Accessory set effects / slot restrictions | Done | Accessories have no set bonuses (no set config exists). Each accessory slot unlocks at a hero Awakening level (in-game text); main and sub stats are limited per slot (`AccessoryData.MainBonusesBySlot`). |
 | - | Arena trophy room | Done | `data/trophies.json` (issue #4): 15 levels per stat, bonus and medal cost per level. |
 
