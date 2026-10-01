@@ -186,6 +186,31 @@ export function ratingFor(heroId: string): Rating | undefined {
 }
 
 /** Prefixes a site path with the deploy base (e.g. /invokers/ on GitHub Pages). */
+// Hero pages live at /heroes/<name>, e.g. /heroes/ironblade-darus. Two heroes with the same name
+// get the element added, then a number, so every slug stays unique.
+const slugify = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const heroSlugs = new Map<string, string>();
+{
+  const taken = new Set<string>();
+  const count = new Map<string, number>();
+  for (const h of heroes) count.set(slugify(h.name), (count.get(slugify(h.name)) ?? 0) + 1);
+  for (const h of heroes) {
+    let slug = slugify(h.name) || 'invoker';
+    if ((count.get(slug) ?? 0) > 1) slug = `${slug}-${slugify(h.element)}`;
+    for (let n = 2; taken.has(slug); n++) slug = `${slug.replace(/-\d+$/, '')}-${n}`;
+    taken.add(slug);
+    heroSlugs.set(h.id, slug);
+  }
+}
+
+export function heroSlug(heroId: string): string {
+  return heroSlugs.get(heroId) ?? slugify(heroId);
+}
+
+export function heroHref(heroId: string): string {
+  return href(`heroes/${heroSlug(heroId)}`);
+}
+
 export function href(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   return `${base}/${path.replace(/^\//, '')}`;
@@ -200,6 +225,8 @@ const exactConfigIds = new Map<string, string>(
 /** What the box pages need to show an owned hero, keyed by exact config id. */
 export interface HeroRef {
   id: string;
+  /** Page slug: link to heroBase + slug. */
+  slug: string;
   name: string;
   rarity: string;
   faction: string;
@@ -212,7 +239,7 @@ export const heroRefsByConfigId: Record<string, HeroRef> = Object.fromEntries(
     const configId = exactConfigIds.get(h.id);
     if (!configId) return [];
     const { id, name, rarity, faction, element } = h as Hero & Record<string, string>;
-    return [[configId, { id, name, rarity, faction, element, class: String(h.class) }]];
+    return [[configId, { id, slug: heroSlug(id), name, rarity, faction, element, class: String(h.class) }]];
   }),
 );
 

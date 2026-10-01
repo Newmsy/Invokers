@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { heroes, heroRefsByConfigId, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { heroes, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -15,12 +15,14 @@ import {
 } from '../../lib/format';
 
 export function getStaticPaths() {
-  return heroes.map((hero) => ({ params: { id: hero.id }, props: { hero } }));
+  return heroes.map((hero) => ({ params: { slug: heroSlug(hero.id) }, props: { hero } }));
 }
 
 const { hero } = Astro.props as { hero: Hero };
 const skills = skillsFor(hero.id).filter((s) => s.levels && s.levels.length > 0);
 const rating = ratingFor(hero.id);
+// #skill-1, #skill-combo… for links to one skill.
+const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').toLowerCase()}`;
 const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
 const color = rarityColor[hero.rarity] ?? '#B5B1D3';
 
@@ -92,7 +94,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     <ul class="skill-list">
       {skills.map((s) => (
         <li>
-          <a href={`#skill-${s.type}`} data-goto="skills">
+          <a href={`#${skillAnchor(s.type)}`} data-goto="skills">
             <span class="skill-type">{skillTypeName(s.type)}</span>
             <span class="skill-title">{s.title}</span>
             <span class="skill-preview">{plain(s.levels![0].text)}</span>
@@ -109,7 +111,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       const levels = s.levels!;
       const max = levels[levels.length - 1].level;
       return (
-        <article class="skill" id={`skill-${s.type}`}>
+        <article class="skill" id={skillAnchor(s.type)}>
           <header>
             <span class="skill-type">{skillTypeName(s.type)}</span>
             <h3>{s.title}</h3>
