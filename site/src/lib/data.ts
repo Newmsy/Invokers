@@ -4,6 +4,8 @@ import manifest from '../../../data/manifest.json';
 import heroesJson from '../../../data/heroes.json';
 import skillsJson from '../../../data/skills.json';
 import eventsJson from '../../../data/events.json';
+import bossesJson from '../../../data/bosses.json';
+import statsJson from '../../../data/stats.json';
 // Ratings are the site's own (Newms's scores), so they live under site/.
 import ratingsJson from '../data/ratings.json';
 
@@ -67,6 +69,27 @@ export interface Rating {
   note?: string;
 }
 
+export interface Boss {
+  id: string;
+  name: string;
+  title?: string;
+  mode: string;
+  element?: string;
+  description?: string;
+  dos: string[];
+  donts: string[];
+  corruptions: string[];
+  stages: { stage: number; energy: number }[];
+}
+
+export interface StatInfo {
+  id: string;
+  name: string;
+  short?: string;
+  description?: string;
+  kind?: string;
+}
+
 export interface GameEvent {
   id: string;
   name: string;
@@ -76,6 +99,26 @@ export interface GameEvent {
 export const pack: Manifest = manifest;
 export const heroes: Hero[] = heroesJson as Hero[];
 export const events: GameEvent[] = eventsJson as GameEvent[];
+
+export const bossPack = bossesJson as { unconfirmed: string[]; bosses: Boss[] };
+export const bosses: Boss[] = bossPack.bosses;
+
+/** URL slug for a boss: its name, plus the element for the Omnissi variants. */
+export function bossSlug(b: Boss): string {
+  return [b.name, b.element].filter(Boolean).join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
+export function bossLabel(b: Boss): string {
+  return b.element ? `${b.name} (${b.element})` : b.name;
+}
+
+const tolerances = (statsJson as StatInfo[]).filter((s) => s.kind === 'rating' && s.id.endsWith('Tolerance'));
+
+/** The game's help text for a corruption's tolerance stat, e.g. "Daze" → DazeTolerance. */
+export function toleranceFor(corruption: string): StatInfo | undefined {
+  const key = `${corruption.replace(/\s+/g, '')}Tolerance`.toLowerCase();
+  return tolerances.find((s) => s.id.toLowerCase() === key);
+}
 
 const skillSets = skillsJson as SkillSet[];
 const skillsByHero = new Map(skillSets.map((s) => [s.heroId, s.skills]));
