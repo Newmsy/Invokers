@@ -1,0 +1,335 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroPicker from '../../components/HeroPicker.astro';
+import { href } from '../../lib/data';
+---
+<Base title="Compare Invokers">
+  <a class="back" href={href('heroes')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    All Invokers
+  </a>
+  <h1>Compare Invokers</h1>
+  <p class="lead">Put up to 4 Invokers side by side. The best value in each row is highlighted.</p>
+
+  <div id="app" data-base={href('/')}>
+    <div class="pick-row">
+      <HeroPicker id="pick" label="Add an Invoker" />
+      <a class="team-link" id="team-link" href={href('team')}>Build a team with these</a>
+    </div>
+    <ul class="chosen" id="chosen" aria-label="Compared Invokers"></ul>
+    <p class="empty" id="empty">Pick at least two Invokers to compare them.</p>
+
+    <section id="results" hidden>
+      <h2>Stats</h2>
+      <div class="controls">
+        <div class="chips" role="group" aria-label="Rank" id="ranks"></div>
+        <label class="level-pick">
+          Level
+          <select id="level"></select>
+        </label>
+      </div>
+      <p class="hint">Base stats without gear or awakening.</p>
+      <div class="table-wrap"><table id="stats"></table></div>
+
+      <h2>Skills</h2>
+      <label class="level">
+        <span>Skill level <output id="skill-level-out">1</output></span>
+        <input id="skill-level" type="range" min="1" max="11" step="1" value="1" />
+      </label>
+      <div id="skills"></div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { attachPicker } from '../../lib/picker';
+  import { formatStat, rankNumber, rankOrder, statFields } from '../../lib/format';
+  import { parseSlugs } from '../../lib/team';
+  import type { RosterHero, RosterSkill } from '../../lib/roster';
+
+  const MAX = 4;
+  const app = document.getElementById('app')!;
+  const base = app.dataset.base!.replace(/\/$/, '');
+  const input = document.getElementById('pick') as HTMLInputElement;
+  const chosenEl = document.getElementById('chosen')!;
+  const results = document.getElementById('results')!;
+  const empty = document.getElementById('empty')!;
+  const ranksEl = document.getElementById('ranks')!;
+  const levelEl = document.getElementById('level') as HTMLSelectElement;
+  const statsEl = document.getElementById('stats') as HTMLTableElement;
+  const skillsEl = document.getElementById('skills')!;
+  const skillLevel = document.getElementById('skill-level') as HTMLInputElement;
+  const skillLevelOut = document.getElementById('skill-level-out')!;
+  const teamLink = document.getElementById('team-link') as HTMLAnchorElement;
+
+  let roster: RosterHero[] = [];
+  let chosen: RosterHero[] = [];
+  let rank = 'Six';
+  let level = '';
+  const skillCache = new Map<string, Promise<RosterSkill[]>>();
+
+  const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, cls?: string) => {
+    const e = document.createElement(tag);
+    if (text !== undefined) e.textContent = text;
+    if (cls) e.className = cls;
+    return e;
+  };
+
+  function skillsOf(h: RosterHero) {
+    if (!skillCache.has(h.slug)) {
+      skillCache.set(h.slug, fetch(`${base}/data/skills/${h.slug}.json`).then((r) => (r.ok ? r.json() : [])));
+    }
+    return skillCache.get(h.slug)!;
+  }
+
+  function levelsAt(r: string): string[] {
+    const all = new Set(chosen.flatMap((h) => Object.keys(h.stats[r] ?? {})));
+    return [...all].sort((a, b) => Number(a) - Number(b));
+  }
+
+  function syncUrl() {
+    // Slugs are [a-z0-9-], so the list can go in the URL without escaping its commas.
+    const slugs = chosen.map((h) => h.slug).join(',');
+    history.replaceState(null, '', `${location.pathname}${slugs ? `?h=${slugs}` : ''}`);
+    teamLink.href = `${base}/team${chosen.length ? `?h=${chosen.map((h) => h.slug).join(',')}` : ''}`;
+  }
+
+  function render() {
+    syncUrl();
+    chosenEl.replaceChildren(
+      ...chosen.map((h) => {
+        const li = el('li');
+        const a = el('a', h.name);
+        a.href = `${base}/heroes/${h.slug}`;
+        const x = el('button', '×');
+        x.type = 'button';
+        x.setAttribute('aria-label', `Remove ${h.name}`);
+        x.addEventListener('click', () => {
+          chosen = chosen.filter((c) => c !== h);
+          render();
+        });
+        li.append(a, x);
+        return li;
+      }),
+    );
+    input.disabled = chosen.length >= MAX;
+    input.placeholder = chosen.length >= MAX ? `Up to ${MAX} Invokers` : 'Add an Invoker';
+    empty.hidden = chosen.length >= 2;
+    results.hidden = chosen.length < 1;
+    if (!chosen.length) return;
+    renderRanks();
+    renderStats();
+    renderSkills();
+  }
+
+  function renderRanks() {
+    const ranks = rankOrder.filter((r) => chosen.some((h) => h.stats[r]));
+    if (!ranks.includes(rank)) rank = ranks[ranks.length - 1];
+    ranksEl.replaceChildren(
+      ...ranks.map((r) => {
+        const b = el('button', `${rankNumber(r)}★`, 'chip');
+        b.type = 'button';
+        b.setAttribute('aria-pressed', String(r === rank));
+        b.addEventListener('click', () => {
+          rank = r;
+          level = '';
+          renderRanks();
+          renderStats();
+        });
+        return b;
+      }),
+    );
+    const levels = levelsAt(rank);
+    if (!levels.includes(level)) level = levels[levels.length - 1];
+    levelEl.replaceChildren(...levels.map((lv) => new Option(lv, lv, false, lv === level)));
+  }
+
+  function renderStats() {
+    const head = el('thead');
+    const hr = el('tr');
+    hr.append(el('th', 'Stat'));
+    for (const h of chosen) {
+      const th = el('th');
+      th.scope = 'col';
+      const a = el('a', h.name);
+      a.href = `${base}/heroes/${h.slug}`;
+      th.append(a);
+      hr.append(th);
+    }
+    head.append(hr);
+    const body = el('tbody');
+    const info: [string, (h: RosterHero) => string][] = [
+      ['Rarity', (h) => h.rarity],
+      ['Element', (h) => h.element],
+      ['Faction', (h) => h.faction],
+      ['Class', (h) => h.cls],
+      ['Starts at', (h) => `${rankNumber(h.baseRank)}★`],
+    ];
+    for (const [label, get] of info) {
+      const tr = el('tr', undefined, 'info');
+      tr.append(el('th', label));
+      for (const h of chosen) tr.append(el('td', get(h)));
+      body.append(tr);
+    }
+    statFields.forEach((f, i) => {
+      const vals = chosen.map((h) => h.stats[rank]?.[level]?.[i]);
+      const nums = vals.filter((v): v is number => typeof v === 'number');
+      const best = Math.max(...nums);
+      const differs = nums.length > 1 && nums.some((v) => v !== best);
+      const tr = el('tr');
+      const th = el('th', f.label);
+      th.scope = 'row';
+      tr.append(th);
+      for (const v of vals) {
+        const td = el('td', v === undefined ? '–' : formatStat(v, f.percent));
+        if (differs && v === best) td.className = 'best';
+        tr.append(td);
+      }
+      body.append(tr);
+    });
+    statsEl.replaceChildren(head, body);
+  }
+
+  let skillRender = 0;
+  async function renderSkills() {
+    const ticket = ++skillRender;
+    const lv = Number(skillLevel.value);
+    skillLevelOut.textContent = String(lv);
+    const sets = await Promise.all(chosen.map(skillsOf));
+    if (ticket !== skillRender) return;
+    const types: { type: string; label: string }[] = [];
+    for (const set of sets) for (const s of set) if (!types.some((t) => t.type === s.type)) types.push(s);
+    skillsEl.replaceChildren(
+      ...types.map(({ type, label }) => {
+        const row = el('section', undefined, 'skill-row');
+        row.append(el('h3', label));
+        const grid = el('div', undefined, 'skill-grid');
+        grid.style.setProperty('--cols', String(chosen.length));
+        chosen.forEach((h, i) => {
+          const s = sets[i].find((x) => x.type === type);
+          const card = el('article', undefined, 'skill');
+          card.append(el('span', h.name, 'who'));
+          if (!s) {
+            card.append(el('p', 'No skill in this slot.', 'none'));
+          } else {
+            card.append(el('strong', s.title));
+            const shown = s.levels.filter((l) => l.level <= lv).pop() ?? s.levels[0];
+            const text = el('div', undefined, 'skill-text');
+            text.innerHTML = shown.html; // built from the game text by richText(), which escapes everything else
+            card.append(text);
+          }
+          grid.append(card);
+        });
+        row.append(grid);
+        return row;
+      }),
+    );
+  }
+
+  levelEl.addEventListener('change', () => {
+    level = levelEl.value;
+    renderStats();
+  });
+  skillLevel.addEventListener('input', renderSkills);
+
+  fetch(`${base}/data/roster.json`)
+    .then((r) => r.json())
+    .then((data: RosterHero[]) => {
+      roster = data;
+      const bySlug = new Map(roster.map((h) => [h.slug, h]));
+      const params = new URLSearchParams(location.search);
+      chosen = parseSlugs(params.get('h'), new Set(bySlug.keys()), MAX).map((s) => bySlug.get(s)!);
+      attachPicker(input, document.getElementById('pick-list') as HTMLUListElement, {
+        roster,
+        exclude: () => new Set(chosen.map((h) => h.slug)),
+        onPick: (h) => {
+          if (chosen.length < MAX) chosen = [...chosen, h];
+          render();
+        },
+      });
+      render();
+      if (chosen.length < MAX) input.disabled = false;
+    });
+</script>
+
+<style>
+  .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
+  h1 { margin: 4px 0 4px; font-size: 32px; font-weight: 700; }
+  .lead { color: var(--soft); margin: 0 0 16px; }
+  .pick-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .pick-row :global(.picker) { flex: 1 1 280px; }
+  .team-link { font-size: 14px; }
+  .chosen { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 12px 0; }
+  .chosen :global(li) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 4px 0 14px;
+    min-height: 40px;
+    border-radius: 20px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+  }
+  .chosen :global(a) { color: var(--text); font-weight: 600; }
+  .chosen :global(button) {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: 0;
+    background: none;
+    color: var(--soft);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .chosen :global(button:hover) { background: var(--surface-3); color: var(--text); }
+  .empty { color: var(--muted); }
+  .empty[hidden], #results[hidden] { display: none; }
+  h2 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
+  .hint { color: var(--muted); font-size: 14px; margin: 8px 0 12px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips :global(.chip) {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font: inherit;
+    cursor: pointer;
+  }
+  .chips :global(.chip[aria-pressed='true']) { background: var(--surface-2); border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .level-pick { display: flex; align-items: center; gap: 8px; color: var(--soft); font-size: 14px; }
+  .level-pick select {
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+  }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  table :global(th), table :global(td) { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  table :global(thead th) { background: var(--surface-3); font-weight: 600; }
+  table :global(thead th a) { color: var(--text); }
+  table :global(thead th:first-child) { text-align: left; color: var(--muted); }
+  table :global(tbody th) { text-align: left; color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  table :global(tr.info td) { color: var(--soft); }
+  table :global(td.best) { color: var(--accent); font-weight: 700; }
+  table :global(tbody tr:last-child > *) { border-bottom: 0; }
+  .level { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--soft); margin-bottom: 12px; max-width: 320px; }
+  .level input { accent-color: var(--accent); width: 100%; min-height: 32px; }
+  #skills :global(.skill-row h3) { font-size: 13px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
+  #skills :global(.skill-grid) { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 8px; }
+  #skills :global(.skill) { padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+  #skills :global(.who) { display: block; font-size: 12px; color: var(--muted); }
+  #skills :global(.skill strong) { display: block; margin: 2px 0 6px; }
+  #skills :global(.skill-text) { font-size: 14px; line-height: 1.55; white-space: pre-line; }
+  #skills :global(.none) { color: var(--muted); margin: 4px 0 0; font-size: 14px; }
+  @media (max-width: 720px) {
+    h1 { font-size: 26px; }
+    #skills :global(.skill-grid) { grid-template-columns: 1fr; }
+  }
+</style>
