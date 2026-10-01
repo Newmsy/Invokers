@@ -164,6 +164,9 @@ export function bossLabel(b: Boss): string {
 
 const tolerances = (statsJson as StatInfo[]).filter((s) => s.kind === 'rating' && s.id.endsWith('Tolerance'));
 
+/** Corruption names, e.g. "Manashock" for ManashockTolerance. */
+export const corruptionNames = tolerances.map((s) => s.id.replace(/Tolerance$/, ''));
+
 /** The game's help text for a corruption's tolerance stat, e.g. "Daze" → DazeTolerance. */
 export function toleranceFor(corruption: string): StatInfo | undefined {
   const key = `${corruption.replace(/\s+/g, '')}Tolerance`.toLowerCase();

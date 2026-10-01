@@ -9,6 +9,7 @@ interface Props {
   title: string;
 }
 const { title } = Astro.props;
+const updated = new Date(pack.extractedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 
 const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').split('/')[1] ?? '';
@@ -44,7 +45,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       <slot />
     </main>
     <footer>
-      Game version {pack.gameVersion} · data extracted {pack.extractedAt}
+      Game version {pack.gameVersion} · updated {updated}
       <br />
       Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
     </footer>

@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { bossLabel, bossPack, bosses, bossSlug, href, toleranceFor, type Boss } from '../../lib/data';
+import { bossLabel, bosses, bossSlug, corruptionNames, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
 
 export function getStaticPaths() {
@@ -18,7 +18,11 @@ for (const s of [...boss.stages].sort((a, b) => a.stage - b.stage)) {
 }
 
 // The tolerance help texts end with "Useful against: …"; on a boss page only the effect matters.
-const tolerances = boss.corruptions.map((c) => {
+// A boss's own Do list sometimes names a tolerance its corruption list leaves out (Koltmos: Bloodrot),
+// so the page lists both.
+const advice = boss.dos.join(' ');
+const named = corruptionNames.filter((c) => !boss.corruptions.some((b) => b.replace(/\s+/g, '').toLowerCase() === c.toLowerCase()) && new RegExp(`\\b${c}\\b`, 'i').test(advice));
+const tolerances = [...boss.corruptions, ...named].map((c) => {
   const stat = toleranceFor(c);
   const text = stat?.description
     ?.split('Useful against')[0]
@@ -27,8 +31,6 @@ const tolerances = boss.corruptions.map((c) => {
   return { corruption: c, name: stat?.name ?? `${c} Tolerance`, text };
 });
 
-// Caveats from the export that mention this boss by name.
-const caveats = bossPack.unconfirmed.filter((u) => u.includes(boss.name) && !u.startsWith('mode '));
 ---
 <Base title={bossLabel(boss)}>
   <a class="back" href={href('bosses')}>
@@ -86,12 +88,6 @@ const caveats = bossPack.unconfirmed.filter((u) => u.includes(boss.name) && !u.s
     </ul>
   </section>
 
-  {caveats.length > 0 && (
-    <section aria-labelledby="caveat-title">
-      <h2 id="caveat-title">Not confirmed yet</h2>
-      <ul class="caveats">{caveats.map((c) => <li>{c}</li>)}</ul>
-    </section>
-  )}
 </Base>
 
 <style>
@@ -139,7 +135,6 @@ const caveats = bossPack.unconfirmed.filter((u) => u.includes(boss.name) && !u.s
   }
   .stage { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
   .energy { font-family: var(--display); font-weight: 600; font-size: 17px; }
-  .caveats { color: var(--soft); padding-left: 20px; margin: 0; }
 
   @media (max-width: 720px) {
     h1 { font-size: 28px; }

@@ -2,11 +2,11 @@
 import Base from '../layouts/Base.astro';
 import { itemName, trophyRoom, type StatBonus } from '../lib/data';
 
-const { trophies, rooms, unconfirmed } = trophyRoom;
+const { trophies, rooms } = trophyRoom;
 const maxLevel = Math.max(...trophies.map((t) => t.maxLevel));
 const levelNumbers = Array.from({ length: maxLevel + 1 }, (_, i) => i);
 
-// Every trophy shares one price list in the config; take it from the first.
+// Every trophy shares one price list; take it from the first.
 const priceList = trophies[0]?.levels ?? [];
 const medals = [...new Set(priceList.flatMap((l) => l.cost.map((c) => c.itemId)))];
 
@@ -38,7 +38,7 @@ const plannerData = {
   <h1>Trophy Room</h1>
   <p class="lead">
     There is one room per element ({rooms.join(', ')}). A room's trophies boost every Invoker of that element, in every
-    battle. Trophies are bought with the Bronze, Silver and Gold Trophies won in arena battles.
+    battle. Trophies are bought with the Bronze, Silver and Gold Trophies won in arena battles, each from its matching arena league.
   </p>
 
   <section class="card" aria-labelledby="plan-title">
@@ -80,7 +80,7 @@ const plannerData = {
 
   <section aria-labelledby="price-title">
     <h2 id="price-title">Cost per level</h2>
-    <p class="hint">The same for every trophy. "From 0" is the total to reach that level from nothing.</p>
+    <p class="hint">The same for every trophy. "From 0" is the total to reach that level from nothing. Estimated: each trophy is assumed to be paid for separately.</p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -126,13 +126,6 @@ const plannerData = {
     </div>
   </section>
 
-  {unconfirmed.length > 0 && (
-    <section class="caveats" aria-labelledby="caveat-title">
-      <h2 id="caveat-title">Not confirmed yet</h2>
-      <p class="hint">The game config doesn't say these, so the page assumes the simplest reading.</p>
-      <ul>{unconfirmed.map((u) => <li>{u}</li>)}</ul>
-    </section>
-  )}
 
   <script type="application/json" id="trophy-data" set:html={JSON.stringify(plannerData).replace(/</g, '\\u003c')} />
 </Base>
@@ -283,8 +276,6 @@ const plannerData = {
   thead th:first-child, tbody th { text-align: left; }
   tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
   tbody tr:last-child > * { border-bottom: 0; }
-  .caveats ul { margin: 0; padding-left: 20px; color: var(--soft); }
-  .caveats li { margin-bottom: 4px; }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }
