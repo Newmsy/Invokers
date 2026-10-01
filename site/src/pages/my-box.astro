@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import { gearStatLabels, heroRefsByConfigId, href, pack, setNames } from '../lib/data';
+import { BOX_FILES } from '../lib/box/decode';
+
+const refs = { heroes: heroRefsByConfigId, stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
+const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_snapshots';
+---
+<Base title="My box">
+  <section class="intro">
+    <h1>My box</h1>
+    <p id="box-status" class="status">No box imported yet.</p>
+
+    <div class="actions">
+      <label class="button primary">
+        Import from game
+        <input id="pick-files" type="file" multiple accept=".dat" hidden />
+      </label>
+      <label class="button">
+        Pick the folder
+        <input id="pick-folder" type="file" hidden />
+      </label>
+      <span class="spacer"></span>
+      <button id="backup" class="button" type="button" disabled>Download backup</button>
+      <label class="button">
+        Load backup
+        <input id="pick-backup" type="file" accept=".json,application/json" hidden />
+      </label>
+      <button id="delete" class="button danger" type="button" disabled>Delete my box</button>
+    </div>
+
+    <div id="drop" class="drop">Or drop the three files here</div>
+    <p id="box-message" class="message" role="status" aria-live="polite"></p>
+
+    <details id="howto" class="howto">
+      <summary>Where are the files?</summary>
+      <ol>
+        <li>Close the game, so it has finished saving.</li>
+        <li>
+          Open this folder by pasting it into the File Explorer address bar (AppData is hidden otherwise):
+          <span class="path"><code id="folder-path">{folder}</code><button id="copy-path" class="link" type="button">Copy</button></span>
+        </li>
+        <li>Pick <code>{BOX_FILES.heroes}</code>, <code>{BOX_FILES.gear}</code> and <code>{BOX_FILES.accessories}</code>.</li>
+      </ol>
+      <p class="muted">
+        Your files are read in this browser and saved only here. Nothing is uploaded. Only those three files are ever
+        opened: if you pick the whole folder, the profile file next to them (with your account name) is skipped
+        without being read. Re-import whenever you've upgraded gear.
+      </p>
+    </details>
+  </section>
+
+  <div id="box-views" hidden>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="heroes" aria-selected="true">Invokers <span data-count="heroes"></span></button>
+      <button role="tab" data-tab="gear" aria-selected="false">Gear <span data-count="gear"></span></button>
+      <button role="tab" data-tab="accessories" aria-selected="false">Accessories <span data-count="accessories"></span></button>
+    </div>
+
+    <section data-panel="heroes">
+      <div class="filters">
+        <input id="hero-search" type="search" placeholder="Search invokers" />
+        <select id="hero-sort" aria-label="Sort invokers">
+          <option value="level">Highest level</option>
+          <option value="rank">Most stars</option>
+          <option value="rarity">Rarity</option>
+          <option value="name">Name</option>
+        </select>
+        <label class="check"><input id="hero-storage" type="checkbox" /> Include storage</label>
+      </div>
+      <div id="hero-grid" class="grid"></div>
+    </section>
+
+    <section data-panel="gear" hidden>
+      <div class="filters" id="gear-filters"></div>
+      <div class="table-wrap"><table id="gear-table"></table></div>
+      <button id="gear-more" class="button" type="button" hidden>Show more</button>
+    </section>
+
+    <section data-panel="accessories" hidden>
+      <div class="filters" id="acc-filters"></div>
+      <div class="table-wrap"><table id="acc-table"></table></div>
+      <button id="acc-more" class="button" type="button" hidden>Show more</button>
+    </section>
+  </div>
+
+  <script id="box-refs" type="application/json" set:html={JSON.stringify(refs)} />
+</Base>
+
+<script>
+  import { start } from '../lib/box/page';
+  start();
+</script>
+
+<style>
+  .status { color: var(--muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .spacer { flex: 1; }
+  :global(.button) {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font: inherit; cursor: pointer;
+  }
+  :global(.button[hidden]) { display: none; }
+  :global(.button:hover:not(:disabled)) { border-color: var(--accent); }
+  :global(.button:disabled) { opacity: 0.45; cursor: default; }
+  :global(.button.primary) { background: var(--accent); color: #0c0b1d; border-color: var(--accent); font-weight: 700; }
+  .button.danger { color: var(--danger); }
+  .link { background: none; border: 0; color: var(--accent); cursor: pointer; font: inherit; padding: 0 6px; }
+  .drop {
+    margin-top: 12px; padding: 18px; border: 1px dashed var(--line); border-radius: 12px;
+    text-align: center; color: var(--muted);
+  }
+  .drop.over { border-color: var(--accent); color: var(--accent); background: var(--surface); }
+  .message { min-height: 1.4em; }
+  :global(.message.error) { color: var(--danger); }
+  .howto { background: var(--surface); border-radius: 12px; padding: 12px 16px; }
+  .howto summary { cursor: pointer; font-weight: 700; }
+  .path { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 4px; }
+  code { background: var(--surface-2); padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+
+  .tabs { display: flex; gap: 4px; margin: 24px 0 12px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .tabs button {
+    background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted);
+    padding: 10px 14px; font: inherit; cursor: pointer; white-space: nowrap;
+  }
+  .tabs button[aria-selected='true'] { color: var(--text); border-bottom-color: var(--accent); }
+  .tabs span { color: var(--muted); font-size: 0.85em; }
+
+  :global(.filters) { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; align-items: center; }
+  :global(.filters input[type='search']), :global(.filters select) {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+    border-radius: 10px; padding: 8px 10px; font: inherit; max-width: 100%;
+  }
+  :global(.filters input[type='search']) { flex: 1 1 200px; }
+  .check { color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  @media (max-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } }
+  :global(.hero-card) {
+    background: var(--surface); border-radius: 12px; padding: 12px; border-left: 3px solid var(--line);
+    display: grid; gap: 4px; min-width: 0;
+  }
+  :global(.hero-card a) { color: var(--text); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  :global(.hero-card .sub) { color: var(--muted); font-size: 0.8rem; }
+  :global(.stars) { color: var(--legendary); letter-spacing: 1px; }
+  :global(.r-Legendary) { border-left-color: var(--legendary) !important; }
+  :global(.r-Epic) { border-left-color: var(--epic) !important; }
+  :global(.r-Rare) { border-left-color: var(--rare) !important; }
+  :global(.r-Uncommon) { border-left-color: var(--uncommon) !important; }
+  :global(.t-Legendary), :global(.t-Greater) { color: var(--legendary); }
+  :global(.t-Epic) { color: var(--epic); }
+  :global(.t-Rare) { color: var(--rare); }
+  :global(.t-Uncommon) { color: var(--uncommon); }
+
+  .table-wrap { overflow-x: auto; }
+  :global(#gear-table), :global(#acc-table) { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  :global(#gear-table th), :global(#acc-table th) {
+    text-align: left; color: var(--muted); font-weight: 500; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap;
+  }
+  :global(#gear-table td), :global(#acc-table td) { padding: 6px 8px; border-bottom: 1px solid var(--surface-2); vertical-align: top; }
+  :global(td.subs) { color: var(--muted); min-width: 180px; }
+  :global(td.num) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Phones: each gear row becomes a compact card. */
+  @media (max-width: 640px) {
+    :global(#gear-table thead), :global(#acc-table thead) { display: none; }
+    :global(#gear-table tr), :global(#acc-table tr) {
+      display: flex; flex-wrap: wrap; gap: 2px 10px; padding: 10px 4px; border-bottom: 1px solid var(--surface-2);
+    }
+    :global(#gear-table td), :global(#acc-table td) { padding: 0; border: 0; }
+    :global(td.slot), :global(td.main) { font-weight: 700; }
+    :global(td.subs) { flex-basis: 100%; min-width: 0; }
+    :global(td[data-label='On']:not(:empty)) { flex-basis: 100%; color: var(--muted); }
+    :global(td[data-label='On']:not(:empty))::before { content: 'On '; }
+  }
+</style>

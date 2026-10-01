@@ -1,15 +1,43 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { heroes, href, type Hero } from '../../lib/data';
+import { heroes, heroRefsByConfigId, href, type Hero } from '../../lib/data';
 
 export function getStaticPaths() {
   return heroes.map((hero) => ({ params: { id: hero.id }, props: { hero } }));
 }
 
 const { hero } = Astro.props as { hero: Hero };
+const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
 ---
 <Base title={hero.name}>
   <p><a href={href('heroes')}>← All heroes</a></p>
   <h1>{hero.name}</h1>
+  <p id="owned" class="owned" data-config-id={configId} hidden></p>
   <pre>{JSON.stringify(hero, null, 2)}</pre>
 </Base>
+
+<script>
+  // Shows how this invoker looks in the player's imported box, if they have one.
+  import { loadBox } from '../../lib/box/store';
+  import { href } from '../../lib/data';
+
+  const STARS = ['Unknown', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
+  const el = document.getElementById('owned')!;
+  loadBox().then((box) => {
+    const copies = box?.heroes.filter((h) => h.configId === el.dataset.configId) ?? [];
+    if (!copies.length) return;
+    const best = copies.reduce((a, b) => (b.level > a.level ? b : a));
+    const extra = copies.length > 1 ? ` (${copies.length} copies)` : '';
+    el.innerHTML = '';
+    el.append(`In your box: ${STARS.indexOf(best.rank)} stars, level ${best.level}, awakening ${best.awakenLevel}${extra}. `);
+    const link = document.createElement('a');
+    link.href = href('my-box');
+    link.textContent = 'My box';
+    el.append(link);
+    el.hidden = false;
+  });
+</script>
+
+<style>
+  .owned { background: var(--surface); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 8px; }
+</style>
