@@ -1,0 +1,52 @@
+---
+// A search box that opens the search page. The search page itself adds live results.
+import NavIcon from './NavIcon.astro';
+import { href } from '../lib/data';
+
+interface Props {
+  value?: string;
+  autofocus?: boolean;
+}
+const { value = '', autofocus = false } = Astro.props;
+---
+<form class="search-form" role="search" action={href('search')} method="get">
+  <NavIcon icon="search" size={20} />
+  <input
+    id="search-input"
+    type="search"
+    name="q"
+    value={value}
+    autofocus={autofocus}
+    placeholder="Search Invokers, skills, items, sets, bosses, guides"
+    aria-label="Search the site"
+    autocomplete="off"
+    spellcheck="false"
+    enterkeyhint="search"
+  />
+</form>
+
+<style>
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .search-form:focus-within { border-color: var(--accent); }
+  input {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: 0;
+    outline: none;
+    color: var(--text);
+    font: inherit;
+    font-size: 16px;
+  }
+  input::placeholder { color: var(--muted); }
+</style>

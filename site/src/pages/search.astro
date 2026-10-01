@@ -1,0 +1,130 @@
+---
+// Site-wide search. The index (search-index.json) is built with the site, so this works on any static host.
+import Base from '../layouts/Base.astro';
+import SearchForm from '../components/SearchForm.astro';
+import { href } from '../lib/data';
+---
+<Base title="Search">
+  <h1>Search</h1>
+  <div class="box"><SearchForm autofocus /></div>
+  <p id="search-status" class="status" role="status" aria-live="polite"></p>
+  <ol id="search-results" class="results" data-index={href('search-index.json')}></ol>
+  <noscript><p class="status">Search needs JavaScript. Every section is listed on the <a href={href('more')}>More</a> page.</p></noscript>
+</Base>
+
+<script>
+  import { search, type SearchDoc, type SearchHit } from '../lib/search/match';
+
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const list = document.getElementById('search-results') as HTMLOListElement;
+  const status = document.getElementById('search-status') as HTMLParagraphElement;
+  const limit = 50;
+  let docs: SearchDoc[] | null = null;
+
+  const fromUrl = new URLSearchParams(location.search).get('q') ?? '';
+  if (fromUrl) input.value = fromUrl;
+
+  function item(hit: SearchHit): HTMLLIElement {
+    const li = document.createElement('li');
+    const card = document.createElement(hit.doc.url ? 'a' : 'div');
+    card.className = 'hit';
+    if (hit.doc.url) (card as HTMLAnchorElement).href = hit.doc.url;
+    const head = document.createElement('div');
+    head.className = 'hit-head';
+    const title = document.createElement('span');
+    title.className = 'hit-title';
+    title.textContent = hit.doc.title;
+    const kind = document.createElement('span');
+    kind.className = 'hit-kind';
+    kind.textContent = hit.doc.kind;
+    head.append(title, kind);
+    card.append(head);
+    // Items have no page, so their description is always shown.
+    const lines = [hit.doc.sub, hit.snippet ?? (hit.doc.url ? undefined : hit.doc.text)].filter(Boolean) as string[];
+    for (const line of lines) {
+      const p = document.createElement('p');
+      p.textContent = line;
+      card.append(p);
+    }
+    li.append(card);
+    return li;
+  }
+
+  function render() {
+    const q = input.value.trim();
+    const url = new URL(location.href);
+    if (q) url.searchParams.set('q', q);
+    else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+    list.replaceChildren();
+    if (!q) {
+      status.textContent = '';
+      return;
+    }
+    if (!docs) {
+      status.textContent = 'Loading…';
+      return;
+    }
+    const hits = search(docs, q, limit + 1);
+    status.textContent =
+      hits.length === 0
+        ? `Nothing found for “${q}”.`
+        : hits.length > limit
+          ? `Top ${limit} results`
+          : `${hits.length} result${hits.length === 1 ? '' : 's'}`;
+    list.append(...hits.slice(0, limit).map(item));
+  }
+
+  let timer: number | undefined;
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = window.setTimeout(render, 80);
+  });
+  input.form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    render();
+    (list.querySelector('a') as HTMLAnchorElement | null)?.focus();
+  });
+
+  fetch(list.dataset.index!)
+    .then((r) => r.json())
+    .then((d: SearchDoc[]) => {
+      docs = d;
+      render();
+    })
+    .catch(() => {
+      status.textContent = 'Search could not load. Try reloading the page.';
+    });
+  render();
+</script>
+
+<style>
+  h1 { margin: 16px 0 16px; font-size: 28px; font-weight: 700; }
+  .status { color: var(--muted); font-size: 14px; margin: 14px 2px 10px; min-height: 1.5em; }
+  .results { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+  .results :global(.hit) {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .results :global(a.hit:hover),
+  .results :global(a.hit:focus-visible) { border-color: var(--accent); }
+  .results :global(.hit-head) { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
+  .results :global(.hit-title) { font-family: var(--display); font-weight: 600; font-size: 16px; }
+  .results :global(.hit-kind) {
+    flex: none;
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--surface-2);
+    border-radius: 10px;
+    padding: 2px 10px;
+  }
+  .results :global(.hit p) { margin: 4px 0 0; color: var(--soft); font-size: 14px; }
+  .box { max-width: 860px; }
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; margin: 16px 0 12px; }
+  }
+</style>
