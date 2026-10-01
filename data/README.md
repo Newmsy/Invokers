@@ -12,7 +12,7 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `items.json` | Resources, currencies, summon items and materials: `id` (game enum name), English `name`, `description` |
 | `stats.json` | Stat names: stat bonuses (`AttackPercent`, …, `percent` flag) and character stat ratings (`kind: rating`) |
 | `sets.json` | Gear sets: `id`, English `name`, `bonuses` keyed by pieces (`3`/`5`/`8`) with `stat`, `statName`, `value` (fractions for percent stats), and the game's `recommendation` text. The game's own 3/5-piece texts are placeholders, so describe bonuses from `bonuses`. |
-| `trophy_room.json` | Arena trophy room: one room per element, 15 levels per stat, bonus per level and medal cost per level |
+| `trophies.json` | Arena trophy room (issue #4): `rooms` (elements), `scope`, `trophies[]` per stat with `levels[]` of `cost[]` `{itemId, amount}` and `bonuses[]` `{stat, value, valueType}` (total at that level); `unconfirmed` lists what the config doesn't say |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's

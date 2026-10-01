@@ -126,20 +126,34 @@ def main():
               "cost": p["Price"]["RawValues"]} for p in hero_data["SkillLevelUpPrices"]]
     write("skill_costs.json", costs)
 
-    # ---- arena trophy room (ArenaData.HallBonuses / HallPrices): one room per element, 15 levels per stat ----
+    # ---- arena trophy room (ArenaData.HallBonuses / HallPrices), shape agreed in issue #4 ----
+    # One room per element; each stat is a trophy with 15 levels. Bonus values are the total at that level.
     arena = load(LOOT / "json" / "ArenaData.json")
     prices = [p["RawValues"] for p in arena["HallPrices"]]
-    trophy = {
-        "elements": ["Fire", "Water", "Wind", "Earth", "Light", "Dark"],
-        "appliesTo": "All Invokers of the room's element, in every battle",
-        "levels": len(prices),
-        "costPerLevel": [{"level": i + 1, "cost": c} for i, c in enumerate(prices)],
-        "stats": [{"stat": stat, "statName": stat_name.get(stat), "percent": stat.endswith("Percent"),
-                   "bonusByLevel": [round(v, 6) for v in values]}
-                  for stat, values in arena["HallBonuses"].items()],
-        "unconfirmed": "Whether costPerLevel applies to each stat separately, and whether every room offers every stat.",
-    }
-    write("trophy_room.json", trophy)
+    trophies = []
+    for stat, values in arena["HallBonuses"].items():
+        trophies.append({
+            "id": stat,
+            "name": stat_name.get(stat) or stat,
+            "maxLevel": len(values),
+            "levels": [{
+                "level": i + 1,
+                "cost": [{"itemId": item, "amount": amount} for item, amount in prices[i].items()],
+                "bonuses": [{"stat": stat, "value": round(v, 6), "valueType": "percent" if stat.endswith("Percent") else "flat"}],
+            } for i, v in enumerate(values)],
+        })
+    write("trophies.json", {
+        "rooms": ["Fire", "Water", "Wind", "Earth", "Light", "Dark"],
+        "scope": {"type": "element", "description": "Each room's trophies boost all Invokers of that room's element, in every battle."},
+        "source": "Static game config (ArenaData.HallBonuses, HallPrices): changes only with game patches; nothing comes from the server.",
+        "unconfirmed": [
+            "Whether each level's cost is paid per stat (assumed: the config has one 15-level price list).",
+            "Whether every element's room offers all stats.",
+            "Which stats sit under the UI's Attack / Defense / Utility groups.",
+            "Any unlock condition for the trophy room (not in the config).",
+        ],
+        "trophies": trophies,
+    })
 
     manifest = load(DATA / "manifest.json")
     manifest.update({"gameVersion": GAME_VERSION, "extractedAt": date.today().isoformat()})
