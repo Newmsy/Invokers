@@ -1,0 +1,40 @@
+---
+// Newms's tier for a hero, or a dash until it has been scored.
+import { ratingFor } from '../lib/data';
+import { tierColor } from '../lib/format';
+
+interface Props {
+  heroId: string;
+  size?: 'sm' | 'lg';
+}
+const { heroId, size = 'sm' } = Astro.props;
+const rating = ratingFor(heroId);
+const label = rating ? `Tier ${rating.tier}` : 'Not rated yet';
+---
+<span
+  class:list={['tier', size, { unrated: !rating }]}
+  style={rating ? `--tier: ${tierColor[rating.tier] ?? '#5FDCF7'}` : undefined}
+  title={label}
+  aria-label={label}
+>{rating ? rating.tier : '–'}</span>
+
+<style>
+  .tier {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    font-family: var(--display);
+    font-weight: 800;
+    background: var(--tier);
+    color: var(--bg);
+  }
+  .sm { width: 32px; height: 32px; font-size: 15px; }
+  .lg { width: 48px; height: 48px; font-size: 20px; }
+  .unrated {
+    background: var(--bg);
+    color: var(--muted);
+    border: 1px dashed var(--line);
+  }
+</style>
