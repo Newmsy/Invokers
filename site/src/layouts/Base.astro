@@ -2,6 +2,8 @@
 import { pack, href } from '../lib/data';
 import NavIcon from '../components/NavIcon.astro';
 import { headerNav, myBox, nav, tabs } from '../lib/nav';
+import Account from '../components/Account.astro';
+import { accountsEnabled } from '../lib/account/config';
 
 interface Props {
   title: string;
@@ -36,6 +38,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
         <NavIcon icon={myBox.icon} size={18} />
         {myBox.label}
       </a>
+      {accountsEnabled && <Account />}
     </header>
     <main>
       <slot />
@@ -43,7 +46,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     <footer>
       Game version {pack.gameVersion} · data extracted {pack.extractedAt}
       <br />
-      Unofficial fan site, not affiliated with the game's developer.
+      Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
     </footer>
     <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabs.length}`}>
       {tabs.map((n) => {
@@ -136,9 +139,14 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   .tab-bar { display: none; }
 
   .brand { white-space: nowrap; }
+  .box-button { white-space: nowrap; flex: none; }
+  /* The sign-in button sits right after My box on wide screens. */
+  @media (min-width: 1141px) {
+    header.top .account { margin-left: 0; min-width: 0; }
+  }
 
   /* Below this width the header links don't fit, so the bottom tab bar takes over. */
-  @media (max-width: 1060px) {
+  @media (max-width: 1140px) {
     .top-nav, .box-button { display: none; }
     footer { padding-bottom: 92px; }
     .tab-bar {

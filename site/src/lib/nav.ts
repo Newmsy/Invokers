@@ -17,6 +17,7 @@ export const nav: NavItem[] = [
   { path: 'blog', label: 'Blog', icon: 'book', header: true },
   { path: 'my-box', label: 'My box', icon: 'box', tab: true },
   { path: 'about', label: 'About', icon: 'info' },
+  { path: 'privacy', label: 'Privacy', icon: 'info' },
 ];
 
 export const headerNav = nav.filter((n) => n.header);

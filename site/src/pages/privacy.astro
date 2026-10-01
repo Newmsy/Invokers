@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/data';
+import { PROVIDER_LABELS, accountsEnabled, providers } from '../lib/account/config';
+
+const providerNames = providers.map((p) => PROVIDER_LABELS[p]).join(' or ');
+---
+<Base title="Privacy">
+  <article class="privacy">
+    <h1>Privacy</h1>
+    <p>You can use every page on this site without an account.</p>
+
+    <h2>Your box in this browser</h2>
+    <p>
+      When you import your box on <a href={href('my-box')}>My box</a>, the game files are read inside your browser.
+      Only the three box files are opened. The profile file next to them, which holds your in-game name and account,
+      is never read. The result (your invokers, gear and accessories) is saved in this browser's storage. Delete it
+      any time with "Delete my box".
+    </p>
+
+    {accountsEnabled ? (
+      <>
+        <h2>If you sign in</h2>
+        <p>
+          Signing in with {providerNames} is optional. It lets you open your box on another device. When you sign in we
+          keep:
+        </p>
+        <ul>
+          <li>your email address and the display name {providerNames} shares, so you can sign in again;</li>
+          <li>your saved box: the same invokers, gear and accessories list that's saved in your browser, and when you imported it.</li>
+        </ul>
+        <p>
+          We don't get your password, your contacts or anything else from {providerNames}. Your box is stored with
+          Supabase, our database provider, and only you can read it. We don't sell it, share it or show ads.
+        </p>
+
+        <h2>Deleting your data</h2>
+        <ul>
+          <li>"Delete my box" while signed in removes your box from this browser and from your account.</li>
+          <li>"Delete my account" in the account panel removes your saved box and your sign-in from our servers straight away.</li>
+          <li>Signing out keeps your box in this browser only.</li>
+        </ul>
+      </>
+    ) : (
+      <>
+        <h2>Accounts</h2>
+        <p>There are no accounts yet, so nothing about you is stored on a server.</p>
+      </>
+    )}
+
+    <h2>Cookies and tracking</h2>
+    <p>
+      There are no ads or trackers. The site loads its fonts from Google Fonts.{accountsEnabled && ' Signing in stores a session token in your browser so you stay signed in.'}
+    </p>
+  </article>
+</Base>
+
+<style>
+  .privacy { max-width: 720px; }
+  .privacy h2 { margin-top: 28px; font-size: 1.2rem; }
+  .privacy li { margin: 4px 0; }
+</style>
