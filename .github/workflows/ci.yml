@@ -23,6 +23,8 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
       - run: npm ci
+      # Unit tests (box file decoder).
+      - run: npm test
       # Type-checks the site, then builds it into site/dist.
       - run: npm run build
       - uses: actions/upload-artifact@v4
