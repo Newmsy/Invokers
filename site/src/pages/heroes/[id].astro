@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { heroes, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { heroes, heroRefsByConfigId, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -21,6 +21,7 @@ export function getStaticPaths() {
 const { hero } = Astro.props as { hero: Hero };
 const skills = skillsFor(hero.id).filter((s) => s.levels && s.levels.length > 0);
 const rating = ratingFor(hero.id);
+const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
 const color = rarityColor[hero.rarity] ?? '#B5B1D3';
 
 const keyStats = statFields.slice(0, 6);
@@ -57,6 +58,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <li>Starts at {rankNumber(hero.baseRank)}★</li>
       </ul>
       {rating?.note && <p class="note">{rating.note}</p>}
+      <p id="owned" class="owned" data-config-id={configId} hidden></p>
     </div>
   </section>
 
@@ -158,6 +160,27 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 </Base>
 
 <script>
+  // Shows how this invoker looks in the player's imported box, if they have one.
+  import { loadBox } from '../../lib/box/store';
+  import { href } from '../../lib/data';
+
+  const STARS = ['Unknown', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
+  const el = document.getElementById('owned')!;
+  loadBox().then((box) => {
+    const copies = box?.heroes.filter((h) => h.configId === el.dataset.configId) ?? [];
+    if (!copies.length) return;
+    const best = copies.reduce((a, b) => (b.level > a.level ? b : a));
+    const extra = copies.length > 1 ? ` (${copies.length} copies)` : '';
+    el.replaceChildren(`In your box: ${STARS.indexOf(best.rank)}★, level ${best.level}, awakening ${best.awakenLevel}${extra}. `);
+    const link = document.createElement('a');
+    link.href = href('my-box');
+    link.textContent = 'My box';
+    el.append(link);
+    el.hidden = false;
+  });
+</script>
+
+<script>
   // Tabs. Without JavaScript every panel simply shows, one after another.
   const tablist = document.querySelector<HTMLElement>('[role=tablist]')!;
   const tabs = [...tablist.querySelectorAll<HTMLButtonElement>('[role=tab]')];
@@ -215,6 +238,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 </script>
 
 <style>
+  .owned { margin: 12px 0 0; background: var(--surface-2); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 8px; }
   .back {
     display: inline-flex;
     align-items: center;

@@ -5,11 +5,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "astro": "^7.3.5",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "vitest": "^3.2.7"
   }
 }
