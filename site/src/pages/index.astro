@@ -1,13 +1,57 @@
 ---
 import Base from '../layouts/Base.astro';
-import { heroes, events, href } from '../lib/data';
+import NavIcon from '../components/NavIcon.astro';
+import { heroes, href } from '../lib/data';
+import { nav } from '../lib/nav';
+
+const blurbs: Record<string, string> = {
+  heroes: `All ${heroes.length} Invokers with skills, stats and ratings`,
+  events: 'Event planners, coming soon',
+  trophies: 'Trophy Room costs, bonuses and an upgrade planner',
+  bosses: "How to beat each boss, with its dos and don'ts",
+  blog: 'Guides and deep dives',
+  'skill-costs': 'What it costs to level skills, by rarity',
+  'my-box': 'Import your Invokers and gear, saved only in your browser',
+};
+const sections = nav.filter((n) => blurbs[n.path]);
 ---
 <Base title="Home">
   <h1>Invokers Companion</h1>
-  <p>Game data for Invokers, read straight from the game files.</p>
-  <ul>
-    <li><a href={href('heroes')}>Invokers</a> ({heroes.length})</li>
-    <li><a href={href('events')}>Events</a> ({events.length})</li>
-    <li><a href={href('my-box')}>My box</a>: import your invokers and gear from the game, saved only in your browser</li>
+  <p class="lead">Guides, planners and reference for Invokers.</p>
+  <ul class="grid">
+    {sections.map((n) => (
+      <li>
+        <a href={href(n.path)}>
+          <NavIcon icon={n.icon} />
+          <span class="name">{n.label}</span>
+          <span class="blurb">{blurbs[n.path]}</span>
+        </a>
+      </li>
+    ))}
   </ul>
 </Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  .lead { color: var(--soft); margin: 0 0 24px; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .grid a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    text-decoration: none;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .grid a:hover { border-color: var(--accent); }
+  .grid :global(svg) { color: var(--accent); grid-row: span 2; }
+  .name { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .blurb { color: var(--muted); font-size: 14px; grid-column: 2; }
+</style>
