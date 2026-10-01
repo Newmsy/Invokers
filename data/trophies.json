@@ -1,0 +1,2987 @@
+{
+ "rooms": [
+  "Fire",
+  "Water",
+  "Wind",
+  "Earth",
+  "Light",
+  "Dark"
+ ],
+ "scope": {
+  "type": "element",
+  "description": "Each room's trophies boost all Invokers of that room's element, in every battle."
+ },
+ "source": "Static game config (ArenaData.HallBonuses, HallPrices): changes only with game patches; nothing comes from the server.",
+ "unconfirmed": [
+  "Whether each level's cost is paid per stat (assumed: the config has one 15-level price list).",
+  "Whether every element's room offers all stats.",
+  "Which stats sit under the UI's Attack / Defense / Utility groups.",
+  "Any unlock condition for the trophy room (not in the config)."
+ ],
+ "trophies": [
+  {
+   "id": "AttackPercent",
+   "name": "ATK",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.02,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.04,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.06,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.08,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.1,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.12,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.14,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.16,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.18,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.2,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.22,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.24,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.26,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.28,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AttackPercent",
+       "value": 0.3,
+       "valueType": "percent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "DefensePercent",
+   "name": "DEF",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.02,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.04,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.06,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.08,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.1,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.12,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.14,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.16,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.18,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.2,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.22,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.24,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.26,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.28,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "DefensePercent",
+       "value": 0.3,
+       "valueType": "percent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "HealthPercent",
+   "name": "HP",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.02,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.04,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.06,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.08,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.1,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.12,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.14,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.16,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.18,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.2,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.22,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.24,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.26,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.28,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "HealthPercent",
+       "value": 0.3,
+       "valueType": "percent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CriticalRatePercent",
+   "name": "Crit Rate",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.01,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.02,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.03,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.04,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.05,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.06,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.07,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.08,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.09,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.1,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.11,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.12,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.13,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.14,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalRatePercent",
+       "value": 0.15,
+       "valueType": "percent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "CriticalDamagePercent",
+   "name": "Crit DMG",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.02,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.04,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.06,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.08,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.1,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.13,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.16,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.19,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.22,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.25,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.28,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.31,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.34,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.37,
+       "valueType": "percent"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "CriticalDamagePercent",
+       "value": 0.4,
+       "valueType": "percent"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "AccuracyFlat",
+   "name": "ACC",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 5,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 10,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 15,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 25,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 30,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 35,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 45,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 50,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 70,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 80,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 90,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "AccuracyFlat",
+       "value": 100,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ResistanceFlat",
+   "name": "RES",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 5,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 10,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 15,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 25,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 30,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 35,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 45,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 50,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 70,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 80,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 90,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ResistanceFlat",
+       "value": 100,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ComboSpeedFlat",
+   "name": "Combo SPD",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 4,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 8,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 12,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 16,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 24,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 28,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 32,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 36,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 44,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 48,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 52,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 56,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ComboSpeedFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "SkillSpeedFlat",
+   "name": "Skill SPD",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 4,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 8,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 12,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 16,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 24,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 28,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 32,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 36,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 44,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 48,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 52,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 56,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillSpeedFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "SkillRecoveryFlat",
+   "name": "Skill RECOV",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 4,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 8,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 12,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 16,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 24,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 28,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 32,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 36,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 44,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 48,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 52,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 56,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "SkillRecoveryFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ManaGenerationFlat",
+   "name": "Mana Gen",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 4,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 8,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 12,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 16,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 24,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 28,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 32,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 36,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 44,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 48,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 52,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 56,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "ManaGenerationFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "InstinctRatingFlat",
+   "name": "Instinct",
+   "maxLevel": 15,
+   "levels": [
+    {
+     "level": 1,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 20
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 4,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 2,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 40
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 8,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 3,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 12,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 4,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 90
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 16,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 5,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Bronze",
+       "amount": 120
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 20,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 6,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 60
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 24,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 7,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 100
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 28,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 8,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 150
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 32,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 9,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 250
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 36,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 10,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Silver",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 40,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 11,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 44,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 12,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 200
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 48,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 13,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 300
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 52,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 14,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 400
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 56,
+       "valueType": "flat"
+      }
+     ]
+    },
+    {
+     "level": 15,
+     "cost": [
+      {
+       "itemId": "ArenaMedal_Gold",
+       "amount": 600
+      }
+     ],
+     "bonuses": [
+      {
+       "stat": "InstinctRatingFlat",
+       "value": 60,
+       "valueType": "flat"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

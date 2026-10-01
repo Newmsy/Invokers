@@ -1,0 +1,449 @@
+[
+ {
+  "id": "Unknown",
+  "name": "Unknown",
+  "percent": false
+ },
+ {
+  "id": "AttackFlat",
+  "name": "ATK",
+  "percent": false
+ },
+ {
+  "id": "DefenseFlat",
+  "name": "DEF",
+  "percent": false
+ },
+ {
+  "id": "HealthFlat",
+  "name": "HP",
+  "percent": false
+ },
+ {
+  "id": "AttackPercent",
+  "name": "ATK",
+  "percent": true
+ },
+ {
+  "id": "DefensePercent",
+  "name": "DEF",
+  "percent": true
+ },
+ {
+  "id": "HealthPercent",
+  "name": "HP",
+  "percent": true
+ },
+ {
+  "id": "CriticalRatePercent",
+  "name": "Crit Rate",
+  "percent": true
+ },
+ {
+  "id": "CriticalDamagePercent",
+  "name": "Crit DMG",
+  "percent": true
+ },
+ {
+  "id": "AccuracyFlat",
+  "name": "ACC",
+  "percent": false
+ },
+ {
+  "id": "ResistanceFlat",
+  "name": "RES",
+  "percent": false
+ },
+ {
+  "id": "MoveSpeedFlat",
+  "name": "Move SPD",
+  "percent": false
+ },
+ {
+  "id": "ComboSpeedFlat",
+  "name": "Combo SPD",
+  "percent": false
+ },
+ {
+  "id": "SkillSpeedFlat",
+  "name": "Skill SPD",
+  "percent": false
+ },
+ {
+  "id": "SkillRecoveryFlat",
+  "name": "Skill RECOV",
+  "percent": false
+ },
+ {
+  "id": "ManaGenerationFlat",
+  "name": "Mana Gen",
+  "percent": false
+ },
+ {
+  "id": "InstinctRatingFlat",
+  "name": "Instinct",
+  "percent": false
+ },
+ {
+  "id": "IgnoreDefensePercent",
+  "name": "Ignore DEF",
+  "percent": true
+ },
+ {
+  "id": "IncreaseHealingDone",
+  "name": "Heal Size",
+  "percent": false
+ },
+ {
+  "id": "IncreaseShieldDone",
+  "name": "Shield Size",
+  "percent": false
+ },
+ {
+  "id": "DecreaseDamageTaken",
+  "name": "Damage Taken",
+  "percent": false
+ },
+ {
+  "id": "BuffReductionDoneWithCombo3and5",
+  "name": "Buff Reduction",
+  "percent": false
+ },
+ {
+  "id": "DodgeChance",
+  "name": "Evasion",
+  "percent": false
+ },
+ {
+  "id": "AnimaDuration",
+  "name": "Titan Invokation Time",
+  "percent": false
+ },
+ {
+  "id": "LifeStealByOtherSkills",
+  "name": "Lifesteal (Skills)",
+  "percent": false
+ },
+ {
+  "id": "RunSpeedBonusOutOfCombat",
+  "name": "Ally Move SPD",
+  "percent": false
+ },
+ {
+  "id": "LifeStealByCombos",
+  "name": "Lifesteal (Combo)",
+  "percent": false
+ },
+ {
+  "id": "CrushTolerancePercent",
+  "name": "Crush Tol.",
+  "percent": true
+ },
+ {
+  "id": "ManaShockTolerancePercent",
+  "name": "Manashock Tol.",
+  "percent": true
+ },
+ {
+  "id": "FrostTolerancePercent",
+  "name": "Frost Tol.",
+  "percent": true
+ },
+ {
+  "id": "DazeTolerancePercent",
+  "name": "Daze Tol.",
+  "percent": true
+ },
+ {
+  "id": "ParalysisTolerancePercent",
+  "name": "Paralysis Tol.",
+  "percent": true
+ },
+ {
+  "id": "NightmareTolerancePercent",
+  "name": "Nightmare Tol.",
+  "percent": true
+ },
+ {
+  "id": "MindFogTolerancePercent",
+  "name": "Mindfog Tol.",
+  "percent": true
+ },
+ {
+  "id": "FatigueTolerancePercent",
+  "name": "Fatigue Tol.",
+  "percent": true
+ },
+ {
+  "id": "BlightTolerancePercent",
+  "name": "Blight Tol.",
+  "percent": true
+ },
+ {
+  "id": "ManaBurnTolerancePercent",
+  "name": "Manaburn Tol.",
+  "percent": true
+ },
+ {
+  "id": "AtrophyTolerancePercent",
+  "name": "Atrophy Tol.",
+  "percent": true
+ },
+ {
+  "id": "BloodRotTolerancePercent",
+  "name": "Bloodrot Tol.",
+  "percent": true
+ },
+ {
+  "id": "Unknown",
+  "name": "Unknown",
+  "short": "Unknown",
+  "description": "Unknown",
+  "kind": "rating"
+ },
+ {
+  "id": "Health",
+  "name": "Health",
+  "short": "HP",
+  "description": "Health",
+  "kind": "rating"
+ },
+ {
+  "id": "Attack",
+  "name": "Attack",
+  "short": "ATK",
+  "description": "Attack",
+  "kind": "rating"
+ },
+ {
+  "id": "Defense",
+  "name": "Defense",
+  "short": "DEF",
+  "description": "Defense",
+  "kind": "rating"
+ },
+ {
+  "id": "WalkSpeed",
+  "name": "WalkSpeed",
+  "short": "WalkSpeed",
+  "description": "WalkSpeed",
+  "kind": "rating"
+ },
+ {
+  "id": "RunSpeed",
+  "name": "Movement Speed",
+  "short": "MOVE SPD",
+  "description": "RunSpeed",
+  "kind": "rating"
+ },
+ {
+  "id": "FastRunSpeed",
+  "name": "FastRunSpeed",
+  "short": "FastRunSpeed",
+  "description": "FastRunSpeed",
+  "kind": "rating"
+ },
+ {
+  "id": "CriticalRate",
+  "name": "Crit Rate",
+  "short": "CRIT RATE",
+  "description": "CriticalRate",
+  "kind": "rating"
+ },
+ {
+  "id": "CriticalDamage",
+  "name": "Crit Damage",
+  "short": "CRIT DMG",
+  "description": "CriticalDamage",
+  "kind": "rating"
+ },
+ {
+  "id": "IgnoreDefense",
+  "name": "Ignore Defense",
+  "short": "IGNORE DEF",
+  "description": "IgnoreDefense",
+  "kind": "rating"
+ },
+ {
+  "id": "Accuracy",
+  "name": "Accuracy",
+  "short": "ACC",
+  "description": "Accuracy",
+  "kind": "rating"
+ },
+ {
+  "id": "Resistance",
+  "name": "Resistance",
+  "short": "RES",
+  "description": "Resistance",
+  "kind": "rating"
+ },
+ {
+  "id": "Instinct",
+  "name": "Instinct",
+  "short": "INSTINCT",
+  "description": "Instinct",
+  "kind": "rating"
+ },
+ {
+  "id": "ComboSpeed",
+  "name": "Combo Speed",
+  "short": "COMBO SPD",
+  "description": "ComboSpeed",
+  "kind": "rating"
+ },
+ {
+  "id": "SkillSpeed",
+  "name": "Skill Speed",
+  "short": "SKILL SPD",
+  "description": "SkillSpeed",
+  "kind": "rating"
+ },
+ {
+  "id": "SkillRecovery",
+  "name": "Skill Recovery",
+  "short": "SKILL RECOV",
+  "description": "SkillRecovery",
+  "kind": "rating"
+ },
+ {
+  "id": "ManaGeneration",
+  "name": "Mana Generation",
+  "short": "MANA GEN",
+  "description": "ManaGeneration",
+  "kind": "rating"
+ },
+ {
+  "id": "IncreaseHealingDone",
+  "name": "IncreaseHealingDone",
+  "short": "IncreaseHealingDone",
+  "description": "IncreaseHealingDone",
+  "kind": "rating"
+ },
+ {
+  "id": "IncreaseShieldsDone",
+  "name": "IncreaseShieldsDone",
+  "short": "IncreaseShieldsDone",
+  "description": "IncreaseShieldsDone",
+  "kind": "rating"
+ },
+ {
+  "id": "DecreaseDamageTaken",
+  "name": "DecreaseDamageTaken",
+  "short": "DecreaseDamageTaken",
+  "description": "DecreaseDamageTaken",
+  "kind": "rating"
+ },
+ {
+  "id": "BuffReductionDoneWithCombo3and5",
+  "name": "BuffReductionDoneWithCombo3and5",
+  "short": "BuffReductionDoneWithCombo3and5",
+  "description": "BuffReductionDoneWithCombo3and5",
+  "kind": "rating"
+ },
+ {
+  "id": "LifeStealByOtherSkills",
+  "name": "LifeStealByOtherSkills",
+  "short": "LifeStealByOtherSkills",
+  "description": "LifeStealByOtherSkills",
+  "kind": "rating"
+ },
+ {
+  "id": "RunSpeedBonusOutOfCombat",
+  "name": "RunSpeedBonusOutOfCombat",
+  "short": "RunSpeedBonusOutOfCombat",
+  "description": "RunSpeedBonusOutOfCombat",
+  "kind": "rating"
+ },
+ {
+  "id": "LifeStealByCombos",
+  "name": "LifeStealByCombos",
+  "short": "LifeStealByCombos",
+  "description": "LifeStealByCombos",
+  "kind": "rating"
+ },
+ {
+  "id": "CrushTolerance",
+  "name": "Crush Tolerance",
+  "short": "Crush",
+  "description": "Decreases the effects of Crush Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Astral)</color>, <color=#FFE606>Hyxxis</color>,<color=#FFE606> Althar</color>,<color=#FFE606> Sorgott</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "ManaShockTolerance",
+  "name": "Manashock Tolerance",
+  "short": "Manashock",
+  "description": "Decreases the effects of Manashock Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Dark)</color>, <color=#FFE606>Koltmos</color>,<color=#FFE606> Sakiel</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "FrostTolerance",
+  "name": "Frost Tolerance",
+  "short": "Frost",
+  "description": "Decreases the effects of Frost Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Water)</color>, <color=#FFE606>Yskara</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "DazeTolerance",
+  "name": "Daze Tolerance",
+  "short": "Daze",
+  "description": "Decreases the effects of Daze Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Fire)</color>, <color=#FFE606>Ulgorim</color>, <color=#FFE606>Galvos</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "ParalysisTolerance",
+  "name": "Paralysis Tolerance",
+  "short": "Paralysis",
+  "description": "Decreases the effects of Paralysis Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Earth)</color>, <color=#FFE606>Omnissi (Light)</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "NightmareTolerance",
+  "name": "Nightmare Tolerance",
+  "short": "Nightmare",
+  "description": "Decreases the effects of Nightmare Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Wind)</color>, <color=#FFE606>Pentiax</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "MindFogTolerance",
+  "name": "Mindfog Tolerance",
+  "short": "Mindfog",
+  "description": "Decreases the effects of Mindfog Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Water)</color>, <color=#FFE606>Pentiax</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "FatigueTolerance",
+  "name": "Fatigue Tolerance",
+  "short": "Fatigue",
+  "description": "Decreases the effects of Fatigue Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Wind)</color>, <color=#FFE606>Yskara</color>, <color=#FFE606>Althar</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "BlightTolerance",
+  "name": "Blight Tolerance",
+  "short": "Blight",
+  "description": "Decreases the effects of Blight Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Light)</color>, <color=#FFE606>Ulgorim</color>,<color=#FFE606> Koltmos</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "ManaBurnTolerance",
+  "name": "Manaburn Tolerance",
+  "short": "Manaburn",
+  "description": "Decreases the effects of Manaburn Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Fire)</color>, <color=#FFE606>Omnissi (Dark)</color>, <color=#FFE606>Hyxxis</color>,<color=#FFE606> Sorgott</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "AtrophyTolerance",
+  "name": "Atrophy Tolerance",
+  "short": "Atrophy",
+  "description": "Decreases the effects of Atrophy Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Astral)</color>, <color=#FFE606>Galvos</color>",
+  "kind": "rating"
+ },
+ {
+  "id": "BloodRotTolerance",
+  "name": "Bloodrot Tolerance",
+  "short": "Bloodrot",
+  "description": "Decreases the effects of Bloodrot Corruption by <color=#5EEF2C>{0}</color>. Useful against: <color=#FFE606>Omnissi (Earth)</color>, <color=#FFE606>Sakiel</color>",
+  "kind": "rating"
+ }
+]

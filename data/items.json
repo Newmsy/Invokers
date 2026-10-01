@@ -1,0 +1,822 @@
+[
+ {
+  "id": "Gem",
+  "name": "Gems",
+  "description": "Used to get items from the Shop, refill Energy, and much more"
+ },
+ {
+  "id": "Gold",
+  "name": "Gold",
+  "description": "Used to upgrade Gear, upgrade Invokers and Titans, and much more"
+ },
+ {
+  "id": "Energy",
+  "name": "Energy",
+  "description": "Used to enter battles in the Campaign and Bosses"
+ },
+ {
+  "id": "Memorium",
+  "name": "Memorium",
+  "description": "Used to upgrade Gear"
+ },
+ {
+  "id": "Token_MultiBattle",
+  "name": "Multi-Battle Tokens",
+  "description": "Used to run Multi-Battles in the Campaign and Boss Mode. Note: Multi-Battle unlocks when you reach Campaign Chapter 2."
+ },
+ {
+  "id": "Arena_Token",
+  "name": "Arena Token",
+  "description": "Used to fight Arena Battles."
+ },
+ {
+  "id": "Arena_Coin",
+  "name": "Arena Coin",
+  "description": "Used to get items from the Arena Shop."
+ },
+ {
+  "id": "ArenaMedal_Bronze",
+  "name": "Bronze Trophy",
+  "description": "Won from Bronze Tier Arena Battles. Used to fill your Trophy Room."
+ },
+ {
+  "id": "ArenaMedal_Silver",
+  "name": "Silver Trophy",
+  "description": "Won from Silver Tier Arena Battles. Used to fill your Trophy Room."
+ },
+ {
+  "id": "ArenaMedal_Gold",
+  "name": "Gold Trophy",
+  "description": "Won from Gold Tier Arena Battles. Used to fill your Trophy Room."
+ },
+ {
+  "id": "NameChangeTicket",
+  "name": "Name Change Scroll",
+  "description": "Used to change your in-game username"
+ },
+ {
+  "id": "EnergyRefill",
+  "name": "Energy Refill",
+  "description": "Instantly gives you maximum Energy"
+ },
+ {
+  "id": "AccountXp",
+  "name": "Player XP",
+  "description": "Increases the Level of your account"
+ },
+ {
+  "id": "HeroXp",
+  "name": "XP",
+  "description": "Invokers and Titans level up as they gain XP"
+ },
+ {
+  "id": "RelicSwapPass_1d",
+  "name": "Gear Swap Pass",
+  "description": "Allows you to remove and replace Gear for free for a limited time."
+ },
+ {
+  "id": "Booster_HeroXp1d50p",
+  "name": "1-Day XP Boost",
+  "description": "Increases the amount of XP and number of XP Potions you gain from battles by 50% for 1 day"
+ },
+ {
+  "id": "Booster_HeroXp3d50p",
+  "name": "3-Day XP Boost",
+  "description": "Increases the amount of XP and number of XP Potions you gain from battles by 50% for 3 days"
+ },
+ {
+  "id": "Booster_Gold1d50p",
+  "name": "1-Day Gold Boost",
+  "description": "Increases the amount of Gold you win from battles by 50% for 1 day"
+ },
+ {
+  "id": "Booster_Gold3d50p",
+  "name": "3-Day Gold Boost",
+  "description": "Increases the amount of Gold you win from battles by 50% for 3 days"
+ },
+ {
+  "id": "Booster_Memorium1d50p",
+  "name": "Booster_Memorium1d50p",
+  "description": "Booster_Memorium1d50p"
+ },
+ {
+  "id": "Booster_Memorium3d50p",
+  "name": "Booster_Memorium3d50p",
+  "description": "Booster_Memorium3d50p"
+ },
+ {
+  "id": "Booster_Rune1d50p",
+  "name": "Booster_Rune1d50p",
+  "description": "Booster_Rune1d50p"
+ },
+ {
+  "id": "Booster_Rune3d50p",
+  "name": "Booster_Rune3d50p",
+  "description": "Booster_Rune3d50p"
+ },
+ {
+  "id": "XpPotion_Small",
+  "name": "Small XP Potion",
+  "description": "Instantly gives Invokers and Titans 100 XP"
+ },
+ {
+  "id": "XpPotion_Regular",
+  "name": "Medium XP Potion",
+  "description": "Instantly gives Invokers and Titans 1,000 XP"
+ },
+ {
+  "id": "XpPotion_Big",
+  "name": "Large XP Potion",
+  "description": "Instantly gives Invokers and Titans 20,000 XP"
+ },
+ {
+  "id": "XpPotion_Premium",
+  "name": "Magic XP Potion",
+  "description": "Instantly gives Invokers and Titans 150,000 XP"
+ },
+ {
+  "id": "ASC_Stars1",
+  "name": "1 <sprite name=\"TMP_TextIcons_Atlas_0\"> Echo",
+  "description": "Used to Ascend Invokers from 1 <sprite name=\"TMP_TextIcons_Atlas_0\"> to 2 <sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Stars2",
+  "name": "2 <sprite name=\"TMP_TextIcons_Atlas_0\"> Echo",
+  "description": "Used to Ascend Invokers from 2 <sprite name=\"TMP_TextIcons_Atlas_0\"> to 3 <sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Stars3",
+  "name": "3 <sprite name=\"TMP_TextIcons_Atlas_0\"> Echo",
+  "description": "Used to Ascend Invokers from 3 <sprite name=\"TMP_TextIcons_Atlas_0\"> to 4 <sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Stars4",
+  "name": "4 <sprite name=\"TMP_TextIcons_Atlas_0\"> Echo",
+  "description": "Used to Ascend Invokers from 4 <sprite name=\"TMP_TextIcons_Atlas_0\"> to 5 <sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Stars5",
+  "name": "5 <sprite name=\"TMP_TextIcons_Atlas_0\"> Echo",
+  "description": "Used to Ascend Invokers from 5 <sprite name=\"TMP_TextIcons_Atlas_0\"> to 6 <sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Anima_Stars3",
+  "name": "3<sprite name=\"TMP_TextIcons_Atlas_0\"> Dragonsoul",
+  "description": "Used to Ascend Titans from 3<sprite name=\"TMP_TextIcons_Atlas_0\"> to 4<sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Anima_Stars4",
+  "name": "4<sprite name=\"TMP_TextIcons_Atlas_0\"> Dragonsoul",
+  "description": "Used to Ascend Titans from 4<sprite name=\"TMP_TextIcons_Atlas_0\"> to 5<sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "ASC_Anima_Stars5",
+  "name": "5<sprite name=\"TMP_TextIcons_Atlas_0\"> Dragonsoul",
+  "description": "Used to Ascend Titans from 5<sprite name=\"TMP_TextIcons_Atlas_0\"> to 6<sprite name=\"TMP_TextIcons_Atlas_0\">"
+ },
+ {
+  "id": "EMP_AnimaSpark",
+  "name": "Titan Spark",
+  "description": "Used to upgrade Titans and Awaken Invokers"
+ },
+ {
+  "id": "EMP_DragonFruit",
+  "name": "Titanheart",
+  "description": "Used to Empower Rare and Epic Titans"
+ },
+ {
+  "id": "EMP_ElderDragonFruit",
+  "name": "Elder Titanheart",
+  "description": "Used to Empower Legendary and Mythical Titans"
+ },
+ {
+  "id": "FT_General1",
+  "name": "Standard Playbook",
+  "description": "Used to upgrade Battle Tactics"
+ },
+ {
+  "id": "FT_General2",
+  "name": "Heroic Playbook",
+  "description": "Used to upgrade Battle Tactics"
+ },
+ {
+  "id": "FT_General3",
+  "name": "Historic Playbook",
+  "description": "Used to upgrade Battle Tactics"
+ },
+ {
+  "id": "TK_Fire",
+  "name": "Fire Spire Key",
+  "description": "Used to enter the Fire Spire"
+ },
+ {
+  "id": "TK_Earth",
+  "name": "Earth Spire Key",
+  "description": "Used to enter the Earth Spire"
+ },
+ {
+  "id": "TK_Wind",
+  "name": "Wind Spire Key",
+  "description": "Used to enter the Wind Spire"
+ },
+ {
+  "id": "TK_Water",
+  "name": "Water Spire Key",
+  "description": "Used to enter the Water Spire"
+ },
+ {
+  "id": "TK_Light",
+  "name": "Light Spire Key",
+  "description": "Used to enter the Light Spire"
+ },
+ {
+  "id": "TK_Dark",
+  "name": "Dark Spire Key",
+  "description": "Used to enter the Dark Spire"
+ },
+ {
+  "id": "SI_WildStar",
+  "name": "Wild Star",
+  "description": "Summons <color=#ABB0B2>Common</color>, <color=#88CC66>Uncommon</color>, and <color=#5CA8CC>Rare</color> Invokers <color=#CBBF87><i>(Fire, Water, Earth, Wind)</i></color>, as well as <color=#ABB0B2>Common</color> and <color=#88CC66>Uncommon</color> Invokers <color=#CBBF87><i>(Light, Dark)</i></color>"
+ },
+ {
+  "id": "SI_FateStar",
+  "name": "Fate Star",
+  "description": "Summons <color=#5CA8CC>Rare</color> and <color=#C852CC>Epic</color> Invokers <color=#CBBF87><i>(Fire, Water, Earth, Wind)</i></color>"
+ },
+ {
+  "id": "SI_DestinyStar",
+  "name": "Destiny Star",
+  "description": "Summons <color=#5CA8CC>Rare</color>, <color=#C852CC>Epic</color>, and <color=#FF9933>Legendary</color> Invokers <color=#CBBF87><i>(Fire, Water, Earth, Wind)</i></color>"
+ },
+ {
+  "id": "SI_DivineStar",
+  "name": "Divine Star",
+  "description": "Summons <color=#C852CC>Epic</color> and <color=#FF9933>Legendary</color> Invokers <color=#CBBF87><i>(Fire, Water, Earth, Wind)</i></color>"
+ },
+ {
+  "id": "SI_RadiantStar",
+  "name": "Radiant Star",
+  "description": "Summons <color=#5CA8CC>Rare</color>, <color=#C852CC>Epic</color>, and <color=#FF9933>Legendary</color> Invokers <color=#CBBF87><i>(Light, Dark)</i></color>"
+ },
+ {
+  "id": "SI_DreamOrb",
+  "name": "Dream Orb",
+  "description": "Summons <color=#5CA8CC>Rare</color> and <color=#C852CC>Epic</color> Titans"
+ },
+ {
+  "id": "SI_WonderOrb",
+  "name": "Wonder Orb",
+  "description": "Summons <color=#5CA8CC>Rare</color>, <color=#C852CC>Epic</color>, and <color=#FF9933>Legendary</color> Titans"
+ },
+ {
+  "id": "SI_MiracleOrb",
+  "name": "Miracle Orb",
+  "description": "Summons <color=#C852CC>Epic</color>, <color=#FF9933>Legendary</color>, and <color=#E54545>Mythical</color> Titans"
+ },
+ {
+  "id": "SI_LegendaryStar",
+  "name": "SI_LegendaryStar",
+  "description": "SI_LegendaryStar"
+ },
+ {
+  "id": "SI_MythicOrb",
+  "name": "SI_MythicOrb",
+  "description": "SI_MythicOrb"
+ },
+ {
+  "id": "SIP_FateStarPiece",
+  "name": "Fate Star Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Fate Star"
+ },
+ {
+  "id": "SIP_DestinyStarPiece",
+  "name": "Destiny Star Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Destiny Star"
+ },
+ {
+  "id": "SIP_DivineStarPiece",
+  "name": "Divine Star Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Divine Star"
+ },
+ {
+  "id": "SIP_RadiantStarPiece",
+  "name": "Radiant Star Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Radiant Star"
+ },
+ {
+  "id": "SIP_WonderOrbPiece",
+  "name": "Wonder Orb Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Wonder Orb"
+ },
+ {
+  "id": "SIP_MiracleOrbPiece",
+  "name": "Miracle Orb Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Miracle Orb"
+ },
+ {
+  "id": "SIP_DreamOrbPiece",
+  "name": "Dream Orb Fragment",
+  "description": "Collect 100 Fragments to combine them to create a Dream Orb"
+ },
+ {
+  "id": "Codex_Rare",
+  "name": "Rare Codex",
+  "description": "Used to upgrade Invoker skills"
+ },
+ {
+  "id": "Codex_Epic",
+  "name": "Epic Codex",
+  "description": "Used to upgrade Invoker skills"
+ },
+ {
+  "id": "Codex_Legendary",
+  "name": "Legendary Codex",
+  "description": "Used to upgrade Invoker skills"
+ },
+ {
+  "id": "Prism_Rare",
+  "name": "Rare Prism",
+  "description": "Used to upgrade Titan skills"
+ },
+ {
+  "id": "Prism_Epic",
+  "name": "Epic Prism",
+  "description": "Used to upgrade Titan skills"
+ },
+ {
+  "id": "Prism_Legendary",
+  "name": "Legendary Prism",
+  "description": "Used to upgrade Titan skills"
+ },
+ {
+  "id": "EE_Tier1Generic",
+  "name": "Raw Essence",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "EE_Tier1Fire",
+  "name": "Raw Fire Essence",
+  "description": "Used to Awaken Fire Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier1Wind",
+  "name": "Raw Wind Essence",
+  "description": "Used to Awaken Wind Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier1Earth",
+  "name": "Raw Earth Essence",
+  "description": "Used to Awaken Earth Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier1Water",
+  "name": "Raw Water Essence",
+  "description": "Used to Awaken Water Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier1Light",
+  "name": "Raw Light Essence",
+  "description": "Used to Awaken Light Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier1Dark",
+  "name": "Raw Dark Essence",
+  "description": "Used to Awaken Dark Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Generic",
+  "name": "Refined Essence",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "EE_Tier2Fire",
+  "name": "Refined Fire Essence",
+  "description": "Used to Awaken Fire Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Wind",
+  "name": "Refined Wind Essence",
+  "description": "Used to Awaken Wind Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Earth",
+  "name": "Refined Earth Essence",
+  "description": "Used to Awaken Earth Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Water",
+  "name": "Refined Water Essence",
+  "description": "Used to Awaken Water Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Light",
+  "name": "Refined Light Essence",
+  "description": "Used to Awaken Light Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier2Dark",
+  "name": "Refined Dark Essence",
+  "description": "Used to Awaken Dark Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Generic",
+  "name": "Pure Essence",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "EE_Tier3Fire",
+  "name": "Pure Fire Essence",
+  "description": "Used to Awaken Fire Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Wind",
+  "name": "Pure Wind Essence",
+  "description": "Used to Awaken Wind Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Earth",
+  "name": "Pure Earth Essence",
+  "description": "Used to Awaken Earth Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Water",
+  "name": "Pure Water Essence",
+  "description": "Used to Awaken Water Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Light",
+  "name": "Pure Light Essence",
+  "description": "Used to Awaken Light Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "EE_Tier3Dark",
+  "name": "Pure Dark Essence",
+  "description": "Used to Awaken Dark Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "AE_ManaTier1",
+  "name": "Raw Astral Essence",
+  "description": "Used to Awaken Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "AE_ManaTier2",
+  "name": "Refined Astral Essence",
+  "description": "Used to Awaken Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "AE_ManaTier3",
+  "name": "Pure Astral Essence",
+  "description": "Used to Awaken Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier1Generic",
+  "name": "Novice Crest",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "RM_Tier1Tank",
+  "name": "Novice Tank Crest",
+  "description": "Used to Awaken Tank Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier1MeleeAttacker",
+  "name": "Novice Melee Attacker Crest",
+  "description": "Used to Awaken Melee Attacker Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier1RangedAttacker",
+  "name": "Novice Ranged Attacker Crest",
+  "description": "Used to Awaken Ranged Attacker Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier1Support",
+  "name": "Novice Support Crest",
+  "description": "Used to Awaken Support Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier2Generic",
+  "name": "Master Melee Attacker Crest",
+  "description": "Used to Awaken Melee Attacker Invokers"
+ },
+ {
+  "id": "RM_Tier2Tank",
+  "name": "Expert Tank Crest",
+  "description": "Used to Awaken Tank Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier2MeleeAttacker",
+  "name": "Expert Melee Attacker Crest",
+  "description": "Used to Awaken Melee Attacker Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier2RangedAttacker",
+  "name": "Expert Ranged Attacker Crest",
+  "description": "Used to Awaken Ranged Attacker Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier2Support",
+  "name": "Expert Support Crest",
+  "description": "Used to Awaken Support Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier3Generic",
+  "name": "Master Crest",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "RM_Tier3Tank",
+  "name": "Master Tank Crest",
+  "description": "Used to Awaken Tank Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier3MeleeAttacker",
+  "name": "Master Melee Attacker Crest",
+  "description": "Used to Awaken Melee Attacker Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier3RangedAttacker",
+  "name": "Master Ranged Attacker Crest",
+  "description": "Used to Awaken Ranged Attacker Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "RM_Tier3Support",
+  "name": "Master Support Crest",
+  "description": "Used to Awaken Support Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Generic",
+  "name": "Ancient Rune",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "FM_Tier1Eldrin",
+  "name": "Ancient Eldrin Rune",
+  "description": "Used to Awaken Eldrin Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Magi",
+  "name": "Ancient Magi Rune",
+  "description": "Used to Awaken Magi Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Stonehearts",
+  "name": "Ancient Stoneheart Rune",
+  "description": "Used to Awaken Stoneheart Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Ekkan",
+  "name": "Ancient Ekkan Rune",
+  "description": "Used to Awaken Ekkan Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Freeborn",
+  "name": "Ancient Freeborn Rune",
+  "description": "Used to Awaken Freeborn Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Beastbloods",
+  "name": "Ancient Beastblood Rune",
+  "description": "Used to Awaken Beastblood Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Nocturna",
+  "name": "Ancient Nocturna Rune",
+  "description": "Used to Awaken Nocturna Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Oasi",
+  "name": "Ancient Oasi Rune",
+  "description": "Used to Awaken Oasi Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Ironbands",
+  "name": "Ancient Ironband Rune",
+  "description": "Used to Awaken Ironband Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Outlaws",
+  "name": "Ancient Outlaw Rune",
+  "description": "Used to Awaken Outlaw Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Cambion",
+  "name": "Ancient Cambion Rune",
+  "description": "Used to Awaken Cambion Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier1Lightseekers",
+  "name": "Ancient Lightseeker Rune",
+  "description": "Used to Awaken Lightseeker Invokers (1<sprite name=\"TMP_TextIcons_Atlas_1\"> and 2<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Generic",
+  "name": "Enchanted Rune",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "FM_Tier2Eldrin",
+  "name": "Enchanted Eldrin Rune",
+  "description": "Used to Awaken Eldrin Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Magi",
+  "name": "Enchanted Magi Rune",
+  "description": "Used to Awaken Magi Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Stonehearts",
+  "name": "Enchanted Stoneheart Rune",
+  "description": "Used to Awaken Stoneheart Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Ekkan",
+  "name": "Enchanted Ekkan Rune",
+  "description": "Used to Awaken Ekkan Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Freeborn",
+  "name": "Enchanted Freeborn Rune",
+  "description": "Used to Awaken Freeborn Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Beastbloods",
+  "name": "Enchanted Beastblood Rune",
+  "description": "Used to Awaken Beastblood Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Nocturna",
+  "name": "Enchanted Nocturna Rune",
+  "description": "Used to Awaken Nocturna Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Oasi",
+  "name": "Enchanted Oasi Rune",
+  "description": "Used to Awaken Oasi Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Ironbands",
+  "name": "Enchanted Ironband Rune",
+  "description": "Used to Awaken Ironband Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Outlaws",
+  "name": "Enchanted Outlaw Rune",
+  "description": "Used to Awaken Outlaw Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Cambion",
+  "name": "Enchanted Cambion Rune",
+  "description": "Used to Awaken Cambion Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier2Lightseekers",
+  "name": "Enchanted Lightseeker Rune",
+  "description": "Used to Awaken Lightseeker Invokers (3<sprite name=\"TMP_TextIcons_Atlas_1\"> and 4<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Generic",
+  "name": "Divine Rune",
+  "description": "Used to Awaken Invokers."
+ },
+ {
+  "id": "FM_Tier3Eldrin",
+  "name": "Divine Eldrin Rune",
+  "description": "Used to Awaken Eldrin Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Magi",
+  "name": "Divine Magi Rune",
+  "description": "Used to Awaken Magi Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Stonehearts",
+  "name": "Divine Stoneheart Rune",
+  "description": "Used to Awaken Stoneheart Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Ekkan",
+  "name": "Divine Ekkan Rune",
+  "description": "Used to Awaken Ekkan Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Freeborn",
+  "name": "Divine Freeborn Rune",
+  "description": "Used to Awaken Freeborn Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Beastbloods",
+  "name": "Divine Beastblood Rune",
+  "description": "Used to Awaken Beastblood Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Nocturna",
+  "name": "Divine Nocturna Rune",
+  "description": "Used to Awaken Nocturna Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Oasi",
+  "name": "Divine Oasi Rune",
+  "description": "Used to Awaken Oasi Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Ironbands",
+  "name": "Divine Ironband Rune",
+  "description": "Used to Awaken Ironband Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Outlaws",
+  "name": "Divine Outlaw Rune",
+  "description": "Used to Awaken Outlaw Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Cambion",
+  "name": "Divine Cambion Rune",
+  "description": "Used to Awaken Cambion Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "FM_Tier3Lightseekers",
+  "name": "Divine Lightseeker Rune",
+  "description": "Used to Awaken Lightseeker Invokers (5<sprite name=\"TMP_TextIcons_Atlas_1\"> and 6<sprite name=\"TMP_TextIcons_Atlas_1\"> Awakening)"
+ },
+ {
+  "id": "GE_GoldCrown",
+  "name": "Crown",
+  "description": "All Tournament Points won during the Chase Event are exchanged for Crowns. Use Crowns to purchase valuable items from the Event Shop."
+ },
+ {
+  "id": "GE_HalloweenPumpkin",
+  "name": "Pumpkin",
+  "description": "All Tournament Points won during the Chase Event are exchanged for Pumpkins. Use Pumpkins to purchase valuable items from the Event Shop."
+ },
+ {
+  "id": "GE_ChristmasSnowflake",
+  "name": "GE_ChristmasSnowflake",
+  "description": "GE_ChristmasSnowflake"
+ },
+ {
+  "id": "GE_StValentinesHeart",
+  "name": "GE_StValentinesHeart",
+  "description": "GE_StValentinesHeart"
+ },
+ {
+  "id": "GE_StPatricksDayShamrock",
+  "name": "GE_StPatricksDayShamrock",
+  "description": "GE_StPatricksDayShamrock"
+ },
+ {
+  "id": "GE_EasterEgg",
+  "name": "GE_EasterEgg",
+  "description": "GE_EasterEgg"
+ },
+ {
+  "id": "GE_LunarNewYearRedPaperLantern",
+  "name": "GE_LunarNewYearRedPaperLantern",
+  "description": "GE_LunarNewYearRedPaperLantern"
+ },
+ {
+  "id": "GE_InvokersAnniversaryBirthdayCake",
+  "name": "GE_InvokersAnniversaryBirthdayCake",
+  "description": "GE_InvokersAnniversaryBirthdayCake"
+ },
+ {
+  "id": "GE_SummerSeashell",
+  "name": "GE_SummerSeashell",
+  "description": "GE_SummerSeashell"
+ },
+ {
+  "id": "GE_SpringFlower",
+  "name": "GE_SpringFlower",
+  "description": "GE_SpringFlower"
+ },
+ {
+  "id": "GE_AutumnMapleLeaf",
+  "name": "GE_AutumnMapleLeaf",
+  "description": "GE_AutumnMapleLeaf"
+ },
+ {
+  "id": "GE_Moonbeam",
+  "name": "GE_Moonbeam",
+  "description": "GE_Moonbeam"
+ },
+ {
+  "id": "GE_ChaseTheLight",
+  "name": "GE_ChaseTheLight",
+  "description": "GE_ChaseTheLight"
+ },
+ {
+  "id": "VIP_1d",
+  "name": "VIP_1d",
+  "description": "VIP_1d"
+ },
+ {
+  "id": "VIP_7d",
+  "name": "VIP_7d",
+  "description": "VIP_7d"
+ },
+ {
+  "id": "VIP_30d",
+  "name": "VIP_30d",
+  "description": "VIP_30d"
+ }
+]

@@ -1,0 +1,779 @@
+[
+ {
+  "id": "CrushTolerance",
+  "name": "Crush Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "CrushTolerancePercent",
+     "statName": "Crush Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Not only does Crush Corruption stun the target, taking them out of the battle for a long time, but it also causes the target to take double damage, from all sources of damage - whether that's a direct hit from a Boss, or damage from a Burn or other debuff.<br><br>Increasing an Invoker's Crush Tolerance decreases the duration of Crush Corruption and its effects by the Tolerance percentage, reducing the time you are stunned and take double damage. Increasing Crush Tolerance will significantly reduce the amount of damage an Invoker takes throughout a battle with a Boss with Crush Corruption.<br><br>The following Bosses have Crush Corruption: <color=#FFE606>Omnissi (Astral), Hyxxis, Althar.</color>"
+ },
+ {
+  "id": "ManaShockTolerance",
+  "name": "Manashock Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ManaShockTolerancePercent",
+     "statName": "Manashock Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Manashock Corruption stuns the target, while also decreasing the amount of Ultimate and Titan Mana the target gains from any source.<br><br>This can massively decrease the effectiveness of a Support Invoker whose job it is to generate Mana for their team, as even if they have high Manashock Tolerance themselves, their power is greatly decreased if their teammates only receive 50% of the Mana they generate.<br><br>Increasing an Invoker's Manashock Tolerance decreases the duration of Manashock and its effects by the Invoker's Tolerance percentage, reducing the duration of the stun and decreasing the Mana gain penalty.<br><br>The following Bosses have Manashock Corruption: <color=#FFE606>Omnissi (Dark), Koltmos, Sakiel.</color>"
+ },
+ {
+  "id": "FrostTolerance",
+  "name": "Frost Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "FrostTolerancePercent",
+     "statName": "Frost Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Frost Corruption stuns the target, while also freezing all of the target's cooldowns for its duration.<br><br>With cooldowns on pause, your Invokers can effectively be locked out of using their Active and Ultimate Skills if they get hit with Frost Corruption at a bad time. This means no heals, no buffs or debuffs - restricted to Combo Attacks alone.<br><br>Increasing an Invoker's Frost Tolerance decreases the duration of the Frost Corruption by the Invoker's Tolerance percentage, which means a shorter stun, and less time with frozen Cooldowns.<br><br>The following Bosses have Frost Corruption: <color=#FFE606>Omnissi (Water), Yskara.</color>"
+ },
+ {
+  "id": "DazeTolerance",
+  "name": "Daze Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "DazeTolerancePercent",
+     "statName": "Daze Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Daze Corruption instantly purges 2 buffs from the target as soon as the Corruption lands, then stuns them for the duration.<br><br>Bosses with Daze Corruption can become incredibly hard to navigate due to being unable to guarantee which Buffs your team will have up at any time. Whenever they get hit with Daze, they'll lose 2 of their buffs straight away.<br><br>Increasing an Invoker's Daze Tolerance will decrease the duration of the Daze's stun by the Invoker's Tolerance percentage. And at 100% Daze Tolerance, the Buff purge will also be blocked.<br><br>The following Bosses have Daze Corruption: <color=#FFE606>Omnissi (Fire), Ulgorim, Galvos.</color>"
+ },
+ {
+  "id": "ParalysisTolerance",
+  "name": "Paralysis Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ParalysisTolerancePercent",
+     "statName": "Paralysis Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Paralysis Corruption stuns the target for its duration. Then, when it expires, it puts a random Skill of the target's on a 30-second cooldown.<br><br>Paralysis can throw your plans out of the window. You can often recover from a long stun, or other crowd-control debuff, by immediately using a powerful heal after the debuff expires. But Paralysis can stop that plan in its tracks if it puts the skill you were waiting to use on a huge 30-second cooldown.<br><br>Increasing an Invoker's Paralysis Tolerance will decrease the duration of the Paralysis' stun by the Invoker's Tolerance percentage. And at 100% Paralysis Tolerance, the cooldown increase will also be blocked.<br><br>The following Bosses have Paralysis Corruption: <color=#FFE606>Omnissi (Earth), Omnissi (Light).</color>"
+ },
+ {
+  "id": "NightmareTolerance",
+  "name": "Nightmare Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "NightmareTolerancePercent",
+     "statName": "Nightmare Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Nightmare Corruption causes the target to run around uncontrollably, during which time they cannot use any Skills, and could run into a trap or deadly enemy attacks. And once the Nightmare Corruption expires, one of the target's Skills will be put on full cooldown.<br><br>Increasing an Invoker's Nightmare Tolerance will decrease the duration of the Nightmare's effects by the Invoker's Tolerance percentage, allowing you to regain control sooner. And at 100% Tolerance, your Skills will not be affected by the cooldown increase.<br><br>The following Bosses have Nightmare Corruption: <color=#FFE606>Omnissi (Wind), Pentiax.</color>"
+ },
+ {
+  "id": "MindFogTolerance",
+  "name": "Mindfog Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "MindFogTolerancePercent",
+     "statName": "Mindfog Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Mindfog Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the target's ACC by a certain percentage. Mindfog Corruption has an infinite duration and cannot be removed. Mindfog Corruption stacks additively, so each stack of Mindfog directly increases the damage per tick and the ACC reduction.<br><br>Bosses with Mindfog Corruption also deal direct Mindfog damage from their Skills, in addition to their regular damage. Direct Mindfog damage ignores the target's DEF stat, and can only be decreased by the target's Mindfog Tolerance.<br><br>Increasing an Invoker's Mindfog Tolerance will decrease all Mindfog damage by the Invoker's Tolerance percentage, along decreasing the effects of the ACC reduction.<br><br>The following Bosses have Mindfog Corruption: <color=#FFE606>Omnissi (Water), Pentiax.</color>"
+ },
+ {
+  "id": "FatigueTolerance",
+  "name": "Fatigue Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "FatigueTolerancePercent",
+     "statName": "Fatigue Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Fatigue Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the target's Move SPD by a certain percentage. Fatigue Corruption has an infinite duration and cannot be removed. Fatigue Corruption stacks additively, so each stack of Fatigue directly increases the damage per tick along with the Move SPD reduction.<br><br>Bosses with Fatigue Corruption also deal direct Fatigue damage from their Skills, in addition to their regular damage. Direct Fatigue damage ignores the target's DEF stat, and can only be decreased by the target's Fatigue Tolerance.<br><br>Increasing an Invoker's Fatigue Tolerance will decrease all Fatigue damage by the Invoker's Tolerance percentage, along decreasing the effects of the Move SPD reduction.<br><br>The following Bosses have Fatigue Corruption: <color=#FFE606>Omnissi (Wind), Yskara, Althar.</color>"
+ },
+ {
+  "id": "BlightTolerance",
+  "name": "Blight Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "BlightTolerancePercent",
+     "statName": "Blight Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Blight Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the target's Skill Recovery by a certain percentage. Blight Corruption has an infinite duration and cannot be removed. Blight Corruption stacks additively, so each stack of Blight directly increases the damage per tick along with the Skill Recovery reduction.<br><br>Bosses with Blight Corruption also deal direct Blight damage from their Skills, in addition to their regular damage. Direct Blight damage ignores the target's DEF stat, and can only be decreased by the target's Blight Tolerance.<br><br>Increasing an Invoker's Blight Tolerance will decrease all Blight damage by the Invoker's Tolerance percentage, along decreasing the effects of the Skill Recovery reduction.<br><br>The following Bosses have Blight Corruption: <color=#FFE606>Omnissi (Light), Ulgorim, Koltmos.</color>"
+ },
+ {
+  "id": "ManaBurnTolerance",
+  "name": "Manaburn Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ManaBurnTolerancePercent",
+     "statName": "Manaburn Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Manaburn Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the target's Mana Gen by a certain percentage. Manaburn Corruption has an infinite duration and cannot be removed. Manaburn Corruption stacks additively, so each stack of Manaburn directly increases the damage per tick along with the Mana Gen reduction.<br><br>Bosses with Manaburn Corruption also deal direct Manaburn damage from their Skills, in addition to their regular damage. Direct Manaburn damage ignores the target's DEF stat, and can only be decreased by the target's Manaburn Tolerance.<br><br>Increasing an Invoker's Manaburn Tolerance will decrease all Manaburn damage by the Invoker's Tolerance percentage, along decreasing the effects of the Mana Gen reduction.<br><br>The following Bosses have Manaburn Corruption: <color=#FFE606>Omnissi (Fire), Omnissi (Dark), Hyxxis.</color>"
+ },
+ {
+  "id": "AtrophyTolerance",
+  "name": "Atrophy Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "AtrophyTolerancePercent",
+     "statName": "Atrophy Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Atrophy Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the target's RES by a certain percentage. Atrophy Corruption has an infinite duration and cannot be removed. Atrophy Corruption stacks additively, so each stack of Atrophy directly increases the damage per tick along with the RES reduction.<br><br>Bosses with Atrophy Corruption also deal direct Atrophy damage from their Skills, in addition to their regular damage. Direct Atrophy damage ignores the target's DEF stat, and can only be decreased by the target's Atrophy Tolerance.<br><br>Increasing an Invoker's Atrophy Tolerance will decrease all Atrophy damage by the Invoker's Tolerance percentage, along decreasing the effects of the RES reduction.<br><br>The following Bosses have Atrophy Corruption: <color=#FFE606>Omnissi (Astral), Galvos.</color>"
+ },
+ {
+  "id": "BloodRotTolerance",
+  "name": "Bloodrot Tolerance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "BloodRotTolerancePercent",
+     "statName": "Bloodrot Tol.",
+     "value": 0.5
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Bloodrot Corruption is a damage-over-time effect that damages the recipient by a percentage of their MAX HP every tick. It also decreases the size of all heals the target receives by a certain percentage. Bloodrot Corruption has an infinite duration and cannot be removed. Bloodrot Corruption stacks additively, so each stack of Bloodrot directly increases the damage per tick along with the Heal Size reduction.<br><br>Bosses with Bloodrot Corruption also deal direct Bloodrot damage from their Skills, in addition to their regular damage. Direct Bloodrot damage ignores the target's DEF stat, and can only be decreased by the target's Bloodrot Tolerance.<br><br>Increasing an Invoker's Bloodrot Tolerance will decrease all Bloodrot damage by the Invoker's Tolerance percentage, along decreasing the effects of the Heal Size reduction.<br><br>The following Bosses have Bloodrot Corruption: <color=#FFE606>Omnissi (Earth), Sakiel.</color>"
+ },
+ {
+  "id": "Attack",
+  "name": "Attack",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.1
+    }
+   ],
+   "5": [
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Useful for almost every Invoker, in almost every scenario.<br><br>Most Invokers' skills scale according to their ATK stat - so the higher their ATK, the more damage they deal. <br><br>And it's just attacks. Many other skills, such as certain heals, also increase in strength according to the Invoker's ATK stat.<br><br>While other Relic Sets with more unique effects may be preferable to unlock an Invoker's potential, a set of 3 Attack Relics is often a great secondary Set to supplement another.<br><br>An Attack Set is simple, but is a core Relic Set, and is almost never a bad choice."
+ },
+ {
+  "id": "Defense",
+  "name": "Defense",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.1
+    }
+   ],
+   "5": [
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "An Invoker's DEF stat decreases the amount of damage they receive from enemy attacks.<br><br>A shot from an enemy's arrow will deal full damage to an Invoker with 0 DEF, but an Invoker with around 4,500 DEF will see a 50% damage reduction from all incoming attacks.<br><br>Not only that, some Invokers have attacks that deal damage based on their DEF - which makes increasing doubly effective, adding both survivabilty and damage.<br><br>A Defense Set is also an incredibly strong pairing if your team has healers that heal based on their ATK or stats other than the recipient's MAX HP. In those cases, building high DEF means each point of HP is worth more, and a strong ATK-based heal can heal far more than MAX HP-based heals on Invokers that have low HP, but incredibly high DEF.<br><br>Having a good amount of both DEF and HP is key to survivability in all scenarios, but when used in the perfect setup, maximizing an Invoker's DEF can be a game-changer."
+ },
+ {
+  "id": "Health",
+  "name": "Health",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.15
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.3
+    }
+   ]
+  },
+  "recommendation": "Every Invoker can benefit from having more HP - and a Health Set provides a significant HP boost.<br><br>Simply being able to stay alive longer can often be the biggest difference between victory and defeat.<br><br>An Invoker can have all the ATK in the world, but if they can't survive a few hits, they'll be taken out by some of the bigger games in the game in no time.<br><br>A Health Set is one of the most versatile Sets in the game - and is the most common secondary Set for Supports and Tanks.<br><br>No matter what your Invoker's role, they'll almost always benefit from being able to stay alive longer to do their job."
+ },
+ {
+  "id": "CriticalRate",
+  "name": "Crit Rate",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "CriticalRatePercent",
+     "statName": "Crit Rate",
+     "value": 0.1
+    }
+   ],
+   "5": [
+    {
+     "stat": "CriticalRatePercent",
+     "statName": "Crit Rate",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "An Invoker's Crit Rate defines their chances of landing a critical hit when attacking.<br><br>If an Invoker lands a Critical Hit, they'll deal additional damage equal to their Crit Damage Stat.<br><br>It's no use building high Crit Damage if your Invoker only has a 5% chance of landing Critical Hits. In that situation, 95% of their attacks will not crit, and they'll be dealing normal damage - making the Crit Damage almost useless in-battle.<br><br>Getting consistent Critical Hits is key. Building high Crit Rate will increase the frequency with which they land Critical Hits, which is the key to consistently high damage output.<br><br>Focus on Crit Rate first to get consistent crits, then build out your Crit Damage.<br><br>Maximizing both of these stats will massively increase an Invoker's damage output. For both Melee and Ranged Attackers, crits are king.<br><br>Pro Tip: Some Invokers have other effects, such as heals, that can also crit - which is also decided by their Crit Rate. Keep an eye out for those."
+ },
+ {
+  "id": "CriticalDamage",
+  "name": "Crit Damage",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "CriticalDamagePercent",
+     "statName": "Crit DMG",
+     "value": 0.2
+    }
+   ],
+   "5": [
+    {
+     "stat": "CriticalDamagePercent",
+     "statName": "Crit DMG",
+     "value": 0.4
+    }
+   ]
+  },
+  "recommendation": "Whenever an Invoker lands a Critical Hit, they'll deal additional damage equal to their Crit Damage Stat.<br><br>A Crit Damage Set is key to maxmizing your Attackers' potential - making it possible to more than double their damage output... if they can land Critical Hits consistently.<br><br>Ensure an Invoker has close to 100% Crit Rate, then stack as much Crit Damage as possible."
+ },
+ {
+  "id": "Accuracy",
+  "name": "Accuracy",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "AccuracyFlat",
+     "statName": "ACC",
+     "value": 50
+    }
+   ],
+   "5": [
+    {
+     "stat": "AccuracyFlat",
+     "statName": "ACC",
+     "value": 75
+    }
+   ]
+  },
+  "recommendation": "Whenever an Invoker casts a debuff on an enemy, there is an Accuracy vs Resistance check that compares the caster's ACC against the target's RES.<br><br>Increasing an Invoker's ACC stat is key to landing debuffs or ensuring that other instant effects actually land and affect their target.<br><br>If an Invoker in your team is there primarily to land debuffs on enemies, their effectiveness will be decided by their ACC stat. <br><br>As a rule of thumb, if an Invoker has more ACC than the target's RES, while attacking a neutral or weak element, their debuffs are guaranteed to land. While attacking at an elemental disadvantage, they will need to increase their ACC more to overcome to Accuracy penalty from attacking a stronger element.<br><br>An Accuracy Set is one of the most important Relic Sets in the game."
+ },
+ {
+  "id": "Resistance",
+  "name": "Resistance",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ResistanceFlat",
+     "statName": "RES",
+     "value": 50
+    }
+   ],
+   "5": [
+    {
+     "stat": "ResistanceFlat",
+     "statName": "RES",
+     "value": 75
+    }
+   ]
+  },
+  "recommendation": "Whenever an enemy (or Invoker) casts a debuff, there is an Accuracy vs Resistance check that compares the caster's ACC against the target's RES.<br><br>The only way to consistently protect your Invokers against enemy debuffs is by boosting their RES Stat.<br><br>If an enemy has more ACC than your RES, their debuff is almost certainly going to land.<br><br>Increasing an Invoker's RES protects them from enemy and Boss debuffs, along with all sorts of other deadly effects that can stop your team in its tracks.<br><br>You'll need a lot higher RES than the enemy's ACC to consistently protect yourselves from debuffs. Make sure to factor in the element matchup to help swing the Accuracy vs Resistance check in your favor.<br><br>A Resistance Set makes it much harder for a boss or enemy team to interfere with your plans. It doesn't matter how much damage your team can deal if they're constantly stun-locked."
+ },
+ {
+  "id": "Instinct",
+  "name": "Instinct",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "InstinctRatingFlat",
+     "statName": "Instinct",
+     "value": 30
+    }
+   ],
+   "5": [
+    {
+     "stat": "InstinctRatingFlat",
+     "statName": "Instinct",
+     "value": 45
+    }
+   ]
+  },
+  "recommendation": "When you are not in direct control of an Invoker, their Instinct stat dictates how quickly they react to enemy attacks and dash out of the way of attacks when red markings appear on the ground.<br><br>This can help them avoid taking big damage from heavy attacks, or avoid deadly debuffs. While increasing RES can help block debuffs, or increasing HP and DEF can help an Invoker withstand big damage, it's better to get out of the way and avoid them entirely.<br><br>Incredibly valuable on Auto for obvious reasons, Instinct also helps your team support you when playing on Manual."
+ },
+ {
+  "id": "ManaGeneration",
+  "name": "Mana",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ManaGenerationFlat",
+     "statName": "Mana Gen",
+     "value": 30
+    }
+   ],
+   "5": [
+    {
+     "stat": "ManaGenerationFlat",
+     "statName": "Mana Gen",
+     "value": 45
+    }
+   ]
+  },
+  "recommendation": "Mana Gen decides how much Ultimate Mana and Titan Mana an Invoker generates when they fight.<br><br>Increasing an Invoker's Mana Gen will help them unlock their Ultimate Skill quicker and more frequently during battle. For Invokers that rely on their Ultimate more than others, whether it's a deadly attack or a powerful heal, boosting their Mana Gen directly boosts their effectiveness. <br><br>It will also help their team use Titans more frequently, which is always a good thing."
+ },
+ {
+  "id": "SkillSpeed",
+  "name": "Spark",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "SkillSpeedFlat",
+     "statName": "Skill SPD",
+     "value": 30
+    }
+   ],
+   "5": [
+    {
+     "stat": "SkillSpeedFlat",
+     "statName": "Skill SPD",
+     "value": 45
+    }
+   ]
+  },
+  "recommendation": "An Invoker's Skill SPD stat dictates both how quickly they attack (how quickly they swing their sword or cast a fireball), but most importantly, the tick rate of any effects cast by their skills.<br><br>For example: an Invoker casts a Regeneration buff that lasts 10s on an ally, that ticks 1 time every second, healing them each tick. If that Invoker increases their Skill SPD by 100%, that tick rate will increase and it will tick 2 times every second. The duration of any effects or debuffs won't be affected.<br><br>This alone allows a Spark Set to increase the effectiveness of almost any buffs or debuffs that apply effects over time - whether it's a Support Invoker with Regeneration, or a debuffer that's packing Burn, Bleed, or a deadly AoE zone.<br><br>While Skill SPD does benefit every Invoker due to its effect on the physical speed of an attack, its primary use lies in magnifying the strength of certain buffs and debuffs. And even though that list of effects is not small, a Spark Set is still one of the strongest and most versatile Relic Sets around."
+ },
+ {
+  "id": "SkillRecovery",
+  "name": "Fury",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "SkillRecoveryFlat",
+     "statName": "Skill RECOV",
+     "value": 30
+    }
+   ],
+   "5": [
+    {
+     "stat": "SkillRecoveryFlat",
+     "statName": "Skill RECOV",
+     "value": 45
+    }
+   ]
+  },
+  "recommendation": "An Invoker's Skill Recovery Stat directly affects the Cooldown time of their Skills.<br><br>Increasing Skill Recovery reduces each Skill's Cooldown time by that percentage, which lets an Invoker cycle through their Active and Utimate Skills more frequently.<br><br>Not only does it mean they get to use their strongest Skills more often against enemies, but also means they generate both Ultimate and Titan Mana quicker.<br><br>This is useful for every Invoker, whether they're looking to unleash their strongest attacks more often, or heal their team more frequently - every Invoker wants to use their strongest skills as often as possible.<br><br>A Fury Set can help an Invoker and their team snowball into a powerful <br>rhythm that's hard for enemies to keep up with."
+ },
+ {
+  "id": "LifeSteal",
+  "name": "Vampire",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.1
+    }
+   ],
+   "5": [
+    {
+     "stat": "LifeStealByOtherSkills",
+     "statName": "LifeStealByOtherSkills",
+     "value": 0.06
+    },
+    {
+     "stat": "LifeStealByCombos",
+     "statName": "LifeStealByCombos",
+     "value": 0.01
+    }
+   ]
+  },
+  "recommendation": "A Vampire Set is an incredibly powerful and versatile Set for any damage dealer, giving them a way to sustain themselves and keep themselves alive without requiring support from the team.<br><br>When attacking with a Vampire Set equipped, an Invoker will heal themselves every time they attack - by 1% of the damage dealt from Combo Attacks and 5% of the damage dealt from Skills.<br><br>This means every time they attack, they're healing up. And the more damage they do, the more they heal.<br><br>Combine it with high ATK, Crit Rate, and Crit Damage, and even the squishiest attackers can become impossible to take down."
+ },
+ {
+  "id": "IgnoreDefense",
+  "name": "Predator",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.1
+    }
+   ],
+   "5": [
+    {
+     "stat": "CriticalDamagePercent",
+     "statName": "Crit DMG",
+     "value": 0.4
+    }
+   ]
+  },
+  "recommendation": "A Predator Set is one of the most sought-after Sets for your primary damage dealers, providing a huge boost to their ATK and Crit DMG.<br><br>Paired well with a Crit Rate Set (or Relics that bring enough Crit Rate on their own), and a Predator Set will take an attacker's damage output to a whole new level."
+ },
+ {
+  "id": "Support",
+  "name": "Paragon",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "IncreaseShieldDone",
+     "statName": "Shield Size",
+     "value": 0.15
+    },
+    {
+     "stat": "IncreaseHealingDone",
+     "statName": "IncreaseHealingDone",
+     "value": 0.15
+    }
+   ],
+   "5": [
+    {
+     "stat": "RunSpeedBonusOutOfCombat",
+     "statName": "RunSpeedBonusOutOfCombat",
+     "value": 3
+    }
+   ]
+  },
+  "recommendation": "A three-piece Paragon Set increases the size of all Heals and Shields cast by the wearer by 15%.<br><br>This means every time the wearer casts a Heal or Shield, whether it's on themselves or on an ally, they will be 15% stronger. It doesn't affect heals received, so this is best used for Support Invokers whose primary job is based around their healing or shielding skills.<br><br>A five-piece Paragon Set increases the Move SPD of all of the allied Invokers when not in combat.<br><br>This helps your team move through levels quicker, which means faster runs and more loot to pick through.<br><br>Paragon Relics are incredibly powerful in the right hands."
+ },
+ {
+  "id": "ReduceBuffDuration",
+  "name": "Voodoo",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "BuffReductionDoneWithCombo3and5",
+     "statName": "BuffReductionDoneWithCombo3and5",
+     "value": 1
+    }
+   ],
+   "5": [
+    {
+     "stat": "BuffReductionDoneWithCombo3and5",
+     "statName": "BuffReductionDoneWithCombo3and5",
+     "value": 2
+    }
+   ]
+  },
+  "recommendation": "The Voodoo Set reduces the duration of 1 random buff on the target by up to 3 seconds every time the wearer attacks with their 3rd and 5th Combo Attacks.<br><br>A Set of Voodoo Relics can significantly decrease the danger of an enemy whose deadliness comes from their buffs, and can help replace the need to bring someone in your team that can remove or block enemy buffs with their Skills.<br><br>That said, it does have its limitations. While a Voodoo Set can be very effective at mitigating the effects of a broad range of buffs, it can falter against enemies who have debuffs that can prevent you from using your Combo Attacks or stun you altogether.<br><br>A Voodoo Set is more situational than some of the core Sets, but when used correctly, is incredibly powerful."
+ },
+ {
+  "id": "EventSet1",
+  "name": "Bulwark",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ResistanceFlat",
+     "statName": "RES",
+     "value": 75
+    }
+   ],
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.3
+    }
+   ]
+  },
+  "recommendation": "If you need extra protection both against enemy debuffs and attacks, a Bulwark Set may give you the help you need to triumph.<br><br>The additional HP is always good for HP-based Invokers or Tanks, but that additional RES can provide that assistance to resist enemy debuffs or negative effects, like buff steals or debuff extensions.<br><br>A Bulwark Set adds some additional utility for those Invokers who need to stay alive at all costs."
+ },
+ {
+  "id": "EventSet2",
+  "name": "Celerity",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "ManaGenerationFlat",
+     "statName": "Mana Gen",
+     "value": 45
+    }
+   ],
+   "5": [
+    {
+     "stat": "SkillRecoveryFlat",
+     "statName": "Skill RECOV",
+     "value": 45
+    }
+   ]
+  },
+  "recommendation": "Fire out Skills like a machine gun with the help of the Celerity Set. This combination of Skill Recovery and Mana Gen will help reduce the Cooldown time of your Skills, while also assisting in generating more Titan and Ultimate Mana.<br><br>These two stats go hand-in-hand - boosting your Skill Recovery lets you cycle through your Active Skills faster, which in turns gives you more Mana, which is itself boosted by your increased Mana Gen. It doesn't matter if you're an offensive or defensive Invokers; both benefit from these two Stats!<br><br>A Celerity Set helps get your Invokers' Skill engine humming allowing them to gain momentum quicker than their opponent."
+ },
+ {
+  "id": "ClanBossSet1",
+  "name": "Guardian",
+  "bonuses": {
+   "3": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.2
+    }
+   ]
+  },
+  "recommendation": "Paired with tanky, high HP Invokers, the Guardian Set can give your entire team some well-needed survivability.<br><br>A three-piece Guardian Set increases the wearer's HP by 20%.<br><br>Great for giving your main tank that extra bit of health, but the real benefits come with a full Guardian Set.<br><br>A five-piece Guardian Set grants all allies a Shield, worth 20% of the wearer's MAX HP, for 12 seconds.<br><br>This Shield applies from the very beginning of a fight, meaning it's a lifesaver for surviving powerful opening strikes in the Arena. Pair Guardian with an additional Health Set, and that Shield will be almost impenetrable."
+ },
+ {
+  "id": "ClanBossSet2",
+  "name": "Spellwall",
+  "bonuses": {
+   "5": [
+    {
+     "stat": "HealthPercent",
+     "statName": "HP",
+     "value": 0.1
+    },
+    {
+     "stat": "AttackPercent",
+     "statName": "ATK",
+     "value": 0.1
+    },
+    {
+     "stat": "DefensePercent",
+     "statName": "DEF",
+     "value": 0.1
+    }
+   ]
+  },
+  "recommendation": "When going against debuff-heavy teams in Arena, or Bosses that rely on specific buffs to succeed, Spellwall is your ace in the hole.<br><br>A three-piece Spellwall set grants the wearer some 2-Stack Willpower and Immunity buffs for 12 seconds.<br><br>This means that, when starting a battle, you'll instantly be able to fully block 2 Debuffs and 2 Control Debuffs (Stun, Freeze, Taunt etc.). If you're facing an enemy whose strategy relies on landing powerful debuffs right at the beginning, this Relic Set is very useful.<br><br>However, it doesn't make it unbeatable. It only negates 2 debuffs and 2 Control Debuffs, meaning it can easily be thwarted by Skills that apply multiple debuffs. As they are also buffs, a very tricky enemy can steal them from you in the early stages of a fight.<br><br>A Spellwall Set can be very powerful against the right enemy, but can be taken advantage of with the correct counter strategy."
+ }
+]
