@@ -17,11 +17,12 @@ npm run dev      # http://localhost:4321
 npm run build    # type-check and build into site/dist
 ```
 
-## Deploy
+## CI
 
-Pushing to `main` builds the site and publishes it to GitHub Pages
-(`.github/workflows/deploy.yml`). Pull requests only build it. Turn Pages on
-once under Settings → Pages → Source: GitHub Actions.
+GitHub Actions type-checks and builds the site on every push to `main` and
+every pull request (`.github/workflows/ci.yml`). The built site is attached to
+each run as the `site` artifact. Hosting isn't set up yet; the site builds to
+plain static files, so any static host works.
 
 ## Ground rules
 
