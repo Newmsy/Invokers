@@ -134,7 +134,7 @@ const plannerData = {
     </section>
   )}
 
-  <script type="application/json" id="trophy-data" set:html={JSON.stringify(plannerData)} />
+  <script type="application/json" id="trophy-data" set:html={JSON.stringify(plannerData).replace(/</g, '\\u003c')} />
 </Base>
 
 <script>
@@ -198,8 +198,12 @@ const plannerData = {
     for (const row of rows) {
       const s = saved[row.dataset.trophy!];
       if (!s) continue;
-      row.querySelector<HTMLSelectElement>('[data-role=from]')!.value = String(s[0]);
-      row.querySelector<HTMLSelectElement>('[data-role=to]')!.value = String(s[1]);
+      // Clamp to the levels on offer, in case a newer data pack lowered the maximum.
+      for (const [role, level] of [['from', s[0]], ['to', s[1]]] as const) {
+        const sel = row.querySelector<HTMLSelectElement>(`[data-role=${role}]`)!;
+        const max = Number(sel.options[sel.options.length - 1].value);
+        sel.value = String(Math.max(0, Math.min(Number(level) || 0, max)));
+      }
     }
   } catch {
     // Ignore unreadable storage.

@@ -1,0 +1,149 @@
+---
+import Base from '../../layouts/Base.astro';
+import { bossLabel, bossPack, bosses, bossSlug, href, toleranceFor, type Boss } from '../../lib/data';
+import { richText } from '../../lib/format';
+
+export function getStaticPaths() {
+  return bosses.map((boss) => ({ params: { slug: bossSlug(boss) }, props: { boss } }));
+}
+
+const { boss } = Astro.props as { boss: Boss };
+
+// Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
+const stageRanges: { from: number; to: number; energy: number }[] = [];
+for (const s of [...boss.stages].sort((a, b) => a.stage - b.stage)) {
+  const last = stageRanges[stageRanges.length - 1];
+  if (last && last.energy === s.energy && last.to === s.stage - 1) last.to = s.stage;
+  else stageRanges.push({ from: s.stage, to: s.stage, energy: s.energy });
+}
+
+// The tolerance help texts end with "Useful against: …"; on a boss page only the effect matters.
+const tolerances = boss.corruptions.map((c) => {
+  const stat = toleranceFor(c);
+  const text = stat?.description
+    ?.split('Useful against')[0]
+    .replace(/\s*by\s*(<color=[^>]*>)?\{0\}(<\/color>)?/g, '')
+    .replace(/[.\s]+$/, '');
+  return { corruption: c, name: stat?.name ?? `${c} Tolerance`, text };
+});
+
+// Caveats from the export that mention this boss by name.
+const caveats = bossPack.unconfirmed.filter((u) => u.includes(boss.name) && !u.startsWith('mode '));
+---
+<Base title={bossLabel(boss)}>
+  <a class="back" href={href('bosses')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    All bosses
+  </a>
+
+  <header class="head">
+    {boss.title && <span class="title">{boss.title}</span>}
+    <h1>{bossLabel(boss)}</h1>
+    {boss.description && <p class="desc" set:html={richText(boss.description)} />}
+  </header>
+
+  <div class="advice">
+    <section class="do" aria-labelledby="do-title">
+      <h2 id="do-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+        Do
+      </h2>
+      <ul>{boss.dos.map((d) => <li set:html={richText(d)} />)}</ul>
+    </section>
+    <section class="dont" aria-labelledby="dont-title">
+      <h2 id="dont-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        Don't
+      </h2>
+      <ul>{boss.donts.map((d) => <li set:html={richText(d)} />)}</ul>
+    </section>
+  </div>
+
+  {tolerances.length > 0 && (
+    <section aria-labelledby="corr-title">
+      <h2 id="corr-title">Corruptions</h2>
+      <p class="hint">Bring Invokers or relics with these tolerances.</p>
+      <ul class="corr">
+        {tolerances.map((t) => (
+          <li>
+            <span class="corr-name">{t.name}</span>
+            {t.text && <span class="corr-text" set:html={richText(t.text)} />}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section aria-labelledby="stage-title">
+    <h2 id="stage-title">Energy per stage</h2>
+    <ul class="stages">
+      {stageRanges.map((r) => (
+        <li>
+          <span class="stage">{r.from === r.to ? `Stage ${r.from}` : `Stages ${r.from}–${r.to}`}</span>
+          <span class="energy">{r.energy} energy</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {caveats.length > 0 && (
+    <section aria-labelledby="caveat-title">
+      <h2 id="caveat-title">Not confirmed yet</h2>
+      <ul class="caveats">{caveats.map((c) => <li>{c}</li>)}</ul>
+    </section>
+  )}
+</Base>
+
+<style>
+  .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
+  .head { margin-bottom: 24px; }
+  .title { color: var(--accent); font-weight: 600; font-size: 14px; }
+  h1 { margin: 4px 0 12px; font-size: 40px; font-weight: 700; }
+  .desc { color: var(--soft); max-width: 70ch; margin: 0; line-height: 1.6; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; display: flex; align-items: center; gap: 8px; }
+  .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
+
+  .advice { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .advice section {
+    padding: 4px 20px 16px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .advice h2 { margin-top: 16px; }
+  .do h2 { color: #7be0a0; }
+  .dont h2 { color: #ff9a8a; }
+  .advice ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .advice li { line-height: 1.5; }
+
+  .corr { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .corr li {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .corr-name { font-weight: 600; }
+  .corr-text { font-size: 14px; color: var(--soft); }
+
+  .stages { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .stages li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--surface);
+    min-width: 120px;
+  }
+  .stage { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .caveats { color: var(--soft); padding-left: 20px; margin: 0; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 28px; }
+    .advice { grid-template-columns: 1fr; }
+    .stages li { flex: 1 1 140px; }
+  }
+</style>

@@ -1,5 +1,7 @@
 ---
 import { pack, href } from '../lib/data';
+import NavIcon from '../components/NavIcon.astro';
+import { headerNav, myBox, nav, tabs } from '../lib/nav';
 import Account from '../components/Account.astro';
 import { accountsEnabled } from '../lib/account/config';
 
@@ -8,14 +10,6 @@ interface Props {
 }
 const { title } = Astro.props;
 
-const nav = [
-  { path: 'heroes', label: 'Invokers', icon: 'grid' },
-  { path: 'events', label: 'Events', icon: 'calendar' },
-  { path: 'my-box', label: 'My box', icon: 'box' },
-  { path: 'blog', label: 'Blog', icon: 'book' },
-  { path: 'trophies', label: 'Trophies', icon: 'trophy' },
-  { path: 'about', label: 'About', icon: 'info' },
-];
 
 const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').split('/')[1] ?? '';
 ---
@@ -36,10 +30,14 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     <header class="top">
       <a class="brand" href={href('/')}>Invokers <span>Companion</span></a>
       <nav class="top-nav" aria-label="Main">
-        {nav.map((n) => (
+        {headerNav.map((n) => (
           <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
         ))}
       </nav>
+      <a class="box-button" href={href(myBox.path)} aria-current={current === myBox.path ? 'page' : undefined}>
+        <NavIcon icon={myBox.icon} size={18} />
+        {myBox.label}
+      </a>
       {accountsEnabled && <Account />}
     </header>
     <main>
@@ -50,22 +48,16 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       <br />
       Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
     </footer>
-    <nav class="tab-bar" aria-label="Main" style={`--tabs: ${nav.length}`}>
-      {nav.map((n) => (
-        <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            {n.icon === 'grid' && (
-              <Fragment set:html='<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>' />
-            )}
-            {n.icon === 'calendar' && <Fragment set:html='<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>' />}
-            {n.icon === 'box' && <Fragment set:html='<path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/>' />}
-            {n.icon === 'book' && <Fragment set:html='<path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h9"/>' />}
-            {n.icon === 'trophy' && <Fragment set:html='<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/>' />}
-            {n.icon === 'info' && <Fragment set:html='<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>' />}
-          </svg>
-          {n.label}
-        </a>
-      ))}
+    <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabs.length}`}>
+      {tabs.map((n) => {
+        const here = n.path === 'more' ? !tabs.some((t) => t.path === current) && nav.some((t) => t.path === current) : current === n.path;
+        return (
+          <a href={href(n.path)} aria-current={here ? 'page' : undefined}>
+            <NavIcon icon={n.icon} />
+            {n.label}
+          </a>
+        );
+      })}
     </nav>
   </body>
 </html>
@@ -106,7 +98,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   header.top {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 24px;
     height: 72px;
   }
   .brand {
@@ -116,13 +108,27 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     color: var(--text);
   }
   .brand span { color: var(--accent); }
-  .top-nav { display: flex; gap: 8px; font-weight: 500; }
+  .top-nav { display: flex; gap: 4px; font-weight: 500; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .top-nav a { white-space: nowrap; }
   .top-nav a {
     color: var(--soft);
     padding: 10px 16px;
     border-radius: 22px;
   }
   .top-nav a[aria-current='page'] { color: var(--bg); background: var(--accent); }
+  .box-button {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 22px;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    font-weight: 600;
+  }
+  .box-button[aria-current='page'] { background: var(--accent); color: var(--bg); }
   main { padding-top: 16px; padding-bottom: 32px; }
   footer {
     color: var(--muted);
@@ -132,13 +138,17 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   }
   .tab-bar { display: none; }
 
-  @media (max-width: 720px) {
-    header.top, main, footer { padding-left: 16px; padding-right: 16px; }
-    header.top { height: 60px; }
-    .brand { font-size: 19px; }
-    .top-nav { display: none; }
-    main { padding-top: 4px; }
-    footer { font-size: 11px; padding-bottom: 92px; }
+  .brand { white-space: nowrap; }
+  .box-button { white-space: nowrap; flex: none; }
+  /* The sign-in button sits right after My box on wide screens. */
+  @media (min-width: 1141px) {
+    header.top .account { margin-left: 0; min-width: 0; }
+  }
+
+  /* Below this width the header links don't fit, so the bottom tab bar takes over. */
+  @media (max-width: 1140px) {
+    .top-nav, .box-button { display: none; }
+    footer { padding-bottom: 92px; }
     .tab-bar {
       display: grid;
       grid-template-columns: repeat(var(--tabs), minmax(0, 1fr));
@@ -162,5 +172,13 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       color: var(--soft);
     }
     .tab-bar a[aria-current='page'] { color: var(--accent); font-weight: 600; }
+  }
+
+  @media (max-width: 720px) {
+    header.top, main, footer { padding-left: 16px; padding-right: 16px; }
+    header.top { height: 60px; }
+    .brand { font-size: 19px; }
+    main { padding-top: 4px; }
+    footer { font-size: 11px; }
   }
 </style>

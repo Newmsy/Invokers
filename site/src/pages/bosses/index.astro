@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
+import { elementColor } from '../../lib/format';
+
+// Group by game mode, in the order players meet them.
+const groups = [
+  { mode: 'relic boss', title: 'Relic bosses' },
+  { mode: 'clan boss', title: 'Clan boss' },
+  { mode: 'other', title: 'Crest bosses' },
+  { mode: 'Pentiax', title: 'Pentiax' },
+  { mode: 'Omnissi', title: 'Omnissi' },
+]
+  .map((g) => ({ ...g, bosses: bosses.filter((b) => b.mode === g.mode) }))
+  .filter((g) => g.bosses.length > 0);
+const known = new Set(groups.map((g) => g.mode));
+const rest = bosses.filter((b) => !known.has(b.mode));
+if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest });
+---
+<Base title="Boss guides">
+  <h1>Boss guides</h1>
+  <p class="lead">Each boss's own dos and don'ts from the game, the corruptions it uses, and the energy cost of each stage.</p>
+
+  {groups.map((g) => (
+    <section aria-labelledby={`g-${g.mode}`}>
+      <h2 id={`g-${g.mode}`}>{g.title}</h2>
+      <ul class="grid">
+        {g.bosses.map((b) => (
+          <li>
+            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#5FDCF7'}` : undefined}>
+              <span class="name">{bossLabel(b)}</span>
+              {b.title && <span class="title">{b.title}</span>}
+              <span class="corr">{b.corruptions.join(' · ')}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    --tint: var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .card:hover { color: var(--text); border-color: var(--tint); }
+  .name { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .title { color: var(--soft); font-size: 14px; }
+  .corr { margin-top: 8px; font-size: 13px; color: var(--tint); font-weight: 600; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
