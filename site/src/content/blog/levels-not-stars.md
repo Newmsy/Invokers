@@ -6,7 +6,7 @@ gameVersion: "0.61.1516"
 tags: [invokers, stats, levelling]
 ---
 
-Ascending an Invoker feels like the big upgrade. The game's stat tables say otherwise: **stars mostly unlock levels, and levels carry the stats.**
+Ascending an Invoker feels like the big upgrade. The numbers say otherwise: **stars mostly unlock levels, and levels carry the stats.**
 
 ## What a star is worth on its own
 
@@ -69,4 +69,4 @@ Ranged attackers hit hardest and are the most fragile. Tanks give up more than h
 - The final star on a level 50 Invoker is +7%; the levels after it are +31%.
 - Rarity decides the ceiling: a 5★ level 40 Legendary is already level with a maxed Common.
 
-*Source: the game's hero stat tables (no gear, no awakening), game version 0.61.1516.*
+*Base stats without gear or awakening, game version 0.61.1516.*

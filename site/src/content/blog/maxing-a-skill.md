@@ -49,4 +49,4 @@ Gold per point of damage climbs steadily, from about 830 gold per 1% at level 2 
 - The last four levels add +44% but take 170,000 gold and 10 Legendary Codex.
 - Spreading early levels across several Invokers' main damage skills gets more out of scarce Legendary Codex than pushing one skill to 11.
 
-*Source: the game's skill texts at levels 1 to 11 and the skill upgrade cost table, game version 0.61.1516.*
+*Numbers for game version 0.61.1516.*

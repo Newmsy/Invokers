@@ -1,18 +1,18 @@
 ---
 title: "What 130 Destiny Stars really buy you"
-description: "The game's own summon rates, the mercy counters hiding in the config, and the chance of a Legendary in N pulls."
+description: "Every summon item's rates, our best estimate of the mercy rules, and the chance of a Legendary in N pulls."
 date: 2026-10-01
 gameVersion: "0.61.1514"
 tags: [summons, odds]
 ---
 
-A Destiny Star has a **0.53%** chance to give a Legendary. That is the number straight from the game's summon config, and it means that without any help from mercy, half of all players need **130 pulls** or more for their first Legendary.
+A Destiny Star has a **0.53%** chance to give a Legendary. Without any help from mercy, that means half of all players need **130 pulls** or more for their first Legendary.
 
-The good news is that the config also holds mercy counters, and they change the picture a lot.
+The good news is that summons have mercy (pity) rules, and they change the picture a lot.
 
 ## The published rates
 
-Every summon item, with the rarity chances exactly as the game stores them:
+Every summon item and its rarity chances:
 
 | Item | Common | Uncommon | Rare | Epic | Legendary |
 |---|---|---|---|---|---|
@@ -54,20 +54,18 @@ Even 500 Destiny Stars leave a 7% chance of no Legendary at all, if the publishe
 
 ## The mercy counters
 
-> **Inferred:** the game doesn't explain these anywhere in its text. What follows is read from the field names in the summon config, and it hasn't been confirmed in game.
+> **Estimated:** the game doesn't explain its mercy rules anywhere. The table below is our best estimate, and it hasn't been confirmed in game.
 
-The config has four mercy fields on some summon rules: `FirstMercySummonNumber`, `MercySummonNumber`, `MercyLimit` and `PostLimitMercySummonNumber`. These are set:
-
-| Item | Rarity | Field values | What it most likely means |
+| Item | Rarity | Mercy count | What it most likely means |
 |---|---|---|---|
-| Destiny Star | Legendary | First 50, then 190 | First Legendary guaranteed by pull 50, then one by every 190th pull without one |
+| Destiny Star | Legendary | 50 first, then 190 | First Legendary guaranteed by pull 50, then one by every 190th pull without one |
 | Radiant Star | Legendary | 200 | One guaranteed by every 200th pull without one |
 | Divine Star | Legendary | 15 | One guaranteed by every 15th pull without one |
 | Wonder Orb | Legendary | 190 | As Destiny, without the first-50 rule |
 | Miracle Orb | Legendary | 15 | As Divine (Mythic has no mercy) |
 | Fate, Destiny, Radiant | Epic | 15, limit 3, then 30 | An Epic by pull 15 the first 3 times, then by pull 30 |
 
-If that reading is right, the "no mercy" table above is far too gloomy for Destiny Stars. Your first Legendary would come by pull 50 at the latest, and after that the worst case is 190 pulls. The data doesn't say whether a natural Legendary resets the counter, or whether the counter is shared between items.
+If that estimate is right, the "no mercy" table above is far too gloomy for Destiny Stars. Your first Legendary would come by pull 50 at the latest, and after that the worst case is 190 pulls. We don't know yet whether a natural Legendary resets the counter, or whether the counter is shared between items.
 
 ## Bonus summons
 
@@ -81,7 +79,7 @@ Using summon items also fills bonus counters, which pay out more summon items:
 | Dream or Wonder Orb | Miracle Orb | 85 |
 | Miracle Orb | Mythic Orb | 100 |
 
-Every 85 Destiny Stars also hand you a Divine Star, which has its own 6.67% Legendary rate. Put the mercy counters (as read above) and the bonus summons together, and the long-run rate works out at about **0.94% per Destiny Star**, close to double the 0.53% on the label. That figure leans on the inferred mercy rules, so treat it as an estimate.
+Every 85 Destiny Stars also hand you a Divine Star, which has its own 6.67% Legendary rate. Put the estimated mercy rules and the bonus summons together, and the long-run rate works out at about **0.94% per Destiny Star**, close to double the 0.53% on the label. That figure leans on the estimated mercy rules, so treat it as an estimate too.
 
 ## Chroma
 
@@ -99,8 +97,8 @@ Each pull can also come out as a chroma (alternate colour) version:
 ## The short version
 
 - 0.53% per Destiny Star is the real rate, and 130 pulls is the median wait without mercy.
-- The config strongly suggests a guarantee at 50 for your first Legendary and every 190 after that.
+- Our best estimate is a guarantee at 50 for your first Legendary and every 190 after that.
 - Radiant Stars are the better way to chase one specific Light or Dark Legendary, because their pool is half the size.
 - Divine Stars are a different world: a Legendary in 10 pulls is a coin flip.
 
-These are odds from the game's own numbers. They tell you what to expect over many pulls, not what your next pull will be.
+These are odds. They tell you what to expect over many pulls, not what your next pull will be.
