@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/data';
+import { rarityOrder, rarityColor } from '../lib/format';
+import { plannerData } from '../lib/planner/data';
+
+const data = plannerData();
+const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).some((h) => h.rarity === r));
+---
+<Base title="Planner">
+  <h1>Planner</h1>
+  <p class="lead">
+    What your invokers still need to max their skills and gear, added up from your imported box. Tick the invokers you
+    want in your plan to see the total.
+  </p>
+
+  <section id="p-empty" class="card empty">
+    <p>Import your box first, then come back here to see what's left to upgrade.</p>
+    <a class="button primary" href={href('my-box')}>Go to My box</a>
+  </section>
+
+  <div id="p-views" hidden>
+    <p id="p-status" class="status"></p>
+
+    <section aria-labelledby="sum-title">
+      <h2 id="sum-title"><span id="s-count"></span></h2>
+      <div class="summary">
+        <div class="card">
+          <h3>Skills to max</h3>
+          <div id="s-skills"></div>
+          <p class="hint"><a href={href('skill-costs')}>Skill cost tables</a></p>
+        </div>
+        <div class="card">
+          <h3>Gear</h3>
+          <div id="s-gear"></div>
+        </div>
+        <div class="card">
+          <h3>Stars and level</h3>
+          <div id="s-level"></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="inv-title">
+      <h2 id="inv-title">Your invokers <span id="p-count" class="count"></span></h2>
+      <div class="filters">
+        <input id="p-search" type="search" placeholder="Search invokers" />
+        <select id="p-stars" aria-label="Minimum stars">
+          <option value="0">Any stars</option>
+          {[3, 4, 5, 6].map((n) => <option value={n}>{n}★ and up</option>)}
+        </select>
+        <select id="p-rarity" aria-label="Rarity">
+          <option value="">Any rarity</option>
+          {rarityOrder.map((r) => <option value={r}>{r}</option>)}
+        </select>
+        <select id="p-sort" aria-label="Sort">
+          <option value="cost">Most left to pay</option>
+          <option value="close">Closest to maxed</option>
+          <option value="stars">Most stars</option>
+          <option value="name">Name</option>
+        </select>
+        <label class="check"><input id="p-storage" type="checkbox" /> Include storage</label>
+        <span class="spacer"></span>
+        <button id="p-all" class="button" type="button">Plan all shown</button>
+        <button id="p-none" class="button" type="button">Clear shown</button>
+      </div>
+      <div id="p-grid" class="grid"></div>
+    </section>
+
+    <section aria-labelledby="roster-title">
+      <h2 id="roster-title">Roster gaps</h2>
+      <p class="hint">How many of each kind of invoker you own, out of every invoker in the game.</p>
+      <div id="r-tables" class="roster-grid"></div>
+      <h3>Invokers you don't have yet</h3>
+      <div class="chips" role="group" aria-label="Rarity">
+        {missingRarities.map((r) => (
+          <button type="button" class="chip" data-missing={r} aria-pressed="false" style={`--rarity: ${rarityColor[r]}`}>{r} <span></span></button>
+        ))}
+      </div>
+      <ul id="r-missing" class="missing"></ul>
+    </section>
+  </div>
+
+  <script id="planner-data" type="application/json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  import { start } from '../lib/planner/page';
+  start();
+</script>
+
+<style>
+  :global(main) {
+    --legendary: #f5c451;
+    --epic: #c29bff;
+    --rare: #6fb8ff;
+    --uncommon: #7be0a0;
+    --common: #b5b1d3;
+  }
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 0 0 8px; color: var(--soft); }
+  section > h3 { margin-top: 24px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .status, .hint, :global(.muted) { color: var(--muted); font-size: 14px; }
+  .count { color: var(--muted); font-weight: 400; font-size: 14px; }
+  .card { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+  .empty[hidden] { display: none; }
+  .empty { margin-top: 24px; display: grid; gap: 12px; justify-items: start; }
+  .empty p { margin: 0; }
+  .button {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; cursor: pointer;
+  }
+  .button:hover { border-color: var(--accent); }
+  .button.primary { background: var(--accent); color: #0c0b1d; border-color: var(--accent); font-weight: 700; }
+
+  .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  :global(.big) { font-family: var(--display); font-weight: 600; font-size: 18px; margin: 0 0 8px; }
+  :global(.soon) { color: var(--muted); font-style: italic; font-size: 14px; margin: 8px 0 0; }
+  :global(.done) { color: var(--uncommon); margin: 0; }
+  :global(dl.cost) { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 4px 16px; margin: 0; font-variant-numeric: tabular-nums; }
+  :global(dl.cost dt) { color: var(--muted); }
+  :global(dl.cost dd) { margin: 0; font-weight: 600; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; align-items: center; }
+  .filters input[type='search'], .filters select {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+    border-radius: 10px; padding: 8px 10px; font: inherit; max-width: 100%;
+  }
+  .filters input[type='search'] { flex: 1 1 200px; }
+  .check { color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+  .spacer { flex: 1; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; align-items: start; }
+  :global(.plan-card) {
+    background: var(--surface); border-radius: 12px; padding: 12px; border-left: 3px solid var(--line);
+    display: grid; gap: 6px; min-width: 0; align-content: start;
+  }
+  :global(.plan-card.off) { opacity: 0.55; }
+  :global(.plan-card .head) { display: flex; gap: 10px; align-items: flex-start; }
+  :global(.plan-card .head input) { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex: none; }
+  :global(.plan-card .who) { display: grid; min-width: 0; }
+  :global(.plan-card a) { color: var(--text); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  :global(.plan-card .sub) { color: var(--muted); font-size: 0.8rem; margin: 0; }
+  :global(.plan-card .stars) { color: var(--legendary); letter-spacing: 1px; }
+  :global(.plan-card .line) { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; font-size: 0.85rem; }
+  :global(.bar) { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+  :global(.bar span) { display: block; height: 100%; background: var(--accent); }
+  :global(.cost-line) { margin: 0; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  :global(.plan-card details summary) { cursor: pointer; color: var(--accent); font-size: 0.85rem; }
+  :global(ul.skills) { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 6px; font-size: 0.8rem; }
+  :global(ul.skills b) { font-weight: 600; color: var(--soft); }
+  :global(ul.skills .lv) { color: var(--muted); font-variant-numeric: tabular-nums; float: right; }
+  :global(ul.skills .c) { display: block; color: var(--muted); }
+  :global(td.num) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  :global(.r-Legendary) { border-left-color: var(--legendary) !important; }
+  :global(.r-Epic) { border-left-color: var(--epic) !important; }
+  :global(.r-Rare) { border-left-color: var(--rare) !important; }
+  :global(.r-Uncommon) { border-left-color: var(--uncommon) !important; }
+  :global(.r-Common) { border-left-color: var(--common) !important; }
+
+  .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  :global(table.roster) { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--surface); border-radius: 12px; overflow: hidden; }
+  :global(table.roster caption) { text-align: left; font-weight: 600; color: var(--soft); padding: 0 0 6px; }
+  :global(table.roster th) { text-align: left; font-weight: 500; padding: 6px 10px; }
+  :global(table.roster td) { padding: 6px 10px; }
+  :global(table.roster td.meter) { width: 35%; }
+  :global(table.roster tr + tr > *) { border-top: 1px solid var(--line); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip {
+    min-height: 40px; padding: 0 16px; border-radius: 20px; background: transparent;
+    border: 1px solid var(--line); color: var(--soft); font: inherit; font-size: 14px; cursor: pointer;
+  }
+  .chip span { color: var(--muted); }
+  .chip[aria-pressed='true'] { background: var(--surface-2); border-color: var(--rarity); color: var(--text); font-weight: 600; }
+  .missing { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 6px 16px; }
+  :global(.missing a) { color: var(--text); font-weight: 600; }
+  :global(.missing .sub) { color: var(--muted); font-size: 0.8rem; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .summary { grid-template-columns: minmax(0, 1fr); }
+    .spacer { display: none; }
+  }
+</style>
