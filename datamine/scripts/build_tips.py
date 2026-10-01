@@ -132,8 +132,7 @@ def main():
            "source": "Installed game files (localization table and UI asset bundles); nothing comes from the server.",
            "unconfirmed": ["Whether every loading hint can appear for every player (the database has no unlock fields "
                            "this script reads).",
-                           "Campaign and dungeon 'Tips & Strategy' (Do / Don't) lines: built from keys at runtime "
-                           "(md-{0}-{1}-Do-{2}), not resolved yet."],
+                           "Boss 'Tips & Strategy' (Do / Don't) lines are in bosses.json, not here."],
            "tips": hints + tips}
     (REPO / "data" / "tips.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     counts = {}
