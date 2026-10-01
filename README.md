@@ -24,8 +24,16 @@ every pull request (`.github/workflows/ci.yml`). The built site is attached to
 each run as the `site` artifact. Hosting isn't set up yet; the site builds to
 plain static files, so any static host works.
 
+## Ratings and art
+
+- Hero tiers are the site owner's own scores, kept in `site/src/data/ratings.json` as
+  `{ "<hero id>": { "tier": "S", "note": "optional" } }`. Heroes without an
+  entry show as not rated yet.
+- Hero portraits go in `site/public/art/heroes/<hero id>.webp` (or `.png`/`.jpg`).
+  Pages pick them up on the next build and show a placeholder until then.
+
 ## Ground rules
 
 - Every page shows the game version and extraction date.
-- No game art until the developer's fan-content policy has been checked.
+- Game art (portraits and icons) is allowed; the site owner decided on 2026-10-01 to publish it.
 - No drop or upgrade predictions; the site shows what the data says.
