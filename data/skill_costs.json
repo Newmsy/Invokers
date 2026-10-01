@@ -1,0 +1,3246 @@
+[
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Ultimate",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill3",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "ActiveSkill1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Combo",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 700,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Common",
+  "skill": "Tolerance1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 3
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Ultimate",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 4
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill3",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "ActiveSkill1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 3
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Combo",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 4
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 300,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 600,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 900,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 1200,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 1500,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 1800,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 2100,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 2400,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 2700,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Uncommon",
+  "skill": "Tolerance1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Ultimate",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 4
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill3",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "ActiveSkill1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Combo",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 4
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 1000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 2000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 3000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 4000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 6000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 7000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 8000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 9000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Rare",
+  "skill": "Tolerance1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Ultimate",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill3",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "ActiveSkill1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 3,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Combo",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 2500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 7500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 12500,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 17500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 22500,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Epic",
+  "skill": "Tolerance2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 8,
+   "Codex_Epic": 6,
+   "Codex_Legendary": 4
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 10,
+   "Codex_Epic": 6,
+   "Codex_Legendary": 5
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Ultimate",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 12,
+   "Codex_Epic": 8,
+   "Codex_Legendary": 6
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill3",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "ActiveSkill1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 8,
+   "Codex_Epic": 6,
+   "Codex_Legendary": 4
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 10,
+   "Codex_Epic": 6,
+   "Codex_Legendary": 5
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Combo",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 12,
+   "Codex_Epic": 8,
+   "Codex_Legendary": 6
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance1",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Tolerance2",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 2,
+  "cost": {
+   "Gold": 5000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 3,
+  "cost": {
+   "Gold": 10000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 4,
+  "cost": {
+   "Gold": 15000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 5,
+  "cost": {
+   "Gold": 20000,
+   "Codex_Rare": 1,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 6,
+  "cost": {
+   "Gold": 25000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 1,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 7,
+  "cost": {
+   "Gold": 30000,
+   "Codex_Rare": 2,
+   "Codex_Epic": 2,
+   "Codex_Legendary": 1
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 8,
+  "cost": {
+   "Gold": 35000,
+   "Codex_Rare": 3,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 9,
+  "cost": {
+   "Gold": 40000,
+   "Codex_Rare": 4,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 2
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 10,
+  "cost": {
+   "Gold": 45000,
+   "Codex_Rare": 5,
+   "Codex_Epic": 3,
+   "Codex_Legendary": 3
+  }
+ },
+ {
+  "rarity": "Legendary",
+  "skill": "Passive",
+  "toLevel": 11,
+  "cost": {
+   "Gold": 50000,
+   "Codex_Rare": 6,
+   "Codex_Epic": 4,
+   "Codex_Legendary": 3
+  }
+ }
+]

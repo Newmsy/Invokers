@@ -1,0 +1,150 @@
+"""Build the data pack (../../data/*.json) from the PC-side dumps.
+
+Inputs (on Newman's PC):
+  - <game>/UserData/datapack/   written in game by the LootDump mod's F11 wishlist dump
+        names.json, hero_stats.json, skills_by_level.json
+  - Documents/MOD/LootDump/output/   earlier LootDump exports
+        Characters.csv, json/HeroData.json (playable hero list, skill costs), json/RelicData.json (set bonuses)
+
+Usage: python build_pack.py [game_dir] [lootdump_output_dir]
+"""
+import csv
+import json
+import os
+import re
+import sys
+from datetime import date
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+DATA = REPO / "data"
+GAME = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(os.environ.get("APPDATA", "")) / "zone.hitzone.invokers.launcher" / "game"
+LOOT = Path(sys.argv[2]) if len(sys.argv) > 2 else REPO.parent / "LootDump" / "output"
+DUMP = GAME / "UserData" / "datapack"
+
+GAME_VERSION = "0.61.1516"
+MAX_SKILL_LEVEL = 11  # 10 upgrades per skill, every rarity (HeroData.SkillLevelUpPrices)
+RANKS = ["One", "Two", "Three", "Four", "Five", "Six"]
+
+
+def load(path):
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def write(name, value):
+    with open(DATA / name, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(value, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    print(f"data/{name}: {len(value) if hasattr(value, '__len__') else ''}")
+
+
+def real(text):
+    """The game returns the key itself when a string doesn't exist."""
+    return text if text and not re.match(r"^(md|ui)-[A-Za-z]", text) else None
+
+
+def main():
+    names = load(DUMP / "names.json")
+    hero_data = load(LOOT / "json" / "HeroData.json")
+    relic_data = load(LOOT / "json" / "RelicData.json")
+    playable = {str(k) for k in hero_data["HeroById"]}
+
+    chars = {}
+    with open(LOOT / "Characters.csv", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            chars[row["Id"]] = row
+
+    # ---- stats ----
+    stats = []
+    for key, v in names["statBonuses"].items():
+        if real(v.get("name")):
+            stats.append({"id": key, "name": v["name"], "percent": key.endswith("Percent")})
+    for key, v in names["stats"].items():
+        if real(v.get("name")):
+            stats.append({"id": key, "name": v["name"], "short": real(v.get("short")),
+                          "description": real(v.get("description")), "kind": "rating"})
+    stat_name = {s["id"]: s["name"] for s in stats}
+    write("stats.json", stats)
+
+    # ---- items (resources, currencies, summon items, materials) ----
+    items = [{"id": key, "name": v["name"], "description": real(v.get("description"))}
+             for key, v in names["resources"].items() if real(v.get("name"))]
+    write("items.json", items)
+
+    # ---- gear sets: names from the game, bonuses from the set config (the game's own 3/5-piece texts are placeholders) ----
+    sets = []
+    for key, info in relic_data["SetInfoBySet"].items():
+        n = names["relicSets"].get(key, {})
+        bonuses = {}
+        for pieces, field in (("3", "ThreeItemsBonus"), ("5", "FiveItemsBonus"), ("8", "EightItemsBonus")):
+            b = info.get(field)
+            if b and b.get("StatBonuses"):
+                bonuses[pieces] = [{"stat": s["Stat"], "statName": stat_name.get(s["Stat"]), "value": round(s["Value"], 6)}
+                                   for s in b["StatBonuses"]]
+        sets.append({"id": key, "name": real(n.get("name")) or key, "bonuses": bonuses,
+                     "recommendation": real(n.get("recommendation"))})
+    write("sets.json", sets)
+
+    # ---- heroes ----
+    stats_by_id = {str(h["id"]): h for h in load(DUMP / "hero_stats.json")}
+    heroes = []
+    for cid in sorted(playable, key=lambda i: chars.get(i, {}).get("LocalizedName") or ""):
+        c = chars.get(cid)
+        if not c:
+            continue
+        s = stats_by_id.get(cid, {})
+        by_rank = {r: s.get("byRank", {}).get(r, {}) for r in RANKS}
+        max_stats = by_rank["Six"].get("60")
+        heroes.append({
+            "id": c["Name"], "configId": int(cid), "name": c["LocalizedName"] or c["Name"],
+            "rarity": c["Rarity"], "faction": c["Faction"], "element": c["Element"], "class": c["Class"],
+            "baseRank": s.get("baseRank"), "maxStats": max_stats, "statsByRank": by_rank,
+        })
+    write("heroes.json", heroes)
+
+    # ---- skills (playable heroes + all Titans), levels 1..11 ----
+    skills = []
+    for entry in load(DUMP / "skills_by_level.json"):
+        if entry["kind"] == "hero" and str(entry["id"]) not in playable:
+            continue
+        out = []
+        for sk in entry.get("skills", []):
+            item = {"type": sk["type"], "title": sk.get("title") or None}
+            if "cooldown" in sk:
+                item["cooldown"] = sk["cooldown"]
+            if "levels" in sk:
+                item["levels"] = [lv for lv in sk["levels"] if lv["level"] <= MAX_SKILL_LEVEL]
+            if "empowerments" in sk:
+                item["empowerments"] = sk["empowerments"]
+            out.append(item)
+        skills.append({"heroId": entry["code"], "kind": entry["kind"], "name": entry["name"], "skills": out})
+    write("skills.json", skills)
+
+    # ---- skill upgrade costs ----
+    costs = [{"rarity": p["Rarity"], "skill": p["SkillKind"], "toLevel": p["Level"] + 1,
+              "cost": p["Price"]["RawValues"]} for p in hero_data["SkillLevelUpPrices"]]
+    write("skill_costs.json", costs)
+
+    # ---- arena trophy room (ArenaData.HallBonuses / HallPrices): one room per element, 15 levels per stat ----
+    arena = load(LOOT / "json" / "ArenaData.json")
+    prices = [p["RawValues"] for p in arena["HallPrices"]]
+    trophy = {
+        "elements": ["Fire", "Water", "Wind", "Earth", "Light", "Dark"],
+        "appliesTo": "All Invokers of the room's element, in every battle",
+        "levels": len(prices),
+        "costPerLevel": [{"level": i + 1, "cost": c} for i, c in enumerate(prices)],
+        "stats": [{"stat": stat, "statName": stat_name.get(stat), "percent": stat.endswith("Percent"),
+                   "bonusByLevel": [round(v, 6) for v in values]}
+                  for stat, values in arena["HallBonuses"].items()],
+        "unconfirmed": "Whether costPerLevel applies to each stat separately, and whether every room offers every stat.",
+    }
+    write("trophy_room.json", trophy)
+
+    manifest = load(DATA / "manifest.json")
+    manifest.update({"gameVersion": GAME_VERSION, "extractedAt": date.today().isoformat()})
+    write("manifest.json", manifest)
+
+
+if __name__ == "__main__":
+    main()

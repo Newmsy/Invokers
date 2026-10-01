@@ -1,0 +1,371 @@
+{
+ "elements": [
+  "Fire",
+  "Water",
+  "Wind",
+  "Earth",
+  "Light",
+  "Dark"
+ ],
+ "appliesTo": "All Invokers of the room's element, in every battle",
+ "levels": 15,
+ "costPerLevel": [
+  {
+   "level": 1,
+   "cost": {
+    "ArenaMedal_Bronze": 20
+   }
+  },
+  {
+   "level": 2,
+   "cost": {
+    "ArenaMedal_Bronze": 40
+   }
+  },
+  {
+   "level": 3,
+   "cost": {
+    "ArenaMedal_Bronze": 60
+   }
+  },
+  {
+   "level": 4,
+   "cost": {
+    "ArenaMedal_Bronze": 90
+   }
+  },
+  {
+   "level": 5,
+   "cost": {
+    "ArenaMedal_Bronze": 120
+   }
+  },
+  {
+   "level": 6,
+   "cost": {
+    "ArenaMedal_Silver": 60
+   }
+  },
+  {
+   "level": 7,
+   "cost": {
+    "ArenaMedal_Silver": 100
+   }
+  },
+  {
+   "level": 8,
+   "cost": {
+    "ArenaMedal_Silver": 150
+   }
+  },
+  {
+   "level": 9,
+   "cost": {
+    "ArenaMedal_Silver": 250
+   }
+  },
+  {
+   "level": 10,
+   "cost": {
+    "ArenaMedal_Silver": 400
+   }
+  },
+  {
+   "level": 11,
+   "cost": {
+    "ArenaMedal_Gold": 200
+   }
+  },
+  {
+   "level": 12,
+   "cost": {
+    "ArenaMedal_Gold": 200
+   }
+  },
+  {
+   "level": 13,
+   "cost": {
+    "ArenaMedal_Gold": 300
+   }
+  },
+  {
+   "level": 14,
+   "cost": {
+    "ArenaMedal_Gold": 400
+   }
+  },
+  {
+   "level": 15,
+   "cost": {
+    "ArenaMedal_Gold": 600
+   }
+  }
+ ],
+ "stats": [
+  {
+   "stat": "AttackPercent",
+   "statName": "ATK",
+   "percent": true,
+   "bonusByLevel": [
+    0.02,
+    0.04,
+    0.06,
+    0.08,
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2,
+    0.22,
+    0.24,
+    0.26,
+    0.28,
+    0.3
+   ]
+  },
+  {
+   "stat": "DefensePercent",
+   "statName": "DEF",
+   "percent": true,
+   "bonusByLevel": [
+    0.02,
+    0.04,
+    0.06,
+    0.08,
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2,
+    0.22,
+    0.24,
+    0.26,
+    0.28,
+    0.3
+   ]
+  },
+  {
+   "stat": "HealthPercent",
+   "statName": "HP",
+   "percent": true,
+   "bonusByLevel": [
+    0.02,
+    0.04,
+    0.06,
+    0.08,
+    0.1,
+    0.12,
+    0.14,
+    0.16,
+    0.18,
+    0.2,
+    0.22,
+    0.24,
+    0.26,
+    0.28,
+    0.3
+   ]
+  },
+  {
+   "stat": "CriticalRatePercent",
+   "statName": "Crit Rate",
+   "percent": true,
+   "bonusByLevel": [
+    0.01,
+    0.02,
+    0.03,
+    0.04,
+    0.05,
+    0.06,
+    0.07,
+    0.08,
+    0.09,
+    0.1,
+    0.11,
+    0.12,
+    0.13,
+    0.14,
+    0.15
+   ]
+  },
+  {
+   "stat": "CriticalDamagePercent",
+   "statName": "Crit DMG",
+   "percent": true,
+   "bonusByLevel": [
+    0.02,
+    0.04,
+    0.06,
+    0.08,
+    0.1,
+    0.13,
+    0.16,
+    0.19,
+    0.22,
+    0.25,
+    0.28,
+    0.31,
+    0.34,
+    0.37,
+    0.4
+   ]
+  },
+  {
+   "stat": "AccuracyFlat",
+   "statName": "ACC",
+   "percent": false,
+   "bonusByLevel": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+   ]
+  },
+  {
+   "stat": "ResistanceFlat",
+   "statName": "RES",
+   "percent": false,
+   "bonusByLevel": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+   ]
+  },
+  {
+   "stat": "ComboSpeedFlat",
+   "statName": "Combo SPD",
+   "percent": false,
+   "bonusByLevel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+   ]
+  },
+  {
+   "stat": "SkillSpeedFlat",
+   "statName": "Skill SPD",
+   "percent": false,
+   "bonusByLevel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+   ]
+  },
+  {
+   "stat": "SkillRecoveryFlat",
+   "statName": "Skill RECOV",
+   "percent": false,
+   "bonusByLevel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+   ]
+  },
+  {
+   "stat": "ManaGenerationFlat",
+   "statName": "Mana Gen",
+   "percent": false,
+   "bonusByLevel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+   ]
+  },
+  {
+   "stat": "InstinctRatingFlat",
+   "statName": "Instinct",
+   "percent": false,
+   "bonusByLevel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+   ]
+  }
+ ],
+ "unconfirmed": "Whether costPerLevel applies to each stat separately, and whether every room offers every stat."
+}
