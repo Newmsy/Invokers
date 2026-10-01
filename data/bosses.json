@@ -1,0 +1,1685 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-01",
+ "source": "Installed game files (localization table, region config, level config); nothing comes from the server.",
+ "unconfirmed": [
+  "mode 'other' covers the four Crest dungeon bosses (Yskara, Galvos, Hyxxis, Koltmos).",
+  "corruptions come from the tolerance help texts. Two disagree with the boss's own Do list: Koltmos (help text: Manashock, Blight; Do list: Bloodrot, Manashock) and Pentiax (help text: Nightmare, Mindfog; Do list names none).",
+  "Boss skills, levels and HP per stage are not exported yet (they need enemy data from a game session).",
+  "Sedula (ClanBoss2) has a name in the game but no stages or advice yet."
+ ],
+ "bosses": [
+  {
+   "id": "DungeonRelics1",
+   "name": "Ulgorim",
+   "title": "The Horde King",
+   "mode": "relic boss",
+   "description": "Ulgorim the Horde King is slow, but hits hard, has a lot of HP, and gets healed by his minions during battle.<br><br>You’ll need to bring someone tough enough to tank Ulgorim’s devastating attacks, plus either a hard-hitting attacker that can out-damage his healing, or someone with Heal Reduction to help counter those heals in the first place.",
+   "dos": [
+    "Bring Heal Reduction",
+    "Use Invokers or Relics with Daze and Blight Tolerances",
+    "Attack the Power Totems!",
+    "Bring high DPS - the faster you break the Totems and the faster you can damage Ulgorim, the easier he becomes."
+   ],
+   "donts": [
+    "Bring Crowd-Control - Ulgorim is immune.",
+    "Ignore the Power Totems! The more Ulgorim heals, the more his attack will grow.",
+    "Stand still. Stay on your toes and avoid his heavy attacks.",
+    "Leave your Heal Reductions at home. You'll regret it."
+   ],
+   "corruptions": [
+    "Daze",
+    "Blight"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 8
+    },
+    {
+     "stage": 2,
+     "energy": 8
+    },
+    {
+     "stage": 3,
+     "energy": 8
+    },
+    {
+     "stage": 4,
+     "energy": 8
+    },
+    {
+     "stage": 5,
+     "energy": 8
+    },
+    {
+     "stage": 6,
+     "energy": 8
+    },
+    {
+     "stage": 7,
+     "energy": 12
+    },
+    {
+     "stage": 8,
+     "energy": 12
+    },
+    {
+     "stage": 9,
+     "energy": 12
+    },
+    {
+     "stage": 10,
+     "energy": 12
+    },
+    {
+     "stage": 11,
+     "energy": 12
+    },
+    {
+     "stage": 12,
+     "energy": 12
+    },
+    {
+     "stage": 13,
+     "energy": 16
+    },
+    {
+     "stage": 14,
+     "energy": 16
+    },
+    {
+     "stage": 15,
+     "energy": 16
+    },
+    {
+     "stage": 16,
+     "energy": 16
+    },
+    {
+     "stage": 17,
+     "energy": 20
+    },
+    {
+     "stage": 18,
+     "energy": 20
+    },
+    {
+     "stage": 19,
+     "energy": 20
+    },
+    {
+     "stage": 20,
+     "energy": 20
+    }
+   ]
+  },
+  {
+   "id": "DungeonRelics2",
+   "name": "Althar",
+   "title": "The Bone Lich",
+   "mode": "relic boss",
+   "description": "Althar is beyond ancient – the kingdom he ruled when he was mortal predates even Serenity's War, and it is said that he was the one to teach Malice the art of necromancy, over a thousand years ago. For that crime alone, Althar deserves a true death – but, of course, as a mighty lich and a Herald of Malice, he is twice immortal. Time will certainly never claim him. But you might.<br><br>At this very moment, he works a great spell using the souls of all those who have fallen to the many schemes of the Knights of Malice – and those who have fallen to your blade as you try to stop them. Koltmos believed this spell could free Malice.<br><br>See how well Althar can work his magic once all his brittle bones are broken.",
+   "dos": [
+    "Bring Block Revive",
+    "Use Invokers or Relics with Fatigue and Crush Tolerance",
+    "Deal with Althar’s minions",
+    "Bring high DPS and high Move SPD – Althar teleports around the area, so you need to keep on top of him"
+   ],
+   "donts": [
+    "Waste time. This battle is a race – you need to lay Althar to rest before his army gets too large",
+    "Ignore the minions.",
+    "Neglect Move SPD. Althar will be continually Pushing and Launching your Invokers away from him, so you need to be able to reposition quickly",
+    "Spread out. Stick to Althar like glue, as he teleports to the Invoker furthest away from him"
+   ],
+   "corruptions": [
+    "Crush",
+    "Fatigue"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 8
+    },
+    {
+     "stage": 2,
+     "energy": 8
+    },
+    {
+     "stage": 3,
+     "energy": 8
+    },
+    {
+     "stage": 4,
+     "energy": 8
+    },
+    {
+     "stage": 5,
+     "energy": 8
+    },
+    {
+     "stage": 6,
+     "energy": 8
+    },
+    {
+     "stage": 7,
+     "energy": 12
+    },
+    {
+     "stage": 8,
+     "energy": 12
+    },
+    {
+     "stage": 9,
+     "energy": 12
+    },
+    {
+     "stage": 10,
+     "energy": 12
+    },
+    {
+     "stage": 11,
+     "energy": 12
+    },
+    {
+     "stage": 12,
+     "energy": 12
+    },
+    {
+     "stage": 13,
+     "energy": 16
+    },
+    {
+     "stage": 14,
+     "energy": 16
+    },
+    {
+     "stage": 15,
+     "energy": 16
+    },
+    {
+     "stage": 16,
+     "energy": 16
+    },
+    {
+     "stage": 17,
+     "energy": 20
+    },
+    {
+     "stage": 18,
+     "energy": 20
+    },
+    {
+     "stage": 19,
+     "energy": 20
+    },
+    {
+     "stage": 20,
+     "energy": 20
+    }
+   ]
+  },
+  {
+   "id": "DungeonRelics6",
+   "name": "Sakiel",
+   "title": "The Fallen Angel",
+   "mode": "relic boss",
+   "description": "The Fallen Angel could have been a great warrior and a greater king, even for the short time he would have lived. But illness and pride drove him to madness, and madness, to heresy.",
+   "dos": [
+    "Use Mindworm. It’s vital for limiting Sakiel gaining power",
+    "Invest in RES and ACC",
+    "Invest in Accuracy. No point bringing Stun if you can't land it when you need it",
+    "Have an Invoker will 100% Heal Reduction. It will be useful against Sakiel’s Demon Form",
+    "Bring Invokers and Relics with Manashock and Bloodrot Tolerances"
+   ],
+   "donts": [
+    "Forget that this fight has two phases!",
+    "Neglect ACC. If you want to steal Sakiel’s buffs, you have to conquer his RES",
+    "Rely on Bleed and Burn debuffs – Sakiel takes 50% less damage from them, and they lower his Skill cooldowns",
+    "Stay still!"
+   ],
+   "corruptions": [
+    "Manashock",
+    "Bloodrot"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 8
+    },
+    {
+     "stage": 2,
+     "energy": 8
+    },
+    {
+     "stage": 3,
+     "energy": 8
+    },
+    {
+     "stage": 4,
+     "energy": 8
+    },
+    {
+     "stage": 5,
+     "energy": 8
+    },
+    {
+     "stage": 6,
+     "energy": 8
+    },
+    {
+     "stage": 7,
+     "energy": 12
+    },
+    {
+     "stage": 8,
+     "energy": 12
+    },
+    {
+     "stage": 9,
+     "energy": 12
+    },
+    {
+     "stage": 10,
+     "energy": 12
+    },
+    {
+     "stage": 11,
+     "energy": 12
+    },
+    {
+     "stage": 12,
+     "energy": 12
+    },
+    {
+     "stage": 13,
+     "energy": 16
+    },
+    {
+     "stage": 14,
+     "energy": 16
+    },
+    {
+     "stage": 15,
+     "energy": 16
+    },
+    {
+     "stage": 16,
+     "energy": 16
+    },
+    {
+     "stage": 17,
+     "energy": 20
+    },
+    {
+     "stage": 18,
+     "energy": 20
+    },
+    {
+     "stage": 19,
+     "energy": 20
+    },
+    {
+     "stage": 20,
+     "energy": 20
+    }
+   ]
+  },
+  {
+   "id": "ClanBoss1",
+   "name": "Sorgott",
+   "title": "The Crypt King",
+   "mode": "clan boss",
+   "dos": [
+    "Have some way to negate or steal <color=#FFE606>Sorgott’</color>s buffs – <color=#FF3232>Jinx</color> is your friend",
+    "Invest in RES or bring Invokers with <color=#2EB4FF>Immunity</color> buffs",
+    "Use AOE Skills. You need a way to kill his <color=#FFE606>Crypt Rats</color> in one fell swoop",
+    "Bring Invokers and Relics with Manaburn and Crush Tolerances. Most of <color=#FFE606>Sorgott</color>’s damage comes from Manaburn, so you need the appropriate Tolerance"
+   ],
+   "donts": [
+    "Neglect debuff removal. <color=#FFE606>Sorgott</color> gets stronger the more debuffs there are on your team",
+    "Rely on <color=#FF3232>Mindworm</color>. <color=#FFE606>Sorgott</color>’s Passive, Despair Feast, cannot be nullified by this debuff",
+    "Try to cleanse or reduce the duration of the <color=#FF3232>Swarm</color> debuff. Once it’s on you, you have to wait until it wears off",
+    "Rely on high DEF to blunt <color=#FFE606>Sorgott’</color>s attacks. Most of his damage is dealt via Tolerances and based off your MAX HP, so stacking DEF won’t save you"
+   ],
+   "corruptions": [
+    "Crush",
+    "Manaburn"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 8
+    },
+    {
+     "stage": 2,
+     "energy": 8
+    },
+    {
+     "stage": 3,
+     "energy": 8
+    },
+    {
+     "stage": 4,
+     "energy": 8
+    },
+    {
+     "stage": 5,
+     "energy": 8
+    },
+    {
+     "stage": 6,
+     "energy": 8
+    },
+    {
+     "stage": 7,
+     "energy": 12
+    },
+    {
+     "stage": 8,
+     "energy": 12
+    },
+    {
+     "stage": 9,
+     "energy": 12
+    },
+    {
+     "stage": 10,
+     "energy": 12
+    },
+    {
+     "stage": 11,
+     "energy": 12
+    },
+    {
+     "stage": 12,
+     "energy": 12
+    },
+    {
+     "stage": 13,
+     "energy": 16
+    },
+    {
+     "stage": 14,
+     "energy": 16
+    },
+    {
+     "stage": 15,
+     "energy": 16
+    },
+    {
+     "stage": 16,
+     "energy": 16
+    },
+    {
+     "stage": 17,
+     "energy": 20
+    },
+    {
+     "stage": 18,
+     "energy": 20
+    },
+    {
+     "stage": 19,
+     "energy": 20
+    },
+    {
+     "stage": 20,
+     "energy": 20
+    }
+   ]
+  },
+  {
+   "id": "DungeonTitan",
+   "name": "Pentiax",
+   "title": "The Corrupted Dragon",
+   "mode": "Pentiax",
+   "description": "Surviving Pentiax's waves of fire and burning hail isn't easy – you'll want to find Invokers that can purge Burn debuffs, or with skills that cast Immunity to block the debuffs in the first place. And the quicker your heroes are, the easier they'll be able dodge his attacks or falling Darkstones.<br><br>As a former Titan, Pentiax takes much more damage from other Titans, but much less from Invokers. Bring high-damage Titans and Invokers that help generate Titan Mana quickly to maximize your chances.",
+   "dos": [
+    "Make sure every Invoker has a Titan bound to them.",
+    "Bring Invokers that generate Titan Mana quickly – more Titans, more damage.",
+    "Time your Titans: a badly-timed Titan is a wasted Titan.",
+    "Bring heals and a way to avoid those Burn debuffs.",
+    "Stay on your toes: positioning and timing is key!"
+   ],
+   "donts": [
+    "Pursue Pentiax once he flies away. You need to wait until he returns to attack him.",
+    "Leave your Titans at home.",
+    "Stand still.",
+    "Forget about Pentiax's Corruptions and Burns."
+   ],
+   "corruptions": [
+    "Nightmare",
+    "Mindfog"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 4
+    },
+    {
+     "stage": 2,
+     "energy": 4
+    },
+    {
+     "stage": 3,
+     "energy": 6
+    },
+    {
+     "stage": 4,
+     "energy": 6
+    },
+    {
+     "stage": 5,
+     "energy": 8
+    },
+    {
+     "stage": 6,
+     "energy": 8
+    },
+    {
+     "stage": 7,
+     "energy": 10
+    },
+    {
+     "stage": 8,
+     "energy": 10
+    },
+    {
+     "stage": 9,
+     "energy": 12
+    },
+    {
+     "stage": 10,
+     "energy": 12
+    },
+    {
+     "stage": 11,
+     "energy": 12
+    },
+    {
+     "stage": 12,
+     "energy": 12
+    },
+    {
+     "stage": 13,
+     "energy": 16
+    },
+    {
+     "stage": 14,
+     "energy": 16
+    },
+    {
+     "stage": 15,
+     "energy": 16
+    },
+    {
+     "stage": 16,
+     "energy": 16
+    },
+    {
+     "stage": 17,
+     "energy": 20
+    },
+    {
+     "stage": 18,
+     "energy": 20
+    },
+    {
+     "stage": 19,
+     "energy": 20
+    },
+    {
+     "stage": 20,
+     "energy": 20
+    }
+   ]
+  },
+  {
+   "id": "DungeonTank",
+   "name": "Hyxxis",
+   "title": "The Brood Mother",
+   "mode": "other",
+   "description": "Hyxxis the Brood Mother was created by Malice's own hand, but it is unlikely even he imagined what the Brood would become. Still, he will use her if he can. Ensure he cannot.",
+   "dos": [
+    "Bring Tanks and a dedicated healer",
+    "Stay out of the goo!",
+    "Break the Brood Eggs",
+    "Use Invokers or Relics with Crush and Manaburn Tolerances"
+   ],
+   "donts": [
+    "Forget to bring a Tank. Or two. Seriously.",
+    "Ignore the Brood Eggs. Failing to destroy the eggs will mean four new targets to deal with",
+    "Stop moving. Stay still and Hyxxis will lock you down with Ensacment or Crush Corruption.",
+    "Bring Crowd Control. Hyxxis is immune."
+   ],
+   "corruptions": [
+    "Crush",
+    "Manaburn"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonSupport",
+   "name": "Galvos",
+   "title": "The Construct",
+   "mode": "other",
+   "description": "Galvos the Construct was made to deal as much damage as possible – and is almost impossible to out-damage.<br><br>Galvos is fully loaded with incredibly high ATK, high Crit Rate, and even higher Crit Damage. And if that's not enough, his damage increases according to the ATK stat of each Invoker in your team. The higher the ATK stat of each Invoker, the more damage Galvos deals to them.<br>However, there are ways to counter that – Galvos deals less damage to Invokers according to the number of Buffs they have. If you can bring strong Supports to ensure you're always stacked with buffs, you'll take a lot less damage right off the bat.<br><br>And to swing things in your favor even more, Galvos takes more damage according to the number of Debuffs he's under. Bring reliable debuffers that decrease Galvos’ ATK, Crit Rate, and Crit Damage to help mitigate his damage output AND increase your own team's output at the same time.<br>This fight is all about bringing the right Support Invokers, managing Buffs and Debuffs, and finding a way to deal enough damage all at the same time.<br><br>Bring high-output Supports to keep Buffs and Debuffs up throughout the fight, and bring a strong tank Tank that can take the brunt of Galvos’ damage, and you'll be on the right path to victory.<br><br>BONUS TIPS<br><br>Yes, while going all-out-attack with your team makes Galvos even more dangerous, it doesn’t mean you can forget about damage entirely. Galvos will get stronger each attack cycle, as he gains power from destroying Power Cells around the arena. If you don’t have enough damage to take him down quickly, his strength will snowball out of control – and you’re going to get crushed.<br><br>Stay on your toes and maximize your opportunity to deal and dodge damage. Can you stay inside the shockwaves and deal damage while Galvos is busy pounding the ground? Or after Galvos pulls you in with his chains, will you be quick enough to escape his follow-up attack?<br><br>Once you have your Buffs and Debuffs under control, keep an eye out for big damage opportunities to bring home the victory.",
+   "dos": [
+    "Bring a Tank and Supports",
+    "Have Invokers or Relics with Daze and Atrophy Tolerance",
+    "Be on the move!",
+    "Keep your Tank topped up with buffs"
+   ],
+   "donts": [
+    "Bring multiple Tanks. You want one dedicated defender drawing Galvos’ attention and taking all of your team’s buffs",
+    "Rely on Auto. To avoid some of Galvos’ more lethal attacks, you’ll need to dodge in specific directions",
+    "Neglect debuffs. You’ll need a balancer of debuffs and buffs to succeed in this fight"
+   ],
+   "corruptions": [
+    "Daze",
+    "Atrophy"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonMelee",
+   "name": "Yskara",
+   "title": "The Ice Queen",
+   "mode": "other",
+   "description": "This is a battle where speed is of the essence: you are effectively on the clock, and speed of movement and rate of damage will decide your fate.<br><br>THE HEART OF ICE<br><br>Yskara the Ice Queen gains her strength from the Heart of Ice - the eternally frozen crystal at the centre of the Crucible. While the Heart of Ice remains, the Yskara cannot be permanently defeated - she will constantly revive after a short time.<br><br>To defeat Yskara, you need to destroy the Heart of Ice - but the Heart cannot be damaged directly.<br><br>THE CRYSTALS<br><br>The Heart of Ice is powered by the three Elemental Crystals, located around the crucible, on the upper level. Each Crystal will either heal or hurt the Heart of Ice, depending on who last destroyed it - either your team or the enemy team.<br><br>When these Crystals first spawn, they will be Frost Crystals and will continuously heal the Heart of Ice. But, if you can destroy a Crystal, it will switch: it will respawn as a Flame Crystal and damage the Heart of Ice, instead of healing it.<br><br>You will have significant resistance: enemy minions will respawn throughout the battle, and will want to keep as many Frost Crystals as possible. Their aim is to fully heal the Heart and unleash the Ice Queen’s ultimate power. These minions will protect Frost Crystals and look to prevent you from switching them to Flame Crystals.<br><br>But, even if you manage to destroy a Frost Crystal and switch it to Flame, your job still isn’t done… Enemy minions will constantly try to destroy Flame Crystals and switch them back to Frost - so you’ll need to constantly defend them.<br><br>THE ICE QUEEN<br><br>Then, there’s the small matter of the Yskara herself. She’s going to make your task incredibly hard - she will constantly slow your team and make it even more difficult to maintain control of the Crystals. On the positive side, has much less of an effect on melee Invokers - both Tanks and Melee Attackers - so you might want to leave your ranged Invokers at home for this one.<br><br>Remember, the Yskara cannot be permanently defeated while the Heart of Ice is alive. She will always respawn after a short time, so defeating her only grants you a temporary respite from her torment - but it is worth it, if you’re fast enough to take advantage while she’s out-of-action.<br><br>THE WIN<br><br>If the Heart of Ice is fully healed by the enemy team, you lose. If you're able to control the Crystals and destroy the Heart of Ice, then Yskara will lose her power - and you can defeat her once and for all.<br><br>To win this fight, you’ll need to maintain more Flame Crystals than Frost Crystals throughout the battle. This means movement speed and damage output is paramount: you’ll need to be fast enough to navigate the arena, and enough damage to destroy the Crystals quickly and get them back on your side.",
+   "dos": [
+    "Bring Melee Attackers.",
+    "Control the Flame Shards!",
+    "Use Invokers or Relics with Frost and Fatigue Tolerances.",
+    "Focus on DPS and Move SPD - the faster you take control and move between Flame Shards, the faster you’ll melt the Heart of Ice."
+   ],
+   "donts": [
+    "Rely on Ranged Attackers – they miss out on a huge +100% ATK bonus and will be slowed by Yskara’s blizzard.",
+    "Ignore the minon waves! Failure to control them means you’ll constantly be fighting to regain control of the Flame Shards.",
+    "Focus solely on Yskara. While she is a threat, your real objective is destroying the Heart of Ice, as that’s how you truly defeat her.",
+    "Stay still. You need to be constantly on the move to protect the Flame Shards and stop incoming minions."
+   ],
+   "corruptions": [
+    "Frost",
+    "Fatigue"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonRanged",
+   "name": "Koltmos",
+   "title": "The Doom Shaman",
+   "mode": "other",
+   "description": "Koltmos leads the Cult of the Black Sun, and he leads them to damnation. He preaches of a golden age, long past, which all the living must aspire to recreate – and which is ruled by all-powerful Malice. His vast legions of rabid followers march in an unholy crusade against the world entire, seeking to drag enough souls screaming into the void to fuel the spells to set Malice free.<br><br>Perhaps it will work, or perhaps he is simply mad. It matters not. He must be ended.",
+   "dos": [
+    "Bring Ranged Attackers",
+    "Use Invokers or Relics with Bloodrot and Manashock Tolerances",
+    "Take out the Doomclaws!",
+    "Bring decent burst damage – if you can deal damage quickly, you can avoid Koltmos’ powerful AOE attack from Deadsun Ritual"
+   ],
+   "donts": [
+    "Stay still! Remember to dodge out of the way when he charges.",
+    "Bring all Melee Attackers. They’re useless for dispatching Koltmos’ Doomclaws",
+    "Group up around Koltmos",
+    "Forget to take out the Doomclaws!"
+   ],
+   "corruptions": [
+    "Manashock",
+    "Blight"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceNeutral",
+   "name": "Omnissi",
+   "title": "The Astral Garuda",
+   "mode": "Omnissi",
+   "element": "Astral",
+   "description": "Beat the Astral Garuda to win Astral Essence — required to Ascend all Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>Keeping buffs up against the Astral Garuda is never reliable — and in fact, it can be dangerous for you. <br><br>Its Passive skill means that every single time the Garuda hits one of your Invokers, she has a 50% chance to steal a random buff. This can instantly turn a strong position on its head. That huge ATK or Crit Damage buff you just had on your team? Well, now the Garuda has them — and she suddenly became far more deadly. <br><br>The Garuda can also reduce your team’s HP quickly, through the Bleed debuff on her Combo Attack or the Atrophy Corruption on her first skill, Celestial Rage. Both debuffs decrease the recipient’s HP by a percentage of their MAX HP, which means huge damage, no matter how high your HP is in the first place.<br><br>Simple, brutal, raw damage here is often the best approach — you don’t want to hand the Garuda a bunch of powerful debuff and make her even more dangerous.",
+   "dos": [
+    "Take Invokers or Relics with Crush and Atrophy Tolerances",
+    "Bring heavy damage.",
+    "Bring heals to recover from Omnissi's crazy damage output."
+   ],
+   "donts": [
+    "Rely too heavily on buffing your team.",
+    "Bring buffs that you don't want Omnissi to have.",
+    "Forget your healer. Astral Omnissi drops your HP fast, you'll need them."
+   ],
+   "corruptions": [
+    "Crush",
+    "Atrophy"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceFire",
+   "name": "Omnissi",
+   "title": "The Fire Garuda",
+   "mode": "Omnissi",
+   "element": "Fire",
+   "description": "Beat the Fire Garuda to win Fire Essence — required to Ascend Fire Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Fire Garuda centers around casting and extending deadly Burn debuffs, with 2 Corruptions that amplify the challenge.<br><br>Her Combo Attack casts a Burn debuff on a single target, but she has another deadly attack that casts a long-lasting Burn debuff on everyone in the arena. Her first skill, Ignic Hail, then extends those debuffs by 5 seconds.<br><br>If you don’t deal with the Burns, your whole team can be wiped out before you know it. Bring Invokers can cast Immunity or remove Debuffs to increase your chances of victory.",
+   "dos": [
+    "Take Invokers or Relics with Daze and Manaburn Tolerances",
+    "Bring Invokers that can cast Immunity or remove debuffs. Ideally more than one.",
+    "Make sure everyone has enough RES, just in case."
+   ],
+   "donts": [
+    "Expect to out-heal the Burn and Manaburn damage."
+   ],
+   "corruptions": [
+    "Daze",
+    "Manaburn"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceDark",
+   "name": "Omnissi",
+   "title": "The Dark Garuda",
+   "mode": "Omnissi",
+   "element": "Dark",
+   "description": "Beat the Dark Garuda to win Dark Essence — required to Ascend Dark Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Dark Garuda centers around two things.<br><br>First, she doesn’t want you to have any buffs. Her Combo Attack will decrease the durations of all buffs on a single target by 3 seconds, while her first skill, Falling Eclipse, removes 1 buff from every member of your team.<br><br>Second, its special Passive reflects 55% of ALL the damage the Garuda receives from Combo Attacks back to the attacker — meaning you'll constantly be damaging yourself with all your Combo Attacks. And at the same time, the Dark Garuda will also receive 50% less damage from all Active Skills. <br><br>This sounds bad, but you can mitigate this passive by bringing the right debuffs. If the Dark Garuda has a Decrease Combo Speed debuff on her, then part of her passive will not function — she will no longer reflect Combo Attack Damage back at your team. She will still receive 50% less damage from Active Skills (there's no way to disable that part of the Passive), but at least you won't be hurting yourself.<br><br>This Passive alone decides how you should approach this battle. Ignore it, and you’ll slowly (or quickly) take your own team out through Combo Attacks alone. You’ll need to bring one or more Invokers that can cast Decrease Combo Speed debuffs to win this fight — or someone to extend the debuff to ensure high uptime. If the debuff drops for even a few seconds, you’re in trouble again.",
+   "dos": [
+    "Take Invokers or Relics with Manashock and Manaburn Tolerances",
+    "Bring Combo SPD Down.",
+    "Bring Invokers that can extend debuff duration.",
+    "Make sure you have enough ACC to land these key debuffs consistently."
+   ],
+   "donts": [
+    "Forget Combo SPD Down. Seriously, we can't let that slide.",
+    "Rely on Skills that deal enemy MAX HP-based damage.",
+    "Try to rely on buffs to keep you alive. You're going to lose them."
+   ],
+   "corruptions": [
+    "Manashock",
+    "Manaburn"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceWind",
+   "name": "Omnissi",
+   "title": "The Wind Garuda",
+   "mode": "Omnissi",
+   "element": "Wind",
+   "description": "Beat the Wind Garuda to win Wind Essence — required to Ascend Wind Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Wind Garuda has a powerful Passive skill that gives her a 60% chance to dodge all Combo Attacks. That takes a huge source of damage away from your team. However, the Passive stops working whenever the Wind Garuda has a Decrease Move Speed debuff.<br><br>You’ll need to take Invokers that can slow the Garuda down with Decrease Move Speed to block that passive — but it won’t be easy. Her first skill, Tempest Crush, will decrease the duration of any debuffs on the Garuda by 1 second for each enemy hit by the skill. A five-second debuff can disappear in an instant.<br><br>Keeping that Decrease Move Speed debuff up as long possible during the fight will be key to victory; you may need to bring multiple sources of the debuff, or bring someone that can extend debuff duration to keep it up at all times.",
+   "dos": [
+    "Bring Move SPD Down.",
+    "Bring multiple sources of Move SPD Down. Or someone that can extend it.",
+    "Bring Nightmare Tolerance and Fatigue Tolerance."
+   ],
+   "donts": [
+    "Forget your Move SPD Down.",
+    "Overlook Omnissi's own Move SPD Down debuff. It's a big deal.",
+    "Try to brute force this fight. You need your Combo Attacks to work."
+   ],
+   "corruptions": [
+    "Nightmare",
+    "Fatigue"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceWater",
+   "name": "Omnissi",
+   "title": "The Water Garuda",
+   "mode": "Omnissi",
+   "element": "Water",
+   "description": "Beat the Water Garuda to win Water Essence — required to Ascend Water Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Water Garuda has a special Passive attack that triggers every 15 seconds, hits your whole team, and decreases their Move Speed by a huge 70% — for 10 seconds. If you let that happen freely, you’re going to be massively slowed for almost the entire battle. Make sure you bring Immunity to block the debuff in the first place, or someone that can help Purge the debuff to get rid of it whenever you receive it.<br><br>In addition, the Water Garuda’s first skill, Dewburst, deals 50% more damage to anyone that has a debuff on them. Both this and the attack from the Passive have short cooldowns, so you’ll frequently need to combat these if you want to succeed.<br><br>Purging or blocking debuffs is your path to victory.",
+   "dos": [
+    "Take Invokers or Relics with Frost and Mindfog Tolerances",
+    "Bring Invokers that can remove debuffs. Ideally more than one.",
+    "…Or someone that can block debuffs in the first place. Immunity is king."
+   ],
+   "donts": [
+    "Let her land her debuffs.",
+    "Ignore the slow. It has a huge, huge impact on your team."
+   ],
+   "corruptions": [
+    "Frost",
+    "Mindfog"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceEarth",
+   "name": "Omnissi",
+   "title": "The Earth Garuda",
+   "mode": "Omnissi",
+   "element": "Earth",
+   "description": "Beat the Earth Garuda to win Earth Essence — required to Ascend Earth Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Earth Garuda is simple, but wields incredible damage. Her Combo Attack boosts her ATK by 25%, while her first skill, Torrent of Earth, gives her a huge +35% Crit Rate buff - massively increasing her damage output.<br><br>Bring Invokers that can either remove those Buffs from the Garuda, or can cast Block Buffs to prevent them from appearing in the first place. If you do nothing about them, you’re unlikely to survive her ramped-up damage.<br><br>And if that’s not bad enough, the Earth Garuda’s unique Passive means that when her HP drops to 75%, 50%, and 25%, she will cast Paralysis Corruption on your whole team (for a huge 15 seconds) and completely refresh the cooldown of her second skill, Gale of Stonewind… which will immediately cast another long-lasting set of Paralysis on top.<br><br>Making sure you bring Invokers with the right Tolerances here will make the difference between failure and victory.",
+   "dos": [
+    "Bring the right Tolerances – Paralysis and Bloodrot",
+    "Bring Invokers that can Block or purge Omnissi's buffs.",
+    "Or better yet, someone that can steal them and use them against her.",
+    "Bring durable, tanky Invokers."
+   ],
+   "donts": [
+    "Let her buff herself freely.",
+    "Forget about the Corruptions.",
+    "Bring a team full of squishy Invokers."
+   ],
+   "corruptions": [
+    "Paralysis",
+    "Bloodrot"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  },
+  {
+   "id": "DungeonEssenceLight",
+   "name": "Omnissi",
+   "title": "The Light Garuda",
+   "mode": "Omnissi",
+   "element": "Light",
+   "description": "Beat the Light Garuda to win Light Essence — required to Ascend Light Invokers.<br><br>While the Garuda shares some skills across each Element, there are also unique mechanics to overcome to master each one.<br><br>The Light Garuda possesses a unique passive that turns your own heals against you. Whenever a member of your team is healed, the Garuda’s passive will destroy a portion of their MAX HP, equal to 50% of the heal — permanently reducing their MAX HP for the duration of the battle.<br><br>The Light Garuda’s Combo Attack will also heal the Garuda equal to the amount of damage she inflicts on you. Its first skill, Twisted Prism, also grants the Garuda a Shield equal to 3% of its MAX HP for each target hit by the attack; if she hits five of your team members, that means she's going to gain a huge 15% MAX HP Shield. <br><br>You have two options to deal with this: first, bring Block Buffs and prevent the Shield from appearing; second, bring maximum damage and nuke it down as fast as possible.<br><br>And if it wasn’t obvious, relying on heals to get you through this fight may be a bad idea — you’ll slowly get weakened and ground down due to the Garuda’s passive skill.",
+   "dos": [
+    "Take Invokers or Relics with Paralysis and Blight Tolerances",
+    "Focus on attacking output and high DPS, not healing.",
+    "Try to block damage in the first place, rather than recovering through heals."
+   ],
+   "donts": [
+    "Rely on heals. You're going to fail.",
+    "Take it slow.",
+    "Rely on Damage Dealers with Vampire Relics."
+   ],
+   "corruptions": [
+    "Paralysis",
+    "Blight"
+   ],
+   "stages": [
+    {
+     "stage": 1,
+     "energy": 5
+    },
+    {
+     "stage": 2,
+     "energy": 5
+    },
+    {
+     "stage": 3,
+     "energy": 5
+    },
+    {
+     "stage": 4,
+     "energy": 7
+    },
+    {
+     "stage": 5,
+     "energy": 7
+    },
+    {
+     "stage": 6,
+     "energy": 7
+    },
+    {
+     "stage": 7,
+     "energy": 7
+    },
+    {
+     "stage": 8,
+     "energy": 9
+    },
+    {
+     "stage": 9,
+     "energy": 9
+    },
+    {
+     "stage": 10,
+     "energy": 9
+    },
+    {
+     "stage": 11,
+     "energy": 9
+    },
+    {
+     "stage": 12,
+     "energy": 11
+    },
+    {
+     "stage": 13,
+     "energy": 11
+    },
+    {
+     "stage": 14,
+     "energy": 11
+    },
+    {
+     "stage": 15,
+     "energy": 11
+    },
+    {
+     "stage": 16,
+     "energy": 13
+    },
+    {
+     "stage": 17,
+     "energy": 13
+    },
+    {
+     "stage": 18,
+     "energy": 13
+    },
+    {
+     "stage": 19,
+     "energy": 13
+    },
+    {
+     "stage": 20,
+     "energy": 14
+    }
+   ]
+  }
+ ]
+}
