@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { heroes, href } from '../../lib/data';
+import { heroes, heroHref, href } from '../../lib/data';
 import { className, rarityColor, rarityOrder } from '../../lib/format';
 
 const sorted = [...heroes].sort(
@@ -60,7 +60,7 @@ const groups = [
         data-class={h.class}
         data-rarity={h.rarity}
       >
-        <a class="card" href={href(`heroes/${h.id}`)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+        <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
           <div class="card-art">
             <HeroArt hero={h} />
             <span class="card-tier"><TierBadge heroId={h.id} /></span>

@@ -214,7 +214,7 @@ export function start(): void {
         h(
           'article',
           { class: `hero-card r-${ref?.rarity ?? 'Unknown'}` },
-          ref ? h('a', { href: refs.heroBase + ref.id }, ref.name) : h('strong', {}, 'Unknown invoker'),
+          ref ? h('a', { href: refs.heroBase + ref.slug }, ref.name) : h('strong', {}, 'Unknown invoker'),
           h('span', { class: 'sub' }, ref ? `${ref.rarity} · ${ref.faction} · ${ref.element} · ${titleCase(ref.class)}` : `config ${hero.configId}`),
           h('span', {}, stars(hero.rank), ` Lv ${hero.level}`),
           h('span', { class: 'sub' }, `Awakening ${hero.awakenLevel} · gear ${gearCount}/8${hero.inStorage ? ' · in storage' : ''}`),
