@@ -147,7 +147,8 @@ export function start(): void {
     const blob = new Blob([JSON.stringify(box)], { type: 'application/json' });
     const a = h('a', { href: URL.createObjectURL(blob), download: `invokers-box-${box.importedAt.slice(0, 10)}.json` });
     a.click();
-    URL.revokeObjectURL((a as HTMLAnchorElement).href);
+    // Revoking straight away can cancel the download in some browsers.
+    setTimeout(() => URL.revokeObjectURL((a as HTMLAnchorElement).href), 10_000);
   });
 
   $('delete').addEventListener('click', async () => {
@@ -327,9 +328,13 @@ export function start(): void {
 
   function renderAll(): void {
     renderStatus();
-    renderHeroes();
-    renderItems(gearView);
-    renderItems(accView);
+    try {
+      renderHeroes();
+      renderItems(gearView);
+      renderItems(accView);
+    } catch {
+      message('Part of your saved box looks damaged. Re-import from the game, or delete it and start again.', true);
+    }
   }
 
   const reload = async () => {
