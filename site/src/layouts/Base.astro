@@ -9,6 +9,7 @@ const { title } = Astro.props;
 const nav = [
   { path: 'heroes', label: 'Invokers', icon: 'grid' },
   { path: 'events', label: 'Events', icon: 'calendar' },
+  { path: 'blog', label: 'Blog', icon: 'book' },
   { path: 'about', label: 'About', icon: 'info' },
 ];
 
@@ -52,6 +53,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
               <Fragment set:html='<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>' />
             )}
             {n.icon === 'calendar' && <Fragment set:html='<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>' />}
+            {n.icon === 'book' && <Fragment set:html='<path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h9"/>' />}
             {n.icon === 'info' && <Fragment set:html='<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>' />}
           </svg>
           {n.label}
@@ -132,7 +134,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     footer { font-size: 11px; padding-bottom: 92px; }
     .tab-bar {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       position: fixed;
       left: 0;
       right: 0;
