@@ -7,11 +7,13 @@ interface Props {
 const { title } = Astro.props;
 
 const nav = [
-  ['heroes', 'Heroes'],
-  ['events', 'Events'],
-  ['my-box', 'My box'],
-  ['about', 'About'],
+  { path: 'heroes', label: 'Invokers', icon: 'grid' },
+  { path: 'events', label: 'Events', icon: 'calendar' },
+  { path: 'my-box', label: 'My box', icon: 'box' },
+  { path: 'about', label: 'About', icon: 'info' },
 ];
+
+const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').split('/')[1] ?? '';
 ---
 <!doctype html>
 <html lang="en">
@@ -21,13 +23,18 @@ const nav = [
     <title>{title} · Invokers Companion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+    />
   </head>
   <body>
-    <header>
-      <a class="brand" href={href('/')}>Invokers Companion</a>
-      <nav>
-        {nav.map(([path, label]) => <a href={href(path)}>{label}</a>)}
+    <header class="top">
+      <a class="brand" href={href('/')}>Invokers <span>Companion</span></a>
+      <nav class="top-nav" aria-label="Main">
+        {nav.map((n) => (
+          <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
+        ))}
       </nav>
     </header>
     <main>
@@ -38,46 +45,115 @@ const nav = [
       <br />
       Unofficial fan site, not affiliated with the game's developer.
     </footer>
+    <nav class="tab-bar" aria-label="Main" style={`--tabs: ${nav.length}`}>
+      {nav.map((n) => (
+        <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {n.icon === 'grid' && (
+              <Fragment set:html='<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>' />
+            )}
+            {n.icon === 'calendar' && <Fragment set:html='<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>' />}
+            {n.icon === 'box' && <Fragment set:html='<path d="M4 8l8-4 8 4v8l-8 4-8-4z"/><path d="M4 8l8 4 8-4M12 12v8"/>' />}
+            {n.icon === 'info' && <Fragment set:html='<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>' />}
+          </svg>
+          {n.label}
+        </a>
+      ))}
+    </nav>
   </body>
 </html>
 
 <style is:global>
-  /* Rift palette (Newms's pick from the UI style mocks). */
   :root {
     color-scheme: dark;
     --bg: #0c0b1d;
-    --surface: #16142e;
-    --surface-2: #201d40;
-    --line: #2e2a57;
-    --text: #e9e8ff;
-    --muted: #9c9ac4;
+    --surface: #18163a;
+    --surface-2: #252150;
+    --surface-3: #131130;
+    --line: #2e2a5c;
+    --text: #eceaf8;
+    --soft: #b5b1d3;
+    --muted: #8a85b5;
     --accent: #5fdcf7;
-    --danger: #ff7a90;
-    --legendary: #f5b84a;
-    --epic: #b886ff;
-    --rare: #5fa8f7;
-    --uncommon: #6fdc8c;
+    --display: 'Sora', system-ui, sans-serif;
     font-family: 'DM Sans', system-ui, sans-serif;
   }
-  h1, h2, h3, .brand { font-family: Sora, 'DM Sans', system-ui, sans-serif; }
+  * { box-sizing: border-box; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
+    line-height: 1.5;
   }
-  a { color: var(--accent); }
-  header, main, footer {
-    max-width: 960px;
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #a6edfb; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.2; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.top, main, footer {
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 16px;
+    padding-left: 48px;
+    padding-right: 48px;
   }
-  header {
+  header.top {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: baseline;
+    align-items: center;
+    gap: 40px;
+    height: 72px;
   }
-  header nav { display: flex; gap: 12px; }
-  .brand { font-weight: 700; color: var(--text); text-decoration: none; }
-  footer { color: var(--muted); font-size: 0.85rem; }
+  .brand {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--text);
+  }
+  .brand span { color: var(--accent); }
+  .top-nav { display: flex; gap: 8px; font-weight: 500; }
+  .top-nav a {
+    color: var(--soft);
+    padding: 10px 16px;
+    border-radius: 22px;
+  }
+  .top-nav a[aria-current='page'] { color: var(--bg); background: var(--accent); }
+  main { padding-top: 16px; padding-bottom: 32px; }
+  footer {
+    color: var(--muted);
+    font-size: 13px;
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+  .tab-bar { display: none; }
+
+  @media (max-width: 720px) {
+    header.top, main, footer { padding-left: 16px; padding-right: 16px; }
+    header.top { height: 60px; }
+    .brand { font-size: 19px; }
+    .top-nav { display: none; }
+    main { padding-top: 4px; }
+    footer { font-size: 11px; padding-bottom: 92px; }
+    .tab-bar {
+      display: grid;
+      grid-template-columns: repeat(var(--tabs), minmax(0, 1fr));
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 68px;
+      padding-bottom: env(safe-area-inset-bottom);
+      background: var(--surface-3);
+      border-top: 1px solid var(--line);
+      z-index: 10;
+    }
+    .tab-bar a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--soft);
+    }
+    .tab-bar a[aria-current='page'] { color: var(--accent); font-weight: 600; }
+  }
 </style>

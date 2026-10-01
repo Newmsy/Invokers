@@ -13,6 +13,8 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `stats.json` | Stat names: stat bonuses (`AttackPercent`, …, `percent` flag) and character stat ratings (`kind: rating`) |
 | `sets.json` | Gear sets: `id`, English `name`, `bonuses` keyed by pieces (`3`/`5`/`8`) with `stat`, `statName`, `value` (fractions for percent stats), and the game's `recommendation` text. The game's own 3/5-piece texts are placeholders, so describe bonuses from `bonuses`. |
 | `trophies.json` | Arena trophy room (issue #4): `rooms` (elements), `scope`, `trophies[]` per stat with `levels[]` of `cost[]` `{itemId, amount}` and `bonuses[]` `{stat, value, valueType}` (total at that level); `unconfirmed` lists what the config doesn't say |
+| `tips.json` | In-game tips (issue #8): `tips[]` with `key`, `text`, `context` (`loading`/`tutorial`/`help`), `screen`. The 40 loading-screen hints (also in the FAQ) add `titleKey`, `title`, `order` and `illustration` (sprite name). `unconfirmed` lists what isn't covered yet |
+| `bosses.json` | Dungeon and clan bosses (issue #11): `id` (region), `name`, `title`, `mode` (`relic boss`/`clan boss`/`Omnissi`/`Pentiax`/`other` = Crest bosses), `element` (Omnissi only; `Astral` for the neutral one), `description`, `dos`, `donts` (the game's own lines, in order), `corruptions`, `stages[]` `{stage, energy}` |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's
