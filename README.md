@@ -21,8 +21,15 @@ npm run build    # type-check and build into site/dist
 
 GitHub Actions type-checks and builds the site on every push to `main` and
 every pull request (`.github/workflows/ci.yml`). The built site is attached to
-each run as the `site` artifact. Hosting isn't set up yet; the site builds to
-plain static files, so any static host works.
+each run as the `site` artifact.
+
+## Hosting
+
+Vercel deploys the site from this repo through its GitHub integration (project
+root `site`, Astro preset), so there is no deploy workflow or secret here. Every
+push to `main` updates the live site, and every other branch gets a preview link.
+Deployment Protection (Vercel Authentication, all deployments) keeps it private
+to the owner's Vercel login.
 
 ## Ratings and art
 
