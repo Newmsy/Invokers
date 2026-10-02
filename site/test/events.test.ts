@@ -17,6 +17,8 @@ describe('event planners', () => {
   it('prices the shortfall in gems', () => {
     expect(shortfall(30000, 28338, 1.5)).toEqual({ energy: 1662, gems: 1108 });
     expect(shortfall(100, 200, 1.5)).toEqual({ energy: 0, gems: 0 });
+    // Gem Shop: 100 energy for 150 gems.
+    expect(shortfall(1662, 0, 100 / 150).gems).toBe(2493);
   });
 
   it('counts arena double days', () => {
