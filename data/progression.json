@@ -1,0 +1,702 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-02",
+ "source": "Static game config (HeroData, ResourcesData).",
+ "maxLevel": 60,
+ "maxLevelByRank": {
+  "One": 10,
+  "Two": 20,
+  "Three": 30,
+  "Four": 40,
+  "Five": 50,
+  "Six": 60
+ },
+ "xpPerLevel": [
+  {
+   "level": 1,
+   "xpToNext": 250,
+   "totalXp": 250
+  },
+  {
+   "level": 2,
+   "xpToNext": 350,
+   "totalXp": 600
+  },
+  {
+   "level": 3,
+   "xpToNext": 450,
+   "totalXp": 1050
+  },
+  {
+   "level": 4,
+   "xpToNext": 600,
+   "totalXp": 1650
+  },
+  {
+   "level": 5,
+   "xpToNext": 800,
+   "totalXp": 2450
+  },
+  {
+   "level": 6,
+   "xpToNext": 1000,
+   "totalXp": 3450
+  },
+  {
+   "level": 7,
+   "xpToNext": 1250,
+   "totalXp": 4700
+  },
+  {
+   "level": 8,
+   "xpToNext": 1500,
+   "totalXp": 6200
+  },
+  {
+   "level": 9,
+   "xpToNext": 1800,
+   "totalXp": 8000
+  },
+  {
+   "level": 10,
+   "xpToNext": 2100,
+   "totalXp": 10100
+  },
+  {
+   "level": 11,
+   "xpToNext": 2400,
+   "totalXp": 12500
+  },
+  {
+   "level": 12,
+   "xpToNext": 2800,
+   "totalXp": 15300
+  },
+  {
+   "level": 13,
+   "xpToNext": 3300,
+   "totalXp": 18600
+  },
+  {
+   "level": 14,
+   "xpToNext": 3800,
+   "totalXp": 22400
+  },
+  {
+   "level": 15,
+   "xpToNext": 4300,
+   "totalXp": 26700
+  },
+  {
+   "level": 16,
+   "xpToNext": 4800,
+   "totalXp": 31500
+  },
+  {
+   "level": 17,
+   "xpToNext": 5400,
+   "totalXp": 36900
+  },
+  {
+   "level": 18,
+   "xpToNext": 6100,
+   "totalXp": 43000
+  },
+  {
+   "level": 19,
+   "xpToNext": 7000,
+   "totalXp": 50000
+  },
+  {
+   "level": 20,
+   "xpToNext": 8000,
+   "totalXp": 58000
+  },
+  {
+   "level": 21,
+   "xpToNext": 9200,
+   "totalXp": 67200
+  },
+  {
+   "level": 22,
+   "xpToNext": 10600,
+   "totalXp": 77800
+  },
+  {
+   "level": 23,
+   "xpToNext": 12200,
+   "totalXp": 90000
+  },
+  {
+   "level": 24,
+   "xpToNext": 14000,
+   "totalXp": 104000
+  },
+  {
+   "level": 25,
+   "xpToNext": 16000,
+   "totalXp": 120000
+  },
+  {
+   "level": 26,
+   "xpToNext": 18000,
+   "totalXp": 138000
+  },
+  {
+   "level": 27,
+   "xpToNext": 20000,
+   "totalXp": 158000
+  },
+  {
+   "level": 28,
+   "xpToNext": 22000,
+   "totalXp": 180000
+  },
+  {
+   "level": 29,
+   "xpToNext": 24000,
+   "totalXp": 204000
+  },
+  {
+   "level": 30,
+   "xpToNext": 26000,
+   "totalXp": 230000
+  },
+  {
+   "level": 31,
+   "xpToNext": 28500,
+   "totalXp": 258500
+  },
+  {
+   "level": 32,
+   "xpToNext": 31500,
+   "totalXp": 290000
+  },
+  {
+   "level": 33,
+   "xpToNext": 35000,
+   "totalXp": 325000
+  },
+  {
+   "level": 34,
+   "xpToNext": 39000,
+   "totalXp": 364000
+  },
+  {
+   "level": 35,
+   "xpToNext": 43750,
+   "totalXp": 407750
+  },
+  {
+   "level": 36,
+   "xpToNext": 49250,
+   "totalXp": 457000
+  },
+  {
+   "level": 37,
+   "xpToNext": 55500,
+   "totalXp": 512500
+  },
+  {
+   "level": 38,
+   "xpToNext": 62500,
+   "totalXp": 575000
+  },
+  {
+   "level": 39,
+   "xpToNext": 71800,
+   "totalXp": 646800
+  },
+  {
+   "level": 40,
+   "xpToNext": 74800,
+   "totalXp": 721600
+  },
+  {
+   "level": 41,
+   "xpToNext": 78300,
+   "totalXp": 799900
+  },
+  {
+   "level": 42,
+   "xpToNext": 82300,
+   "totalXp": 882200
+  },
+  {
+   "level": 43,
+   "xpToNext": 86800,
+   "totalXp": 969000
+  },
+  {
+   "level": 44,
+   "xpToNext": 91800,
+   "totalXp": 1060800
+  },
+  {
+   "level": 45,
+   "xpToNext": 97300,
+   "totalXp": 1158100
+  },
+  {
+   "level": 46,
+   "xpToNext": 103300,
+   "totalXp": 1261400
+  },
+  {
+   "level": 47,
+   "xpToNext": 110300,
+   "totalXp": 1371700
+  },
+  {
+   "level": 48,
+   "xpToNext": 118300,
+   "totalXp": 1490000
+  },
+  {
+   "level": 49,
+   "xpToNext": 128300,
+   "totalXp": 1618300
+  },
+  {
+   "level": 50,
+   "xpToNext": 138300,
+   "totalXp": 1756600
+  },
+  {
+   "level": 51,
+   "xpToNext": 148300,
+   "totalXp": 1904900
+  },
+  {
+   "level": 52,
+   "xpToNext": 160300,
+   "totalXp": 2065200
+  },
+  {
+   "level": 53,
+   "xpToNext": 175300,
+   "totalXp": 2240500
+  },
+  {
+   "level": 54,
+   "xpToNext": 192300,
+   "totalXp": 2432800
+  },
+  {
+   "level": 55,
+   "xpToNext": 212300,
+   "totalXp": 2645100
+  },
+  {
+   "level": 56,
+   "xpToNext": 237300,
+   "totalXp": 2882400
+  },
+  {
+   "level": 57,
+   "xpToNext": 267300,
+   "totalXp": 3149700
+  },
+  {
+   "level": 58,
+   "xpToNext": 307300,
+   "totalXp": 3457000
+  },
+  {
+   "level": 59,
+   "xpToNext": 357300,
+   "totalXp": 3814300
+  }
+ ],
+ "xpByRarity": "same for every rarity (the game has one XP table)",
+ "levelCost": {
+  "One": {},
+  "Two": {},
+  "Three": {},
+  "Four": {},
+  "Five": {},
+  "Six": {}
+ },
+ "ascension": [
+  {
+   "fromRank": "One",
+   "toRank": "Two",
+   "levelRequired": 10,
+   "fodderCount": 1,
+   "fodder": [
+    {
+     "kind": "invoker",
+     "rank": "One"
+    },
+    {
+     "kind": "echo",
+     "itemId": "ASC_Stars1"
+    }
+   ],
+   "goldByRarity": {
+    "Common": 250
+   }
+  },
+  {
+   "fromRank": "Two",
+   "toRank": "Three",
+   "levelRequired": 20,
+   "fodderCount": 2,
+   "fodder": [
+    {
+     "kind": "invoker",
+     "rank": "Two"
+    },
+    {
+     "kind": "echo",
+     "itemId": "ASC_Stars2"
+    }
+   ],
+   "goldByRarity": {
+    "Common": 2500,
+    "Uncommon": 5000
+   }
+  },
+  {
+   "fromRank": "Three",
+   "toRank": "Four",
+   "levelRequired": 30,
+   "fodderCount": 3,
+   "fodder": [
+    {
+     "kind": "invoker",
+     "rank": "Three"
+    },
+    {
+     "kind": "echo",
+     "itemId": "ASC_Stars3"
+    }
+   ],
+   "goldByRarity": {
+    "Common": 15000,
+    "Uncommon": 25000,
+    "Rare": 35000
+   }
+  },
+  {
+   "fromRank": "Four",
+   "toRank": "Five",
+   "levelRequired": 40,
+   "fodderCount": 4,
+   "fodder": [
+    {
+     "kind": "invoker",
+     "rank": "Four"
+    },
+    {
+     "kind": "echo",
+     "itemId": "ASC_Stars4"
+    }
+   ],
+   "goldByRarity": {
+    "Common": 30000,
+    "Uncommon": 50000,
+    "Rare": 75000,
+    "Epic": 125000
+   }
+  },
+  {
+   "fromRank": "Five",
+   "toRank": "Six",
+   "levelRequired": 50,
+   "fodderCount": 5,
+   "fodder": [
+    {
+     "kind": "invoker",
+     "rank": "Five"
+    },
+    {
+     "kind": "echo",
+     "itemId": "ASC_Stars5"
+    }
+   ],
+   "goldByRarity": {
+    "Common": 75000,
+    "Uncommon": 100000,
+    "Rare": 150000,
+    "Epic": 250000,
+    "Legendary": 600000
+   }
+  }
+ ],
+ "fodderXp": {
+  "byRank": {
+   "One": 1500,
+   "Two": 3500,
+   "Three": 6500,
+   "Four": 13000,
+   "Five": 32000,
+   "Six": 60000
+  },
+  "byLevel": [
+   {
+    "level": 1,
+    "xp": 0
+   },
+   {
+    "level": 2,
+    "xp": 62
+   },
+   {
+    "level": 3,
+    "xp": 150
+   },
+   {
+    "level": 4,
+    "xp": 262
+   },
+   {
+    "level": 5,
+    "xp": 412
+   },
+   {
+    "level": 6,
+    "xp": 612
+   },
+   {
+    "level": 7,
+    "xp": 862
+   },
+   {
+    "level": 8,
+    "xp": 1175
+   },
+   {
+    "level": 9,
+    "xp": 1550
+   },
+   {
+    "level": 10,
+    "xp": 2000
+   },
+   {
+    "level": 11,
+    "xp": 2525
+   },
+   {
+    "level": 12,
+    "xp": 3125
+   },
+   {
+    "level": 13,
+    "xp": 3825
+   },
+   {
+    "level": 14,
+    "xp": 4650
+   },
+   {
+    "level": 15,
+    "xp": 5600
+   },
+   {
+    "level": 16,
+    "xp": 6675
+   },
+   {
+    "level": 17,
+    "xp": 7875
+   },
+   {
+    "level": 18,
+    "xp": 9225
+   },
+   {
+    "level": 19,
+    "xp": 10750
+   },
+   {
+    "level": 20,
+    "xp": 12500
+   },
+   {
+    "level": 21,
+    "xp": 14500
+   },
+   {
+    "level": 22,
+    "xp": 16800
+   },
+   {
+    "level": 23,
+    "xp": 19450
+   },
+   {
+    "level": 24,
+    "xp": 22500
+   },
+   {
+    "level": 25,
+    "xp": 26000
+   },
+   {
+    "level": 26,
+    "xp": 30000
+   },
+   {
+    "level": 27,
+    "xp": 34500
+   },
+   {
+    "level": 28,
+    "xp": 39500
+   },
+   {
+    "level": 29,
+    "xp": 45000
+   },
+   {
+    "level": 30,
+    "xp": 51000
+   },
+   {
+    "level": 31,
+    "xp": 57500
+   },
+   {
+    "level": 32,
+    "xp": 64625
+   },
+   {
+    "level": 33,
+    "xp": 72500
+   },
+   {
+    "level": 34,
+    "xp": 81250
+   },
+   {
+    "level": 35,
+    "xp": 91000
+   },
+   {
+    "level": 36,
+    "xp": 101937
+   },
+   {
+    "level": 37,
+    "xp": 114250
+   },
+   {
+    "level": 38,
+    "xp": 128125
+   },
+   {
+    "level": 39,
+    "xp": 143750
+   },
+   {
+    "level": 40,
+    "xp": 161700
+   },
+   {
+    "level": 41,
+    "xp": 180400
+   },
+   {
+    "level": 42,
+    "xp": 199975
+   },
+   {
+    "level": 43,
+    "xp": 220550
+   },
+   {
+    "level": 44,
+    "xp": 242250
+   },
+   {
+    "level": 45,
+    "xp": 265200
+   },
+   {
+    "level": 46,
+    "xp": 289525
+   },
+   {
+    "level": 47,
+    "xp": 315350
+   },
+   {
+    "level": 48,
+    "xp": 342925
+   },
+   {
+    "level": 49,
+    "xp": 372500
+   },
+   {
+    "level": 50,
+    "xp": 404575
+   },
+   {
+    "level": 51,
+    "xp": 439150
+   },
+   {
+    "level": 52,
+    "xp": 476225
+   },
+   {
+    "level": 53,
+    "xp": 516300
+   },
+   {
+    "level": 54,
+    "xp": 560125
+   },
+   {
+    "level": 55,
+    "xp": 608200
+   },
+   {
+    "level": 56,
+    "xp": 661275
+   },
+   {
+    "level": 57,
+    "xp": 720600
+   },
+   {
+    "level": 58,
+    "xp": 787425
+   },
+   {
+    "level": 59,
+    "xp": 864250
+   },
+   {
+    "level": 60,
+    "xp": 953575
+   }
+  ]
+ },
+ "xpItems": [
+  {
+   "itemId": "XpPotion_Small",
+   "xp": 100
+  },
+  {
+   "itemId": "XpPotion_Regular",
+   "xp": 1000
+  },
+  {
+   "itemId": "XpPotion_Big",
+   "xp": 20000
+  },
+  {
+   "itemId": "XpPotion_Premium",
+   "xp": 150000
+  }
+ ],
+ "unconfirmed": [
+  "fodder: the ascension slots take the given number of Invokers or Echoes (in-game: 'Select {0} or more Invokers or Echoes'); the config does not say whether fodder Invokers must be the same rank. Each Echo item is described as 'Used to Ascend Invokers from N to N+1 stars', which suggests same-rank fodder.",
+  "fodderXp: the config has both an XP-per-rank and an XP-per-level table for Invokers used as food; how they combine (e.g. rank base plus level) is not stated.",
+  "levelCost: every rank's level-up price is empty, so levelling costs no Gold."
+ ]
+}
