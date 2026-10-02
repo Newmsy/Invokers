@@ -31,8 +31,8 @@ const calc = {
 <Base title="Events">
   <h1>Events</h1>
   <p class="lead">
-    How events score, the points each one needs, and planners for the energy it takes to finish them. Every planner
-    starts with example numbers: change them to match your account.
+    Points each event needs, and the energy to finish it. Planners start with example numbers: change them to match
+    your account.
   </p>
 
   <section aria-labelledby="how-title">
@@ -48,9 +48,8 @@ const calc = {
   <section class="card" aria-labelledby="farm-title">
     <h2 id="farm-title">Energy to finish a farming event</h2>
     <p class="hint">
-      Pick the event and the highest stage you clear comfortably. For points per run, use the average your runs score
-      (the event screen shows your points after each run). Points per energy rises with stage, so the highest stage you
-      can farm is usually best.
+      Pick the highest stage you clear comfortably (points per energy rises with stage). For points per run, use your
+      average from the event screen.
     </p>
     <div class="calc">
       <label><span>Event</span><select id="f-event">{farming.map((e) => <option value={e.id}>{e.name}</option>)}</select></label>
@@ -68,9 +67,8 @@ const calc = {
   <section class="card" aria-labelledby="plan-title">
     <h2 id="plan-title">Energy plan</h2>
     <p class="hint">
-      Add the events you want to finish, then set your energy income. Only the natural recharge ({recharge} a day, one
-      every {guide.income.rechargeMinutes} minutes) and {guide.income.energyPerGem} energy per gem are fixed; the rest are
-      example numbers.
+      Add events, then set your energy income. Only the recharge ({recharge} a day, one every
+      {guide.income.rechargeMinutes} minutes) and {guide.income.energyPerGem} energy per gem are fixed.
     </p>
 
     <h3>Events in the plan</h3>
@@ -113,8 +111,7 @@ const calc = {
   <section class="card" aria-labelledby="arena-title">
     <h2 id="arena-title">Arena Rush</h2>
     <p class="hint">
-      Wins score more than losses, and both score more in higher leagues: from 40 per win and 20 per loss in Bronze 1 up
-      to 150 and 70 in Gold 4. Enter your league's points.
+      Points per win and loss rise with league: 40 and 20 in Bronze 1, up to 150 and 70 in Gold 4.
     </p>
     <div class="calc">
       <label><span>Battles a day</span><input id="a-battles" type="number" inputmode="numeric" min="0" value={guide.arena.battlesPerDay} /></label>

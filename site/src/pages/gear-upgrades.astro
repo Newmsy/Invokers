@@ -26,7 +26,7 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
 <Base title="Gear upgrades and Memorium">
   <h1>Gear upgrades and Memorium</h1>
   <p class="lead">
-    What it costs to upgrade gear from +0 to +20, what selling and crushing give back, and where the Memorium comes from.
+    Gear upgrade costs from +0 to +20, selling and crushing, and where Memorium comes from.
   </p>
   <nav class="jump" aria-label="On this page">
     <a href="#upgrading">Upgrading</a>
@@ -38,8 +38,8 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   <section id="upgrading" aria-labelledby="upgrading-title">
     <h2 id="upgrading-title">What upgrading does</h2>
     <ul class="facts">
-      <li>Upgrading raises the piece's stats. At <strong>+5, +10, +15 and +20</strong> it also either unlocks a new substat or upgrades one it already has, up to four substats in total.</li>
-      <li><strong>Rarity</strong> sets how many substats a piece starts with. <strong>Stars</strong> set how big the main stat and substats are, so a higher-star piece stays stronger even when upgraded.</li>
+      <li>Upgrading raises stats. <strong>+5, +10, +15 and +20</strong> each unlock a substat (up to four) or upgrade one.</li>
+      <li><strong>Rarity</strong> sets the starting substats. <strong>Stars</strong> set stat size, so higher-star pieces stay stronger.</li>
       <li>Upgrades cost <span class="cur">{goldIcon && <img src={goldIcon} alt="" width="18" height="18" />}Gold</span> and <span class="cur">{memoriumIcon && <img src={memoriumIcon} alt="" width="18" height="18" />}Memorium</span>.</li>
     </ul>
     <div class="table-wrap narrow">
@@ -143,8 +143,7 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   <section id="selling" aria-labelledby="selling-title">
     <h2 id="selling-title">Selling and crushing</h2>
     <p>
-      Gear you don't need can be <strong>sold for Gold</strong> or <strong>crushed for Memorium</strong>, which then pays for
-      upgrading your best pieces.
+      Spare gear can be <strong>sold for Gold</strong> or <strong>crushed for Memorium</strong> to fund your best pieces.
     </p>
     {salvage ? (
       <div class="table-wrap">
