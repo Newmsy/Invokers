@@ -27,13 +27,10 @@ const seeAlso = [
   { path: 'events', label: 'Events energy planner' },
 ];
 
-// Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
-const stageRanges: { from: number; to: number; energy: number }[] = [];
-for (const s of [...boss.stages].sort((a, b) => a.stage - b.stage)) {
-  const last = stageRanges[stageRanges.length - 1];
-  if (last && last.energy === s.energy && last.to === s.stage - 1) last.to = s.stage;
-  else stageRanges.push({ from: s.stage, to: s.stage, energy: s.energy });
-}
+const stages = [...boss.stages].sort((a, b) => a.stage - b.stage);
+const num = (v: number | undefined) => (v == null ? '–' : v.toLocaleString('en-GB'));
+const signed = (v: number | undefined) => (v == null ? '–' : v > 0 ? `+${v}%` : v < 0 ? `−${-v}%` : '0%');
+const hasSkillLevel = stages.some((s) => s.skillLevel != null);
 
 // The tolerance help texts end with "Useful against: …"; on a boss page only the effect matters.
 // A boss's own Do list sometimes names a tolerance its corruption list leaves out (Koltmos: Bloodrot),
@@ -179,15 +176,47 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   )}
 
   <section aria-labelledby="stage-title">
-    <h2 id="stage-title">Energy per stage</h2>
-    <ul class="stages">
-      {stageRanges.map((r) => (
-        <li>
-          <span class="stage">{r.from === r.to ? `Stage ${r.from}` : `Stages ${r.from}–${r.to}`}</span>
-          <span class="energy">{energyIcon && <img src={energyIcon} alt="" width="20" height="20" />}{r.energy} energy</span>
-        </li>
-      ))}
-    </ul>
+    <h2 id="stage-title">Stages</h2>
+    <p class="hint">
+      The boss's level, element and base stats on each stage, the enemy team's Accuracy and Resistance, and the
+      bonus (+) or penalty (−) the stage gives your Invokers' Tolerances.
+    </p>
+    <div class="table-wrap">
+      <table class="stage-table">
+        <thead>
+          <tr>
+            <th scope="col">Stage</th>
+            <th scope="col">Energy</th>
+            <th scope="col">Level</th>
+            <th scope="col">Element</th>
+            <th scope="col">HP</th>
+            <th scope="col">ATK</th>
+            <th scope="col">DEF</th>
+            {hasSkillLevel && <th scope="col">Skill level</th>}
+            <th scope="col">Enemy ACC</th>
+            <th scope="col">Enemy RES</th>
+            <th scope="col">Tolerance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stages.map((s) => (
+            <tr>
+              <th scope="row">{s.stage}</th>
+              <td><span class="energy">{energyIcon && <img src={energyIcon} alt="" width="16" height="16" />}{s.energy}</span></td>
+              <td>{num(s.level)}</td>
+              <td class="el">{s.element ? <span>{elementIcon(s.element) && <img src={elementIcon(s.element)} alt="" width="16" height="16" />}{s.element}</span> : '–'}</td>
+              <td>{num(s.hp)}</td>
+              <td>{num(s.atk)}</td>
+              <td>{num(s.def)}</td>
+              {hasSkillLevel && <td>{num(s.skillLevel)}</td>}
+              <td>{num(s.accuracy)}</td>
+              <td>{num(s.resistance)}</td>
+              <td class:list={['tol', { up: (s.toleranceBonus ?? 0) > 0, down: (s.toleranceBonus ?? 0) < 0 }]}>{signed(s.toleranceBonus)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <SeeAlso links={seeAlso} />
@@ -365,21 +394,19 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     .corr > li.corr-panel { order: 1; }
   }
 
-  .stages { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .stages li {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 14px;
-    border-radius: 10px;
-    background: var(--surface);
-    min-width: 120px;
-  }
-  .stage { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; display: inline-flex; align-items: center; gap: 6px; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .stage-table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .stage-table th, .stage-table td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  .stage-table thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  .stage-table th:first-child { text-align: left; }
+  .stage-table tbody th { color: var(--soft); font-weight: 600; position: sticky; left: 0; background: var(--bg); }
+  .stage-table tbody tr:last-child > * { border-bottom: 0; }
+  .stage-table .energy, .stage-table .el span { display: inline-flex; align-items: center; gap: 6px; }
+  .stage-table .tol.up { color: #7be0a0; }
+  .stage-table .tol.down { color: #ff8a65; }
 
   @media (max-width: 720px) {
     h1 { font-size: 28px; }
     .advice { grid-template-columns: 1fr; }
-    .stages li { flex: 1 1 140px; }
   }
 </style>
