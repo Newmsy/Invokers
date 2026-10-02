@@ -8,20 +8,26 @@ import {
   MAX_AWAKENING,
   MAX_STARS,
   ascensionSteps,
+  ascensionTable,
   awakeningMaterials,
   awakeningTiers,
   baseStars,
   echoFor,
   levelCap,
+  maxLevel,
   plainItemName,
+  xpToLevel,
 } from '../lib/progression';
 
 // One row per rarity: where it starts and the Echoes it uses on the way to 6★.
 const byRarity = [...rarityOrder].reverse().map((rarity) => {
   const hero = heroes.find((h) => h.rarity === rarity)!;
   const stars = baseStars(hero);
-  return { rarity, stars, steps: ascensionSteps(stars) };
+  const steps = ascensionSteps(stars, rarity);
+  return { rarity, stars, steps, gold: steps.reduce((sum, s) => sum + (s.gold ?? 0), 0) };
 });
+const n = (v: number) => v.toLocaleString('en-GB');
+const rarities = [...rarityOrder].reverse();
 
 // Tier words ("Ancient", "Raw", "Novice", …) are the first word of each item's name.
 const sample = awakeningMaterials(heroes[0]);
@@ -48,6 +54,7 @@ const list = [...heroes]
     name: h.name,
     rarity: h.rarity,
     stars: baseStars(h),
+    steps: ascensionSteps(baseStars(h), h.rarity).map((s) => [s.count ?? 0, s.gold ?? 0]),
     tiers: awakeningMaterials(h).map((m) => [use(m.rune), use(m.essence), use(m.astral), use(m.crest)]),
   }));
 
@@ -77,7 +84,7 @@ const icon = (id: string) => itemIcon(id);
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th scope="col">Rarity</th><th scope="col">Starts at</th><th scope="col">Ascensions</th><th scope="col">Echoes used</th><th scope="col">Level cap</th></tr>
+          <tr><th scope="col">Rarity</th><th scope="col">Starts at</th><th scope="col">Ascensions</th><th scope="col">Echoes used</th><th scope="col">Gold</th><th scope="col">Level cap</th></tr>
         </thead>
         <tbody>
           {byRarity.map((r) => (
@@ -87,16 +94,44 @@ const icon = (id: string) => itemIcon(id);
               <td>{r.steps.length}</td>
               <td class="items">
                 {r.steps.map((s) => (
-                  <span class="item">{icon(s.echo) && <img src={icon(s.echo)} alt="" width="22" height="22" loading="lazy" />}{plainItemName(s.echo)}</span>
+                  <span class="item">{s.count ? `${s.count}× ` : ''}{icon(s.echo) && <img src={icon(s.echo)} alt="" width="22" height="22" loading="lazy" />}{plainItemName(s.echo)}</span>
                 ))}
               </td>
+              <td class="num">{r.gold ? n(r.gold) : '–'}</td>
               <td>{levelCap(r.stars)} → {levelCap(MAX_STARS)}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="gap">How many Echoes and how much Gold each ascension takes isn't on the site yet.</p>
+    <h3>Each ascension</h3>
+    <p>
+      The Invoker must be at its level cap first. The game takes the Echoes shown, or Invokers in their place. Gold
+      depends on the Invoker's rarity.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Step</th>
+            <th scope="col">Level needed</th>
+            <th scope="col">Echoes</th>
+            {rarities.map((r) => <th scope="col" class="num" style={`color: ${rarityColor[r]}`}>{r} Gold</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {ascensionTable.map((row) => (
+            <tr>
+              <th scope="row">{row.from}★ → {row.to}★</th>
+              <td>{row.levelRequired}</td>
+              <td class="items"><span class="item">{row.count}× {icon(echoFor(row.from)) && <img src={icon(echoFor(row.from))} alt="" width="22" height="22" loading="lazy" />}{plainItemName(echoFor(row.from))}</span></td>
+              {rarities.map((r) => <td class="num">{row.gold[r] != null ? n(row.gold[r]) : '–'}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>Levelling itself costs no Gold. Level 1 to {maxLevel} takes {n(xpToLevel(maxLevel))} XP in total.</p>
     <p class="aside">
       Stars mostly matter for the levels they unlock: see the blog post <a href={href('blog/levels-not-stars')}>Levels, not stars</a>.
     </p>
@@ -184,7 +219,7 @@ const icon = (id: string) => itemIcon(id);
 <script>
   interface Data {
     items: Record<string, [string, string | null]>;
-    list: { name: string; rarity: string; stars: number; tiers: string[][] }[];
+    list: { name: string; rarity: string; stars: number; steps: [number, number][]; tiers: string[][] }[];
     max: number;
   }
   const data: Data = JSON.parse(document.getElementById('asc-data')!.textContent!);
@@ -212,8 +247,14 @@ const icon = (id: string) => itemIcon(id);
     if (h.stars >= data.max) asc.append(el('p', '', `Already ${data.max}★.`));
     else {
       const p = el('p', 'chips');
-      for (let s = h.stars; s < data.max; s++) p.append(chip(`ASC_Stars${s}`));
-      asc.append(el('p', 'muted', `${h.stars}★ to ${data.max}★: ${data.max - h.stars} ascension${data.max - h.stars > 1 ? 's' : ''}.`), p);
+      h.steps.forEach(([count, ], i) => {
+        const c = chip(`ASC_Stars${h.stars + i}`);
+        if (count) c.prepend(`${count}× `);
+        p.append(c);
+      });
+      const gold = h.steps.reduce((sum, [, g]) => sum + g, 0);
+      const goldText = gold ? ` and ${gold.toLocaleString('en-GB')} Gold` : '';
+      asc.append(el('p', 'muted', `${h.stars}★ to ${data.max}★: ${data.max - h.stars} ascension${data.max - h.stars > 1 ? 's' : ''}${goldText}.`), p);
     }
     const awk = el('div', 'block');
     awk.append(el('h3', '', 'Awakening'));
@@ -260,6 +301,8 @@ const icon = (id: string) => itemIcon(id);
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 4px; }
   tbody th { color: var(--soft); font-weight: 500; white-space: nowrap; }
   tbody tr:last-child > * { border-bottom: 0; }
   :global(.item) { display: inline-flex; align-items: center; gap: 6px; margin: 2px 12px 2px 0; white-space: nowrap; }
