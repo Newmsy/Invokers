@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import { bossLabel, bosses, bossSlug, corruptionNames, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
@@ -10,6 +11,14 @@ export function getStaticPaths() {
 
 const { boss } = Astro.props as { boss: Boss };
 const hasTiers = tierLists.some((l) => l.id === bossSlug(boss));
+
+// Gear sets for this boss's corruptions, then the pages that plan a run at it.
+const setAnchor = (c: string) => `gear#set-${c.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-tolerance`;
+const seeAlso = [
+  ...boss.corruptions.map((c) => ({ path: setAnchor(c), label: `${c} Tolerance set` })),
+  { path: 'blog/boss-corruptions-and-tolerance-sets', label: 'Which Tolerance set to build first' },
+  { path: 'events', label: 'Events energy planner' },
+];
 
 // Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
 const stageRanges: { from: number; to: number; energy: number }[] = [];
@@ -109,6 +118,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     </ul>
   </section>
 
+  <SeeAlso links={seeAlso} />
 </Base>
 
 <style>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, heroes, href } from '../lib/data';
 import { itemIcon } from '../lib/art';
 import { rarityColor, rarityOrder } from '../lib/format';
@@ -170,9 +171,12 @@ const icon = (id: string) => itemIcon(id);
     <p class="gap">Drop rates for these materials aren't on the site yet.</p>
   </section>
 
-  <p class="more">
-    Levelling skills too? See <a href={href('skill-costs')}>Skill upgrade costs</a>. Gear: <a href={href('gear-upgrades')}>Gear upgrades and Memorium</a>.
-  </p>
+  <SeeAlso links={[
+    { path: 'planner', label: 'Planner' },
+    { path: 'skill-costs', label: 'Skill upgrade costs' },
+    { path: 'gear-upgrades', label: 'Gear upgrades and Memorium' },
+    { path: 'heroes/compare', label: 'Compare Invokers' },
+  ]} />
 
   <script type="application/json" id="asc-data" set:html={JSON.stringify({ items, list, max: MAX_STARS }).replace(/</g, '\\u003c')} />
 </Base>
@@ -238,8 +242,7 @@ const icon = (id: string) => itemIcon(id);
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
   .gap { padding: 12px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
-  .aside, .more { color: var(--soft); }
-  .more { margin-top: 40px; }
+  .aside { color: var(--soft); }
   .card { margin-top: 40px; padding: 4px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
   .card h2 { margin-top: 16px; }
   .pick { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); max-width: 360px; }

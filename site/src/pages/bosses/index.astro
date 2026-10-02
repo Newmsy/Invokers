@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
 
@@ -37,6 +38,12 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
       </ul>
     </section>
   ))}
+  <SeeAlso links={[
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'gear#tolerance', label: 'Tolerance gear sets' },
+    { path: 'blog/boss-corruptions-and-tolerance-sets', label: 'Which Tolerance set to build first' },
+    { path: 'events', label: 'Events' },
+  ]} />
 </Base>
 
 <style>

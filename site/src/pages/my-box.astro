@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import { heroRefsWithArt } from '../lib/art';
 import { gearStatLabels, href, pack, setNames } from '../lib/data';
 import { BOX_FILES } from '../lib/box/decode';
@@ -94,6 +95,12 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
   </div>
 
   <script id="box-refs" type="application/json" set:html={JSON.stringify(refs)} />
+  <SeeAlso links={[
+    { path: 'planner', label: 'Planner' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'gear', label: 'Gear sets' },
+    { path: 'tiers', label: 'Tier lists' },
+  ]} />
 </Base>
 
 <script>

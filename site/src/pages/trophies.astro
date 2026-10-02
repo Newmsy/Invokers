@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { itemName, trophyRoom, type StatBonus } from '../lib/data';
+import SeeAlso from '../components/SeeAlso.astro';
+import { href, itemName, trophyRoom, type StatBonus } from '../lib/data';
 
 const { trophies, rooms } = trophyRoom;
 const maxLevel = Math.max(...trophies.map((t) => t.maxLevel));
@@ -37,7 +38,7 @@ const plannerData = {
 <Base title="Trophy Room">
   <h1>Trophy Room</h1>
   <p class="lead">
-    One room per element ({rooms.join(', ')}). Its trophies boost every Invoker of that element in every battle. Pay with
+    One room per element ({rooms.map((r, i) => <>{i > 0 && ', '}<a href={href(`heroes?element=${r}`)}>{r}</a></>)}). Its trophies boost every Invoker of that element in every battle. Pay with
     Bronze, Silver and Gold Trophies from the matching arena league.
   </p>
 
@@ -128,6 +129,10 @@ const plannerData = {
 
 
   <script type="application/json" id="trophy-data" set:html={JSON.stringify(plannerData).replace(/</g, '\\u003c')} />
+  <SeeAlso links={[
+    { path: 'tiers/invokers/arena', label: 'Arena tier list' },
+    { path: 'events#arena-title', label: 'Arena Rush calculator' },
+  ]} />
 </Base>
 
 <script>

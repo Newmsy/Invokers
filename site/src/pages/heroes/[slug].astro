@@ -16,6 +16,7 @@ import {
   tierColor,
 } from '../../lib/format';
 import { heroTiers, tierNames } from '../../lib/tierData';
+import { legendaryPool, summons } from '../../lib/summons';
 
 export function getStaticPaths() {
   return heroes.map((hero) => ({ params: { slug: heroSlug(hero.id) }, props: { hero } }));
@@ -43,6 +44,9 @@ const tiers = heroTiers(hero.id).sort((a, b) => tierNames.indexOf(a.tier) - tier
 // The Compare link appears once the compare page (built in another thread) exists.
 const hasCompare = Object.keys(import.meta.glob('./compare.astro')).length > 0;
 
+// Summon items whose Legendary pool includes this Invoker.
+const summonedBy = summons.items.filter((i) => legendaryPool(i).some((h) => h.id === hero.id)).map((i) => i.name);
+
 // Plain-text preview of a skill for the overview list.
 const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 ---
@@ -63,9 +67,9 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <TierBadge heroId={hero.id} size="lg" />
       </div>
       <ul class="tags">
-        <li>{elementIcon(hero.element) && <img src={elementIcon(hero.element)} alt="" width="18" height="18" />}{hero.element}</li>
-        <li>{hero.faction}</li>
-        <li>{classIcon(String(hero.class)) && <img src={classIcon(String(hero.class))} alt="" width="18" height="18" />}{className(hero.class)}</li>
+        <li><a href={href(`heroes?element=${encodeURIComponent(hero.element)}`)} title={`All ${hero.element} Invokers`}>{elementIcon(hero.element) && <img src={elementIcon(hero.element)} alt="" width="18" height="18" />}{hero.element}</a></li>
+        <li><a href={href(`heroes?faction=${encodeURIComponent(hero.faction)}`)} title={`All ${hero.faction} Invokers`}>{hero.faction}</a></li>
+        <li><a href={href(`heroes?class=${encodeURIComponent(String(hero.class))}`)} title={`All ${className(hero.class)} Invokers`}>{classIcon(String(hero.class)) && <img src={classIcon(String(hero.class))} alt="" width="18" height="18" />}{className(hero.class)}</a></li>
         <li>Starts at {rankNumber(hero.baseRank)}★</li>
       </ul>
       {hasCompare && (
@@ -74,6 +78,11 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
           Compare
         </a>
       )}
+      <a class="compare" href={href(`team?h=${heroSlug(hero.id)}`)}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 010 6M18 15c2 .5 3 2.5 3 5"></path></svg>
+        Build a team
+      </a>
+      {summonedBy.length > 0 && <p class="summon">Legendary from <a href={href('summons#pools-title')}>{summonedBy.map((n) => `${n}s`).join(' and ')}</a></p>}
       {rating?.note && <p class="note">{rating.note}</p>}
       <p id="owned" class="owned" data-config-id={configId} data-box-href={href('my-box')} hidden></p>
     </div>
@@ -87,7 +96,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="overview" class="panel" role="tabpanel" aria-labelledby="tab-overview">
     <h2>Max stats</h2>
-    <p class="hint">Rank 6, level 60, without gear or awakening.</p>
+    <p class="hint">Rank 6, level 60, without gear or awakening. <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
     <div class="stat-grid">
       {keyStats.map((f) => (
         <div class="stat">
@@ -167,7 +176,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
     <h2>Stats by rank and level</h2>
-    <p class="hint">Base stats without gear or awakening.</p>
+    <p class="hint">Base stats without gear or awakening. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levels-not-stars')}>Why levels matter more than stars</a></p>
     <div class="rank-picker" role="group" aria-label="Rank">
       {ranks.map((r) => (
         <button type="button" class="chip" data-rank={r} aria-pressed={r === topRank ? 'true' : 'false'}>{rankNumber(r)}★</button>
@@ -331,6 +340,10 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     gap: 6px;
   }
   .tags img { display: block; }
+  .tags a { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
+  .tags li:has(a:hover) { border-color: var(--accent); }
+  .summon { margin: 12px 0 0; color: var(--soft); font-size: 14px; }
+  .compare + .compare { margin-left: 8px; }
   .note { color: var(--soft); margin: 16px 0 0; max-width: 60ch; }
 
   .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
