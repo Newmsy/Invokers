@@ -2,6 +2,7 @@
 // Phone menu: every section, including the ones not in the bottom bar.
 import Base from '../layouts/Base.astro';
 import NavIcon from '../components/NavIcon.astro';
+import SectionArt from '../components/SectionArt.astro';
 import SearchForm from '../components/SearchForm.astro';
 import { href } from '../lib/data';
 import { nav } from '../lib/nav';
@@ -13,7 +14,7 @@ import { nav } from '../lib/nav';
     {nav.map((n) => (
       <li>
         <a href={href(n.path)}>
-          <NavIcon icon={n.icon} />
+          {n.art ? <SectionArt art={n.art} size={36} /> : <NavIcon icon={n.icon} />}
           <span>{n.label}</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
         </a>

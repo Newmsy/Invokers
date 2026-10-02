@@ -1,6 +1,6 @@
 ---
 // A row of game art for a post header or blog card, from "kind:Name" references (see lib/markdown-art).
-import { artRefPath } from '../lib/markdown-art';
+import { artRef } from '../lib/markdown-art';
 import { href } from '../lib/data';
 
 interface Props {
@@ -9,11 +9,8 @@ interface Props {
 }
 const { refs, size = 'large' } = Astro.props;
 const images = refs.map((r) => {
-  const [kind, ...rest] = r.split(':');
-  const name = rest.join(':');
-  const path = artRefPath(kind, name);
-  if (!path) throw new Error(`No ${kind} art for "${name}"`);
-  return { src: href(path), name, portrait: kind === 'hero' || kind === 'titan' };
+  const a = artRef(r);
+  return { src: href(a.path), name: a.name, portrait: a.portrait };
 });
 ---
 {images.length > 0 && (

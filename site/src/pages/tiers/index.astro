@@ -2,8 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { href } from '../../lib/data';
-import { pools, tierLists, tiersDraft } from '../../lib/tierData';
+import { pools, tierLists, tierRows, tiersDraft, type PoolKind } from '../../lib/tierData';
 
+// The first two S-tier picks of a list, as small portraits on its link.
+const topArt = (kind: PoolKind, list: (typeof tierLists)[number]) =>
+  (tierRows(kind, list)[0]?.picks ?? []).filter((p) => p.art).slice(0, 2);
 const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: g, lists: tierLists.filter((l) => l.group === g) }));
 ---
 <Base title="Tier lists">
@@ -18,7 +21,14 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
         <div class="group">
           <h3>{g.group}</h3>
           <ul class="links">
-            {g.lists.map((l) => <li><a href={href(`tiers/${p.kind}/${l.id}`)}>{l.label}</a></li>)}
+            {g.lists.map((l) => (
+              <li>
+                <a href={href(`tiers/${p.kind}/${l.id}`)}>
+                  <span class="faces" aria-hidden="true">{topArt(p.kind, l).map((t) => <img src={t.art} alt="" width="28" height="28" loading="lazy" />)}</span>
+                  {l.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       ))}
@@ -58,6 +68,11 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
     font-weight: 600;
     font-size: 14px;
   }
+  .links a:has(.faces img) { padding-left: 6px; gap: 8px; }
+  .faces { display: inline-flex; }
+  .faces img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: top center; border: 2px solid var(--surface); }
+  .faces img + img { margin-left: -8px; }
+  .faces:empty { display: none; }
   .links a:hover { border-color: var(--accent); color: var(--text); }
   @media (max-width: 720px) { h1 { font-size: 22px; } }
 </style>

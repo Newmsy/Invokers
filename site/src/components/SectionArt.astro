@@ -1,0 +1,35 @@
+---
+// A section's picture (lib/nav `art`): a portrait cropped to the face, or an item or icon on a tile.
+import { artRef } from '../lib/markdown-art';
+import { href } from '../lib/data';
+
+interface Props {
+  art?: string;
+  size?: number;
+  class?: string;
+}
+const { art, size = 40, class: cls } = Astro.props;
+const a = art ? artRef(art) : undefined;
+---
+{a && (
+  <span class:list={['section-art', { portrait: a.portrait }, cls]} style={`--size: ${size}px`} aria-hidden="true">
+    <img src={href(a.path)} alt="" width={size} height={size} loading="lazy" />
+  </span>
+)}
+
+<style>
+  .section-art {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: var(--size);
+    height: var(--size);
+    border-radius: calc(var(--size) / 4);
+    background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--accent) 22%, var(--surface-2)), var(--surface));
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .section-art img { width: 78%; height: 78%; object-fit: contain; }
+  .section-art.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+</style>
