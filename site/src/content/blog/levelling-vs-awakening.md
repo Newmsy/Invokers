@@ -9,9 +9,10 @@ tags: [invokers, stats, levelling, awakening]
 
 **Levelling to 6★ level 60 multiplies HP, ATK and DEF by about 10. Full Awakening then roughly quadruples ATK and more than doubles HP.**
 
-- Stars set the level cap, 10 levels per star. You can't pass level 50 without 6★, and 6★ needs level 50 first, so ascending and levelling are one road.
-- At 6★ level 60, Awakening is all that's left, and its first level alone (+41% ATK) is worth as much as the last star and ten levels (+40%).
-- Awakening bonuses are the same at every rarity; only the cost goes up.
+- Ascending raises stars and needs level = stars × 10, up to level 60 at 6★. Levelling and ascending are one road.
+- Awakening comes in six levels, and each needs that many stars: the 6th needs 6★.
+- Its first level alone (+41% ATK) is worth as much as the last star and ten levels (+40%).
+- Awakening also unlocks accessory slots, and its bonuses are the same at every rarity; only the cost goes up.
 
 Examples: ![Almea](hero:) (Epic, Melee) and ![Duchess Kanraku](hero:) (Legendary, Ranged). Costs: [Ascension and Awakening](/ascension).
 
@@ -32,7 +33,7 @@ Start is level 1 at the starting star. Crit, speed and the other stats don't cha
 
 ## Awakening: level 60, none vs full
 
-Both at 6★ level 60. Full Awakening is all six levels with every node.
+Both at 6★ level 60. Full Awakening is all six levels with every node, before any accessories it unlocks.
 
 | | ![Almea](hero:) | Awakened | ![Duchess Kanraku](hero:) | Awakened |
 |---|---|---|---|---|
