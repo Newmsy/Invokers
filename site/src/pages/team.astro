@@ -8,7 +8,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
 ---
 <Base title="Team builder">
   <h1>Team builder</h1>
-  <p class="lead">Pick {TEAM_SIZE} Invokers to see the team's elements, factions, classes and speed stats.</p>
+  <p class="lead">Pick {TEAM_SIZE} Invokers to see the team's elements, factions and classes.</p>
 
   <div id="app" data-base={href('/')} data-version={pack.gameVersion}>
     <div class="pick-row">
@@ -46,12 +46,10 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       <div class="mix" id="mix"></div>
       <ul class="notes" id="notes"></ul>
 
-      <h2>Speed stats</h2>
-      <p class="hint">Rank 6, level 60, without gear or awakening.</p>
-      <div class="table-wrap"><table id="speed"></table></div>
+      <h2>Team stats</h2>
+      <p class="hint">Rank 6, level 60, without gear or awakening. The best value in each column is highlighted.</p>
+      <div class="table-wrap"><table id="team-stats"></table></div>
 
-      <h2>Combo timings and speed thresholds</h2>
-      <p class="hint">Coming soon: combo chain timings for each Invoker and the speed each team member needs to keep up.</p>
     </section>
 
     <section id="saved-wrap" hidden>
@@ -65,10 +63,10 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
 <script>
   import { attachPicker } from '../lib/picker';
   import { avatar } from '../lib/avatar';
-  import { formatStat, statFields } from '../lib/format';
   import { loadBox } from '../lib/box/store';
-  import { TEAM_SIZE, isTeamDoc, maxRow, parseSlugs, speedKeys, statIndex, summarise, toTeamDoc, type TeamDoc } from '../lib/team';
+  import { TEAM_SIZE, isTeamDoc, parseSlugs, summarise, teamStats, toTeamDoc, type TeamDoc } from '../lib/team';
   import type { RosterHero } from '../lib/roster';
+  import { formatStat, statFields } from '../lib/format';
   import { accountsEnabled } from '../lib/account/config';
   import { getAccountState, onAccountChange } from '../lib/account/state';
 
@@ -194,34 +192,33 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
     );
     document.getElementById('notes')!.replaceChildren(...notes.map((n) => el('li', n)));
 
-    const fields = speedKeys.map((k) => statFields.find((f) => f.key === k)!);
-    const table = document.getElementById('speed') as HTMLTableElement;
+    // One column per stat, all treated alike. Instinct is the same for every Invoker, so it is left out.
+    const cols = statFields.map((f, i) => ({ f, i })).filter(({ f }) => f.key !== 'instinct');
+    const t = teamStats(list);
     const head = el('thead');
     const hr = el('tr');
-    hr.append(el('th', 'Invoker'), ...fields.map((f) => el('th', f.short)));
+    hr.append(el('th', 'Invoker'), ...cols.map(({ f }) => el('th', f.short)));
     head.append(hr);
     const body = el('tbody');
-    for (const h of list) {
-      const row = maxRow(h);
+    list.forEach((h, r) => {
       const tr = el('tr');
       const th = el('th');
       th.scope = 'row';
-      const a = el('a', undefined, 'with-avatar');
-      a.append(avatar(h.art, 28), h.name);
+      const a = el('a', h.name);
       a.href = `${base}/heroes/${h.slug}`;
       th.append(a);
-      tr.append(th, ...speedKeys.map((k) => {
-        const v = row[statIndex[k]];
-        const td = el('td', formatStat(v));
-        if (list.length > 1 && v === s.speed[k].min && v !== s.speed[k].max) td.className = 'low';
+      tr.append(th, ...cols.map(({ f, i }) => {
+        const v = t.rows[r][i];
+        const td = el('td', formatStat(v, f.percent));
+        if (list.length > 1 && v === t.best[i] && t.rows.some((row) => row[i] !== v)) td.className = 'best';
         return td;
       }));
       body.append(tr);
-    }
-    const total = el('tr', undefined, 'total');
-    total.append(el('th', 'Team total'), ...speedKeys.map((k) => el('td', formatStat(s.speed[k].total))));
-    body.append(total);
-    table.replaceChildren(head, body);
+    });
+    const avg = el('tr', undefined, 'total');
+    avg.append(el('th', 'Team average'), ...cols.map(({ f, i }) => el('td', formatStat(t.average[i], f.percent))));
+    body.append(avg);
+    (document.getElementById('team-stats') as HTMLTableElement).replaceChildren(head, body);
   }
 
   function renderSaved() {
@@ -419,8 +416,9 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
   table :global(th), table :global(td) { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
   table :global(thead th) { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   table :global(thead th:first-child), table :global(tbody th) { text-align: left; }
+  table :global(tbody th) { position: sticky; left: 0; background: var(--bg); }
   table :global(tbody th a) { color: var(--text); }
-  table :global(td.low) { color: #ff8a65; }
+  table :global(td.best) { color: var(--accent); font-weight: 700; }
   table :global(tr.total > *) { font-weight: 700; border-bottom: 0; background: var(--surface-3); }
   .saved { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .saved :global(li) { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
