@@ -1,5 +1,5 @@
 {
-  "draft": true,
+  "draft": false,
   "invokers": {
     "campaign": {
       "S": ["sanctus-the-valiant", "kingpin-tatsulow", "kryxa-the-giantfeller", "virtus-the-heavensent", "akrila-the-oathpainter", "valentu-the-devoted", "tassia-the-lost", "kollodon-the-summit", "skoloss-the-tomb-baron", "ravizia", "kosmi-the-voidsmith", "lightwind-iristeia", "moros", "duchess-kanraku", "shredripper-matescu", "mistress-dusca", "admiral-gladstone", "gondo-the-watchman"],
