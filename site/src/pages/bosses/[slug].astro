@@ -31,6 +31,13 @@ const tolerances = [...boss.corruptions, ...named].map((c) => {
   return { corruption: c, name: stat?.name ?? `${c} Tolerance`, text };
 });
 
+// Long briefings (some run to hundreds of words) show their first paragraph up top; the rest folds away
+// below the Do and Don't lists.
+const paragraphs = (boss.description ?? '').split(/(?:<br\s*\/?>\s*){2,}/).filter((p) => p.trim());
+const longBriefing = (boss.description ?? '').split(/\s+/).length > 80 && paragraphs.length > 1;
+const intro = longBriefing ? paragraphs[0] : boss.description;
+const rest = longBriefing ? paragraphs.slice(1) : [];
+
 ---
 <Base title={bossLabel(boss)}>
   <a class="back" href={href('bosses')}>
@@ -41,7 +48,7 @@ const tolerances = [...boss.corruptions, ...named].map((c) => {
   <header class="head">
     {boss.title && <span class="title">{boss.title}</span>}
     <h1>{bossLabel(boss)}</h1>
-    {boss.description && <p class="desc" set:html={richText(boss.description)} />}
+    {intro && <p class="desc" set:html={richText(intro)} />}
   </header>
 
   <div class="advice">
@@ -60,6 +67,13 @@ const tolerances = [...boss.corruptions, ...named].map((c) => {
       <ul>{boss.donts.map((d) => <li set:html={richText(d)} />)}</ul>
     </section>
   </div>
+
+  {rest.length > 0 && (
+    <details class="briefing">
+      <summary>Full boss briefing</summary>
+      {rest.map((p) => <p set:html={richText(p)} />)}
+    </details>
+  )}
 
   {tolerances.length > 0 && (
     <section aria-labelledby="corr-title">
@@ -111,6 +125,16 @@ const tolerances = [...boss.corruptions, ...named].map((c) => {
   .dont h2 { color: #ff9a8a; }
   .advice ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
   .advice li { line-height: 1.5; }
+
+  .briefing {
+    margin-top: 16px;
+    padding: 4px 20px 12px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .briefing summary { cursor: pointer; color: var(--soft); min-height: 44px; display: flex; align-items: center; }
+  .briefing p { margin: 8px 0 0; color: var(--soft); max-width: 70ch; line-height: 1.6; }
 
   .corr { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
   .corr li {
