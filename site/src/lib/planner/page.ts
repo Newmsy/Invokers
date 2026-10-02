@@ -112,11 +112,13 @@ export function start(): void {
   function renderSummary(): void {
     const list = plans.filter((p) => picked.has(p.hero.id));
     const t = totals(list);
+    const unpriced = list.filter((p) => !p.skillMax).length;
     $('s-count').textContent = `${t.heroes} invoker${t.heroes === 1 ? '' : 's'} in your plan`;
 
     $('s-skills').replaceChildren(
-      h('p', { class: 'big' }, t.skillsToGo ? `${fmt(t.skillsToGo)} skill levels to go` : 'Every skill maxed'),
+      h('p', { class: 'big' }, t.skillsToGo ? `${fmt(t.skillsToGo)} skill levels to go` : unpriced ? 'No other skill levels to go' : 'Every skill maxed'),
       costList(t.skillCost),
+      ...(unpriced ? [h('p', { class: 'muted' }, `${fmt(unpriced)} invoker${unpriced === 1 ? ' has' : 's have'} no price list yet and ${unpriced === 1 ? "isn't" : "aren't"} counted.`)] : []),
     );
 
     const gearLines: (HTMLElement | null)[] = [
@@ -180,8 +182,11 @@ export function start(): void {
       'article',
       { class: `plan-card r-${p.ref?.rarity ?? 'Unknown'}${check.checked ? '' : ' off'}` },
       h('div', { class: 'head' }, check, h('div', { class: 'who' }, title, h('span', { class: 'sub' }, stars, ` Lv ${p.hero.level}`, p.hero.inStorage ? ' · storage' : ''))),
-      h('div', { class: 'line' }, h('span', {}, `Skills ${p.skillLevels}/${p.skillMax}`), bar),
-      h('p', { class: 'cost-line' }, costText(p.skillCost)),
+      // No priced skills (e.g. an invoker newer than the data pack): say so rather than "Nothing left".
+      p.skillMax
+        ? h('div', { class: 'line' }, h('span', {}, `Skills ${p.skillLevels}/${p.skillMax}`), bar)
+        : h('div', { class: 'line' }, h('span', {}, 'Skills')),
+      h('p', { class: 'cost-line' }, p.skillMax ? costText(p.skillCost) : 'No price list yet'),
       h('p', { class: 'sub' }, gearText),
       details,
     );
