@@ -6,11 +6,14 @@ gameVersion: "0.61.1514"
 tags: [gear, gold]
 ---
 
-Taking a 6★ Legendary piece of gear from +0 to +20 costs **2,334,830 gold** and **6,600 Memorium**. Where that gold goes is not spread evenly.
+Maxing a 6★ Legendary piece (+0 to +20) costs **2,334,830 gold** and **6,600 Memorium**, and most of it lands at the very end.
+
+- **+15 is the cheap stop.** It costs under 20% of the gold of +20. Push to +20 only on pieces you'll keep.
+- **Rarity is the bargain, stars are the cost.** A Legendary costs 46% more gold than a Common; a 6★ costs 39% more gold than a 5★ and almost twice the Memorium.
 
 ## The last five levels are the bill
 
-6★ gear, gold per bracket of five levels:
+6★ gear, gold per five levels:
 
 | Rarity | +0 → +5 | +5 → +10 | +10 → +15 | +15 → +20 | Total |
 |---|---|---|---|---|---|
@@ -21,13 +24,13 @@ Taking a 6★ Legendary piece of gear from +0 to +20 costs **2,334,830 gold** an
 | Legendary | 13,920 | 75,060 | 369,270 | 1,876,580 | 2,334,830 |
 | Greater | 19,210 | 103,590 | 509,590 | 2,589,670 | 3,222,060 |
 
-For every rarity, **about 80% of the gold** goes on +15 to +20. The single step from +19 to +20 on a 6★ Legendary is **605,350 gold**, more than a quarter of the whole cost. Getting a piece to +15 costs less than a fifth of the total.
+About **80% of the gold** goes on +15 to +20 for every rarity. The single step from +19 to +20 on a 6★ Legendary is **605,350 gold**, over a quarter of the total.
 
 ## Rarity barely changes the price
 
-A Legendary costs only **1.46 times** as much to max as a Common of the same stars, and Greater gear 1.38 times a Legendary. Memorium doesn't change with rarity at all: every 6★ piece needs the same 6,600, split 300 / 739 / 2,385 / 3,176 across the four brackets.
+A Legendary costs **1.46 times** a Common of the same stars to max, and Greater 1.38 times a Legendary. Memorium doesn't change with rarity: every 6★ piece needs 6,600, split 300 / 739 / 2,385 / 3,176 across the brackets.
 
-Since the price barely moves with rarity, while a Legendary starts with 4 substats against a Common's 0 (Uncommon 1, Rare 2, Epic 3), the gold is almost always better spent on the higher-rarity piece.
+A Legendary also starts with 4 substats against a Common's 0 (Uncommon 1, Rare 2, Epic 3), so gold is almost always better spent on the higher-rarity piece.
 
 ## Stars change it a lot
 
@@ -42,11 +45,6 @@ Legendary gear by star level:
 | 5★ | 10,010 | 53,940 | 265,400 | 1,348,790 | 1,678,140 | 3,520 |
 | 6★ | 13,920 | 75,060 | 369,270 | 1,876,580 | 2,334,830 | 6,600 |
 
-Memorium is the steeper climb: a 6★ piece takes 33 times the Memorium of a 1★, against 4.6 times the gold. If Memorium is your bottleneck, that's where it goes.
-
-## What to take from it
-
-- **+15 is the cheap stop.** It costs under 20% of the gold of +20. Push to +20 only on pieces you'll keep.
-- **Rarity is the bargain, stars are the cost.** Upgrading a Legendary instead of a Common costs 46% more gold; upgrading a 6★ instead of a 5★ costs 39% more gold and almost twice the Memorium.
+Memorium climbs faster: a 6★ takes 33 times the Memorium of a 1★, against 4.6 times the gold.
 
 *Numbers for game version 0.61.1514.*

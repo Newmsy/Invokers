@@ -6,9 +6,15 @@ gameVersion: "0.61.1516"
 tags: [gear, sets]
 ---
 
-The game has **31 gear sets**. Every one of them gives its bonus at 3 pieces, 5 pieces, or both; none has an 8-piece bonus. Here is what each set gives.
+There are **31 gear sets**, each with a bonus at 3 pieces, 5 pieces or both. None has an 8-piece bonus.
+
+- Tolerance sets give the best all-round 5-piece bonus, whichever corruption they're named for.
+- Vampire's skill lifesteal is 6%, not the 5% its description says.
+- Small rating sets are worth more than they look on Invokers with little of that stat.
 
 ## The stat sets
+
+Bonuses are totals: a full Attack set gives +20% ATK, not +30%.
 
 | Set | 3 pieces | 5 pieces |
 |---|---|---|
@@ -24,9 +30,7 @@ The game has **31 gear sets**. Every one of them gives its bonus at 3 pieces, 5 
 | Spark | +30 Skill SPD | +45 Skill SPD |
 | Fury | +30 Skill Recovery | +45 Skill Recovery |
 
-The bonuses as listed are cumulative totals: a full Attack set gives +20% ATK, not +30%.
-
-The rating sets (Instinct, Mana, Spark, Fury) look small next to the percentage sets, but the first points of a rating are the most valuable ones (see our post *Stats that stop working*). +45 Skill Speed on an Invoker with little of it is worth about +9% skill speed.
+The first points of a rating are worth the most (see *Stats that stop working*): +45 Skill Speed on an Invoker with little of it is about +9% skill speed.
 
 ## The combination sets
 
@@ -41,24 +45,17 @@ The rating sets (Instinct, Mana, Spark, Fury) look small next to the percentage 
 | Guardian | +20% HP | All allies get a shield worth 20% of the wearer's max HP for 12 seconds |
 | Spellwall | Willpower and Immunity buffs at the start of battle | +10% HP, ATK and DEF |
 
-**Vampire heals a little more than it says.** Its description says 5% of skill damage, but the set actually heals **6%**. The combo figure (1%) matches.
-
-Voodoo's description says each hit cuts a buff by up to 3 seconds. Guardian's 5-piece shield and Spellwall's 3-piece buffs are special effects rather than stat bonuses, so they work as their descriptions say rather than adding to your stat screen.
+- **Vampire** says 5% of skill damage but heals **6%**. The 1% combo figure matches.
+- **Voodoo** cuts a buff by up to 3 seconds per hit.
+- Guardian's shield and Spellwall's buffs are effects, so they don't show on your stat screen.
 
 ## The twelve Tolerance sets
 
-Each Tolerance set protects against one boss corruption effect (Crush, Manashock, Frost, Daze, Paralysis, Nightmare, Mindfog, Fatigue, Blight, Manaburn, Atrophy, Bloodrot):
+One per boss corruption: Crush, Manashock, Frost, Daze, Paralysis, Nightmare, Mindfog, Fatigue, Blight, Manaburn, Atrophy, Bloodrot.
 
-- **3 pieces:** +50% tolerance to that corruption, which shortens its duration by half.
-- **5 pieces:** **+20% HP, +20% ATK and +20% DEF**, the same for all twelve.
+- **3 pieces:** +50% tolerance to that corruption, halving its duration.
+- **5 pieces:** **+20% HP, +20% ATK and +20% DEF**, the same on all twelve.
 
-That 5-piece bonus is the biggest all-round bonus of any set. It's also the same on every Tolerance set, so for a boss without that corruption, any Tolerance set you've already built still gives the +20% to all three.
-
-## The short version
-
-- No set has an 8-piece bonus; 5 pieces is the most any set rewards.
-- Tolerance sets give the best all-round 5-piece bonus in the game, whichever corruption they're named for.
-- Vampire's skill lifesteal is 6%, not the 5% its description says.
-- Small rating sets are worth more than they look on Invokers with little of that stat.
+That 5-piece bonus is the biggest all-round bonus of any set, so any Tolerance set you've built still pays off against bosses without its corruption.
 
 *Numbers for game version 0.61.1516.*
