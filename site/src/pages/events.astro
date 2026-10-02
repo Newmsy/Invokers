@@ -2,8 +2,12 @@
 import Base from '../layouts/Base.astro';
 import { bosses, href } from '../lib/data';
 import guide from '../data/event-guide.json';
+import { itemIcon } from '../lib/art';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
+const energyIcon = itemIcon('Energy');
+const gemIcon = itemIcon('Gem');
+const arenaIcon = itemIcon('Arena_Token');
 
 // Energy per stage for each farming event, from the boss list (every boss of a kind costs the same).
 const farming = guide.events
@@ -46,7 +50,7 @@ const calc = {
   </section>
 
   <section class="card" aria-labelledby="farm-title">
-    <h2 id="farm-title">Energy to finish a farming event</h2>
+    <h2 id="farm-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Energy to finish a farming event</h2>
     <p class="hint">
       Pick the highest stage you clear comfortably (points per energy rises with stage). For points per run, use your
       average from the event screen.
@@ -65,7 +69,7 @@ const calc = {
   </section>
 
   <section class="card" aria-labelledby="plan-title">
-    <h2 id="plan-title">Energy plan</h2>
+    <h2 id="plan-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Energy plan</h2>
     <p class="hint">
       Add events, then set your energy income. Only the recharge ({recharge} a day, one every{' '}
       {guide.income.rechargeMinutes} minutes) and {guide.income.energyPerGem} energy per gem are fixed.
@@ -103,13 +107,13 @@ const calc = {
       <div><span class="label">You need</span><span class="value" id="s-need">–</span></div>
       <div><span class="label">You'll have</span><span class="value" id="s-have">–</span></div>
       <div><span class="label">Short by</span><span class="value" id="s-short">–</span></div>
-      <div><span class="label">Gems to cover it</span><span class="value" id="s-gems">–</span></div>
+      <div><span class="label">{gemIcon && <img class="l-icon" src={gemIcon} alt="" width="16" height="16" />}Gems to cover it</span><span class="value" id="s-gems">–</span></div>
     </div>
     <div class="plan-actions"><button type="button" class="chip" id="p-reset">Reset to example numbers</button></div>
   </section>
 
   <section class="card" aria-labelledby="arena-title">
-    <h2 id="arena-title">Arena Rush</h2>
+    <h2 id="arena-title">{arenaIcon && <img class="h-icon" src={arenaIcon} alt="" width="26" height="26" />}Arena Rush</h2>
     <p class="hint">
       Points per win and loss rise with league: 40 and 20 in Bronze 1, up to 150 and 70 in Gold 4.
     </p>
@@ -353,6 +357,8 @@ const calc = {
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+  .h-icon { vertical-align: -6px; margin-right: 8px; }
+  .l-icon { vertical-align: -3px; margin-right: 4px; }
   h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: var(--soft); }
   .lead, .text { color: var(--soft); max-width: 70ch; margin: 0; }
   .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; max-width: 80ch; }

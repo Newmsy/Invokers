@@ -3,6 +3,7 @@ title: "Which Tolerance set to build first"
 description: "Every boss's two corruptions in one table, which Tolerance sets cover the most bosses, and two places where the game's own text is wrong."
 date: 2026-10-01
 gameVersion: "0.61.1516"
+art: ["class:Tank", "class:Melee", "class:Ranged", "class:Support"]
 tags: [bosses, gear, sets]
 ---
 
@@ -23,13 +24,13 @@ Every boss has two corruptions, one damage and one control. A Tolerance set give
 | Galvos, the Construct | Crest boss | Daze, Atrophy |
 | Yskara, the Ice Queen | Crest boss | Frost, Fatigue |
 | Koltmos, the Doom Shaman | Crest boss | Manashock, Blight |
-| Omnissi (Astral) | Omnissi | Crush, Atrophy |
-| Omnissi (Fire) | Omnissi | Daze, Manaburn |
-| Omnissi (Dark) | Omnissi | Manashock, Manaburn |
-| Omnissi (Wind) | Omnissi | Nightmare, Fatigue |
-| Omnissi (Water) | Omnissi | Frost, Mindfog |
-| Omnissi (Earth) | Omnissi | Paralysis, Bloodrot |
-| Omnissi (Light) | Omnissi | Paralysis, Blight |
+| ![Omnissi (Astral)](element:astral) | Omnissi | Crush, Atrophy |
+| ![Omnissi (Fire)](element:fire) | Omnissi | Daze, Manaburn |
+| ![Omnissi (Dark)](element:dark) | Omnissi | Manashock, Manaburn |
+| ![Omnissi (Wind)](element:wind) | Omnissi | Nightmare, Fatigue |
+| ![Omnissi (Water)](element:water) | Omnissi | Frost, Mindfog |
+| ![Omnissi (Earth)](element:earth) | Omnissi | Paralysis, Bloodrot |
+| ![Omnissi (Light)](element:light) | Omnissi | Paralysis, Blight |
 
 ## How many bosses each set covers
 
@@ -56,8 +57,8 @@ From the game's own boss guides:
 
 - **Sakiel** takes 50% less damage from Bleed and Burn, and they lower its cooldowns. Invest in Accuracy to land debuffs and steal its buffs.
 - **Sorgott** hits through Tolerances and your max HP, so DEF won't save you. Mindworm doesn't stop its passive.
-- **Yskara** gives Melee Attackers +100% ATK; Ranged miss out. Koltmos is the opposite: bring Ranged for its Doomclaws.
+- **Yskara** gives ![Melee Attackers](class:melee) +100% ATK; ![Ranged](class:ranged) miss out. Koltmos is the opposite: bring Ranged for its Doomclaws.
 - **Ulgorim** and **Hyxxis** are immune to crowd control.
-- **Galvos** wants one Tank, not two: a single defender takes its attention and all your buffs.
+- **Galvos** wants one ![Tank](class:tank), not two: a single defender takes its attention and all your buffs.
 
 *Numbers for game version 0.61.1516.*

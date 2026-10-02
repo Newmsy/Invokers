@@ -3,13 +3,20 @@ import Base from '../../layouts/Base.astro';
 import { bossLabel, bosses, bossSlug, corruptionNames, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
+import { tierRows } from '../../lib/tierData';
+import { elementIcon, itemIcon } from '../../lib/art';
 
 export function getStaticPaths() {
   return bosses.map((boss) => ({ params: { slug: bossSlug(boss) }, props: { boss } }));
 }
 
 const { boss } = Astro.props as { boss: Boss };
-const hasTiers = tierLists.some((l) => l.id === bossSlug(boss));
+const tierList = tierLists.find((l) => l.id === bossSlug(boss));
+const hasTiers = !!tierList;
+// The S tier's Invokers, as portraits under the header.
+const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
+const elIcon = boss.element ? elementIcon(boss.element) : undefined;
+const energyIcon = itemIcon('Energy');
 
 // Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
 const stageRanges: { from: number; to: number; energy: number }[] = [];
@@ -49,12 +56,19 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
 
   <header class="head">
     {boss.title && <span class="title">{boss.title}</span>}
-    <h1>{bossLabel(boss)}</h1>
+    <h1>{elIcon && <img class="el" src={elIcon} alt={boss.element} width="32" height="32" />}{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
     {hasTiers && (
       <p class="tiers">
         Best picks: <a href={href(`tiers/invokers/${bossSlug(boss)}`)}>Invokers</a> · <a href={href(`tiers/titans/${bossSlug(boss)}`)}>Titans</a>
       </p>
+    )}
+    {topPicks.length > 0 && (
+      <ul class="picks" aria-label="Top tier Invokers">
+        {topPicks.map((p) => (
+          <li><a href={p.href} title={p.name}><img src={p.art} alt={p.name} width="56" height="56" loading="lazy" /></a></li>
+        ))}
+      </ul>
     )}
   </header>
 
@@ -103,7 +117,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
       {stageRanges.map((r) => (
         <li>
           <span class="stage">{r.from === r.to ? `Stage ${r.from}` : `Stages ${r.from}–${r.to}`}</span>
-          <span class="energy">{r.energy} energy</span>
+          <span class="energy">{energyIcon && <img src={energyIcon} alt="" width="20" height="20" />}{r.energy} energy</span>
         </li>
       ))}
     </ul>
@@ -115,6 +129,11 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .tiers { margin: 10px 0 0; color: var(--soft); font-weight: 500; }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
+  h1 .el { vertical-align: -4px; margin-right: 10px; }
+  .picks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .picks a { display: block; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .picks a:hover { border-color: var(--accent); }
+  .picks img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
   .title { color: var(--accent); font-weight: 600; font-size: 14px; }
   h1 { margin: 4px 0 12px; font-size: 40px; font-weight: 700; }
   .desc { color: var(--soft); max-width: 70ch; margin: 0; line-height: 1.6; }
@@ -166,7 +185,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     min-width: 120px;
   }
   .stage { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; display: inline-flex; align-items: center; gap: 6px; }
 
   @media (max-width: 720px) {
     h1 { font-size: 28px; }

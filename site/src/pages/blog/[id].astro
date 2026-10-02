@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ArtStrip from '../../components/ArtStrip.astro';
 import { pack, href } from '../../lib/data';
 
 export async function getStaticPaths() {
@@ -16,6 +17,7 @@ const older = post.data.gameVersion !== pack.gameVersion;
 <Base title={post.data.title}>
   <article>
     <a class="back" href={href('blog')}>← Blog</a>
+    <div class="cover"><ArtStrip refs={post.data.art} /></div>
     <h1>{post.data.title}</h1>
     <p class="meta">
       {date} · written for game version {post.data.gameVersion}
@@ -53,6 +55,24 @@ const older = post.data.gameVersion !== pack.gameVersion;
   }
   .body :global(th:first-child), .body :global(td:first-child) { text-align: left; }
   .body :global(th) { color: var(--text); font-family: var(--display); font-weight: 600; background: var(--surface); }
+  .cover:not(:empty) { margin-top: 20px; }
+  .body :global(.art-chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .body :global(.art-chip img) {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 6px;
+  }
+  .body :global(a.art-chip span) { color: var(--text); }
+  .body :global(a.art-chip:hover span) { color: var(--accent); }
   .body :global(blockquote) {
     margin: 20px 0;
     padding: 12px 18px;
