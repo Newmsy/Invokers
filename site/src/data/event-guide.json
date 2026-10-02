@@ -38,5 +38,5 @@
       { "name": "Daily rewards", "energy": 1100 }
     ]
   },
-  "arena": { "battlesPerDay": 29, "eventDays": 3 }
+  "arena": { "battlesPerDay": 29, "eventDays": 3, "winRates": [50, 70, 90, 100], "leagues": [{ "league": "Bronze 1", "win": 40, "loss": 20 }, { "league": "Gold 4", "win": 150, "loss": 70 }] }
 }
