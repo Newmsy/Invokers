@@ -13,7 +13,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | # | Request | Status | Notes |
 |---|---|---|---|
 | 1 | Localization table (English strings) | Mostly done | Item, set, stat, element, faction, rarity, region and slot names exported (`data/items.json`, `stats.json`, `sets.json`) via the game's own `Localized.md_*` helpers. All 42,446 strings are decoded offline; 28,246 keys were named by logging lookups in a play session (`out/`, not committed). Event names still to wire up. |
-| 2 | Images and icons | Not started | Art is in Unity Addressables bundles (`StreamingAssets/aa`, 179 bundles, 863 MB). Plan: extract offline with UnityPy, name files by internal id. |
+| 2 | Images and icons | Done | `site/public/art/` (issue #12) from `scripts/export_art.py`: 231 hero and 38 Titan portraits, 1,039 skill icons, 138 item icons, element and class icons. No standalone set, faction or rarity icons exist. See `site/public/art/README.md`. |
 | 3 | Hero stat growth / max stats | Done | `data/heroes.json`: `maxStats` and `statsByRank` from the game's own stat calculator (no gear or awakening). Awakening bonuses not included yet. |
 | 4 | Skill values at every level | Done | `data/skills.json`: skill text at levels 1-11 (the cap for every rarity) for 231 heroes and 38 Titans, Titan passives at empowerment 0-6. `data/skill_costs.json` for upgrade costs. |
 | 5 | Other event divisions | Blocked | The server only sends the player's own division. Needs captures from accounts in the other divisions. |
