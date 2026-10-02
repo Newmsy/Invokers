@@ -9,8 +9,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
 <Base title="Gear sets">
   <h1>Gear sets</h1>
   <p class="lead">
-    Every gear set and what it gives at 3 and 5 pieces, with the game's own advice on who should wear it. For the
-    corruption-tolerance sets, the bosses that use that corruption are linked.
+    What every set gives at 3 and 5 pieces, and who should wear it. Tolerance sets link the bosses they counter.
   </p>
   <p class="links">
     <a href={href('my-box')}>See your own gear in My box</a>
@@ -31,8 +30,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
       <h2 id={g.id}>{g.title}</h2>
       {g.id === 'tolerance' && (
         <p class="hint">
-          Every tolerance set gives the same 5-piece bonus. Tolerance shortens a corruption and weakens its effects, so
-          pick the set for the boss you're farming.
+          Tolerance shortens and weakens a corruption, so pick the set for your boss. The 5-piece bonus is the same on all.
         </p>
       )}
       <ul class="grid">
