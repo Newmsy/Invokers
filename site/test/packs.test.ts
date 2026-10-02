@@ -14,7 +14,13 @@ describe('pack value', () => {
     expect(bankGemsPerPound).toBeCloseTo(10000 / 99.99, 6);
     expect(itemValue('SI_DestinyStar')).toEqual({ gems: 300, how: 'shop' });
     expect(itemValue('Energy')!.gems).toBeCloseTo(1.5, 6);
-    expect(itemValue('Gold')!.gems).toBeCloseTo(1 / 4000, 9);
+    expect(itemValue('Gold')!.gems).toBeCloseTo(0.5 / 4000, 9);
+    expect(itemValue('Memorium')!.gems).toBeCloseTo(0.05, 9);
+    expect(itemValue('Codex_Rare')!.gems).toBeCloseTo(500 / 3 / 2, 6);
+    expect(itemValue('Prism_Rare')!.gems).toBeCloseTo(500 / 3 / 2, 6);
+    expect(itemValue('Codex_Epic')!.gems).toBeCloseTo((1000 / 3) * 0.85, 6);
+    expect(itemValue('Prism_Epic')!.gems).toBeCloseTo((1000 / 3) * 0.7, 6);
+    expect(itemValue('Codex_Legendary')!.gems).toBeCloseTo(500, 6);
     expect(itemValue('SI_DivineStar')!.how).toBe('estimated');
     expect(itemValue('SI_DivineStar')!.gems).toBeGreaterThan(4000);
     expect(bank()[0]).toMatchObject({ price: 4.99, gems: 420, first: 840 });

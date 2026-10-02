@@ -181,7 +181,7 @@ const contents = (p: PackValue) => p.rewards.map((r) => ({ ...r, name: rewardNam
   <section aria-labelledby="how-title">
     <h2 id="how-title">How it's worked out</h2>
     <ul class="text how">
-      <li>Each item is worth its Gem Shop price. Gems turn into £ at the Bank's best rate, the {money(bankRows.at(-1)?.price ?? 0)} bundle.</li>
+      <li>Items are valued from their Gem Shop prices. Gems turn into £ at the Bank's best rate, the {money(bankRows.at(-1)?.price ?? 0)} bundle.</li>
       <li>Calendars count every day's rewards.</li>
       <li>Legendary averages use the <a href={href('summons')}>summon rates</a>, bonus summons included and mercy left out.</li>
       <li>Prices are UK store prices.</li>
