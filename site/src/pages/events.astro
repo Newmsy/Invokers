@@ -18,10 +18,9 @@ const farming = guide.events
   .map((e) => {
     const boss = e.bossMode ? bosses.find((b) => b.mode === e.bossMode) : undefined;
     // Points per run come from each stage's drop rates and points per drop (estimated: they are averages).
-    const fallback = 'pointsPerRun' in e ? (e.pointsPerRun as unknown as Record<string, number>) : undefined;
     const stages = boss
       ? [...boss.stages].sort((a, b) => a.stage - b.stage).flatMap((s) => {
-          const score = stageScore(e.bossMode, s.stage, fallback);
+          const score = stageScore(e.bossMode, s.stage);
           // Only stages with a points estimate are offered, so nothing needs typing in.
           return score ? [{ label: `Stage ${s.stage}`, energy: s.energy, points: score.pointsPerRun, lines: score.lines }] : [];
         })
@@ -42,15 +41,13 @@ const gemEnergy = shop.packs.find(
 );
 const gemPrice = gemEnergy ? { gems: gemEnergy.price.resources!.Gem, energy: gemEnergy.rewards![0].amount } : { gems: 150, energy: 100 };
 const income = { ...guide.income, energyPerGem: gemPrice.energy / gemPrice.gems };
-const arenaDays = guide.arena.eventDays;
-// Every league once exported; until then the two the event guide gives.
-const leagues = arenaLeagues.length ? arenaLeagues : guide.arena.leagues;
+
 
 const calc = {
   farming,
   income,
   chaseDays: guide.chase.days,
-  arena: { battlesPerDay: guide.arena.battlesPerDay, days: arenaDays, target: arenaEvent.target, leagues, winRates: guide.arena.winRates },
+  arena: { ...guide.arena, chaseDays: guide.chase.days, target: arenaEvent.target, leagues: arenaLeagues },
 };
 ---
 <Base title="Events">
@@ -138,15 +135,17 @@ const calc = {
   <section class="card" aria-labelledby="arena-title">
     <h2 id="arena-title">{arenaIcon && <img class="h-icon" src={arenaIcon} alt="" width="26" height="26" />}Arena Rush</h2>
     <p class="hint">
-      {guide.arena.battlesPerDay} battles a day (one an hour plus five from playtime rewards) over a {arenaDays}-day
-      event, against the {fmt(arenaEvent.target)}-point final reward. Double-point days are not counted; * means longer than the event.
+      {guide.arena.battlesPerDay} battles a day (one an hour plus five from playtime rewards). A {guide.chase.days}-day
+      chase holds three 3-day Arena Rush events, and wins score double during them ({guide.arena.doubleDays} days).
+      Chase: points over the whole chase. Days: days at normal points to reach the {fmt(arenaEvent.target)}-point
+      final reward. Top tier: whether the chase total reaches {fmt(guide.arena.chaseTarget)}.
     </p>
     <div class="calc">
-      <label><span>League</span><select id="a-league">{leagues.map((l, i) => <option value={i} selected={i === leagues.length - 1}>{l.league}</option>)}</select></label>
+      <label><span>Win rate</span><select id="a-rate">{guide.arena.winRates.map((r) => <option value={r} selected={r === 100}>{r}%</option>)}</select></label>
     </div>
     <div class="table-wrap arena-table">
       <table>
-        <thead><tr><th scope="col">Wins</th><th scope="col" class="num">A day</th><th scope="col" class="num">Event</th><th scope="col" class="num">Days needed</th></tr></thead>
+        <thead><tr><th scope="col">League</th><th scope="col" class="num">A day</th><th scope="col" class="num">Chase</th><th scope="col" class="num">Days</th><th scope="col">Top tier?</th></tr></thead>
         <tbody id="a-rows"></tbody>
       </table>
     </div>
@@ -193,7 +192,7 @@ const calc = {
     farming: { id: string; name: string; target: number; perChase: number; estimated: boolean; options: Option[] }[];
     income: { rechargeMinutes: number; energyPerGem: number; daily: { name: string; energy: number }[]; extras: { name: string; energy: number }[] };
     chaseDays: number;
-    arena: { battlesPerDay: number; days: number; target: number; leagues: { league: string; win: number; loss: number }[]; winRates: number[] };
+    arena: { battlesPerDay: number; chaseDays: number; doubleDays: number; chaseTarget: number; target: number; leagues: { league: string; win: number; loss: number }[] };
   }
 
   const data: Data = JSON.parse(document.getElementById('event-data')!.textContent!);
@@ -205,11 +204,11 @@ const calc = {
   const includeEls = all<HTMLInputElement>('[data-include]');
   const dailyEls = all<HTMLInputElement>('[data-daily]');
   const extraEls = all<HTMLInputElement>('[data-extra]');
-  const aLeague = document.getElementById('a-league') as HTMLSelectElement | null;
+  const aRate = $<HTMLSelectElement>('a-rate');
 
   // Per-viewer convenience: remember choices in this browser only.
   const KEY = 'events-planner-v2';
-  interface Saved { stages?: Record<string, string>; include?: Record<string, boolean>; daily?: boolean[]; extra?: boolean[]; league?: string }
+  interface Saved { stages?: Record<string, string>; include?: Record<string, boolean>; daily?: boolean[]; extra?: boolean[]; rate?: string }
   const save = () => {
     try {
       const saved: Saved = {
@@ -218,7 +217,7 @@ const calc = {
         include: Object.fromEntries(data.farming.map((e, i) => [e.id, includeEls[i].checked])),
         daily: dailyEls.map((el) => el.checked),
         extra: extraEls.map((el) => el.checked),
-        league: aLeague?.value,
+        rate: aRate.value,
       };
       localStorage.setItem(KEY, JSON.stringify(saved));
     } catch {
@@ -240,7 +239,7 @@ const calc = {
     });
     dailyEls.forEach((el, i) => typeof saved.daily?.[i] === 'boolean' && (el.checked = saved.daily[i]));
     extraEls.forEach((el, i) => typeof saved.extra?.[i] === 'boolean' && (el.checked = saved.extra[i]));
-    if (aLeague && saved.league && data.arena.leagues[Number(saved.league)]) aLeague.value = saved.league;
+    if (saved.rate && aRate.querySelector(`option[value="${CSS.escape(saved.rate)}"]`)) aRate.value = saved.rate;
   };
 
   // Chase energy: every included event at its chosen stage, times how many run in a chase.
@@ -311,25 +310,26 @@ const calc = {
     save();
   }
 
-  // Arena: a row per typical win rate, so there's nothing to type.
+  // Arena: a row per league at the chosen win rate, so there's nothing to type.
   function updateArena() {
-    const league = data.arena.leagues[Number(aLeague?.value)] ?? data.arena.leagues[data.arena.leagues.length - 1];
+    const rate = Number(aRate.value) / 100;
     $('a-rows').replaceChildren(
-      ...data.arena.winRates.map((rate) => {
+      ...data.arena.leagues.map((l) => {
         const r = arena({
           battlesPerDay: data.arena.battlesPerDay,
-          winRate: rate / 100,
-          winPoints: league.win,
-          lossPoints: league.loss,
-          days: data.arena.days,
-          doubleDays: 0,
-          target: data.arena.target,
+          winRate: rate,
+          winPoints: l.win,
+          lossPoints: l.loss,
+          days: data.arena.chaseDays,
+          doubleDays: data.arena.doubleDays,
+          target: data.arena.chaseTarget,
         });
-        const days = Number.isFinite(r.daysToTarget) ? (r.daysToTarget <= data.arena.days ? fmt(r.daysToTarget) : `${fmt(r.daysToTarget)}*`) : '–';
+        // Days to the standalone target at normal points, as the event guide counts it.
+        const days = r.perDay > 0 ? data.arena.target / r.perDay : Infinity;
         const tr = document.createElement('tr');
-        [`${rate}%`, fmt(r.perDay), fmt(r.total), days].forEach((text, i) => {
+        [l.league, fmt(r.perDay), fmt(r.total), Number.isFinite(days) ? days.toFixed(1) : '–', r.total >= data.arena.chaseTarget ? 'Yes' : 'No'].forEach((text, i) => {
           const cell = document.createElement(i ? 'td' : 'th');
-          if (i) cell.className = 'num';
+          if (i) cell.className = i === 4 ? (text === 'Yes' ? 'yes' : 'no') : 'num';
           else cell.scope = 'row';
           cell.textContent = text;
           tr.append(cell);
@@ -340,7 +340,7 @@ const calc = {
   }
 
   restore();
-  for (const el of [...stageEls, ...includeEls, ...dailyEls, ...extraEls, aLeague]) {
+  for (const el of [...stageEls, ...includeEls, ...dailyEls, ...extraEls, aRate]) {
     el?.addEventListener(el instanceof HTMLSelectElement || (el as HTMLInputElement).type === 'checkbox' ? 'change' : 'input', update);
   }
   update();
@@ -439,9 +439,12 @@ const calc = {
   .row.check span:last-child { text-align: right; padding-right: 11px; font-variant-numeric: tabular-nums; }
   .how :global(h3) { margin: 16px 0 8px; }
   .arena-table { margin-top: 12px; }
-  .arena-table :global(tbody th), .arena-table :global(tbody td) { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  .arena-table :global(tbody th), .arena-table :global(tbody td) { white-space: nowrap; padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
   .arena-table :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .arena-table :global(tbody tr:last-child > *) { border-bottom: 0; }
+  .arena-table :global(td.yes), .arena-table :global(td.no) { text-align: left; }
+  .arena-table :global(td.yes) { color: var(--accent); font-weight: 600; }
+  .arena-table :global(td.no) { color: var(--muted); }
   .missing { margin: 12px 0 0; }
   .missing[hidden], .how[hidden] { display: none; }
   .how { margin-top: 16px; }
@@ -462,6 +465,7 @@ const calc = {
     .summary .value { font-size: 18px; }
     .plan :global(li) { grid-template-columns: 1fr auto; }
     .frow { grid-template-columns: 1fr auto; gap: 4px 12px; }
+    .arena-table th, .arena-table :global(tbody th), .arena-table :global(tbody td) { padding: 8px 6px; font-size: 13px; }
     .frow select { grid-column: 1 / -1; grid-row: 2; }
     .frow .fmeta { grid-column: 1 / -1; grid-row: 3; }
     .frow .fenergy { grid-column: 2; grid-row: 1; }

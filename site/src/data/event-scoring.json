@@ -1,0 +1,2137 @@
+{
+ "note": "Drop tables and scoring from the event guide workbook (Newms's upload, game version in gameVersion). Used until data/event_scoring.json is exported (issue #13).",
+ "gameVersion": "0.61.1514",
+ "families": [
+  {
+   "id": "gear",
+   "modes": [
+    "relic boss",
+    "clan boss"
+   ],
+   "rollsPerRun": 2,
+   "points": {
+    "3★ Common": 30,
+    "3★ Uncommon": 30,
+    "3★ Rare": 40,
+    "3★ Epic": 50,
+    "3★ Legendary": 60,
+    "4★ Common": 40,
+    "4★ Uncommon": 50,
+    "4★ Rare": 60,
+    "4★ Epic": 70,
+    "4★ Legendary": 100,
+    "5★ Common": 230,
+    "5★ Uncommon": 250,
+    "5★ Rare": 300,
+    "5★ Epic": 400,
+    "5★ Legendary": 450,
+    "6★ Common": 800,
+    "6★ Uncommon": 1300,
+    "6★ Rare": 1900,
+    "6★ Epic": 2100,
+    "6★ Legendary": 2500
+   },
+   "stages": [
+    {
+     "stage": 1,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 1,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 2,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.9,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.1,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 3,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.8,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.2,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 4,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.7,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.3,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 5,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.516,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.344,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.07,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.056,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.014,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 6,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.375,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.375,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.1,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.125,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.025,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 7,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.236,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.2655,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Epic",
+       "chance": 0.0885,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.1225,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.1855,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.035,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.007,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.0528,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.006,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0012,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 8,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.172,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.172,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Epic",
+       "chance": 0.086,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.15,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.285,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.055,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.01,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.0602,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0084,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0014,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 9,
+     "drops": [
+      {
+       "key": "3★ Uncommon",
+       "chance": 0.084,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Rare",
+       "chance": 0.0735,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "3★ Epic",
+       "chance": 0.0525,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.175,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.427,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.084,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.014,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.0765,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0117,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0018,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 10,
+     "drops": [
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.174,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.5481,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1218,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0261,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1079,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0182,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0039,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 11,
+     "drops": [
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.1245,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.5478,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1328,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0249,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1377,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0272,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0051,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 12,
+     "drops": [
+      {
+       "key": "4★ Uncommon",
+       "chance": 0.082,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Rare",
+       "chance": 0.5658,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1476,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0246,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1422,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0324,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0054,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 13,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.57,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.15,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.03,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1824,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.048,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0096,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0076,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.002,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.0004,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 14,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.5328,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1584,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0288,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1924,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0572,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0104,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0148,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.0044,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.0008,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 15,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.504,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.168,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.028,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.1944,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.0648,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0108,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0216,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.0072,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.0012,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 16,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.4554,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1716,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.033,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.207,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.078,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.015,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0276,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.0104,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.002,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 17,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.3819,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.1596,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0285,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.247,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.114,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.019,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0325,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.015,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.0025,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 18,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.3575,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.165,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.0275,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.2457,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.1248,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0195,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.0378,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.0192,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.003,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 19,
+     "drops": [
+      {
+       "key": "4★ Rare",
+       "chance": 0.351,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Epic",
+       "chance": 0.162,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "4★ Legendary",
+       "chance": 0.027,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Rare",
+       "chance": 0.234,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.1365,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.0195,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.042,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.0245,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.0035,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    },
+    {
+     "stage": 20,
+     "drops": [
+      {
+       "key": "5★ Rare",
+       "chance": 0.495,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Epic",
+       "chance": 0.36,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "5★ Legendary",
+       "chance": 0.045,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Rare",
+       "chance": 0.055,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Epic",
+       "chance": 0.04,
+       "min": 1,
+       "max": 1
+      },
+      {
+       "key": "6★ Legendary",
+       "chance": 0.005,
+       "min": 1,
+       "max": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "crest",
+   "modes": [
+    "other",
+    "Omnissi"
+   ],
+   "rollsPerRun": 1,
+   "points": {
+    "Rare": 1,
+    "Epic": 10,
+    "Legendary": 100
+   },
+   "stages": [
+    {
+     "stage": 1,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 2,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.4,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.1,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 3,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.35,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.15,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 4,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.3,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.2,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 5,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.25,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.5,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.25,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 6,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.1063,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Rare",
+       "chance": 0.425,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.3188,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.09,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Epic",
+       "chance": 0.06,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 7,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.42,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.42,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0413,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Epic",
+       "chance": 0.064,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0547,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 8,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.2813,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.375,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.0938,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0935,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Epic",
+       "chance": 0.068,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0085,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.08,
+       "min": 2,
+       "max": 2
+      }
+     ]
+    },
+    {
+     "stage": 9,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.1825,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.365,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.1825,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.024,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Epic",
+       "chance": 0.072,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.084,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.045,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.045,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 10,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.09,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Rare",
+       "chance": 0.36,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.27,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0745,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.076,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0395,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.045,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.045,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 11,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.35,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.35,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.035,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Epic",
+       "chance": 0.08,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.085,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.05,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.05,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 12,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.2438,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.325,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Rare",
+       "chance": 0.0813,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0392,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Epic",
+       "chance": 0.08,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0808,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.075,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.075,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 13,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.155,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.31,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Rare",
+       "chance": 0.155,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.086,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.088,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.046,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.048,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.112,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 14,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.0738,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Rare",
+       "chance": 0.295,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Rare",
+       "chance": 0.2213,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0662,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.096,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0778,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.051,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.119,
+       "min": 4,
+       "max": 4
+      }
+     ]
+    },
+    {
+     "stage": 15,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.28,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Rare",
+       "chance": 0.28,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0463,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Epic",
+       "chance": 0.104,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.1097,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.081,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.072,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.027,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 16,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.13,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Rare",
+       "chance": 0.26,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Rare",
+       "chance": 0.13,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.064,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.112,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.104,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.06,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.08,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.06,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 17,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.12,
+       "min": 10,
+       "max": 10
+      },
+      {
+       "key": "Rare",
+       "chance": 0.24,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Rare",
+       "chance": 0.12,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.065,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.12,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.115,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.066,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.088,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.066,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 18,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.105,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Rare",
+       "chance": 0.21,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Rare",
+       "chance": 0.105,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0957,
+       "min": 12,
+       "max": 12
+      },
+      {
+       "key": "Epic",
+       "chance": 0.132,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.1023,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.075,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.1,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.075,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 19,
+     "drops": [
+      {
+       "key": "Rare",
+       "chance": 0.095,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Rare",
+       "chance": 0.19,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Rare",
+       "chance": 0.095,
+       "min": 18,
+       "max": 18
+      },
+      {
+       "key": "Epic",
+       "chance": 0.1633,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.14,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Epic",
+       "chance": 0.0467,
+       "min": 18,
+       "max": 18
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.081,
+       "min": 2,
+       "max": 2
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.108,
+       "min": 4,
+       "max": 4
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.081,
+       "min": 6,
+       "max": 6
+      }
+     ]
+    },
+    {
+     "stage": 20,
+     "drops": [
+      {
+       "key": "Epic",
+       "chance": 0.1117,
+       "min": 14,
+       "max": 14
+      },
+      {
+       "key": "Epic",
+       "chance": 0.26,
+       "min": 16,
+       "max": 16
+      },
+      {
+       "key": "Epic",
+       "chance": 0.2783,
+       "min": 18,
+       "max": 18
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.14,
+       "min": 6,
+       "max": 6
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.14,
+       "min": 8,
+       "max": 8
+      },
+      {
+       "key": "Legendary",
+       "chance": 0.07,
+       "min": 10,
+       "max": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sparks",
+   "modes": [
+    "Pentiax"
+   ],
+   "rollsPerRun": 1,
+   "points": {
+    "Spark": 1
+   },
+   "stages": [
+    {
+     "stage": 1,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 3,
+       "max": 5
+      }
+     ]
+    },
+    {
+     "stage": 2,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 5,
+       "max": 7
+      }
+     ]
+    },
+    {
+     "stage": 3,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 11,
+       "max": 13
+      }
+     ]
+    },
+    {
+     "stage": 4,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 13,
+       "max": 17
+      }
+     ]
+    },
+    {
+     "stage": 5,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 21,
+       "max": 25
+      }
+     ]
+    },
+    {
+     "stage": 6,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 23,
+       "max": 27
+      }
+     ]
+    },
+    {
+     "stage": 7,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 29,
+       "max": 35
+      }
+     ]
+    },
+    {
+     "stage": 8,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 31,
+       "max": 37
+      }
+     ]
+    },
+    {
+     "stage": 9,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 38,
+       "max": 46
+      }
+     ]
+    },
+    {
+     "stage": 10,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 43,
+       "max": 53
+      }
+     ]
+    },
+    {
+     "stage": 11,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 49,
+       "max": 59
+      }
+     ]
+    },
+    {
+     "stage": 12,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 54,
+       "max": 66
+      }
+     ]
+    },
+    {
+     "stage": 13,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 83,
+       "max": 101
+      }
+     ]
+    },
+    {
+     "stage": 14,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 94,
+       "max": 114
+      }
+     ]
+    },
+    {
+     "stage": 15,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 104,
+       "max": 128
+      }
+     ]
+    },
+    {
+     "stage": 16,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 115,
+       "max": 141
+      }
+     ]
+    },
+    {
+     "stage": 17,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 162,
+       "max": 198
+      }
+     ]
+    },
+    {
+     "stage": 18,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 180,
+       "max": 220
+      }
+     ]
+    },
+    {
+     "stage": 19,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 198,
+       "max": 242
+      }
+     ]
+    },
+    {
+     "stage": 20,
+     "drops": [
+      {
+       "key": "Spark",
+       "chance": 1,
+       "min": 216,
+       "max": 264
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "arenaLeagues": [
+  {
+   "league": "Bronze 1",
+   "win": 40,
+   "loss": 20
+  },
+  {
+   "league": "Bronze 2",
+   "win": 50,
+   "loss": 20
+  },
+  {
+   "league": "Bronze 3",
+   "win": 60,
+   "loss": 30
+  },
+  {
+   "league": "Bronze 4",
+   "win": 70,
+   "loss": 30
+  },
+  {
+   "league": "Silver 1",
+   "win": 80,
+   "loss": 40
+  },
+  {
+   "league": "Silver 2",
+   "win": 90,
+   "loss": 40
+  },
+  {
+   "league": "Silver 3",
+   "win": 100,
+   "loss": 50
+  },
+  {
+   "league": "Silver 4",
+   "win": 110,
+   "loss": 50
+  },
+  {
+   "league": "Gold 1",
+   "win": 120,
+   "loss": 60
+  },
+  {
+   "league": "Gold 2",
+   "win": 130,
+   "loss": 60
+  },
+  {
+   "league": "Gold 3",
+   "win": 140,
+   "loss": 70
+  },
+  {
+   "league": "Gold 4",
+   "win": 150,
+   "loss": 70
+  }
+ ]
+}
