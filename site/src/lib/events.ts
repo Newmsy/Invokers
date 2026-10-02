@@ -57,3 +57,34 @@ export function arena(input: ArenaInput): { perBattle: number; perDay: number; t
   }
   return { perBattle, perDay, total, daysToTarget };
 }
+
+/** One kind of drop a stage can give: its chance per roll and the amount range when it drops. */
+export interface StageDrop {
+  /** Key into the family's points table, e.g. "5★ Epic", "Legendary" or "Spark". */
+  key: string;
+  /** 0 to 1, per roll. */
+  chance: number;
+  min: number;
+  max: number;
+}
+
+/** A group of farming events that share drop tables and scoring (relic and clan bosses, Crest and Omnissi, Pentiax). */
+export interface ScoringFamily {
+  id: string;
+  /** Boss modes (as in bosses.json) that use these tables. */
+  modes: string[];
+  rollsPerRun: number;
+  points: Record<string, number>;
+  stages: { stage: number; drops: StageDrop[] }[];
+}
+
+/** Expected points from one drop line: chance × average amount × points per item. */
+export function dropPoints(drop: StageDrop, points: Record<string, number>): number {
+  const chance = Math.min(1, Math.max(0, drop.chance));
+  return chance * ((drop.min + drop.max) / 2) * (points[drop.key] ?? 0);
+}
+
+/** Average points a run: rolls per run × the expected points of every drop the stage can give. */
+export function expectedPointsPerRun(family: Pick<ScoringFamily, 'rollsPerRun' | 'points'>, drops: StageDrop[]): number {
+  return Math.max(0, family.rollsPerRun) * drops.reduce((sum, d) => sum + dropPoints(d, family.points), 0);
+}
