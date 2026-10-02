@@ -4,6 +4,7 @@ import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, href } from '../lib/data';
 import guide from '../data/event-guide.json';
 import { itemIcon } from '../lib/art';
+import { arenaLeagues, stageScore } from '../lib/eventScoring';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const energyIcon = itemIcon('Energy');
@@ -15,11 +16,18 @@ const farming = guide.events
   .filter((e) => e.bossMode || e.difficulties)
   .map((e) => {
     const boss = e.bossMode ? bosses.find((b) => b.mode === e.bossMode) : undefined;
-    const stages = boss ? [...boss.stages].sort((a, b) => a.stage - b.stage).map((s) => ({ label: `Stage ${s.stage}`, energy: s.energy })) : [];
+    // Points per run come from each stage's drop rates and points per drop (estimated: they are averages).
+    const fallback = 'pointsPerRun' in e ? (e.pointsPerRun as unknown as Record<string, number>) : undefined;
+    const stages = boss
+      ? [...boss.stages].sort((a, b) => a.stage - b.stage).map((s) => {
+          const score = stageScore(e.bossMode, s.stage, fallback);
+          return { label: `Stage ${s.stage}`, energy: s.energy, points: score?.pointsPerRun, estimated: !!score, lines: score?.lines ?? [] };
+        })
+      : [];
     const options = e.difficulties
-      ? e.difficulties.map((d) => ({ label: d.name, energy: d.energy, points: d.points }))
-      : stages.map((s) => ({ ...s, points: undefined as number | undefined }));
-    return { id: e.id, name: e.name, target: e.target, options };
+      ? e.difficulties.map((d) => ({ label: d.name, energy: d.energy, points: d.points as number | undefined, estimated: false, lines: [] as typeof stages[number]['lines'] }))
+      : stages;
+    return { id: e.id, name: e.name, target: e.target, byDifficulty: !!e.difficulties, options };
   })
   .filter((e) => e.options.length);
 
@@ -30,7 +38,7 @@ const calc = {
   farming,
   income: guide.income,
   chaseDays: guide.chase.days,
-  arena: { ...guide.arena, target: arenaEvent.target },
+  arena: { ...guide.arena, target: arenaEvent.target, leagues: arenaLeagues },
 };
 ---
 <Base title="Events">
@@ -53,13 +61,13 @@ const calc = {
   <section class="card" aria-labelledby="farm-title">
     <h2 id="farm-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Energy to finish a farming event</h2>
     <p class="hint">
-      Pick the highest stage you clear comfortably (points per energy rises with stage). For points per run, use your
-      average from the event screen.
+      Pick the highest stage you clear comfortably: points per energy rises with stage. Points per run are estimated
+      from the stage's drop rates and the points each drop scores.
     </p>
     <div class="calc">
       <label><span>Event</span><select id="f-event">{farming.map((e) => <option value={e.id}>{e.name}</option>)}</select></label>
       <label><span id="f-stage-label">Stage</span><select id="f-stage"></select></label>
-      <label><span>Points per run</span><input id="f-points" type="number" inputmode="numeric" min="1" value="300" /></label>
+      <label><span id="f-points-label">Points per run</span><input id="f-points" type="number" inputmode="numeric" min="1" /></label>
       <label><span>Target points</span><input id="f-target" type="number" inputmode="numeric" min="0" /></label>
       <label><span>Times per chase</span><input id="f-count" type="number" inputmode="numeric" min="1" max="10" value="1" /></label>
     </div>
@@ -67,6 +75,17 @@ const calc = {
       <p><span class="big" id="f-energy">–</span> energy <span class="muted" id="f-runs"></span></p>
       <button type="button" class="chip" id="f-add">Add to my energy plan</button>
     </div>
+    <p class="hint missing" id="f-missing" hidden>No estimate for this stage yet: enter your average points per run from the event screen.</p>
+    <details class="how" id="f-how" hidden>
+      <summary>How points per run are worked out</summary>
+      <p class="hint" id="f-how-text"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Drop</th><th scope="col" class="num">Chance</th><th scope="col" class="num">Amount</th><th scope="col" class="num">Points</th></tr></thead>
+          <tbody id="f-how-rows"></tbody>
+        </table>
+      </div>
+    </details>
   </section>
 
   <section class="card" aria-labelledby="plan-title">
@@ -119,6 +138,9 @@ const calc = {
       Points per win and loss rise with league: 40 and 20 in Bronze 1, up to 150 and 70 in Gold 4.
     </p>
     <div class="calc">
+      {arenaLeagues.length > 0 && (
+        <label><span>League</span><select id="a-league">{arenaLeagues.map((l, i) => <option value={i}>{l.league}</option>)}</select></label>
+      )}
       <label><span>Battles a day</span><input id="a-battles" type="number" inputmode="numeric" min="0" value={guide.arena.battlesPerDay} /></label>
       <label><span>Win rate (%)</span><input id="a-rate" type="number" inputmode="numeric" min="0" max="100" value="70" /></label>
       <label><span>Points per win</span><input id="a-win" type="number" inputmode="numeric" min="0" value="40" /></label>
@@ -134,7 +156,7 @@ const calc = {
     <h2 id="list-title">Every event and its target</h2>
     <p class="hint">Final reward targets from recent events. Targets can differ between divisions and from one event to the next.</p>
     <div class="table-wrap">
-      <table>
+      <table class="list">
         <thead><tr><th scope="col">Event</th><th scope="col" class="num">Final reward</th><th scope="col">How it scores</th></tr></thead>
         <tbody>
           {guide.events.map((e) => (
@@ -165,12 +187,12 @@ const calc = {
 <script>
   import { arena, dailyIncome, periodIncome, shortfall, toFinish } from '../lib/events';
 
-  interface Option { label: string; energy: number; points?: number }
+  interface Option { label: string; energy: number; points?: number; estimated: boolean; lines: { key: string; chance: number; amount: string; points: number }[] }
   interface Data {
-    farming: { id: string; name: string; target: number; options: Option[] }[];
+    farming: { id: string; name: string; target: number; byDifficulty: boolean; options: Option[] }[];
     income: { rechargeMinutes: number; energyPerGem: number; daily: { name: string; energy: number }[]; extras: { name: string; energy: number }[] };
     chaseDays: number;
-    arena: { battlesPerDay: number; target: number };
+    arena: { battlesPerDay: number; target: number; leagues: { league: string; win: number; loss: number }[] };
   }
   interface PlanRow { name: string; energy: number }
 
@@ -197,6 +219,8 @@ const calc = {
       // The farming target and points belong to the chosen event and stage, so those are kept too.
       values['f-event'] = fEvent.value;
       values['f-stage'] = fStage.value;
+      const league = document.getElementById('a-league') as HTMLSelectElement | null;
+      if (league) values['a-league'] = league.value;
       localStorage.setItem(KEY, JSON.stringify({ plan, inputs: values }));
     } catch {
       /* storage blocked: the page still works, it just forgets */
@@ -214,8 +238,7 @@ const calc = {
 
   function fillStages() {
     const e = event();
-    const fixed = e.options.some((o) => o.points);
-    $('f-stage-label').textContent = fixed ? 'Difficulty' : 'Stage';
+    $('f-stage-label').textContent = e.byDifficulty ? 'Difficulty' : 'Stage';
     fStage.replaceChildren(...e.options.map((o, i) => new Option(`${o.label} · ${o.energy} energy`, String(i))));
     fStage.value = String(e.options.length - 1);
     fTarget.value = String(e.target);
@@ -223,12 +246,34 @@ const calc = {
   }
   function fillPoints() {
     const o = option();
-    fPoints.disabled = !!o.points;
-    if (o.points) fPoints.value = String(o.points);
+    const known = !!o.points;
+    fPoints.disabled = known;
+    fPoints.value = known ? String(Math.round(o.points!)) : '';
+    $('f-points-label').textContent = o.estimated ? 'Points per run (estimated)' : 'Points per run';
+    $('f-missing').hidden = known;
+    const how = $<HTMLDetailsElement>('f-how');
+    how.hidden = !o.lines.length;
+    if (o.lines.length) {
+      $('f-how-text').textContent = `Each line: chance × average amount × points, added up, then times the number of drops a run. Total: ${fmt(o.points!)} points a run.`;
+      $('f-how-rows').replaceChildren(
+        ...o.lines.map((l) => {
+          const tr = document.createElement('tr');
+          const cells = [l.key, `${(l.chance * 100).toFixed(l.chance < 0.01 ? 2 : 1)}%`, l.amount, fmt(l.points)];
+          cells.forEach((text, i) => {
+            const cell = document.createElement(i ? 'td' : 'th');
+            if (i) cell.className = 'num';
+            else cell.setAttribute('scope', 'row');
+            cell.textContent = text;
+            tr.append(cell);
+          });
+          return tr;
+        }),
+      );
+    }
   }
   function farm() {
     const o = option();
-    const one = toFinish(num(fTarget), num(fPoints), o.energy);
+    const one = toFinish(num(fTarget), o.points ?? num(fPoints), o.energy);
     const times = Math.max(1, Math.floor(num(fCount)) || 1);
     return { energy: one.energy * times, runs: one.runs * times, times, label: `${event().name}, ${o.label.toLowerCase()}${times > 1 ? ` ×${times}` : ''}` };
   }
@@ -284,7 +329,16 @@ const calc = {
     save();
   }
 
-  // Arena
+  // Arena: the league sets points per win and loss once those are in the data.
+  const aLeague = document.getElementById('a-league') as HTMLSelectElement | null;
+  function fillLeague() {
+    const l = aLeague ? data.arena.leagues[Number(aLeague.value)] : undefined;
+    for (const [id, v] of [['a-win', l?.win], ['a-loss', l?.loss]] as const) {
+      const el = $<HTMLInputElement>(id);
+      el.disabled = v !== undefined;
+      if (v !== undefined) el.value = String(v);
+    }
+  }
   function updateArena() {
     const r = arena({
       battlesPerDay: num($('a-battles')),
@@ -344,6 +398,15 @@ const calc = {
     updatePlan();
   });
   for (const el of [daysEl, otherEl, ...dailyEls, ...extraEls]) el.addEventListener('input', updatePlan);
+  if (aLeague) {
+    const savedLeague = saved.inputs?.['a-league'];
+    if (savedLeague && data.arena.leagues[Number(savedLeague)]) aLeague.value = savedLeague;
+    fillLeague();
+    aLeague.addEventListener('change', () => {
+      fillLeague();
+      updateArena();
+    });
+  }
   for (const id of ['a-battles', 'a-rate', 'a-win', 'a-loss', 'a-days', 'a-double', 'a-target']) $(id).addEventListener('input', updateArena);
   $('p-reset').addEventListener('click', () => {
     plan = [];
@@ -439,6 +502,16 @@ const calc = {
   td.wrap { color: var(--soft); min-width: 260px; }
   tbody tr:last-child > * { border-bottom: 0; }
   .table-wrap + .hint { margin-top: 12px; }
+  .missing { margin: 12px 0 0; }
+  .missing[hidden], .how[hidden] { display: none; }
+  .how { margin-top: 16px; }
+  .how summary { cursor: pointer; color: var(--accent); font-size: 14px; min-height: 32px; }
+  .how .hint { margin-top: 8px; }
+  /* The breakdown rows are built by the script, so they need global selectors. */
+  .how :global(tbody th), .how :global(tbody td) { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  .how :global(tbody th) { color: var(--text); font-weight: 500; white-space: nowrap; }
+  .how :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .how :global(tbody tr:last-child > *) { border-bottom: 0; }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }
@@ -449,11 +522,11 @@ const calc = {
     .summary .value { font-size: 18px; }
     .plan :global(li) { grid-template-columns: 1fr auto; }
     /* Stack the event table: name and target on one line, how it scores underneath. */
-    thead { display: none; }
-    tbody tr { display: grid; grid-template-columns: 1fr auto; border-bottom: 1px solid var(--line); }
-    tbody tr:last-child { border-bottom: 0; }
-    tbody tr > * { border-bottom: 0; }
-    tbody th { white-space: normal; padding-bottom: 2px; }
+    .list thead { display: none; }
+    .list tbody tr { display: grid; grid-template-columns: 1fr auto; border-bottom: 1px solid var(--line); }
+    .list tbody tr:last-child { border-bottom: 0; }
+    .list tbody tr > * { border-bottom: 0; }
+    .list tbody th { white-space: normal; padding-bottom: 2px; }
     td.wrap { grid-column: 1 / -1; min-width: 0; padding-top: 2px; }
     .plan :global(.remove) { grid-column: 1 / -1; justify-self: start; }
   }
