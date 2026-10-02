@@ -193,7 +193,7 @@ const calc = {
           {summons.bonus.map((b) => (
             <tr>
               <th scope="row">{b.uses.map((u) => bonusLabel(u)).join(' or ')}</th>
-              <td>{bonusLabel(b.gives).replace(/^g/, 'G')}</td>
+              <td>{bonusLabel(b.gives).replace(/^r/, 'R')}</td>
               <td>{b.every}</td>
             </tr>
           ))}
@@ -314,7 +314,7 @@ const calc = {
 
     const notes: string[] = [];
     if (r.bonusItems.length) {
-      notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} ${summonItem(b.item)?.pity ? '' : 'bonus '}${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
+      notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
     }
     if (r.guaranteedBy) notes.push(`If the estimated mercy rule holds, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
     if (specific) notes.push(`One of ${pool!.length} equally likely Legendaries. Mercy and bonus summons aren't counted for one specific Invoker.`);

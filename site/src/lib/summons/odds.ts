@@ -12,11 +12,11 @@ export function summonItem(id: string): SummonItem | undefined {
 /** Summon items a player can own and pull (pity entries left out). */
 export const pullableItems = summons.items.filter((i) => !i.pity);
 
-/** How a summon item reads on the page: its name, or "guaranteed Legendary" for a pity entry. */
+/** How a summon item reads on the page: its name, or "random Legendary Invoker" for a pity entry. */
 export function bonusLabel(id: string): string {
   const item = summonItem(id);
   if (!item) return id;
-  return item.pity ? `guaranteed ${Object.keys(item.rates)[0]}` : item.name;
+  return item.pity ? `random ${Object.keys(item.rates)[0]} ${item.kind === 'titan' ? 'Titan' : 'Invoker'}` : item.name;
 }
 
 /** Chance of at least one hit in n independent pulls at chance p. */

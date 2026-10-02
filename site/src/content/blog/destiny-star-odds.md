@@ -67,10 +67,10 @@ Still unknown: whether a natural Legendary resets the counter, and whether items
 | Use | Get | Required |
 |---|---|---|
 | ![Fate Star](item:) or ![Destiny Star](item:) | ![Divine Star](item:) | 85 |
-| ![Divine Star](item:) | Guaranteed Legendary | 45 |
+| ![Divine Star](item:) | Random Legendary Invoker | 45 |
 | ![Radiant Star](item:) | ![Radiant Star](item:) | 10 |
 | ![Dream Orb](item:) or ![Wonder Orb](item:) | ![Miracle Orb](item:) | 85 |
-| ![Miracle Orb](item:) | Guaranteed Mythic | 100 |
+| ![Miracle Orb](item:) | Random Mythic Titan | 100 |
 
 With the estimated mercy rules and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star** (estimated), close to double the 0.53% on the label.
 
