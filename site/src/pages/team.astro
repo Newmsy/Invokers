@@ -141,7 +141,8 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
         const b = el('button', glyph);
         b.type = 'button';
         b.setAttribute('aria-label', `Move ${h.name} ${label}`);
-        b.disabled = i + dir < 0 || i + dir >= TEAM_SIZE;
+        // Filled slots stay packed from the Lead down, so links and saved teams keep the order shown.
+        b.disabled = i + dir < 0 || !team[i + dir];
         b.addEventListener('click', () => {
           [team[i], team[i + dir]] = [team[i + dir], team[i]];
           render();
@@ -153,6 +154,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       x.setAttribute('aria-label', `Remove ${h.name}`);
       x.addEventListener('click', () => {
         team[i] = null;
+        team = [...members(), ...Array(TEAM_SIZE).fill(null)].slice(0, TEAM_SIZE);
         render();
       });
       tools.append(move(-1, 'earlier', '‹'), move(1, 'later', '›'), x);
