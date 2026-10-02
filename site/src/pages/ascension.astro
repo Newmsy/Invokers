@@ -1,0 +1,281 @@
+---
+import Base from '../layouts/Base.astro';
+import { bosses, bossLabel, bossSlug, heroes, href } from '../lib/data';
+import { itemIcon } from '../lib/art';
+import { rarityColor, rarityOrder } from '../lib/format';
+import {
+  MAX_AWAKENING,
+  MAX_STARS,
+  ascensionSteps,
+  awakeningMaterials,
+  awakeningTiers,
+  baseStars,
+  echoFor,
+  levelCap,
+  plainItemName,
+} from '../lib/progression';
+
+// One row per rarity: where it starts and the Echoes it uses on the way to 6★.
+const byRarity = [...rarityOrder].reverse().map((rarity) => {
+  const hero = heroes.find((h) => h.rarity === rarity)!;
+  const stars = baseStars(hero);
+  return { rarity, stars, steps: ascensionSteps(stars) };
+});
+
+// Tier words ("Ancient", "Raw", "Novice", …) are the first word of each item's name.
+const sample = awakeningMaterials(heroes[0]);
+const tierWord = (id: string) => plainItemName(id).split(' ')[0];
+const tierRows = awakeningTiers.map((t, i) => ({
+  ...t,
+  rune: `${tierWord(sample[i].rune)} Rune`,
+  essence: `${tierWord(sample[i].essence)} Essence`,
+  astral: plainItemName(sample[i].astral),
+  crest: `${tierWord(sample[i].crest)} Crest`,
+}));
+
+// Everything the per-Invoker list needs, keyed by item code so each name and icon is sent once.
+const items: Record<string, [string, string | null]> = {};
+const use = (id: string) => {
+  items[id] ??= [plainItemName(id), itemIcon(id) ?? null];
+  return id;
+};
+for (let s = 1; s < MAX_STARS; s++) use(echoFor(s));
+use('EMP_AnimaSpark');
+const list = [...heroes]
+  .sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || a.name.localeCompare(b.name))
+  .map((h) => ({
+    name: h.name,
+    rarity: h.rarity,
+    stars: baseStars(h),
+    tiers: awakeningMaterials(h).map((m) => [use(m.rune), use(m.essence), use(m.astral), use(m.crest)]),
+  }));
+
+const omnissi = bosses.filter((b) => b.mode === 'Omnissi');
+const crestBosses = bosses.filter((b) => b.mode === 'other');
+const icon = (id: string) => itemIcon(id);
+---
+<Base title="Ascension and Awakening">
+  <h1>Ascension and Awakening</h1>
+  <p class="lead">
+    Maxing an Invoker means two things: ascending to {MAX_STARS}★, which lifts the level cap to {levelCap(MAX_STARS)}, and
+    Awakening to level {MAX_AWAKENING}. Here's what each rarity needs, and where the materials come from.
+  </p>
+  <nav class="jump" aria-label="On this page">
+    <a href="#ascend">Ascending</a>
+    <a href="#awaken">Awakening</a>
+    <a href="#mine">For one Invoker</a>
+    <a href="#where">Where to get them</a>
+  </nav>
+
+  <section id="ascend" aria-labelledby="ascend-title">
+    <h2 id="ascend-title">Ascending to {MAX_STARS}★</h2>
+    <p>
+      Each ascension uses <strong>Echoes of the Invoker's current star</strong>: a 3★ Echo takes a 3★ Invoker to 4★. Every star
+      adds ten levels to the cap, and ascending is also what lets an Invoker Awaken.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Rarity</th><th scope="col">Starts at</th><th scope="col">Ascensions</th><th scope="col">Echoes used</th><th scope="col">Level cap</th></tr>
+        </thead>
+        <tbody>
+          {byRarity.map((r) => (
+            <tr>
+              <th scope="row" style={`color: ${rarityColor[r.rarity]}`}>{r.rarity}</th>
+              <td>{r.stars}★</td>
+              <td>{r.steps.length}</td>
+              <td class="items">
+                {r.steps.map((s) => (
+                  <span class="item">{icon(s.echo) && <img src={icon(s.echo)} alt="" width="22" height="22" loading="lazy" />}{plainItemName(s.echo)}</span>
+                ))}
+              </td>
+              <td>{levelCap(r.stars)} → {levelCap(MAX_STARS)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="gap">How many Echoes and how much Gold each ascension takes isn't on the site yet.</p>
+    <p class="aside">
+      Stars mostly matter for the levels they unlock: see the blog post <a href={href('blog/levels-not-stars')}>Levels, not stars</a>.
+    </p>
+  </section>
+
+  <section id="awaken" aria-labelledby="awaken-title">
+    <h2 id="awaken-title">Awakening to level {MAX_AWAKENING}</h2>
+    <p>
+      Awakening needs four kinds of material, matched to the Invoker: a <strong>Rune</strong> for its faction,
+      an <strong>Essence</strong> for its element, <strong>Astral Essence</strong> (every Invoker uses it)
+      and a <strong>Crest</strong> for its class. Titan Sparks are used for Awakening too. The material tier goes up every two levels:
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Awakening</th><th scope="col">Rune (faction)</th><th scope="col">Essence (element)</th><th scope="col">Astral</th><th scope="col">Crest (class)</th></tr>
+        </thead>
+        <tbody>
+          {tierRows.map((t) => (
+            <tr>
+              <th scope="row">Levels {t.levels.join('–')}</th>
+              <td>{t.rune}</td>
+              <td>{t.essence}</td>
+              <td>{t.astral}</td>
+              <td>{t.crest}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>Awakening can also extend how long your Titan's Invokation lasts, and it unlocks accessory slots.</p>
+    <p class="gap">The amount of each material per Awakening level, by rarity, isn't on the site yet.</p>
+  </section>
+
+  <section id="mine" class="card" aria-labelledby="mine-title">
+    <h2 id="mine-title">What one Invoker needs</h2>
+    <label class="pick">
+      <span>Invoker</span>
+      <select id="a-hero">
+        {[...rarityOrder].map((r) => (
+          <optgroup label={r}>
+            {list.map((h, i) => h.rarity === r && <option value={i}>{h.name}</option>)}
+          </optgroup>
+        ))}
+      </select>
+    </label>
+    <div id="a-out" aria-live="polite"></div>
+  </section>
+
+  <section id="where" aria-labelledby="where-title">
+    <h2 id="where-title">Where to get them</h2>
+    <dl class="where">
+      <dt>Echoes</dt>
+      <dd>Spire floor rewards include Echoes.</dd>
+      <dt>Runes</dt>
+      <dd>Campaign battles. The VIP bonus raises your chance of Rune drops there.</dd>
+      <dt>Essences</dt>
+      <dd>
+        The Garuda bosses (Omnissi) in Boss Mode, one per element; the Astral Garuda drops Astral Essence:{' '}
+        {omnissi.map((b, i) => (
+          <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}`)}>{b.element}</a></>
+        ))}.
+      </dd>
+      <dt>Crests</dt>
+      <dd>
+        The Crest bosses:{' '}
+        {crestBosses.map((b, i) => (
+          <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}`)}>{bossLabel(b)}</a></>
+        ))}.
+      </dd>
+    </dl>
+    <p class="gap">Drop rates for these materials aren't on the site yet.</p>
+  </section>
+
+  <p class="more">
+    Levelling skills too? See <a href={href('skill-costs')}>Skill upgrade costs</a>. Gear: <a href={href('gear-upgrades')}>Gear upgrades and Memorium</a>.
+  </p>
+
+  <script type="application/json" id="asc-data" set:html={JSON.stringify({ items, list, max: MAX_STARS }).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  interface Data {
+    items: Record<string, [string, string | null]>;
+    list: { name: string; rarity: string; stars: number; tiers: string[][] }[];
+    max: number;
+  }
+  const data: Data = JSON.parse(document.getElementById('asc-data')!.textContent!);
+  const select = document.getElementById('a-hero') as HTMLSelectElement;
+  const out = document.getElementById('a-out')!;
+
+  const el = (tag: string, cls?: string, text?: string) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  };
+  const chip = (id: string) => {
+    const [name, src] = data.items[id] ?? [id, null];
+    const span = el('span', 'item');
+    if (src) span.append(Object.assign(document.createElement('img'), { src, alt: '', width: 22, height: 22 }));
+    span.append(name);
+    return span;
+  };
+
+  function render() {
+    const h = data.list[Number(select.value)];
+    const asc = el('div', 'block');
+    asc.append(el('h3', '', 'Ascending'));
+    if (h.stars >= data.max) asc.append(el('p', '', `Already ${data.max}★.`));
+    else {
+      const p = el('p', 'chips');
+      for (let s = h.stars; s < data.max; s++) p.append(chip(`ASC_Stars${s}`));
+      asc.append(el('p', 'muted', `${h.stars}★ to ${data.max}★: ${data.max - h.stars} ascension${data.max - h.stars > 1 ? 's' : ''}.`), p);
+    }
+    const awk = el('div', 'block');
+    awk.append(el('h3', '', 'Awakening'));
+    h.tiers.forEach((ids, i) => {
+      const row = el('div', 'tier');
+      row.append(el('span', 'lvl', `Levels ${i * 2 + 1}–${i * 2 + 2}`));
+      const p = el('p', 'chips');
+      ids.forEach((id) => p.append(chip(id)));
+      row.append(p);
+      awk.append(row);
+    });
+    const also = el('p', 'chips');
+    also.append(el('span', 'lvl', 'Also used:\u00a0'), chip('EMP_AnimaSpark'));
+    awk.append(also);
+    out.replaceChildren(asc, awk);
+  }
+  select.addEventListener('change', render);
+  render();
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 20px; font-weight: 600; margin: 40px 0 8px; scroll-margin-top: 80px; }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .gap { padding: 12px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
+  .aside, .more { color: var(--soft); }
+  .more { margin-top: 40px; }
+  .card { margin-top: 40px; padding: 4px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  .card h2 { margin-top: 16px; }
+  .pick { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); max-width: 360px; }
+  select {
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+  }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  tbody th { color: var(--soft); font-weight: 500; white-space: nowrap; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  :global(.item) { display: inline-flex; align-items: center; gap: 6px; margin: 2px 12px 2px 0; white-space: nowrap; }
+  :global(.item img) { border-radius: 4px; }
+  #a-out :global(.block) { margin-top: 16px; }
+  #a-out :global(h3) { font-size: 15px; font-weight: 600; margin: 0 0 6px; color: var(--soft); }
+  #a-out :global(.muted) { color: var(--muted); font-size: 14px; margin: 0 0 4px; }
+  #a-out :global(.chips) { display: flex; flex-wrap: wrap; margin: 0; }
+  #a-out :global(.tier) { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: center; padding: 6px 0; border-top: 1px solid var(--line); }
+  #a-out :global(.lvl) { color: var(--muted); font-size: 13px; }
+  .where { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; max-width: 70ch; color: var(--soft); }
+  .where dt { font-weight: 600; color: var(--text); }
+  .where dd { margin: 0; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+    .where { grid-template-columns: 1fr; }
+    .where dd { margin-bottom: 8px; }
+    #a-out :global(.tier) { grid-template-columns: 1fr; }
+  }
+</style>

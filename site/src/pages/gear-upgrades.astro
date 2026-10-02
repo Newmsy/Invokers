@@ -1,0 +1,275 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, pack } from '../lib/data';
+import { itemIcon } from '../lib/art';
+import { rarityColor } from '../lib/format';
+import { gearCosts, gearSalvage } from '../lib/planner/data';
+import brackets from '../data/gear-upgrade-brackets.json';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
+const greaterColor = '#FF8A65';
+const colorOf = (r: string) => rarityColor[r] ?? greaterColor;
+
+// The full per-level price list and the sell/crush returns appear as soon as they're available.
+const perLevel = gearCosts();
+const salvage = gearSalvage();
+const rarities = perLevel ? [...new Set(perLevel.map((r) => r.rarity))] : [];
+const starsList = perLevel ? [...new Set(perLevel.map((r) => r.stars))].sort((a, b) => a - b) : [];
+const calc = perLevel?.map((r) => [r.rarity, r.stars, r.toLevel, r.gold ?? 0, r.memorium ?? 0]) ?? [];
+const salvageMax = salvage?.filter((r) => r.level === 0 || r.level === 20) ?? [];
+
+const memoriumIcon = itemIcon('Memorium');
+const goldIcon = itemIcon('Gold');
+const sameVersion = brackets.gameVersion === pack.gameVersion;
+---
+<Base title="Gear upgrades and Memorium">
+  <h1>Gear upgrades and Memorium</h1>
+  <p class="lead">
+    What it costs to upgrade gear from +0 to +20, what selling and crushing give back, and where the Memorium comes from.
+  </p>
+  <nav class="jump" aria-label="On this page">
+    <a href="#upgrading">Upgrading</a>
+    <a href="#cost">Upgrade cost</a>
+    <a href="#selling">Selling and crushing</a>
+    <a href="#memorium">Where Memorium comes from</a>
+  </nav>
+
+  <section id="upgrading" aria-labelledby="upgrading-title">
+    <h2 id="upgrading-title">What upgrading does</h2>
+    <ul class="facts">
+      <li>Upgrading raises the piece's stats. At <strong>+5, +10, +15 and +20</strong> it also either unlocks a new substat or upgrades one it already has, up to four substats in total.</li>
+      <li><strong>Rarity</strong> sets how many substats a piece starts with. <strong>Stars</strong> set how big the main stat and substats are, so a higher-star piece stays stronger even when upgraded.</li>
+      <li>Upgrades cost <span class="cur">{goldIcon && <img src={goldIcon} alt="" width="18" height="18" />}Gold</span> and <span class="cur">{memoriumIcon && <img src={memoriumIcon} alt="" width="18" height="18" />}Memorium</span>.</li>
+    </ul>
+    <div class="table-wrap narrow">
+      <table>
+        <thead><tr><th scope="col">Rarity</th><th scope="col">Substats at +0</th></tr></thead>
+        <tbody>
+          {Object.entries(brackets.substatsAtZero).map(([r, n]) => (
+            <tr><th scope="row" style={`color: ${colorOf(r)}`}>{r}</th><td>{n}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="cost" aria-labelledby="cost-title">
+    <h2 id="cost-title">Upgrade cost</h2>
+    <p class="hint">
+      Totals for each block of five levels.{!sameVersion && ` Prices as of game version ${brackets.gameVersion}.`}
+    </p>
+
+    <h3>6★ gear by rarity</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Rarity</th>
+            {brackets.brackets.map((b) => <th scope="col">{b}</th>)}
+            <th scope="col">Gold to +20</th>
+            <th scope="col">Memorium to +20</th>
+          </tr>
+        </thead>
+        <tbody>
+          {brackets.byRarity6Star.map((r) => (
+            <tr>
+              <th scope="row" style={`color: ${colorOf(r.rarity)}`}>{r.rarity}</th>
+              {r.gold.map((g) => <td>{fmt(g)}</td>)}
+              <td class="strong">{fmt(sum(r.gold))}</td>
+              <td>{fmt(sum(brackets.memorium6Star))}</td>
+            </tr>
+          ))}
+          <tr class="total">
+            <th scope="row">Memorium, any rarity</th>
+            {brackets.memorium6Star.map((m) => <td>{fmt(m)}</td>)}
+            <td>–</td>
+            <td>{fmt(sum(brackets.memorium6Star))}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Legendary gear by stars</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Stars</th>
+            {brackets.brackets.map((b) => <th scope="col">{b}</th>)}
+            <th scope="col">Gold to +20</th>
+            <th scope="col">Memorium to +20</th>
+          </tr>
+        </thead>
+        <tbody>
+          {brackets.legendaryByStars.map((r) => (
+            <tr>
+              <th scope="row">{r.stars}★</th>
+              {r.gold.map((g) => <td>{fmt(g)}</td>)}
+              <td class="strong">{fmt(sum(r.gold))}</td>
+              <td>{fmt(r.memorium)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="facts takeaways">
+      <li><strong>About 80% of the gold goes on +15 to +20.</strong> +15 costs under a fifth of the full price, so push to +20 only on pieces you'll keep.</li>
+      <li><strong>Rarity barely changes the price.</strong> A 6★ Legendary costs 1.46 times a 6★ Common to max, and the Memorium is the same for every rarity.</li>
+      <li><strong>Stars change it a lot.</strong> A 6★ piece takes 33 times the Memorium of a 1★ piece, against 4.6 times the gold.</li>
+    </ul>
+
+    {perLevel ? (
+      <section class="card" aria-labelledby="calc-title">
+        <h3 id="calc-title">Cost per level</h3>
+        <div class="calc">
+          <label><span>Rarity</span><select id="g-rarity">{rarities.map((r) => <option value={r}>{r}</option>)}</select></label>
+          <label><span>Stars</span><select id="g-stars">{starsList.map((s) => <option value={s} selected={s === Math.max(...starsList)}>{s}★</option>)}</select></label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">To level</th><th scope="col">Gold</th><th scope="col">Memorium</th><th scope="col">Gold from +0</th><th scope="col">Memorium from +0</th></tr></thead>
+            <tbody id="g-rows"></tbody>
+          </table>
+        </div>
+        <script type="application/json" id="gear-data" set:html={JSON.stringify(calc)} />
+      </section>
+    ) : (
+      <p class="gap">A level-by-level price list for every rarity and star isn't on the site yet.</p>
+    )}
+  </section>
+
+  <section id="selling" aria-labelledby="selling-title">
+    <h2 id="selling-title">Selling and crushing</h2>
+    <p>
+      Gear you don't need can be <strong>sold for Gold</strong> or <strong>crushed for Memorium</strong>, which then pays for
+      upgrading your best pieces.
+    </p>
+    {salvage ? (
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Rarity</th><th scope="col">Stars</th><th scope="col">Level</th><th scope="col">Sell for Gold</th><th scope="col">Crush for Memorium</th></tr></thead>
+          <tbody>
+            {salvageMax.map((r) => (
+              <tr>
+                <th scope="row" style={`color: ${colorOf(r.rarity)}`}>{r.rarity}</th>
+                <td>{r.stars}★</td>
+                <td>+{r.level}</td>
+                <td>{r.sellGold != null ? fmt(r.sellGold) : '–'}</td>
+                <td>{r.crushMemorium != null ? fmt(r.crushMemorium) : '–'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p class="gap">How much each piece returns, by rarity, stars and upgrade level, isn't on the site yet.</p>
+    )}
+  </section>
+
+  <section id="memorium" aria-labelledby="memorium-title">
+    <h2 id="memorium-title">Where Memorium comes from</h2>
+    <p>Memorium is only used to upgrade gear. You get it from:</p>
+    <ul class="sources">
+      <li><strong>Campaign battles.</strong> Memorium drops from Campaign fights.</li>
+      <li><strong>Spires.</strong> Clearing Spire floors gives Memorium among the rewards.</li>
+      <li><strong>Crushing gear</strong> you don't need, as above.</li>
+      <li><strong>VIP.</strong> The VIP bonus multiplies the Memorium you win from battles.</li>
+    </ul>
+    <p class="gap">Memorium per Campaign stage, and the best stages to farm it, aren't on the site yet.</p>
+  </section>
+
+  <p class="more">
+    Upgrading Invokers instead? See <a href={href('ascension')}>Ascension and Awakening</a> and <a href={href('skill-costs')}>Skill upgrade costs</a>.
+  </p>
+</Base>
+
+<script>
+  const el = document.getElementById('gear-data');
+  if (el) {
+    type Row = [string, number, number, number, number];
+    const rows: Row[] = JSON.parse(el.textContent!);
+    const rarity = document.getElementById('g-rarity') as HTMLSelectElement;
+    const stars = document.getElementById('g-stars') as HTMLSelectElement;
+    const body = document.getElementById('g-rows')!;
+    const fmt = (n: number) => n.toLocaleString('en-GB');
+    const td = (text: string) => Object.assign(document.createElement('td'), { textContent: text });
+    const update = () => {
+      const picked = rows.filter((r) => r[0] === rarity.value && r[1] === Number(stars.value)).sort((a, b) => a[2] - b[2]);
+      let gold = 0;
+      let mem = 0;
+      body.replaceChildren(
+        ...picked.map((r) => {
+          gold += r[3];
+          mem += r[4];
+          const tr = document.createElement('tr');
+          const th = Object.assign(document.createElement('th'), { scope: 'row', textContent: `+${r[2]}` });
+          tr.append(th, td(fmt(r[3])), td(r[4] ? fmt(r[4]) : '–'), td(fmt(gold)), td(mem ? fmt(mem) : '–'));
+          return tr;
+        }),
+      );
+    };
+    rarity.addEventListener('change', update);
+    stars.addEventListener('change', update);
+    update();
+  }
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 20px; font-weight: 600; margin: 40px 0 8px; scroll-margin-top: 80px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 24px 0 8px; color: var(--soft); }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: -4px 0 0; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a {
+    padding: 6px 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font-size: 14px;
+  }
+  .facts, .sources { max-width: 70ch; padding-left: 20px; color: var(--soft); }
+  .facts li, .sources li { margin: 6px 0; }
+  .takeaways { margin-top: 16px; }
+  .cur { display: inline-flex; align-items: center; gap: 4px; }
+  .cur img { vertical-align: middle; }
+  .gap {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px dashed var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .card { margin-top: 24px; padding: 4px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  .calc { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+  .calc label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  select {
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+  }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap.narrow { max-width: 420px; margin-top: 12px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  thead th:first-child, tbody th { text-align: left; }
+  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  tbody tr:last-child > * { border-bottom: 0; }
+  td.strong { font-weight: 600; color: var(--text); }
+  tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
+  .more { margin-top: 40px; color: var(--soft); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+  }
+</style>
