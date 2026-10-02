@@ -183,6 +183,9 @@ const calc = {
   const save = () => {
     try {
       const values = Object.fromEntries(inputs.map((el, i) => [keyOf(el, i), el.value]));
+      // The farming target and points belong to the chosen event and stage, so those are kept too.
+      values['f-event'] = fEvent.value;
+      values['f-stage'] = fStage.value;
       localStorage.setItem(KEY, JSON.stringify({ plan, inputs: values }));
     } catch {
       /* storage blocked: the page still works, it just forgets */
@@ -222,6 +225,7 @@ const calc = {
     const r = farm();
     $('f-energy').textContent = fmt(r.energy);
     $('f-runs').textContent = Number.isFinite(r.runs) ? `(${fmt(r.runs)} runs)` : '';
+    save();
   }
 
   // Energy plan
@@ -295,9 +299,22 @@ const calc = {
     const v = saved.inputs![keyOf(el, i)];
     if (typeof v === 'string' && v !== '') el.value = v;
   });
+  // Put back the saved event and stage first; their target and points only apply to that same event.
   const savedTarget = fTarget.value;
+  const savedPoints = fPoints.value;
+  const savedEvent = saved.inputs?.['f-event'];
+  const sameEvent = !!savedEvent && data.farming.some((e) => e.id === savedEvent);
+  if (sameEvent) fEvent.value = savedEvent;
   fillStages();
-  if (saved.inputs && savedTarget) fTarget.value = savedTarget;
+  if (sameEvent) {
+    const stage = Number(saved.inputs?.['f-stage']);
+    if (Number.isInteger(stage) && stage >= 0 && stage < event().options.length) {
+      fStage.value = String(stage);
+      fillPoints();
+    }
+    if (savedTarget) fTarget.value = savedTarget;
+    if (savedPoints && !fPoints.disabled) fPoints.value = savedPoints;
+  }
 
   fEvent.addEventListener('change', () => {
     fillStages();
