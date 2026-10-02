@@ -1,6 +1,7 @@
 {
- "gameVersion": "0.61.0",
- "extractedAt": "2026-10-01",
+ "gameVersion": "0.61.1516",
+ "textVersion": "0.61.1",
+ "extractedAt": "2026-10-02",
  "source": "Installed game files (localization table and UI asset bundles); nothing comes from the server.",
  "unconfirmed": [
   "Whether every loading hint can appear for every player (the database has no unlock fields this script reads).",
@@ -954,6 +955,18 @@
    "screen": "Gear auto-equip"
   },
   {
+   "key": "ui-global-events-GetLegendary-tutorial-rewards-milestones",
+   "text": "Number of {0} Tournaments during the Chase Event: {1}.",
+   "context": "tutorial",
+   "screen": "global events GetLegendary"
+  },
+  {
+   "key": "ui-global-events-GetLegendary-tutorial-x2",
+   "text": "Get {0}x Tournament Points from Tournaments active during the Chase Event",
+   "context": "tutorial",
+   "screen": "global events GetLegendary"
+  },
+  {
    "key": "ui-loading-screen-fake-sequence-1",
    "text": "Loading...",
    "context": "loading",
@@ -1618,6 +1631,2402 @@
    "text": "You also gain VIP Points for each purchase from the in-game Shop, excluding Gem purchases. Larger purchases equal more VIP Points.",
    "context": "tutorial",
    "screen": "VIP"
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-01-1",
+   "text": "Eliminate the Ogryn Peltast first – their Bleeds are deadly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 1",
+   "region": "Chapter1_ELD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-01-2",
+   "text": "Watch out for the Bear's Push – it can disrupt your damage dealers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 1",
+   "region": "Chapter1_ELD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-01-3",
+   "text": "Be careful of the Ogryn Ripper's Accuracy reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 1",
+   "region": "Chapter1_ELD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-02-1",
+   "text": "Clear out the Defense lowering Sabrewolves first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 2",
+   "region": "Chapter1_ELD",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-02-2",
+   "text": "Watch out for the Ogryn Warchanter – they deal damage based on MAX HP.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 2",
+   "region": "Chapter1_ELD",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-02-3",
+   "text": "Take out the Bonecaster to stop their Burns.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 2",
+   "region": "Chapter1_ELD",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-03-1",
+   "text": "Clear an area before moving to the next.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 3",
+   "region": "Chapter1_ELD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-03-2",
+   "text": "Deal with support enemies before the elites.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 3",
+   "region": "Chapter1_ELD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-03-3",
+   "text": "Focus on the Ogryn Turret first!",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 3",
+   "region": "Chapter1_ELD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-03-4",
+   "text": "The final area is heavily guarded – be prepared.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 3",
+   "region": "Chapter1_ELD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-04-1",
+   "text": "Take out elite enemies quickly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 4",
+   "region": "Chapter1_ELD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-04-2",
+   "text": "Don't get knocked away by the Ogryn Terraquake.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 4",
+   "region": "Chapter1_ELD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-04-3",
+   "text": "Beware of the Ironskull pushing Invokers away.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 4",
+   "region": "Chapter1_ELD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-04-4",
+   "text": "Take out the Minehugger before it explodes!",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 4",
+   "region": "Chapter1_ELD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-05-1",
+   "text": "Eliminate Dusk Knights fast – their Defense reduction's deadly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 5",
+   "region": "Chapter1_ELD",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-05-2",
+   "text": "Destroy the Ogryn Turret so it can't lower your Accuracy.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 5",
+   "region": "Chapter1_ELD",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-05-3",
+   "text": "Dispatch the mini-boss fast, so he cannot spawn reinforcements.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 5",
+   "region": "Chapter1_ELD",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-06-1",
+   "text": "Focus on the Ogryn Cannon – don't get stunned!",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 6",
+   "region": "Chapter1_ELD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-06-2",
+   "text": "Dispatch the Archers before they can stack up Bleed.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 6",
+   "region": "Chapter1_ELD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-06-3",
+   "text": "Topple the Healing Totem to stop enemies healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 6",
+   "region": "Chapter1_ELD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-07-1",
+   "text": "Eliminate Dusk Knights fast – their Defense reduction's deadly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 7",
+   "region": "Chapter1_ELD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-07-2",
+   "text": "Clear out ranged enemies first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 7",
+   "region": "Chapter1_ELD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-07-3",
+   "text": "Thin enemy waves before they stack up.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 7",
+   "region": "Chapter1_ELD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-07-4",
+   "text": "Focus on protecting the Liferoots.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 7",
+   "region": "Chapter1_ELD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-08-1",
+   "text": "Avoid getting surrounded – stick to the perimeter.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 8",
+   "region": "Chapter1_ELD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-08-2",
+   "text": "Dispatch the fast firing Ogryn Peltasts quickly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 8",
+   "region": "Chapter1_ELD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-08-3",
+   "text": "Destroy the Ogryn Turret so it can't lower your Accuracy.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 8",
+   "region": "Chapter1_ELD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-08-4",
+   "text": "Keep your distance when fighting the Ogryn Hatewitch.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 8",
+   "region": "Chapter1_ELD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-09-1",
+   "text": "Deal with the Ogryn Firebulk first. He deals big AOE damage.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 9",
+   "region": "Chapter1_ELD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-09-2",
+   "text": "Don't neglect the Ogryn Peltasts.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 9",
+   "region": "Chapter1_ELD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-09-3",
+   "text": "Shatter the Healing Totem to stop enemies healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 9",
+   "region": "Chapter1_ELD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-09-4",
+   "text": "Focus on one Warhorn at a time – don't divide your damage.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 9",
+   "region": "Chapter1_ELD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-10-1",
+   "text": "Take out the Ogryn Peltasts early.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 10",
+   "region": "Chapter1_ELD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-10-2",
+   "text": "Spread out to avoid Ulgorim's slam.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 10",
+   "region": "Chapter1_ELD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-10-3",
+   "text": "Destroy Ulgorim's Healing Totems ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 10",
+   "region": "Chapter1_ELD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter1_ELD-10-4",
+   "text": "Bring Daze and Blight Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 1, stage 10",
+   "region": "Chapter1_ELD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-01-1",
+   "text": "Focus on the Wisphags first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 1",
+   "region": "Chapter2_MON",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-01-2",
+   "text": "Dispatch Shredclaws to avoid Bleeds.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 1",
+   "region": "Chapter2_MON",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-01-3",
+   "text": "Be careful of the Mistrider's pull!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 1",
+   "region": "Chapter2_MON",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-01-4",
+   "text": "Save AoE skills for the final enemy wave.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 1",
+   "region": "Chapter2_MON",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-02-1",
+   "text": "Extinguish the Fire Elementals to stop their Burns.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 2",
+   "region": "Chapter2_MON",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-02-2",
+   "text": "Use AoE attacks to take out multiple Hexlings.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 2",
+   "region": "Chapter2_MON",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-02-3",
+   "text": "Take out the Soulmask to stop its ATK reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 2",
+   "region": "Chapter2_MON",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-02-4",
+   "text": "Focus down the Demon Beacon to stop it buffing enemy Resistance.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 2",
+   "region": "Chapter2_MON",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-03-1",
+   "text": "Destroy the Spires to stop their buffs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 3",
+   "region": "Chapter2_MON",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-03-2",
+   "text": "Stop the Wisphags! They can reduce your healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 3",
+   "region": "Chapter2_MON",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-03-3",
+   "text": "Have one Invoker focus the Spires, while others clear incoming waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 3",
+   "region": "Chapter2_MON",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-04-1",
+   "text": "Use AOE skills to take out Hexling swarms.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 4",
+   "region": "Chapter2_MON",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-04-2",
+   "text": "Prioritize the Hellflinger to stop its damage.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 4",
+   "region": "Chapter2_MON",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-04-3",
+   "text": "Use DEF Down to dispatch the Thunderbringer fast.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 4",
+   "region": "Chapter2_MON",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-04-4",
+   "text": "Build Resistance to resist the Thunderbringer's Shock.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 4",
+   "region": "Chapter2_MON",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-05-1",
+   "text": "Protect the Shrine!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 5",
+   "region": "Chapter2_MON",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-05-2",
+   "text": "Focus on the Demon Beacon when less enemies are nearby.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 5",
+   "region": "Chapter2_MON",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-05-3",
+   "text": "Deal with one Demon Beacon at a time.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 5",
+   "region": "Chapter2_MON",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-05-4",
+   "text": "Hit the Demon Beacon and enemies all at once with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 5",
+   "region": "Chapter2_MON",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-06-1",
+   "text": "Destroy the Spirit Mortar to stop it launching your Invokers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 6",
+   "region": "Chapter2_MON",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-06-2",
+   "text": "Use AoE skills to hit both Totems at the same time.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 6",
+   "region": "Chapter2_MON",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-06-3",
+   "text": "The Sindrinker can heal over time – dispatch her quick!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 6",
+   "region": "Chapter2_MON",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-06-4",
+   "text": "Manage Burns by bringing a healer.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 6",
+   "region": "Chapter2_MON",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-07-1",
+   "text": "Don't neglect the Shredclaws – they can soon overwhelm you.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 7",
+   "region": "Chapter2_MON",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-07-2",
+   "text": "Use AoE skills to hit multiple attackers at once.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 7",
+   "region": "Chapter2_MON",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-07-3",
+   "text": "Destroy the Vileguts before they explode!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 7",
+   "region": "Chapter2_MON",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-07-4",
+   "text": "Don't let enemies reach the Shrine.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 7",
+   "region": "Chapter2_MON",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-08-1",
+   "text": "Destroy the Vileguts before they explode!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 8",
+   "region": "Chapter2_MON",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-08-2",
+   "text": "Focus your attention on one Soulmask at a time.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 8",
+   "region": "Chapter2_MON",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-08-3",
+   "text": "Take out multiple Shredclaws with AoE attacks.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 8",
+   "region": "Chapter2_MON",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-08-4",
+   "text": "The Thunderbringer's tough – give it all you got!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 8",
+   "region": "Chapter2_MON",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-09-1",
+   "text": "Don't get surrounded!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 9",
+   "region": "Chapter2_MON",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-09-2",
+   "text": "Use the fountains to heal your entire party.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 9",
+   "region": "Chapter2_MON",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-09-3",
+   "text": "Demolish the Spirit Mortars first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 9",
+   "region": "Chapter2_MON",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-09-4",
+   "text": "Use control debuffs to deal with the Vilegut waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 9",
+   "region": "Chapter2_MON",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-10-1",
+   "text": "Take out mobs before entering the Boss fight.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 10",
+   "region": "Chapter2_MON",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-10-2",
+   "text": "Have Invokers who can extend debuffs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 10",
+   "region": "Chapter2_MON",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-10-3",
+   "text": "Build ACC to land debuffs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 10",
+   "region": "Chapter2_MON",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter2_MON-10-4",
+   "text": "Have an Invoker with Combo SPD Down!",
+   "context": "battle",
+   "screen": "Campaign Chapter 2, stage 10",
+   "region": "Chapter2_MON",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-01-1",
+   "text": "Clear the Goblin Cleavers – they can lower your ATK and healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 1",
+   "region": "Chapter3_CAV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-01-2",
+   "text": "Don't let the Goblin Archers' DEF Down debuff stack up.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 1",
+   "region": "Chapter3_CAV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-01-3",
+   "text": "Use AoE skills to clear out Skeletons fast.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 1",
+   "region": "Chapter3_CAV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-02-1",
+   "text": "Don't let the Goblin Archers lower your DEF.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 2",
+   "region": "Chapter3_CAV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-02-2",
+   "text": "Stop the Goblin Cleavers to avoid Heal Reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 2",
+   "region": "Chapter3_CAV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-02-3",
+   "text": "Focus your assault on the Goblin Warlord – he's tough!",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 2",
+   "region": "Chapter3_CAV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-02-4",
+   "text": "Watch out for the Goblin Warlord's Stun.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 2",
+   "region": "Chapter3_CAV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-03-1",
+   "text": "Take out the Firespitter – it'll focus on your high HP Invokers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 3",
+   "region": "Chapter3_CAV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-03-2",
+   "text": "Use AoE skills to clear out enemy groups.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 3",
+   "region": "Chapter3_CAV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-03-3",
+   "text": "Bring DEF Up buffs to survive long fights.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 3",
+   "region": "Chapter3_CAV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-03-4",
+   "text": "The Stonewalker's bulky – be ready for a long battle.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 3",
+   "region": "Chapter3_CAV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-04-1",
+   "text": "Squash the Grubs quickly.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 4",
+   "region": "Chapter3_CAV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-04-2",
+   "text": "Use AoE skills to hit Grubs and the Spire.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 4",
+   "region": "Chapter3_CAV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-04-3",
+   "text": "Focus on one Spire at a time.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 4",
+   "region": "Chapter3_CAV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-04-4",
+   "text": "Deal with the Spires as your main priority.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 4",
+   "region": "Chapter3_CAV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-05-1",
+   "text": "Control the Goblin Cleavers so you can keep healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 5",
+   "region": "Chapter3_CAV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-05-2",
+   "text": "Bring plenty of healing – the Deathforge hits hard.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 5",
+   "region": "Chapter3_CAV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-05-3",
+   "text": "Destroy the Goblin Cannons to stop their Pushes.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 5",
+   "region": "Chapter3_CAV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-05-4",
+   "text": "Avoid the Deathforge's Charge!",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 5",
+   "region": "Chapter3_CAV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-06-1",
+   "text": "Dispatch the Firespitter to stop their Decrease C. DMG debuffs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 6",
+   "region": "Chapter3_CAV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-06-2",
+   "text": "Spread out to avoid blasts from the Goblin Cannons.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 6",
+   "region": "Chapter3_CAV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-06-3",
+   "text": "Save your Titans and Ultimates for the final waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 6",
+   "region": "Chapter3_CAV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-06-4",
+   "text": "Focus on survival, not clearing enemies, during the final assault.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 6",
+   "region": "Chapter3_CAV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-07-1",
+   "text": "Squish multiple Grubs at once with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 7",
+   "region": "Chapter3_CAV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-07-2",
+   "text": "Rip out the Mother Worm first!",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 7",
+   "region": "Chapter3_CAV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-07-3",
+   "text": "The Worm Tendril boosts enemy DEF.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 7",
+   "region": "Chapter3_CAV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-07-4",
+   "text": "Don't ignore the Tunnel Worm – it boosts enemy ATK.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 7",
+   "region": "Chapter3_CAV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-08-1",
+   "text": "Have the Greater Golem as your main target.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 8",
+   "region": "Chapter3_CAV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-08-2",
+   "text": "Don't let the Goblin Cleavers and Archer waves stack up.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 8",
+   "region": "Chapter3_CAV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-08-3",
+   "text": "Clear out Skeletons with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 8",
+   "region": "Chapter3_CAV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-08-4",
+   "text": "Use your burst damage to dismantle the Greater Golem.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 8",
+   "region": "Chapter3_CAV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-09-1",
+   "text": "Don't let smaller enemies overwhelm you.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 9",
+   "region": "Chapter3_CAV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-09-2",
+   "text": "Prioritize protecting the Wardstone over chasing down enemies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 9",
+   "region": "Chapter3_CAV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-09-3",
+   "text": "Spread your Invokers out to avoid the Goblin Boomrushers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 9",
+   "region": "Chapter3_CAV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-09-4",
+   "text": "Time your powerful AoE skills for larger enemy waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 9",
+   "region": "Chapter3_CAV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-10-1",
+   "text": "Clear out all enemies before starting the Boss fight.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 10",
+   "region": "Chapter3_CAV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-10-2",
+   "text": "Bind a Titan to all of your Invokers!",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 10",
+   "region": "Chapter3_CAV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-10-3",
+   "text": "Bring a healer and someone to deal with Burns.",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 10",
+   "region": "Chapter3_CAV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter3_CAV-10-4",
+   "text": "Dash away from Pentiax's fire breath!",
+   "context": "battle",
+   "screen": "Campaign Chapter 3, stage 10",
+   "region": "Chapter3_CAV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-01-1",
+   "text": "Focus on the Jackals – they can block your Ultimate!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 1",
+   "region": "Chapter4_ICE",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-01-2",
+   "text": "Don't let the Coldbows lower your ATK.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 1",
+   "region": "Chapter4_ICE",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-01-3",
+   "text": "Smash the Frozen Skeletons with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 1",
+   "region": "Chapter4_ICE",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-01-4",
+   "text": "The Mauler's a tough one – hit them with sustained damage.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 1",
+   "region": "Chapter4_ICE",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-02-1",
+   "text": "Clear the Frostlings before they jump all over you!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 2",
+   "region": "Chapter4_ICE",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-02-2",
+   "text": "Dispatch the Jackals to keep your Ultimates online.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 2",
+   "region": "Chapter4_ICE",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-02-3",
+   "text": "Build Resistance to avoid getting frozen.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 2",
+   "region": "Chapter4_ICE",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-02-4",
+   "text": "Don't attack the Reaver while under a Weaken debuff!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 2",
+   "region": "Chapter4_ICE",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-03-1",
+   "text": "Destroy the Bound Knight early to prevent its Heal Reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 3",
+   "region": "Chapter4_ICE",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-03-2",
+   "text": "Cross the bridge slowly – don't open multiple portals at once!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 3",
+   "region": "Chapter4_ICE",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-03-3",
+   "text": "Bring AoE skills to deal with clustered enemies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 3",
+   "region": "Chapter4_ICE",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-03-4",
+   "text": "Take out damage dealers before dispatching the Glacierguard.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 3",
+   "region": "Chapter4_ICE",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-04-1",
+   "text": "Watch out for the danger zones when an icicle drops!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 4",
+   "region": "Chapter4_ICE",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-04-2",
+   "text": "Keep moving when trying to destroy a Queensblade.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 4",
+   "region": "Chapter4_ICE",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-05-1",
+   "text": "Smash the Queensblades to unfreeze your party.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 5",
+   "region": "Chapter4_ICE",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-05-2",
+   "text": "Counter Archers with your own ranged Invokers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 5",
+   "region": "Chapter4_ICE",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-05-3",
+   "text": "Deal with the miniboss' minions before taking them out.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 5",
+   "region": "Chapter4_ICE",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-06-1",
+   "text": "Stick close to the Flame Ward!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 6",
+   "region": "Chapter4_ICE",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-06-2",
+   "text": "Take out Cryowolves and Coldbows first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 6",
+   "region": "Chapter4_ICE",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-06-3",
+   "text": "Save your Ultimates and Titans for large waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 6",
+   "region": "Chapter4_ICE",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-06-4",
+   "text": "Protect the Ward – don't chase enemies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 6",
+   "region": "Chapter4_ICE",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-07-1",
+   "text": "Cut down the Icecutter before it can apply Bleed.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 7",
+   "region": "Chapter4_ICE",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-07-2",
+   "text": "Destroy the Glacier Glyphs – don't get slowed!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 7",
+   "region": "Chapter4_ICE",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-07-3",
+   "text": "Use your powerful AoE skills on large waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 7",
+   "region": "Chapter4_ICE",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-07-4",
+   "text": "Focus the Winterfount to stop it healing enemies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 7",
+   "region": "Chapter4_ICE",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-08-1",
+   "text": "Frozen enemies may suddenly unfreeze and attack!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 8",
+   "region": "Chapter4_ICE",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-08-2",
+   "text": "Be wary of the storm – it'll slow you down.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 8",
+   "region": "Chapter4_ICE",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-08-3",
+   "text": "Watch out for Icehaunts in the storm.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 8",
+   "region": "Chapter4_ICE",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-09-1",
+   "text": "Melt the Ice Cradle to stop it freezing you!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 9",
+   "region": "Chapter4_ICE",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-09-2",
+   "text": "Spread out to avoid the Frostgore's Launches and Freezes.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 9",
+   "region": "Chapter4_ICE",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-09-3",
+   "text": "Waves grow over time – stay alert!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 9",
+   "region": "Chapter4_ICE",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-09-4",
+   "text": "Break the Queensblade before time runs out!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 9",
+   "region": "Chapter4_ICE",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-10-1",
+   "text": "Bring Melee Attackers!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 10",
+   "region": "Chapter4_ICE",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-10-2",
+   "text": "Protect the Flame Shards!",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 10",
+   "region": "Chapter4_ICE",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter4_ICE-10-3",
+   "text": "Bring Frost and Fatigue Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 4, stage 10",
+   "region": "Chapter4_ICE",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-01-1",
+   "text": "Dismantle the Skeleslaw Constra to stop Heal Reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 1",
+   "region": "Chapter5_VOL",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-01-2",
+   "text": "Destroy the Lavaspit Constra to prevent your Crit Rate being lowered.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 1",
+   "region": "Chapter5_VOL",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-01-3",
+   "text": "Smash Saurin Choppers with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 1",
+   "region": "Chapter5_VOL",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-01-4",
+   "text": "The Saurin Globb can lower your DEF - don't ignore it!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 1",
+   "region": "Chapter5_VOL",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-02-1",
+   "text": "Control the Skink swarms – they're weak but they stack up quick.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 2",
+   "region": "Chapter5_VOL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-02-2",
+   "text": "Watch out for the mines! They explode after their countdown.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 2",
+   "region": "Chapter5_VOL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-02-3",
+   "text": "Focus on protecting the Soulforge, not chasing enemy waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 2",
+   "region": "Chapter5_VOL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-02-4",
+   "text": "Position your Invokers to avoid the Decimator's Launches.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 2",
+   "region": "Chapter5_VOL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-03-1",
+   "text": "Dormant Skinks won't attack you – live and let live!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 3",
+   "region": "Chapter5_VOL",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-03-2",
+   "text": "Prioritize the Clawshots – their ranged attacks are strong.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 3",
+   "region": "Chapter5_VOL",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-03-3",
+   "text": "Watch out for Skink swarms!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 3",
+   "region": "Chapter5_VOL",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-04-1",
+   "text": "Take out damage dealers before the Saurin Guardsplitter.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 4",
+   "region": "Chapter5_VOL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-04-2",
+   "text": "Smash the Power Cell to stop its Shields!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 4",
+   "region": "Chapter5_VOL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-04-3",
+   "text": "Destroy the Skeleslaws near the Cannons.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 4",
+   "region": "Chapter5_VOL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-04-4",
+   "text": "Don't let the Lavaspit Constra lower your Crit Rate!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 4",
+   "region": "Chapter5_VOL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-05-1",
+   "text": "Saurin Choppers can buff enemy ATK – take them out!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 5",
+   "region": "Chapter5_VOL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-05-2",
+   "text": "Take out the Saurin Blaster to prevent Burns.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 5",
+   "region": "Chapter5_VOL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-05-3",
+   "text": "Spread out to avoid the Araka's Stun.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 5",
+   "region": "Chapter5_VOL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-05-4",
+   "text": "When the Araka Constra charges, run!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 5",
+   "region": "Chapter5_VOL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-06-1",
+   "text": "Hurry to the Flame Ward ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 6",
+   "region": "Chapter5_VOL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-06-2",
+   "text": "Smash multiple Skinks with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 6",
+   "region": "Chapter5_VOL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-06-3",
+   "text": "Stay close to the Flame Ward.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 6",
+   "region": "Chapter5_VOL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-07-1",
+   "text": "Enemies board the train from all sides - don't get surrounded!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 7",
+   "region": "Chapter5_VOL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-07-2",
+   "text": "Protect the train's Soulforge at all costs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 7",
+   "region": "Chapter5_VOL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-07-3",
+   "text": "Avoid the mines in the train's center.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 7",
+   "region": "Chapter5_VOL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-08-1",
+   "text": "Take out the Lavaspit Constra to avoid Crit Rate reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 8",
+   "region": "Chapter5_VOL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-08-2",
+   "text": "Save your Ultimates for overlapping waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 8",
+   "region": "Chapter5_VOL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-08-3",
+   "text": "Be wary of the Decimator lowering your Defense.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 8",
+   "region": "Chapter5_VOL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-08-4",
+   "text": "Destroy the Power Cell before the time runs out!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 8",
+   "region": "Chapter5_VOL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-09-1",
+   "text": "Spread out to avoid the Razor Wheel's AoEs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 9",
+   "region": "Chapter5_VOL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-09-2",
+   "text": "Don't stay in the burning area!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 9",
+   "region": "Chapter5_VOL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-09-3",
+   "text": "Destroy the Chain Cannons – they can pull Invokers out of position.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 9",
+   "region": "Chapter5_VOL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-09-4",
+   "text": "Save your Titans for heavy enemy waves.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 9",
+   "region": "Chapter5_VOL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-10-1",
+   "text": "Bring Tanks and Supports for this fight.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 10",
+   "region": "Chapter5_VOL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-10-2",
+   "text": "Stack Daze and Atrophy Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 10",
+   "region": "Chapter5_VOL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter5_VOL-10-3",
+   "text": "Stack buffs on your Tank!",
+   "context": "battle",
+   "screen": "Campaign Chapter 5, stage 10",
+   "region": "Chapter5_VOL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-01-1",
+   "text": "Bring AoE skills to stop the Silkfangs overwhelming you.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 1",
+   "region": "Chapter6_BRD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-01-2",
+   "text": "Beware of the Spinebacks' AoE attacks.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 1",
+   "region": "Chapter6_BRD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-01-3",
+   "text": "Focus the Fire Spiders – they can Shield their allies!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 1",
+   "region": "Chapter6_BRD",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-02-1",
+   "text": "Manage the Spineback swarms when fighting Scourix – their AoE attacks are annoying in narrow spaces.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 2",
+   "region": "Chapter6_BRD",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-02-2",
+   "text": "Avoid the Mantiflay's AoE attacks – they can apply Bleed and Heal Reduction.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 2",
+   "region": "Chapter6_BRD",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-03-1",
+   "text": "Save your Titans and Ultimates for dealing with the Spore Cannons.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 3",
+   "region": "Chapter6_BRD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-03-2",
+   "text": "Use Ranged Invokers to deal with Skorapins.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 3",
+   "region": "Chapter6_BRD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-03-3",
+   "text": "Destroy the Brood Healers ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 3",
+   "region": "Chapter6_BRD",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-04-1",
+   "text": "Bring lots of AoE skills to deal with enemy swarms.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 4",
+   "region": "Chapter6_BRD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-04-2",
+   "text": "Don't neglect the Brood Worm's support minions.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 4",
+   "region": "Chapter6_BRD",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-05-1",
+   "text": "Bring lots of AoE skills to deal with enemy swarms.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 5",
+   "region": "Chapter6_BRD",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-05-2",
+   "text": "Spread out to avoid the Dreadweaver's AoE Stun.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 5",
+   "region": "Chapter6_BRD",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-06-1",
+   "text": "Take out the opening enemy swarms ASAP.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 6",
+   "region": "Chapter6_BRD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-06-2",
+   "text": "Avoid the Jadescuttlers' charging attacks and then strike back.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 6",
+   "region": "Chapter6_BRD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-06-3",
+   "text": "Dispatch the Brood Worm quickly to stop it buffing nearby Silkfangs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 6",
+   "region": "Chapter6_BRD",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-07-1",
+   "text": "The Silkfangs at the beginning won't attack unless provoked. Leave them be!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 7",
+   "region": "Chapter6_BRD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-07-2",
+   "text": "Deal with the Skorapin packs at range, or knock them away.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 7",
+   "region": "Chapter6_BRD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-07-3",
+   "text": "The first Prime Broodox brings reinforcements – be ready!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 7",
+   "region": "Chapter6_BRD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-07-4",
+   "text": "Save your Titans for defending the Crystal Lattice.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 7",
+   "region": "Chapter6_BRD",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-08-1",
+   "text": "Focus on destroying the Brood Healer ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 8",
+   "region": "Chapter6_BRD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-08-2",
+   "text": "A Mantiflay waits at the end of the Stage – save some Titans for then!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 8",
+   "region": "Chapter6_BRD",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-09-1",
+   "text": "Group Jadescuttlers and Silkfangs together to clear them with AoE skills.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 9",
+   "region": "Chapter6_BRD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-09-2",
+   "text": "The second Prime Broodox gets reinforcements at 50% HP – be ready!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 9",
+   "region": "Chapter6_BRD",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-10-1",
+   "text": "Smash the Brood Eggs before they hatch!",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 10",
+   "region": "Chapter6_BRD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-10-2",
+   "text": "Bring at least one Tank and some Supports for this fight.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 10",
+   "region": "Chapter6_BRD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter6_BRD-10-3",
+   "text": "Bring Crush and Manaburn Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 6, stage 10",
+   "region": "Chapter6_BRD",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-01-1",
+   "text": "Clear the Oringani Lancer and its smaller minions with AoE attacks.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 1",
+   "region": "Chapter7_TRO",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-01-2",
+   "text": "Pelannan Skinks group up around the Curse Head – smash 'em with AoE skills!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 1",
+   "region": "Chapter7_TRO",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-02-1",
+   "text": "Focus on the Oringani Chanters – don't let them Shield their allies!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 2",
+   "region": "Chapter7_TRO",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-02-2",
+   "text": "The Lorotol Brute can reflect damage – wait until they're vulnerable to attack.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 2",
+   "region": "Chapter7_TRO",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-02-3",
+   "text": "Stay on the platform to turn the monkey statues faster!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 2",
+   "region": "Chapter7_TRO",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-03-1",
+   "text": "Take out the Oringani Chanters to stop their Shields!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 3",
+   "region": "Chapter7_TRO",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-03-2",
+   "text": "The Pelannan Skinks in the market don't attack on sight.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 3",
+   "region": "Chapter7_TRO",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-03-3",
+   "text": "Dispatch the Jungle Tyrant's Chanters to stop him gaining a Shield.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 3",
+   "region": "Chapter7_TRO",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-04-1",
+   "text": "Destroy the Invincibility Pillar ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 4",
+   "region": "Chapter7_TRO",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-04-2",
+   "text": "You can't take down the Black Sun Crusader straight away – damage him until he retreats.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 4",
+   "region": "Chapter7_TRO",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-05-1",
+   "text": "Destroy the Queensblade to release the frozen platforms.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 5",
+   "region": "Chapter7_TRO",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-05-2",
+   "text": "Dispatch Saurin Sun Strikers quickly – they're a menace up close.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 5",
+   "region": "Chapter7_TRO",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-05-3",
+   "text": "The Lorotol Brute can reflect damage – wait until they're vulnerable to attack.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 5",
+   "region": "Chapter7_TRO",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-06-1",
+   "text": "Avoid the Saurin Cloudburster's AoE attacks where possible.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 6",
+   "region": "Chapter7_TRO",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-06-2",
+   "text": "Stack Resistance to resist the Black Sun Crusader's Bleeds.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 6",
+   "region": "Chapter7_TRO",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-07-1",
+   "text": "Defend Grandun at all costs! You'll fail the Stage if he falls.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 7",
+   "region": "Chapter7_TRO",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-07-2",
+   "text": "Bring Support Invokers to protect against Saurin Sun Strikers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 7",
+   "region": "Chapter7_TRO",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-08-1",
+   "text": "Stay away from the flowers! They'll apply Chain if you get too close.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 8",
+   "region": "Chapter7_TRO",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-08-2",
+   "text": "Destroy the Undying Pillar ASAP!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 8",
+   "region": "Chapter7_TRO",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-08-3",
+   "text": "Avoid the Saurin Doomdrum's AoE attacks – they can Stun your Invokers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 8",
+   "region": "Chapter7_TRO",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-09-1",
+   "text": "Dispatch Saurin Sun Strikers quickly – they're a menace up close.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 9",
+   "region": "Chapter7_TRO",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-09-2",
+   "text": "Take out the Oringani Chanter to close the two portals.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 9",
+   "region": "Chapter7_TRO",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-09-3",
+   "text": "The Jungle Tyrant have multiple Stun skills – make sure your Resistance is high!",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 9",
+   "region": "Chapter7_TRO",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-10-1",
+   "text": "Bring Ranged Invokers to take out Koltmos' Doomclaws.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 10",
+   "region": "Chapter7_TRO",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-10-2",
+   "text": "You can stop the Deadsun Ritual's attack if you deal enough damage.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 10",
+   "region": "Chapter7_TRO",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter7_TRO-10-3",
+   "text": "Bring Bloodrot and Manashock Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 7, stage 10",
+   "region": "Chapter7_TRO",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-01-1",
+   "text": "Avoid the Dark Tendrils!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 1",
+   "region": "Chapter8_GRV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-01-2",
+   "text": "Break the Souldrain Cauldron – then focus on the remaining enemies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 1",
+   "region": "Chapter8_GRV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-01-3",
+   "text": "Deal with ranged enemies as a priority.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 1",
+   "region": "Chapter8_GRV",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-02-1",
+   "text": "Careful in narrow corridors – they're full of traps!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 2",
+   "region": "Chapter8_GRV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-02-2",
+   "text": "When fighting the Death Giant, take out the nearby Death Acolyte first. It'll stop the Death Giant getting buffed.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 2",
+   "region": "Chapter8_GRV",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-03-1",
+   "text": "Dispatch Night Screechers fast – they can reduce your Skill Speed and Ultimate Mana.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 3",
+   "region": "Chapter8_GRV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-03-2",
+   "text": "Death Acolytes can apply Shields to fellow minions – don't let them!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 3",
+   "region": "Chapter8_GRV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-03-3",
+   "text": "The Necroknight spawns Lost Rangers as back-up – take them out fast!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 3",
+   "region": "Chapter8_GRV",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-04-1",
+   "text": "Beware of falling chandeliers!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 4",
+   "region": "Chapter8_GRV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-04-2",
+   "text": "Take out the Death Acolytes to stop their buffs.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 4",
+   "region": "Chapter8_GRV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-04-3",
+   "text": "Stay out of range of the Necroknight's AoE attacks. They'll reduce your Crit Rate and DMG.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 4",
+   "region": "Chapter8_GRV",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-05-1",
+   "text": "Avoid Harvesters hiding in holes!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 5",
+   "region": "Chapter8_GRV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-05-2",
+   "text": "Prioritize Wights – their ranged attacks hit hard.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 5",
+   "region": "Chapter8_GRV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-05-3",
+   "text": "Watch out for exploding Bloatnauts.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 5",
+   "region": "Chapter8_GRV",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-06-1",
+   "text": "Beware of falling chandeliers!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 6",
+   "region": "Chapter8_GRV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-06-2",
+   "text": "Slowly cross the bridge to avoid swarms of Night Screechers.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 6",
+   "region": "Chapter8_GRV",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-07-1",
+   "text": "The Deathless Giant is invincible until you destroy all Soul Totems.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 7",
+   "region": "Chapter8_GRV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-07-2",
+   "text": "Once all Soul Totems are destroyed, the Deathless Giant is vulnerable. Let him have it!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 7",
+   "region": "Chapter8_GRV",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-08-1",
+   "text": "Beware of falling chandeliers!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 8",
+   "region": "Chapter8_GRV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-08-2",
+   "text": "Release the Sabrewolves to help destroy the Bell of Unrest.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 8",
+   "region": "Chapter8_GRV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-08-3",
+   "text": "Use your Titans and Ultimates to smash the Bell of Unrest.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 8",
+   "region": "Chapter8_GRV",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-09-1",
+   "text": "Save your Titans for protecting the Dark Tome.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 9",
+   "region": "Chapter8_GRV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-09-2",
+   "text": "Death Acolytes can heal fellow minions – take them out!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 9",
+   "region": "Chapter8_GRV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-09-3",
+   "text": "Death Acolytes near the Dark Tome are invincible for a short period.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 9",
+   "region": "Chapter8_GRV",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-10-1",
+   "text": "Use Hex to stop Althar reviving his minions!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 10",
+   "region": "Chapter8_GRV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-10-2",
+   "text": "Bring Fatigue and Crush Tolerances.",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 10",
+   "region": "Chapter8_GRV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter8_GRV-10-3",
+   "text": "Take out Althar as fast as you can!",
+   "context": "battle",
+   "screen": "Campaign Chapter 8, stage 10",
+   "region": "Chapter8_GRV",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-01-1",
+   "text": "Take out ranged enemies around the Waystone first.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 1",
+   "region": "Chapter12_CEL",
+   "stage": 1
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-02-1",
+   "text": "Bring AoE skills to take out lots of small enemies at once.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 2",
+   "region": "Chapter12_CEL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-02-2",
+   "text": "Beware of Baloran's Burns! Bring Resistance to stop them applying.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 2",
+   "region": "Chapter12_CEL",
+   "stage": 2
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-03-1",
+   "text": "Control your Lead Invoker to pick up the portal pieces as quick as you can.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 3",
+   "region": "Chapter12_CEL",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-03-2",
+   "text": "Some portals may lead to hidden riches!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 3",
+   "region": "Chapter12_CEL",
+   "stage": 3
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-04-1",
+   "text": "The storm is fierce – beware of electrified areas.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 4",
+   "region": "Chapter12_CEL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-04-2",
+   "text": "Don't let Drakefists sneak up on you!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 4",
+   "region": "Chapter12_CEL",
+   "stage": 4
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-05-1",
+   "text": "Gurkriks apply Bleed with their attacks. Build up your Resistance to negate it.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 5",
+   "region": "Chapter12_CEL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-05-2",
+   "text": "The Seraphic Knight can greatly reduce your Defense with its Doomrend skill. Avoid it!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 5",
+   "region": "Chapter12_CEL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-05-3",
+   "text": "Dodge the Daemal Polyps' shots – it'll reduce your Attack.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 5",
+   "region": "Chapter12_CEL",
+   "stage": 5
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-06-1",
+   "text": "Take out the Voidcyst Aegis! It can apply Shields to its allies.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 6",
+   "region": "Chapter12_CEL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-06-2",
+   "text": "Stop the Voidcyst Mender to prevent its allies from healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 6",
+   "region": "Chapter12_CEL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-06-3",
+   "text": "Dispatch the Voidcyst Preserver! It make its allies Unkillable.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 6",
+   "region": "Chapter12_CEL",
+   "stage": 6
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-07-1",
+   "text": "Protect the Cleric Blade at all costs!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 7",
+   "region": "Chapter12_CEL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-07-2",
+   "text": "Keep pace with the Cleric Blade, so enemies don't sneak up on you!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 7",
+   "region": "Chapter12_CEL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-07-3",
+   "text": "Use AoE skills when enemies swarm the Cleric Blade.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 7",
+   "region": "Chapter12_CEL",
+   "stage": 7
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-08-1",
+   "text": "Stick near the portals until the timer runs out!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 8",
+   "region": "Chapter12_CEL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-08-2",
+   "text": "Hold onto your Titans for the Seraphic Knight – he's a tough customer!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 8",
+   "region": "Chapter12_CEL",
+   "stage": 8
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-09-1",
+   "text": "Bring AoE skills to clear away multiple enemies at once.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 9",
+   "region": "Chapter12_CEL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-09-2",
+   "text": "Don't get smashed by crumbling columns!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 9",
+   "region": "Chapter12_CEL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-09-3",
+   "text": "Save your Titans for protecting the Celestial Anchor.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 9",
+   "region": "Chapter12_CEL",
+   "stage": 9
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-10-1",
+   "text": "This is a two-stage fight – be ready!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 10",
+   "region": "Chapter12_CEL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-10-2",
+   "text": "Stun Sakiel during his Fallen Blades skill!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 10",
+   "region": "Chapter12_CEL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-10-3",
+   "text": "Resistance and Accuracy are mandatory for this battle!",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 10",
+   "region": "Chapter12_CEL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-Chapter12_CEL-10-4",
+   "text": "Bring Heal Reduction to stop Sakiel from healing.",
+   "context": "battle",
+   "screen": "Campaign Chapter 12, stage 10",
+   "region": "Chapter12_CEL",
+   "stage": 10
+  },
+  {
+   "key": "md-LevelHint-TowerGeneric-1",
+   "text": "Build a core Elemental team for tackling each Spire.",
+   "context": "battle",
+   "screen": "Spires (any floor)"
+  },
+  {
+   "key": "md-LevelHint-TowerGeneric-2",
+   "text": "Watch out for floor-specific buffs and debuffs.",
+   "context": "battle",
+   "screen": "Spires (any floor)"
+  },
+  {
+   "key": "md-LevelHint-TowerGeneric-3",
+   "text": "Don't waste skills or Titans as a wave ends.",
+   "context": "battle",
+   "screen": "Spires (any floor)"
+  },
+  {
+   "key": "md-LevelHint-TowerGeneric-4",
+   "text": "Be adaptable! Each floor has its own challenges.",
+   "context": "battle",
+   "screen": "Spires (any floor)"
+  },
+  {
+   "key": "md-LevelHint-TowerGeneric-5",
+   "text": "Save your Titan for big waves or bosses.",
+   "context": "battle",
+   "screen": "Spires (any floor)"
+  },
+  {
+   "key": "md-LevelHint-PVP-1",
+   "text": "Invoker and Titan Stats are modified for Arena Battles – don't forget!",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-2",
+   "text": "Invoker Skills start with cooldowns on 70%. High Skill Recovery will help you use them sooner.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-3",
+   "text": "Pay attention to your opponent's team – target their most dangerous Invokers first.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-4",
+   "text": "Your Accuracy and Resistance goals aren't static – they change depending on your opponent.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-5",
+   "text": "Getting a Titan before your opponent is a big advantage. High Mana Gen can be key.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-6",
+   "text": "Control debuffs like <color=#FF3232>Stun</color>, <color=#FF3232>Shock</color>, <color=#FF3232>Freeze</color>, and <color=#FF3232>Taunt</color>, can put a stop to the other team's plans. Make sure you have enough Accuracy.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-7",
+   "text": "Using a Tactic with <color=#FFE606>2 Frontline Tanks</color> will mean your other Invokers don't get targeted. Pay attention to enemy Element – they'll attack your Tanks regardless, so you can massively decrease their damage if you have a stronger Element.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-8",
+   "text": "<color=#F8D962>Light</color> and <color=#8B5CF6>Dark</color> function differently in PvP – while still strong vs. the other 4 Elements, they also counter each other! A Light Invoker will be at Advantage while attacking an enemy Dark Invoker, but be at Disadvantage when a Dark Invoker attacks them. Stay alert!",
+   "context": "battle",
+   "screen": "Arena PvP battles"
+  },
+  {
+   "key": "md-LevelHint-PVP-9",
+   "text": "Tap an enemy's portrait or directly on them in battle to focus your Lead Invoker's attacks.",
+   "context": "battle",
+   "screen": "Arena PvP battles"
   }
  ]
 }
