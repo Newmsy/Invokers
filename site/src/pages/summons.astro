@@ -42,8 +42,8 @@ const calc = {
 <Base title="Summons">
   <h1>Summons</h1>
   <p class="lead">
-    The chance of each rarity from every summon item, and a calculator for the odds of getting at least one in a number of
-    pulls. These are odds over many pulls: no calculator can tell you what your next pull will be.
+    Rarity chances for every summon item, and the odds of at least one in N pulls. Odds describe many pulls, not your
+    next one.
   </p>
 
   <section class="card" aria-labelledby="calc-title">
@@ -117,9 +117,9 @@ const calc = {
       </div>
       {g.kind === 'hero' && (
         <p class="hint">
-          The Wild Star's Uncommon chance is 25.65% for Fire, Water, Earth and Wind heroes plus 2.85% for Light and Dark ones.
-          Radiant Stars only give Light and Dark heroes. Inside a rarity every hero is equally likely, so one specific
-          Legendary from a Destiny Star is 0.53% ÷ {pools.SI_DestinyStar.length} heroes, about 1 in
+          Wild Star Uncommon is 25.65% Fire, Water, Earth and Wind plus 2.85% Light and Dark. Radiant Stars only give Light
+          and Dark heroes. Every hero in a rarity is equally likely, so one specific Destiny Star Legendary is
+          0.53% ÷ {pools.SI_DestinyStar.length} heroes, about 1 in
           {' '}{fmt(Math.round(pools.SI_DestinyStar.length / 0.0053))} pulls; from a Radiant Star it is about 1 in
           {' '}{fmt(Math.round(pools.SI_RadiantStar.length / 0.0053))}.
         </p>
@@ -157,8 +157,8 @@ const calc = {
   <section aria-labelledby="mercy-title">
     <h2 id="mercy-title">Mercy (estimated)</h2>
     <p class="callout">
-      <strong>Estimated.</strong> The game doesn't explain its mercy rules. This is our best estimate and it hasn't been
-      confirmed in game. We also don't know yet whether a natural pull resets the counter, or whether items share one.
+      <strong>Estimated.</strong> The game doesn't explain its mercy rules; this is our best estimate, not confirmed in
+      game. Unknown: whether a natural pull resets the counter, and whether items share one.
     </p>
     <div class="table-wrap">
       <table>
