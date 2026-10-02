@@ -22,8 +22,8 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
   <p class="lead">Each boss's own dos and don'ts from the game, the corruptions it uses, and the energy cost of each stage.</p>
 
   {groups.map((g) => (
-    <section aria-labelledby={`g-${g.mode}`}>
-      <h2 id={`g-${g.mode}`}>{g.title}</h2>
+    <section aria-labelledby={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>
+      <h2 id={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>{g.title}</h2>
       <ul class="grid">
         {g.bosses.map((b) => (
           <li>

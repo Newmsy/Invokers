@@ -141,6 +141,8 @@ export function pageDocs(): SearchDoc[] {
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],
     ['blog', 'Blog', 'The numbers behind Invokers, worked out in plain language'],
+    ['team', 'Team builder', 'Build a team of Invokers and check its elements, factions and speed'],
+    ['heroes/compare', 'Compare Invokers', 'Compare Invokers side by side: stats and skills'],
     ['planner', 'Planner', 'What your Invokers still need to max their skills and gear, from your imported box'],
     ['skill-costs', 'Skill upgrade costs', 'What it costs to level a skill, level by level'],
     ['my-box', 'My box', 'Import your Invokers and gear to see your roster'],
