@@ -25,6 +25,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | 11 | Accessory set effects / slot restrictions | Done | Accessories have no set bonuses (no set config exists). Each accessory slot unlocks at a hero Awakening level (in-game text); main and sub stats are limited per slot (`AccessoryData.MainBonusesBySlot`). |
 | - | In-game tips (issue #8) | Done | `data/tips.json` from `scripts/build_tips.py` (offline: localization + UI bundles via UnityPy). 40 loading-screen hints in game order with titles, 10 loading messages, 184 tutorial popup lines, 8 help labels. Boss Do/Don't lines are in `data/bosses.json`. |
 | - | Boss guides (issue #11) | Done | `data/bosses.json` from `scripts/build_bosses.py`: 16 bosses with their Do/Don't lists, Corruptions, and per-stage HP/ATK/DEF, level, element and ACC/RES (from the F11 level dump). Boss skills not yet. |
+| - | Shop packs | Done | `data/shop_packs.json` from `scripts/decode_shop.py`: every pack in the game's local shop cache (`LocalLow/.../shop/packs/*.dat`, MemoryPack + Brotli localization). Only packs the server has sent to this client; re-run after new offers appear. Local store prices (`skus_prices.dat`) are the player's own currency and are not exported. |
 | - | Arena trophy room | Done | `data/trophies.json` (issue #4): 15 levels per stat, bonus and medal cost per level. |
 
 ## Facts worth knowing
