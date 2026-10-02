@@ -1,10 +1,11 @@
 ---
 // Public page for a share link: /share/?id=<id>. The site is static, so the share is fetched in the browser.
 import Base from '../../layouts/Base.astro';
-import { gearStatLabels, heroRefsByConfigId, href, pack, setNames } from '../../lib/data';
+import { heroRefsWithArt } from '../../lib/art';
+import { gearStatLabels, href, pack, setNames } from '../../lib/data';
 import { accountsEnabled } from '../../lib/account/config';
 
-const refs = { heroes: heroRefsByConfigId, stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
+const refs = { heroes: heroRefsWithArt(), stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
 ---
 <Base title="Shared">
   <h1 id="share-heading">Shared link</h1>

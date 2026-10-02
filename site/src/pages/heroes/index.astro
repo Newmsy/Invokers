@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
+import { elementIcon } from '../../lib/art';
 import { heroes, heroHref, href } from '../../lib/data';
 import { className, rarityColor, rarityOrder } from '../../lib/format';
 
@@ -67,7 +68,7 @@ const groups = [
           </div>
           <div class="card-body">
             <span class="card-name">{h.name}</span>
-            <span class="card-meta"><span class="rarity">{h.rarity}</span> · {h.element} · {className(h.class)}</span>
+            <span class="card-meta"><span class="rarity">{h.rarity}</span> · {elementIcon(h.element) && <img src={elementIcon(h.element)} alt="" width="14" height="14" loading="lazy" />}{h.element} · {className(h.class)}</span>
           </div>
         </a>
       </li>
@@ -248,6 +249,7 @@ const groups = [
   }
   .card-name { font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.25; }
   .card-meta { font-size: 13px; color: var(--soft); }
+  .card-meta img { vertical-align: -2px; margin-right: 3px; }
   .rarity { color: var(--rarity); font-weight: 600; }
   .empty { color: var(--soft); }
   .visually-hidden {

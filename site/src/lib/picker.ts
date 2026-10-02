@@ -1,5 +1,6 @@
 // Browser-side hero search box used by the compare page and the team builder: type a name, pick from up
 // to 8 matches with the mouse or the arrow keys and Enter.
+import { avatar } from './avatar';
 import type { RosterHero } from './roster';
 
 export interface PickerOptions {
@@ -33,9 +34,11 @@ export function attachPicker(input: HTMLInputElement, list: HTMLUListElement, op
         const li = document.createElement('li');
         li.id = `${list.id}-${i}`;
         li.setAttribute('role', 'option');
-        li.innerHTML = `<strong></strong><span></span>`;
-        li.querySelector('strong')!.textContent = h.name;
-        li.querySelector('span')!.textContent = `${h.rarity} · ${h.element} · ${h.cls}`;
+        const text = document.createElement('div');
+        text.innerHTML = `<strong></strong><span></span>`;
+        text.querySelector('strong')!.textContent = h.name;
+        text.querySelector('span')!.textContent = `${h.rarity} · ${h.element} · ${h.cls}`;
+        li.append(avatar(h.art, 32), text);
         li.addEventListener('mousedown', (e) => {
           e.preventDefault();
           pick(i);

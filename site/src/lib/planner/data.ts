@@ -1,4 +1,5 @@
 // Build-time inputs for the planner page: cost tables and hero facts, serialised into the page.
+import { heroArt } from '../art';
 import { heroRefsByConfigId, href, itemName, pack } from '../data';
 import { calculatorData, currencies } from '../skillCosts';
 import type { GearCostRow, PlanData } from './model';
@@ -29,7 +30,7 @@ export function plannerData(): PlanData {
     heroes: Object.fromEntries(
       Object.entries(heroRefsByConfigId).map(([configId, r]) => [
         configId,
-        { id: r.id, slug: r.slug, name: r.name, rarity: r.rarity, faction: r.faction, element: r.element, class: r.class },
+        { id: r.id, slug: r.slug, name: r.name, rarity: r.rarity, faction: r.faction, element: r.element, class: r.class, art: heroArt(r.id) },
       ]),
     ),
     gameVersion: pack.gameVersion,

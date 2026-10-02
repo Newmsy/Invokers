@@ -46,8 +46,9 @@ const { id, label } = Astro.props;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   }
   .picker-list[hidden] { display: none; }
-  .picker-list li { display: flex; flex-direction: column; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
-  .picker-list li span { font-size: 12px; color: var(--soft); }
+  .picker-list li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+  .picker-list li div { display: flex; flex-direction: column; min-width: 0; }
+  .picker-list li div span { font-size: 12px; color: var(--soft); }
   .picker-list li[aria-selected='true'] { background: var(--surface-3); outline: 1px solid var(--accent); }
   .picker-list li.empty { color: var(--muted); cursor: default; }
 </style>

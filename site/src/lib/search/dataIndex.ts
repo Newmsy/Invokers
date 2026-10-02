@@ -4,6 +4,7 @@ import itemsJson from '../../../../data/items.json';
 import setsJson from '../../../../data/sets.json';
 import skillsJson from '../../../../data/skills.json';
 import { bossLabel, bossSlug, bosses, heroHref, heroes, href, trophyRoom, type Item, type SkillSet } from '../data';
+import { heroArt, itemIcon, skillIcon } from '../art';
 import { className, skillTypeName } from '../format';
 import type { SearchDoc } from './match';
 
@@ -76,6 +77,7 @@ export function dataDocs(): SearchDoc[] {
       title: h.name,
       sub: [h.element, h.rarity, h.faction, className(h.class)].filter(Boolean).join(' · '),
       url: heroHref(h.id),
+      image: heroArt(h.id),
     });
   }
 
@@ -90,6 +92,7 @@ export function dataDocs(): SearchDoc[] {
         sub: `${set.name} · ${skillTypeName(s.type)}`,
         text: clip(plainText(first.text)),
         url: `${heroHref(set.heroId)}#${skillAnchor(s.type)}`,
+        image: skillIcon(set.heroId, s.type) ?? heroArt(set.heroId),
       });
     }
   }
@@ -127,7 +130,7 @@ export function dataDocs(): SearchDoc[] {
     if (seen.has(name)) continue;
     seen.add(name);
     const desc = item.description && item.description !== item.name ? plainText(item.description) : undefined;
-    docs.push({ kind: 'Item', title: name, text: desc });
+    docs.push({ kind: 'Item', title: name, text: desc, image: itemIcon(item.id) });
   }
 
   return docs;

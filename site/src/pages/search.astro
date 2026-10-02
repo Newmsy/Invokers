@@ -38,13 +38,27 @@ import { href } from '../lib/data';
     kind.className = 'hit-kind';
     kind.textContent = hit.doc.kind;
     head.append(title, kind);
-    card.append(head);
+    const body = document.createElement('div');
+    body.className = 'hit-body';
+    body.append(head);
+    if (hit.doc.image) {
+      const img = document.createElement('img');
+      img.className = 'hit-image';
+      img.src = hit.doc.image;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.width = 44;
+      img.height = 44;
+      card.classList.add('has-image');
+      card.append(img);
+    }
+    card.append(body);
     // Items have no page, so their description is always shown.
     const lines = [hit.doc.sub, hit.snippet ?? (hit.doc.url ? undefined : hit.doc.text)].filter(Boolean) as string[];
     for (const line of lines) {
       const p = document.createElement('p');
       p.textContent = line;
-      card.append(p);
+      body.append(p);
     }
     li.append(card);
     return li;
@@ -110,6 +124,8 @@ import { href } from '../lib/data';
     border: 1px solid var(--line);
     color: var(--text);
   }
+  .results :global(.hit.has-image) { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .results :global(.hit-image) { display: block; width: 44px; height: 44px; border-radius: 10px; object-fit: cover; object-position: top center; background: var(--surface-2); }
   .results :global(a.hit:hover),
   .results :global(a.hit:focus-visible) { border-color: var(--accent); }
   .results :global(.hit-head) { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }

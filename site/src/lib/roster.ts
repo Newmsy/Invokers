@@ -1,5 +1,6 @@
 // Compact hero list for the compare page and team builder, built from the data pack at build time and
 // served as /data/roster.json. Pages fetch it in the browser so the big pack stays out of their HTML.
+import { heroArt } from './art';
 import { heroRefsByConfigId, heroes, heroSlug, skillsFor } from './data';
 import { className, richText, skillTypeName, statFields } from './format';
 
@@ -13,6 +14,8 @@ export interface RosterHero {
   /** Display class name, e.g. "Melee". */
   cls: string;
   baseRank: string;
+  /** Portrait URL, when the hero has art. */
+  art?: string;
   /** Exact int64 config id as text, to match the player's imported box. */
   configId?: string;
   /** rank → level → values in statFields order. */
@@ -41,6 +44,7 @@ export function roster(): RosterHero[] {
     faction: h.faction,
     cls: className(h.class),
     baseRank: h.baseRank,
+    art: heroArt(h.id),
     configId: configIds.get(h.id),
     stats: Object.fromEntries(
       Object.entries(h.statsByRank).map(([rank, byLevel]) => [
