@@ -1,11 +1,433 @@
 ---
 import Base from '../layouts/Base.astro';
-import { events } from '../lib/data';
+import { bosses, href } from '../lib/data';
+import guide from '../data/event-guide.json';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+
+// Energy per stage for each farming event, from the boss list (every boss of a kind costs the same).
+const farming = guide.events
+  .filter((e) => e.bossMode || e.difficulties)
+  .map((e) => {
+    const boss = e.bossMode ? bosses.find((b) => b.mode === e.bossMode) : undefined;
+    const stages = boss ? [...boss.stages].sort((a, b) => a.stage - b.stage).map((s) => ({ label: `Stage ${s.stage}`, energy: s.energy })) : [];
+    const options = e.difficulties
+      ? e.difficulties.map((d) => ({ label: d.name, energy: d.energy, points: d.points }))
+      : stages.map((s) => ({ ...s, points: undefined as number | undefined }));
+    return { id: e.id, name: e.name, target: e.target, options };
+  })
+  .filter((e) => e.options.length);
+
+const arenaEvent = guide.events.find((e) => e.id === 'arena')!;
+const recharge = Math.floor((24 * 60) / guide.income.rechargeMinutes);
+
+const calc = {
+  farming,
+  income: guide.income,
+  chaseDays: guide.chase.days,
+  arena: { ...guide.arena, target: arenaEvent.target },
+};
 ---
 <Base title="Events">
   <h1>Events</h1>
-  {events.length === 0 && <p>No event data yet.</p>}
-  <ul>
-    {events.map((e) => <li>{e.name}</li>)}
-  </ul>
+  <p class="lead">
+    How events score, the points each one needs, and planners for the energy it takes to finish them. Every planner
+    starts with example numbers: change them to match your account.
+  </p>
+
+  <section aria-labelledby="how-title">
+    <h2 id="how-title">How events work</h2>
+    <p class="text">
+      Events come in two layers. Standalone events run for 3 to 7 days, with a bracket of 50 players and ten reward
+      thresholds. They run inside a {guide.chase.days}-day <strong>Get Legendary chase</strong> (a bracket of
+      {' '}{guide.chase.bracket}, {fmt(guide.chase.entry)} points to enter), whose tiers pay {guide.chase.crowns} Gold
+      Crowns in total. Points from each standalone event also count toward the chase.
+    </p>
+  </section>
+
+  <section class="card" aria-labelledby="farm-title">
+    <h2 id="farm-title">Energy to finish a farming event</h2>
+    <p class="hint">
+      Pick the event and the highest stage you clear comfortably. For points per run, use the average your runs score
+      (the event screen shows your points after each run). Points per energy rises with stage, so the highest stage you
+      can farm is usually best.
+    </p>
+    <div class="calc">
+      <label><span>Event</span><select id="f-event">{farming.map((e) => <option value={e.id}>{e.name}</option>)}</select></label>
+      <label><span id="f-stage-label">Stage</span><select id="f-stage"></select></label>
+      <label><span>Points per run</span><input id="f-points" type="number" inputmode="numeric" min="1" value="300" /></label>
+      <label><span>Target points</span><input id="f-target" type="number" inputmode="numeric" min="0" /></label>
+      <label><span>Times per chase</span><input id="f-count" type="number" inputmode="numeric" min="1" max="10" value="1" /></label>
+    </div>
+    <div class="out" aria-live="polite">
+      <p><span class="big" id="f-energy">–</span> energy <span class="muted" id="f-runs"></span></p>
+      <button type="button" class="chip" id="f-add">Add to my energy plan</button>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="plan-title">
+    <h2 id="plan-title">Energy plan</h2>
+    <p class="hint">
+      Add the events you want to finish, then set your energy income. Only the natural recharge ({recharge} a day, one
+      every {guide.income.rechargeMinutes} minutes) and {guide.income.energyPerGem} energy per gem are fixed; the rest are
+      example numbers.
+    </p>
+
+    <h3>Events in the plan</h3>
+    <ul class="plan" id="p-list"></ul>
+    <p class="empty" id="p-empty">Nothing added yet. Use the calculator above, or type the energy you need here:</p>
+    <label class="inline"><span>Other energy you need</span><input id="p-other" type="number" inputmode="numeric" min="0" value="0" /></label>
+
+    <div class="cols">
+      <div>
+        <h3>Energy per day</h3>
+        <div class="rows">
+          <div class="row fixed"><span>Natural recharge</span><span>{recharge}</span></div>
+          {guide.income.daily.map((r, i) => (
+            <label class="row"><span>{r.name}</span><input type="number" inputmode="numeric" min="0" data-daily={i} value={r.energy} /></label>
+          ))}
+          <div class="row total"><span>Per day</span><span id="p-daily">–</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Over the period</h3>
+        <div class="rows">
+          <label class="row"><span>Days</span><input type="number" inputmode="numeric" min="1" max="60" id="p-days" value={guide.chase.days} /></label>
+          {guide.income.extras.map((r, i) => (
+            <label class="row"><span>{r.name}</span><input type="number" inputmode="numeric" min="0" data-extra={i} value={r.energy} /></label>
+          ))}
+          <div class="row total"><span>Income</span><span id="p-income">–</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary" aria-live="polite">
+      <div><span class="label">You need</span><span class="value" id="s-need">–</span></div>
+      <div><span class="label">You'll have</span><span class="value" id="s-have">–</span></div>
+      <div><span class="label">Short by</span><span class="value" id="s-short">–</span></div>
+      <div><span class="label">Gems to cover it</span><span class="value" id="s-gems">–</span></div>
+    </div>
+    <div class="plan-actions"><button type="button" class="chip" id="p-reset">Reset to example numbers</button></div>
+  </section>
+
+  <section class="card" aria-labelledby="arena-title">
+    <h2 id="arena-title">Arena Rush</h2>
+    <p class="hint">
+      Wins score more than losses, and both score more in higher leagues: from 40 per win and 20 per loss in Bronze 1 up
+      to 150 and 70 in Gold 4. Enter your league's points.
+    </p>
+    <div class="calc">
+      <label><span>Battles a day</span><input id="a-battles" type="number" inputmode="numeric" min="0" value={guide.arena.battlesPerDay} /></label>
+      <label><span>Win rate (%)</span><input id="a-rate" type="number" inputmode="numeric" min="0" max="100" value="70" /></label>
+      <label><span>Points per win</span><input id="a-win" type="number" inputmode="numeric" min="0" value="40" /></label>
+      <label><span>Points per loss</span><input id="a-loss" type="number" inputmode="numeric" min="0" value="20" /></label>
+      <label><span>Event days</span><input id="a-days" type="number" inputmode="numeric" min="1" value="3" /></label>
+      <label><span>Double-point days</span><input id="a-double" type="number" inputmode="numeric" min="0" value="0" /></label>
+      <label><span>Target points</span><input id="a-target" type="number" inputmode="numeric" min="0" value={arenaEvent.target} /></label>
+    </div>
+    <p class="result" id="a-result" aria-live="polite">–</p>
+  </section>
+
+  <section aria-labelledby="list-title">
+    <h2 id="list-title">Every event and its target</h2>
+    <p class="hint">Final reward targets from recent events. Targets can differ between divisions and from one event to the next.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Event</th><th scope="col" class="num">Final reward</th><th scope="col">How it scores</th></tr></thead>
+        <tbody>
+          {guide.events.map((e) => (
+            <tr>
+              <th scope="row">{e.name}</th>
+              <td class="num">{fmt(e.target)}</td>
+              <td class="wrap">{e.scoring}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">
+      Energy per stage for each boss is on its <a href={href('bosses')}>boss guide</a>. For summon events, the
+      <a href={href('summons')}> Summons</a> page has the rates.
+    </p>
+  </section>
+
+  <script type="application/json" id="event-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
 </Base>
+
+<script>
+  import { arena, dailyIncome, periodIncome, shortfall, toFinish } from '../lib/events';
+
+  interface Option { label: string; energy: number; points?: number }
+  interface Data {
+    farming: { id: string; name: string; target: number; options: Option[] }[];
+    income: { rechargeMinutes: number; energyPerGem: number; daily: { name: string; energy: number }[]; extras: { name: string; energy: number }[] };
+    chaseDays: number;
+    arena: { battlesPerDay: number; target: number };
+  }
+  interface PlanRow { name: string; energy: number }
+
+  const data: Data = JSON.parse(document.getElementById('event-data')!.textContent!);
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const num = (el: HTMLInputElement) => Math.max(0, Number(el.value) || 0);
+  const fmt = (n: number) => (Number.isFinite(n) ? Math.round(n).toLocaleString('en-GB') : '–');
+
+  // Per-viewer convenience: remember the plan and income in this browser only.
+  const KEY = 'events-planner-v1';
+  const load = (): { plan?: PlanRow[]; inputs?: Record<string, string> } => {
+    try {
+      return JSON.parse(localStorage.getItem(KEY) ?? '{}');
+    } catch {
+      return {};
+    }
+  };
+  const inputs = [...document.querySelectorAll<HTMLInputElement>('input[type=number]')];
+  let plan: PlanRow[] = [];
+  const keyOf = (el: HTMLInputElement, i: number) => el.id || (el.dataset.daily ? `d${el.dataset.daily}` : el.dataset.extra ? `e${el.dataset.extra}` : String(i));
+  const save = () => {
+    try {
+      const values = Object.fromEntries(inputs.map((el, i) => [keyOf(el, i), el.value]));
+      localStorage.setItem(KEY, JSON.stringify({ plan, inputs: values }));
+    } catch {
+      /* storage blocked: the page still works, it just forgets */
+    }
+  };
+
+  // Farming calculator
+  const fEvent = $<HTMLSelectElement>('f-event');
+  const fStage = $<HTMLSelectElement>('f-stage');
+  const fPoints = $<HTMLInputElement>('f-points');
+  const fTarget = $<HTMLInputElement>('f-target');
+  const fCount = $<HTMLInputElement>('f-count');
+  const event = () => data.farming.find((e) => e.id === fEvent.value)!;
+  const option = () => event().options[Number(fStage.value)] ?? event().options[0];
+
+  function fillStages() {
+    const e = event();
+    const fixed = e.options.some((o) => o.points);
+    $('f-stage-label').textContent = fixed ? 'Difficulty' : 'Stage';
+    fStage.replaceChildren(...e.options.map((o, i) => new Option(`${o.label} · ${o.energy} energy`, String(i))));
+    fStage.value = String(e.options.length - 1);
+    fTarget.value = String(e.target);
+    fillPoints();
+  }
+  function fillPoints() {
+    const o = option();
+    fPoints.disabled = !!o.points;
+    if (o.points) fPoints.value = String(o.points);
+  }
+  function farm() {
+    const o = option();
+    const one = toFinish(num(fTarget), num(fPoints), o.energy);
+    const times = Math.max(1, Math.floor(num(fCount)) || 1);
+    return { energy: one.energy * times, runs: one.runs * times, times, label: `${event().name}, ${o.label.toLowerCase()}${times > 1 ? ` ×${times}` : ''}` };
+  }
+  function updateFarm() {
+    const r = farm();
+    $('f-energy').textContent = fmt(r.energy);
+    $('f-runs').textContent = Number.isFinite(r.runs) ? `(${fmt(r.runs)} runs)` : '';
+  }
+
+  // Energy plan
+  const daysEl = $<HTMLInputElement>('p-days');
+  const otherEl = $<HTMLInputElement>('p-other');
+  const dailyEls = [...document.querySelectorAll<HTMLInputElement>('[data-daily]')];
+  const extraEls = [...document.querySelectorAll<HTMLInputElement>('[data-extra]')];
+  function renderPlan() {
+    const list = $('p-list');
+    list.replaceChildren(
+      ...plan.map((row, i) => {
+        const li = document.createElement('li');
+        const name = document.createElement('span');
+        name.textContent = row.name;
+        const energy = document.createElement('span');
+        energy.className = 'n';
+        energy.textContent = `${fmt(row.energy)} energy`;
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'remove';
+        remove.textContent = 'Remove';
+        remove.setAttribute('aria-label', `Remove ${row.name}`);
+        remove.addEventListener('click', () => {
+          plan.splice(i, 1);
+          renderPlan();
+          updatePlan();
+        });
+        li.append(name, energy, remove);
+        return li;
+      }),
+    );
+    $('p-empty').hidden = plan.length > 0;
+  }
+  function updatePlan() {
+    const daily = dailyIncome(dailyEls.map((el) => ({ name: '', energy: num(el) })), data.income.rechargeMinutes);
+    const income = periodIncome(daily, num(daysEl), extraEls.map((el) => ({ name: '', energy: num(el) })));
+    const need = plan.reduce((s, r) => s + r.energy, 0) + num(otherEl);
+    const short = shortfall(need, income, data.income.energyPerGem);
+    $('p-daily').textContent = fmt(daily);
+    $('p-income').textContent = fmt(income);
+    $('s-need').textContent = fmt(need);
+    $('s-have').textContent = fmt(income);
+    $('s-short').textContent = short.energy ? fmt(short.energy) : 'Nothing';
+    $('s-gems').textContent = short.energy ? fmt(short.gems) : 'None';
+    save();
+  }
+
+  // Arena
+  function updateArena() {
+    const r = arena({
+      battlesPerDay: num($('a-battles')),
+      winRate: num($('a-rate')) / 100,
+      winPoints: num($('a-win')),
+      lossPoints: num($('a-loss')),
+      days: num($('a-days')),
+      doubleDays: num($('a-double')),
+      target: num($('a-target')),
+    });
+    const days = num($('a-days'));
+    const reach = Number.isFinite(r.daysToTarget) && r.daysToTarget <= days;
+    $('a-result').textContent =
+      `${fmt(r.perDay)} points a day, ${fmt(r.total)} over the event. ` +
+      (Number.isFinite(r.daysToTarget) ? `The target takes ${fmt(r.daysToTarget)} day${r.daysToTarget === 1 ? '' : 's'}${reach ? '.' : `, more than the event lasts.`}` : '');
+    save();
+  }
+
+  // Restore saved values, then wire everything up.
+  const saved = load();
+  if (Array.isArray(saved.plan)) plan = saved.plan.filter((r) => r && typeof r.name === 'string' && Number.isFinite(r.energy));
+  if (saved.inputs) inputs.forEach((el, i) => {
+    const v = saved.inputs![keyOf(el, i)];
+    if (typeof v === 'string' && v !== '') el.value = v;
+  });
+  const savedTarget = fTarget.value;
+  fillStages();
+  if (saved.inputs && savedTarget) fTarget.value = savedTarget;
+
+  fEvent.addEventListener('change', () => {
+    fillStages();
+    updateFarm();
+  });
+  fStage.addEventListener('change', () => {
+    fillPoints();
+    updateFarm();
+  });
+  for (const el of [fPoints, fTarget, fCount]) el.addEventListener('input', updateFarm);
+  $('f-add').addEventListener('click', () => {
+    const r = farm();
+    if (!Number.isFinite(r.energy) || r.energy <= 0) return;
+    plan.push({ name: r.label, energy: r.energy });
+    renderPlan();
+    updatePlan();
+  });
+  for (const el of [daysEl, otherEl, ...dailyEls, ...extraEls]) el.addEventListener('input', updatePlan);
+  for (const id of ['a-battles', 'a-rate', 'a-win', 'a-loss', 'a-days', 'a-double', 'a-target']) $(id).addEventListener('input', updateArena);
+  $('p-reset').addEventListener('click', () => {
+    plan = [];
+    dailyEls.forEach((el, i) => (el.value = String(data.income.daily[i].energy)));
+    extraEls.forEach((el, i) => (el.value = String(data.income.extras[i].energy)));
+    daysEl.value = String(data.chaseDays);
+    otherEl.value = '0';
+    renderPlan();
+    updatePlan();
+  });
+
+  renderPlan();
+  updateFarm();
+  updatePlan();
+  updateArena();
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; color: var(--soft); }
+  .lead, .text { color: var(--soft); max-width: 70ch; margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; max-width: 80ch; }
+  .hint a { color: var(--accent); }
+  .muted { color: var(--muted); font-size: 15px; font-weight: 400; }
+  .card {
+    margin-top: 24px;
+    padding: 4px 20px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .card h2 { margin-top: 16px; }
+  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+  .calc label, .inline { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  .inline { max-width: 240px; }
+  select, input[type='number'] {
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input:disabled { opacity: 0.6; }
+  .out { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+  .out p { margin: 0; font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .big { font-size: 32px; font-weight: 700; color: var(--accent); }
+  .chip {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 22px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .plan { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 6px; }
+  /* Plan rows are built by the script, so they need global selectors. */
+  .plan :global(li) { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--surface-2); }
+  .plan :global(.n) { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .plan :global(.remove) { min-height: 36px; padding: 0 12px; border-radius: 18px; background: transparent; border: 1px solid var(--line); color: var(--soft); font: inherit; font-size: 13px; cursor: pointer; }
+  .empty { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+  .empty[hidden] { display: none; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rows { display: grid; gap: 4px; }
+  .row { display: grid; grid-template-columns: 1fr 110px; gap: 12px; align-items: center; min-height: 44px; color: var(--soft); font-size: 14px; }
+  .row input { min-height: 38px; text-align: right; }
+  .row.fixed span:last-child, .row.total span:last-child { text-align: right; padding-right: 11px; font-variant-numeric: tabular-nums; }
+  .row.total { border-top: 1px solid var(--line); font-weight: 600; color: var(--text); }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .summary div { padding: 12px 14px; border-radius: 12px; background: var(--surface-3); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+  .summary .label { color: var(--muted); font-size: 13px; }
+  .summary .value { font-family: var(--display); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .plan-actions { margin-top: 16px; }
+  .plan-actions .chip { border-color: var(--line); color: var(--soft); font-weight: 500; }
+  .result { margin: 16px 0 0; font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  tbody th { color: var(--text); font-weight: 500; white-space: nowrap; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.wrap { color: var(--soft); min-width: 260px; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  .table-wrap + .hint { margin-top: 12px; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+    .calc { grid-template-columns: 1fr 1fr; }
+    .cols { grid-template-columns: 1fr; gap: 0; }
+    .summary { grid-template-columns: 1fr 1fr; }
+    .summary .value { font-size: 18px; }
+    .plan :global(li) { grid-template-columns: 1fr auto; }
+    /* Stack the event table: name and target on one line, how it scores underneath. */
+    thead { display: none; }
+    tbody tr { display: grid; grid-template-columns: 1fr auto; border-bottom: 1px solid var(--line); }
+    tbody tr:last-child { border-bottom: 0; }
+    tbody tr > * { border-bottom: 0; }
+    tbody th { white-space: normal; padding-bottom: 2px; }
+    td.wrap { grid-column: 1 / -1; min-width: 0; padding-top: 2px; }
+    .plan :global(.remove) { grid-column: 1 / -1; justify-self: start; }
+  }
+</style>

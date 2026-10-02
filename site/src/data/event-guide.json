@@ -1,0 +1,43 @@
+{
+  "note": "Event targets and scoring from the September 2026 events (one division), and Newms's energy income as editable defaults. Energy per stage comes from data/bosses.json.",
+  "gameVersion": "0.61.1514",
+  "chase": { "days": 21, "bracket": 100, "entry": 1000, "crowns": 200 },
+  "events": [
+    { "id": "relic", "name": "Relic Boss", "bossMode": "relic boss", "target": 51000, "scoring": "Points for every item dropped, by stars and rarity: 30 to 60 for a 3-star item, 40 to 100 for 4 stars, 230 to 450 for 5 stars and 800 to 2,500 for 6 stars. Two items drop per run." },
+    { "id": "accessory", "name": "Accessory Hunt (clan boss)", "bossMode": "clan boss", "target": 51000, "scoring": "Scored like the Relic Boss events: points per item by stars and rarity, two items per run." },
+    { "id": "crest", "name": "Crest Bosses", "bossMode": "other", "target": 18000, "scoring": "1 point per Rare, 10 per Epic and 100 per Legendary item dropped." },
+    { "id": "omnissi", "name": "Omnissi (Essence)", "bossMode": "Omnissi", "target": 16000, "scoring": "1 point per Rare, 10 per Epic and 100 per Legendary item dropped." },
+    { "id": "pentiax", "name": "Pentiax (Titan Sparks)", "bossMode": "Pentiax", "target": 32000, "scoring": "1 point per Titan Spark." },
+    { "id": "campaign", "name": "Campaign Rush", "target": 4800, "scoring": "A fixed score per battle by difficulty, the same on every stage.", "difficulties": [
+      { "name": "Normal", "points": 6, "energy": 6 },
+      { "name": "Hard", "points": 10, "energy": 10 },
+      { "name": "Brutal", "points": 16, "energy": 14 }
+    ] },
+    { "id": "arena", "name": "Arena Rush", "target": 18000, "scoring": "Points for every arena battle, more for a win and more in higher leagues: from 40 per win and 20 per loss in Bronze 1 up to 150 and 70 in Gold 4. Some days score double." },
+    { "id": "gearup", "name": "Gear Up", "target": 12000, "scoring": "Points for upgrading gear to +5, +10, +15 and +20, more for higher-star gear." },
+    { "id": "summon", "name": "Invoker Summon", "target": 200000, "scoring": "Points for every summon item used, plus points for each Invoker pulled by rarity. Chroma pulls score double." },
+    { "id": "titansummon", "name": "Titan Summon", "target": 180000, "scoring": "Points for every orb used, plus points for each Titan pulled by rarity." },
+    { "id": "powerup", "name": "Invoker Power Up", "target": 90000, "scoring": "Points for levels gained, ascensions, awakening levels and codices used." },
+    { "id": "titanpowerup", "name": "Titan Power Up", "target": 60000, "scoring": "Points for Titan levels, ascensions, empowerments and prisms." }
+  ],
+  "income": {
+    "rechargeMinutes": 5,
+    "energyPerGem": 1.5,
+    "daily": [
+      { "name": "Playtime reward", "energy": 100 },
+      { "name": "Bonus quest", "energy": 250 },
+      { "name": "Gem shop (50 gems)", "energy": 100 },
+      { "name": "Arena Bazaar (300 tokens)", "energy": 100 },
+      { "name": "Daily quest", "energy": 100 },
+      { "name": "Daily shop energy", "energy": 50 },
+      { "name": "8-hour shop energy (3 a day)", "energy": 90 }
+    ],
+    "extras": [
+      { "name": "Weekly quests", "energy": 1200 },
+      { "name": "Monthly quests", "energy": 1000 },
+      { "name": "Event rewards", "energy": 2400 },
+      { "name": "Daily rewards", "energy": 1100 }
+    ]
+  },
+  "arena": { "battlesPerDay": 29 }
+}
