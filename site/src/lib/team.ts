@@ -2,6 +2,7 @@
 // Heroes are stored by data pack id; URLs use name slugs.
 import type { RosterHero } from './roster';
 import type { TeamDoc } from './share/payload';
+import { statFields } from './format';
 
 export { isTeamDoc, type TeamDoc } from './share/payload';
 
@@ -40,4 +41,22 @@ export function summarise(team: RosterHero[]): TeamSummary {
 
 export function toTeamDoc(name: string, gameVersion: string, team: RosterHero[]): TeamDoc {
   return { schema: 1, name, gameVersion, heroes: team.map((h) => ({ id: h.id })) };
+}
+
+/** Stats at rank Six, top level: the same "max stats" the hero pages show, in statFields order. */
+export function maxRow(h: RosterHero): number[] {
+  const byLevel = h.stats.Six ?? Object.values(h.stats).pop() ?? {};
+  const top = Object.keys(byLevel).sort((a, b) => Number(a) - Number(b)).pop();
+  return top ? byLevel[top] : statFields.map(() => 0);
+}
+
+/** Every stat weighs the same here: per-member rows, the team average, and the best value per stat. */
+export function teamStats(team: RosterHero[]): { rows: number[][]; average: number[]; best: number[] } {
+  const rows = team.map(maxRow);
+  const cols = statFields.map((_, i) => rows.map((r) => r[i]));
+  return {
+    rows,
+    average: cols.map((c) => (c.length ? c.reduce((a, b) => a + b, 0) / c.length : 0)),
+    best: cols.map((c) => (c.length ? Math.max(...c) : 0)),
+  };
 }
