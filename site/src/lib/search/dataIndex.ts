@@ -115,7 +115,7 @@ export function dataDocs(): SearchDoc[] {
       title: `${set.name} set`,
       sub: setSummary(set),
       text: plainText(set.recommendation ?? ''),
-      url: href('blog/every-gear-set'),
+      url: href(`gear#set-${set.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`),
     });
   }
 
@@ -142,6 +142,7 @@ export function pageDocs(): SearchDoc[] {
     ['heroes', 'Invokers', 'Every Invoker with ratings, skills and stats'],
     ['events', 'Events', 'Event calendar and planners'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
+    ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],
     ['blog', 'Blog', 'The numbers behind Invokers, worked out in plain language'],
