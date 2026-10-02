@@ -1,0 +1,432 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroPicker from '../components/HeroPicker.astro';
+import { href, pack } from '../lib/data';
+import { TEAM_SIZE } from '../lib/team';
+
+const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
+---
+<Base title="Team builder">
+  <h1>Team builder</h1>
+  <p class="lead">Pick {TEAM_SIZE} Invokers to see the team's elements, factions, classes and speed stats.</p>
+
+  <div id="app" data-base={href('/')} data-version={pack.gameVersion}>
+    <div class="pick-row">
+      <HeroPicker id="pick" label="Add an Invoker" />
+      <label class="only-box" id="only-box-wrap" hidden>
+        <input type="checkbox" id="only-box" />
+        Only Invokers in my box
+      </label>
+    </div>
+
+    <ol class="slots" id="slots">
+      {slots.map((i) => (
+        <li class="slot" data-slot={i}>
+          <span class="slot-label">{i === 0 ? 'Lead' : `Slot ${i + 1}`}</span>
+          <span class="slot-empty">Empty</span>
+        </li>
+      ))}
+    </ol>
+
+    <div class="actions">
+      <label class="name">
+        <span class="visually-hidden">Team name</span>
+        <input id="team-name" type="text" placeholder="Team name" maxlength="60" />
+      </label>
+      <button type="button" class="btn" id="save">Save team</button>
+      <button type="button" class="btn ghost" id="copy">Copy link</button>
+      <button type="button" class="btn ghost" id="share" hidden>Share</button>
+      <a class="btn ghost" id="compare" href={href('heroes/compare')}>Compare</a>
+      <button type="button" class="btn ghost" id="clear">Clear</button>
+      <span class="status" id="status" aria-live="polite"></span>
+    </div>
+
+    <section id="summary" hidden>
+      <h2>Team mix</h2>
+      <div class="mix" id="mix"></div>
+      <ul class="notes" id="notes"></ul>
+
+      <h2>Speed stats</h2>
+      <p class="hint">Rank 6, level 60, without gear or awakening.</p>
+      <div class="table-wrap"><table id="speed"></table></div>
+
+      <h2>Combo timings and speed thresholds</h2>
+      <p class="hint">Coming soon: combo chain timings for each Invoker and the speed each team member needs to keep up.</p>
+    </section>
+
+    <section id="saved-wrap" hidden>
+      <h2>Saved teams</h2>
+      <p class="hint">Saved in this browser only.</p>
+      <ul class="saved" id="saved"></ul>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { attachPicker } from '../lib/picker';
+  import { formatStat, statFields } from '../lib/format';
+  import { loadBox } from '../lib/box/store';
+  import { TEAM_SIZE, isTeamDoc, maxRow, parseSlugs, speedKeys, statIndex, summarise, toTeamDoc, type TeamDoc } from '../lib/team';
+  import type { RosterHero } from '../lib/roster';
+  import { accountsEnabled } from '../lib/account/config';
+  import { getAccountState, onAccountChange } from '../lib/account/state';
+
+  const STORE = 'invokers-teams';
+  const app = document.getElementById('app')!;
+  const base = app.dataset.base!.replace(/\/$/, '');
+  const version = app.dataset.version!;
+  const input = document.getElementById('pick') as HTMLInputElement;
+  const slotEls = [...document.querySelectorAll<HTMLLIElement>('#slots .slot')];
+  const nameEl = document.getElementById('team-name') as HTMLInputElement;
+  const statusEl = document.getElementById('status')!;
+  const onlyBox = document.getElementById('only-box') as HTMLInputElement;
+  const compareLink = document.getElementById('compare') as HTMLAnchorElement;
+
+  let roster: RosterHero[] = [];
+  let byId = new Map<string, RosterHero>();
+  let team: (RosterHero | null)[] = Array(TEAM_SIZE).fill(null);
+  let owned: Set<string> | null = null;
+
+  const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text?: string, cls?: string) => {
+    const e = document.createElement(tag);
+    if (text !== undefined) e.textContent = text;
+    if (cls) e.className = cls;
+    return e;
+  };
+  const members = () => team.filter((h): h is RosterHero => !!h);
+  const say = (msg: string) => {
+    statusEl.textContent = msg;
+    setTimeout(() => statusEl.textContent === msg && (statusEl.textContent = ''), 3000);
+  };
+
+  function readSaved(): TeamDoc[] {
+    try {
+      const list = JSON.parse(localStorage.getItem(STORE) ?? '[]');
+      return Array.isArray(list) ? list.filter(isTeamDoc) : [];
+    } catch {
+      return [];
+    }
+  }
+  function writeSaved(list: TeamDoc[]) {
+    try {
+      localStorage.setItem(STORE, JSON.stringify(list));
+    } catch {
+      say("Couldn't save in this browser.");
+    }
+  }
+
+  function syncUrl() {
+    const slugs = members().map((h) => h.slug).join(',');
+    // Slugs are [a-z0-9-], so the list can go in the URL without escaping its commas.
+    const name = nameEl.value.trim();
+    const query = [slugs && `h=${slugs}`, name && `name=${encodeURIComponent(name)}`].filter(Boolean).join('&');
+    history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
+    compareLink.href = `${base}/heroes/compare${slugs ? `?h=${members().slice(0, 4).map((h) => h.slug).join(',')}` : ''}`;
+  }
+
+  function renderSlots() {
+    slotEls.forEach((li, i) => {
+      const h = team[i];
+      li.replaceChildren(el('span', i === 0 ? 'Lead' : `Slot ${i + 1}`, 'slot-label'));
+      li.classList.toggle('filled', !!h);
+      if (!h) {
+        li.append(el('span', 'Empty', 'slot-empty'));
+        return;
+      }
+      const a = el('a', h.name, 'slot-name');
+      a.href = `${base}/heroes/${h.slug}`;
+      li.append(a, el('span', `${h.rarity} · ${h.element} · ${h.cls}`, 'slot-meta'));
+      const tools = el('div', undefined, 'slot-tools');
+      const move = (dir: -1 | 1, label: string, glyph: string) => {
+        const b = el('button', glyph);
+        b.type = 'button';
+        b.setAttribute('aria-label', `Move ${h.name} ${label}`);
+        b.disabled = i + dir < 0 || i + dir >= TEAM_SIZE;
+        b.addEventListener('click', () => {
+          [team[i], team[i + dir]] = [team[i + dir], team[i]];
+          render();
+        });
+        return b;
+      };
+      const x = el('button', '×');
+      x.type = 'button';
+      x.setAttribute('aria-label', `Remove ${h.name}`);
+      x.addEventListener('click', () => {
+        team[i] = null;
+        render();
+      });
+      tools.append(move(-1, 'earlier', '‹'), move(1, 'later', '›'), x);
+      li.append(tools);
+    });
+  }
+
+  function renderSummary() {
+    const list = members();
+    const summary = document.getElementById('summary')!;
+    summary.hidden = !list.length;
+    if (!list.length) return;
+    const s = summarise(list);
+    const mix = document.getElementById('mix')!;
+    mix.replaceChildren(
+      ...([
+        ['Elements', s.elements],
+        ['Factions', s.factions],
+        ['Classes', s.classes],
+      ] as const).map(([label, counts]) => {
+        const group = el('div', undefined, 'mix-group');
+        group.append(el('span', label, 'mix-label'));
+        const ul = el('ul');
+        for (const [name, n] of counts) ul.append(el('li', n > 1 ? `${name} ×${n}` : name));
+        group.append(ul);
+        return group;
+      }),
+    );
+    const notes: string[] = [];
+    if (!s.hasTank) notes.push('No Tank yet. Front Line Invokers are targeted by more enemies, so a Tank is a safe choice there.');
+    notes.push(
+      s.factions.length === 1
+        ? `All ${s.factions[0][0]}: every Invoker can use the same pool of ${s.factions[0][0]} Titans.`
+        : `Titans come from ${s.factions.length} factions here, since each Invoker can only use Titans from their own faction (Litria works with any).`,
+    );
+    document.getElementById('notes')!.replaceChildren(...notes.map((n) => el('li', n)));
+
+    const fields = speedKeys.map((k) => statFields.find((f) => f.key === k)!);
+    const table = document.getElementById('speed') as HTMLTableElement;
+    const head = el('thead');
+    const hr = el('tr');
+    hr.append(el('th', 'Invoker'), ...fields.map((f) => el('th', f.short)));
+    head.append(hr);
+    const body = el('tbody');
+    for (const h of list) {
+      const row = maxRow(h);
+      const tr = el('tr');
+      const th = el('th');
+      th.scope = 'row';
+      const a = el('a', h.name);
+      a.href = `${base}/heroes/${h.slug}`;
+      th.append(a);
+      tr.append(th, ...speedKeys.map((k) => {
+        const v = row[statIndex[k]];
+        const td = el('td', formatStat(v));
+        if (list.length > 1 && v === s.speed[k].min && v !== s.speed[k].max) td.className = 'low';
+        return td;
+      }));
+      body.append(tr);
+    }
+    const total = el('tr', undefined, 'total');
+    total.append(el('th', 'Team total'), ...speedKeys.map((k) => el('td', formatStat(s.speed[k].total))));
+    body.append(total);
+    table.replaceChildren(head, body);
+  }
+
+  function renderSaved() {
+    const saved = readSaved();
+    document.getElementById('saved-wrap')!.hidden = !saved.length;
+    document.getElementById('saved')!.replaceChildren(
+      ...saved.map((t, idx) => {
+        const li = el('li');
+        const names = t.heroes.map((m) => byId.get(m.id)?.name).filter(Boolean).join(', ');
+        const info = el('div');
+        info.append(el('strong', t.name || 'Untitled team'), el('span', names || 'No Invokers'));
+        const load = el('button', 'Load', 'btn ghost');
+        load.type = 'button';
+        load.addEventListener('click', () => {
+          const picked = t.heroes.map((m) => byId.get(m.id) ?? null).slice(0, TEAM_SIZE);
+          team = [...picked, ...Array(TEAM_SIZE - picked.length).fill(null)];
+          nameEl.value = t.name;
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        const del = el('button', 'Delete', 'btn ghost');
+        del.type = 'button';
+        del.addEventListener('click', () => {
+          writeSaved(readSaved().filter((_, j) => j !== idx));
+          renderSaved();
+        });
+        li.append(info, load, del);
+        return li;
+      }),
+    );
+  }
+
+  function render() {
+    renderSlots();
+    renderSummary();
+    syncUrl();
+    input.disabled = members().length >= TEAM_SIZE;
+    input.placeholder = input.disabled ? 'Team is full' : 'Add an Invoker';
+  }
+
+  document.getElementById('save')!.addEventListener('click', () => {
+    if (!members().length) return say('Add an Invoker first.');
+    const name = nameEl.value.trim() || 'Untitled team';
+    const doc = toTeamDoc(name, version, members());
+    const list = readSaved().filter((t) => t.name !== name);
+    writeSaved([doc, ...list].slice(0, 50));
+    renderSaved();
+    say('Saved.');
+  });
+  document.getElementById('copy')!.addEventListener('click', async () => {
+    syncUrl();
+    try {
+      await navigator.clipboard.writeText(location.href);
+      say('Link copied.');
+    } catch {
+      say('Copy the address bar to share this team.');
+    }
+  });
+  document.getElementById('clear')!.addEventListener('click', () => {
+    team = Array(TEAM_SIZE).fill(null);
+    nameEl.value = '';
+    render();
+  });
+  nameEl.addEventListener('change', syncUrl);
+
+  // Share links need sign-in; the button only shows for signed-in players.
+  const shareBtn = document.getElementById('share') as HTMLButtonElement;
+  const showShare = () => (shareBtn.hidden = !(accountsEnabled && getAccountState().status === 'signed-in'));
+  showShare();
+  onAccountChange(showShare);
+  shareBtn.addEventListener('click', async () => {
+    if (!members().length) return say('Add an Invoker first.');
+    const name = nameEl.value.trim() || 'Untitled team';
+    shareBtn.disabled = true;
+    try {
+      const { createShare } = await import('../lib/share/api');
+      const url = await createShare('team', name, toTeamDoc(name, version, members()));
+      try {
+        await navigator.clipboard.writeText(url);
+        say('Share link copied.');
+      } catch {
+        say(`Share link: ${url}`);
+      }
+    } catch {
+      say("Couldn't make a share link. Try again.");
+    } finally {
+      shareBtn.disabled = false;
+    }
+  });
+
+  Promise.all([fetch(`${base}/data/roster.json`).then((r) => r.json()), loadBox()]).then(([data, box]) => {
+    roster = data as RosterHero[];
+    byId = new Map(roster.map((h) => [h.id, h]));
+    const bySlug = new Map(roster.map((h) => [h.slug, h]));
+    if (box?.heroes.length) {
+      owned = new Set(box.heroes.map((h) => h.configId));
+      document.getElementById('only-box-wrap')!.hidden = false;
+      onlyBox.checked = true;
+    }
+    const params = new URLSearchParams(location.search);
+    const picked = parseSlugs(params.get('h'), new Set(bySlug.keys()), TEAM_SIZE).map((s) => bySlug.get(s)!);
+    team = [...picked, ...Array(TEAM_SIZE - picked.length).fill(null)];
+    nameEl.value = params.get('name')?.slice(0, 60) ?? '';
+    attachPicker(input, document.getElementById('pick-list') as HTMLUListElement, {
+      roster,
+      exclude: () => new Set(members().map((h) => h.slug)),
+      filter: () => (owned && onlyBox.checked ? (h) => !!h.configId && owned!.has(h.configId) : null),
+      onPick: (h) => {
+        const free = team.indexOf(null);
+        if (free >= 0) team[free] = h;
+        render();
+      },
+    });
+    render();
+    renderSaved();
+  });
+</script>
+
+<style>
+  h1 { margin: 16px 0 4px; font-size: 32px; font-weight: 700; }
+  .lead { color: var(--soft); margin: 0 0 16px; }
+  .pick-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .pick-row :global(.picker) { flex: 1 1 280px; }
+  .only-box { display: flex; align-items: center; gap: 8px; min-height: 44px; color: var(--soft); font-size: 14px; }
+  .only-box[hidden] { display: none; }
+  .only-box input { accent-color: var(--accent); width: 18px; height: 18px; }
+  .slots { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .slots :global(.slot) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 120px;
+    padding: 12px;
+    border-radius: 14px;
+    background: var(--surface-3);
+    border: 1px dashed var(--line);
+  }
+  .slots :global(.slot.filled) { background: var(--surface); border-style: solid; }
+  .slots :global(.slot:first-child.filled) { border-color: var(--accent); }
+  .slots :global(.slot-label) { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .slots :global(.slot-empty) { color: var(--muted); margin-top: auto; }
+  .slots :global(.slot-name) { color: var(--text); font-weight: 600; }
+  .slots :global(.slot-meta) { font-size: 12px; color: var(--soft); }
+  .slots :global(.slot-tools) { display: flex; gap: 4px; margin-top: auto; }
+  .slots :global(.slot-tools button) {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--soft);
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .slots :global(.slot-tools button:disabled) { opacity: 0.35; cursor: default; }
+  .slots :global(.slot-tools button:last-child) { margin-left: auto; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .name input {
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    width: 220px;
+  }
+  .btn, :global(.saved .btn) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn.ghost, :global(.saved .btn.ghost) { background: transparent; color: var(--text); border-color: var(--line); }
+  .status { color: var(--soft); font-size: 14px; }
+  #summary[hidden], #saved-wrap[hidden], .btn[hidden] { display: none; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+  .mix { display: flex; flex-wrap: wrap; gap: 12px 32px; }
+  .mix :global(.mix-label) { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .mix :global(ul) { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; }
+  .mix :global(li) { padding: 6px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+  .notes { margin: 12px 0 0; padding-left: 20px; color: var(--soft); }
+  .notes :global(li) { margin: 4px 0; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  table :global(th), table :global(td) { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  table :global(thead th) { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  table :global(thead th:first-child), table :global(tbody th) { text-align: left; }
+  table :global(tbody th a) { color: var(--text); }
+  table :global(td.low) { color: #ff8a65; }
+  table :global(tr.total > *) { font-weight: 700; border-bottom: 0; background: var(--surface-3); }
+  .saved { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .saved :global(li) { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+  .saved :global(li > div) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .saved :global(li span) { font-size: 13px; color: var(--soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (max-width: 720px) {
+    h1 { font-size: 26px; }
+    .slots { grid-template-columns: 1fr 1fr; }
+    .slots :global(.slot:first-child) { grid-column: 1 / -1; min-height: 96px; }
+    .name input { width: 100%; }
+    .name { flex: 1 1 100%; }
+  }
+</style>
