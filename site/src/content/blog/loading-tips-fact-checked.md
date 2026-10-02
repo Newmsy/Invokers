@@ -6,38 +6,33 @@ gameVersion: "0.61.1516"
 tags: [tips, guides]
 ---
 
-Invokers shows 40 tips on its loading screens. Most are good advice; some make claims you can check. Here is what holds up, what's missing, and what's worth knowing that the tips don't say.
+Of the 40 loading-screen tips, the checkable ones mostly hold up. One gets the maths wrong, and a few big things are missing.
 
 ## Confirmed
 
-**"Ascending your Invokers increases their level cap."** True, and it's most of what ascending does. On its own, each star adds only about 5% to an Invoker's base stats; the levels it unlocks do the rest. Going from 5★ level 50 to 6★ gives about +7%, and the ten levels after that add +31%. (More in *Levels, not stars*.)
-
-**"Upgrading Skills Unlocks New Strength."** It does, and very evenly: every hero damage skill in the game hits exactly twice as hard at level 11 as at level 1. (More in *Maxing a skill doubles its damage*.)
-
-**"A Relic's Rarity decides how many Substats it has at Level 0."** Confirmed: Common gear starts with 0 substats, Uncommon 1, Rare 2, Epic 3 and Legendary 4. Upgrades at +5, +10, +15 and +20 add a substat until there are 4, then upgrade one. So a Legendary piece spends all four milestones on upgrades, and a Common spends all four unlocking substats.
-
-**"Equip 3 or 5 Relics from the same Set."** Confirmed: of the 31 sets, none has a bonus beyond 5 pieces.
-
-**"Each Boss has two different Corruptions."** Confirmed for all 16 bosses. (See *Which Tolerance set to build first*.)
-
-**"Common, Uncommon, and Rare Invokers each have one Tolerance. Epic and Legendary Invokers have two."** Matches the skill upgrades: only Epics and Legendaries have a second Tolerance to level up.
-
-**"You get 30 free Spire Keys every day, 5 per Element."** The game has six elements, so 6 × 5 = 30 adds up.
-
-**"You need more Accuracy than the enemy's Resistance to land debuffs consistently."** The resist curve is driven by Resistance minus Accuracy, so yes. It also flattens quickly: the first 100 points of difference count for far more than the next thousand.
+| Tip | Verdict |
+|---|---|
+| "Ascending your Invokers increases their level cap." | True, and it's most of what ascending does: a star alone adds about 5% to base stats. 5★ level 50 to 6★ is about +7%; the ten levels after add +31%. (*Levels, not stars*) |
+| "Upgrading Skills Unlocks New Strength." | Every hero damage skill hits exactly twice as hard at level 11 as at level 1. (*Maxing a skill doubles its damage*) |
+| "A Relic's Rarity decides how many Substats it has at Level 0." | Common 0, Uncommon 1, Rare 2, Epic 3, Legendary 4. +5, +10, +15 and +20 add a substat until there are 4, then upgrade one, so a Legendary spends all four on upgrades and a Common on unlocks. |
+| "Equip 3 or 5 Relics from the same Set." | None of the 31 sets has a bonus beyond 5 pieces. |
+| "Each Boss has two different Corruptions." | True for all 16 bosses. (*Which Tolerance set to build first*) |
+| "Common, Uncommon, and Rare Invokers each have one Tolerance. Epic and Legendary Invokers have two." | Matches skill upgrades: only Epics and Legendaries have a second Tolerance to level. |
+| "You get 30 free Spire Keys every day, 5 per Element." | Six elements × 5 = 30. |
+| "You need more Accuracy than the enemy's Resistance to land debuffs consistently." | Resist is driven by Resistance minus Accuracy. The first 100 points of difference count for far more than the next thousand. |
 
 ## True, but the maths is off
 
-**"50% More XP means 50% faster levelling."** Not quite. With 50% more XP per battle you need two thirds as many battles, which is a third less time, not half. Still worth activating.
+**"50% More XP means 50% faster levelling."** You need two thirds as many battles: a third less time, not half. Still worth activating.
 
 ## What the tips leave out
 
-- **Where the gold goes on gear.** The tips say to upgrade your best relics. They don't say that about 80% of the gold to max a 6★ piece is spent on +15 to +20. (See *Where your gold goes on gear*.)
-- **That some stats stop working.** Instinct does nothing past a rating of 362, and Skill Speed's first 100 points are worth more than the 1,000 points from 1,000 to 2,000. (See *Stats that stop working*.)
-- **The mercy counters.** No tip mentions mercy, but summons do have it. (See *What 130 Destiny Stars really buy you*.)
+- **Gear gold:** about 80% of the gold to max a 6★ piece goes on +15 to +20. (*Where your gold goes on gear*)
+- **Stats that stop:** Instinct does nothing past 362, and Skill Speed's first 100 points beat the 1,000 from 1,000 to 2,000. (*Stats that stop working*)
+- **Mercy:** no tip mentions it, but summons have it. (*What 130 Destiny Stars really buy you*)
 
-## Tips we can't check yet
+## Tip numbers not checked yet
 
-Some tips quote numbers we haven't verified yet: elemental advantage (+30% damage dealt, 30% less taken), Titan Invokation lasting 12 seconds, and the AoE target limits by rarity (7 enemies for Common and Uncommon, 8 for Rare, 9 for Epic, 10 for Legendary). We'll come back to them.
+Elemental advantage (+30% damage dealt, 30% less taken), Titan Invokation lasting 12 seconds, and AoE target limits by rarity (7 for Common and Uncommon, 8 Rare, 9 Epic, 10 Legendary).
 
 *Numbers for game version 0.61.1516.*

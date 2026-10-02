@@ -6,7 +6,9 @@ gameVersion: "0.61.1516"
 tags: [bosses, gear, sets]
 ---
 
-Every boss in the game has exactly two corruptions: one damage corruption and one control corruption. Tolerance cuts how long a corruption lasts, and each Tolerance gear set gives +50% Tolerance to one of them at 3 pieces (plus +20% HP, ATK and DEF at 5 pieces, the same on all twelve). With twelve sets and sixteen bosses, it helps to know which to build first.
+**Build Crush and Manaburn Tolerance first.** Each covers four bosses, and together they fully cover Sorgott and Hyxxis.
+
+Every boss has two corruptions, one damage and one control. A Tolerance set gives +50% Tolerance to one at 3 pieces, shortening it, plus +20% HP, ATK and DEF at 5 pieces on all twelve sets.
 
 ## Every boss, every corruption
 
@@ -41,21 +43,20 @@ Every boss in the game has exactly two corruptions: one damage corruption and on
 | Manashock | 3 | Sakiel, Koltmos, Omnissi (Dark) |
 | Frost, Mindfog, Nightmare, Paralysis, Atrophy, Bloodrot | 2 each | |
 
-**Crush and Manaburn are the two to build first.** Each covers four bosses, and between them they fully cover both Sorgott and Hyxxis, which have exactly that pair. Crush is also the nastiest corruption on paper: the game says it stuns the target and makes it take double damage from every source.
+Crush is also the nastiest on paper: it stuns and makes the target take double damage from every source.
 
 ## Where the game's text is wrong
 
-**The Crush and Manaburn sets forget the clan boss.** The Crush Tolerance set's description lists Omnissi (Astral), Hyxxis and Althar, and the Manaburn set lists Omnissi (Fire), Omnissi (Dark) and Hyxxis. Both leave out Sorgott, whose corruptions are Crush and Manaburn, and whose own boss guide says most of its damage comes from Manaburn. The other ten sets list their bosses correctly.
+- **Crush and Manaburn sets forget the clan boss.** Their descriptions leave out Sorgott, whose corruptions are exactly Crush and Manaburn (its boss guide says most of its damage is Manaburn). The other ten sets list their bosses correctly.
+- **Koltmos's tip names the wrong Tolerance.** It says Bloodrot and Manashock, but its corruptions are Manashock and **Blight**. Bring Blight.
 
-**Koltmos's tip names the wrong Tolerance.** Koltmos's boss guide says to bring Bloodrot and Manashock Tolerances. Its corruptions are Manashock and **Blight**, and the Blight set's description agrees. Bring Blight, not Bloodrot.
+## Boss tips worth knowing
 
-## A few boss tips worth knowing
+From the game's own boss guides:
 
-These come from the game's own boss guides:
-
-- **Sakiel** takes 50% less damage from Bleed and Burn, and they lower its skill cooldowns. Invest in Accuracy instead; you'll need it to land debuffs and steal its buffs.
-- **Sorgott** deals most of its damage through Tolerances and your max HP, so stacking DEF won't save you. Mindworm doesn't stop its passive.
-- **Yskara** gives Melee Attackers a +100% ATK bonus that Ranged Attackers miss out on. Koltmos is the opposite: bring Ranged Attackers for its Doomclaws.
+- **Sakiel** takes 50% less damage from Bleed and Burn, and they lower its cooldowns. Invest in Accuracy to land debuffs and steal its buffs.
+- **Sorgott** hits through Tolerances and your max HP, so DEF won't save you. Mindworm doesn't stop its passive.
+- **Yskara** gives Melee Attackers +100% ATK; Ranged miss out. Koltmos is the opposite: bring Ranged for its Doomclaws.
 - **Ulgorim** and **Hyxxis** are immune to crowd control.
 - **Galvos** wants one Tank, not two: a single defender takes its attention and all your buffs.
 

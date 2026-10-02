@@ -6,11 +6,15 @@ gameVersion: "0.61.1516"
 tags: [invokers, stats, levelling]
 ---
 
-Ascending an Invoker feels like the big upgrade. The numbers say otherwise: **stars mostly unlock levels, and levels carry the stats.**
+**Stars mostly unlock levels, and levels carry the stats.**
+
+- A star on its own adds about 5% of base stats. Ascend to unlock levels, not for the star.
+- The final star on a level 50 Invoker is +7%; the levels after it are +31%.
+- Rarity sets the ceiling: a 5★ level 40 Legendary already matches a maxed Common.
 
 ## What a star is worth on its own
 
-Here is Admiral Gladstone's ATK at level 1 for every star level, and then at every level cap at 6★:
+Admiral Gladstone's ATK:
 
 | | 1★ | 2★ | 3★ | 4★ | 5★ | 6★ |
 |---|---|---|---|---|---|---|
@@ -20,11 +24,9 @@ Here is Admiral Gladstone's ATK at level 1 for every star level, and then at eve
 |---|---|---|---|---|---|---|---|
 | ATK | 73 | 111 | 175 | 263 | 374 | 508 | 665 |
 
-Each star adds about **5% of the 1★ base**: 58, 61, 64 and so on. Going from level 1 to 60 multiplies the stat by more than 9. The same pattern holds for HP and DEF, and for every one of the 231 Invokers: from 1★ level 1 to 6★ level 60, ATK grows by a factor of 11.4 to 11.5 for everyone.
+Each star adds about **5% of the 1★ base**; level 1 to 60 multiplies the stat by more than 9. HP and DEF follow the same pattern, and for all 231 Invokers ATK grows 11.4 to 11.5 times from 1★ level 1 to 6★ level 60.
 
 ## Same level, more stars
-
-Comparing an Invoker at its level cap with the same Invoker at the same level but 6★ shows how little the stars themselves add, and how it shrinks as you go:
 
 | Level | Star cap at that level | 6★ at the same level gives |
 |---|---|---|
@@ -34,11 +36,11 @@ Comparing an Invoker at its level cap with the same Invoker at the same level bu
 | 40 | 4★ | +14% |
 | 50 | 5★ | +7% |
 
-So ascending a 5★ level 50 Invoker to 6★ gives about **+7%** straight away. The other **+31%** comes from the ten levels it unlocks: a maxed 6★ level 60 has 1.40 times the stats of the same Invoker at 5★ level 50.
+Ascending a 5★ level 50 Invoker gives about **+7%** at once. The ten levels it unlocks add **+31%**: a 6★ level 60 has 1.40 times the stats of 5★ level 50.
 
 ## Rarity sets the ceiling
 
-Rarity is where the real gap lives. Average stats at 6★ level 60:
+Average stats at 6★ level 60:
 
 | Rarity | HP | ATK | DEF |
 |---|---|---|---|
@@ -48,11 +50,11 @@ Rarity is where the real gap lives. Average stats at 6★ level 60:
 | Epic | 7,092 | 655 | 641 |
 | Legendary | 8,526 | 804 | 750 |
 
-Legendaries start at 5★. A Legendary at 5★ level 40 (424 ATK on average) already outhits a fully maxed Common (408), and at 5★ level 50 (573) it is ahead of a maxed Rare.
+Legendaries start at 5★. At 5★ level 40 (424 ATK on average) one already outhits a maxed Common (408), and at level 50 (573) a maxed Rare.
 
 ## By class
 
-For Legendaries at 6★ level 60, the classes split the stats very differently:
+Legendaries at 6★ level 60:
 
 | Class | HP | ATK | DEF |
 |---|---|---|---|
@@ -61,12 +63,6 @@ For Legendaries at 6★ level 60, the classes split the stats very differently:
 | Melee | 8,149 | 882 | 709 |
 | Ranged | 7,034 | 997 | 706 |
 
-Ranged attackers hit hardest and are the most fragile. Tanks give up more than half the ATK of a ranged attacker for 44% more HP.
-
-## The short version
-
-- A star on its own is worth about 5% of base stats. Ascend to unlock levels, not for the star.
-- The final star on a level 50 Invoker is +7%; the levels after it are +31%.
-- Rarity decides the ceiling: a 5★ level 40 Legendary is already level with a maxed Common.
+Ranged hit hardest and are most fragile. Tanks give up more than half a Ranged attacker's ATK for 44% more HP.
 
 *Base stats without gear or awakening, game version 0.61.1516.*
