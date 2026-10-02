@@ -143,6 +143,7 @@ export function pageDocs(): SearchDoc[] {
     ['tiers', 'Tier lists', 'The best Invokers and Titans for the campaign, Spires, Arena and every boss'],
     ['events', 'Events', 'How events score, their targets, and energy and Arena Rush planners'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
+    ['packs', 'Pack value', 'Every paid pack ranked by value per £, plus Bank gem bundles and Gem Shop prices'],
     ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],

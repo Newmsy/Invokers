@@ -16,6 +16,7 @@ export const nav: NavItem[] = [
   { path: 'tiers', label: 'Tier lists', icon: 'tiers', header: true, art: 'titan:Goros' },
   { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true, art: 'item:Energy' },
   { path: 'summons', label: 'Summons', icon: 'star', header: true, tab: true, art: 'item:Destiny Star' },
+  { path: 'packs', label: 'Pack value', icon: 'star', art: 'item:Gems' },
   { path: 'gear', label: 'Gear', icon: 'shield', header: true, art: 'item:Gear Swap Pass' },
   { path: 'trophies', label: 'Trophies', icon: 'trophy', art: 'item:Gold Trophy' },
   { path: 'bosses', label: 'Bosses', icon: 'skull', header: true, art: 'item:Elder Titanheart' },
