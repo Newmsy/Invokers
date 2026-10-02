@@ -1,4 +1,4 @@
-// Site navigation, in the agreed order (Summons and Gear join when their pages exist).
+// Site navigation, in the agreed order (Gear joins when its page exists).
 // Desktop: `header` entries in the top bar, with My box as a button on the right.
 // Phones: `tab` entries in the bottom bar; everything is on the More page.
 export interface NavItem {
@@ -12,6 +12,7 @@ export interface NavItem {
 export const nav: NavItem[] = [
   { path: 'heroes', label: 'Invokers', icon: 'grid', header: true, tab: true },
   { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true },
+  { path: 'summons', label: 'Summons', icon: 'star', header: true, tab: true },
   { path: 'trophies', label: 'Trophies', icon: 'trophy', header: true },
   { path: 'bosses', label: 'Bosses', icon: 'skull', header: true },
   { path: 'blog', label: 'Blog', icon: 'book', header: true },

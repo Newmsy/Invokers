@@ -1,0 +1,390 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/data';
+import { itemIcon } from '../lib/art';
+import { rarityColor } from '../lib/format';
+import { atLeastOne, legendaryPool, pullsFor, summonItem, summonRarities, summons } from '../lib/summons';
+
+const colors: Record<string, string> = { ...rarityColor, Mythic: '#FF7A7A' };
+const pct = (p: number) => {
+  if (p >= 1) return '100%';
+  if (p > 0.9995) return '~100%';
+  const v = p * 100;
+  return `${v < 1 ? v.toFixed(3).replace(/0+$/, '') : v.toFixed(2).replace(/0+$/, '')}%`.replace(/\.%$/, '%');
+};
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const itemLabel = (id: string) => summonItem(id)?.name ?? id;
+
+const groups = [
+  { kind: 'hero' as const, title: 'Invoker stars' },
+  { kind: 'titan' as const, title: 'Titan orbs' },
+].map((g) => {
+  const items = summons.items.filter((i) => i.kind === g.kind);
+  const rarities = summonRarities.filter((r) => items.some((i) => i.rates[r]));
+  return { ...g, items, rarities };
+});
+
+const legendaryItems = summons.items.filter((i) => i.rates.Legendary && i.rates.Legendary < 1);
+const ladder = [10, 50, 100, 130, 200, 300, 500];
+
+const mercyRows = summons.items.flatMap((i) =>
+  Object.entries(i.mercy ?? {}).map(([rarity, count]) => ({ item: i.name, rarity, count, first: i.firstMercy?.[rarity] })),
+);
+
+const pools = Object.fromEntries(summons.items.filter((i) => i.legendaryPool).map((i) => [i.id, legendaryPool(i)]));
+
+// What the calculator needs in the browser; the maths itself is imported by the script below.
+const calc = {
+  items: summons.items.map((i) => ({ id: i.id, name: i.name, rarities: summonRarities.filter((r) => i.rates[r]) })),
+  pools,
+};
+---
+<Base title="Summons">
+  <h1>Summons</h1>
+  <p class="lead">
+    The chance of each rarity from every summon item, and a calculator for the odds of getting at least one in a number of
+    pulls. These are odds over many pulls: no calculator can tell you what your next pull will be.
+  </p>
+
+  <section class="card" aria-labelledby="calc-title">
+    <h2 id="calc-title">Odds calculator</h2>
+    <div class="calc">
+      <label>
+        <span>Summon item</span>
+        <select id="c-item">{calc.items.map((i) => <option value={i.id} selected={i.id === 'SI_DestinyStar'}>{i.name}</option>)}</select>
+      </label>
+      <label>
+        <span>Looking for</span>
+        <select id="c-rarity"></select>
+      </label>
+      <label id="c-hero-wrap" hidden>
+        <span>Invoker</span>
+        <select id="c-hero"></select>
+      </label>
+      <label>
+        <span>Pulls</span>
+        <input id="c-pulls" type="number" inputmode="numeric" min="1" max="100000" value="100" />
+      </label>
+    </div>
+    <div class="toggles">
+      <label class="check"><input type="checkbox" id="c-bonus" checked /> Count bonus summons</label>
+      <label class="check"><input type="checkbox" id="c-mercy" /> Use the estimated mercy rules</label>
+      <label class="check" id="c-first-wrap" hidden><input type="checkbox" id="c-first" /> No Legendary from Destiny Stars yet</label>
+      <label class="since" id="c-since-wrap" hidden>
+        <span>Pulls since your last one</span>
+        <input id="c-since" type="number" inputmode="numeric" min="0" value="0" />
+      </label>
+    </div>
+    <div class="results" aria-live="polite">
+      <div class="big"><span id="r-chance">–</span><small>chance of at least one</small></div>
+      <dl>
+        <div><dt>Chance per pull</dt><dd id="r-per">–</dd></div>
+        <div><dt>Average you'd get</dt><dd id="r-avg">–</dd></div>
+        <div><dt>Pulls for a 50% / 90% / 99% chance</dt><dd id="r-need">–</dd></div>
+      </dl>
+      <p class="note" id="r-note"></p>
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section aria-labelledby={`rates-${g.kind}`}>
+      <h2 id={`rates-${g.kind}`}>{g.title}: rates per pull</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              {g.rarities.map((r) => <th scope="col" style={`color: ${colors[r]}`}>{r}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {g.items.map((i) => {
+              const icon = itemIcon(i.id);
+              return (
+                <tr>
+                  <th scope="row">
+                    <span class="item">
+                      {icon ? <img src={icon} alt="" width="28" height="28" loading="lazy" /> : <span class="icon-gap" />}
+                      {i.name}
+                    </span>
+                  </th>
+                  {g.rarities.map((r) => <td>{i.rates[r] ? pct(i.rates[r]) : '–'}</td>)}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {g.kind === 'hero' && (
+        <p class="hint">
+          The Wild Star's Uncommon chance is 25.65% for Fire, Water, Earth and Wind heroes plus 2.85% for Light and Dark ones.
+          Radiant Stars only give Light and Dark heroes. Inside a rarity every hero is equally likely, so one specific
+          Legendary from a Destiny Star is 0.53% ÷ {pools.SI_DestinyStar.length} heroes, about 1 in
+          {' '}{fmt(Math.round(pools.SI_DestinyStar.length / 0.0053))} pulls; from a Radiant Star it is about 1 in
+          {' '}{fmt(Math.round(pools.SI_RadiantStar.length / 0.0053))}.
+        </p>
+      )}
+    </section>
+  ))}
+
+  <section aria-labelledby="ladder-title">
+    <h2 id="ladder-title">Chance of at least one Legendary</h2>
+    <p class="hint">From the rates alone, with no mercy and no bonus summons.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Pulls</th>
+            {legendaryItems.map((i) => <th scope="col">{i.name}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {ladder.map((n) => (
+            <tr>
+              <th scope="row">{n}</th>
+              {legendaryItems.map((i) => <td>{pct(atLeastOne(i.rates.Legendary, n))}</td>)}
+            </tr>
+          ))}
+          <tr class="total">
+            <th scope="row">50% chance by</th>
+            {legendaryItems.map((i) => <td>{fmt(pullsFor(i.rates.Legendary, 0.5))} pulls</td>)}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="mercy-title">
+    <h2 id="mercy-title">Mercy (estimated)</h2>
+    <p class="callout">
+      <strong>Estimated.</strong> The game doesn't explain its mercy rules. This is our best estimate and it hasn't been
+      confirmed in game. We also don't know yet whether a natural pull resets the counter, or whether items share one.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Item</th><th scope="col">Rarity</th><th scope="col">Guaranteed by</th></tr>
+        </thead>
+        <tbody>
+          {mercyRows.map((m) => (
+            <tr>
+              <th scope="row">{m.item}</th>
+              <td style={`color: ${colors[m.rarity]}`}>{m.rarity}</td>
+              <td>
+                {m.first ? `pull ${m.first} for your first, then every ${m.count}` : m.rarity === 'Epic' ? `pull 15 the first 3 times, then ${m.count}` : `pull ${m.count}`}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">The calculator uses 30 for Epic mercy, the safe end of the range.</p>
+  </section>
+
+  <section aria-labelledby="bonus-title">
+    <h2 id="bonus-title">Bonus summons</h2>
+    <p class="hint">Using summon items fills bonus counters that pay out more summon items.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Use</th><th scope="col">Get</th><th scope="col">Every</th></tr>
+        </thead>
+        <tbody>
+          {summons.bonus.map((b) => (
+            <tr>
+              <th scope="row">{b.uses.map(itemLabel).join(' or ')}</th>
+              <td>{itemLabel(b.gives)}</td>
+              <td>{b.every}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="chroma-title">
+    <h2 id="chroma-title">Chroma chance</h2>
+    <p class="hint">Any pull can come out as a chroma (alternate colour) version.</p>
+    <div class="table-wrap narrow">
+      <table>
+        <thead>
+          <tr><th scope="col">Rarity</th><th scope="col">Invokers</th><th scope="col">Titans</th></tr>
+        </thead>
+        <tbody>
+          {summonRarities.map((r) => (
+            <tr>
+              <th scope="row" style={`color: ${colors[r]}`}>{r}</th>
+              <td>{summons.chroma.hero[r] ? pct(summons.chroma.hero[r]) : '–'}</td>
+              <td>{summons.chroma.titan[r] ? pct(summons.chroma.titan[r]) : '–'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="more">
+    The long read: <a href={href('blog/destiny-star-odds')}>What 130 Destiny Stars really buy you</a>.
+  </p>
+
+  <script type="application/json" id="summon-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
+</Base>
+
+<script>
+  import { odds, pullsFor, summonItem } from '../lib/summons/odds';
+
+  interface Data {
+    items: { id: string; name: string; rarities: string[] }[];
+    pools: Record<string, { id: string; name: string }[]>;
+  }
+  const data: Data = JSON.parse(document.getElementById('summon-data')!.textContent!);
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const item = $<HTMLSelectElement>('c-item');
+  const rarity = $<HTMLSelectElement>('c-rarity');
+  const hero = $<HTMLSelectElement>('c-hero');
+  const pulls = $<HTMLInputElement>('c-pulls');
+  const bonus = $<HTMLInputElement>('c-bonus');
+  const mercy = $<HTMLInputElement>('c-mercy');
+  const first = $<HTMLInputElement>('c-first');
+  const since = $<HTMLInputElement>('c-since');
+  const ANY = '__any';
+  const fmt = (n: number) => n.toLocaleString('en-GB');
+  const pct = (p: number) => {
+    if (p >= 1) return '100%';
+    if (p > 0.9995) return '~100%';
+    const v = p * 100;
+    return `${v < 1 ? v.toFixed(3).replace(/0+$/, '') : v.toFixed(1)}%`.replace(/\.%$/, '%');
+  };
+
+  function fillRarities() {
+    const it = data.items.find((i) => i.id === item.value)!;
+    const keep = rarity.value;
+    rarity.replaceChildren(...it.rarities.map((r) => new Option(r, r)));
+    rarity.value = it.rarities.includes(keep) ? keep : it.rarities.includes('Legendary') ? 'Legendary' : it.rarities[it.rarities.length - 1];
+    fillHeroes();
+  }
+  function fillHeroes() {
+    const pool = rarity.value === 'Legendary' ? data.pools[item.value] : undefined;
+    $('c-hero-wrap').hidden = !pool;
+    if (pool) {
+      const keep = hero.value;
+      hero.replaceChildren(new Option('Any Legendary', ANY), ...pool.map((h) => new Option(h.name, h.id)));
+      hero.value = pool.some((h) => h.id === keep) ? keep : ANY;
+    }
+  }
+
+  function update() {
+    const pool = rarity.value === 'Legendary' ? data.pools[item.value] : undefined;
+    const specific = !!pool && hero.value !== ANY;
+    const def = summonItem(item.value)!;
+    const hasMercy = !!def.mercy?.[rarity.value];
+    const hasFirst = !!def.firstMercy?.[rarity.value];
+    mercy.disabled = specific || !hasMercy;
+    bonus.disabled = specific;
+    $('c-first-wrap').hidden = !(mercy.checked && hasFirst && !specific);
+    $('c-since-wrap').hidden = !(mercy.checked && hasMercy && !specific);
+
+    const n = Math.min(100000, Math.max(0, Math.floor(Number(pulls.value) || 0)));
+    const r = odds({
+      item: item.value,
+      rarity: rarity.value,
+      pulls: n,
+      poolSize: specific ? pool!.length : undefined,
+      bonus: bonus.checked,
+      mercy: mercy.checked,
+      firstTime: first.checked,
+      since: Number(since.value) || 0,
+    });
+    $('r-chance').textContent = n ? pct(r.chance) : '–';
+    $('r-per').textContent = pct(r.perPull) + (r.perPull > 0 && r.perPull < 1 ? ` (1 in ${fmt(Math.round(1 / r.perPull))})` : '');
+    $('r-avg').textContent = n ? `${r.expected < 10 ? r.expected.toFixed(2) : fmt(Math.round(r.expected))}` : '–';
+    $('r-need').textContent = [0.5, 0.9, 0.99].map((q) => fmt(pullsFor(r.perPull, q))).join(' / ');
+
+    const notes: string[] = [];
+    if (r.bonusItems.length) {
+      notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${summonItem(b.item)?.name ?? b.item}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
+    }
+    if (r.guaranteedBy) notes.push(`If the estimated mercy rule holds, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
+    if (specific) notes.push(`One of ${pool!.length} equally likely Legendaries. Mercy and bonus summons aren't counted for one specific Invoker.`);
+    notes.push('The 50%, 90% and 99% pull counts use the rate per pull only.');
+    $('r-note').textContent = notes.join(' ');
+  }
+
+  item.addEventListener('change', () => {
+    fillRarities();
+    update();
+  });
+  rarity.addEventListener('change', () => {
+    fillHeroes();
+    update();
+  });
+  for (const el of [hero, pulls, bonus, mercy, first, since]) el.addEventListener('input', update);
+  fillRarities();
+  update();
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 8px 0 12px; max-width: 80ch; }
+  h2 + .hint { margin-top: -4px; }
+  .card {
+    margin-top: 24px;
+    padding: 4px 20px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .card h2 { margin-top: 16px; }
+  .calc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .calc label, .since { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  [hidden] { display: none !important; }
+  select, input[type='number'] {
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .toggles { display: flex; flex-wrap: wrap; align-items: end; gap: 12px 24px; margin-top: 16px; }
+  .check { display: flex; align-items: center; gap: 8px; min-height: 44px; color: var(--soft); font-size: 15px; }
+  .check input { width: 18px; height: 18px; accent-color: var(--accent); }
+  .check:has(input:disabled) { opacity: 0.5; }
+  .since { max-width: 220px; }
+  .results { display: grid; grid-template-columns: auto 1fr; gap: 8px 32px; margin-top: 20px; align-items: start; }
+  .big { display: flex; flex-direction: column; font-family: var(--display); font-weight: 700; font-size: 40px; line-height: 1.1; color: var(--accent); }
+  .big small { font-family: inherit; font-size: 13px; font-weight: 500; color: var(--muted); }
+  dl { margin: 0; display: grid; gap: 6px; }
+  dl div { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  dt { color: var(--muted); font-size: 14px; }
+  dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+  .note { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .callout { margin: 0 0 12px; padding: 12px 16px; border-radius: 12px; border: 1px solid #f5c45155; background: #f5c45114; color: var(--soft); font-size: 14px; max-width: 80ch; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap.narrow { max-width: 420px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  thead th:first-child, tbody th { text-align: left; }
+  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  tbody tr:last-child > * { border-bottom: 0; }
+  tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
+  .item { display: inline-flex; align-items: center; gap: 8px; }
+  .item img, .icon-gap { width: 28px; height: 28px; flex: none; }
+  .more { margin-top: 32px; color: var(--soft); }
+  .more a { color: var(--accent); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .card { padding: 4px 14px 14px; }
+    .calc { grid-template-columns: 1fr 1fr; }
+    .results { grid-template-columns: 1fr; }
+    .big { font-size: 32px; }
+  }
+</style>
