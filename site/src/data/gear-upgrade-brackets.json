@@ -1,0 +1,23 @@
+{
+  "gameVersion": "0.61.1514",
+  "note": "Gear upgrade totals per five levels. Replace with the full per-level table once the data pack carries it (issue #26).",
+  "brackets": ["+0 → +5", "+5 → +10", "+10 → +15", "+15 → +20"],
+  "byRarity6Star": [
+    { "rarity": "Common", "gold": [9540, 51440, 253050, 1285970] },
+    { "rarity": "Uncommon", "gold": [9920, 53500, 263160, 1337410] },
+    { "rarity": "Rare", "gold": [10720, 57770, 284220, 1444400] },
+    { "rarity": "Epic", "gold": [12000, 64700, 318330, 1617730] },
+    { "rarity": "Legendary", "gold": [13920, 75060, 369270, 1876580] },
+    { "rarity": "Greater", "gold": [19210, 103590, 509590, 2589670] }
+  ],
+  "memorium6Star": [300, 739, 2385, 3176],
+  "legendaryByStars": [
+    { "stars": 1, "gold": [3040, 16430, 80770, 410510], "memorium": 200 },
+    { "stars": 2, "gold": [4360, 23460, 115390, 586430], "memorium": 400 },
+    { "stars": 3, "gold": [6530, 35190, 173090, 879640], "memorium": 700 },
+    { "stars": 4, "gold": [7820, 42230, 207710, 1055570], "memorium": 1650 },
+    { "stars": 5, "gold": [10010, 53940, 265400, 1348790], "memorium": 3520 },
+    { "stars": 6, "gold": [13920, 75060, 369270, 1876580], "memorium": 6600 }
+  ],
+  "substatsAtZero": { "Common": 0, "Uncommon": 1, "Rare": 2, "Epic": 3, "Legendary": 4 }
+}

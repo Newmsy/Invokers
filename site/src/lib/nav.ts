@@ -17,6 +17,8 @@ export const nav: NavItem[] = [
   { path: 'blog', label: 'Blog', icon: 'book', header: true },
   { path: 'planner', label: 'Planner', icon: 'list' },
   { path: 'skill-costs', label: 'Skill costs', icon: 'book' },
+  { path: 'ascension', label: 'Ascension and Awakening', icon: 'book' },
+  { path: 'gear-upgrades', label: 'Gear upgrades and Memorium', icon: 'book' },
   { path: 'updates', label: 'Game updates', icon: 'refresh' },
   { path: 'heroes/compare', label: 'Compare Invokers', icon: 'grid' },
   { path: 'team', label: 'Team builder', icon: 'grid' },

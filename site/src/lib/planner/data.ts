@@ -9,8 +9,25 @@ import type { GearCostRow, PlanData } from './model';
 const gearFiles = import.meta.glob<{ default: unknown }>('../../../../data/gear_costs.json', { eager: true });
 const gearRows = Object.values(gearFiles)[0]?.default;
 
-function gearCosts(): GearCostRow[] | null {
-  const rows = Array.isArray(gearRows) ? gearRows : (gearRows as { costs?: unknown } | undefined)?.costs;
+/** Sell and crush returns from data/gear_costs.json (`salvage`), or null until they exist. */
+export interface SalvageRow {
+  rarity: string;
+  stars: number;
+  level: number;
+  sellGold?: number;
+  crushMemorium?: number;
+}
+export function gearSalvage(): SalvageRow[] | null {
+  const rows = (gearRows as { salvage?: unknown } | undefined)?.salvage;
+  if (!Array.isArray(rows)) return null;
+  const valid = rows.filter((r): r is SalvageRow => !!r && typeof r.rarity === 'string' && typeof r.stars === 'number' && typeof r.level === 'number');
+  return valid.length ? valid : null;
+}
+
+/** Upgrade price rows from data/gear_costs.json (a bare list, or under `costs` or `upgrade`), or null until it exists. */
+export function gearCosts(): GearCostRow[] | null {
+  const file = gearRows as { costs?: unknown; upgrade?: unknown } | undefined;
+  const rows = Array.isArray(gearRows) ? gearRows : (file?.upgrade ?? file?.costs);
   if (!Array.isArray(rows)) return null;
   const valid = rows.filter(
     (r): r is GearCostRow => !!r && typeof r.rarity === 'string' && typeof r.stars === 'number' && typeof r.toLevel === 'number',
