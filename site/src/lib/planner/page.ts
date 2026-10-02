@@ -1,4 +1,5 @@
 // Client side of the Planner page: reads the saved box and shows what each invoker still needs.
+import { avatar } from '../avatar';
 import type { BoxGear } from '../box/decode';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import {
@@ -148,7 +149,7 @@ export function start(): void {
     });
 
     const title = p.ref
-      ? h('a', { href: `${data.heroBase}${p.ref.slug}` }, name)
+      ? h('a', { href: `${data.heroBase}${p.ref.slug}`, class: 'with-avatar' }, avatar(p.ref.art, 32), name)
       : h('span', {}, name);
     const stars = h('span', { class: 'stars', title: `${p.stars} stars` }, '★'.repeat(p.stars));
 
@@ -244,7 +245,7 @@ export function start(): void {
     $('r-missing').replaceChildren(
       ...(list.length
         ? list.map((m) =>
-            h('li', {}, h('a', { href: `${data.heroBase}${m.slug}` }, m.name), h('span', { class: 'sub' }, ` ${m.element} · ${m.faction} · ${className(m.class)}`)),
+            h('li', {}, h('a', { href: `${data.heroBase}${m.slug}`, class: 'with-avatar' }, avatar(m.art, 24), m.name), h('span', { class: 'sub' }, ` ${m.element} · ${m.faction} · ${className(m.class)}`)),
           )
         : [h('li', { class: 'muted' }, `You have every ${missingRarity} invoker.`)]),
     );

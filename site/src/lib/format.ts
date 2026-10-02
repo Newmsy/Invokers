@@ -94,19 +94,6 @@ export function richText(text: string): string {
     .replace(/&lt;\/color&gt;/g, '</span>');
 }
 
-// Hero art drops into public/art/heroes/<id>.(webp|png|jpg) once it is extracted.
-// Until then pages show a placeholder. The glob only lists files; nothing is imported.
-const artFiles = new Set(
-  Object.keys(import.meta.glob('../../public/art/heroes/*.{webp,png,jpg}')).map((p) => p.split('/').pop()!),
-);
-
-export function heroArt(id: string): string | undefined {
-  for (const ext of ['webp', 'png', 'jpg']) {
-    if (artFiles.has(`${id}.${ext}`)) return `art/heroes/${id}.${ext}`;
-  }
-  return undefined;
-}
-
 export function initials(name: string): string {
   return name
     .split(/\s+/)

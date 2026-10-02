@@ -43,6 +43,7 @@ import { href } from '../../lib/data';
 
 <script>
   import { attachPicker } from '../../lib/picker';
+  import { avatar } from '../../lib/avatar';
   import { formatStat, rankNumber, rankOrder, statFields } from '../../lib/format';
   import { parseSlugs } from '../../lib/team';
   import type { RosterHero, RosterSkill } from '../../lib/roster';
@@ -99,7 +100,8 @@ import { href } from '../../lib/data';
     chosenEl.replaceChildren(
       ...chosen.map((h) => {
         const li = el('li');
-        const a = el('a', h.name);
+        const a = el('a', undefined, 'with-avatar');
+        a.append(avatar(h.art, 28), h.name);
         a.href = `${base}/heroes/${h.slug}`;
         const x = el('button', '×');
         x.type = 'button';
@@ -151,7 +153,8 @@ import { href } from '../../lib/data';
     for (const h of chosen) {
       const th = el('th');
       th.scope = 'col';
-      const a = el('a', h.name);
+      const a = el('a', undefined, 'with-avatar');
+      a.append(avatar(h.art, 28), h.name);
       a.href = `${base}/heroes/${h.slug}`;
       th.append(a);
       hr.append(th);
@@ -208,7 +211,9 @@ import { href } from '../../lib/data';
         chosen.forEach((h, i) => {
           const s = sets[i].find((x) => x.type === type);
           const card = el('article', undefined, 'skill');
-          card.append(el('span', h.name, 'who'));
+          const who = el('span', undefined, 'who with-avatar');
+          who.append(avatar(h.art, 24), h.name);
+          card.append(who);
           if (!s) {
             card.append(el('p', 'No skill in this slot.', 'none'));
           } else {
@@ -264,7 +269,7 @@ import { href } from '../../lib/data';
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 0 4px 0 14px;
+    padding: 0 4px 0 6px;
     min-height: 40px;
     border-radius: 20px;
     background: var(--surface-2);

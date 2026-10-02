@@ -1,7 +1,8 @@
 ---
-// Hero portrait, or a placeholder tinted by element until the art is extracted.
-import { href, type Hero } from '../lib/data';
-import { elementColor, heroArt, initials } from '../lib/format';
+// Hero portrait, or a placeholder tinted by element for a hero without art.
+import type { Hero } from '../lib/data';
+import { heroArt } from '../lib/art';
+import { elementColor, initials } from '../lib/format';
 
 interface Props {
   hero: Hero;
@@ -12,7 +13,7 @@ const art = heroArt(hero.id);
 const tint = elementColor[hero.element] ?? '#5FDCF7';
 ---
 {art ? (
-  <img class:list={['art', cls]} src={href(art)} alt="" loading="lazy" />
+  <img class:list={['art', cls]} src={art} alt="" loading="lazy" />
 ) : (
   <div class:list={['art', 'art-placeholder', cls]} style={`--tint: ${tint}`} aria-hidden="true">
     <span>{initials(hero.name)}</span>

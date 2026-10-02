@@ -12,6 +12,8 @@ export interface SearchDoc {
   text?: string;
   /** Where the result links to. Items have no page of their own, so they have none. */
   url?: string;
+  /** Portrait or icon URL shown next to the result. */
+  image?: string;
 }
 
 export interface SearchHit {

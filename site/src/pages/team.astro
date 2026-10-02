@@ -64,6 +64,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
 
 <script>
   import { attachPicker } from '../lib/picker';
+  import { avatar } from '../lib/avatar';
   import { formatStat, statFields } from '../lib/format';
   import { loadBox } from '../lib/box/store';
   import { TEAM_SIZE, isTeamDoc, maxRow, parseSlugs, speedKeys, statIndex, summarise, toTeamDoc, type TeamDoc } from '../lib/team';
@@ -133,7 +134,8 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
         li.append(el('span', 'Empty', 'slot-empty'));
         return;
       }
-      const a = el('a', h.name, 'slot-name');
+      const a = el('a', undefined, 'slot-name with-avatar');
+      a.append(avatar(h.art, 40), h.name);
       a.href = `${base}/heroes/${h.slug}`;
       li.append(a, el('span', `${h.rarity} · ${h.element} · ${h.cls}`, 'slot-meta'));
       const tools = el('div', undefined, 'slot-tools');
@@ -204,7 +206,8 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       const tr = el('tr');
       const th = el('th');
       th.scope = 'row';
-      const a = el('a', h.name);
+      const a = el('a', undefined, 'with-avatar');
+      a.append(avatar(h.art, 28), h.name);
       a.href = `${base}/heroes/${h.slug}`;
       th.append(a);
       tr.append(th, ...speedKeys.map((k) => {

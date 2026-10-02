@@ -1,5 +1,6 @@
 // Renders a shared box or team on /share/. Everything shown comes from the share itself, and text is
 // always added as text nodes, never parsed as HTML.
+import { avatar } from '../avatar';
 import type { BoxAccessory, BoxGear, BoxHero, StatRoll } from '../box/decode';
 import type { HeroRef } from '../data';
 import { getShare } from './api';
@@ -54,7 +55,7 @@ export async function startShareView(): Promise<void> {
     return label.percent ? `${label.name} ${+(s.value * 100).toFixed(1)}%` : `${label.name} ${+s.value.toFixed(1)}`;
   };
   const heroLink = (ref: HeroRef | undefined) =>
-    ref ? h('a', { href: refs.heroBase + ref.slug }, ref.name) : h('strong', {}, 'Unknown invoker');
+    ref ? h('a', { href: refs.heroBase + ref.slug, class: 'with-avatar' }, avatar(ref.art, 28), ref.name) : h('strong', {}, 'Unknown invoker');
   const heroSub = (ref: HeroRef | undefined) =>
     h('span', { class: 'sub' }, ref ? `${ref.rarity} · ${ref.faction} · ${ref.element} · ${titleCase(ref.class)}` : '');
 

@@ -27,6 +27,7 @@ export interface PlanHero {
   faction: string;
   element: string;
   class: string;
+  art?: string;
 }
 
 export interface PlanData {

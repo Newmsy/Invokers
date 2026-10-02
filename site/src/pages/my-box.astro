@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
-import { gearStatLabels, heroRefsByConfigId, href, pack, setNames } from '../lib/data';
+import { heroRefsWithArt } from '../lib/art';
+import { gearStatLabels, href, pack, setNames } from '../lib/data';
 import { BOX_FILES } from '../lib/box/decode';
 import { accountsEnabled } from '../lib/account/config';
 import ShareBox from '../components/ShareBox.astro';
 
-const refs = { heroes: heroRefsByConfigId, stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
+const refs = { heroes: heroRefsWithArt(), stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
 const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_snapshots';
 ---
 <Base title="My box">

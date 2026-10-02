@@ -232,6 +232,8 @@ export interface HeroRef {
   faction: string;
   element: string;
   class: string;
+  /** Portrait URL; added by heroRefsWithArt() in lib/art. */
+  art?: string;
 }
 
 export const heroRefsByConfigId: Record<string, HeroRef> = Object.fromEntries(
