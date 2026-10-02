@@ -85,7 +85,23 @@ export interface Boss {
   dos: string[];
   donts: string[];
   corruptions: string[];
-  stages: { stage: number; energy: number }[];
+  stages: BossStage[];
+}
+
+/** One boss stage. hp/atk/def are the boss's base values; accuracy/resistance the enemy team's flat bonuses;
+ * toleranceBonus the bonus (+) or penalty (−) to your Invokers' tolerances, in percent points. */
+export interface BossStage {
+  stage: number;
+  energy: number;
+  level?: number;
+  element?: string;
+  hp?: number;
+  atk?: number;
+  def?: number;
+  skillLevel?: number;
+  accuracy?: number;
+  resistance?: number;
+  toleranceBonus?: number;
 }
 
 export interface StatInfo {
