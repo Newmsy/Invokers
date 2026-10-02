@@ -2,7 +2,7 @@
 // readable names (img/heroes/<hero-slug>.webp, img/skills/<hero-slug>-skill-1.webp, ...) through
 // pages/img/[...path].ts, and the build drops public/art from dist so no code appears in an image URL.
 // The glob only lists files; nothing is imported.
-import { heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, type HeroRef } from './data';
+import { heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, titans, type HeroRef } from './data';
 
 const sourceFiles = new Set(
   Object.keys(import.meta.glob('../../public/art/**/*.webp')).map((p) => p.replace(/^.*\/public\/art\//, '')),
@@ -18,6 +18,7 @@ const skillIconPath = new Map<string, string>();
 const itemIconPath = new Map<string, string>();
 const elementIconPath = new Map<string, string>();
 const classIconPath = new Map<string, string>();
+const titanArtPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -36,6 +37,7 @@ for (const h of heroes) {
     add(`skills/${slug}-skill-${skillPart(s.type)}.webp`, `skills/${h.id}_${skillFile[s.type] ?? s.type}.webp`, skillIconPath, `${h.id}/${s.type}`);
   }
 }
+for (const t of titans) add(`titans/${t.slug}.webp`, `titans/${t.id}.webp`, titanArtPath, t.id);
 for (const source of sourceFiles) {
   const [kind, file] = source.split('/');
   const code = file?.replace(/\.webp$/, '');
@@ -60,6 +62,7 @@ export function artRoutes(): { served: string; source: string }[] {
 }
 
 export const heroArt = (heroId: string) => url(heroArtPath.get(heroId));
+export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
 export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get(`${heroId}/${type}`));
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));

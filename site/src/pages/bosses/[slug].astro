@@ -2,12 +2,14 @@
 import Base from '../../layouts/Base.astro';
 import { bossLabel, bosses, bossSlug, corruptionNames, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
+import { tierLists } from '../../lib/tiers/lists';
 
 export function getStaticPaths() {
   return bosses.map((boss) => ({ params: { slug: bossSlug(boss) }, props: { boss } }));
 }
 
 const { boss } = Astro.props as { boss: Boss };
+const hasTiers = tierLists.some((l) => l.id === bossSlug(boss));
 
 // Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
 const stageRanges: { from: number; to: number; energy: number }[] = [];
@@ -49,6 +51,11 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     {boss.title && <span class="title">{boss.title}</span>}
     <h1>{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
+    {hasTiers && (
+      <p class="tiers">
+        Best picks: <a href={href(`tiers/invokers/${bossSlug(boss)}`)}>Invokers</a> · <a href={href(`tiers/titans/${bossSlug(boss)}`)}>Titans</a>
+      </p>
+    )}
   </header>
 
   <div class="advice">
@@ -105,6 +112,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
 </Base>
 
 <style>
+  .tiers { margin: 10px 0 0; color: var(--soft); font-weight: 500; }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
   .title { color: var(--accent); font-weight: 600; font-size: 14px; }

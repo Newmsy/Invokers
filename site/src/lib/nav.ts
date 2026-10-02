@@ -11,10 +11,11 @@ export interface NavItem {
 
 export const nav: NavItem[] = [
   { path: 'heroes', label: 'Invokers', icon: 'grid', header: true, tab: true },
+  { path: 'tiers', label: 'Tier lists', icon: 'tiers', header: true },
   { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true },
   { path: 'summons', label: 'Summons', icon: 'star', header: true, tab: true },
   { path: 'gear', label: 'Gear', icon: 'shield', header: true },
-  { path: 'trophies', label: 'Trophies', icon: 'trophy', header: true },
+  { path: 'trophies', label: 'Trophies', icon: 'trophy' },
   { path: 'bosses', label: 'Bosses', icon: 'skull', header: true },
   { path: 'blog', label: 'Blog', icon: 'book', header: true },
   { path: 'planner', label: 'Planner', icon: 'list' },
