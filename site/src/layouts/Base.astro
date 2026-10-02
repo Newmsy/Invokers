@@ -137,11 +137,11 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     color: var(--text);
   }
   .brand span { color: var(--accent); }
-  .top-nav { display: flex; gap: 4px; font-weight: 500; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .top-nav { display: flex; gap: 2px; font-weight: 500; min-width: 0; overflow-x: auto; scrollbar-width: none; }
   .top-nav a { white-space: nowrap; }
   .top-nav a {
     color: var(--soft);
-    padding: 10px 16px;
+    padding: 10px 12px;
     border-radius: 22px;
   }
   .top-nav a[aria-current='page'] { color: var(--bg); background: var(--accent); }
@@ -187,6 +187,13 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   /* The sign-in button sits right after My box on wide screens. */
   @media (min-width: 1141px) {
     header.top .account { margin-left: 0; min-width: 0; }
+  }
+
+  /* Seven sections plus Search and My box: drop the Search label before the links run out of room. */
+  @media (max-width: 1320px) {
+    header.top { gap: 16px; padding-left: 32px; padding-right: 32px; }
+    .search-link { padding: 0 10px; min-width: 44px; justify-content: center; }
+    .search-link span { display: none; }
   }
 
   /* Below this width the header links don't fit, so the bottom tab bar takes over. */
