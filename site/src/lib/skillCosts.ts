@@ -24,14 +24,13 @@ export function currencyName(id: string): string {
   return itemNames.get(id) ?? id;
 }
 
-const skillOrder = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Combo', 'Ultimate', 'Passive', 'Tolerance1', 'Tolerance2'];
+const skillOrder = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Combo', 'Ultimate', 'Tolerance1', 'Tolerance2'];
 const skillNames: Record<string, string> = {
   ActiveSkill1: 'Skill 1',
   ActiveSkill2: 'Skill 2',
   ActiveSkill3: 'Skill 3',
   Combo: 'Combo',
   Ultimate: 'Ultimate',
-  Passive: 'Passive',
   Tolerance1: 'Tolerance 1',
   Tolerance2: 'Tolerance 2',
 };
@@ -42,8 +41,14 @@ export function skillName(s: string): string {
 
 export const rarities = rarityOrder.filter((r) => rows.some((x) => x.rarity === r));
 
+/**
+ * The price table also lists a Legendary "Passive" slot, but no Invoker has a Passive skill (every Invoker has
+ * Skills 1-3, Combo and Ultimate, plus one tolerance skill below Epic and two from Epic up), so it isn't counted.
+ */
+const unusedSlots = new Set(['Passive']);
+
 export function skillsOf(rarity: string): string[] {
-  const present = new Set(rows.filter((r) => r.rarity === rarity).map((r) => r.skill));
+  const present = new Set(rows.filter((r) => r.rarity === rarity && !unusedSlots.has(r.skill)).map((r) => r.skill));
   return skillOrder.filter((s) => present.has(s)).concat([...present].filter((s) => !skillOrder.includes(s)));
 }
 
