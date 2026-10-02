@@ -6,6 +6,8 @@ Sources (all offline, from the installed game):
                                              and the GameHintsDatabase asset lists the loading-screen hints in order.
   - global-metadata.dat string literals, and <game>/UserData/datapack/keys_seen.json (LootDump F11) if present,
     for keys used from code.
+  - <game>/UserData/datapack/hints.json (LootDump F11): the in-battle hint keys the game builds at runtime
+    (md-LevelHint-<region>-<stage>-<n> per campaign stage, md-LevelHint-TowerGeneric-<n>, md-LevelHint-PVP-<n>).
 
 Usage: python build_tips.py [game_dir]      needs: pip install UnityPy brotli
 """
@@ -19,7 +21,7 @@ from pathlib import Path
 
 import UnityPy
 
-from decode_localization import DEFAULT_GAME, fnv1a64, metadata_literals, read_package
+from decode_localization import DEFAULT_GAME, fnv1a64, metadata_literals, newest_package, read_package
 
 REPO = Path(__file__).resolve().parents[2]
 GAME = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_GAME
@@ -99,7 +101,7 @@ def hints_database(obj, strings):
 def main():
     warnings.filterwarnings("ignore")
     UnityPy.config.FALLBACK_UNITY_VERSION = UNITY_VERSION
-    version, _package, strings = read_package(GAME / "Invokers_Data" / "StreamingAssets" / "i18n" / "en_US.bin.br")
+    version, _package, strings = read_package(newest_package(GAME))
 
     keys = set()
     hints = []
@@ -128,7 +130,24 @@ def main():
                              "screen": screen or key.removeprefix("ui-").split("-tutorial")[0].split("-tip")[0].replace("-", " ")})
                 break
 
-    out = {"gameVersion": version, "extractedAt": date.today().isoformat(),
+    battle = GAME / "UserData" / "datapack" / "hints.json"
+    if battle.exists():
+        for h in json.loads(battle.read_text(encoding="utf-8")):
+            text = strings.get(fnv1a64(h["key"]))
+            if not text:
+                continue
+            if h["kind"] == "campaign":
+                chapter = re.match(r"Chapter(\d+)", h["region"])
+                screen = f"Campaign Chapter {chapter.group(1)}, stage {h['stage']}" if chapter else h["region"]
+            else:
+                screen = {"spire": "Spires (any floor)", "pvp": "Arena PvP battles"}.get(h["kind"], h["kind"])
+            tip = {"key": h["key"], "text": text, "context": "battle", "screen": screen}
+            if h["kind"] == "campaign":
+                tip.update(region=h["region"], stage=h["stage"])
+            tips.append(tip)
+
+    manifest = json.loads((REPO / "data" / "manifest.json").read_text(encoding="utf-8"))
+    out = {"gameVersion": manifest["gameVersion"], "textVersion": version, "extractedAt": date.today().isoformat(),
            "source": "Installed game files (localization table and UI asset bundles); nothing comes from the server.",
            "unconfirmed": ["Whether every loading hint can appear for every player (the database has no unlock fields "
                            "this script reads).",

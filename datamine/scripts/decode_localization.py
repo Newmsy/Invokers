@@ -14,9 +14,12 @@ Format ("LOC1", game 0.61.x), little-endian:
   index: count x { u64 key hash, u32 offset into blob, u32 byte length }, sorted by hash
   blob:  UTF-8 strings, no terminators; offset 0xFFFFFFFF = no string
 
-Keys are hashed with FNV-1a 64 over the UTF-8 key (e.g. "ui-vip-chest-ruby"). Key names are not stored, so this
+Keys are hashed with FNV-1a 64 over the lowercased UTF-8 key (e.g. "ui-vip-chest-ruby"). Key names are not stored, so this
 script resolves the keys it can find as string literals in global-metadata.dat. Names built at runtime (items,
 sets, stats: the Localized.md_* helpers) need the running game; see ../README.md.
+
+The game also downloads newer text to %USERPROFILE%/AppData/LocalLow/Hit_Zone/Invokers/i18n/dl_<lang>.bin (same
+format, not compressed); newest_package() prefers it.
 
 Usage: python decode_localization.py [game_dir] [out_dir] [lang]
 """
@@ -32,14 +35,18 @@ DEFAULT_GAME = Path(os.environ.get("APPDATA", "")) / "zone.hitzone.invokers.laun
 
 
 def fnv1a64(text: str) -> int:
+    """Hash of a localization key. The game lowercases keys before hashing ("md-LevelHint-..." is stored as the hash
+    of "md-levelhint-...")."""
     h = 0xCBF29CE484222325
-    for byte in text.encode("utf-8"):
+    for byte in text.lower().encode("utf-8"):
         h = ((h ^ byte) * 0x100000001B3) & 0xFFFFFFFFFFFFFFFF
     return h
 
 
 def read_package(path: Path):
-    raw = brotli.decompress(path.read_bytes())
+    raw = path.read_bytes()
+    if raw[:4] != b"LOC1":
+        raw = brotli.decompress(raw)
     if raw[:4] != b"LOC1":
         raise ValueError(f"{path.name}: not a LOC1 package")
     count, index_off = struct.unpack_from("<II", raw, 28)
@@ -63,6 +70,16 @@ def read_package(path: Path):
     return version, package, strings
 
 
+def newest_package(game: Path, lang: str = "en_US") -> Path:
+    """The game downloads newer text over the shipped package (LocalLow/.../i18n/dl_<lang>.bin, uncompressed LOC1).
+    Strings added after the build (e.g. per-stage campaign hints) are only in the download, so prefer it."""
+    local = Path(os.environ.get("USERPROFILE", "")) / "AppData" / "LocalLow" / "Hit_Zone" / "Invokers" / "i18n"
+    for candidate in (local / f"dl_{lang}.bin", local / f"{lang}.bin"):
+        if candidate.exists():
+            return candidate
+    return game / "Invokers_Data" / "StreamingAssets" / "i18n" / f"{lang}.bin.br"
+
+
 def metadata_literals(game: Path):
     """String literals from global-metadata.dat (il2cpp metadata v39: header of (offset, size, count) triples)."""
     meta = (game / "Invokers_Data" / "il2cpp_data" / "Metadata" / "global-metadata.dat").read_bytes()
@@ -81,7 +98,7 @@ def main():
     lang = sys.argv[3] if len(sys.argv) > 3 else "en_US"
     out.mkdir(parents=True, exist_ok=True)
 
-    version, package, strings = read_package(game / "Invokers_Data" / "StreamingAssets" / "i18n" / f"{lang}.bin.br")
+    version, package, strings = read_package(newest_package(game, lang))
     literals = metadata_literals(game)
     resolved = {}
     for lit in literals:

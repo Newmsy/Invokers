@@ -1,11 +1,12 @@
 {
  "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-01",
+ "extractedAt": "2026-10-02",
  "source": "Installed game files (localization table, region config, level config); nothing comes from the server.",
  "unconfirmed": [
   "mode 'other' covers the four Crest dungeon bosses (Yskara, Galvos, Hyxxis, Koltmos).",
   "corruptions come from the tolerance help texts. Two disagree with the boss's own Do list: Koltmos (help text: Manashock, Blight; Do list: Bloodrot, Manashock) and Pentiax (help text: Nightmare, Mindfog; Do list names none).",
-  "Boss skills, levels and HP per stage are not exported yet (they need enemy data from a game session).",
+  "Boss skills are not exported yet. Stage hp/atk/def are the boss's own base values from the level config; accuracy/resistance are the enemy team's flat bonuses; toleranceBonus is the stage's Tolerance Bonus (positive) or Penalty (negative) to your Invokers' tolerances, in percent points.",
+  "skillLevel is missing on some early stages (the level config doesn't set it there).",
   "Sedula (ClanBoss2) has a name in the game but no stages or advice yet."
  ],
  "bosses": [
@@ -34,83 +35,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 8
+     "energy": 8,
+     "level": 3,
+     "element": "Earth",
+     "hp": 15000,
+     "atk": 38,
+     "def": 3050,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 8
+     "energy": 8,
+     "level": 15,
+     "element": "Wind",
+     "hp": 21000,
+     "atk": 40,
+     "def": 3660,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 8
+     "energy": 8,
+     "level": 30,
+     "element": "Water",
+     "hp": 25000,
+     "atk": 65,
+     "def": 4880,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 8
+     "energy": 8,
+     "level": 35,
+     "element": "Fire",
+     "hp": 55000,
+     "atk": 105,
+     "def": 5490,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 8
+     "energy": 8,
+     "level": 40,
+     "element": "Earth",
+     "hp": 96000,
+     "atk": 130,
+     "def": 6100,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 8
+     "energy": 8,
+     "level": 45,
+     "element": "Wind",
+     "hp": 125000,
+     "atk": 265,
+     "def": 6100,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 12
+     "energy": 12,
+     "level": 50,
+     "element": "Water",
+     "hp": 150000,
+     "atk": 350,
+     "def": 6710,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 12
+     "energy": 12,
+     "level": 55,
+     "element": "Fire",
+     "hp": 200000,
+     "atk": 425,
+     "def": 6710,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 12
+     "energy": 12,
+     "level": 60,
+     "element": "Earth",
+     "hp": 275000,
+     "atk": 515,
+     "def": 6710,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 12
+     "energy": 12,
+     "level": 65,
+     "element": "Wind",
+     "hp": 330000,
+     "atk": 700,
+     "def": 6710,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 12
+     "energy": 12,
+     "level": 70,
+     "element": "Water",
+     "hp": 415000,
+     "atk": 900,
+     "def": 7320,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 12
+     "energy": 12,
+     "level": 75,
+     "element": "Fire",
+     "hp": 475000,
+     "atk": 1500,
+     "def": 7930,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 16
+     "energy": 16,
+     "level": 80,
+     "element": "Earth",
+     "hp": 550000,
+     "atk": 1800,
+     "def": 7930,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 16
+     "energy": 16,
+     "level": 85,
+     "element": "Wind",
+     "hp": 700000,
+     "atk": 2200,
+     "def": 7930,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 16
+     "energy": 16,
+     "level": 90,
+     "element": "Water",
+     "hp": 1350000,
+     "atk": 3000,
+     "def": 8540,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 16
+     "energy": 16,
+     "level": 100,
+     "element": "Fire",
+     "hp": 1900000,
+     "atk": 3800,
+     "def": 8540,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 20
+     "energy": 20,
+     "level": 110,
+     "element": "Earth",
+     "hp": 3150000,
+     "atk": 5700,
+     "def": 9500,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 20
+     "energy": 20,
+     "level": 115,
+     "element": "Wind",
+     "hp": 6000000,
+     "atk": 6500,
+     "def": 10000,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 20
+     "energy": 20,
+     "level": 120,
+     "element": "Water",
+     "hp": 7000000,
+     "atk": 7250,
+     "def": 10500,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 20
+     "energy": 20,
+     "level": 150,
+     "element": "Fire",
+     "hp": 9000000,
+     "atk": 8400,
+     "def": 11000,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -139,83 +306,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 8
+     "energy": 8,
+     "level": 3,
+     "element": "Wind",
+     "hp": 30000,
+     "atk": 35,
+     "def": 2600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 8
+     "energy": 8,
+     "level": 15,
+     "element": "Water",
+     "hp": 60000,
+     "atk": 60,
+     "def": 3120,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 8
+     "energy": 8,
+     "level": 30,
+     "element": "Fire",
+     "hp": 80000,
+     "atk": 80,
+     "def": 4160,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 8
+     "energy": 8,
+     "level": 35,
+     "element": "Earth",
+     "hp": 100000,
+     "atk": 90,
+     "def": 4680,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 8
+     "energy": 8,
+     "level": 40,
+     "element": "Wind",
+     "hp": 125000,
+     "atk": 100,
+     "def": 4680,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 8
+     "energy": 8,
+     "level": 45,
+     "element": "Water",
+     "hp": 200000,
+     "atk": 125,
+     "def": 5200,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 12
+     "energy": 12,
+     "level": 50,
+     "element": "Fire",
+     "hp": 230000,
+     "atk": 150,
+     "def": 5200,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 12
+     "energy": 12,
+     "level": 55,
+     "element": "Earth",
+     "hp": 275000,
+     "atk": 200,
+     "def": 5720,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 12
+     "energy": 12,
+     "level": 60,
+     "element": "Wind",
+     "hp": 350000,
+     "atk": 250,
+     "def": 5720,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 12
+     "energy": 12,
+     "level": 65,
+     "element": "Water",
+     "hp": 450000,
+     "atk": 300,
+     "def": 5720,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 12
+     "energy": 12,
+     "level": 70,
+     "element": "Fire",
+     "hp": 550000,
+     "atk": 350,
+     "def": 6240,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 12
+     "energy": 12,
+     "level": 75,
+     "element": "Earth",
+     "hp": 650000,
+     "atk": 400,
+     "def": 6240,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 16
+     "energy": 16,
+     "level": 80,
+     "element": "Wind",
+     "hp": 800000,
+     "atk": 600,
+     "def": 6240,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 16
+     "energy": 16,
+     "level": 85,
+     "element": "Water",
+     "hp": 1150000,
+     "atk": 700,
+     "def": 6760,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 16
+     "energy": 16,
+     "level": 90,
+     "element": "Fire",
+     "hp": 1750000,
+     "atk": 1000,
+     "def": 6760,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 16
+     "energy": 16,
+     "level": 100,
+     "element": "Earth",
+     "hp": 3000000,
+     "atk": 1200,
+     "def": 6760,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 20
+     "energy": 20,
+     "level": 110,
+     "element": "Wind",
+     "hp": 4000000,
+     "atk": 2900,
+     "def": 9500,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 20
+     "energy": 20,
+     "level": 115,
+     "element": "Water",
+     "hp": 4500000,
+     "atk": 4000,
+     "def": 10000,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 20
+     "energy": 20,
+     "level": 120,
+     "element": "Fire",
+     "hp": 5000000,
+     "atk": 4500,
+     "def": 10500,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 20
+     "energy": 20,
+     "level": 150,
+     "element": "Earth",
+     "hp": 6000000,
+     "atk": 5000,
+     "def": 11000,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -229,7 +562,7 @@
     "Use Mindworm. It’s vital for limiting Sakiel gaining power",
     "Invest in RES and ACC",
     "Invest in Accuracy. No point bringing Stun if you can't land it when you need it",
-    "Have an Invoker will 100% Heal Reduction. It will be useful against Sakiel’s Demon Form",
+    "Have an Invoker with 100% Heal Reduction. It will be useful against Sakiel’s Demon Form",
     "Bring Invokers and Relics with Manashock and Bloodrot Tolerances"
    ],
    "donts": [
@@ -245,83 +578,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 8
+     "energy": 8,
+     "level": 3,
+     "element": "Fire",
+     "hp": 15000,
+     "atk": 5,
+     "def": 3050,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 8
+     "energy": 8,
+     "level": 15,
+     "element": "Earth",
+     "hp": 17500,
+     "atk": 8,
+     "def": 3660,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 8
+     "energy": 8,
+     "level": 30,
+     "element": "Wind",
+     "hp": 35000,
+     "atk": 15,
+     "def": 4880,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 8
+     "energy": 8,
+     "level": 35,
+     "element": "Water",
+     "hp": 58000,
+     "atk": 35,
+     "def": 5490,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 8
+     "energy": 8,
+     "level": 40,
+     "element": "Fire",
+     "hp": 60000,
+     "atk": 40,
+     "def": 5490,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 8
+     "energy": 8,
+     "level": 45,
+     "element": "Earth",
+     "hp": 80000,
+     "atk": 45,
+     "def": 6100,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 12
+     "energy": 12,
+     "level": 50,
+     "element": "Wind",
+     "hp": 150000,
+     "atk": 80,
+     "def": 6100,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 12
+     "energy": 12,
+     "level": 55,
+     "element": "Water",
+     "hp": 160000,
+     "atk": 150,
+     "def": 6710,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 12
+     "energy": 12,
+     "level": 60,
+     "element": "Fire",
+     "hp": 225000,
+     "atk": 225,
+     "def": 6710,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 12
+     "energy": 12,
+     "level": 65,
+     "element": "Earth",
+     "hp": 275000,
+     "atk": 290,
+     "def": 6710,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 12
+     "energy": 12,
+     "level": 70,
+     "element": "Wind",
+     "hp": 375000,
+     "atk": 340,
+     "def": 7320,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 12
+     "energy": 12,
+     "level": 75,
+     "element": "Water",
+     "hp": 400000,
+     "atk": 470,
+     "def": 7320,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 16
+     "energy": 16,
+     "level": 80,
+     "element": "Fire",
+     "hp": 475000,
+     "atk": 475,
+     "def": 7320,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 16
+     "energy": 16,
+     "level": 85,
+     "element": "Earth",
+     "hp": 550000,
+     "atk": 500,
+     "def": 7930,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 16
+     "energy": 16,
+     "level": 90,
+     "element": "Wind",
+     "hp": 800000,
+     "atk": 850,
+     "def": 7930,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 16
+     "energy": 16,
+     "level": 100,
+     "element": "Water",
+     "hp": 1250000,
+     "atk": 1200,
+     "def": 8540,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 20
+     "energy": 20,
+     "level": 110,
+     "element": "Fire",
+     "hp": 1550000,
+     "atk": 1650,
+     "def": 8540,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 20
+     "energy": 20,
+     "level": 115,
+     "element": "Earth",
+     "hp": 2250000,
+     "atk": 1800,
+     "def": 9150,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 20
+     "energy": 20,
+     "level": 120,
+     "element": "Wind",
+     "hp": 3500000,
+     "atk": 1800,
+     "def": 9150,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 20
+     "energy": 20,
+     "level": 150,
+     "element": "Water",
+     "hp": 4000000,
+     "atk": 2300,
+     "def": 10675,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -349,83 +858,263 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 8
+     "energy": 8,
+     "level": 3,
+     "element": "Fire",
+     "hp": 15000,
+     "atk": 15,
+     "def": 1500,
+     "skillLevel": 0,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 8
+     "energy": 8,
+     "level": 15,
+     "element": "Earth",
+     "hp": 35000,
+     "atk": 20,
+     "def": 1500,
+     "skillLevel": 0,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 8
+     "energy": 8,
+     "level": 30,
+     "element": "Wind",
+     "hp": 60000,
+     "atk": 30,
+     "def": 2250,
+     "skillLevel": 0,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 8
+     "energy": 8,
+     "level": 35,
+     "element": "Water",
+     "hp": 125000,
+     "atk": 40,
+     "def": 2250,
+     "skillLevel": 0,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 8
+     "energy": 8,
+     "level": 40,
+     "element": "Fire",
+     "hp": 150000,
+     "atk": 50,
+     "def": 2250,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 8
+     "energy": 8,
+     "level": 45,
+     "element": "Earth",
+     "hp": 200000,
+     "atk": 75,
+     "def": 2250,
+     "skillLevel": 0,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 12
+     "energy": 12,
+     "level": 50,
+     "element": "Wind",
+     "hp": 250000,
+     "atk": 100,
+     "def": 2250,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 12
+     "energy": 12,
+     "level": 55,
+     "element": "Water",
+     "hp": 350000,
+     "atk": 150,
+     "def": 3500,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 12
+     "energy": 12,
+     "level": 60,
+     "element": "Fire",
+     "hp": 425000,
+     "atk": 225,
+     "def": 3500,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 12
+     "energy": 12,
+     "level": 65,
+     "element": "Earth",
+     "hp": 425000,
+     "atk": 240,
+     "def": 3500,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 12
+     "energy": 12,
+     "level": 70,
+     "element": "Wind",
+     "hp": 450000,
+     "atk": 275,
+     "def": 3500,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 12
+     "energy": 12,
+     "level": 75,
+     "element": "Water",
+     "hp": 500000,
+     "atk": 375,
+     "def": 3500,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 16
+     "energy": 16,
+     "level": 80,
+     "element": "Fire",
+     "hp": 575000,
+     "atk": 525,
+     "def": 3500,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 16
+     "energy": 16,
+     "level": 85,
+     "element": "Earth",
+     "hp": 775000,
+     "atk": 1000,
+     "def": 3500,
+     "skillLevel": 2,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 16
+     "energy": 16,
+     "level": 90,
+     "element": "Wind",
+     "hp": 2500000,
+     "atk": 1400,
+     "def": 4440,
+     "skillLevel": 2,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 16
+     "energy": 16,
+     "level": 100,
+     "element": "Water",
+     "hp": 3500000,
+     "atk": 1450,
+     "def": 4440,
+     "skillLevel": 3,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 20
+     "energy": 20,
+     "level": 110,
+     "element": "Fire",
+     "hp": 4500000,
+     "atk": 1500,
+     "def": 4440,
+     "skillLevel": 4,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 20
+     "energy": 20,
+     "level": 115,
+     "element": "Earth",
+     "hp": 6000000,
+     "atk": 3000,
+     "def": 5000,
+     "skillLevel": 5,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 20
+     "energy": 20,
+     "level": 120,
+     "element": "Wind",
+     "hp": 7500000,
+     "atk": 4500,
+     "def": 6120,
+     "skillLevel": 6,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 20
+     "energy": 20,
+     "level": 150,
+     "element": "Water",
+     "hp": 8000000,
+     "atk": 5000,
+     "def": 6120,
+     "skillLevel": 7,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -455,83 +1144,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 4
+     "energy": 4,
+     "level": 3,
+     "element": "Earth",
+     "hp": 14000,
+     "atk": 10,
+     "def": 3050,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 4
+     "energy": 4,
+     "level": 15,
+     "element": "Wind",
+     "hp": 18000,
+     "atk": 10,
+     "def": 3660,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 6
+     "energy": 6,
+     "level": 30,
+     "element": "Water",
+     "hp": 28000,
+     "atk": 20,
+     "def": 4880,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 6
+     "energy": 6,
+     "level": 35,
+     "element": "Fire",
+     "hp": 60000,
+     "atk": 100,
+     "def": 5490,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 8
+     "energy": 8,
+     "level": 40,
+     "element": "Earth",
+     "hp": 75000,
+     "atk": 175,
+     "def": 6100,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 8
+     "energy": 8,
+     "level": 45,
+     "element": "Wind",
+     "hp": 125000,
+     "atk": 275,
+     "def": 6100,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 10
+     "energy": 10,
+     "level": 50,
+     "element": "Water",
+     "hp": 150000,
+     "atk": 500,
+     "def": 6710,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 10
+     "energy": 10,
+     "level": 55,
+     "element": "Fire",
+     "hp": 175000,
+     "atk": 600,
+     "def": 6710,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 12
+     "energy": 12,
+     "level": 60,
+     "element": "Earth",
+     "hp": 200000,
+     "atk": 700,
+     "def": 6710,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 12
+     "energy": 12,
+     "level": 65,
+     "element": "Wind",
+     "hp": 285000,
+     "atk": 900,
+     "def": 6710,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 12
+     "energy": 12,
+     "level": 70,
+     "element": "Water",
+     "hp": 325000,
+     "atk": 1100,
+     "def": 7320,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 12
+     "energy": 12,
+     "level": 75,
+     "element": "Fire",
+     "hp": 375000,
+     "atk": 1600,
+     "def": 7930,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 16
+     "energy": 16,
+     "level": 80,
+     "element": "Earth",
+     "hp": 450000,
+     "atk": 1800,
+     "def": 7930,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 16
+     "energy": 16,
+     "level": 85,
+     "element": "Wind",
+     "hp": 650000,
+     "atk": 2100,
+     "def": 7930,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 16
+     "energy": 16,
+     "level": 90,
+     "element": "Water",
+     "hp": 1300000,
+     "atk": 3500,
+     "def": 8540,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 16
+     "energy": 16,
+     "level": 100,
+     "element": "Fire",
+     "hp": 2500000,
+     "atk": 4000,
+     "def": 8540,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 20
+     "energy": 20,
+     "level": 110,
+     "element": "Earth",
+     "hp": 5000000,
+     "atk": 4250,
+     "def": 10000,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 20
+     "energy": 20,
+     "level": 115,
+     "element": "Wind",
+     "hp": 7500000,
+     "atk": 4600,
+     "def": 10000,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 20
+     "energy": 20,
+     "level": 120,
+     "element": "Water",
+     "hp": 8500000,
+     "atk": 5000,
+     "def": 10000,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 20
+     "energy": 20,
+     "level": 150,
+     "element": "Fire",
+     "hp": 10000000,
+     "atk": 5500,
+     "def": 12000,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -560,83 +1415,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Earth",
+     "hp": 12500,
+     "atk": 6,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Wind",
+     "hp": 22000,
+     "atk": 20,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Water",
+     "hp": 40000,
+     "atk": 60,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Fire",
+     "hp": 100000,
+     "atk": 90,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Earth",
+     "hp": 175000,
+     "atk": 125,
+     "def": 1200,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Wind",
+     "hp": 200000,
+     "atk": 150,
+     "def": 1200,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Water",
+     "hp": 300000,
+     "atk": 160,
+     "def": 1200,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Fire",
+     "hp": 375000,
+     "atk": 200,
+     "def": 1200,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Earth",
+     "hp": 475000,
+     "atk": 250,
+     "def": 1320,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Wind",
+     "hp": 650000,
+     "atk": 500,
+     "def": 1320,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Water",
+     "hp": 850000,
+     "atk": 625,
+     "def": 1320,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Fire",
+     "hp": 1000000,
+     "atk": 875,
+     "def": 1440,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Earth",
+     "hp": 1250000,
+     "atk": 1100,
+     "def": 1440,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Wind",
+     "hp": 2000000,
+     "atk": 1250,
+     "def": 1440,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Water",
+     "hp": 2750000,
+     "atk": 2400,
+     "def": 1560,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Fire",
+     "hp": 3750000,
+     "atk": 2900,
+     "def": 1680,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Earth",
+     "hp": 5500000,
+     "atk": 3200,
+     "def": 2000,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Wind",
+     "hp": 7500000,
+     "atk": 3500,
+     "def": 2500,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Water",
+     "hp": 8000000,
+     "atk": 4500,
+     "def": 3000,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Fire",
+     "hp": 10000000,
+     "atk": 5000,
+     "def": 4000,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -664,83 +1685,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Fire",
+     "hp": 40000,
+     "atk": 75,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Earth",
+     "hp": 65000,
+     "atk": 100,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Wind",
+     "hp": 120000,
+     "atk": 175,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Water",
+     "hp": 220000,
+     "atk": 200,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Fire",
+     "hp": 350000,
+     "atk": 325,
+     "def": 1200,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Earth",
+     "hp": 450000,
+     "atk": 330,
+     "def": 1200,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Wind",
+     "hp": 550000,
+     "atk": 390,
+     "def": 2000,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Water",
+     "hp": 700000,
+     "atk": 475,
+     "def": 2000,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Fire",
+     "hp": 850000,
+     "atk": 550,
+     "def": 2000,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Earth",
+     "hp": 1250000,
+     "atk": 775,
+     "def": 2000,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Wind",
+     "hp": 1300000,
+     "atk": 800,
+     "def": 4000,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Water",
+     "hp": 1500000,
+     "atk": 1100,
+     "def": 4000,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Fire",
+     "hp": 2750000,
+     "atk": 1900,
+     "def": 4000,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Earth",
+     "hp": 3750000,
+     "atk": 2400,
+     "def": 6000,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Wind",
+     "hp": 6000000,
+     "atk": 3150,
+     "def": 6000,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Water",
+     "hp": 8000000,
+     "atk": 4000,
+     "def": 6000,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Fire",
+     "hp": 9500000,
+     "atk": 6000,
+     "def": 7000,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Earth",
+     "hp": 11000000,
+     "atk": 7000,
+     "def": 10000,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Wind",
+     "hp": 12500000,
+     "atk": 7500,
+     "def": 10000,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Water",
+     "hp": 16000000,
+     "atk": 10000,
+     "def": 13500,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -769,83 +1956,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Water",
+     "hp": 3300,
+     "atk": 22,
+     "def": 2000,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Fire",
+     "hp": 6600,
+     "atk": 25,
+     "def": 2400,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Earth",
+     "hp": 13200,
+     "atk": 35,
+     "def": 3200,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Wind",
+     "hp": 23100,
+     "atk": 60,
+     "def": 3600,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Water",
+     "hp": 33000,
+     "atk": 80,
+     "def": 4000,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Fire",
+     "hp": 49500,
+     "atk": 100,
+     "def": 4000,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Earth",
+     "hp": 66000,
+     "atk": 175,
+     "def": 4400,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Wind",
+     "hp": 82500,
+     "atk": 225,
+     "def": 4400,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Water",
+     "hp": 99000,
+     "atk": 300,
+     "def": 4400,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Fire",
+     "hp": 115500,
+     "atk": 325,
+     "def": 4400,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Earth",
+     "hp": 120000,
+     "atk": 400,
+     "def": 4800,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Wind",
+     "hp": 135000,
+     "atk": 500,
+     "def": 5200,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Water",
+     "hp": 150000,
+     "atk": 600,
+     "def": 5200,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Fire",
+     "hp": 170000,
+     "atk": 625,
+     "def": 5200,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Earth",
+     "hp": 192500,
+     "atk": 800,
+     "def": 5600,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Wind",
+     "hp": 204600,
+     "atk": 950,
+     "def": 5600,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Water",
+     "hp": 325000,
+     "atk": 1000,
+     "def": 5600,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Fire",
+     "hp": 375000,
+     "atk": 1400,
+     "def": 6000,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Earth",
+     "hp": 525000,
+     "atk": 1200,
+     "def": 6000,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Wind",
+     "hp": 650000,
+     "atk": 1500,
+     "def": 7000,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -874,83 +2227,249 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Water",
+     "hp": 25000,
+     "atk": 60,
+     "def": 6100,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Fire",
+     "hp": 45000,
+     "atk": 85,
+     "def": 7320,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Earth",
+     "hp": 62500,
+     "atk": 115,
+     "def": 9760,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Wind",
+     "hp": 80000,
+     "atk": 150,
+     "def": 10980,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Water",
+     "hp": 150000,
+     "atk": 190,
+     "def": 10980,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Fire",
+     "hp": 192500,
+     "atk": 300,
+     "def": 12200,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Earth",
+     "hp": 225000,
+     "atk": 375,
+     "def": 12200,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Wind",
+     "hp": 275000,
+     "atk": 500,
+     "def": 12200,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Water",
+     "hp": 300000,
+     "atk": 550,
+     "def": 13420,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Fire",
+     "hp": 305000,
+     "atk": 600,
+     "def": 13420,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Earth",
+     "hp": 375000,
+     "atk": 625,
+     "def": 14640,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Wind",
+     "hp": 450000,
+     "atk": 775,
+     "def": 14640,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Water",
+     "hp": 600000,
+     "atk": 1000,
+     "def": 14640,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Fire",
+     "hp": 650000,
+     "atk": 1375,
+     "def": 14640,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Earth",
+     "hp": 1150000,
+     "atk": 2050,
+     "def": 14640,
+     "skillLevel": 1,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Wind",
+     "hp": 1500000,
+     "atk": 2400,
+     "def": 11640,
+     "skillLevel": 1,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Water",
+     "hp": 2500000,
+     "atk": 3200,
+     "def": 13640,
+     "skillLevel": 2,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Fire",
+     "hp": 3200000,
+     "atk": 3600,
+     "def": 12640,
+     "skillLevel": 3,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Earth",
+     "hp": 3850000,
+     "atk": 3000,
+     "def": 11640,
+     "skillLevel": 4,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Wind",
+     "hp": 5500000,
+     "atk": 4400,
+     "def": 14640,
+     "skillLevel": 5,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -978,83 +2497,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Neutral",
+     "hp": 53000,
+     "atk": 15,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Neutral",
+     "hp": 96500,
+     "atk": 20,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Neutral",
+     "hp": 180000,
+     "atk": 21,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Neutral",
+     "hp": 320000,
+     "atk": 29,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Neutral",
+     "hp": 380000,
+     "atk": 40,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Neutral",
+     "hp": 550000,
+     "atk": 220,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Neutral",
+     "hp": 580000,
+     "atk": 300,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Neutral",
+     "hp": 640000,
+     "atk": 425,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Neutral",
+     "hp": 1100000,
+     "atk": 525,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Neutral",
+     "hp": 1120000,
+     "atk": 575,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Neutral",
+     "hp": 1150000,
+     "atk": 575,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Neutral",
+     "hp": 1500000,
+     "atk": 850,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Neutral",
+     "hp": 2200000,
+     "atk": 975,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Neutral",
+     "hp": 2350000,
+     "atk": 1200,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Neutral",
+     "hp": 3200000,
+     "atk": 2200,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Neutral",
+     "hp": 4900000,
+     "atk": 2600,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Neutral",
+     "hp": 5750000,
+     "atk": 3000,
+     "def": 4500,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Neutral",
+     "hp": 6500000,
+     "atk": 3500,
+     "def": 5000,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Neutral",
+     "hp": 8500000,
+     "atk": 5500,
+     "def": 5500,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Neutral",
+     "hp": 9500000,
+     "atk": 6000,
+     "def": 6000,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1080,83 +2775,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Fire",
+     "hp": 45000,
+     "atk": 7,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Fire",
+     "hp": 60000,
+     "atk": 15,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Fire",
+     "hp": 115000,
+     "atk": 18,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Fire",
+     "hp": 185000,
+     "atk": 77,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Fire",
+     "hp": 215000,
+     "atk": 105,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Fire",
+     "hp": 285000,
+     "atk": 250,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Fire",
+     "hp": 375000,
+     "atk": 280,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Fire",
+     "hp": 450000,
+     "atk": 360,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Fire",
+     "hp": 650000,
+     "atk": 610,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Fire",
+     "hp": 850000,
+     "atk": 750,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Fire",
+     "hp": 1100000,
+     "atk": 850,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Fire",
+     "hp": 1750000,
+     "atk": 1100,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Fire",
+     "hp": 2350000,
+     "atk": 1400,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Fire",
+     "hp": 1850000,
+     "atk": 1900,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Fire",
+     "hp": 3255000,
+     "atk": 2500,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Fire",
+     "hp": 3500000,
+     "atk": 3000,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Fire",
+     "hp": 2500000,
+     "atk": 4000,
+     "def": 8500,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Fire",
+     "hp": 2500000,
+     "atk": 4500,
+     "def": 9500,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Fire",
+     "hp": 4000000,
+     "atk": 2800,
+     "def": 9500,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Fire",
+     "hp": 12000000,
+     "atk": 7000,
+     "def": 10000,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1185,83 +3056,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Dark",
+     "hp": 30000,
+     "atk": 28,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Dark",
+     "hp": 50000,
+     "atk": 60,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Dark",
+     "hp": 85000,
+     "atk": 75,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Dark",
+     "hp": 175000,
+     "atk": 110,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Dark",
+     "hp": 240000,
+     "atk": 125,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Dark",
+     "hp": 360000,
+     "atk": 150,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Dark",
+     "hp": 480000,
+     "atk": 275,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Dark",
+     "hp": 520000,
+     "atk": 450,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Dark",
+     "hp": 610000,
+     "atk": 650,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Dark",
+     "hp": 650000,
+     "atk": 900,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Dark",
+     "hp": 700000,
+     "atk": 1000,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Dark",
+     "hp": 875000,
+     "atk": 1200,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Dark",
+     "hp": 1000000,
+     "atk": 1500,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Dark",
+     "hp": 2000000,
+     "atk": 2000,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Dark",
+     "hp": 2100000,
+     "atk": 2500,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Dark",
+     "hp": 2200000,
+     "atk": 2600,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Dark",
+     "hp": 3000000,
+     "atk": 2800,
+     "def": 3200,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Dark",
+     "hp": 4000000,
+     "atk": 3500,
+     "def": 3200,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Dark",
+     "hp": 5000000,
+     "atk": 5000,
+     "def": 3200,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Dark",
+     "hp": 6000000,
+     "atk": 5500,
+     "def": 3200,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1289,83 +3336,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Wind",
+     "hp": 50000,
+     "atk": 14,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Wind",
+     "hp": 80000,
+     "atk": 18,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Wind",
+     "hp": 120000,
+     "atk": 35,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Wind",
+     "hp": 190000,
+     "atk": 115,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Wind",
+     "hp": 230000,
+     "atk": 125,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Wind",
+     "hp": 320000,
+     "atk": 175,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Wind",
+     "hp": 500000,
+     "atk": 200,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Wind",
+     "hp": 610000,
+     "atk": 300,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Wind",
+     "hp": 800000,
+     "atk": 575,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Wind",
+     "hp": 1000000,
+     "atk": 800,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Wind",
+     "hp": 1300000,
+     "atk": 950,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Wind",
+     "hp": 1750000,
+     "atk": 1350,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Wind",
+     "hp": 1500000,
+     "atk": 1900,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Wind",
+     "hp": 2000000,
+     "atk": 1900,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Wind",
+     "hp": 3850000,
+     "atk": 2400,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Wind",
+     "hp": 5000000,
+     "atk": 2200,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Wind",
+     "hp": 3000000,
+     "atk": 3000,
+     "def": 5500,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Wind",
+     "hp": 3500000,
+     "atk": 3500,
+     "def": 7000,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Wind",
+     "hp": 9000000,
+     "atk": 1900,
+     "def": 5500,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Wind",
+     "hp": 11000000,
+     "atk": 6000,
+     "def": 8000,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1392,83 +3615,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Water",
+     "hp": 40000,
+     "atk": 20,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Water",
+     "hp": 55000,
+     "atk": 35,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Water",
+     "hp": 85000,
+     "atk": 65,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Water",
+     "hp": 225000,
+     "atk": 100,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Water",
+     "hp": 266000,
+     "atk": 140,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Water",
+     "hp": 300000,
+     "atk": 150,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Water",
+     "hp": 450000,
+     "atk": 240,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Water",
+     "hp": 750000,
+     "atk": 310,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Water",
+     "hp": 1150000,
+     "atk": 425,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Water",
+     "hp": 1250000,
+     "atk": 650,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Water",
+     "hp": 1300000,
+     "atk": 750,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Water",
+     "hp": 1600000,
+     "atk": 1000,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Water",
+     "hp": 2200000,
+     "atk": 1500,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Water",
+     "hp": 2500000,
+     "atk": 1900,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Water",
+     "hp": 3500000,
+     "atk": 2650,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Water",
+     "hp": 4200000,
+     "atk": 3000,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Water",
+     "hp": 5000000,
+     "atk": 3500,
+     "def": 6000,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Water",
+     "hp": 6500000,
+     "atk": 4000,
+     "def": 7000,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Water",
+     "hp": 9000000,
+     "atk": 5500,
+     "def": 8000,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Water",
+     "hp": 11000000,
+     "atk": 6500,
+     "def": 9000,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1497,83 +3896,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Earth",
+     "hp": 35000,
+     "atk": 15,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Earth",
+     "hp": 60000,
+     "atk": 25,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Earth",
+     "hp": 105000,
+     "atk": 35,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Earth",
+     "hp": 140000,
+     "atk": 50,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Earth",
+     "hp": 175000,
+     "atk": 65,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Earth",
+     "hp": 315000,
+     "atk": 125,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Earth",
+     "hp": 330000,
+     "atk": 375,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Earth",
+     "hp": 400000,
+     "atk": 500,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Earth",
+     "hp": 750000,
+     "atk": 650,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Earth",
+     "hp": 1200000,
+     "atk": 800,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Earth",
+     "hp": 1250000,
+     "atk": 950,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Earth",
+     "hp": 900000,
+     "atk": 1200,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Earth",
+     "hp": 2320000,
+     "atk": 1600,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Earth",
+     "hp": 2400000,
+     "atk": 2000,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Earth",
+     "hp": 4000000,
+     "atk": 2850,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Earth",
+     "hp": 4125000,
+     "atk": 3300,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Earth",
+     "hp": 5500000,
+     "atk": 3750,
+     "def": 5000,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Earth",
+     "hp": 7500000,
+     "atk": 4250,
+     "def": 6000,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Earth",
+     "hp": 8500000,
+     "atk": 4500,
+     "def": 6500,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Earth",
+     "hp": 10500000,
+     "atk": 6750,
+     "def": 7500,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   },
@@ -1601,83 +4176,259 @@
    "stages": [
     {
      "stage": 1,
-     "energy": 5
+     "energy": 5,
+     "level": 3,
+     "element": "Light",
+     "hp": 35000,
+     "atk": 15,
+     "def": 600,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 75
     },
     {
      "stage": 2,
-     "energy": 5
+     "energy": 5,
+     "level": 15,
+     "element": "Light",
+     "hp": 60000,
+     "atk": 25,
+     "def": 720,
+     "accuracy": 0,
+     "resistance": 50,
+     "toleranceBonus": 70
     },
     {
      "stage": 3,
-     "energy": 5
+     "energy": 5,
+     "level": 30,
+     "element": "Light",
+     "hp": 110000,
+     "atk": 50,
+     "def": 960,
+     "accuracy": 5,
+     "resistance": 50,
+     "toleranceBonus": 60
     },
     {
      "stage": 4,
-     "energy": 7
+     "energy": 7,
+     "level": 35,
+     "element": "Light",
+     "hp": 190000,
+     "atk": 70,
+     "def": 1080,
+     "accuracy": 10,
+     "resistance": 55,
+     "toleranceBonus": 50
     },
     {
      "stage": 5,
-     "energy": 7
+     "energy": 7,
+     "level": 40,
+     "element": "Light",
+     "hp": 240000,
+     "atk": 90,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 15,
+     "resistance": 60,
+     "toleranceBonus": 45
     },
     {
      "stage": 6,
-     "energy": 7
+     "energy": 7,
+     "level": 45,
+     "element": "Light",
+     "hp": 350000,
+     "atk": 150,
+     "def": 1200,
+     "skillLevel": 1,
+     "accuracy": 20,
+     "resistance": 65,
+     "toleranceBonus": 40
     },
     {
      "stage": 7,
-     "energy": 7
+     "energy": 7,
+     "level": 50,
+     "element": "Light",
+     "hp": 450000,
+     "atk": 275,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 75,
+     "toleranceBonus": 35
     },
     {
      "stage": 8,
-     "energy": 9
+     "energy": 9,
+     "level": 55,
+     "element": "Light",
+     "hp": 580000,
+     "atk": 375,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 25,
+     "resistance": 110,
+     "toleranceBonus": 30
     },
     {
      "stage": 9,
-     "energy": 9
+     "energy": 9,
+     "level": 60,
+     "element": "Light",
+     "hp": 750000,
+     "atk": 475,
+     "def": 1320,
+     "skillLevel": 1,
+     "accuracy": 30,
+     "resistance": 115,
+     "toleranceBonus": 25
     },
     {
      "stage": 10,
-     "energy": 9
+     "energy": 9,
+     "level": 65,
+     "element": "Light",
+     "hp": 900000,
+     "atk": 540,
+     "def": 1320,
+     "skillLevel": 2,
+     "accuracy": 40,
+     "resistance": 174,
+     "toleranceBonus": 0
     },
     {
      "stage": 11,
-     "energy": 9
+     "energy": 9,
+     "level": 70,
+     "element": "Light",
+     "hp": 1200000,
+     "atk": 580,
+     "def": 1440,
+     "skillLevel": 2,
+     "accuracy": 50,
+     "resistance": 275,
+     "toleranceBonus": -10
     },
     {
      "stage": 12,
-     "energy": 11
+     "energy": 11,
+     "level": 75,
+     "element": "Light",
+     "hp": 1500000,
+     "atk": 680,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 60,
+     "resistance": 310,
+     "toleranceBonus": -20
     },
     {
      "stage": 13,
-     "energy": 11
+     "energy": 11,
+     "level": 80,
+     "element": "Light",
+     "hp": 1800000,
+     "atk": 820,
+     "def": 1560,
+     "skillLevel": 2,
+     "accuracy": 70,
+     "resistance": 345,
+     "toleranceBonus": -30
     },
     {
      "stage": 14,
-     "energy": 11
+     "energy": 11,
+     "level": 85,
+     "element": "Light",
+     "hp": 2400000,
+     "atk": 1100,
+     "def": 1560,
+     "skillLevel": 3,
+     "accuracy": 80,
+     "resistance": 380,
+     "toleranceBonus": -40
     },
     {
      "stage": 15,
-     "energy": 11
+     "energy": 11,
+     "level": 90,
+     "element": "Light",
+     "hp": 3000000,
+     "atk": 1600,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 90,
+     "resistance": 440,
+     "toleranceBonus": -50
     },
     {
      "stage": 16,
-     "energy": 13
+     "energy": 13,
+     "level": 100,
+     "element": "Light",
+     "hp": 4500000,
+     "atk": 1850,
+     "def": 1680,
+     "skillLevel": 4,
+     "accuracy": 105,
+     "resistance": 475,
+     "toleranceBonus": -60
     },
     {
      "stage": 17,
-     "energy": 13
+     "energy": 13,
+     "level": 110,
+     "element": "Light",
+     "hp": 6000000,
+     "atk": 2400,
+     "def": 6000,
+     "skillLevel": 5,
+     "accuracy": 115,
+     "resistance": 515,
+     "toleranceBonus": -70
     },
     {
      "stage": 18,
-     "energy": 13
+     "energy": 13,
+     "level": 115,
+     "element": "Light",
+     "hp": 8000000,
+     "atk": 2800,
+     "def": 6500,
+     "skillLevel": 6,
+     "accuracy": 140,
+     "resistance": 555,
+     "toleranceBonus": -80
     },
     {
      "stage": 19,
-     "energy": 13
+     "energy": 13,
+     "level": 120,
+     "element": "Light",
+     "hp": 10000000,
+     "atk": 4000,
+     "def": 8000,
+     "skillLevel": 7,
+     "accuracy": 150,
+     "resistance": 595,
+     "toleranceBonus": -100
     },
     {
      "stage": 20,
-     "energy": 14
+     "energy": 14,
+     "level": 150,
+     "element": "Light",
+     "hp": 12000000,
+     "atk": 5000,
+     "def": 8500,
+     "skillLevel": 8,
+     "accuracy": 175,
+     "resistance": 635,
+     "toleranceBonus": -100
     }
    ]
   }
