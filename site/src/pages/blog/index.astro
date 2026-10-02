@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ArtStrip from '../../components/ArtStrip.astro';
 import { href } from '../../lib/data';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -13,6 +14,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
     {posts.map((p) => (
       <li>
         <a href={href(`blog/${p.id}`)}>
+          <div class="art"><ArtStrip refs={p.data.art.slice(0, 3)} size="small" /></div>
           <h2>{p.data.title}</h2>
           <p>{p.data.description}</p>
           <span class="meta">{fmt(p.data.date)} · game version {p.data.gameVersion}</span>
@@ -34,11 +36,13 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
     color: var(--text);
   }
   .posts a:hover { border-color: var(--accent); }
+  .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
   .posts h2 { margin: 0 0 6px; font-size: 20px; }
   .posts p { margin: 0 0 10px; color: var(--soft); }
   .meta { font-size: 13px; color: var(--muted); }
   @media (max-width: 720px) {
     .posts a { padding: 16px; }
-    .posts h2 { font-size: 18px; }
+    .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
+  .posts h2 { font-size: 18px; }
   }
 </style>

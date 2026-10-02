@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { rarityColor } from '../lib/format';
+import { itemIcon } from '../lib/art';
 import {
   calculatorData,
   costBetween,
@@ -15,6 +16,7 @@ import {
 } from '../lib/skillCosts';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
+const icon = (c: string) => itemIcon(c);
 
 const calc = {
   currencies: currencies.map((id) => ({ id, name: currencyName(id) })),
@@ -36,7 +38,7 @@ const calc = {
           <tr>
             <th scope="col">Rarity</th>
             <th scope="col">Skills</th>
-            {currencies.map((c) => <th scope="col">{currencyName(c)}</th>)}
+            {currencies.map((c) => <th scope="col"><span class="cur">{icon(c) && <img src={icon(c)} alt="" width="22" height="22" loading="lazy" />}{currencyName(c)}</span></th>)}
           </tr>
         </thead>
         <tbody>
@@ -99,7 +101,7 @@ const calc = {
                   <thead>
                     <tr>
                       <th scope="col">To level</th>
-                      {used.map((c) => <th scope="col">{currencyName(c)}</th>)}
+                      {used.map((c) => <th scope="col"><span class="cur">{icon(c) && <img src={icon(c)} alt="" width="22" height="22" loading="lazy" />}{currencyName(c)}</span></th>)}
                     </tr>
                   </thead>
                   <tbody>
@@ -255,4 +257,6 @@ const calc = {
     .result { font-size: 17px; }
     .rarity:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
   }
+  .cur { display: inline-flex; align-items: center; gap: 6px; }
+  .cur img { flex: none; }
 </style>

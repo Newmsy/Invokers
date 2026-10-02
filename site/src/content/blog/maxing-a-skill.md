@@ -3,6 +3,7 @@ title: "Maxing a skill doubles its damage, and the cheap levels come first"
 description: "Every hero damage skill hits exactly twice as hard at level 11 as at level 1. Here is what each level adds and costs."
 date: 2026-10-01
 gameVersion: "0.61.1516"
+art: ["hero:Ironblade Darus", "item:Legendary Codex", "item:Gold"]
 tags: [skills, codex, gold]
 ---
 
@@ -21,13 +22,13 @@ Same for every hero, rarity and skill slot:
 | Damage added (of level 1) | +6% | +6% | +10% | +12% | +10% | +12% | +10% | +12% | +10% | +12% |
 | Running total | 106% | 112% | 122% | 134% | 144% | 156% | 166% | 178% | 188% | 200% |
 
-Example: Ironblade Darus's Iron Kick goes from 122.5% ATK at level 1 to 245% at level 11.
+Example: ![Ironblade Darus](hero:)'s Iron Kick goes from 122.5% ATK at level 1 to 245% at level 11.
 
 ## What it costs
 
 A Legendary's active skill:
 
-| To level | Gold | Rare Codex | Epic Codex | Legendary Codex | Damage added |
+| To level | ![Gold](item:) | ![Rare Codex](item:) | ![Epic Codex](item:) | ![Legendary Codex](item:) | Damage added |
 |---|---|---|---|---|---|
 | 2 | 5,000 | 1 | 1 | | +6% |
 | 3 | 10,000 | 1 | 1 | | +6% |
