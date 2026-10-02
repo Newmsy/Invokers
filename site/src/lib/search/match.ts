@@ -48,7 +48,9 @@ const kindRank: Record<SearchKind, number> = {
   Page: 7,
 };
 
-const wordStart = (hay: string, t: string) => hay.startsWith(t) || hay.includes(` ${t}`);
+// A leading "+" counts as part of the word boundary, so "20% atk" finds "+20% ATK".
+const wordStart = (hay: string, t: string) =>
+  hay.startsWith(t) || hay.includes(` ${t}`) || hay.startsWith(`+${t}`) || hay.includes(` +${t}`);
 
 /**
  * Every query word must appear in the title, sub line or text (as the start of a word,
