@@ -3,6 +3,7 @@ import { pack, href } from '../lib/data';
 import NavIcon from '../components/NavIcon.astro';
 import { headerNav, myBox, nav, tabs } from '../lib/nav';
 import Account from '../components/Account.astro';
+import SectionArt from '../components/SectionArt.astro';
 import { accountsEnabled } from '../lib/account/config';
 
 interface Props {
@@ -13,6 +14,9 @@ const updated = new Date(pack.extractedAt).toLocaleDateString('en-GB', { day: 'n
 
 
 const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').split('/')[1] ?? '';
+// A section's own page (not its sub-pages) shows the section picture beside its heading.
+const pagePath = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/^\/|\/$/g, '');
+const section = nav.find((n) => n.path === pagePath);
 ---
 <!doctype html>
 <html lang="en">
@@ -46,6 +50,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
       {accountsEnabled && <Account />}
     </header>
     <main>
+      {section?.art && <SectionArt art={section.art} size={88} class="page-art" />}
       <slot />
     </main>
     <footer>
@@ -174,6 +179,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
   }
   .box-button[aria-current='page'] { background: var(--accent); color: var(--bg); }
   main { padding-top: 16px; padding-bottom: 32px; }
+  main .page-art { float: right; margin: 12px 0 12px 16px; }
   footer {
     color: var(--muted);
     font-size: 13px;
@@ -232,6 +238,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
     header.top { height: 60px; }
     .brand { font-size: 19px; }
     main { padding-top: 4px; }
+    main .page-art { --size: 56px !important; margin: 10px 0 8px 12px; }
     footer { font-size: 11px; }
   }
 </style>

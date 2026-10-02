@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import NavIcon from '../components/NavIcon.astro';
+import SectionArt from '../components/SectionArt.astro';
 import { heroes, href } from '../lib/data';
 import { nav } from '../lib/nav';
 
@@ -31,7 +32,7 @@ const sections = nav.filter((n) => blurbs[n.path]);
     {sections.map((n) => (
       <li>
         <a href={href(n.path)}>
-          <NavIcon icon={n.icon} />
+          {n.art ? <SectionArt art={n.art} size={52} class="card-art" /> : <NavIcon icon={n.icon} />}
           <span class="name">{n.label}</span>
           <span class="blurb">{blurbs[n.path]}</span>
         </a>
@@ -47,7 +48,7 @@ const sections = nav.filter((n) => blurbs[n.path]);
   .grid a {
     display: grid;
     grid-template-columns: auto 1fr;
-    column-gap: 12px;
+    column-gap: 14px;
     row-gap: 2px;
     align-items: center;
     padding: 16px;
@@ -61,6 +62,7 @@ const sections = nav.filter((n) => blurbs[n.path]);
   }
   .grid a:hover { border-color: var(--accent); }
   .grid :global(svg) { color: var(--accent); grid-row: span 2; }
+  .grid :global(.card-art) { grid-row: span 2; }
   .name { font-family: var(--display); font-weight: 600; font-size: 17px; }
   .blurb { color: var(--muted); font-size: 14px; grid-column: 2; }
 </style>

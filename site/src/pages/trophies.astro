@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { href, itemName, trophyRoom, type StatBonus } from '../lib/data';
+import { elementIcon, itemIcon } from '../lib/art';
 
 const { trophies, rooms } = trophyRoom;
 const maxLevel = Math.max(...trophies.map((t) => t.maxLevel));
@@ -38,8 +39,8 @@ const plannerData = {
 <Base title="Trophy Room">
   <h1>Trophy Room</h1>
   <p class="lead">
-    One room per element ({rooms.map((r, i) => <>{i > 0 && ', '}<a href={href(`heroes?element=${r}`)}>{r}</a></>)}). Its trophies boost every Invoker of that element in every battle. Pay with
-    Bronze, Silver and Gold Trophies from the matching arena league.
+    One room per element ({rooms.map((r, i) => <>{i > 0 && ', '}<a class="el" href={href(`heroes?element=${r}`)}>{elementIcon(r) && <img src={elementIcon(r)} alt="" width="18" height="18" />}{r}</a></>)}). Its trophies boost every Invoker of that element in every battle. Pay with
+    {" "}{medals.map((m, i) => <>{i > 0 && (i === medals.length - 1 ? ' and ' : ', ')}<span class="el">{itemIcon(m) && <img src={itemIcon(m)} alt="" width="18" height="18" />}{medalName(m)}</span></>)} Trophies from the matching arena league.
   </p>
 
   <section class="card" aria-labelledby="plan-title">
@@ -88,7 +89,7 @@ const plannerData = {
           <tr>
             <th scope="col">Level</th>
             <th scope="col">Cost</th>
-            {medals.map((m) => <th scope="col">From 0: {medalName(m)}</th>)}
+            {medals.map((m) => <th scope="col"><span class="medal">{itemIcon(m) && <img src={itemIcon(m)} alt="" width="22" height="22" />}From 0: {medalName(m)}</span></th>)}
           </tr>
         </thead>
         <tbody>
@@ -223,6 +224,8 @@ const plannerData = {
 </script>
 
 <style>
+  .el img { vertical-align: -3px; margin-right: 3px; }
+  .medal { display: inline-flex; align-items: center; gap: 6px; }
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 18px; font-weight: 600; margin: 32px 0 8px; }
   .lead { color: var(--soft); max-width: 70ch; margin: 0 0 8px; }

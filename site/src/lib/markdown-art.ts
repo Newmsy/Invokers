@@ -23,6 +23,15 @@ export function artRefPath(kind: string, name: string): string | undefined {
   return artRoutes().some((r) => r.served === served) ? `img/${served}` : undefined;
 }
 
+/** A "kind:Name" reference → its img/ path and whether it is a portrait. Throws when there is no such art. */
+export function artRef(ref: string): { path: string; name: string; portrait: boolean } {
+  const [kind, ...rest] = ref.split(':');
+  const name = rest.join(':');
+  const path = artRefPath(kind, name);
+  if (!path) throw new Error(`No ${kind} art for "${name}"`);
+  return { path, name, portrait: kind === 'hero' || kind === 'titan' };
+}
+
 /** Sätteri plugin: swaps each art reference for its chip. */
 export function markdownArt(base = '/') {
   const root = base.replace(/\/$/, '');

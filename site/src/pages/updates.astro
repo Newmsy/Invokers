@@ -1,12 +1,16 @@
 ---
 // What changed in each game update, newest first. The notes come from scripts/update-notes.ts.
 import Base from '../layouts/Base.astro';
-import { heroes, heroHref, href, pack } from '../lib/data';
+import { heroes, heroHref, href, pack, titans } from '../lib/data';
+import { heroArt, titanArt } from '../lib/art';
 import { rarityColor, skillTypeName } from '../lib/format';
 import { changeCount, type SkillChange, type ValueChange } from '../lib/updates/diff';
 import { updateAnchor, updates } from '../lib/updates/notes';
 
 const heroIds = new Set(heroes.map((h) => h.id));
+const titanIds = new Set(titans.map((t) => t.id));
+// Portrait for a hero or Titan named in the notes.
+const face = (id: string) => (heroIds.has(id) ? heroArt(id) : titanIds.has(id) ? titanArt(id) : undefined);
 const date = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
@@ -85,6 +89,7 @@ type Change = ValueChange;
           <ul class="tags">
             {u.heroes.added.map((h) => (
               <li>
+                {face(h.id) && <img class="face" src={face(h.id)} alt="" width="24" height="24" loading="lazy" />}
                 {heroIds.has(h.id) ? <a href={heroHref(h.id)} style={`color: ${rarityColor[h.rarity ?? ''] ?? 'inherit'}`}>{h.name}</a> : h.name}
                 <span class="muted"> {[h.rarity, h.element].filter(Boolean).join(' ')}</span>
               </li>
@@ -107,7 +112,7 @@ type Change = ValueChange;
           <ul class="cards">
             {u.heroes.changed.map((h) => (
               <li class="card small">
-                <h4>{heroIds.has(h.id) ? <a href={heroHref(h.id)}>{h.name}</a> : h.name}</h4>
+                <h4>{face(h.id) && <img class="face" src={face(h.id)} alt="" width="24" height="24" loading="lazy" />}{heroIds.has(h.id) ? <a href={heroHref(h.id)}>{h.name}</a> : h.name}</h4>
                 <ul class="changes">
                   {h.changes.map((c: Change) => (
                     <li><span class="label">{c.label}</span> <del>{c.before}</del> <span aria-hidden="true">→</span><span class="sr"> to </span> <ins>{c.after}</ins></li>
@@ -128,6 +133,7 @@ type Change = ValueChange;
             {u.skills.map((h) => (
               <li class="card small">
                 <h4>
+                  {face(h.id) && <img class="face" src={face(h.id)} alt="" width="24" height="24" loading="lazy" />}
                   {heroIds.has(h.id) ? <a href={heroHref(h.id)}>{h.name}</a> : h.name}
                   {h.kind === 'titan' && <span class="muted"> Titan</span>}
                 </h4>
@@ -221,6 +227,7 @@ type Change = ValueChange;
   h2 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
   h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--soft); }
   h4 { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+  .face { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; object-position: top center; vertical-align: -6px; margin-right: 6px; }
   p { margin: 0 0 8px; }
   .lead { color: var(--soft); max-width: 70ch; margin: 0; }
   .hint, .meta, .muted { color: var(--muted); font-size: 14px; }

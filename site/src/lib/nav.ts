@@ -7,25 +7,27 @@ export interface NavItem {
   icon: string;
   header?: boolean;
   tab?: boolean;
+  /** Section picture as "kind:Name" (see lib/markdown-art), shown on the home cards, More and page headers. */
+  art?: string;
 }
 
 export const nav: NavItem[] = [
-  { path: 'heroes', label: 'Invokers', icon: 'grid', header: true, tab: true },
-  { path: 'tiers', label: 'Tier lists', icon: 'tiers', header: true },
-  { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true },
-  { path: 'summons', label: 'Summons', icon: 'star', header: true, tab: true },
-  { path: 'gear', label: 'Gear', icon: 'shield', header: true },
-  { path: 'trophies', label: 'Trophies', icon: 'trophy' },
-  { path: 'bosses', label: 'Bosses', icon: 'skull', header: true },
-  { path: 'blog', label: 'Blog', icon: 'book', header: true },
-  { path: 'planner', label: 'Planner', icon: 'list' },
-  { path: 'skill-costs', label: 'Skill costs', icon: 'book' },
-  { path: 'ascension', label: 'Ascension and Awakening', icon: 'book' },
-  { path: 'gear-upgrades', label: 'Gear upgrades and Memorium', icon: 'book' },
-  { path: 'updates', label: 'Game updates', icon: 'refresh' },
-  { path: 'heroes/compare', label: 'Compare Invokers', icon: 'grid' },
-  { path: 'team', label: 'Team builder', icon: 'grid' },
-  { path: 'my-box', label: 'My box', icon: 'box', tab: true },
+  { path: 'heroes', label: 'Invokers', icon: 'grid', header: true, tab: true, art: 'hero:Admiral Gladstone' },
+  { path: 'tiers', label: 'Tier lists', icon: 'tiers', header: true, art: 'titan:Goros' },
+  { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true, art: 'item:Energy' },
+  { path: 'summons', label: 'Summons', icon: 'star', header: true, tab: true, art: 'item:Destiny Star' },
+  { path: 'gear', label: 'Gear', icon: 'shield', header: true, art: 'item:Gear Swap Pass' },
+  { path: 'trophies', label: 'Trophies', icon: 'trophy', art: 'item:Gold Trophy' },
+  { path: 'bosses', label: 'Bosses', icon: 'skull', header: true, art: 'item:Elder Titanheart' },
+  { path: 'blog', label: 'Blog', icon: 'book', header: true, art: 'item:Heroic Playbook' },
+  { path: 'planner', label: 'Planner', icon: 'list', art: 'item:Legendary Codex' },
+  { path: 'skill-costs', label: 'Skill costs', icon: 'book', art: 'item:Rare Codex' },
+  { path: 'ascension', label: 'Ascension and Awakening', icon: 'book', art: 'item:5 star Echo' },
+  { path: 'gear-upgrades', label: 'Gear upgrades and Memorium', icon: 'book', art: 'item:Memorium' },
+  { path: 'updates', label: 'Game updates', icon: 'refresh', art: 'item:Historic Playbook' },
+  { path: 'heroes/compare', label: 'Compare Invokers', icon: 'grid', art: 'hero:Ironblade Darus' },
+  { path: 'team', label: 'Team builder', icon: 'grid', art: 'titan:Vulkoz' },
+  { path: 'my-box', label: 'My box', icon: 'box', tab: true, art: 'item:Titanheart' },
   { path: 'about', label: 'About', icon: 'info' },
   { path: 'privacy', label: 'Privacy', icon: 'info' },
 ];
