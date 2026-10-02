@@ -13,6 +13,8 @@ tags: [skills, codex, gold]
 - The last four levels add +44% but take 170,000 gold and 10 Legendary Codex.
 - Spreading early levels across several main damage skills gets more from scarce Legendary Codex than pushing one skill to 11.
 
+Costs for every rarity, with a calculator: [Skill upgrade costs](/skill-costs).
+
 ## Every skill follows the same steps
 
 Same for every hero, rarity and skill slot:
@@ -46,6 +48,6 @@ A Legendary's active skill:
 - All five skills on one Legendary: **1,375,000 gold, 174 Rare, 128 Epic and 90 Legendary Codex**.
 - Epics: 137,500 gold per skill, at most 2 Legendary Codex per level. Rares never need Legendary Codex.
 
-Gold per 1% of damage climbs from about 830 at level 2 to over 4,000 at levels 10 and 11.
+Gold per 1% of damage climbs from about 830 at level 2 to over 4,000 at levels 10 and 11. To see what your own box still needs, use the [Planner](/planner).
 
 *Numbers for game version 0.61.1516.*

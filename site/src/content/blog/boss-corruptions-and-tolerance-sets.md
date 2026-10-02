@@ -15,33 +15,33 @@ Every boss has two corruptions, one damage and one control. A Tolerance set give
 
 | Boss | Mode | Corruptions |
 |---|---|---|
-| Ulgorim, the Horde King | Relic boss | Daze, Blight |
-| Althar, the Bone Lich | Relic boss | Crush, Fatigue |
-| Sakiel, the Fallen Angel | Relic boss | Manashock, Bloodrot |
-| Sorgott, the Crypt King | Clan boss | Crush, Manaburn |
-| Pentiax, the Corrupted Dragon | Pentiax | Nightmare, Mindfog |
-| Hyxxis, the Brood Mother | Crest boss | Crush, Manaburn |
-| Galvos, the Construct | Crest boss | Daze, Atrophy |
-| Yskara, the Ice Queen | Crest boss | Frost, Fatigue |
-| Koltmos, the Doom Shaman | Crest boss | Manashock, Blight |
-| ![Omnissi (Astral)](element:astral) | Omnissi | Crush, Atrophy |
-| ![Omnissi (Fire)](element:fire) | Omnissi | Daze, Manaburn |
-| ![Omnissi (Dark)](element:dark) | Omnissi | Manashock, Manaburn |
-| ![Omnissi (Wind)](element:wind) | Omnissi | Nightmare, Fatigue |
-| ![Omnissi (Water)](element:water) | Omnissi | Frost, Mindfog |
-| ![Omnissi (Earth)](element:earth) | Omnissi | Paralysis, Bloodrot |
-| ![Omnissi (Light)](element:light) | Omnissi | Paralysis, Blight |
+| [Ulgorim, the Horde King](/bosses/ulgorim) | Relic boss | Daze, Blight |
+| [Althar, the Bone Lich](/bosses/althar) | Relic boss | Crush, Fatigue |
+| [Sakiel, the Fallen Angel](/bosses/sakiel) | Relic boss | Manashock, Bloodrot |
+| [Sorgott, the Crypt King](/bosses/sorgott) | Clan boss | Crush, Manaburn |
+| [Pentiax, the Corrupted Dragon](/bosses/pentiax) | Pentiax | Nightmare, Mindfog |
+| [Hyxxis, the Brood Mother](/bosses/hyxxis) | Crest boss | Crush, Manaburn |
+| [Galvos, the Construct](/bosses/galvos) | Crest boss | Daze, Atrophy |
+| [Yskara, the Ice Queen](/bosses/yskara) | Crest boss | Frost, Fatigue |
+| [Koltmos, the Doom Shaman](/bosses/koltmos) | Crest boss | Manashock, Blight |
+| [![Omnissi (Astral)](element:astral)](/bosses/omnissi-astral) | Omnissi | Crush, Atrophy |
+| [![Omnissi (Fire)](element:fire)](/bosses/omnissi-fire) | Omnissi | Daze, Manaburn |
+| [![Omnissi (Dark)](element:dark)](/bosses/omnissi-dark) | Omnissi | Manashock, Manaburn |
+| [![Omnissi (Wind)](element:wind)](/bosses/omnissi-wind) | Omnissi | Nightmare, Fatigue |
+| [![Omnissi (Water)](element:water)](/bosses/omnissi-water) | Omnissi | Frost, Mindfog |
+| [![Omnissi (Earth)](element:earth)](/bosses/omnissi-earth) | Omnissi | Paralysis, Bloodrot |
+| [![Omnissi (Light)](element:light)](/bosses/omnissi-light) | Omnissi | Paralysis, Blight |
 
 ## How many bosses each set covers
 
 | Tolerance | Bosses | Which |
 |---|---|---|
-| **Crush** | **4** | Althar, Sorgott, Hyxxis, Omnissi (Astral) |
-| **Manaburn** | **4** | Sorgott, Hyxxis, Omnissi (Fire), Omnissi (Dark) |
-| Daze | 3 | Ulgorim, Galvos, Omnissi (Fire) |
-| Blight | 3 | Ulgorim, Koltmos, Omnissi (Light) |
-| Fatigue | 3 | Althar, Yskara, Omnissi (Wind) |
-| Manashock | 3 | Sakiel, Koltmos, Omnissi (Dark) |
+| **[Crush](/gear#set-crush-tolerance)** | **4** | Althar, Sorgott, Hyxxis, Omnissi (Astral) |
+| **[Manaburn](/gear#set-manaburn-tolerance)** | **4** | Sorgott, Hyxxis, Omnissi (Fire), Omnissi (Dark) |
+| [Daze](/gear#set-daze-tolerance) | 3 | Ulgorim, Galvos, Omnissi (Fire) |
+| [Blight](/gear#set-blight-tolerance) | 3 | Ulgorim, Koltmos, Omnissi (Light) |
+| [Fatigue](/gear#set-fatigue-tolerance) | 3 | Althar, Yskara, Omnissi (Wind) |
+| [Manashock](/gear#set-manashock-tolerance) | 3 | Sakiel, Koltmos, Omnissi (Dark) |
 | Frost, Mindfog, Nightmare, Paralysis, Atrophy, Bloodrot | 2 each | |
 
 Crush is also the nastiest on paper: it stuns and makes the target take double damage from every source.
@@ -60,5 +60,7 @@ From the game's own boss guides:
 - **Yskara** gives ![Melee Attackers](class:melee) +100% ATK; ![Ranged](class:ranged) miss out. Koltmos is the opposite: bring Ranged for its Doomclaws.
 - **Ulgorim** and **Hyxxis** are immune to crowd control.
 - **Galvos** wants one ![Tank](class:tank), not two: a single defender takes its attention and all your buffs.
+
+Best picks for each boss: [tier lists](/tiers). All sets: [Gear sets](/gear).
 
 *Numbers for game version 0.61.1516.*

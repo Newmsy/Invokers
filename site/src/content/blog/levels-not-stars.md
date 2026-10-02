@@ -13,6 +13,8 @@ tags: [invokers, stats, levelling]
 - The final star on a level 50 Invoker is +7%; the levels after it are +31%.
 - Rarity sets the ceiling: a 5★ level 40 Legendary already matches a maxed Common.
 
+What each star costs: [Ascension and Awakening](/ascension).
+
 ## What a star is worth on its own
 
 ![Admiral Gladstone](hero:)'s ATK:
@@ -64,6 +66,6 @@ Legendaries at 6★ level 60:
 | ![Melee](class:) | 8,149 | 882 | 709 |
 | ![Ranged](class:) | 7,034 | 997 | 706 |
 
-Ranged hit hardest and are most fragile. Tanks give up more than half a Ranged attacker's ATK for 44% more HP.
+Ranged hit hardest and are most fragile. Tanks give up more than half a Ranged attacker's ATK for 44% more HP. Put any Invokers side by side in [Compare](/heroes/compare).
 
 *Base stats without gear or awakening, game version 0.61.1516.*

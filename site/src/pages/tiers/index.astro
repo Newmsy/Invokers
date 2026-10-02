@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import { href } from '../../lib/data';
 import { pools, tierLists, tiersDraft } from '../../lib/tierData';
 
@@ -23,6 +24,11 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
       ))}
     </section>
   ))}
+  <SeeAlso links={[
+    { path: 'bosses', label: 'Boss guides' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'heroes/compare', label: 'Compare Invokers' },
+  ]} />
 </Base>
 
 <style>

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { href } from '../lib/data';
+import { heroHref } from '../lib/data';
+import SeeAlso from '../components/SeeAlso.astro';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
 import { atLeastOne, legendaryPool, pullsFor, summonItem, summonRarities, summons } from '../lib/summons';
@@ -223,9 +224,21 @@ const calc = {
     </div>
   </section>
 
-  <p class="more">
-    The long read: <a href={href('blog/destiny-star-odds')}>What 130 Destiny Stars really buy you</a>.
-  </p>
+  <section aria-labelledby="pools-title">
+    <h2 id="pools-title">Who's in each Legendary pool</h2>
+    {summons.items.filter((i) => pools[i.id]).map((i) => (
+      <details class="pool">
+        <summary>{i.name}: {pools[i.id].length} Legendaries</summary>
+        <ul>{pools[i.id].map((h) => <li><a href={heroHref(h.id)}>{h.name}</a></li>)}</ul>
+      </details>
+    ))}
+  </section>
+
+  <SeeAlso links={[
+    { path: 'blog/destiny-star-odds', label: 'What 130 Destiny Stars really buy you' },
+    { path: 'events', label: 'Events' },
+    { path: 'tiers', label: 'Tier lists' },
+  ]} />
 
   <script type="application/json" id="summon-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
 </Base>
@@ -377,7 +390,9 @@ const calc = {
   tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
   .item { display: inline-flex; align-items: center; gap: 8px; }
   .item img, .icon-gap { width: 28px; height: 28px; flex: none; }
-  .more { margin-top: 32px; color: var(--soft); }
+  .pool { margin: 8px 0; }
+  .pool summary { cursor: pointer; color: var(--text); }
+  .pool ul { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 10px 0 4px; padding: 0; list-style: none; font-size: 15px; }
   .more a { color: var(--accent); }
 
   @media (max-width: 720px) {

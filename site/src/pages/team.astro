@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import HeroPicker from '../components/HeroPicker.astro';
 import { href, pack } from '../lib/data';
 import { TEAM_SIZE } from '../lib/team';
@@ -58,6 +59,11 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       <ul class="saved" id="saved"></ul>
     </section>
   </div>
+  <SeeAlso links={[
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'heroes/compare', label: 'Compare Invokers' },
+    { path: 'heroes', label: 'All Invokers' },
+  ]} />
 </Base>
 
 <script>

@@ -37,6 +37,13 @@ const groups = [
     <h1>Invokers</h1>
     <span class="count" id="count" aria-live="polite">{sorted.length} total</span>
   </div>
+  <p class="links">
+    <a href={href('tiers')}>Tier lists</a>
+    <span aria-hidden="true">·</span>
+    <a href={href('heroes/compare')}>Compare Invokers</a>
+    <span aria-hidden="true">·</span>
+    <a href={href('team')}>Team builder</a>
+  </p>
 
   <div class="controls">
     <label class="search">
@@ -167,6 +174,7 @@ const groups = [
 </script>
 
 <style>
+  .links { margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 15px; }
   .head {
     display: flex;
     align-items: baseline;

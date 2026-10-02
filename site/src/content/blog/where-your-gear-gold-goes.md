@@ -12,6 +12,8 @@ Maxing a 6★ Legendary piece (+0 to +20) costs ![](item:gold) **2,334,830 gold*
 - **+15 is the cheap stop.** It costs under 20% of the gold of +20. Push to +20 only on pieces you'll keep.
 - **Rarity is the bargain, stars are the cost.** A Legendary costs 46% more gold than a Common; a 6★ costs 39% more gold than a 5★ and almost twice the Memorium.
 
+Full cost tables and where Memorium comes from: [Gear upgrades and Memorium](/gear-upgrades). Plan your own gear in the [Planner](/planner).
+
 ## The last five levels are the bill
 
 6★ gear, gold per five levels:

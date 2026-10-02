@@ -13,6 +13,8 @@ A Destiny Star gives a Legendary **0.53%** of the time. Without mercy, half of a
 - Radiant Stars are the better way to chase one specific Light or Dark Legendary: their pool is half the size.
 - Divine Stars are a different world: a Legendary in 10 pulls is a coin flip.
 
+Run your own numbers in the [Summons odds calculator](/summons).
+
 ## The published rates
 
 | Item | Common | Uncommon | Rare | Epic | Legendary |
@@ -33,7 +35,7 @@ Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars 
 | ![Miracle Orb](item:) | | 90% | 9% | 1% |
 | Mythic Orb | | | | 100% |
 
-Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 heroes (every Fire, Water, Earth and Wind Legendary except ![Ardell The Torrent](hero:), who can't be summoned), so a **specific** Legendary is about **1 in 7,170 pulls**. The Radiant pool has 19, so about 1 in 3,585.
+Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 heroes (every Fire, Water, Earth and Wind Legendary except ![Ardell The Torrent](hero:), who can't be summoned), so a **specific** Legendary is about **1 in 7,170 pulls**. The Radiant pool has 19, so about 1 in 3,585. [Who's in each pool](/summons#pools-title).
 
 ## Chance of at least one Legendary (no mercy)
 

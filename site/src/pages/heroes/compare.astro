@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import HeroPicker from '../../components/HeroPicker.astro';
 import { href } from '../../lib/data';
 ---
@@ -39,6 +40,11 @@ import { href } from '../../lib/data';
       <div id="skills"></div>
     </section>
   </div>
+  <SeeAlso links={[
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'blog/levels-not-stars', label: 'Levels, not stars' },
+  ]} />
 </Base>
 
 <script>

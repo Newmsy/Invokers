@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { href, pack } from '../lib/data';
+import SeeAlso from '../components/SeeAlso.astro';
+import { pack } from '../lib/data';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
 import { gearCosts, gearSalvage } from '../lib/planner/data';
@@ -179,9 +180,13 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
     <p class="gap">Memorium per Campaign stage, and the best stages to farm it, aren't on the site yet.</p>
   </section>
 
-  <p class="more">
-    Upgrading Invokers instead? See <a href={href('ascension')}>Ascension and Awakening</a> and <a href={href('skill-costs')}>Skill upgrade costs</a>.
-  </p>
+  <SeeAlso links={[
+    { path: 'gear', label: 'Gear sets' },
+    { path: 'planner', label: 'Planner' },
+    { path: 'blog/where-your-gear-gold-goes', label: 'Where your gold goes on gear' },
+    { path: 'ascension', label: 'Ascension and Awakening' },
+    { path: 'skill-costs', label: 'Skill upgrade costs' },
+  ]} />
 </Base>
 
 <script>
@@ -265,7 +270,6 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   tbody tr:last-child > * { border-bottom: 0; }
   td.strong { font-weight: 600; color: var(--text); }
   tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
-  .more { margin-top: 40px; color: var(--soft); }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }

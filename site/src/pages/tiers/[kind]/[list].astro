@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import SeeAlso from '../../../components/SeeAlso.astro';
 import { elementIcon } from '../../../lib/art';
 import { bosses, bossSlug, href } from '../../../lib/data';
 import { elementColor, initials, tierColor } from '../../../lib/format';
@@ -19,6 +20,17 @@ const groups = [...new Set(tierLists.map((l) => l.group))];
 // Invokers filter by element (Spires want one element per team); Titans by the faction that can bind them.
 const picks = rows.flatMap((r) => r.picks);
 const filterKey = kind === 'invokers' ? 'element' : 'faction';
+// Top picks straight into the team builder and compare page; plus pages that go with this mode or boss.
+const topSlugs = picks.map((p) => p.slug);
+const seeAlso = [
+  ...(kind === 'invokers' && topSlugs.length > 1
+    ? [
+        { path: `team?h=${topSlugs.slice(0, 5).join(',')}&name=${encodeURIComponent(list.label)}`, label: 'Try the top 5 in the Team builder' },
+        { path: `heroes/compare?h=${topSlugs.slice(0, 4).join(',')}`, label: 'Compare the top 4' },
+      ]
+    : []),
+  ...(list.id === 'arena' ? [{ path: 'trophies', label: 'Trophy Room' }, { path: 'events#arena-title', label: 'Arena Rush calculator' }] : []),
+];
 const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.element : p.meta) ?? ''))].filter(Boolean).sort();
 ---
 <Base title={`${pool.label} tier list: ${list.label}`}>
@@ -88,6 +100,8 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
       </section>
     ))}
   </div>
+
+  <SeeAlso links={seeAlso} />
 </Base>
 
 <script>

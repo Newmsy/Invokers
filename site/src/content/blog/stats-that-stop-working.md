@@ -12,6 +12,8 @@ Secondary stats are ratings that turn into an effect through a curve. **Almost e
 - Skill Speed, Mana Generation and Skill Recovery give most of their value in the first few hundred points, so spreading rating across them usually beats piling it into one.
 - Defense is the exception: it rewards stacking, but only at high totals.
 
+The sets that give these ratings: [Gear sets](/gear) and [Every gear set, by the numbers](/blog/every-gear-set).
+
 ## Instinct: hard cap at 362
 
 | Instinct rating | 0 | 50 | 100 | 200 | 300 | 362 | 500+ |

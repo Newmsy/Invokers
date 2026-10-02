@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, href } from '../lib/data';
 import guide from '../data/event-guide.json';
 import { itemIcon } from '../lib/art';
@@ -153,6 +154,12 @@ const calc = {
   </section>
 
   <script type="application/json" id="event-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
+  <SeeAlso links={[
+    { path: 'bosses', label: 'Boss guides' },
+    { path: 'tiers/invokers/arena', label: 'Arena tier list' },
+    { path: 'trophies', label: 'Trophy Room' },
+    { path: 'summons', label: 'Summons' },
+  ]} />
 </Base>
 
 <script>

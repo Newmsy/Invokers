@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import { bossLabel, bosses, bossSlug, corruptionNames, heroes, heroHref, heroRefsByConfigId, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
@@ -19,6 +20,12 @@ const hasTiers = !!tierList;
 const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
 const elIcon = boss.element ? elementIcon(boss.element) : undefined;
 const energyIcon = itemIcon('Energy');
+
+// Pages that help plan a run at this boss (its tolerance sets are linked from the corruption panels).
+const seeAlso = [
+  { path: 'blog/boss-corruptions-and-tolerance-sets', label: 'Which Tolerance set to build first' },
+  { path: 'events', label: 'Events energy planner' },
+];
 
 // Stages that share an energy cost collapse into one row: "1–6 · 8 energy".
 const stageRanges: { from: number; to: number; energy: number }[] = [];
@@ -183,6 +190,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     </ul>
   </section>
 
+  <SeeAlso links={seeAlso} />
 </Base>
 
 <script>

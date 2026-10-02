@@ -30,7 +30,7 @@ Bonuses are totals: a full Attack set gives +20% ATK, not +30%.
 | Spark | +30 Skill SPD | +45 Skill SPD |
 | Fury | +30 Skill Recovery | +45 Skill Recovery |
 
-The first points of a rating are worth the most (see *Stats that stop working*): +45 Skill Speed on an Invoker with little of it is about +9% skill speed.
+The first points of a rating are worth the most (see [Stats that stop working](/blog/stats-that-stop-working)): +45 Skill Speed on an Invoker with little of it is about +9% skill speed.
 
 ## The combination sets
 
@@ -56,6 +56,8 @@ One per boss corruption: Crush, Manashock, Frost, Daze, Paralysis, Nightmare, Mi
 - **3 pieces:** +50% tolerance to that corruption, halving its duration.
 - **5 pieces:** **+20% HP, +20% ATK and +20% DEF**, the same on all twelve.
 
-That 5-piece bonus is the biggest all-round bonus of any set, so any Tolerance set you've built still pays off against bosses without its corruption.
+That 5-piece bonus is the biggest all-round bonus of any set, so any Tolerance set you've built still pays off against bosses without its corruption. Which to build first: [Which Tolerance set to build first](/blog/boss-corruptions-and-tolerance-sets).
+
+Every set with the bosses it counters: [Gear sets](/gear). Upgrade costs: [Gear upgrades and Memorium](/gear-upgrades).
 
 *Numbers for game version 0.61.1516.*

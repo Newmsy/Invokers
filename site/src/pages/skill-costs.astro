@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import { rarityColor } from '../lib/format';
 import { itemIcon } from '../lib/art';
 import {
@@ -126,6 +127,12 @@ const calc = {
   })}
 
   <script type="application/json" id="cost-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
+  <SeeAlso links={[
+    { path: 'planner', label: 'Planner' },
+    { path: 'ascension', label: 'Ascension and Awakening' },
+    { path: 'gear-upgrades', label: 'Gear upgrades and Memorium' },
+    { path: 'blog/maxing-a-skill', label: 'Maxing a skill doubles its damage' },
+  ]} />
 </Base>
 
 <script>

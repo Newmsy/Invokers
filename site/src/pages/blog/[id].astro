@@ -2,14 +2,24 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArtStrip from '../../components/ArtStrip.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
 import { pack, href } from '../../lib/data';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+  // Other posts that share a tag, most shared tags first.
+  const related = (post: (typeof posts)[number]) =>
+    posts
+      .filter((p) => p.id !== post.id)
+      .map((p) => ({ p, shared: p.data.tags.filter((t) => post.data.tags.includes(t)).length }))
+      .filter((r) => r.shared > 0)
+      .sort((a, b) => b.shared - a.shared || b.p.data.date.getTime() - a.p.data.date.getTime())
+      .slice(0, 3)
+      .map((r) => ({ path: `blog/${r.p.id}`, label: r.p.data.title }));
+  return posts.map((post) => ({ params: { id: post.id }, props: { post, related: related(post) } }));
 }
 
-const { post } = Astro.props;
+const { post, related } = Astro.props;
 const { Content } = await render(post);
 const date = post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const older = post.data.gameVersion !== pack.gameVersion;
@@ -26,6 +36,7 @@ const older = post.data.gameVersion !== pack.gameVersion;
     <div class="body">
       <Content />
     </div>
+    <SeeAlso links={related} />
   </article>
 </Base>
 

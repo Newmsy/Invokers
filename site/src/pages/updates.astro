@@ -1,7 +1,7 @@
 ---
 // What changed in each game update, newest first. The notes come from scripts/update-notes.ts.
 import Base from '../layouts/Base.astro';
-import { heroes, heroHref, pack } from '../lib/data';
+import { heroes, heroHref, href, pack } from '../lib/data';
 import { rarityColor, skillTypeName } from '../lib/format';
 import { changeCount, type SkillChange, type ValueChange } from '../lib/updates/diff';
 import { updateAnchor, updates } from '../lib/updates/notes';
@@ -154,7 +154,7 @@ type Change = ValueChange;
 
       {u.skillCosts.length > 0 && (
         <div class="block">
-          <h3>Skill upgrade costs</h3>
+          <h3><a href={href('skill-costs')}>Skill upgrade costs</a></h3>
           <div class="table-wrap">
             <table>
               <thead><tr><th scope="col">Rarity</th><th scope="col">Skill</th><th scope="col">To level</th><th scope="col">Before</th><th scope="col">Now</th></tr></thead>
@@ -175,14 +175,14 @@ type Change = ValueChange;
       )}
 
       {[
-        { title: 'Gear sets', added: u.sets.added, removed: u.sets.removed, changed: u.sets.changed },
-        { title: 'Trophy Room', added: [], removed: [], changed: u.trophies },
-        { title: 'Bosses', added: u.bosses.added, removed: u.bosses.removed, changed: u.bosses.changed },
+        { title: 'Gear sets', path: 'gear', added: u.sets.added, removed: u.sets.removed, changed: u.sets.changed },
+        { title: 'Trophy Room', path: 'trophies', added: [], removed: [], changed: u.trophies },
+        { title: 'Bosses', path: 'bosses', added: u.bosses.added, removed: u.bosses.removed, changed: u.bosses.changed },
       ]
         .filter((g) => g.added.length || g.removed.length || g.changed.length)
         .map((g) => (
           <div class="block">
-            <h3>{g.title}</h3>
+            <h3><a href={href(g.path)}>{g.title}</a></h3>
             {g.added.length > 0 && <p><span class="label">New:</span> {g.added.join(', ')}</p>}
             {g.removed.length > 0 && <p><span class="label">Removed:</span> {g.removed.join(', ')}</p>}
             {g.changed.length > 0 && (
