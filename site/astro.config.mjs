@@ -25,6 +25,8 @@ export default defineConfig({
   base,
   trailingSlash: 'ignore',
   integrations: [dropSourceArt],
+  // Old blog URLs keep working.
+  redirects: { '/blog/levels-not-stars': '/blog/levelling-vs-awakening' },
   // ![Name](hero:) and friends in blog posts become icon chips (src/lib/markdown-art.ts); links to /pages get
   // the base path (src/lib/markdown-links.ts).
   markdown: { processor: satteri({ mdastPlugins: [markdownArt(base), markdownLinks(base)] }) },

@@ -176,7 +176,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
     <h2>Stats by rank and level</h2>
-    <p class="hint">Base stats without gear or awakening. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levels-not-stars')}>Why levels matter more than stars</a></p>
+    <p class="hint">Base stats without gear or awakening. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
     <div class="rank-picker" role="group" aria-label="Rank">
       {ranks.map((r) => (
         <button type="button" class="chip" data-rank={r} aria-pressed={r === topRank ? 'true' : 'false'}>{rankNumber(r)}★</button>
