@@ -113,11 +113,21 @@ const topPulls = (id: string) => {
 
 export interface ItemValue { gems: number; how: 'shop' | 'limited' | 'estimated' }
 
+/** Share of the Gem Shop price a pack's item counts for, where it's less than full (Newms's call). */
+const weight: Record<string, number> = {
+  Codex_Rare: 0.5,
+  Prism_Rare: 0.5,
+  Codex_Epic: 0.85,
+  Prism_Epic: 0.7,
+  Gold: 0.5,
+  Memorium: 0.5,
+};
+
 /** What one of an item is worth in gems, or undefined when it can't be priced. */
 export function itemValue(id: string): ItemValue | undefined {
   if (id === 'Gem') return { gems: 1, how: 'shop' };
   const s = shopPrice.get(id);
-  if (s) return { gems: s.gems, how: s.limited ? 'limited' : 'shop' };
+  if (s) return { gems: s.gems * (weight[id] ?? 1), how: s.limited ? 'limited' : 'shop' };
   const item = summonItem(id);
   if (!item) return undefined;
   const ref = item.kind === 'titan' ? 'SI_WonderOrb' : 'SI_DestinyStar';
