@@ -141,6 +141,7 @@ export function pageDocs(): SearchDoc[] {
   const pages: [string, string, string][] = [
     ['heroes', 'Invokers', 'Every Invoker with ratings, skills and stats'],
     ['events', 'Events', 'Event calendar and planners'],
+    ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],
     ['blog', 'Blog', 'The numbers behind Invokers, worked out in plain language'],
