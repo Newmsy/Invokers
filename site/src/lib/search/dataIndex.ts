@@ -24,6 +24,16 @@ function isPlaceholder(item: Item): boolean {
   return !item.name || item.name === item.id || item.name.includes('_');
 }
 
+/**
+ * False for items players can't get or use: faction runes for factions with no Invokers (Ekkan, Oasi, Outlaws),
+ * and the generic tier-2 crest whose name copies the Melee Attacker one.
+ */
+function inGame(item: Item, factions: Set<string>): boolean {
+  const rune = /^FM_Tier\d(.+)$/.exec(item.id)?.[1];
+  if (rune && rune !== 'Generic' && !factions.has(rune)) return false;
+  return item.id !== 'RM_Tier2Generic';
+}
+
 /** Keeps the index small: long texts are cut at a word boundary. */
 export function clip(s: string, max = 240): string {
   return s.length <= max ? s : `${s.slice(0, s.lastIndexOf(' ', max))}…`;
@@ -124,8 +134,9 @@ export function dataDocs(): SearchDoc[] {
   }
 
   const seen = new Set<string>();
+  const factions = new Set(heroes.map((h) => h.faction));
   for (const item of itemsJson as Item[]) {
-    if (isPlaceholder(item)) continue;
+    if (isPlaceholder(item) || !inGame(item, factions)) continue;
     const name = plainText(item.name);
     if (seen.has(name)) continue;
     seen.add(name);
