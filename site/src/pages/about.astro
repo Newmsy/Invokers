@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { pack } from '../lib/data';
+import { href, pack } from '../lib/data';
 ---
 <Base title="About">
   <h1>About</h1>
@@ -8,5 +8,9 @@ import { pack } from '../lib/data';
     Invokers Companion is an unofficial fan site with guides, planners and reference
     tables for Invokers. Numbers are for game version {pack.gameVersion}. Nothing here
     predicts your drops or upgrades.
+  </p>
+  <p>
+    Start with the <a href={href('heroes')}>Invokers</a>, <a href={href('tiers')}>Tier lists</a> or
+    <a href={href('blog')}>Blog</a>. What changed in each update: <a href={href('updates')}>Game updates</a>.
   </p>
 </Base>

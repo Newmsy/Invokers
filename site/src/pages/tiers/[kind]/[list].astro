@@ -29,7 +29,6 @@ const seeAlso = [
         { path: `heroes/compare?h=${topSlugs.slice(0, 4).join(',')}`, label: 'Compare the top 4' },
       ]
     : []),
-  ...(boss ? boss.corruptions.map((c) => ({ path: `gear#set-${c.toLowerCase()}-tolerance`, label: `${c} Tolerance set` })) : []),
   ...(list.id === 'arena' ? [{ path: 'trophies', label: 'Trophy Room' }, { path: 'events#arena-title', label: 'Arena Rush calculator' }] : []),
 ];
 const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.element : p.meta) ?? ''))].filter(Boolean).sort();

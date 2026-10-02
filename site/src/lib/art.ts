@@ -47,7 +47,9 @@ for (const source of sourceFiles) {
     if (!/_/.test(name) || /\s/.test(name)) add(`items/${slugify(name)}.webp`, source, itemIconPath, code);
   }
 }
-for (const el of new Set(heroes.map((h) => h.element))) {
+// Every element icon, including Astral (shown on Omnissi), which no Invoker has.
+const iconElements = [...sourceFiles].filter((f) => f.startsWith('icons/element/')).map((f) => f.replace(/^.*\/|\.webp$/g, ''));
+for (const el of new Set([...heroes.map((h) => h.element), ...iconElements])) {
   add(`icons/${slugify(el === 'Neutral' ? 'Astral' : el)}.webp`, `icons/element/${el}.webp`, elementIconPath, el);
 }
 for (const c of new Set(heroes.map((h) => String(h.class)))) {

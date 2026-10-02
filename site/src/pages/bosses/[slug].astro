@@ -1,21 +1,28 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
-import { bossLabel, bosses, bossSlug, corruptionNames, href, toleranceFor, type Boss } from '../../lib/data';
+import { bossLabel, bosses, bossSlug, corruptionNames, heroes, heroHref, heroRefsByConfigId, href, toleranceFor, type Boss } from '../../lib/data';
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
+import { tierRows } from '../../lib/tierData';
+import { elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
+import { gearSets } from '../../lib/gear';
+import { corruptionKey, hasHeroTolerances, heroesWithTolerance } from '../../lib/tolerances';
 
 export function getStaticPaths() {
   return bosses.map((boss) => ({ params: { slug: bossSlug(boss) }, props: { boss } }));
 }
 
 const { boss } = Astro.props as { boss: Boss };
-const hasTiers = tierLists.some((l) => l.id === bossSlug(boss));
+const tierList = tierLists.find((l) => l.id === bossSlug(boss));
+const hasTiers = !!tierList;
+// The S tier's Invokers, as portraits under the header.
+const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
+const elIcon = boss.element ? elementIcon(boss.element) : undefined;
+const energyIcon = itemIcon('Energy');
 
-// Gear sets for this boss's corruptions, then the pages that plan a run at it.
-const setAnchor = (c: string) => `gear#set-${c.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-tolerance`;
+// Pages that help plan a run at this boss (its tolerance sets are linked from the corruption panels).
 const seeAlso = [
-  ...boss.corruptions.map((c) => ({ path: setAnchor(c), label: `${c} Tolerance set` })),
   { path: 'blog/boss-corruptions-and-tolerance-sets', label: 'Which Tolerance set to build first' },
   { path: 'events', label: 'Events energy planner' },
 ];
@@ -39,8 +46,20 @@ const tolerances = [...boss.corruptions, ...named].map((c) => {
     ?.split('Useful against')[0]
     .replace(/\s*by\s*(<color=[^>]*>)?\{0\}(<\/color>)?/g, '')
     .replace(/[.\s]+$/, '');
-  return { corruption: c, name: stat?.name ?? `${c} Tolerance`, text };
+  const key = corruptionKey(c);
+  const set = gearSets.find((g) => g.corruption && corruptionKey(g.corruption) === key);
+  const counters = heroesWithTolerance(c)
+    .map((id) => heroes.find((h) => h.id === id)!)
+    .sort((a, b) => a.name.localeCompare(b.name));
+  return { corruption: c, key, name: stat?.name ?? `${c} Tolerance`, text, set, counters };
 });
+
+// For "My box only" and "Your Invokers wearing it": the box stores config ids.
+const configIdOf = new Map(Object.entries(heroRefsByConfigId).map(([configId, r]) => [r.id, configId]));
+const boxRefs = {
+  heroes: Object.fromEntries(Object.entries(heroRefsWithArt()).map(([c, r]) => [c, { slug: r.slug, name: r.name, art: r.art }])),
+  heroBase: href('heroes/'),
+};
 
 // Long briefings (some run to hundreds of words) show their first paragraph up top; the rest folds away
 // below the Do and Don't lists.
@@ -58,12 +77,19 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
 
   <header class="head">
     {boss.title && <span class="title">{boss.title}</span>}
-    <h1>{bossLabel(boss)}</h1>
+    <h1>{elIcon && <img class="el" src={elIcon} alt={boss.element} width="32" height="32" />}{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
     {hasTiers && (
       <p class="tiers">
         Best picks: <a href={href(`tiers/invokers/${bossSlug(boss)}`)}>Invokers</a> · <a href={href(`tiers/titans/${bossSlug(boss)}`)}>Titans</a>
       </p>
+    )}
+    {topPicks.length > 0 && (
+      <ul class="picks" aria-label="Top tier Invokers">
+        {topPicks.map((p) => (
+          <li><a href={p.href} title={p.name}><img src={p.art} alt={p.name} width="56" height="56" loading="lazy" /></a></li>
+        ))}
+      </ul>
     )}
   </header>
 
@@ -94,15 +120,61 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   {tolerances.length > 0 && (
     <section aria-labelledby="corr-title">
       <h2 id="corr-title">Corruptions</h2>
-      <p class="hint">Bring Invokers or relics with these tolerances.</p>
+      <p class="hint">Bring Invokers or relics with these tolerances. Tap one to see who counters it.</p>
       <ul class="corr">
-        {tolerances.map((t) => (
+        {tolerances.map((t) => [
           <li>
-            <span class="corr-name">{t.name}</span>
-            {t.text && <span class="corr-text" set:html={richText(t.text)} />}
-          </li>
-        ))}
+            <button type="button" class="corr-card" aria-expanded="false" aria-controls={`corr-${t.key}`}>
+              <span class="corr-name">
+                {t.name}
+                <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+              </span>
+              {t.text && <span class="corr-text" set:html={richText(t.text)} />}
+            </button>
+          </li>,
+          <li class="corr-panel" id={`corr-${t.key}`} data-set={t.set?.id} hidden>
+            <div class="panel-head">
+              <h3>Invokers with {t.name}</h3>
+              {hasHeroTolerances && t.counters.length > 0 && (
+                <label class="mine" hidden><input type="checkbox" /> My box only</label>
+              )}
+            </div>
+            {hasHeroTolerances ? (
+              t.counters.length > 0 ? (
+                <>
+                  <ul class="heroes">
+                    {t.counters.map((h) => (
+                      <li data-config-id={configIdOf.get(h.id)}>
+                        <a class="with-avatar" href={heroHref(h.id)}>
+                          <span class="avatar" style="--size: 36px">{heroArt(h.id) && <img src={heroArt(h.id)} alt="" width="36" height="36" loading="lazy" />}</span>
+                          {h.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <p class="muted none-mine" hidden>None in your box yet.</p>
+                  <a class="see-all" href={href(`heroes?tolerance=${t.key}`)}>See them on the Invokers page</a>
+                </>
+              ) : (
+                <p class="muted">No Invoker has this tolerance. Use gear for it.</p>
+              )
+            ) : (
+              <p class="muted">Invoker list coming soon. Gear adds this tolerance meanwhile.</p>
+            )}
+            {t.set && (
+              <p class="gear">
+                <a href={href(`gear#set-${t.set.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)}>{t.set.name} gear</a>
+                {t.set.bonuses.map((b) => <span class="bonus">{b.pieces} pieces: {b.lines.join(', ')}</span>)}
+              </p>
+            )}
+            <div class="worn" hidden>
+              <h3>Your Invokers wearing it</h3>
+              <ul class="heroes"></ul>
+            </div>
+          </li>,
+        ])}
       </ul>
+      <script id="box-refs" type="application/json" set:html={JSON.stringify(boxRefs)} />
     </section>
   )}
 
@@ -112,7 +184,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
       {stageRanges.map((r) => (
         <li>
           <span class="stage">{r.from === r.to ? `Stage ${r.from}` : `Stages ${r.from}–${r.to}`}</span>
-          <span class="energy">{r.energy} energy</span>
+          <span class="energy">{energyIcon && <img src={energyIcon} alt="" width="20" height="20" />}{r.energy} energy</span>
         </li>
       ))}
     </ul>
@@ -121,10 +193,96 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   <SeeAlso links={seeAlso} />
 </Base>
 
+<script>
+  import { avatar } from '../../lib/avatar';
+  import { loadBox, onBoxChange } from '../../lib/box/store';
+  import type { HeroRef } from '../../lib/data';
+
+  // One corruption panel open at a time; it sits right under its card. #corr-<name> opens one directly.
+  const cards = [...document.querySelectorAll<HTMLButtonElement>('.corr-card')];
+  const panels = cards.map((c) => document.getElementById(c.getAttribute('aria-controls')!)!);
+
+  function open(id: string | null) {
+    cards.forEach((c, i) => {
+      const on = c.getAttribute('aria-controls') === id;
+      c.setAttribute('aria-expanded', String(on));
+      panels[i].hidden = !on;
+    });
+    history.replaceState(null, '', id ? `#${id}` : location.pathname + location.search);
+  }
+  for (const c of cards) {
+    c.addEventListener('click', () => open(c.getAttribute('aria-expanded') === 'true' ? null : c.getAttribute('aria-controls')));
+  }
+  const fromHash = location.hash.slice(1);
+  if (panels.some((p) => p.id === fromHash)) open(fromHash);
+
+  // With an imported box: a "My box only" switch for the hero list, and who already wears the matching gear.
+  const refsEl = document.getElementById('box-refs');
+  const refs = refsEl ? (JSON.parse(refsEl.textContent!) as { heroes: Record<string, Pick<HeroRef, 'slug' | 'name' | 'art'>>; heroBase: string }) : null;
+
+  async function showBox() {
+    const box = await loadBox();
+    const owned = new Set(box?.heroes.map((h) => h.configId) ?? []);
+    for (const panel of panels) {
+      const mine = panel.querySelector<HTMLLabelElement>('.mine');
+      const toggle = mine?.querySelector('input');
+      const items = [...panel.querySelectorAll<HTMLLIElement>('.heroes > li[data-config-id]')];
+      const none = panel.querySelector<HTMLElement>('.none-mine');
+      const filter = () => {
+        let shown = 0;
+        for (const li of items) {
+          li.hidden = !!toggle?.checked && !owned.has(li.dataset.configId!);
+          if (!li.hidden) shown++;
+        }
+        if (none) none.hidden = shown > 0;
+      };
+      if (mine && toggle) {
+        mine.hidden = !box;
+        if (!box) toggle.checked = false;
+        toggle.onchange = filter;
+      }
+      filter();
+
+      // Pieces of this tolerance set on each of the player's Invokers, most first.
+      const worn = panel.querySelector<HTMLElement>('.worn')!;
+      const list = worn.querySelector('ul')!;
+      const pieces = new Map<number, number>();
+      for (const g of box?.gear ?? []) {
+        if (g.set === panel.dataset.set && g.equippedHeroId != null) pieces.set(g.equippedHeroId, (pieces.get(g.equippedHeroId) ?? 0) + 1);
+      }
+      const rows = (box?.heroes ?? [])
+        .filter((h) => pieces.has(h.id) && refs?.heroes[h.configId])
+        .map((h) => ({ ref: refs!.heroes[h.configId], n: pieces.get(h.id)! }))
+        .sort((a, b) => b.n - a.n || a.ref.name.localeCompare(b.ref.name));
+      list.replaceChildren(
+        ...rows.map(({ ref, n }) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.className = 'with-avatar';
+          a.href = refs!.heroBase + ref.slug;
+          a.append(avatar(ref.art, 36), `${ref.name} · ${n} ${n === 1 ? 'piece' : 'pieces'}`);
+          li.append(a);
+          return li;
+        }),
+      );
+      worn.hidden = rows.length === 0;
+    }
+  }
+  if (panels.length) {
+    void showBox();
+    onBoxChange(() => void showBox());
+  }
+</script>
+
 <style>
   .tiers { margin: 10px 0 0; color: var(--soft); font-weight: 500; }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
+  h1 .el { vertical-align: -4px; margin-right: 10px; }
+  .picks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .picks a { display: block; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .picks a:hover { border-color: var(--accent); }
+  .picks img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
   .title { color: var(--accent); font-weight: 600; font-size: 14px; }
   h1 { margin: 4px 0 12px; font-size: 40px; font-weight: 700; }
   .desc { color: var(--soft); max-width: 70ch; margin: 0; line-height: 1.6; }
@@ -155,16 +313,57 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .briefing p { margin: 8px 0 0; color: var(--soft); max-width: 70ch; line-height: 1.6; }
 
   .corr { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-  .corr li {
+  .corr > li { display: flex; }
+  .corr-card {
+    flex: 1;
     padding: 14px 16px;
     border-radius: 12px;
     background: var(--surface);
+    border: 1px solid transparent;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-  .corr-name { font-weight: 600; }
+  .corr-card:hover { border-color: var(--muted); }
+  .corr-card[aria-expanded='true'] { border-color: var(--accent); background: var(--surface-2); }
+  .corr-name { font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .chev { color: var(--muted); transition: transform 0.15s; }
+  .corr-card[aria-expanded='true'] .chev { transform: rotate(180deg); color: var(--accent); }
   .corr-text { font-size: 14px; color: var(--soft); }
+
+  .corr > li.corr-panel {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .corr > li.corr-panel[hidden] { display: none; }
+  .corr-panel h3 { font-size: 16px; font-weight: 600; margin: 0; }
+  .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .mine { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--soft); font-size: 14px; cursor: pointer; }
+  .mine[hidden] { display: none; }
+  .heroes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 16px; }
+  .heroes li[hidden] { display: none; }
+  .heroes a { min-height: 44px; color: var(--text); }
+  .heroes a:hover { color: var(--accent); }
+  .muted { color: var(--muted); font-size: 14px; margin: 0; }
+  .see-all { font-size: 14px; }
+  .gear { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; color: var(--soft); }
+  .gear a { font-weight: 600; }
+  .worn { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .worn[hidden] { display: none; }
+  .worn .heroes { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  /* Wide screens keep the cards on one row and open the panel underneath them all. */
+  @media (min-width: 721px) {
+    .corr > li.corr-panel { order: 1; }
+  }
 
   .stages { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .stages li {
@@ -176,7 +375,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     min-width: 120px;
   }
   .stage { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .energy { font-family: var(--display); font-weight: 600; font-size: 17px; display: inline-flex; align-items: center; gap: 6px; }
 
   @media (max-width: 720px) {
     h1 { font-size: 28px; }

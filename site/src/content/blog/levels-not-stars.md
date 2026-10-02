@@ -3,6 +3,7 @@ title: "Levels, not stars"
 description: "Each extra star adds about 5% to an Invoker's base stats. Levels do almost all the work."
 date: 2026-10-01
 gameVersion: "0.61.1516"
+art: ["hero:Admiral Gladstone", "item:5 star Echo", "item:XP"]
 tags: [invokers, stats, levelling]
 ---
 
@@ -12,9 +13,11 @@ tags: [invokers, stats, levelling]
 - The final star on a level 50 Invoker is +7%; the levels after it are +31%.
 - Rarity sets the ceiling: a 5★ level 40 Legendary already matches a maxed Common.
 
+What each star costs: [Ascension and Awakening](/ascension).
+
 ## What a star is worth on its own
 
-Admiral Gladstone's ATK:
+![Admiral Gladstone](hero:)'s ATK:
 
 | | 1★ | 2★ | 3★ | 4★ | 5★ | 6★ |
 |---|---|---|---|---|---|---|
@@ -58,11 +61,11 @@ Legendaries at 6★ level 60:
 
 | Class | HP | ATK | DEF |
 |---|---|---|---|
-| Tank | 10,099 | 421 | 976 |
-| Support | 9,160 | 765 | 726 |
-| Melee | 8,149 | 882 | 709 |
-| Ranged | 7,034 | 997 | 706 |
+| ![Tank](class:) | 10,099 | 421 | 976 |
+| ![Support](class:) | 9,160 | 765 | 726 |
+| ![Melee](class:) | 8,149 | 882 | 709 |
+| ![Ranged](class:) | 7,034 | 997 | 706 |
 
-Ranged hit hardest and are most fragile. Tanks give up more than half a Ranged attacker's ATK for 44% more HP.
+Ranged hit hardest and are most fragile. Tanks give up more than half a Ranged attacker's ATK for 44% more HP. Put any Invokers side by side in [Compare](/heroes/compare).
 
 *Base stats without gear or awakening, game version 0.61.1516.*

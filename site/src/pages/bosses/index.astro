@@ -3,6 +3,14 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
+import { elementIcon } from '../../lib/art';
+import { tierLists, tierRows } from '../../lib/tierData';
+
+// The first three S-tier Invokers for each boss, as small portraits on its card.
+const topArt = (b: (typeof bosses)[number]) => {
+  const list = tierLists.find((l) => l.id === bossSlug(b));
+  return list ? (tierRows('invokers', list)[0]?.picks ?? []).filter((p) => p.art).slice(0, 3) : [];
+};
 
 // Group by game mode, in the order players meet them.
 const groups = [
@@ -29,9 +37,12 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
         {g.bosses.map((b) => (
           <li>
             <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#5FDCF7'}` : undefined}>
-              <span class="name">{bossLabel(b)}</span>
+              <span class="name">{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
               {b.title && <span class="title">{b.title}</span>}
               <span class="corr">{b.corruptions.join(' · ')}</span>
+              {topArt(b).length > 0 && (
+                <span class="top" aria-hidden="true">{topArt(b).map((p) => <img src={p.art} alt="" width="32" height="32" loading="lazy" />)}</span>
+              )}
             </a>
           </li>
         ))}
@@ -71,7 +82,9 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
     color: var(--text);
   }
   .card:hover { color: var(--text); border-color: var(--tint); }
-  .name { font-family: var(--display); font-weight: 600; font-size: 17px; }
+  .top { display: flex; gap: 4px; margin-top: 10px; }
+  .top img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; object-position: top center; }
+  .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; }
   .title { color: var(--soft); font-size: 14px; }
   .corr { margin-top: 8px; font-size: 13px; color: var(--tint); font-weight: 600; }
 

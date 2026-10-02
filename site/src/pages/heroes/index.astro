@@ -5,6 +5,7 @@ import TierBadge from '../../components/TierBadge.astro';
 import { elementIcon } from '../../lib/art';
 import { heroes, heroHref, href } from '../../lib/data';
 import { className, rarityColor, rarityOrder } from '../../lib/format';
+import { corruptionLabel, hasHeroTolerances, heroTolerances } from '../../lib/tolerances';
 
 const sorted = [...heroes].sort(
   (a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || a.name.localeCompare(b.name),
@@ -21,6 +22,14 @@ const groups = [
     label: 'Rarity',
     options: rarityOrder.filter((r) => heroes.some((h) => h.rarity === r)).map((v) => [v, v]),
   },
+  // Shown once the data says which tolerances each Invoker has; boss pages link here with ?tolerance=daze.
+  ...(hasHeroTolerances
+    ? [{
+        key: 'tolerance',
+        label: 'Tolerance',
+        options: [...new Set([...heroTolerances.values()].flat())].sort().map((v) => [v, corruptionLabel(v)]),
+      }]
+    : []),
 ];
 ---
 <Base title="Invokers">
@@ -28,6 +37,13 @@ const groups = [
     <h1>Invokers</h1>
     <span class="count" id="count" aria-live="polite">{sorted.length} total</span>
   </div>
+  <p class="links">
+    <a href={href('tiers')}>Tier lists</a>
+    <span aria-hidden="true">·</span>
+    <a href={href('heroes/compare')}>Compare Invokers</a>
+    <span aria-hidden="true">·</span>
+    <a href={href('team')}>Team builder</a>
+  </p>
 
   <div class="controls">
     <label class="search">
@@ -60,6 +76,7 @@ const groups = [
         data-faction={h.faction}
         data-class={h.class}
         data-rarity={h.rarity}
+        data-tolerance={heroTolerances.get(h.id)?.join(' ')}
       >
         <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
           <div class="card-art">
@@ -78,9 +95,9 @@ const groups = [
 </Base>
 
 <script>
-  const keys = ['element', 'faction', 'class', 'rarity'] as const;
+  const keys = ['element', 'faction', 'class', 'rarity', 'tolerance'] as const;
   type Key = (typeof keys)[number];
-  const state: Record<Key, string> & { q: string } = { element: '', faction: '', class: '', rarity: '', q: '' };
+  const state: Record<Key, string> & { q: string } = { element: '', faction: '', class: '', rarity: '', tolerance: '', q: '' };
 
   const items = [...document.querySelectorAll<HTMLLIElement>('#grid > li')];
   const q = document.querySelector<HTMLInputElement>('#q')!;
@@ -101,7 +118,7 @@ const groups = [
     let shown = 0;
     for (const li of items) {
       const ok =
-        keys.every((k) => !state[k] || li.dataset[k] === state[k]) && (!needle || li.dataset.name!.includes(needle));
+        keys.every((k) => !state[k] || (k === 'tolerance' ? (li.dataset.tolerance ?? '').split(' ').includes(state[k]) : li.dataset[k] === state[k])) && (!needle || li.dataset.name!.includes(needle));
       li.hidden = !ok;
       if (ok) shown++;
     }
@@ -157,6 +174,7 @@ const groups = [
 </script>
 
 <style>
+  .links { margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 15px; }
   .head {
     display: flex;
     align-items: baseline;
