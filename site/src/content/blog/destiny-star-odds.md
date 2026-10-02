@@ -34,7 +34,7 @@ Titan orbs work the same way:
 | Miracle Orb | | 90% | 9% | 1% |
 | Mythic Orb | | | | 100% |
 
-Inside a rarity, every hero has the same weight. A Destiny Star's Legendary pool has 38 heroes, so a **specific** Legendary is 0.53% ÷ 38, about **1 in 7,170 pulls**. The Radiant pool has only 19 Legendaries, which makes a specific one twice as likely: about 1 in 3,585.
+Inside a rarity, every hero has the same weight. A Destiny Star's Legendary pool has 38 heroes: every Fire, Water, Earth and Wind Legendary except Ardell The Torrent, who can't be summoned from any star. So a **specific** Legendary is 0.53% ÷ 38, about **1 in 7,170 pulls**. The Radiant pool has only 19 Legendaries, which makes a specific one twice as likely: about 1 in 3,585.
 
 ## The chance of at least one Legendary
 
