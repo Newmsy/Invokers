@@ -1,9 +1,9 @@
 {
-  "note": "Event targets and scoring from the September 2026 events (one division), and Newms's energy income as editable defaults. Energy per stage comes from data/bosses.json; drop tables and Arena league points are in event-scoring.json. perChase is how many of each event run in one chase, from the event guide workbook (relic: Ulgorim 2, Althar 2, Sakiel 1).",
+  "note": "Event targets and scoring from the September 2026 events (one division), and Newms's energy income as editable defaults. Energy per stage comes from data/bosses.json; drop tables and Arena league points are in event-scoring.json. perChase (perBoss for relic bosses) is how many of each event run in one chase, from the event guide workbook.",
   "gameVersion": "0.61.1514",
   "chase": { "days": 21, "bracket": 100, "entry": 1000, "crowns": 200 },
   "events": [
-    { "id": "relic", "name": "Relic Boss", "perChase": 5, "bossMode": "relic boss", "target": 51000, "scoring": "Points for every item dropped, by stars and rarity: 30 to 60 for a 3-star item, 40 to 100 for 4 stars, 230 to 450 for 5 stars and 800 to 2,500 for 6 stars. Two items drop per run." },
+    { "id": "relic", "name": "Relic Boss", "perBoss": { "Ulgorim": 2, "Althar": 2, "Sakiel": 1 }, "bossMode": "relic boss", "target": 51000, "scoring": "Points for every item dropped, by stars and rarity: 30 to 60 for a 3-star item, 40 to 100 for 4 stars, 230 to 450 for 5 stars and 800 to 2,500 for 6 stars. Two items drop per run." },
     { "id": "accessory", "name": "Accessory Hunt (clan boss)", "perChase": 1, "bossMode": "clan boss", "target": 51000, "scoring": "Scored like the Relic Boss events: points per item by stars and rarity, two items per run." },
     { "id": "crest", "name": "Crest Bosses", "perChase": 2, "bossMode": "other", "target": 18000, "scoring": "1 point per Rare, 10 per Epic and 100 per Legendary item dropped." },
     { "id": "omnissi", "name": "Omnissi (Essence)", "perChase": 2, "bossMode": "Omnissi", "target": 16000, "scoring": "1 point per Rare, 10 per Epic and 100 per Legendary item dropped." },
