@@ -5,6 +5,7 @@ import { bosses, href } from '../lib/data';
 import guide from '../data/event-guide.json';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
+import { shop } from '../lib/packs';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const energyIcon = itemIcon('Energy');
@@ -33,10 +34,16 @@ const farming = guide.events
 
 const arenaEvent = guide.events.find((e) => e.id === 'arena')!;
 const recharge = Math.floor((24 * 60) / guide.income.rechargeMinutes);
+// Gems buy energy at the Gem Shop's unlimited energy price (the cheaper daily offers are one a day, in the income list).
+const gemEnergy = shop.packs.find(
+  (p) => p.tab === 'GemShop' && p.purchaseLimit === 'Unlimited' && p.price.resources?.Gem && p.rewards?.length === 1 && p.rewards[0].id === 'Energy',
+);
+const gemPrice = gemEnergy ? { gems: gemEnergy.price.resources!.Gem, energy: gemEnergy.rewards![0].amount } : { gems: 150, energy: 100 };
+const income = { ...guide.income, energyPerGem: gemPrice.energy / gemPrice.gems };
 
 const calc = {
   farming,
-  income: guide.income,
+  income,
   chaseDays: guide.chase.days,
   arena: { ...guide.arena, target: arenaEvent.target, leagues: arenaLeagues },
 };
@@ -92,7 +99,7 @@ const calc = {
     <h2 id="plan-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Energy plan</h2>
     <p class="hint">
       Add events, then set your energy income. Only the recharge ({recharge} a day, one every{' '}
-      {guide.income.rechargeMinutes} minutes) and {guide.income.energyPerGem} energy per gem are fixed.
+      {guide.income.rechargeMinutes} minutes) and the Gem Shop price ({gemPrice.energy} energy for {gemPrice.gems} gems) are fixed.
     </p>
 
     <h3>Events in the plan</h3>

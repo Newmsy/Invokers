@@ -22,7 +22,6 @@
   ],
   "income": {
     "rechargeMinutes": 5,
-    "energyPerGem": 1.5,
     "daily": [
       { "name": "Playtime reward", "energy": 100 },
       { "name": "Bonus quest", "energy": 250 },
