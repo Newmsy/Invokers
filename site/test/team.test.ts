@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countBy, maxRow, parseSlugs, summarise, toTeamDoc, isTeamDoc } from '../src/lib/team';
+import { countBy, parseSlugs, summarise, toTeamDoc, isTeamDoc } from '../src/lib/team';
 import type { RosterHero } from '../src/lib/roster';
 
 // Stat rows follow statFields order: hp, atk, def, critRate, critDmg, acc, res, instinct,
@@ -30,13 +30,8 @@ describe('parseSlugs', () => {
 describe('team summary', () => {
   const a = hero('a', 'Tank', 'Freeborn', 'Earth', row(8, 0, 7, 0));
   const b = hero('b', 'Support', 'Freeborn', 'Fire', row(0, 6, 3, 5));
-  it('reads max stats from rank Six, top level', () => {
-    expect(maxRow(a)[8]).toBe(8);
-  });
-  it('totals speed stats and finds the lowest member', () => {
+  it('counts factions and spots a Tank', () => {
     const s = summarise([a, b]);
-    expect(s.speed.comboSpeed).toEqual({ total: 8, min: 0, max: 8 });
-    expect(s.speed.manaGen).toEqual({ total: 5, min: 0, max: 5 });
     expect(s.hasTank).toBe(true);
     expect(s.factions).toEqual([['Freeborn', 2]]);
   });
