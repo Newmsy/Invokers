@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href } from '../../lib/data';
+import { pools, tierLists, tiersDraft } from '../../lib/tierData';
+
+const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: g, lists: tierLists.filter((l) => l.group === g) }));
+---
+<Base title="Tier lists">
+  <h1>Tier lists</h1>
+  <p class="lead">The best Invokers and Titans for each mode and boss, S to D.</p>
+  {tiersDraft && <p class="draft">Draft: these tiers are still being reviewed.</p>}
+
+  {pools.map((p) => (
+    <section aria-labelledby={`pool-${p.kind}`}>
+      <h2 id={`pool-${p.kind}`}>{p.label}</h2>
+      {groups.map((g) => (
+        <div class="group">
+          <h3>{g.group}</h3>
+          <ul class="links">
+            {g.lists.map((l) => <li><a href={href(`tiers/${p.kind}/${l.id}`)}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </section>
+  ))}
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 20px; font-weight: 700; margin: 28px 0 4px; }
+  h3 { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 14px 0 8px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .draft {
+    display: inline-block;
+    margin: 12px 0 0;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px dashed var(--line);
+    color: var(--soft);
+    font-size: 14px;
+  }
+  .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--text); }
+  @media (max-width: 720px) { h1 { font-size: 22px; } }
+</style>

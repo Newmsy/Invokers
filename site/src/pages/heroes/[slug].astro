@@ -13,7 +13,9 @@ import {
   richText,
   skillTypeName,
   statFields,
+  tierColor,
 } from '../../lib/format';
+import { heroTiers, tierNames } from '../../lib/tierData';
 
 export function getStaticPaths() {
   return heroes.map((hero) => ({ params: { slug: heroSlug(hero.id) }, props: { hero } }));
@@ -34,6 +36,9 @@ const ranks = rankOrder.filter((r) => hero.statsByRank[r]);
 const levelsOf = (rank: string) =>
   Object.keys(hero.statsByRank[rank] ?? {}).sort((a, b) => Number(a) - Number(b));
 const topRank = ranks[ranks.length - 1];
+
+// Where this Invoker sits on each tier list, best first.
+const tiers = heroTiers(hero.id).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier));
 
 // The Compare link appears once the compare page (built in another thread) exists.
 const hasCompare = Object.keys(import.meta.glob('./compare.astro')).length > 0;
@@ -113,6 +118,22 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         </li>
       ))}
     </ul>
+
+    {tiers.length > 0 && (
+      <>
+        <h2>Tier lists</h2>
+        <ul class="tier-list">
+          {tiers.map((t) => (
+            <li>
+              <a href={href(`tiers/invokers/${t.list.id}`)}>
+                <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#5FDCF7'}`}>{t.tier}</span>
+                {t.list.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
   </section>
 
   <section id="skills" class="panel" role="tabpanel" aria-labelledby="tab-skills">
@@ -328,6 +349,35 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .tabs button[aria-selected='true'] { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); }
   .panel h2 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
   .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
+
+  .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tier-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 12px 0 4px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .tier-list a:hover { border-color: var(--accent); color: var(--text); }
+  .tier-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--tier);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 13px;
+  }
 
   .stat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
   .stat {

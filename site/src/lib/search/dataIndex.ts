@@ -140,6 +140,7 @@ export function dataDocs(): SearchDoc[] {
 export function pageDocs(): SearchDoc[] {
   const pages: [string, string, string][] = [
     ['heroes', 'Invokers', 'Every Invoker with ratings, skills and stats'],
+    ['tiers', 'Tier lists', 'The best Invokers and Titans for the campaign, Spires, Arena and every boss'],
     ['events', 'Events', 'How events score, their targets, and energy and Arena Rush planners'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
     ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],

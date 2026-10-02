@@ -12,6 +12,8 @@ import statsJson from '../../../data/stats.json';
 import setsJson from '../../../data/sets.json';
 // Ratings are the site's own (Newms's scores), so they live under site/.
 import ratingsJson from '../data/ratings.json';
+import { makeHeroSlugs, slugify } from './slugs';
+import { titanInfo, type TitanInfo } from './tiers/candidates';
 
 export interface Manifest {
   gameVersion: string;
@@ -185,23 +187,11 @@ export function ratingFor(heroId: string): Rating | undefined {
   return ratings[heroId];
 }
 
-/** Prefixes a site path with the deploy base (e.g. /invokers/ on GitHub Pages). */
-// Hero pages live at /heroes/<name>, e.g. /heroes/ironblade-darus. Two heroes with the same name
-// get the element added, then a number, so every slug stays unique.
-const slugify = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const heroSlugs = new Map<string, string>();
-{
-  const taken = new Set<string>();
-  const count = new Map<string, number>();
-  for (const h of heroes) count.set(slugify(h.name), (count.get(slugify(h.name)) ?? 0) + 1);
-  for (const h of heroes) {
-    let slug = slugify(h.name) || 'invoker';
-    if ((count.get(slug) ?? 0) > 1) slug = `${slug}-${slugify(h.element)}`;
-    for (let n = 2; taken.has(slug); n++) slug = `${slug.replace(/-\d+$/, '')}-${n}`;
-    taken.add(slug);
-    heroSlugs.set(h.id, slug);
-  }
-}
+// Hero pages live at /heroes/<name>, e.g. /heroes/ironblade-darus (see lib/slugs).
+const heroSlugs = makeHeroSlugs(heroes);
+
+/** The 38 Titans: name, page slug and the faction that can bind them (none = any). */
+export const titans: TitanInfo[] = titanInfo(heroes, skillSets);
 
 export function heroSlug(heroId: string): string {
   return heroSlugs.get(heroId) ?? slugify(heroId);
@@ -211,6 +201,7 @@ export function heroHref(heroId: string): string {
   return href(`heroes/${heroSlug(heroId)}`);
 }
 
+/** Prefixes a site path with the deploy base (e.g. /invokers/ on GitHub Pages). */
 export function href(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   return `${base}/${path.replace(/^\//, '')}`;
