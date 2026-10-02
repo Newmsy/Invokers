@@ -29,7 +29,7 @@ export function toFinish(target: number, pointsPerRun: number, energyPerRun: num
 export function shortfall(need: number, income: number, energyPerGem: number): { energy: number; gems: number } {
   const energy = Math.max(0, need - income);
   // The small nudge keeps float noise (e.g. 100/150 energy per gem) from adding a gem.
-  return { energy, gems: energyPerGem > 0 ? Math.ceil(energy / energyPerGem - 1e-9) : Infinity };
+  return { energy, gems: energyPerGem > 0 ? Math.max(0, Math.ceil(energy / energyPerGem - 1e-9)) : Infinity };
 }
 
 export interface ArenaInput {
