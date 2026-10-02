@@ -19,6 +19,8 @@ const itemIconPath = new Map<string, string>();
 const elementIconPath = new Map<string, string>();
 const classIconPath = new Map<string, string>();
 const titanArtPath = new Map<string, string>();
+const heroSplashPath = new Map<string, string>();
+const titanSplashPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -33,11 +35,16 @@ const skillPart = (type: string) => type.replace(/^ActiveSkill/, '').toLowerCase
 for (const h of heroes) {
   const slug = heroSlug(h.id);
   add(`heroes/${slug}.webp`, `heroes/${h.id}.webp`, heroArtPath, h.id);
+  // Full-size character art (issue #66), used for big headers when it exists.
+  add(`splash/heroes/${slug}.webp`, `splash/heroes/${h.id}.webp`, heroSplashPath, h.id);
   for (const s of skillsFor(h.id)) {
     add(`skills/${slug}-skill-${skillPart(s.type)}.webp`, `skills/${h.id}_${skillFile[s.type] ?? s.type}.webp`, skillIconPath, `${h.id}/${s.type}`);
   }
 }
-for (const t of titans) add(`titans/${t.slug}.webp`, `titans/${t.id}.webp`, titanArtPath, t.id);
+for (const t of titans) {
+  add(`titans/${t.slug}.webp`, `titans/${t.id}.webp`, titanArtPath, t.id);
+  add(`splash/titans/${t.slug}.webp`, `splash/titans/${t.id}.webp`, titanSplashPath, t.id);
+}
 for (const source of sourceFiles) {
   const [kind, file] = source.split('/');
   const code = file?.replace(/\.webp$/, '');
@@ -65,6 +72,8 @@ export function artRoutes(): { served: string; source: string }[] {
 
 export const heroArt = (heroId: string) => url(heroArtPath.get(heroId));
 export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
+export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
+export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));
 export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get(`${heroId}/${type}`));
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));

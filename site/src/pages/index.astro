@@ -2,7 +2,9 @@
 import Base from '../layouts/Base.astro';
 import NavIcon from '../components/NavIcon.astro';
 import SectionArt from '../components/SectionArt.astro';
-import { heroes, href } from '../lib/data';
+import { heroes, heroHref, href } from '../lib/data';
+import { heroArt, heroSplash } from '../lib/art';
+import { tierLists, tierRows } from '../lib/tierData';
 import { nav } from '../lib/nav';
 
 const blurbs: Record<string, string> = {
@@ -24,10 +26,31 @@ const blurbs: Record<string, string> = {
   'my-box': 'Import your Invokers and gear, saved only in your browser',
 };
 const sections = nav.filter((n) => blurbs[n.path]);
+
+// Banner: the campaign list's top picks, topped up with other Legendaries. Full-size art replaces the
+// portraits once it exists.
+const campaign = tierLists.find((l) => l.id === 'campaign');
+const topSlugs = campaign ? tierRows('invokers', campaign).flatMap((r) => r.picks.map((p) => p.slug)) : [];
+const bannerHeroes = [
+  ...topSlugs.map((slug) => heroes.find((h) => heroHref(h.id).endsWith(`/${slug}`))),
+  ...heroes.filter((h) => h.rarity === 'Legendary'),
+]
+  .filter((h, i, all): h is (typeof heroes)[number] => !!h && !!heroArt(h.id) && all.indexOf(h) === i)
+  .slice(0, 12);
+const splashes = heroes.filter((h) => heroSplash(h.id)).slice(0, 3);
 ---
 <Base title="Home">
   <h1>Invokers Companion</h1>
   <p class="lead">Guides, planners and reference for Invokers.</p>
+  {splashes.length > 0 ? (
+    <div class="banner splash" aria-hidden="true">
+      {splashes.map((h) => <a href={heroHref(h.id)} tabindex="-1"><img src={heroSplash(h.id)} alt="" /></a>)}
+    </div>
+  ) : (
+    <div class="banner" aria-hidden="true">
+      {bannerHeroes.map((h) => <a href={heroHref(h.id)} tabindex="-1" title={h.name}><img src={heroArt(h.id)} alt="" width="120" height="120" /></a>)}
+    </div>
+  )}
   <ul class="grid">
     {sections.map((n) => (
       <li>
@@ -44,6 +67,23 @@ const sections = nav.filter((n) => blurbs[n.path]);
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   .lead { color: var(--soft); margin: 0 0 24px; }
+  .banner {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 24px;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .banner a { flex: none; display: block; width: 120px; height: 120px; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .banner a:hover { border-color: var(--accent); }
+  .banner img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .banner.splash { mask-image: none; gap: 0; justify-content: center; }
+  .banner.splash a { width: auto; height: 280px; border: 0; background: none; flex: 1; }
+  .banner.splash img { object-fit: contain; object-position: bottom center; }
+  @media (max-width: 720px) {
+    .banner a { width: 76px; height: 76px; border-radius: 14px; }
+    .banner.splash a { height: 180px; }
+  }
   .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
   .grid a {
     display: grid;
