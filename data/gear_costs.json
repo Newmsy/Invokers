@@ -1,0 +1,8895 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-02",
+ "source": "Static game config (RelicData, AccessoryData).",
+ "gear": {
+  "upgrade": [
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 180,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 270,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 360,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 540,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 730,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 1090,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 1450,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 2180,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 2900,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 3630,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 4540,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 7260,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 10890,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 14520,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 18150,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 27220,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 36300,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 54450,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 72600,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 90740,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 190,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 280,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 380,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 570,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 750,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 1130,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 1510,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 2260,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 3020,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 3770,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 4720,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 7550,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 11320,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 15100,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 18870,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 28310,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 37750,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 56620,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 75500,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 94370,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 200,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 310,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 410,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 610,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 820,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 1220,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 1630,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 2450,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 3260,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 4080,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 5100,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 8150,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 12230,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 16310,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 20380,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 30580,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 40770,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 61150,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 81540,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 101920,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 230,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 340,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 460,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 680,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 910,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 1370,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 1830,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 2740,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 3650,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 4570,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 5710,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 9130,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 13700,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 18260,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 22830,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 34250,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 45660,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 68490,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 91320,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 114150,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 260,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 400,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 530,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 790,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 1060,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 1590,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 2120,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 3180,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 4240,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 5300,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 6620,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 10590,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 15890,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 21190,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 26480,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 39730,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 52970,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 79450,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 105940,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 132420,
+    "memorium": 18
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 260,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 390,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 520,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 780,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1040,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 1560,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 2070,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 3110,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 4150,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 5190,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 6480,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 10370,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 15560,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 20740,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 25930,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 38890,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 51850,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 77780,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 103710,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 129630,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 270,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 400,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 540,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 810,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1080,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 1620,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 2160,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 3240,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 4310,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 5390,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 6740,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 10790,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 16180,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 21570,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 26960,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 40450,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 53930,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 80890,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 107860,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 134820,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 290,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 440,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 580,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 870,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 1160,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 1750,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 2330,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 3490,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 4660,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 5820,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 7280,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 11650,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 17470,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 23300,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 29120,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 43680,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 58240,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 87360,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 116480,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 145610,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 330,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 490,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 650,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 980,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 1300,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 1960,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 2610,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 3910,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 5220,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 6520,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 8150,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 13050,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 19570,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 26090,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 32620,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 48920,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 65230,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 97850,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 130460,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 163080,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 380,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 570,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 760,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 1140,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 1510,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 2270,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 3030,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 4540,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 6050,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 7570,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 9460,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 15130,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 22700,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 30270,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 37830,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 56750,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 75670,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 113500,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 151340,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 189170,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 390,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 580,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 780,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1170,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1560,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 2330,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 3110,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 4670,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 6220,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 7780,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 9720,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 15560,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 23330,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 31110,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 38890,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 58340,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 77780,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 116670,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 155560,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 194450,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 400,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 610,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 810,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1210,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1620,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 2430,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 3240,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 4850,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 6470,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 8090,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 10110,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 16180,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 24270,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 32360,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 40450,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 60670,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 80890,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 121340,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 161780,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 202230,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 440,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 660,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 870,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 1310,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 1750,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 2620,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 3490,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 5240,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 6990,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 8740,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 10920,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 17470,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 26210,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 34950,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 43680,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 65520,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 87360,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 131040,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 174730,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 218410,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 490,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 730,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 980,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 1470,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 1960,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 2940,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 3910,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 5870,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 7830,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 9780,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 12230,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 19570,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 29350,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 39140,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 48920,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 73390,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 97850,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 146770,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 195690,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 244620,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 570,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 850,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1140,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 1700,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 2270,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 3410,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 4540,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 6810,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 9080,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 11350,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 14190,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 22700,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 34050,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 45400,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 56750,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 85130,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 113500,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 170250,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 227000,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 283760,
+    "memorium": 60
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 470,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 700,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 930,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1400,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1870,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 2800,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 3730,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 5600,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 7470,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 9330,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 11670,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 18670,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 28000,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 37330,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 46670,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 70000,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 93340,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 140010,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 186670,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 233340,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 490,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 730,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 970,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1460,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1940,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 2910,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 3880,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 5820,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 7770,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 9710,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 12130,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 19410,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 29120,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 38830,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 48540,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 72800,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 97070,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 145610,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 194140,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 242680,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 520,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 790,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1050,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 1570,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 2100,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 3150,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 4190,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 6290,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 8390,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 10480,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 13100,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 20970,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 31450,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 41930,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 52420,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 78630,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 104840,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 157250,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 209670,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 262090,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 590,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 880,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 1170,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 1760,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 2350,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 3520,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 4700,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 7040,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 9390,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 11740,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 14680,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 23480,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 35220,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 46970,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 58710,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 88060,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 117420,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 176120,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 234830,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 293540,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 680,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1020,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1360,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 2040,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 2720,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 4090,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 5450,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 8170,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 10900,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 13620,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 17030,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 27240,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 40860,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 54480,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 68100,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 102150,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 136200,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 204300,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 272410,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 340510,
+    "memorium": 137
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 600,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 890,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 1190,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1790,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 2390,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 3580,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 4770,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 7160,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 9540,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 11930,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 14910,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 23850,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 35780,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 47710,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 59630,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 89450,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 119260,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 178900,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 238530,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 298160,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 620,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 930,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 1240,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1860,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 2480,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 3720,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 4960,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 7440,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 9920,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 12400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 15500,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 24810,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 37210,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 49610,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 62020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 93030,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 124030,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 186050,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 248070,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 310090,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 670,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 1000,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1340,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 2010,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 2680,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 4020,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 5360,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 8040,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 10720,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 13400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 16740,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 26790,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 40190,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 53580,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 66980,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 100470,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 133960,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 200940,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 267910,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 334890,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 750,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 1130,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 1500,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 2250,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 3000,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 4500,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 6000,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 9000,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 12000,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 15000,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 18750,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 30010,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 45010,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 60010,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 75020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 112520,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 150030,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 225050,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 300060,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 375080,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 870,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1310,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1740,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 2610,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 3480,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 5220,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 6960,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 10440,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 13920,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 17400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 21750,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 34810,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 52210,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 69610,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 87020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 130530,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 174040,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 261060,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 348070,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 435090,
+    "memorium": 402
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 830,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 1240,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 1660,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 2490,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 3320,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 4980,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 6640,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 9960,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 13270,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 16590,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 20740,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 33190,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 49780,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 66370,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 82970,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 124450,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 165930,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 248900,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 331860,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 414830,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 860,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 1290,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 1730,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 2590,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 3450,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 5180,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 6900,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 10350,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 13810,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 17260,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 21570,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 34510,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 51770,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 69030,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 86280,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 129430,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 172570,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 258850,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 345140,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 431420,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 930,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 1400,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1860,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 2800,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 3730,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 5590,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 7450,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 11180,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 14910,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 18640,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 23300,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 37270,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 55910,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 74550,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 93190,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 139780,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 186370,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 279560,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 372750,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 465940,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 1040,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 1570,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 2090,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 3130,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 4170,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 6260,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 8350,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 12520,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 16700,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 20870,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 26090,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 41750,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 62620,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 83500,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 104370,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 156550,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 208740,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 313110,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 417480,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 521850,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 1210,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1820,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 2420,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 3630,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 4840,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 7260,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 9690,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 14530,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 19370,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 24210,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 30270,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 48430,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 72640,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 96860,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 121070,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 181600,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 242140,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 363210,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 484280,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 605350,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 1,
+    "gold": 1670,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 2,
+    "gold": 2510,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 3,
+    "gold": 3340,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 4,
+    "gold": 5010,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 5,
+    "gold": 6680,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 6,
+    "gold": 10020,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 7,
+    "gold": 13370,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 8,
+    "gold": 20050,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 9,
+    "gold": 26730,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 10,
+    "gold": 33420,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 11,
+    "gold": 41770,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 12,
+    "gold": 66830,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 13,
+    "gold": 100250,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 14,
+    "gold": 133660,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 15,
+    "gold": 167080,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 16,
+    "gold": 250610,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 17,
+    "gold": 334150,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 18,
+    "gold": 501230,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 19,
+    "gold": 668300,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Greater",
+    "toLevel": 20,
+    "gold": 835380,
+    "memorium": 754
+   }
+  ],
+  "sell": {
+   "One": {
+    "Common": {
+     "Gold": 1000
+    },
+    "Uncommon": {
+     "Gold": 1050
+    },
+    "Rare": {
+     "Gold": 1100
+    },
+    "Epic": {
+     "Gold": 1140
+    },
+    "Legendary": {
+     "Gold": 1190
+    }
+   },
+   "Two": {
+    "Common": {
+     "Gold": 1500
+    },
+    "Uncommon": {
+     "Gold": 1560
+    },
+    "Rare": {
+     "Gold": 1620
+    },
+    "Epic": {
+     "Gold": 1680
+    },
+    "Legendary": {
+     "Gold": 1750
+    }
+   },
+   "Three": {
+    "Common": {
+     "Gold": 2000
+    },
+    "Uncommon": {
+     "Gold": 2100
+    },
+    "Rare": {
+     "Gold": 2200
+    },
+    "Epic": {
+     "Gold": 2300
+    },
+    "Legendary": {
+     "Gold": 2400
+    }
+   },
+   "Four": {
+    "Common": {
+     "Gold": 10000
+    },
+    "Uncommon": {
+     "Gold": 10400
+    },
+    "Rare": {
+     "Gold": 10800
+    },
+    "Epic": {
+     "Gold": 11200
+    },
+    "Legendary": {
+     "Gold": 11600
+    }
+   },
+   "Five": {
+    "Common": {
+     "Gold": 25000
+    },
+    "Uncommon": {
+     "Gold": 28000
+    },
+    "Rare": {
+     "Gold": 31000
+    },
+    "Epic": {
+     "Gold": 47000
+    },
+    "Legendary": {
+     "Gold": 71000
+    }
+   },
+   "Six": {
+    "Common": {
+     "Gold": 50000
+    },
+    "Uncommon": {
+     "Gold": 55000
+    },
+    "Rare": {
+     "Gold": 61000
+    },
+    "Epic": {
+     "Gold": 92000
+    },
+    "Legendary": {
+     "Gold": 138000
+    },
+    "Greater": {
+     "Gold": 207000
+    }
+   }
+  },
+  "deactivate": {
+   "One": {
+    "Common": {
+     "Gold": 500
+    },
+    "Uncommon": {
+     "Gold": 520
+    },
+    "Rare": {
+     "Gold": 540
+    },
+    "Epic": {
+     "Gold": 560
+    },
+    "Legendary": {
+     "Gold": 580
+    }
+   },
+   "Two": {
+    "Common": {
+     "Gold": 1000
+    },
+    "Uncommon": {
+     "Gold": 1040
+    },
+    "Rare": {
+     "Gold": 1080
+    },
+    "Epic": {
+     "Gold": 1120
+    },
+    "Legendary": {
+     "Gold": 1160
+    }
+   },
+   "Three": {
+    "Common": {
+     "Gold": 2000
+    },
+    "Uncommon": {
+     "Gold": 2100
+    },
+    "Rare": {
+     "Gold": 2200
+    },
+    "Epic": {
+     "Gold": 2300
+    },
+    "Legendary": {
+     "Gold": 2400
+    }
+   },
+   "Four": {
+    "Common": {
+     "Gold": 10000
+    },
+    "Uncommon": {
+     "Gold": 10400
+    },
+    "Rare": {
+     "Gold": 10800
+    },
+    "Epic": {
+     "Gold": 11200
+    },
+    "Legendary": {
+     "Gold": 11600
+    }
+   },
+   "Five": {
+    "Common": {
+     "Gold": 40000
+    },
+    "Uncommon": {
+     "Gold": 42000
+    },
+    "Rare": {
+     "Gold": 44000
+    },
+    "Epic": {
+     "Gold": 46000
+    },
+    "Legendary": {
+     "Gold": 48000
+    }
+   },
+   "Six": {
+    "Common": {
+     "Gold": 60000
+    },
+    "Uncommon": {
+     "Gold": 62000
+    },
+    "Rare": {
+     "Gold": 64000
+    },
+    "Epic": {
+     "Gold": 67000
+    },
+    "Legendary": {
+     "Gold": 70000
+    },
+    "Greater": {
+     "Gold": 81000
+    }
+   }
+  },
+  "destroy": {
+   "One": {
+    "Memorium": 5
+   },
+   "Two": {
+    "Memorium": 18
+   },
+   "Three": {
+    "Memorium": 48
+   },
+   "Four": {
+    "Memorium": 75
+   },
+   "Five": {
+    "Memorium": 125
+   },
+   "Six": {
+    "Memorium": 250
+   }
+  }
+ },
+ "accessories": {
+  "upgrade": [
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 180,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 270,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 360,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 540,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 730,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 1090,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 1450,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 2180,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 2900,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 3630,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 4540,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 7260,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 10890,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 14520,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 18150,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 27220,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 36300,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 54450,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 72600,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 90740,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 190,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 280,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 380,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 570,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 750,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 1130,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 1510,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 2260,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 3020,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 3770,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 4720,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 7550,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 11320,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 15100,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 18870,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 28310,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 37750,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 56620,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 75500,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 94370,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 200,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 310,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 410,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 610,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 820,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 1220,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 1630,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 2450,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 3260,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 4080,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 5100,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 8150,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 12230,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 16310,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 20380,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 30580,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 40770,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 61150,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 81540,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 101920,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 230,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 340,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 460,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 680,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 910,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 1370,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 1830,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 2740,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 3650,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 4570,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 5710,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 9130,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 13700,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 18260,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 22830,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 34250,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 45660,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 68490,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 91320,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 114150,
+    "memorium": 18
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 260,
+    "memorium": 1
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 400,
+    "memorium": 2
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 530,
+    "memorium": 3
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 790,
+    "memorium": 4
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 1060,
+    "memorium": 5
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 1590,
+    "memorium": 6
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 2120,
+    "memorium": 8
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 3180,
+    "memorium": 9
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 4240,
+    "memorium": 10
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 5300,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 6620,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 10590,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 15890,
+    "memorium": 12
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 21190,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 26480,
+    "memorium": 13
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 39730,
+    "memorium": 14
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 52970,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 79450,
+    "memorium": 15
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 105940,
+    "memorium": 16
+   },
+   {
+    "rank": "One",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 132420,
+    "memorium": 18
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 260,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 390,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 520,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 780,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1040,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 1560,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 2070,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 3110,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 4150,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 5190,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 6480,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 10370,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 15560,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 20740,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 25930,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 38890,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 51850,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 77780,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 103710,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 129630,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 270,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 400,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 540,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 810,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1080,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 1620,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 2160,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 3240,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 4310,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 5390,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 6740,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 10790,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 16180,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 21570,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 26960,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 40450,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 53930,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 80890,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 107860,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 134820,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 290,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 440,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 580,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 870,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 1160,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 1750,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 2330,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 3490,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 4660,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 5820,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 7280,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 11650,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 17470,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 23300,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 29120,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 43680,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 58240,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 87360,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 116480,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 145610,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 330,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 490,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 650,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 980,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 1300,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 1960,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 2610,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 3910,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 5220,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 6520,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 8150,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 13050,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 19570,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 26090,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 32620,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 48920,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 65230,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 97850,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 130460,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 163080,
+    "memorium": 34
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 380,
+    "memorium": 3
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 570,
+    "memorium": 5
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 760,
+    "memorium": 7
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 1140,
+    "memorium": 9
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 1510,
+    "memorium": 11
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 2270,
+    "memorium": 13
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 3030,
+    "memorium": 15
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 4540,
+    "memorium": 17
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 6050,
+    "memorium": 19
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 7570,
+    "memorium": 21
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 9460,
+    "memorium": 23
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 15130,
+    "memorium": 24
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 22700,
+    "memorium": 25
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 30270,
+    "memorium": 26
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 37830,
+    "memorium": 27
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 56750,
+    "memorium": 28
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 75670,
+    "memorium": 30
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 113500,
+    "memorium": 31
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 151340,
+    "memorium": 32
+   },
+   {
+    "rank": "Two",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 189170,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 390,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 580,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 780,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1170,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1560,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 2330,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 3110,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 4670,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 6220,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 7780,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 9720,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 15560,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 23330,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 31110,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 38890,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 58340,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 77780,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 116670,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 155560,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 194450,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 400,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 610,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 810,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1210,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1620,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 2430,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 3240,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 4850,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 6470,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 8090,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 10110,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 16180,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 24270,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 32360,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 40450,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 60670,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 80890,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 121340,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 161780,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 202230,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 440,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 660,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 870,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 1310,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 1750,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 2620,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 3490,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 5240,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 6990,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 8740,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 10920,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 17470,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 26210,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 34950,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 43680,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 65520,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 87360,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 131040,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 174730,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 218410,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 490,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 730,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 980,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 1470,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 1960,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 2940,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 3910,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 5870,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 7830,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 9780,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 12230,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 19570,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 29350,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 39140,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 48920,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 73390,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 97850,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 146770,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 195690,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 244620,
+    "memorium": 60
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 570,
+    "memorium": 5
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 850,
+    "memorium": 8
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1140,
+    "memorium": 12
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 1700,
+    "memorium": 15
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 2270,
+    "memorium": 19
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 3410,
+    "memorium": 22
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 4540,
+    "memorium": 26
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 6810,
+    "memorium": 30
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 9080,
+    "memorium": 34
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 11350,
+    "memorium": 39
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 14190,
+    "memorium": 40
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 22700,
+    "memorium": 42
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 34050,
+    "memorium": 43
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 45400,
+    "memorium": 45
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 56750,
+    "memorium": 47
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 85130,
+    "memorium": 50
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 113500,
+    "memorium": 52
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 170250,
+    "memorium": 54
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 227000,
+    "memorium": 57
+   },
+   {
+    "rank": "Three",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 283760,
+    "memorium": 60
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 470,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 700,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 930,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1400,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 1870,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 2800,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 3730,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 5600,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 7470,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 9330,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 11670,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 18670,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 28000,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 37330,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 46670,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 70000,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 93340,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 140010,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 186670,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 233340,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 490,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 730,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 970,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1460,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 1940,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 2910,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 3880,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 5820,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 7770,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 9710,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 12130,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 19410,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 29120,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 38830,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 48540,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 72800,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 97070,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 145610,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 194140,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 242680,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 520,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 790,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1050,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 1570,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 2100,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 3150,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 4190,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 6290,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 8390,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 10480,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 13100,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 20970,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 31450,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 41930,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 52420,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 78630,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 104840,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 157250,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 209670,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 262090,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 590,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 880,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 1170,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 1760,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 2350,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 3520,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 4700,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 7040,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 9390,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 11740,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 14680,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 23480,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 35220,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 46970,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 58710,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 88060,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 117420,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 176120,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 234830,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 293540,
+    "memorium": 137
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 680,
+    "memorium": 12
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1020,
+    "memorium": 20
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1360,
+    "memorium": 28
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 2040,
+    "memorium": 36
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 2720,
+    "memorium": 44
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 4090,
+    "memorium": 52
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 5450,
+    "memorium": 61
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 8170,
+    "memorium": 70
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 10900,
+    "memorium": 80
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 13620,
+    "memorium": 92
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 17030,
+    "memorium": 96
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 27240,
+    "memorium": 100
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 40860,
+    "memorium": 104
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 54480,
+    "memorium": 108
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 68100,
+    "memorium": 112
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 102150,
+    "memorium": 117
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 136200,
+    "memorium": 122
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 204300,
+    "memorium": 127
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 272410,
+    "memorium": 132
+   },
+   {
+    "rank": "Four",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 340510,
+    "memorium": 137
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 600,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 890,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 1190,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 1790,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 2390,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 3580,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 4770,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 7160,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 9540,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 11930,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 14910,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 23850,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 35780,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 47710,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 59630,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 89450,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 119260,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 178900,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 238530,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 298160,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 620,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 930,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 1240,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 1860,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 2480,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 3720,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 4960,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 7440,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 9920,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 12400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 15500,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 24810,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 37210,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 49610,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 62020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 93030,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 124030,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 186050,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 248070,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 310090,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 670,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 1000,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1340,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 2010,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 2680,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 4020,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 5360,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 8040,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 10720,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 13400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 16740,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 26790,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 40190,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 53580,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 66980,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 100470,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 133960,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 200940,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 267910,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 334890,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 750,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 1130,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 1500,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 2250,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 3000,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 4500,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 6000,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 9000,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 12000,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 15000,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 18750,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 30010,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 45010,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 60010,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 75020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 112520,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 150030,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 225050,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 300060,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 375080,
+    "memorium": 402
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 870,
+    "memorium": 15
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1310,
+    "memorium": 23
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 1740,
+    "memorium": 32
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 2610,
+    "memorium": 41
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 3480,
+    "memorium": 50
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 5220,
+    "memorium": 58
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 6960,
+    "memorium": 68
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 10440,
+    "memorium": 78
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 13920,
+    "memorium": 89
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 17400,
+    "memorium": 102
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 21750,
+    "memorium": 202
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 34810,
+    "memorium": 235
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 52210,
+    "memorium": 268
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 69610,
+    "memorium": 278
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 87020,
+    "memorium": 288
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 130530,
+    "memorium": 298
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 174040,
+    "memorium": 310
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 261060,
+    "memorium": 322
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 348070,
+    "memorium": 361
+   },
+   {
+    "rank": "Five",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 435090,
+    "memorium": 402
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 1,
+    "gold": 830,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 2,
+    "gold": 1240,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 3,
+    "gold": 1660,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 4,
+    "gold": 2490,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 5,
+    "gold": 3320,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 6,
+    "gold": 4980,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 7,
+    "gold": 6640,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 8,
+    "gold": 9960,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 9,
+    "gold": 13270,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 10,
+    "gold": 16590,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 11,
+    "gold": 20740,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 12,
+    "gold": 33190,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 13,
+    "gold": 49780,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 14,
+    "gold": 66370,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 15,
+    "gold": 82970,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 16,
+    "gold": 124450,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 17,
+    "gold": 165930,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 18,
+    "gold": 248900,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 19,
+    "gold": 331860,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Common",
+    "toLevel": 20,
+    "gold": 414830,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 1,
+    "gold": 860,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 2,
+    "gold": 1290,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 3,
+    "gold": 1730,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 4,
+    "gold": 2590,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 5,
+    "gold": 3450,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 6,
+    "gold": 5180,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 7,
+    "gold": 6900,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 8,
+    "gold": 10350,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 9,
+    "gold": 13810,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 10,
+    "gold": 17260,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 11,
+    "gold": 21570,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 12,
+    "gold": 34510,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 13,
+    "gold": 51770,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 14,
+    "gold": 69030,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 15,
+    "gold": 86280,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 16,
+    "gold": 129430,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 17,
+    "gold": 172570,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 18,
+    "gold": 258850,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 19,
+    "gold": 345140,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Uncommon",
+    "toLevel": 20,
+    "gold": 431420,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 1,
+    "gold": 930,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 2,
+    "gold": 1400,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 3,
+    "gold": 1860,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 4,
+    "gold": 2800,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 5,
+    "gold": 3730,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 6,
+    "gold": 5590,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 7,
+    "gold": 7450,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 8,
+    "gold": 11180,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 9,
+    "gold": 14910,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 10,
+    "gold": 18640,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 11,
+    "gold": 23300,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 12,
+    "gold": 37270,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 13,
+    "gold": 55910,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 14,
+    "gold": 74550,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 15,
+    "gold": 93190,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 16,
+    "gold": 139780,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 17,
+    "gold": 186370,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 18,
+    "gold": 279560,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 19,
+    "gold": 372750,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Rare",
+    "toLevel": 20,
+    "gold": 465940,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 1,
+    "gold": 1040,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 2,
+    "gold": 1570,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 3,
+    "gold": 2090,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 4,
+    "gold": 3130,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 5,
+    "gold": 4170,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 6,
+    "gold": 6260,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 7,
+    "gold": 8350,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 8,
+    "gold": 12520,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 9,
+    "gold": 16700,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 10,
+    "gold": 20870,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 11,
+    "gold": 26090,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 12,
+    "gold": 41750,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 13,
+    "gold": 62620,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 14,
+    "gold": 83500,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 15,
+    "gold": 104370,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 16,
+    "gold": 156550,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 17,
+    "gold": 208740,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 18,
+    "gold": 313110,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 19,
+    "gold": 417480,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Epic",
+    "toLevel": 20,
+    "gold": 521850,
+    "memorium": 754
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 1,
+    "gold": 1210,
+    "memorium": 28
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 2,
+    "gold": 1820,
+    "memorium": 43
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 3,
+    "gold": 2420,
+    "memorium": 60
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 4,
+    "gold": 3630,
+    "memorium": 76
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 5,
+    "gold": 4840,
+    "memorium": 93
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 6,
+    "gold": 7260,
+    "memorium": 108
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 7,
+    "gold": 9690,
+    "memorium": 127
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 8,
+    "gold": 14530,
+    "memorium": 146
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 9,
+    "gold": 19370,
+    "memorium": 166
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 10,
+    "gold": 24210,
+    "memorium": 192
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 11,
+    "gold": 30270,
+    "memorium": 379
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 12,
+    "gold": 48430,
+    "memorium": 441
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 13,
+    "gold": 72640,
+    "memorium": 503
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 14,
+    "gold": 96860,
+    "memorium": 522
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 15,
+    "gold": 121070,
+    "memorium": 540
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 16,
+    "gold": 181600,
+    "memorium": 559
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 17,
+    "gold": 242140,
+    "memorium": 582
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 18,
+    "gold": 363210,
+    "memorium": 604
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 19,
+    "gold": 484280,
+    "memorium": 677
+   },
+   {
+    "rank": "Six",
+    "rarity": "Legendary",
+    "toLevel": 20,
+    "gold": 605350,
+    "memorium": 754
+   }
+  ],
+  "sell": {
+   "One": {
+    "Common": {
+     "Gold": 1000
+    },
+    "Uncommon": {
+     "Gold": 1050
+    },
+    "Rare": {
+     "Gold": 1100
+    },
+    "Epic": {
+     "Gold": 1140
+    },
+    "Legendary": {
+     "Gold": 1190
+    }
+   },
+   "Two": {
+    "Common": {
+     "Gold": 1500
+    },
+    "Uncommon": {
+     "Gold": 1560
+    },
+    "Rare": {
+     "Gold": 1620
+    },
+    "Epic": {
+     "Gold": 1680
+    },
+    "Legendary": {
+     "Gold": 1750
+    }
+   },
+   "Three": {
+    "Common": {
+     "Gold": 2000
+    },
+    "Uncommon": {
+     "Gold": 2100
+    },
+    "Rare": {
+     "Gold": 2200
+    },
+    "Epic": {
+     "Gold": 2300
+    },
+    "Legendary": {
+     "Gold": 2400
+    }
+   },
+   "Four": {
+    "Common": {
+     "Gold": 10000
+    },
+    "Uncommon": {
+     "Gold": 10400
+    },
+    "Rare": {
+     "Gold": 10800
+    },
+    "Epic": {
+     "Gold": 11200
+    },
+    "Legendary": {
+     "Gold": 11600
+    }
+   },
+   "Five": {
+    "Common": {
+     "Gold": 25000
+    },
+    "Uncommon": {
+     "Gold": 28000
+    },
+    "Rare": {
+     "Gold": 31000
+    },
+    "Epic": {
+     "Gold": 47000
+    },
+    "Legendary": {
+     "Gold": 71000
+    }
+   },
+   "Six": {
+    "Common": {
+     "Gold": 50000
+    },
+    "Uncommon": {
+     "Gold": 55000
+    },
+    "Rare": {
+     "Gold": 61000
+    },
+    "Epic": {
+     "Gold": 92000
+    },
+    "Legendary": {
+     "Gold": 138000
+    }
+   }
+  }
+ },
+ "unconfirmed": [
+  "destroy: Memorium per rank; the config name doesn't say whether destroying gives or costs it (in game, dismantling gear returns Memorium).",
+  "deactivate: Gold per rank and rarity; what 'deactivate' does in the UI is not stated."
+ ]
+}
