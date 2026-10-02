@@ -38,6 +38,8 @@ jobs:
           PUBLIC_SUPABASE_URL: ${{ vars.PUBLIC_SUPABASE_URL }}
           PUBLIC_SUPABASE_ANON_KEY: ${{ vars.PUBLIC_SUPABASE_ANON_KEY }}
           PUBLIC_AUTH_PROVIDERS: ${{ vars.PUBLIC_AUTH_PROVIDERS }}
+      # Every link between pages (and to an #anchor) must lead somewhere.
+      - run: node scripts/check-links.ts
       - uses: actions/upload-artifact@v4
         with:
           name: site
