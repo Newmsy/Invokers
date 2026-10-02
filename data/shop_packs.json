@@ -1,0 +1,3767 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-02",
+ "source": "The game's local shop cache (every pack the server has sent this client).",
+ "packs": [
+  {
+   "id": 3,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 5,
+    "sku": "prod.anima.currency_gems_5_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 840
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem1",
+   "platform": "All",
+   "replacesPackId": 10
+  },
+  {
+   "id": 4,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 10,
+    "sku": "prod.anima.currency_gems_10_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 1680
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem2",
+   "platform": "All",
+   "replacesPackId": 11
+  },
+  {
+   "id": 6,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.currency_gems_20_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 3480
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem3",
+   "platform": "All",
+   "replacesPackId": 12
+  },
+  {
+   "id": 7,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.currency_gems_30_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 5480
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem4",
+   "platform": "All",
+   "replacesPackId": 13
+  },
+  {
+   "id": 8,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.currency_gems_50_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 9640
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem5",
+   "platform": "All",
+   "replacesPackId": 14
+  },
+  {
+   "id": 9,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.currency_gems_100_bonus",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 20000
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "bonus": 200,
+   "artLayout": "S_Currency_Gem6",
+   "platform": "All",
+   "replacesPackId": 15
+  },
+  {
+   "id": 10,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 5,
+    "sku": "prod.anima.currency_gems_5",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 420
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem1",
+   "platform": "All"
+  },
+  {
+   "id": 11,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 10,
+    "sku": "prod.anima.currency_gems_10",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 840
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem2",
+   "platform": "All"
+  },
+  {
+   "id": 12,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.currency_gems_20",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 1740
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem3",
+   "platform": "All"
+  },
+  {
+   "id": 13,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.currency_gems_30",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2740
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem4",
+   "platform": "All"
+  },
+  {
+   "id": 14,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.currency_gems_50",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4820
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem5",
+   "platform": "All"
+  },
+  {
+   "id": 15,
+   "name": "{0} GEMS",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "Currency",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.currency_gems_100",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 10000
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Currency_Gem6",
+   "platform": "All"
+  },
+  {
+   "id": 16,
+   "name": "Destiny Star",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 300
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_DestinyStar1"
+  },
+  {
+   "id": 17,
+   "name": "10 Destiny Stars",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 3000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 10
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_DestinyStar2"
+  },
+  {
+   "id": 18,
+   "name": "Wonder Orb",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_WonderOrb1"
+  },
+  {
+   "id": 19,
+   "name": "10 Wonder Orbs",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 5000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 10
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_WonderOrb2"
+  },
+  {
+   "id": 20,
+   "name": "Miracle Orb",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 5000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_MiracleOrb",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_MiracleOrb1"
+  },
+  {
+   "id": 21,
+   "name": "3 Miracle Orbs",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 15000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_MiracleOrb",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_MiracleOrb2"
+  },
+  {
+   "id": 22,
+   "name": "1-Day XP Boost",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 400
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Booster_HeroXp1d50p",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_XPBoost1"
+  },
+  {
+   "id": 23,
+   "name": "3-Day XP Boost",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 800
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Booster_HeroXp3d50p",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_XPBoost3"
+  },
+  {
+   "id": 24,
+   "name": "3 Rare Codexes",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Rare",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 4,
+   "artLayout": "S_GemShop_RareHeroSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 25,
+   "name": "3 Epic Codexes",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Epic",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 2,
+   "artLayout": "S_GemShop_EpicHeroSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 26,
+   "name": "3 Legendary Codexes",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Legendary",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_LegHeroSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 27,
+   "name": "3 Rare Prisms",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Rare",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 4,
+   "artLayout": "S_GemShop_RareAnimaSkillUp"
+  },
+  {
+   "id": 28,
+   "name": "3 Epic Prisms",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Epic",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 2,
+   "artLayout": "S_GemShop_EpicAnimaSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 29,
+   "name": "3 Legendary Prisms",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Legendary",
+     "amount": 3
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_LegAnimaSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 30,
+   "name": "1.6M Gold",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 1600000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 25,
+   "artLayout": "S_GemShop_Gold1",
+   "platform": "All"
+  },
+  {
+   "id": 31,
+   "name": "4M Gold",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 4000000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 25,
+   "artLayout": "S_GemShop_Gold2",
+   "platform": "All"
+  },
+  {
+   "id": 32,
+   "name": "100 Energy",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 150
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 100
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_EnergyRefill",
+   "platform": "All"
+  },
+  {
+   "id": 35,
+   "name": "Rare Codexes",
+   "description": "Contains 1 Rare Codex",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 5,
+    "sku": "prod.anima.offer_hero_skillup_rare",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_RareHeroSkillUp"
+  },
+  {
+   "id": 36,
+   "name": "Epic Codex Mix",
+   "description": "Contains 1 Epic Codex",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 15,
+    "sku": "prod.anima.offer_hero_skillup_epic",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Epic",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Codex_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_EpicHeroSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 37,
+   "name": "Legendary Prism Mix",
+   "description": "Contains 1 Legendary Prism",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 25,
+    "sku": "prod.anima.offer_titan_skillup_leg",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Legendary",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Prism_Epic",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Prism_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_LegAnimaSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 38,
+   "name": "Rare Prisms",
+   "description": "Contains 1 Rare Prism",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 5,
+    "sku": "prod.anima.offer_titan_skillup_rare",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_RareAnimaSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 39,
+   "name": "Epic Prism Mix",
+   "description": "Contains 1 Epic Prism",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 15,
+    "sku": "prod.anima.offer_titan_skillup_epic",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Epic",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Prism_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_EpicAnimaSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 41,
+   "name": "Fate Star",
+   "description": "Contains 1 Fate Star",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_FateStar",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "PerWeek",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_SpecialOffers_FateStar1",
+   "platform": "All"
+  },
+  {
+   "id": 42,
+   "name": "Destiny Pack",
+   "description": "Contains 1 Destiny Star and 900 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 10,
+    "sku": "prod.anima.offer_destiny_star_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 900
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DestinyStar1",
+   "platform": "All"
+  },
+  {
+   "id": 43,
+   "name": "Destiny Hyper Pack",
+   "description": "Contains 3 Destiny Stars and 2,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.offer_destiny_star_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 3
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DestinyStar2",
+   "platform": "All"
+  },
+  {
+   "id": 44,
+   "name": "Destiny Super Pack",
+   "description": "Contains 6 Destiny Stars and 4,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.offer_destiny_star_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 6
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DestinyStar3",
+   "platform": "All"
+  },
+  {
+   "id": 45,
+   "name": "Destiny Ultra Pack",
+   "description": "Contains 15 Destiny Stars and 9,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.offer_destiny_star_4",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 15
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 9500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DestinyStar4",
+   "platform": "All"
+  },
+  {
+   "id": 46,
+   "name": "Radiant Pack",
+   "description": "Contains 1 Radiant Star and 2,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.offer_radiant_star_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_UmbralStar1",
+   "platform": "All"
+  },
+  {
+   "id": 47,
+   "name": "Radiant Hyper Pack",
+   "description": "Contains 2 Radiant Stars and 4,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.offer_radiant_star_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_UmbralStar2",
+   "platform": "All"
+  },
+  {
+   "id": 48,
+   "name": "Radiant Super Pack",
+   "description": "Contains 3 Radiant Stars and 7,000 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 75,
+    "sku": "prod.anima.offer_radiant_star_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 3
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 7000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_UmbralStar3",
+   "platform": "All"
+  },
+  {
+   "id": 49,
+   "name": "Radiant Ultra Pack",
+   "description": "Contains 5 Radiant Stars and 9,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.offer_radiant_star_4",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 5
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 9500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_UmbralStar4",
+   "platform": "All"
+  },
+  {
+   "id": 50,
+   "name": "Gold Pack",
+   "description": "Contains 500,000 Gold and 900 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 10,
+    "sku": "prod.anima.offer_gold_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 2000000
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 900
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_Gold1",
+   "platform": "All"
+  },
+  {
+   "id": 51,
+   "name": "Hyper Gold Pack",
+   "description": "Contains 1,500,000 Gold and 2,700 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.offer_gold_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 6000000
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2700
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_Gold2",
+   "platform": "All"
+  },
+  {
+   "id": 52,
+   "name": "Super Gold Pack",
+   "description": "Contains 2,500,000 Gold and 4,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.offer_gold_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 10000000
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_Gold3",
+   "platform": "All"
+  },
+  {
+   "id": 53,
+   "name": "Ultra Gold Pack",
+   "description": "Contains 5,000,000 Gold and 9,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.offer_gold_4",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 20000000
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 9500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_Gold4",
+   "platform": "All"
+  },
+  {
+   "id": 127,
+   "name": "Wonder Pack",
+   "description": "Contains 1 Wonder Orb and 2,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.offer_wonder_orb_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_WonderOrb1",
+   "platform": "All"
+  },
+  {
+   "id": 128,
+   "name": "Hyper Wonder Pack",
+   "description": "Contains 2 Wonder Orbs and 5,000 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 60,
+    "sku": "prod.anima.offer_wonder_orb_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 5000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_WonderOrb2",
+   "platform": "All"
+  },
+  {
+   "id": 129,
+   "name": "Super Wonder Pack",
+   "description": "Contains 3 Wonder Orbs and 8,000 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 90,
+    "sku": "prod.anima.offer_wonder_orb_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 3
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 8000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_WonderOrb3",
+   "platform": "All"
+  },
+  {
+   "id": 130,
+   "name": "Ultra Wonder Pack",
+   "description": "Contains 4 Wonder Orbs and 11,000 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 120,
+    "sku": "prod.anima.offer_wonder_orb_4",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 4
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 11000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_WonderOrb4",
+   "platform": "All"
+  },
+  {
+   "id": 131,
+   "name": "Dream Pack",
+   "description": "Contains 1 Dream Orb and 1,300 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 15,
+    "sku": "prod.anima.offer_dream_orb_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DreamOrb",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 1300
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DreamOrb1",
+   "platform": "All"
+  },
+  {
+   "id": 132,
+   "name": "Hyper Dream Pack",
+   "description": "Contains 2 Dream Orbs and 2,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.offer_dream_orb_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DreamOrb",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DreamOrb2",
+   "platform": "All"
+  },
+  {
+   "id": 133,
+   "name": "Super Dream Pack",
+   "description": "Contains 3 Dream Orbs and 4,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 45,
+    "sku": "prod.anima.offer_dream_orb_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DreamOrb",
+     "amount": 3
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DreamOrb3",
+   "platform": "All"
+  },
+  {
+   "id": 134,
+   "name": "Ultra Dream Pack",
+   "description": "Contains 6 Dream Orbs and 9,500 Gems",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.offer_dream_orb_4",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DreamOrb",
+     "amount": 6
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 9500
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_DreamOrb4",
+   "platform": "All"
+  },
+  {
+   "id": 2043,
+   "name": "1-Day Gold Boost",
+   "description": "Increase the amount of Gold you win from battles by 50%!",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 400
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Booster_Gold1d50p",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_GoldBoost1",
+   "platform": "All"
+  },
+  {
+   "id": 2044,
+   "name": "3-Day Gold Boost",
+   "description": "Increase the amount of Gold you win from battles by 50%!",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 800
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Booster_Gold3d50p",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_GoldBoost3",
+   "platform": "All"
+  },
+  {
+   "id": 2046,
+   "name": "Wild Star",
+   "description": "Contains 1 Wild Star",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WildStar",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Cooldown",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_WildStar1",
+   "platform": "All"
+  },
+  {
+   "id": 2047,
+   "name": "30 Energy",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 30
+    }
+   ],
+   "purchaseLimit": "PerDay",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_EnergyRefill"
+  },
+  {
+   "id": 2048,
+   "name": "10K Memorium",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Memorium",
+     "amount": 10000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 25,
+   "artLayout": "S_GemShop_Memorium2",
+   "platform": "All"
+  },
+  {
+   "id": 2049,
+   "name": "4K Memorium",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 500
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Memorium",
+     "amount": 4000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 25,
+   "artLayout": "S_GemShop_Memorium1",
+   "platform": "All"
+  },
+  {
+   "id": 2052,
+   "name": "QUICK TIPS",
+   "kind": "Fixed",
+   "type": "FaqReward",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 5000
+    }
+   ],
+   "purchaseLimit": "Cooldown",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_FAQReward"
+  },
+  {
+   "id": 2053,
+   "name": "Legendary Codex Mix",
+   "description": "Contains 1 Legendary Codex",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": 25,
+    "sku": "prod.anima.offer_hero_skillup_leg",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Legendary",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Codex_Epic",
+     "amount": 9
+    },
+    {
+     "type": "resource",
+     "id": "Codex_Rare",
+     "amount": 9
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_LegHeroSkillUp",
+   "platform": "All"
+  },
+  {
+   "id": 2056,
+   "name": "100 Energy",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 100
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 100
+    }
+   ],
+   "purchaseLimit": "PerDay",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_EnergyRefill",
+   "platform": "All",
+   "replacesPackId": 32
+  },
+  {
+   "id": 2057,
+   "name": "100 Energy",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 50
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 100
+    }
+   ],
+   "purchaseLimit": "PerDay",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_GemShop_EnergyRefill",
+   "platform": "All",
+   "replacesPackId": 2056
+  },
+  {
+   "id": 2060,
+   "name": "Deluxe Starter Pack",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "HotDeals",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.starter_pack_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DivineStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 50
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_StarStarterSet"
+  },
+  {
+   "id": 2062,
+   "name": "Titan Starter Set II",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "HotDeals",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.starter_pack_5",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_MiracleOrb",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 16
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "S_OrbStarterSet"
+  },
+  {
+   "id": 2063,
+   "name": "Mega Ascension Pack",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "HotDeals",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.hero_up_pack_2",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "ASC_Stars5",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "XpPotion_Big",
+     "amount": 10
+    },
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 300000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 10,
+   "artLayout": "S_SpecialOffers_Gold3"
+  },
+  {
+   "id": 2064,
+   "name": "Deluxe Ascension Pack",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "HotDeals",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.hero_up_pack_3",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "ASC_Stars5",
+     "amount": 5
+    },
+    {
+     "type": "resource",
+     "id": "XpPotion_Big",
+     "amount": 20
+    },
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 600000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 5,
+   "artLayout": "S_SpecialOffers_Gold4"
+  },
+  {
+   "id": 2065,
+   "name": "Ascension Pack",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "HotDeals",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.hero_up_pack_1",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "ASC_Stars4",
+     "amount": 4
+    },
+    {
+     "type": "resource",
+     "id": "XpPotion_Big",
+     "amount": 10
+    },
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 150000
+    }
+   ],
+   "purchaseLimit": "PerMonth",
+   "purchaseLimitCount": 20,
+   "artLayout": "S_SpecialOffers_Gold2"
+  },
+  {
+   "id": 2286,
+   "name": "Multi-Battle Tokens",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 100
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 40
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Resource-11"
+  },
+  {
+   "id": 2386,
+   "name": "30 Energy",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "SpecialOffers",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 30
+    }
+   ],
+   "purchaseLimit": "Cooldown",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_EnergyRefill",
+   "platform": "All"
+  },
+  {
+   "id": 3427,
+   "name": "Arena Tokens",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 50
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Arena_Token",
+     "amount": 10
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_Resource-21"
+  },
+  {
+   "id": 3668,
+   "name": "ENERGY BOOSTER PACK",
+   "description": "Keep battling with Energy and Multi-Battle Tokens.",
+   "shortName": "Energy Booster",
+   "kind": "Trigger",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.trigger_pack_30",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 3600
+    },
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 200
+    }
+   ],
+   "purchaseLimit": "PerAccountWithDuration",
+   "purchaseLimitCount": 5,
+   "durationHours": 4.0,
+   "artLayout": "Shop_ExclusivePack_Energy",
+   "platform": "All"
+  },
+  {
+   "id": 5294,
+   "name": "SUMMON CALENDAR",
+   "description": "Boost your Collection with 5 Days of valuable Stars and Gems. Summon now!",
+   "shortName": "Summon 5d",
+   "kind": "Fixed",
+   "type": "Retention",
+   "tab": "Retention",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.progression_pack_30",
+    "resources": {}
+   },
+   "steps": [
+    {
+     "step": 1,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "SI_DivineStar",
+       "amount": 1
+      },
+      {
+       "type": "resource",
+       "id": "SI_FateStar",
+       "amount": 5,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 200,
+       "secondary": true
+      }
+     ],
+     "action": null,
+     "requiredAmount": 0
+    },
+    {
+     "step": 2,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "SI_DestinyStar",
+       "amount": 3,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "SI_FateStar",
+       "amount": 5,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 200,
+       "secondary": true
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 3,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "SI_DestinyStar",
+       "amount": 3,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "SI_FateStar",
+       "amount": 5,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 200,
+       "secondary": true
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 4,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "SI_DestinyStar",
+       "amount": 3,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "SI_FateStar",
+       "amount": 5,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 200,
+       "secondary": true
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 5,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "SI_RadiantStar",
+       "amount": 2
+      },
+      {
+       "type": "resource",
+       "id": "SI_DestinyStar",
+       "amount": 3,
+       "secondary": true
+      },
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 200,
+       "secondary": true
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    }
+   ],
+   "purchaseLimit": "OneUntilActive",
+   "purchaseLimitCount": 0,
+   "artLayout": "Shop_ExclusivePack_Stars"
+  },
+  {
+   "id": 5295,
+   "name": "GEM CALENDAR",
+   "description": "Supercharge your game with a ton of Gems every day for 30 Days.",
+   "shortName": "Gems 30d",
+   "kind": "Fixed",
+   "type": "Retention",
+   "tab": "Retention",
+   "price": {
+    "usd": 10,
+    "sku": "prod.anima.progression_pack_10",
+    "resources": {}
+   },
+   "steps": [
+    {
+     "step": 1,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 300
+      }
+     ],
+     "action": null,
+     "requiredAmount": 0
+    },
+    {
+     "step": 2,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 3,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 4,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 5,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 6,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 7,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 50
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 8,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 250
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 9,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 10,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 11,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 12,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 13,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 14,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 60
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 15,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 250
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 16,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 17,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 18,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 19,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 20,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 21,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 70
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 22,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 260
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 23,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 24,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 25,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 26,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 27,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 28,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 29,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 80
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 30,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Gem",
+       "amount": 300
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    }
+   ],
+   "purchaseLimit": "OneUntilActive",
+   "purchaseLimitCount": 0,
+   "artLayout": "Shop_ExclusivePack_Gems"
+  },
+  {
+   "id": 5296,
+   "name": "WEEKLY BATTLE CALENDAR",
+   "description": "Kickstart your progress with 7 Days of Energy and Multi-Battles.",
+   "shortName": "Battle 7d",
+   "kind": "Fixed",
+   "type": "Retention",
+   "tab": "Retention",
+   "price": {
+    "usd": 15,
+    "sku": "prod.anima.progression_pack_15",
+    "resources": {}
+   },
+   "steps": [
+    {
+     "step": 1,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": null,
+     "requiredAmount": 0
+    },
+    {
+     "step": 2,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 3,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 4,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 5,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 6,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 7,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    }
+   ],
+   "purchaseLimit": "OneUntilActive",
+   "purchaseLimitCount": 0,
+   "artLayout": "Shop_ExclusivePack_Energy"
+  },
+  {
+   "id": 5297,
+   "name": "MONTHLY BATTLE CALENDAR",
+   "description": "Maximize your progress with 30 Days of Energy and Multi-Battles!",
+   "shortName": "Battle 30d",
+   "kind": "Fixed",
+   "type": "Retention",
+   "tab": "Retention",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.progression_pack_50",
+    "resources": {}
+   },
+   "steps": [
+    {
+     "step": 1,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": null,
+     "requiredAmount": 0
+    },
+    {
+     "step": 2,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 3,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 4,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 5,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 6,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 7,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 8,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 9,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 10,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 11,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 12,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 13,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 14,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 15,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 16,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 17,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 18,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 19,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 20,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 21,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 22,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 23,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 24,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 25,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 26,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 27,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 28,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 29,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    },
+    {
+     "step": 30,
+     "rewards": [
+      {
+       "type": "resource",
+       "id": "Energy",
+       "amount": 400
+      },
+      {
+       "type": "resource",
+       "id": "Token_MultiBattle",
+       "amount": 40
+      }
+     ],
+     "action": "Login",
+     "requiredAmount": 1
+    }
+   ],
+   "purchaseLimit": "OneUntilActive",
+   "purchaseLimitCount": 0,
+   "artLayout": "Shop_ExclusivePack_Energy"
+  },
+  {
+   "id": 5750,
+   "name": "FREE GEAR REMOVAL",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "RelicSwapPass_1d",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Cooldown",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_RelicSwapPass1",
+   "platform": "All"
+  },
+  {
+   "id": 5751,
+   "name": "GEAR REMOVAL",
+   "kind": "Fixed",
+   "type": "Default",
+   "tab": "GemShop",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {
+     "Gem": 1000
+    }
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "RelicSwapPass_1d",
+     "amount": 1
+    }
+   ],
+   "purchaseLimit": "Unlimited",
+   "purchaseLimitCount": 0,
+   "artLayout": "S_GemShop_RelicSwapPass1",
+   "platform": "All"
+  },
+  {
+   "id": 13263,
+   "name": "AUTUMN ASSAULT PACK",
+   "description": "Prepare for fall with a ton of Summons, Energy and Multi-Battles.",
+   "shortName": "Autumn",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.exclusive_pack_100",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DivineStar",
+     "amount": 5
+    },
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 5
+    },
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 18
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 2000,
+     "secondary": true
+    },
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 200,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "Shop_LiveOps_ClanBoss1",
+   "platform": "All"
+  },
+  {
+   "id": 13302,
+   "name": "MONTHLY SUMMON BOOSTER",
+   "description": "Kickstart your month and beat everyone to the punch, with a monster deal on Stars and Gems.",
+   "shortName": "Summon Booster",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 30,
+    "sku": "prod.anima.exclusive_pack_30",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DivineStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 5
+    },
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 500,
+     "secondary": true
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 1000,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "Shop_ExclusivePack_FRB018",
+   "platform": "All"
+  },
+  {
+   "id": 13303,
+   "name": "WEEKLY BOOSTER PACK",
+   "description": "Boost your Collection with Divine and Destiny Stars, then boost your progress with a ton of Energy.",
+   "shortName": "Weekly Booster",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.exclusive_pack_20",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DivineStar",
+     "amount": 1
+    },
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 3
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 1000,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "Shop_ExclusivePack_MAG007",
+   "platform": "All"
+  },
+  {
+   "id": 13307,
+   "name": "ENERGY PACK",
+   "description": "All the energy you need for non-stop battling and endless victories.",
+   "shortName": "Energy",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.exclusive_pack_20",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 900
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 1200
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_Energy",
+   "platform": "All"
+  },
+  {
+   "id": 13345,
+   "name": "RADIANT STAR PACK",
+   "description": "Summon special Light & Dark Invokers and gain Legendary power.",
+   "shortName": "Radiant Stars",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.exclusive_pack_100",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_RadiantStar",
+     "amount": 10
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 6000
+    },
+    {
+     "type": "resource",
+     "id": "Booster_HeroXp3d50p",
+     "amount": 1,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 5,
+   "artLayout": "Shop_ExclusivePack_RadiantStar",
+   "platform": "All"
+  },
+  {
+   "id": 13350,
+   "name": "ENERGY PACK",
+   "description": "Grab this free Energy and dive back into battle!",
+   "shortName": "Energy",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 50
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "Shop_ExclusivePack_Energy",
+   "platform": "All"
+  },
+  {
+   "id": 13359,
+   "name": "EPIC CODEX PACK",
+   "description": "Power up your Invokers' Skills with Epic Codexes.",
+   "shortName": "Epic Codexes",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 90,
+    "sku": "prod.anima.exclusive_pack_90",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Codex_Epic",
+     "amount": 50
+    },
+    {
+     "type": "resource",
+     "id": "Codex_Rare",
+     "amount": 50
+    },
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 2000000,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_LTS014",
+   "platform": "All"
+  },
+  {
+   "id": 13367,
+   "name": "GIANT GEM SET",
+   "description": "Grab this massive discount on Gems and make some massive progress.",
+   "shortName": "Giant Gems",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.exclusive_pack_20",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 4000
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_Gems",
+   "platform": "All"
+  },
+  {
+   "id": 13369,
+   "name": "Surprise Gift!",
+   "description": "Enjoy the weekend with Invokers: Titan Legacy!",
+   "shortName": "Surprise Gift",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": null,
+    "sku": null,
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 20
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 100
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 1,
+   "artLayout": "Shop_ExclusivePack_IRN003",
+   "platform": "All"
+  },
+  {
+   "id": 13377,
+   "name": "TITAN SPARK SET",
+   "description": "Grab Titan Sparks, XP Potions, and Gems - and give Pentiax the night off.",
+   "shortName": "Titan Sparks",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 20,
+    "sku": "prod.anima.exclusive_pack_20",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "EMP_AnimaSpark",
+     "amount": 4000
+    },
+    {
+     "type": "resource",
+     "id": "XpPotion_Big",
+     "amount": 40
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 1000,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_TitanSparks",
+   "platform": "All"
+  },
+  {
+   "id": 13386,
+   "name": "DIVINE STAR PACK",
+   "description": "Strengthen your team with the best Invokers around.",
+   "shortName": "Divine Stars",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 100,
+    "sku": "prod.anima.exclusive_pack_100",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DivineStar",
+     "amount": 2
+    },
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 50
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 2400,
+     "secondary": true
+    },
+    {
+     "type": "resource",
+     "id": "Booster_HeroXp1d50p",
+     "amount": 1,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_LTS002",
+   "platform": "All"
+  },
+  {
+   "id": 13395,
+   "name": "WEEKEND SUPER SUMMONS",
+   "description": "A huge chance to get Legendary Invokers - at crazy value. Get it now, before it's gone.",
+   "shortName": "Destiny Stars",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.exclusive_pack_50",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_DestinyStar",
+     "amount": 20
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_Meme_DestinyStar",
+   "platform": "All"
+  },
+  {
+   "id": 13403,
+   "name": "TITAN WONDER PACK",
+   "description": "Wonder no more - grab this pack and summon powerful Titans!",
+   "shortName": "Wonder Orbs",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 120,
+    "sku": "prod.anima.exclusive_pack_120",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "SI_WonderOrb",
+     "amount": 20
+    },
+    {
+     "type": "resource",
+     "id": "Gem",
+     "amount": 5000
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_ANIMLTS002",
+   "platform": "All"
+  },
+  {
+   "id": 13437,
+   "name": "TITAN LEGEND PACK",
+   "description": "Get everything you need to turn your Legendary Titan into a true Legend.",
+   "shortName": "Legendary Prisms",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 90,
+    "sku": "prod.anima.exclusive_pack_90",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Prism_Legendary",
+     "amount": 20
+    },
+    {
+     "type": "resource",
+     "id": "Prism_Epic",
+     "amount": 35
+    },
+    {
+     "type": "resource",
+     "id": "Prism_Rare",
+     "amount": 50
+    },
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 1000000,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 3,
+   "artLayout": "Shop_ExclusivePack_ANIMCAM002",
+   "platform": "All"
+  },
+  {
+   "id": 13480,
+   "name": "RELIC UPGRADE PACK",
+   "description": "Tune up your Relics and climb up the Gear Up Tournament Leaderboards with the help of this pack!",
+   "shortName": "Gear Up",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 60,
+    "sku": "prod.anima.exclusive_pack_60",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Gold",
+     "amount": 28000000
+    },
+    {
+     "type": "resource",
+     "id": "Memorium",
+     "amount": 44000
+    },
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 500,
+     "secondary": true
+    },
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 40,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 10,
+   "artLayout": "Shop_LiveOps_UpgradeRelics",
+   "platform": "All"
+  },
+  {
+   "id": 13522,
+   "name": "BOSS BATTLE PACK",
+   "description": "Grab these resources, keep up the fight against Omnissi, and earn that precious Essence!",
+   "shortName": "Multi-Battles & Energy",
+   "kind": "Promo",
+   "type": "Default",
+   "tab": "Exclusive",
+   "price": {
+    "usd": 50,
+    "sku": "prod.anima.exclusive_pack_50",
+    "resources": {}
+   },
+   "rewards": [
+    {
+     "type": "resource",
+     "id": "Energy",
+     "amount": 5000
+    },
+    {
+     "type": "resource",
+     "id": "Token_MultiBattle",
+     "amount": 400
+    },
+    {
+     "type": "resource",
+     "id": "Booster_Gold3d50p",
+     "amount": 1,
+     "secondary": true
+    }
+   ],
+   "purchaseLimit": "PerAccount",
+   "purchaseLimitCount": 10,
+   "artLayout": "Shop_LiveOps_CollectDungeonEssence",
+   "platform": "All"
+  }
+ ]
+}
