@@ -4,7 +4,7 @@ import HeroArt from '../../components/HeroArt.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import { titanArt } from '../../lib/art';
-import { heroHref, heroSlug, href } from '../../lib/data';
+import { heroHref, heroSlug, href, titanHref } from '../../lib/data';
 import { effects, heroesWith, skillsWith, titansWith, type Effect } from '../../lib/effects';
 import { initials, rarityColor, skillTypeName } from '../../lib/format';
 
@@ -17,8 +17,6 @@ const list = heroesWith(effect.slug);
 const titanList = titansWith(effect.slug);
 const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').toLowerCase()}`;
 const related = effects.filter((e) => e.group === effect.group && e.slug !== effect.slug && heroesWith(e.slug).length > 0);
-// The pages for Titans arrive separately; link them once they exist.
-const titanPages = Object.keys(import.meta.glob('../titans/*.astro')).length > 0;
 ---
 <Base title={`${effect.name} (status effect)`}>
   <a class="back" href={href('effects')}>
@@ -59,7 +57,7 @@ const titanPages = Object.keys(import.meta.glob('../titans/*.astro')).length > 0
               <span class="meta">{skillsWith(t.id, effect.slug).map((s) => (s === 'Invocation' ? 'Invokation' : skillTypeName(s))).join(', ')}</span>
             </>
           );
-          return <li>{titanPages ? <a class="card" href={href(`titans/${t.slug}`)}>{inner}</a> : <span class="card">{inner}</span>}</li>;
+          return <li><a class="card" href={titanHref(t.slug)}>{inner}</a></li>;
         })}
       </ul>
     </>

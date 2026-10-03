@@ -13,6 +13,7 @@ export interface NavItem {
 
 export const nav: NavItem[] = [
   { path: 'heroes', label: 'Invokers', icon: 'grid', header: true, tab: true, art: 'hero:Admiral Gladstone' },
+  { path: 'titans', label: 'Titans', icon: 'grid', art: 'titan:Visciant' },
   { path: 'effects', label: 'Status effects', icon: 'book', art: 'item:Rare Codex' },
   { path: 'tiers', label: 'Tier lists', icon: 'tiers', header: true, art: 'titan:Goros' },
   { path: 'events', label: 'Events', icon: 'calendar', header: true, tab: true, art: 'item:Energy' },

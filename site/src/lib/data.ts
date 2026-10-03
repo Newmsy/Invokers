@@ -209,6 +209,11 @@ const heroSlugs = makeHeroSlugs(heroes);
 /** The 38 Titans: name, page slug and the faction that can bind them (none = any). */
 export const titans: TitanInfo[] = titanInfo(heroes, skillSets);
 
+/** Titan pages live at /titans/<name>, e.g. /titans/visciant. */
+export function titanHref(slug: string): string {
+  return href(`titans/${slug}`);
+}
+
 export function heroSlug(heroId: string): string {
   return heroSlugs.get(heroId) ?? slugify(heroId);
 }

@@ -478,7 +478,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .skill h3 { margin: 0; font-size: 18px; font-weight: 600; }
   .level { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--soft); margin-bottom: 10px; max-width: 320px; }
   .level input { accent-color: var(--accent); width: 100%; min-height: 32px; }
-  .skill-text { font-size: 15px; line-height: 1.6; }
+  .skill-text { font-size: 15px; line-height: 1.6; white-space: pre-line; }
   .skill-text[hidden] { display: none; }
 
   .stat-cols th .sub { display: block; font-size: 0.8em; font-weight: 400; color: var(--muted); }
