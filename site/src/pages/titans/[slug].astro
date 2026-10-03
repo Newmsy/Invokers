@@ -7,6 +7,7 @@ import { heroHref, href, titanHref, titans } from '../../lib/data';
 import { initials, rarityColor, richText, skillTypeName, tierColor } from '../../lib/format';
 import { tierNames, titanTiers } from '../../lib/tierData';
 import { binders, bonusLabel, titanPassive, titanSkills } from '../../lib/titans';
+import { effectsFor, linkEffects } from '../../lib/effects';
 import type { TitanInfo } from '../../lib/tiers/candidates';
 
 export function getStaticPaths() {
@@ -25,6 +26,8 @@ const typeName = (t: string) => (t === 'Invocation' ? 'Invokation' : skillTypeNa
 const anchor = (t: string) => `skill-${t.replace(/^ActiveSkill/, '').toLowerCase()}`;
 // Same-faction Titans, for the foot of the page.
 const siblings = titans.filter((t) => t.faction === titan.faction && t.id !== titan.id);
+const kitEffects = effectsFor(titan.id);
+const effectHref = (slug: string) => href(`effects/${slug}`);
 const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(titan.faction)}`) : href('heroes');
 ---
 <Base title={`${titan.name} (Titan)`}>
@@ -84,6 +87,11 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
 
   <section>
     <h2>Skills</h2>
+    {kitEffects.length > 0 && (
+      <ul class="effect-list">
+        {kitEffects.map((e) => <li><a href={effectHref(e.slug)} title={e.text}>{e.name}</a></li>)}
+      </ul>
+    )}
     {skills.map((s) => {
       const levels = s.levels!;
       const max = levels[levels.length - 1].level;
@@ -104,7 +112,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
             </label>
           )}
           {levels.map((l, i) => (
-            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={richText(l.text)} />
+            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={linkEffects(richText(l.text), effectHref)} />
           ))}
         </article>
       );
@@ -241,6 +249,10 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   .skill-text { font-size: 15px; line-height: 1.6; white-space: pre-line; }
   .skill-text[hidden] { display: none; }
 
+  .effect-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .effect-list a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; }
+  .effect-list a:hover { border-color: var(--accent); }
+  .skill-text :global(.effect-link) { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
   .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
   .tier-list a {
     display: inline-flex;

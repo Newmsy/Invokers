@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroArt from '../../components/HeroArt.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import { href } from '../../lib/data';
+import { effectGroups, effects, heroesWith } from '../../lib/effects';
+
+// Best-rated first, so each card's portraits are the Invokers worth knowing.
+const cards = effects
+  .map((e) => ({ e, list: heroesWith(e.slug) }))
+  .filter((c) => c.list.length > 0);
+---
+<Base title="Status effects">
+  <h1>Status effects</h1>
+  <p class="lead">Every buff, debuff and control effect, and which Invokers bring it.</p>
+  <nav class="jump" aria-label="Groups">
+    {effectGroups.map((g) => <a href={`#${g.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{g}</a>)}
+  </nav>
+
+  {effectGroups.map((g) => (
+    <section>
+      <h2 id={g.toLowerCase().replace(/[^a-z]+/g, '-')}>{g}</h2>
+      <ul class="grid">
+        {cards.filter((c) => c.e.group === g).map(({ e, list }) => (
+          <li>
+            <a class="card" href={href(`effects/${e.slug}`)}>
+              <span class="row">
+                <span class="name">{e.name}</span>
+                <span class="count">{list.length} {list.length === 1 ? 'Invoker' : 'Invokers'}</span>
+              </span>
+              <span class="text">{e.text}</span>
+              <span class="faces">
+                {list.slice(0, 5).map((h) => <span class="face"><HeroArt hero={h} /></span>)}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <SeeAlso links={[
+    { path: 'heroes', label: 'Invokers' },
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'blog/boss-corruptions-and-tolerance-sets', label: 'Corruptions and tolerance sets' },
+  ]} />
+</Base>
+
+<style>
+  h1 { margin: 0; font-size: 32px; }
+  .lead { color: var(--soft); margin: 8px 0 12px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; }
+  h2 { font-size: 18px; margin: 28px 0 12px; scroll-margin-top: 16px; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .card:hover { border-color: var(--accent); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .name { font-weight: 600; }
+  .count { color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .text { color: var(--soft); font-size: 14px; flex: 1; }
+  .faces { display: flex; gap: 6px; margin-top: 4px; }
+  .face { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); background: var(--surface-2); }
+  @media (max-width: 720px) { h1 { font-size: 26px; } }
+</style>

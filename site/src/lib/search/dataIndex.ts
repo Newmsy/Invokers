@@ -5,6 +5,7 @@ import setsJson from '../../../../data/sets.json';
 import skillsJson from '../../../../data/skills.json';
 import { bossLabel, bossSlug, bosses, heroHref, heroes, href, titanHref, titans, trophyRoom, type Item, type SkillSet } from '../data';
 import { heroArt, itemIcon, skillIcon, titanArt } from '../art';
+import { effects, heroesWith } from '../effects';
 import { className, skillTypeName } from '../format';
 import type { SearchDoc } from './match';
 
@@ -107,6 +108,12 @@ export function dataDocs(): SearchDoc[] {
     }
   }
 
+  for (const e of effects) {
+    const list = heroesWith(e.slug);
+    if (!list.length) continue;
+    docs.push({ kind: 'Page', title: e.name, sub: `Status effect · ${list.length} ${list.length === 1 ? 'Invoker' : 'Invokers'}`, text: e.text, url: href(`effects/${e.slug}`) });
+  }
+
   // Mode names as the boss guides page groups them.
   const modes: Record<string, string> = { 'relic boss': 'Relic boss', 'clan boss': 'Clan boss', other: 'Crest boss' };
   for (const b of bosses) {
@@ -151,6 +158,7 @@ export function pageDocs(): SearchDoc[] {
   const pages: [string, string, string][] = [
     ['heroes', 'Invokers', 'Every Invoker with ratings, skills and stats'],
     ['titans', 'Titans', 'Every Titan with its bound Invoker bonus at each Empowerment, skills and Invokation'],
+    ['effects', 'Status effects', 'Every buff, debuff and control effect (Stun, Bleed, Weaken, Shield...) and which Invokers bring it'],
     ['tiers', 'Tier lists', 'The best Invokers and Titans for the campaign, Spires, Arena and every boss'],
     ['events', 'Events', 'How events score, their targets, and energy and Arena Rush planners'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
