@@ -33,6 +33,30 @@ const num = (v: number | undefined) => (v == null ? '–' : v.toLocaleString('en
 const signed = (v: number | undefined) => (v == null ? '–' : v > 0 ? `+${v}%` : v < 0 ? `−${-v}%` : '0%');
 const hasSkillLevel = stages.some((s) => s.skillLevel != null);
 
+// How the boss scales, for the summary above the stage table.
+const firstStage = stages[0];
+const lastStage = stages[stages.length - 1];
+const grow = (a?: number, b?: number) => (a && b ? b / a : 0);
+const times = (x: number) => `×${x >= 10 ? Math.round(x).toLocaleString('en-GB') : (Math.round(x * 10) / 10).toString()}`;
+const short = (v: number | undefined) =>
+  v == null ? '–' : v >= 1e6 ? `${Math.round(v / 1e5) / 10}M` : v >= 1e4 ? `${Math.round(v / 1e3)}K` : v.toLocaleString('en-GB');
+// The wall: from stage 10 on, the stage whose HP grows most over the one before.
+const lateSteps = stages.slice(1).map((s, i) => ({ s, prev: stages[i] })).filter(({ s }) => s.stage >= 10);
+const wall = lateSteps.reduce<(typeof lateSteps)[number] | undefined>(
+  (best, x) => (!best || grow(x.prev.hp, x.s.hp) > grow(best.prev.hp, best.s.hp) ? x : best),
+  undefined,
+);
+const tolZero = stages.find((s) => (s.toleranceBonus ?? 0) <= 0);
+const tolWorst = Math.min(...stages.map((s) => s.toleranceBonus ?? 0));
+const tolWorstAt = stages.find((s) => s.toleranceBonus === tolWorst);
+// Runs of stages with the same energy cost: "8 (1–6), 12 (7–12) ...".
+const energyBands = stages.reduce<{ energy: number; from: number; to: number }[]>((bands, s) => {
+  const last = bands[bands.length - 1];
+  if (last && last.energy === s.energy) last.to = s.stage;
+  else bands.push({ energy: s.energy, from: s.stage, to: s.stage });
+  return bands;
+}, []);
+
 // The tolerance help texts end with "Useful against: …"; on a boss page only the effect matters.
 // A boss's own Do list sometimes names a tolerance its corruption list leaves out (Koltmos: Bloodrot),
 // so the page lists both.
@@ -183,6 +207,32 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
       The boss's level, element and base stats on each stage, the enemy team's Accuracy and Resistance, and the
       bonus (+) or penalty (−) the stage gives your Invokers' Tolerances.
     </p>
+    {firstStage && lastStage && (
+      <ul class="scaling">
+        <li>
+          <strong>HP {times(grow(firstStage.hp, lastStage.hp))}</strong> from stage {firstStage.stage} to {lastStage.stage}
+          ({short(firstStage.hp)} → {short(lastStage.hp)}). ATK {times(grow(firstStage.atk, lastStage.atk))}.
+        </li>
+        {wall && (
+          <li>
+            <strong>Biggest wall: stage {wall.s.stage}.</strong> HP jumps {times(grow(wall.prev.hp, wall.s.hp))} over stage {wall.prev.stage}
+            ({short(wall.prev.hp)} → {short(wall.s.hp)}).
+          </li>
+        )}
+        {tolZero && (
+          <li>
+            <strong>Tolerance bonus gone at stage {tolZero.stage}.</strong> It starts at {signed(firstStage.toleranceBonus)}, turns into a penalty after
+            stage {tolZero.stage}{tolWorstAt && tolWorst < 0 && <> and reaches {signed(tolWorst)} at stage {tolWorstAt.stage}</>}.
+          </li>
+        )}
+        <li>
+          <strong>Enemy RES {num(firstStage.resistance)} → {num(lastStage.resistance)}</strong>, ACC {num(firstStage.accuracy)} → {num(lastStage.accuracy)}.
+        </li>
+        <li>
+          <strong>Energy per run:</strong> {energyBands.map((b, i) => <>{i > 0 && ', '}{b.energy} ({b.from === b.to ? `stage ${b.from}` : `${b.from}–${b.to}`})</>)}.
+        </li>
+      </ul>
+    )}
     <div class="table-wrap">
       <table class="stage-table">
         <thead>
@@ -202,7 +252,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
         </thead>
         <tbody>
           {stages.map((s) => (
-            <tr>
+            <tr class:list={{ wall: wall?.s.stage === s.stage }}>
               <th scope="row">{s.stage}</th>
               <td><span class="energy">{energyIcon && <img src={energyIcon} alt="" width="16" height="16" />}{s.energy}</span></td>
               <td>{num(s.level)}</td>
@@ -406,6 +456,9 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .stage-table tbody th { color: var(--soft); font-weight: 600; position: sticky; left: 0; background: var(--bg); }
   .stage-table tbody tr:last-child > * { border-bottom: 0; }
   .stage-table .energy, .stage-table .el span { display: inline-flex; align-items: center; gap: 6px; }
+  .stage-table tr.wall > * { background: color-mix(in srgb, var(--accent) 12%, var(--bg)); }
+  .scaling { margin: 0 0 14px; padding-left: 20px; color: var(--soft); line-height: 1.6; font-size: 15px; }
+  .scaling strong { color: var(--text); }
   .stage-table .tol.up { color: #7be0a0; }
   .stage-table .tol.down { color: #ff8a65; }
 
