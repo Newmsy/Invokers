@@ -10,8 +10,8 @@ tags: [invokers, roster]
 **There are 231 Invokers. Almost half are Melee, Fire has the most, and Beastbloods is by far the smallest faction.**
 
 - **Rarity:** 78 Rare, 61 Epic and 58 Legendary, with only 34 Common and Uncommon.
-- **Class:** 110 ![Melee](class:) Melee, 47 ![Support](class:) Support, 44 ![Ranged](class:) Ranged and 30 ![Tank](class:) Tanks.
-- **Element:** ![Fire](element:) Fire leads with 50. ![Light](element:) Light has the fewest at 30.
+- **Class:** 110 ![Melee](class:), 47 ![Support](class:), 44 ![Ranged](class:) and 30 ![Tank](class:).
+- **Element:** ![Fire](element:) leads with 50. ![Light](element:) has the fewest at 30.
 - **Can't be summoned:** ![Ardell The Torrent](hero:) is the only Invoker that no summon item gives.
 
 Browse them all on the [Invokers](/heroes) page.
@@ -44,9 +44,9 @@ Ranged is the rarest Legendary class: only 8, against 27 Melee.
 
 Three element and class pairs have **no Legendary at all**:
 
-- ![Light](element:) Light Ranged
-- ![Water](element:) Water Ranged
-- ![Wind](element:) Wind Tank
+- ![Light Ranged](element:Light)
+- ![Water Ranged](element:Water)
+- ![Wind Tank](element:Wind)
 
 Fire has the most Legendary Melee (7). Water has the most Legendary Supports (5).
 
