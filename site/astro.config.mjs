@@ -25,8 +25,8 @@ export default defineConfig({
   base,
   trailingSlash: 'ignore',
   integrations: [dropSourceArt],
-  // Old blog URLs keep working.
-  redirects: { '/blog/levels-not-stars': '/blog/levelling-vs-awakening' },
+  // Old blog URLs keep working. Astro doesn't add the base to a redirect's target, so it is added here.
+  redirects: { '/blog/levels-not-stars': `${base.replace(/\/$/, '')}/blog/levelling-vs-awakening` },
   // ![Name](hero:) and friends in blog posts become icon chips (src/lib/markdown-art.ts); links to /pages get
   // the base path (src/lib/markdown-links.ts).
   markdown: { processor: satteri({ mdastPlugins: [markdownArt(base), markdownLinks(base)] }) },
