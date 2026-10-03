@@ -16,6 +16,12 @@ describe('fully awakened stats', () => {
     expect(stats.critRate).toBeCloseTo(0.05);
   });
 
+  it("matches the game's max stats for Crestelle Moonveil", () => {
+    const { stats } = awakened('Crestelle Moonveil');
+    expect([stats.hp, stats.atk, stats.def].map(Math.round)).toEqual([11568, 906, 759]);
+    expect([stats.acc, stats.res, stats.comboSpeed, stats.skillSpeed, stats.skillRecovery, stats.manaGen, stats.instinct, stats.runSpeed]).toEqual([0, 45, 26, 54, 0, 0, 47, 128]);
+  });
+
   it('matches the Levelling vs Awakening post', () => {
     const almea = awakened('Almea');
     expect([almea.stats.hp, almea.stats.atk, almea.stats.def].map(Math.round)).toEqual([7387, 940, 671]);
