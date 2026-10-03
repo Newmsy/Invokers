@@ -45,6 +45,9 @@ for (const h of heroes) {
 for (const t of titans) {
   add(`titans/${t.slug}.webp`, `titans/${t.id}.webp`, titanArtPath, t.id);
   add(`splash/titans/${t.slug}.webp`, `splash/titans/${t.id}.webp`, titanSplashPath, t.id);
+  for (const s of skillsFor(t.id)) {
+    add(`skills/titan-${t.slug}-skill-${skillPart(s.type)}.webp`, `skills/${t.id}_${s.type}.webp`, skillIconPath, `${t.id}/${s.type}`);
+  }
 }
 // Boss art (issue #66), by boss id; shown on the boss guides when it exists.
 for (const b of bosses) add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);

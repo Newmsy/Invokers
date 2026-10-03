@@ -3,8 +3,8 @@
 import itemsJson from '../../../../data/items.json';
 import setsJson from '../../../../data/sets.json';
 import skillsJson from '../../../../data/skills.json';
-import { bossLabel, bossSlug, bosses, heroHref, heroes, href, trophyRoom, type Item, type SkillSet } from '../data';
-import { heroArt, itemIcon, skillIcon } from '../art';
+import { bossLabel, bossSlug, bosses, heroHref, heroes, href, titanHref, titans, trophyRoom, type Item, type SkillSet } from '../data';
+import { heroArt, itemIcon, skillIcon, titanArt } from '../art';
 import { className, skillTypeName } from '../format';
 import type { SearchDoc } from './match';
 
@@ -81,6 +81,16 @@ export function dataDocs(): SearchDoc[] {
     });
   }
 
+  for (const t of titans) {
+    docs.push({
+      kind: 'Titan',
+      title: t.name,
+      sub: t.faction ? `Titan · ${t.faction} Invokers` : 'Titan · any Invoker',
+      url: titanHref(t.slug),
+      image: titanArt(t.id),
+    });
+  }
+
   for (const set of skillsJson as SkillSet[]) {
     if (set.kind !== 'hero' || !heroIds.has(set.heroId)) continue;
     for (const s of set.skills) {
@@ -140,6 +150,7 @@ export function dataDocs(): SearchDoc[] {
 export function pageDocs(): SearchDoc[] {
   const pages: [string, string, string][] = [
     ['heroes', 'Invokers', 'Every Invoker with ratings, skills and stats'],
+    ['titans', 'Titans', 'Every Titan with its bound Invoker bonus at each Empowerment, skills and Invokation'],
     ['tiers', 'Tier lists', 'The best Invokers and Titans for the campaign, Spires, Arena and every boss'],
     ['events', 'Events', 'How events score, their targets, and energy and Arena Rush planners'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
