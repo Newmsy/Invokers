@@ -14,6 +14,18 @@ tags: [trophies, arena, stats]
 - All six rooms: **23,760 Bronze, 69,120 Silver and 122,400 Gold** (estimated, assuming every room has all 12 trophies).
 - Cheapest bonus in the room: level 1 of anything, 20 Bronze.
 
+## In Gold Trophies
+
+A Gold Trophy is worth 2 Silver, and a Silver is worth 2 Bronze. Counting everything in Gold:
+
+| | Gold Trophies |
+|---|---|
+| One trophy, 0 → 15 | 2,262.5 |
+| One room (12 trophies) | 27,150 |
+| All six rooms (estimated) | 162,900 |
+
+Gold levels (11–15) are 75% of the total cost.
+
 Plan your own upgrades on the [Trophy Room](/trophies) page.
 
 ## Cost per level
