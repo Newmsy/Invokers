@@ -9,7 +9,6 @@ import {
   MAX_STARS,
   ascensionTable,
   awakeningByRarity,
-  awakeningEstimated,
   awakeningMaterials,
   awakeningTiers,
   awakeningTotal,
@@ -63,7 +62,6 @@ const materialRows = awakeningTiers.flatMap((t, i) =>
   kinds.map((k) => ({ tier: t, id: itemId(k.key, t.tier), name: label(k, i), varies: k.varies, icon: iconFor(k, i) })),
 );
 const spark = 'EMP_AnimaSpark';
-const est = awakeningEstimated ? ' (estimated)' : '';
 
 const omnissi = bosses.filter((b) => b.mode === 'Omnissi');
 const crestBosses = bosses.filter((b) => b.mode === 'other');
@@ -205,7 +203,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   </section>
 
   <section id="awaken" aria-labelledby="awaken-title">
-    <h2 id="awaken-title">Awakening to level {MAX_AWAKENING}{est}</h2>
+    <h2 id="awaken-title">Awakening to level {MAX_AWAKENING}</h2>
     <p>
       Each Awakening level needs that star reached (level 6 needs {MAX_STARS}★). Costs depend only on rarity: two
       Legendaries pay the same. Runes match the Invoker's faction, Essences its element, Crests its class.

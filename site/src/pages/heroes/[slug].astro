@@ -37,10 +37,12 @@ const otherStats = statFields.slice(6);
 
 // Stats tab: first day, 6★ level 60, and 6★ level 60 with every Awakening node.
 const awakened = fullyAwakened(hero);
+// Overview "Max stats" matches the game's own max stats, which include full Awakening.
+const maxed = awakened?.stats ?? hero.maxStats;
 const statCols = [
   { label: 'Lv 1', sub: `${rankNumber(hero.baseRank)}★`, stats: hero.statsByRank[hero.baseRank]['1'] },
   { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
-  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60, est.', stats: awakened.stats }] : []),
+  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60', stats: awakened.stats }] : []),
 ];
 
 // Where this Invoker sits on each tier list, best first.
@@ -112,12 +114,12 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="overview" class="panel" role="tabpanel" aria-labelledby="tab-overview">
     <h2>Max stats</h2>
-    <p class="hint">Rank 6, level 60, without gear or awakening. <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
+    <p class="hint">{awakened ? '6★, level 60, fully awakened, without gear.' : '6★, level 60, without gear or awakening.'} <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
     <div class="stat-grid">
       {keyStats.map((f) => (
         <div class="stat">
           <span class="stat-label">{f.short}</span>
-          <span class="stat-value">{formatStat(hero.maxStats[f.key], f.percent)}</span>
+          <span class="stat-value">{formatStat(maxed[f.key], f.percent)}</span>
         </div>
       ))}
     </div>
@@ -125,7 +127,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       {otherStats.map((f) => (
         <div>
           <dt>{f.label}</dt>
-          <dd>{formatStat(hero.maxStats[f.key], f.percent)}</dd>
+          <dd>{formatStat(maxed[f.key], f.percent)}</dd>
         </div>
       ))}
     </dl>
@@ -224,7 +226,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
     <h2>Stats</h2>
-    <p class="hint">Without gear. Awakened (estimated) has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
+    <p class="hint">Without gear. Awakened has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
     <div class="table-wrap">
       <table class="stat-cols">
         <caption class="visually-hidden">{hero.name} stats at level 1, level 60 and fully awakened</caption>

@@ -53,6 +53,6 @@ ATK gain over 6★ level 60 by Awakening level (running total):
 | Almea | +4% | +7% | +12% | +16% | +21% | +26% |
 | Duchess Kanraku | +4% | +7% | +12% | +18% | +23% | +28% |
 
-The Awakened totals are estimated. Put Invokers side by side in [Compare](/heroes/compare).
+Put Invokers side by side in [Compare](/heroes/compare).
 
 *Base stats without gear, game version 0.61.1516.*
