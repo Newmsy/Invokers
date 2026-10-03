@@ -1,0 +1,211 @@
+{
+ "gameVersion": "0.61.1516",
+ "note": "Snapshot of awakening costs per rarity and awaken level from data/awakening.json in PR #75 (identical for every soul class). Used until that file lands in data/.",
+ "byRarity": {
+  "Common": [
+   {
+    "AE_ManaTier1": 22,
+    "EE_Tier1Generic": 10,
+    "FM_Tier1Generic": 50,
+    "RM_Tier1Generic": 20
+   },
+   {
+    "AE_ManaTier1": 33,
+    "EE_Tier1Generic": 10,
+    "EMP_AnimaSpark": 50,
+    "FM_Tier1Generic": 60,
+    "RM_Tier1Generic": 40
+   },
+   {
+    "AE_ManaTier2": 12,
+    "EE_Tier2Generic": 8,
+    "FM_Tier2Generic": 25,
+    "RM_Tier2Generic": 40
+   },
+   {
+    "AE_ManaTier2": 23,
+    "EE_Tier2Generic": 8,
+    "EMP_AnimaSpark": 200,
+    "FM_Tier2Generic": 28,
+    "RM_Tier2Generic": 60
+   },
+   {
+    "AE_ManaTier3": 12,
+    "EE_Tier3Generic": 5,
+    "FM_Tier3Generic": 25,
+    "RM_Tier3Generic": 40
+   },
+   {
+    "AE_ManaTier3": 23,
+    "EE_Tier3Generic": 10,
+    "EMP_AnimaSpark": 1000,
+    "FM_Tier3Generic": 28,
+    "RM_Tier3Generic": 60
+   }
+  ],
+  "Uncommon": [
+   {
+    "AE_ManaTier1": 22,
+    "EE_Tier1Generic": 10,
+    "FM_Tier1Generic": 50,
+    "RM_Tier1Generic": 20
+   },
+   {
+    "AE_ManaTier1": 33,
+    "EE_Tier1Generic": 10,
+    "EMP_AnimaSpark": 50,
+    "FM_Tier1Generic": 60,
+    "RM_Tier1Generic": 40
+   },
+   {
+    "AE_ManaTier2": 12,
+    "EE_Tier2Generic": 8,
+    "FM_Tier2Generic": 25,
+    "RM_Tier2Generic": 40
+   },
+   {
+    "AE_ManaTier2": 23,
+    "EE_Tier2Generic": 8,
+    "EMP_AnimaSpark": 200,
+    "FM_Tier2Generic": 28,
+    "RM_Tier2Generic": 60
+   },
+   {
+    "AE_ManaTier3": 12,
+    "EE_Tier3Generic": 5,
+    "FM_Tier3Generic": 25,
+    "RM_Tier3Generic": 40
+   },
+   {
+    "AE_ManaTier3": 23,
+    "EE_Tier3Generic": 10,
+    "EMP_AnimaSpark": 1000,
+    "FM_Tier3Generic": 28,
+    "RM_Tier3Generic": 60
+   }
+  ],
+  "Rare": [
+   {
+    "AE_ManaTier1": 22,
+    "EE_Tier1Generic": 10,
+    "FM_Tier1Generic": 50,
+    "RM_Tier1Generic": 20
+   },
+   {
+    "AE_ManaTier1": 33,
+    "EE_Tier1Generic": 10,
+    "EMP_AnimaSpark": 50,
+    "FM_Tier1Generic": 60,
+    "RM_Tier1Generic": 40
+   },
+   {
+    "AE_ManaTier2": 12,
+    "EE_Tier2Generic": 8,
+    "FM_Tier2Generic": 25,
+    "RM_Tier2Generic": 40
+   },
+   {
+    "AE_ManaTier2": 23,
+    "EE_Tier2Generic": 8,
+    "EMP_AnimaSpark": 200,
+    "FM_Tier2Generic": 28,
+    "RM_Tier2Generic": 60
+   },
+   {
+    "AE_ManaTier3": 12,
+    "EE_Tier3Generic": 5,
+    "FM_Tier3Generic": 25,
+    "RM_Tier3Generic": 40
+   },
+   {
+    "AE_ManaTier3": 23,
+    "EE_Tier3Generic": 10,
+    "EMP_AnimaSpark": 1000,
+    "FM_Tier3Generic": 28,
+    "RM_Tier3Generic": 60
+   }
+  ],
+  "Epic": [
+   {
+    "AE_ManaTier1": 35,
+    "EE_Tier1Generic": 17,
+    "FM_Tier1Generic": 75,
+    "RM_Tier1Generic": 40
+   },
+   {
+    "AE_ManaTier1": 45,
+    "EE_Tier1Generic": 20,
+    "EMP_AnimaSpark": 70,
+    "FM_Tier1Generic": 80,
+    "RM_Tier1Generic": 60
+   },
+   {
+    "AE_ManaTier2": 24,
+    "EE_Tier2Generic": 15,
+    "FM_Tier2Generic": 50,
+    "RM_Tier2Generic": 60
+   },
+   {
+    "AE_ManaTier2": 35,
+    "EE_Tier2Generic": 15,
+    "EMP_AnimaSpark": 350,
+    "FM_Tier2Generic": 60,
+    "RM_Tier2Generic": 80
+   },
+   {
+    "AE_ManaTier3": 24,
+    "EE_Tier3Generic": 11,
+    "FM_Tier3Generic": 50,
+    "RM_Tier3Generic": 60
+   },
+   {
+    "AE_ManaTier3": 65,
+    "EE_Tier3Generic": 20,
+    "EMP_AnimaSpark": 1750,
+    "FM_Tier3Generic": 40,
+    "RM_Tier3Generic": 80
+   }
+  ],
+  "Legendary": [
+   {
+    "AE_ManaTier1": 60,
+    "EE_Tier1Generic": 25,
+    "FM_Tier1Generic": 100,
+    "RM_Tier1Generic": 60
+   },
+   {
+    "AE_ManaTier1": 70,
+    "EE_Tier1Generic": 30,
+    "EMP_AnimaSpark": 100,
+    "FM_Tier1Generic": 120,
+    "RM_Tier1Generic": 100
+   },
+   {
+    "AE_ManaTier2": 38,
+    "EE_Tier2Generic": 25,
+    "FM_Tier2Generic": 75,
+    "RM_Tier2Generic": 80
+   },
+   {
+    "AE_ManaTier2": 50,
+    "EE_Tier2Generic": 25,
+    "EMP_AnimaSpark": 500,
+    "FM_Tier2Generic": 80,
+    "RM_Tier2Generic": 100
+   },
+   {
+    "AE_ManaTier3": 40,
+    "EE_Tier3Generic": 18,
+    "FM_Tier3Generic": 75,
+    "RM_Tier3Generic": 80
+   },
+   {
+    "AE_ManaTier3": 90,
+    "EE_Tier3Generic": 30,
+    "EMP_AnimaSpark": 2500,
+    "FM_Tier3Generic": 60,
+    "RM_Tier3Generic": 100
+   }
+  ]
+ }
+}
