@@ -42,7 +42,7 @@ const maxed = awakened?.stats ?? hero.maxStats;
 const statCols = [
   { label: 'Lv 1', sub: `${rankNumber(hero.baseRank)}★`, stats: hero.statsByRank[hero.baseRank]['1'] },
   { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
-  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60, est.', stats: awakened.stats }] : []),
+  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60', stats: awakened.stats }] : []),
 ];
 
 // Where this Invoker sits on each tier list, best first.
@@ -226,7 +226,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
     <h2>Stats</h2>
-    <p class="hint">Without gear. Awakened (estimated) has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
+    <p class="hint">Without gear. Awakened has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
     <div class="table-wrap">
       <table class="stat-cols">
         <caption class="visually-hidden">{hero.name} stats at level 1, level 60 and fully awakened</caption>

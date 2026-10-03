@@ -1,6 +1,6 @@
 // Ascension and Awakening: which items an Invoker needs at each step. Ascension counts, Gold and XP come from
 // data/progression.json. Awakening amounts come from data/awakening.json once it lands (PR #75); until then a
-// per-rarity snapshot of the same numbers is used and the page marks them estimated.
+// per-rarity snapshot of the same numbers is used.
 import progressionJson from '../../../data/progression.json';
 import awakeningSnapshot from '../data/awakening-costs.json';
 import type { Hero } from './data';
@@ -168,9 +168,6 @@ interface AwakeningFile {
 }
 const awakeningFiles = import.meta.glob<{ default: AwakeningFile }>('../../../data/awakening.json', { eager: true });
 const awakeningFile = Object.values(awakeningFiles)[0]?.default;
-
-/** True while the amounts come from the snapshot rather than the data pack. */
-export const awakeningEstimated = !awakeningFile;
 
 /** Items per Awakening level for each rarity (index 0 = level 1). The same for every Invoker of a rarity. */
 export const awakeningByRarity: Record<string, Costs[]> = awakeningFile
