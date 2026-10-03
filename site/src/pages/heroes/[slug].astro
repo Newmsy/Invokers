@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import { classIcon, elementIcon, skillIcon } from '../../lib/art';
-import { heroes, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -14,7 +14,8 @@ import {
   statFields,
   tierColor,
 } from '../../lib/format';
-import { heroTiers, tierNames } from '../../lib/tierData';
+import { bestTier, heroTiers, tierNames } from '../../lib/tierData';
+import { similarTo } from '../../lib/similar';
 import { fullyAwakened } from '../../lib/awakening';
 import { legendaryPool, summons } from '../../lib/summons';
 
@@ -49,6 +50,13 @@ const hasCompare = Object.keys(import.meta.glob('./compare.astro')).length > 0;
 
 // Summon items whose Legendary pool includes this Invoker.
 const summonedBy = summons.items.filter((i) => legendaryPool(i).some((h) => h.id === hero.id)).map((i) => i.name);
+
+// Stand-ins for this Invoker; the ones in the player's box get marked by the script below.
+const similar = similarTo(hero).map((h) => ({
+  hero: h,
+  best: bestTier(h.id),
+  configId: Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === h.id)?.[0] ?? '',
+}));
 
 // Plain-text preview of a skill for the overview list.
 const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -146,6 +154,29 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         </ul>
       </>
     )}
+
+    {similar.length > 0 && (
+      <>
+        <h2 id="similar">Similar Invokers</h2>
+        <p class="hint">Same class, {hero.element} first. <span id="similar-owned" hidden>Ones in your box are marked.</span></p>
+        <ul class="similar">
+          {similar.map(({ hero: h, best, configId: cid }) => (
+            <li data-config-id={cid}>
+              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+                <span class="similar-art">
+                  <HeroArt hero={h} />
+                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#5FDCF7'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
+                  <span class="similar-owned">Owned</span>
+                </span>
+                <span class="similar-name">{h.name}</span>
+                <span class="similar-meta">{elementIcon(h.element) && <img src={elementIcon(h.element)} alt="" width="14" height="14" loading="lazy" />}{h.element} · {h.rarity}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="hint more"><a href={href(`heroes?class=${encodeURIComponent(String(hero.class))}&element=${encodeURIComponent(hero.element)}`)}>All {hero.element} {className(hero.class)} Invokers</a> · <a href={href(`heroes/compare?h=${[hero, ...similar.slice(0, 3).map((x) => x.hero)].map((x) => heroSlug(x.id)).join(',')}`)}>Compare with the top 3</a></p>
+      </>
+    )}
   </section>
 
   <section id="skills" class="panel" role="tabpanel" aria-labelledby="tab-skills">
@@ -220,6 +251,18 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     link.textContent = 'My box';
     el.append(link);
     el.hidden = false;
+  });
+
+  // Marks the Similar Invokers the player owns.
+  loadBox().then((box) => {
+    const owned = new Set(box?.heroes.map((h) => h.configId) ?? []);
+    let any = false;
+    for (const li of document.querySelectorAll<HTMLElement>('.similar [data-config-id]')) {
+      const has = owned.has(li.dataset.configId ?? '');
+      li.classList.toggle('is-owned', has);
+      any ||= has;
+    }
+    document.getElementById('similar-owned')!.hidden = !any;
   });
 </script>
 
@@ -376,6 +419,53 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     font-weight: 800;
     font-size: 13px;
   }
+
+  .similar { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
+  .similar a { display: flex; flex-direction: column; gap: 2px; color: var(--text); text-decoration: none; font-size: 13px; }
+  .similar-art {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-bottom: 2px solid var(--rarity);
+    margin-bottom: 4px;
+  }
+  .similar a:hover .similar-art { border-color: var(--accent); }
+  .similar-tier {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tier);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 12px;
+  }
+  .similar-owned {
+    display: none;
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .similar .is-owned .similar-owned { display: block; }
+  .similar .is-owned .similar-art { border-color: var(--accent); }
+  .similar-name { font-weight: 600; line-height: 1.25; }
+  .similar-meta { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 12px; }
+  .hint.more { margin: 10px 0 0; }
 
   .stat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
   .stat {

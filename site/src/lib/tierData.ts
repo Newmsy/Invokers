@@ -98,4 +98,9 @@ export function titanTiers(slug: string): { list: TierListDef; tier: TierName }[
   });
 }
 
+/** A hero's best tier on any list, with that list, or undefined if no list has them. */
+export function bestTier(heroId: string): { list: TierListDef; tier: TierName } | undefined {
+  return heroTiers(heroId).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier))[0];
+}
+
 export { tierLists, tierNames };
