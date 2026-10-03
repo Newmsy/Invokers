@@ -1,8 +1,8 @@
 // Buffs, debuffs and other effects that skills apply, for the effects glossary, the Invoker filter and the links in
 // skill texts. Each description restates what the skills themselves say about the effect.
-import { heroes, ratingFor, skillsFor, titans, type Hero } from './data';
+import { heroes, skillsFor, titans, type Hero } from './data';
 import { rarityOrder } from './format';
-import { tierNames } from './tiers/lists';
+import { bestTier, tierNames } from './tierData';
 import type { TitanInfo } from './tiers/candidates';
 
 export type EffectGroup = 'Control' | 'Damage over time' | 'Debuffs' | 'Buffs' | 'Protection' | 'Support';
@@ -133,10 +133,10 @@ export function skillsWith(id: string, slug: string): string[] {
   return byId.get(id)?.get(slug) ?? [];
 }
 
-// Best-rated first, then by rarity and name.
+// Best tier on any tier list first, then rarity and name.
 const rank = (h: Hero) => {
-  const t = ratingFor(h.id)?.tier as (typeof tierNames)[number] | undefined;
-  return (t && tierNames.includes(t) ? tierNames.indexOf(t) : tierNames.length) * 10 + rarityOrder.indexOf(h.rarity);
+  const best = bestTier(h.id);
+  return (best ? tierNames.indexOf(best.tier) : tierNames.length) * 10 + rarityOrder.indexOf(h.rarity);
 };
 
 /** Invokers whose kit applies the effect, best first. */
