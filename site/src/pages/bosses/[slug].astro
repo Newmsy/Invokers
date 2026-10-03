@@ -5,7 +5,7 @@ import { bossLabel, bosses, bossSlug, corruptionNames, heroes, heroHref, heroRef
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
 import { tierRows } from '../../lib/tierData';
-import { elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
+import { bossArt, elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
 import { gearSets } from '../../lib/gear';
 import { corruptionKey, hasHeroTolerances, heroesWithTolerance } from '../../lib/tolerances';
 
@@ -19,6 +19,7 @@ const hasTiers = !!tierList;
 // The S tier's Invokers, as portraits under the header.
 const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
 const elIcon = boss.element ? elementIcon(boss.element) : undefined;
+const art = bossArt(boss.id);
 const energyIcon = itemIcon('Energy');
 
 // Pages that help plan a run at this boss (its tolerance sets are linked from the corruption panels).
@@ -73,6 +74,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   </a>
 
   <header class="head">
+    {art && <img class="boss-art" src={art} alt={bossLabel(boss)} />}
     {boss.title && <span class="title">{boss.title}</span>}
     <h1>{elIcon && <img class="el" src={elIcon} alt={boss.element} width="32" height="32" />}{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
@@ -307,6 +309,8 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .tiers { margin: 10px 0 0; color: var(--soft); font-weight: 500; }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
+  .boss-art { float: right; width: min(40%, 320px); max-height: 320px; object-fit: contain; margin: 0 0 12px 16px; }
+  @media (max-width: 720px) { .boss-art { float: none; display: block; width: 100%; max-height: 220px; margin: 0 0 12px; } }
   h1 .el { vertical-align: -4px; margin-right: 10px; }
   .picks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .picks a { display: block; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
