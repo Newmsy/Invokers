@@ -15,6 +15,7 @@ import {
   awakeningTotal,
   baseStars,
   echoFor,
+  foodCost,
   foodStep,
   fullAscension,
   levelCap,
@@ -32,6 +33,8 @@ const foodSteps = ascensionTable.map((row) => foodStep(row.from));
 const byRarity = rarities.map((rarity) => fullAscension(rarity, baseStars(heroes.find((h) => h.rarity === rarity)!)));
 const legendary = byRarity.find((r) => r.rarity === 'Legendary')!;
 const ownXp = xpToLevel(levelCap(MAX_STARS - 1));
+// What a higher-rarity Invoker saves when used as food at its starting star.
+const saved = (stars: number) => foodCost[stars - 1];
 
 // Awakening materials shown generically: tier word plus what varies. Icons are one example of each.
 const sample = awakeningMaterials(heroes[0]);
@@ -154,7 +157,11 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
         {n(legendary.foodGold)} Gold to build the five 5★ food, plus its own {n(legendary.ownGold)} Gold.
       </li>
       <li>XP and Gold are for levelling and ascending the food. Food itself is fed at any level.</li>
-      <li>Spare higher-rarity Invokers skip steps: a 3★ Rare used as food saves 6 Commons, a 4★ Epic saves 24.</li>
+      <li>
+        Spare higher-rarity Invokers skip steps. Used as food, a 3★ Rare saves {n(saved(3).commons)} Commons,{' '}
+        {n(saved(3).xp)} XP and {n(saved(3).gold)} Gold; a 4★ Epic saves {n(saved(4).commons)} Commons,{' '}
+        {n(saved(4).xp)} XP and {n(saved(4).gold)} Gold.
+      </li>
       <li class="muted">Estimated: assumes food can be any level and ascending keeps the Invoker's level.</li>
     </ul>
   </section>
