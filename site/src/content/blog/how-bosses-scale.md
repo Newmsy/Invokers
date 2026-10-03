@@ -12,7 +12,7 @@ tags: [bosses, stages]
 - **Stage 10 is the turning point.** Your Tolerance bonus drops from +25% to 0, and enemy RES jumps from 115 to 174 (then 275 at stage 11).
 - **From stage 11 it's a penalty**, reaching −100% at stages 19 and 20.
 - **Stage 1 to 20, boss HP grows about ×180 to ×800.** The steepest late steps are usually at stage 15 or 16.
-- Relic bosses, Sorgott and Pentiax cost 20 energy a run from stage 17. Crest bosses and Omnissi top out at 14.
+- Relic bosses, the clan boss and Pentiax cost 20 energy a run from stage 17. Crest bosses and Omnissi top out at 14.
 
 Every boss page now has these numbers above its stage table, with the biggest wall highlighted. Start at [Bosses](/bosses).
 
@@ -40,7 +40,7 @@ The wall is the stage from 10 on where HP grows most over the stage before.
 | [Ulgorim](/bosses/ulgorim) | 15K → 9M | ×600 | Stage 15: 700K → 1.35M |
 | [Althar](/bosses/althar) | 30K → 6M | ×200 | Stage 16: 1.75M → 3M |
 | [Sakiel](/bosses/sakiel) | 15K → 4M | ×267 | Stage 16: 800K → 1.25M |
-| [Sorgott](/bosses/sorgott) | 15K → 8M | ×533 | **Stage 15: 775K → 2.5M (×3.2)** |
+| [Sorgott](/bosses/sorgott) | 15K → 8M | ×533 | Stage 15: 775K → 2.5M |
 | [Pentiax](/bosses/pentiax) | 14K → 10M | ×714 | Stage 15: 650K → 1.3M |
 | [Hyxxis](/bosses/hyxxis) | 12.5K → 10M | ×800 | Stage 14: 1.25M → 2M |
 | [Galvos](/bosses/galvos) | 40K → 16M | ×400 | Stage 13: 1.5M → 2.75M |
@@ -54,7 +54,7 @@ The wall is the stage from 10 on where HP grows most over the stage before.
 | [Omnissi ![](element:Earth)](/bosses/omnissi-earth) | 35K → 10.5M | ×300 | Stage 13: 900K → 2.32M |
 | [Omnissi ![](element:Light)](/bosses/omnissi-light) | 35K → 12M | ×343 | Stage 16: 3M → 4.5M |
 
-**Sorgott's stage 15 is the hardest single step**: HP more than triples.
+**Omnissi (Fire) has the steepest finish**: HP triples from stage 19 to 20.
 
 ## What to do with it
 
