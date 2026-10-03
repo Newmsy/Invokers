@@ -1,5 +1,6 @@
-// Full-Awakening stats: every node of Awakening levels 1-6 for an Invoker's Awakening type,
-// added to its 6★ level 60 base. Estimated: the game may stack bonuses differently.
+// Full-Awakening stats: every node of Awakening levels 1-6 for an Invoker's Awakening type.
+// Percent bonuses are of the 1★ level 1 stats and add to the 6★ level 60 base; flat bonuses add
+// directly. Checked against the game's max stats for Skoloss the Tomb Baron (12,294 HP, 364 ATK, 1,261 DEF).
 import totals from '../data/awakening-totals.json';
 import type { Hero, HeroStats } from './data';
 
@@ -23,7 +24,8 @@ export function fullyAwakened(hero: Hero): { stats: HeroStats; titanTime: number
   const type = awakeningType(hero);
   if (!type) return undefined;
   const stats = { ...hero.maxStats };
-  for (const [k, v] of Object.entries(type.percent)) stats[k as keyof HeroStats] *= 1 + v;
+  const base = hero.statsByRank.One['1'];
+  for (const [k, v] of Object.entries(type.percent)) stats[k as keyof HeroStats] += base[k as keyof HeroStats] * v;
   let titanTime = 0;
   for (const [k, v] of Object.entries(type.flat)) {
     if (k === 'titanTime') titanTime += v;
