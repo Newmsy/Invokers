@@ -8,7 +8,6 @@ import {
   className,
   formatStat,
   rankNumber,
-  rankOrder,
   rarityColor,
   richText,
   skillTypeName,
@@ -16,6 +15,7 @@ import {
   tierColor,
 } from '../../lib/format';
 import { heroTiers, tierNames } from '../../lib/tierData';
+import { fullyAwakened } from '../../lib/awakening';
 import { legendaryPool, summons } from '../../lib/summons';
 
 export function getStaticPaths() {
@@ -33,10 +33,13 @@ const color = rarityColor[hero.rarity] ?? '#B5B1D3';
 const keyStats = statFields.slice(0, 6);
 const otherStats = statFields.slice(6);
 
-const ranks = rankOrder.filter((r) => hero.statsByRank[r]);
-const levelsOf = (rank: string) =>
-  Object.keys(hero.statsByRank[rank] ?? {}).sort((a, b) => Number(a) - Number(b));
-const topRank = ranks[ranks.length - 1];
+// Stats tab: first day, 6★ level 60, and 6★ level 60 with every Awakening node.
+const awakened = fullyAwakened(hero);
+const statCols = [
+  { label: 'Lv 1', sub: `${rankNumber(hero.baseRank)}★`, stats: hero.statsByRank[hero.baseRank]['1'] },
+  { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
+  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60, est.', stats: awakened.stats }] : []),
+];
 
 // Where this Invoker sits on each tier list, best first.
 const tiers = heroTiers(hero.id).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier));
@@ -175,34 +178,27 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   </section>
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
-    <h2>Stats by rank and level</h2>
-    <p class="hint">Base stats without gear or awakening. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
-    <div class="rank-picker" role="group" aria-label="Rank">
-      {ranks.map((r) => (
-        <button type="button" class="chip" data-rank={r} aria-pressed={r === topRank ? 'true' : 'false'}>{rankNumber(r)}★</button>
-      ))}
-    </div>
-    {ranks.map((r) => (
-      <div class="table-wrap" data-rank-table={r} hidden={r !== topRank}>
-        <table>
-          <caption class="visually-hidden">Rank {rankNumber(r)} stats</caption>
-          <thead>
+    <h2>Stats</h2>
+    <p class="hint">Without gear. Awakened (estimated) has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
+    <div class="table-wrap">
+      <table class="stat-cols">
+        <caption class="visually-hidden">{hero.name} stats at level 1, level 60 and fully awakened</caption>
+        <thead>
+          <tr>
+            <th scope="col">Stat</th>
+            {statCols.map((c) => <th scope="col">{c.label}<span class="sub">{c.sub}</span></th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {statFields.map((f) => (
             <tr>
-              <th scope="col">Level</th>
-              {levelsOf(r).map((lv) => <th scope="col">{lv}</th>)}
+              <th scope="row">{f.short}</th>
+              {statCols.map((c) => <td>{formatStat(c.stats[f.key], f.percent)}</td>)}
             </tr>
-          </thead>
-          <tbody>
-            {statFields.map((f) => (
-              <tr>
-                <th scope="row">{f.short}</th>
-                {levelsOf(r).map((lv) => <td>{formatStat(hero.statsByRank[r][lv][f.key], f.percent)}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    ))}
+          ))}
+        </tbody>
+      </table>
+    </div>
   </section>
 </Base>
 
@@ -272,17 +268,6 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       const level = Number(input.value);
       const shown = texts.filter((t) => Number(t.dataset.level) <= level).pop();
       for (const t of texts) t.hidden = t !== shown;
-    });
-  }
-
-  // Rank picker on the stats tab.
-  const rankButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-rank]')];
-  for (const b of rankButtons) {
-    b.addEventListener('click', () => {
-      for (const o of rankButtons) o.setAttribute('aria-pressed', String(o === b));
-      for (const t of document.querySelectorAll<HTMLElement>('[data-rank-table]')) {
-        t.hidden = t.dataset.rankTable !== b.dataset.rank;
-      }
     });
   }
 </script>
@@ -468,18 +453,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .skill-text { font-size: 15px; line-height: 1.6; }
   .skill-text[hidden] { display: none; }
 
-  .rank-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .chip {
-    min-height: 40px;
-    padding: 0 16px;
-    border-radius: 20px;
-    background: transparent;
-    border: 1px solid var(--line);
-    color: var(--soft);
-    font: inherit;
-    cursor: pointer;
-  }
-  .chip[aria-pressed='true'] { background: var(--surface-2); border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .stat-cols th .sub { display: block; font-size: 0.8em; font-weight: 400; color: var(--muted); }
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
   .table-wrap[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
