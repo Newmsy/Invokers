@@ -24,6 +24,12 @@ const section = nav.find((n) => n.path === pagePath);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · Invokers Companion</title>
+    <meta name="theme-color" content="#0c0b1d" />
+    <link rel="icon" href={href('icons/icon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={href('icons/apple-touch-icon.png')} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Invokers" />
+    <link rel="manifest" href={href('manifest.webmanifest')} crossorigin="use-credentials" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,6 +75,12 @@ const section = nav.find((n) => n.path === pagePath);
         );
       })}
     </nav>
+    {import.meta.env.PROD && (
+      <script is:inline define:vars={{ sw: href('sw.js'), scope: href('/') }}>
+        // Keeps opened pages and images for offline use (pages/sw.js.ts).
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register(sw, { scope }).catch(() => {});
+      </script>
+    )}
     <script>
       // Press / anywhere (outside a text field) to jump to search.
       document.addEventListener('keydown', (e) => {

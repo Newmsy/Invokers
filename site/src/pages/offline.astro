@@ -1,0 +1,15 @@
+---
+// Shown by the service worker when a page you haven't opened before can't load.
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/data';
+---
+<Base title="Offline">
+  <h1>You're offline</h1>
+  <p class="lead">This page hasn't been saved on this device yet. Pages you've opened before still work without signal.</p>
+  <p><a href={href('/')}>Home</a> · <a href={href('heroes')}>Invokers</a> · <a href={href('my-box')}>My box</a></p>
+</Base>
+
+<style>
+  h1 { font-size: 28px; margin: 16px 0 8px; }
+  .lead { color: var(--soft); max-width: 50ch; }
+</style>
