@@ -2,7 +2,7 @@
 // readable names (img/heroes/<hero-slug>.webp, img/skills/<hero-slug>-skill-1.webp, ...) through
 // pages/img/[...path].ts, and the build drops public/art from dist so no code appears in an image URL.
 // The glob only lists files; nothing is imported.
-import { heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, titans, type HeroRef } from './data';
+import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, titans, type HeroRef } from './data';
 
 const sourceFiles = new Set(
   Object.keys(import.meta.glob('../../public/art/**/*.webp')).map((p) => p.replace(/^.*\/public\/art\//, '')),
@@ -21,6 +21,7 @@ const classIconPath = new Map<string, string>();
 const titanArtPath = new Map<string, string>();
 const heroSplashPath = new Map<string, string>();
 const titanSplashPath = new Map<string, string>();
+const bossArtPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -45,6 +46,8 @@ for (const t of titans) {
   add(`titans/${t.slug}.webp`, `titans/${t.id}.webp`, titanArtPath, t.id);
   add(`splash/titans/${t.slug}.webp`, `splash/titans/${t.id}.webp`, titanSplashPath, t.id);
 }
+// Boss art (issue #66), by boss id; shown on the boss guides when it exists.
+for (const b of bosses) add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);
 for (const source of sourceFiles) {
   const [kind, file] = source.split('/');
   const code = file?.replace(/\.webp$/, '');
@@ -72,6 +75,7 @@ export function artRoutes(): { served: string; source: string }[] {
 
 export const heroArt = (heroId: string) => url(heroArtPath.get(heroId));
 export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
+export const bossArt = (bossId: string) => url(bossArtPath.get(bossId));
 export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
 export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));
 export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get(`${heroId}/${type}`));

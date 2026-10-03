@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
-import { elementIcon } from '../../lib/art';
+import { bossArt, elementIcon } from '../../lib/art';
 import { tierLists, tierRows } from '../../lib/tierData';
 
 // The first three S-tier Invokers for each boss, as small portraits on its card.
@@ -37,6 +37,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
         {g.bosses.map((b) => (
           <li>
             <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#5FDCF7'}` : undefined}>
+              {bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" loading="lazy" />}
               <span class="name">{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
               {b.title && <span class="title">{b.title}</span>}
               <span class="corr">{b.corruptions.join(' · ')}</span>
@@ -69,6 +70,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
   }
+  .boss-art { width: 100%; height: 140px; object-fit: contain; margin-bottom: 8px; }
   .card {
     --tint: var(--accent);
     display: flex;
