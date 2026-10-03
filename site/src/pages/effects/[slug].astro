@@ -1,0 +1,119 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroArt from '../../components/HeroArt.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import TierBadge from '../../components/TierBadge.astro';
+import { titanArt } from '../../lib/art';
+import { heroHref, heroSlug, href } from '../../lib/data';
+import { effects, heroesWith, skillsWith, titansWith, type Effect } from '../../lib/effects';
+import { initials, rarityColor, skillTypeName } from '../../lib/format';
+
+export function getStaticPaths() {
+  return effects.filter((e) => heroesWith(e.slug).length > 0).map((effect) => ({ params: { slug: effect.slug }, props: { effect } }));
+}
+
+const { effect } = Astro.props as { effect: Effect };
+const list = heroesWith(effect.slug);
+const titanList = titansWith(effect.slug);
+const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').toLowerCase()}`;
+const related = effects.filter((e) => e.group === effect.group && e.slug !== effect.slug && heroesWith(e.slug).length > 0);
+// The pages for Titans arrive separately; link them once they exist.
+const titanPages = Object.keys(import.meta.glob('../titans/*.astro')).length > 0;
+---
+<Base title={`${effect.name} (status effect)`}>
+  <a class="back" href={href('effects')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    All status effects
+  </a>
+  <span class="group">{effect.group}</span>
+  <h1>{effect.name}</h1>
+  <p class="lead">{effect.text}</p>
+  <p class="links">
+    <a href={href(`heroes?effect=${effect.slug}`)}>Filter Invokers by {effect.name}</a>
+    {list.length > 1 && <><span aria-hidden="true">·</span><a href={href(`heroes/compare?h=${list.slice(0, 4).map((h) => heroSlug(h.id)).join(',')}`)}>Compare the top 4</a></>}
+  </p>
+
+  <h2>{list.length === 1 ? '1 Invoker brings it' : `${list.length} Invokers bring it`}</h2>
+  <ul class="grid">
+    {list.map((h) => (
+      <li>
+        <a class="card" href={`${heroHref(h.id)}#${skillAnchor(skillsWith(h.id, effect.slug)[0])}`} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+          <span class="art"><HeroArt hero={h} /><span class="tier"><TierBadge heroId={h.id} /></span></span>
+          <span class="name">{h.name}</span>
+          <span class="meta">{skillsWith(h.id, effect.slug).map(skillTypeName).join(', ')}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  {titanList.length > 0 && (
+    <>
+      <h2>Titans</h2>
+      <ul class="grid">
+        {titanList.map((t) => {
+          const art = titanArt(t.id);
+          const inner = (
+            <>
+              <span class="art">{art ? <img src={art} alt="" loading="lazy" /> : <span class="ph">{initials(t.name)}</span>}</span>
+              <span class="name">{t.name}</span>
+              <span class="meta">{skillsWith(t.id, effect.slug).map((s) => (s === 'Invocation' ? 'Invokation' : skillTypeName(s))).join(', ')}</span>
+            </>
+          );
+          return <li>{titanPages ? <a class="card" href={href(`titans/${t.slug}`)}>{inner}</a> : <span class="card">{inner}</span>}</li>;
+        })}
+      </ul>
+    </>
+  )}
+
+  {related.length > 0 && (
+    <>
+      <h2>Other {effect.group.toLowerCase()} effects</h2>
+      <ul class="chips">
+        {related.map((e) => <li><a href={href(`effects/${e.slug}`)}>{e.name}</a></li>)}
+      </ul>
+    </>
+  )}
+
+  <SeeAlso links={[
+    { path: 'effects', label: 'All status effects' },
+    { path: 'heroes', label: 'Invokers' },
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'team', label: 'Team builder' },
+  ]} />
+</Base>
+
+<style>
+  .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
+  .group { display: block; color: var(--accent); font-weight: 600; font-size: 14px; }
+  h1 { margin: 4px 0 0; font-size: 36px; }
+  .lead { color: var(--soft); font-size: 17px; margin: 8px 0; max-width: 60ch; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); font-size: 14px; margin: 0; }
+  h2 { font-size: 18px; margin: 28px 0 12px; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  a.card:hover { border-color: var(--accent); }
+  .art { position: relative; aspect-ratio: 1; background: var(--surface-2); border-bottom: 2px solid var(--rarity, var(--line)); display: flex; align-items: center; justify-content: center; }
+  .art img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .tier { position: absolute; top: 6px; right: 6px; }
+  .ph { font-family: var(--display); font-weight: 800; font-size: 24px; color: var(--muted); }
+  .name { font-weight: 600; padding: 8px 10px 0; line-height: 1.25; }
+  .meta { color: var(--muted); padding: 2px 10px 10px; }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; }
+  .chips a:hover { border-color: var(--accent); }
+  @media (max-width: 720px) {
+    h1 { font-size: 28px; }
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

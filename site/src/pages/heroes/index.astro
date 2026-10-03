@@ -5,6 +5,7 @@ import TierBadge from '../../components/TierBadge.astro';
 import { elementIcon } from '../../lib/art';
 import { heroes, heroHref, href } from '../../lib/data';
 import { className, rarityColor, rarityOrder } from '../../lib/format';
+import { effects, effectsFor } from '../../lib/effects';
 import { corruptionLabel, hasHeroTolerances, heroTolerances } from '../../lib/tolerances';
 
 const sorted = [...heroes].sort(
@@ -22,6 +23,7 @@ const groups = [
     label: 'Rarity',
     options: rarityOrder.filter((r) => heroes.some((h) => h.rarity === r)).map((v) => [v, v]),
   },
+  { key: 'effect', label: 'Effect', options: effects.filter((e) => heroes.some((h) => effectsFor(h.id).includes(e))).map((e) => [e.slug, e.name]) },
   // Shown once the data says which tolerances each Invoker has; boss pages link here with ?tolerance=daze.
   ...(hasHeroTolerances
     ? [{
@@ -39,6 +41,8 @@ const groups = [
   </div>
   <p class="links">
     <a href={href('tiers')}>Tier lists</a>
+    <span aria-hidden="true">·</span>
+    <a href={href('effects')}>Status effects</a>
     <span aria-hidden="true">·</span>
     <a href={href('heroes/compare')}>Compare Invokers</a>
     <span aria-hidden="true">·</span>
@@ -77,6 +81,7 @@ const groups = [
         data-class={h.class}
         data-rarity={h.rarity}
         data-tolerance={heroTolerances.get(h.id)?.join(' ')}
+        data-effect={effectsFor(h.id).map((e) => e.slug).join(' ')}
       >
         <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
           <div class="card-art">
@@ -95,9 +100,9 @@ const groups = [
 </Base>
 
 <script>
-  const keys = ['element', 'faction', 'class', 'rarity', 'tolerance'] as const;
+  const keys = ['element', 'faction', 'class', 'rarity', 'effect', 'tolerance'] as const;
   type Key = (typeof keys)[number];
-  const state: Record<Key, string> & { q: string } = { element: '', faction: '', class: '', rarity: '', tolerance: '', q: '' };
+  const state: Record<Key, string> & { q: string } = { element: '', faction: '', class: '', rarity: '', effect: '', tolerance: '', q: '' };
 
   const items = [...document.querySelectorAll<HTMLLIElement>('#grid > li')];
   const q = document.querySelector<HTMLInputElement>('#q')!;
@@ -118,7 +123,7 @@ const groups = [
     let shown = 0;
     for (const li of items) {
       const ok =
-        keys.every((k) => !state[k] || (k === 'tolerance' ? (li.dataset.tolerance ?? '').split(' ').includes(state[k]) : li.dataset[k] === state[k])) && (!needle || li.dataset.name!.includes(needle));
+        keys.every((k) => !state[k] || (k === 'tolerance' || k === 'effect' ? (li.dataset[k] ?? '').split(' ').includes(state[k]) : li.dataset[k] === state[k])) && (!needle || li.dataset.name!.includes(needle));
       li.hidden = !ok;
       if (ok) shown++;
     }

@@ -16,6 +16,7 @@ import {
 } from '../../lib/format';
 import { heroTiers, tierNames } from '../../lib/tierData';
 import { fullyAwakened } from '../../lib/awakening';
+import { effectsFor, linkEffects } from '../../lib/effects';
 import { legendaryPool, summons } from '../../lib/summons';
 
 export function getStaticPaths() {
@@ -49,6 +50,10 @@ const hasCompare = Object.keys(import.meta.glob('./compare.astro')).length > 0;
 
 // Summon items whose Legendary pool includes this Invoker.
 const summonedBy = summons.items.filter((i) => legendaryPool(i).some((h) => h.id === hero.id)).map((i) => i.name);
+
+// Buffs, debuffs and control in this kit, linked to the glossary; skill texts link each bracketed effect too.
+const kitEffects = effectsFor(hero.id);
+const effectHref = (slug: string) => href(`effects/${slug}`);
 
 // Plain-text preview of a skill for the overview list.
 const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -131,6 +136,15 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       ))}
     </ul>
 
+    {kitEffects.length > 0 && (
+      <>
+        <h2>Effects</h2>
+        <ul class="effect-list">
+          {kitEffects.map((e) => <li><a href={effectHref(e.slug)} title={e.text}>{e.name}</a></li>)}
+        </ul>
+      </>
+    )}
+
     {tiers.length > 0 && (
       <>
         <h2>Tier lists</h2>
@@ -170,7 +184,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
             </label>
           )}
           {levels.map((l, i) => (
-            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={richText(l.text)} />
+            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={linkEffects(richText(l.text), effectHref)} />
           ))}
         </article>
       );
@@ -348,6 +362,20 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .panel h2 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
   .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
 
+  .effect-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .effect-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 14px;
+  }
+  .effect-list a:hover { border-color: var(--accent); }
+  .skill-text :global(.effect-link) { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
   .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
   .tier-list a {
     display: inline-flex;
