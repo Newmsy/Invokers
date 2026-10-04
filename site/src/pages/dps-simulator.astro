@@ -55,6 +55,24 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="d-sources"></tbody>
       </table>
 
+      <section id="d-skills-box" hidden>
+        <h2>What levelling a skill is worth</h2>
+        <p class="hint">DPS gained by levelling each skill that isn't maxed yet.</p>
+        <table>
+          <thead><tr><th>Skill</th><th class="num">Level</th><th class="num">+1 level</th><th class="num">To max</th></tr></thead>
+          <tbody id="d-skills"></tbody>
+        </table>
+      </section>
+
+      <section id="d-debuffs-box" hidden>
+        <h2>Debuffs on the boss</h2>
+        <p class="hint" id="d-acc"></p>
+        <table>
+          <thead><tr><th>Skill</th><th>Debuff</th><th class="num">Lands</th><th class="num">Landed in the fight</th></tr></thead>
+          <tbody id="d-debuffs"></tbody>
+        </table>
+      </section>
+
       <h2>What one more substat roll is worth</h2>
       <p class="hint">DPS gained by adding one normal (B grade) 5★ substat roll to this build.</p>
       <table>
@@ -65,6 +83,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       <section id="o-box" hidden>
         <h2>Best gear from your box</h2>
         <p class="hint" id="o-summary"></p>
+        <ul class="hint sets" id="o-sets"></ul>
         <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
         <table>
           <thead><tr><th>Slot</th><th>Now</th><th>Best</th></tr></thead>
@@ -73,8 +92,8 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </section>
 
       <p class="hint note">
-        Estimates: one target, no buffs or debuffs, average crits, a {FIGHT_SEC}-second fight. Burn and Bleed count at
-        their per-tick limit. The numbers will sharpen as the battle rules are confirmed.
+        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC}-second fight.
+        Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
     </section>
   </div>
@@ -118,6 +137,9 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
+  :global(td.piece .equipped) { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--soft); }
+  :global(td.piece .equipped b) { padding: 1px 6px; margin-right: 2px; border-radius: 6px; background: var(--accent); color: #0c0b1d; font-weight: 700; }
+  .sets { margin: 0 0 8px; padding-left: 18px; }
   :global(tr.same td) { color: var(--muted); }
   :global(.pos) { color: var(--uncommon, #7be0a0); }
 </style>

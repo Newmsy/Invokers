@@ -3,7 +3,7 @@
 // full, otherwise the readiest skill (3, 2, 1), otherwise the next combo step. Damage uses expected crits.
 // Battle rules that aren't exported yet are in constants.ts.
 import * as C from './constants';
-import type { Dot, Hit } from './parse';
+import type { Debuff, Dot, Hit } from './parse';
 
 // ---- Data shapes (built at build time by data.ts) ----
 
@@ -21,6 +21,8 @@ export const toHitT = (h: Hit): HitT => {
 export interface SkillLevelT {
   h: HitT[];
   d?: Dot[];
+  /** Debuffs and control effects cast on the target. */
+  x?: Debuff[];
 }
 
 export interface DpsSkill {
@@ -40,7 +42,7 @@ export interface DpsHero {
   sign?: string;
   /** rank → level → [hp, atk, def] at the levels the data lists (1, 10, 20 …). */
   base: Record<string, Record<string, [number, number, number]>>;
-  /** Stats that don't grow with level: critRate, critDmg, comboSpeed, skillSpeed, skillRecovery, manaGen, instinct. */
+  /** Stats that don't grow with level: critRate, critDmg, acc, comboSpeed, skillSpeed, skillRecovery, manaGen, instinct. */
   fixed: Record<string, number>;
   skills: Partial<Record<'ActiveSkill1' | 'ActiveSkill2' | 'ActiveSkill3' | 'Ultimate', DpsSkill>>;
   /** Combo hits per step, index = skill level - 1. */
@@ -53,6 +55,8 @@ export interface BossStage {
   element: string;
   hp: number;
   def: number;
+  /** The boss's RES, which resists debuffs that need Accuracy. */
+  res: number;
 }
 
 export interface Curves {
@@ -61,6 +65,8 @@ export interface Curves {
   manaGen: number[];
   comboSpeed: number[];
   defense: number[];
+  /** Resist chance (%) by target RES - attacker ACC + 1,500. */
+  resist: number[];
 }
 
 export interface DpsData {
@@ -84,6 +90,7 @@ export interface Totals {
   flat: { hp: number; atk: number; def: number };
   critRate: number;
   critDmg: number;
+  acc: number;
   comboSpeed: number;
   skillSpeed: number;
   skillRecovery: number;
@@ -121,6 +128,7 @@ export function addStat(t: Totals, stat: string, value: number): void {
     case 'HealthPercent': t.pct.hp += value; break;
     case 'CriticalRatePercent': t.critRate += value; break;
     case 'CriticalDamagePercent': t.critDmg += value; break;
+    case 'AccuracyFlat': t.acc += value; break;
     case 'ComboSpeedFlat': t.comboSpeed += value; break;
     case 'SkillSpeedFlat': t.skillSpeed += value; break;
     case 'SkillRecoveryFlat': t.skillRecovery += value; break;
@@ -147,6 +155,7 @@ export function totalsFor(data: DpsData, hero: DpsHero, rank: string, level: num
     flat: { hp: 0, atk: 0, def: 0 },
     critRate: f.critRate ?? 0,
     critDmg: f.critDmg ?? 0,
+    acc: f.acc ?? 0,
     comboSpeed: f.comboSpeed ?? 0,
     skillSpeed: f.skillSpeed ?? 0,
     skillRecovery: f.skillRecovery ?? 0,
@@ -194,6 +203,12 @@ export function defenseFactor(curve: number[], def: number): number {
   return curve[last] * Math.exp(-decay * (def - last));
 }
 
+/** Chance a debuff that needs Accuracy lands: 1 - resist chance at (target RES - ACC). */
+export function landChance(curve: number[], res: number, acc: number): number {
+  const offset = (curve.length - 1) / 2;
+  return 1 - Math.max(0, Math.min(100, at(curve, res - acc + offset))) / 100;
+}
+
 // ---- Fight ----
 
 export type Mode = 'pve' | 'arena';
@@ -216,6 +231,17 @@ export interface SourceResult {
   damage: number;
 }
 
+export interface DebuffResult {
+  slot: SkillSlot;
+  name: string;
+  /** Casts that tried to apply it, in a fight of `seconds`. */
+  tries: number;
+  /** Chance one try lands (cast chance x not resisted). */
+  chance: number;
+  /** Expected number landed. */
+  landed: number;
+}
+
 export interface FightResult {
   /** Average damage per second over fights of WINDOW seconds either side of `seconds` (smooths out cooldown timing). */
   dps: number;
@@ -223,6 +249,9 @@ export interface FightResult {
   total: number;
   seconds: number;
   sources: SourceResult[];
+  debuffs: DebuffResult[];
+  /** Chance a debuff that needs Accuracy lands on this boss stage. */
+  accChance: number;
 }
 
 /** Fight lengths averaged for the DPS figure: `seconds` ± this many, every half second. */
@@ -235,6 +264,8 @@ interface Event {
   at: number;
   slot: SkillSlot;
   damage: number;
+  /** Debuffs tried by this cast. */
+  debuffs?: Debuff[];
   /** True for the action itself (counts as a cast); false for later Burn/Bleed ticks. */
   cast: boolean;
 }
@@ -250,7 +281,9 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const defFactor = defenseFactor(data.curves.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
   const hitScale = critFactor * defFactor * C.ELEMENT_FACTOR;
   const hitDamage = (h: HitT) => ((h[0] ?? 0) * atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * hitScale;
-  const tickDamage = (d: Dot) => Math.min(d.pct * stage.hp, d.capAtk * atk) * (C.DOT_USES_DEF ? defFactor : 1);
+  const accChance = landChance(data.curves.resist, stage.res, t.acc);
+  const tickDamage = (d: Dot) =>
+    Math.min(d.pct * stage.hp, d.capAtk * atk) * (C.DOT_USES_DEF ? defFactor : 1) * (d.acc ? accChance : 1);
 
   const pctOf = (curve: number[], rating: number) => at(curve, rating) / 100;
   const skillSpeed = 1 + pctOf(data.curves.skillSpeed, t.skillSpeed);
@@ -275,7 +308,7 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
 
   const cast = (slot: SkillSlot, s: DpsSkill, castSec: number) => {
     const level = s.levels[levelOf(input, slot, s.levels.length)];
-    events.push({ at: now, slot, damage: level.h.reduce((n, h) => n + hitDamage(h), 0), cast: true });
+    events.push({ at: now, slot, damage: level.h.reduce((n, h) => n + hitDamage(h), 0), cast: true, debuffs: level.x });
     for (const d of level.d ?? []) {
       const ticks = Math.floor(d.durationSec / d.everySec);
       for (let i = 1; i <= ticks; i++) events.push({ at: now + i * d.everySec, slot, damage: tickDamage(d), cast: false });
@@ -337,7 +370,20 @@ export function simulate(data: DpsData, input: FightInput): FightResult {
     results.set(e.slot, r);
   }
   const sources = [...results.values()].sort((a, b) => b.damage - a.damage);
-  return { dps: sum / count, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources };
+  const accChance = landChance(data.curves.resist, input.stage.res, input.totals.acc);
+  const debuffs = new Map<string, DebuffResult>();
+  for (const e of events) {
+    if (e.at >= T || !e.debuffs) continue;
+    for (const d of e.debuffs) {
+      const key = `${e.slot}:${d.name}`;
+      const chance = d.chance * (d.acc ? accChance : 1);
+      const r = debuffs.get(key) ?? { slot: e.slot, name: d.name, tries: 0, chance, landed: 0 };
+      r.tries += 1;
+      r.landed += chance;
+      debuffs.set(key, r);
+    }
+  }
+  return { dps: sum / count, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance };
 }
 
 // ---- Stat value table ----
@@ -360,4 +406,37 @@ export function statValues(data: DpsData, input: FightInput, rolls = C.NORMAL_RO
     return { stat, value, dps, gain: base.dps > 0 ? dps / base.dps - 1 : 0 };
   });
   return { base, values: values.sort((a, b) => b.gain - a.gain) };
+}
+
+// ---- Skill upgrades ----
+
+export const UPGRADABLE: SkillSlot[] = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Ultimate', 'Combo'];
+
+export interface SkillGain {
+  slot: SkillSlot;
+  level: number;
+  max: number;
+  /** DPS gain from one more level, and from levelling to max (fractions). */
+  next: number;
+  toMax: number;
+}
+
+/** Highest level a skill has. */
+export function maxLevel(hero: DpsHero, slot: SkillSlot): number {
+  return slot === 'Combo' ? hero.combo.length : (hero.skills[slot]?.levels.length ?? 0);
+}
+
+/** DPS gained from levelling each skill that isn't maxed, largest first. */
+export function skillGains(data: DpsData, input: FightInput): SkillGain[] {
+  const base = simulate(data, input).dps;
+  if (base <= 0) return [];
+  const out: SkillGain[] = [];
+  for (const slot of UPGRADABLE) {
+    const max = maxLevel(input.hero, slot);
+    const level = Math.min(max, input.skillLevels[slot] ?? max);
+    if (!max || level >= max) continue;
+    const at = (lv: number) => simulate(data, { ...input, skillLevels: { ...input.skillLevels, [slot]: lv } }).dps / base - 1;
+    out.push({ slot, level, max, next: at(level + 1), toMax: at(max) });
+  }
+  return out.sort((a, b) => b.next - a.next);
 }

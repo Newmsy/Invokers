@@ -3,8 +3,9 @@
 import type { BoxHero } from '../box/decode';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
-import { finalStat, statValues, type DpsData, type Mode, type SkillSlot } from './model';
-import { openSlots, optimise, type Piece } from './optimise';
+import { CRIT_RATE_CAP } from './constants';
+import { finalStat, skillGains, statValues, type DpsData, type Mode, type SkillSlot } from './model';
+import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB');
@@ -110,12 +111,13 @@ export async function start(): Promise<void> {
       ['ATK', fmt(finalStat(t, 'atk'))],
       ['DEF', fmt(finalStat(t, 'def'))],
       ['HP', fmt(finalStat(t, 'hp'))],
-      ['Crit Rate', pct(t.critRate)],
+      ['Crit Rate', t.critRate > CRIT_RATE_CAP ? `${pct(t.critRate)} (${pct(CRIT_RATE_CAP, 0)} counts)` : pct(t.critRate)],
       ['Crit DMG', pct(t.critDmg)],
       ['Skill SPD', fmt(t.skillSpeed)],
       ['Skill RECOV', fmt(t.skillRecovery)],
       ['Combo SPD', fmt(t.comboSpeed)],
       ['Mana Gen', fmt(t.manaGen)],
+      ['ACC', fmt(t.acc)],
     ];
     $('d-stats').replaceChildren(...stats.flatMap(([k, v]) => [el('dt', k), el('dd', v)]));
 
@@ -123,6 +125,23 @@ export async function start(): Promise<void> {
       ...base.sources
         .filter((s) => s.damage > 0)
         .map((s) => row(SOURCE[s.slot], [fmt(s.casts), 'num'], [fmt(s.damage), 'num'], [pct(base.total ? s.damage / base.total : 0), 'num'])),
+    );
+
+    // Debuffs: what each skill tries to cast and how many land on this stage.
+    $('d-debuffs-box').hidden = !base.debuffs.length;
+    $('d-acc').textContent =
+      `Stage ${stage.stage} has ${fmt(stage.res)} RES. With ${fmt(t.acc)} ACC, a debuff that needs Accuracy lands ${pct(base.accChance, 0)} of the time.`;
+    $('d-debuffs').replaceChildren(
+      ...base.debuffs.map((d) => row(SOURCE[d.slot], d.name, [pct(d.chance, 0), 'num'], [`${d.landed.toFixed(1)} of ${fmt(d.tries)}`, 'num'])),
+    );
+
+    // Skill upgrades (box Invokers whose skills aren't maxed).
+    const gains = heroSel.value.startsWith('box:') ? skillGains(data, input) : [];
+    $('d-skills-box').hidden = !gains.length;
+    $('d-skills').replaceChildren(
+      ...gains.map((g) =>
+        row(SOURCE[g.slot], [`${g.level} of ${g.max}`, 'num'], [g.next >= 0.0005 ? `+${pct(g.next, 2)}` : 'No change', g.next >= 0.0005 ? 'num pos' : 'num'], [g.toMax >= 0.0005 ? `+${pct(g.toMax, 1)}` : 'No change', 'num']),
+      ),
     );
 
     $('d-values').replaceChildren(
@@ -151,7 +170,9 @@ export async function start(): Promise<void> {
     if (p.equippedHeroId !== null && p.equippedHeroId !== ownerId && box) {
       const wearer = box.heroes.find((h) => h.id === p.equippedHeroId);
       const name = wearer && data.heroes.find((d) => d.configId === wearer.configId)?.name;
-      td.append(el('small', `Worn by ${name ?? 'another Invoker'}`));
+      const badge = el('span', undefined, 'equipped');
+      badge.append(el('b', 'Equipped'), ` by ${name ?? 'another Invoker'}`);
+      td.append(badge);
     }
     return td;
   }
@@ -165,6 +186,14 @@ export async function start(): Promise<void> {
     const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, seconds });
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
+    const setLine = (l: Loadout) =>
+      activeSets(data, l)
+        .map((s) => `${setNames[s.set] ?? s.set} ${s.pieces} pieces (${s.tiers.map((n) => `${n}-piece`).join(' + ')} bonus)`)
+        .join(', ') || 'none';
+    $('o-sets').replaceChildren(
+      el('li', `Set bonuses now: ${setLine(r.current)}`),
+      el('li', `Set bonuses with the best gear: ${setLine(r.best)}`),
+    );
     $('o-summary').textContent = r.changed.length
       ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes estimated DPS from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
       : 'This Invoker already wears the best gear your box has for it.';

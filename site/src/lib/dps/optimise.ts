@@ -155,3 +155,13 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
     changed: slots.filter((s) => current[s]?.id !== best[s]?.id || current[s]?.kind !== best[s]?.kind),
   };
 }
+
+/** Gear sets a loadout completes: set id, pieces worn and the bonus tiers (3, 5 …) that are active. */
+export function activeSets(data: DpsData, loadout: Loadout): { set: string; pieces: number; tiers: number[] }[] {
+  const counts = new Map<string, number>();
+  for (const p of Object.values(loadout)) if (p?.kind === 'gear') counts.set((p as BoxGear).set, (counts.get((p as BoxGear).set) ?? 0) + 1);
+  return [...counts]
+    .map(([set, pieces]) => ({ set, pieces, tiers: Object.keys(data.sets[set] ?? {}).map(Number).filter((n) => n <= pieces).sort((a, b) => a - b) }))
+    .filter((s) => s.tiers.length)
+    .sort((a, b) => b.pieces - a.pieces);
+}

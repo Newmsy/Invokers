@@ -47,6 +47,7 @@ export const NORMAL_ROLL: { stat: string; value: number }[] = [
   { stat: 'SkillSpeedFlat', value: 7 },
   { stat: 'ComboSpeedFlat', value: 7 },
   { stat: 'ManaGenerationFlat', value: 7 },
+  { stat: 'AccuracyFlat', value: 14 },
   { stat: 'DefensePercent', value: 0.027 * 0.8 },
   { stat: 'HealthPercent', value: 0.027 * 0.8 },
 ];
