@@ -17,6 +17,7 @@ import {
 import { bestTier, heroTiers, tierNames } from '../../lib/tierData';
 import { similarTo } from '../../lib/similar';
 import { awakeningType, fullyAwakened, soulSignAnchor } from '../../lib/awakening';
+import { formatPower, maxPower } from '../../lib/power';
 import { corruptionKey, corruptionLabel } from '../../lib/tolerances';
 import { effectsFor, linkEffects } from '../../lib/effects';
 import { legendaryPool, summons } from '../../lib/summons';
@@ -43,6 +44,7 @@ const splash = heroSplash(hero.id);
 const awakened = fullyAwakened(hero);
 // Overview "Max stats" matches the game's own max stats, which include full Awakening.
 const maxed = awakened?.stats ?? hero.maxStats;
+const topPower = formatPower(maxPower(hero.maxStats, !!awakened));
 const statCols = [
   { label: 'Lv 1', sub: `${rankNumber(hero.baseRank)}★`, stats: hero.statsByRank[hero.baseRank]['1'] },
   { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
@@ -146,7 +148,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="overview" class="panel" role="tabpanel" aria-labelledby="tab-overview">
     <h2>Max stats</h2>
-    <p class="hint">{awakened ? '6★, level 60, fully awakened, without gear.' : '6★, level 60, without gear or awakening.'} <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
+    <p class="hint">{awakened ? '6★, level 60, fully awakened, without gear.' : '6★, level 60, without gear or awakening.'} Power <strong>{topPower}</strong> with max skills. <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
     <div class="stat-grid">
       {keyStats.map((f) => (
         <div class="stat">

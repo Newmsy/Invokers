@@ -7,7 +7,7 @@ import { BOX_FILES } from '../lib/box/decode';
 import { accountsEnabled } from '../lib/account/config';
 import ShareBox from '../components/ShareBox.astro';
 
-const refs = { heroes: heroRefsWithArt(), stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/') };
+const refs = { heroes: heroRefsWithArt(), stats: gearStatLabels, sets: setNames, gameVersion: pack.gameVersion, heroBase: href('heroes/'), dataUrl: href('dps-data.json') };
 const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_snapshots';
 ---
 <Base title="My box">
@@ -76,6 +76,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
       <div class="filters">
         <input id="hero-search" type="search" placeholder="Search invokers" />
         <select id="hero-sort" aria-label="Sort invokers">
+          <option value="power">Highest power</option>
           <option value="level">Highest level</option>
           <option value="rank">Most stars</option>
           <option value="rarity">Rarity</option>
@@ -177,6 +178,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
     display: grid; gap: 4px; min-width: 0;
   }
   :global(.hero-card a) { color: var(--text); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+  :global(.hero-card .power) { float: right; font-weight: 700; font-variant-numeric: tabular-nums; }
   :global(.hero-card .sub) { color: var(--muted); font-size: 0.8rem; }
   :global(.stars) { color: var(--legendary); letter-spacing: 1px; }
   :global(.r-Legendary) { border-left-color: var(--legendary) !important; }
