@@ -51,6 +51,10 @@ export interface TitanInfo {
   name: string;
   /** The faction whose Invokers can bind it, or undefined for a Titan any Invoker can use. */
   faction?: string;
+  /** Rare, Epic, Legendary or Mythical. */
+  rarity?: string;
+  /** "Melee Attacker" or "Tank", as the game shows it. */
+  role?: string;
 }
 
 /** Titan ids carry the same faction code as hero ids (e.g. LTS); a code no hero shares means any faction. */

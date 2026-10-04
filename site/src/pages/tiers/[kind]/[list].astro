@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import SeeAlso from '../../../components/SeeAlso.astro';
 import { elementIcon } from '../../../lib/art';
 import { bosses, bossSlug, href } from '../../../lib/data';
-import { elementColor, initials, tierColor } from '../../../lib/format';
+import { elementColor, initials, rarityColor, tierColor } from '../../../lib/format';
 import { listCorruptions, pools, tierLists, tierRows, tiersDraft, type PoolKind } from '../../../lib/tierData';
 import type { TierListDef } from '../../../lib/tiers/lists';
 
@@ -91,7 +91,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
                     <span class="name">{p.name}</span>
                     <span class="meta">
                       {p.element && elementIcon(p.element) && <img src={elementIcon(p.element)} alt="" width="13" height="13" loading="lazy" />}
-                      {p.element && `${p.element} · `}{p.meta}
+                      {p.element && `${p.element} · `}{p.rarity && <><span style={`color: ${rarityColor[p.rarity] ?? 'inherit'}`}>{p.rarity}</span> · </>}{p.meta}
                     </span>
                     {p.brings.length > 0 && <span class="brings">{p.brings.map((b) => <span>{b}</span>)}</span>}
                   </span>

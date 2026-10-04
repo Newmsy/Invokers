@@ -87,20 +87,20 @@ for (const source of sourceFiles) {
 // Gear set icons by set id, faction cards, rarity card backgrounds, loading-hint pictures (by the hint's
 // order in tips.json) and game mode cards, all under readable names.
 const setIconPath = new Map<string, string>();
-const gearIconPath = new Map<string, string>();
 for (const [id, name] of Object.entries(setNames)) add(`sets/${slugify(name)}.webp`, `sets/${id}.webp`, setIconPath, id);
-// Gear pieces: each set has its own picture per slot; accessories have one per faction; plus the empty-slot outlines.
-for (const source of sourceFiles) {
-  const m = source.match(/^gear\/(.+)\.webp$/);
-  if (!m) continue;
-  const parts = m[1].split('_');
-  if (parts[0] === 'slot' && parts.length === 2) add(`gear/empty-${slugify(parts[1])}.webp`, source, gearIconPath, `slot:${parts[1]}`);
-  else if (parts[0] === 'accessory' && parts.length === 3) {
-    add(`gear/${slugify(parts[2])}-${slugify(parts[1])}.webp`, source, gearIconPath, `accessory:${parts[2]}:${parts[1]}`);
-  } else if (parts.length === 2 && setNames[parts[0]]) {
-    add(`gear/${slugify(setNames[parts[0]])}-${slugify(parts[1])}.webp`, source, gearIconPath, `set:${parts[0]}:${parts[1]}`);
-  }
+// Gear piece icons per set and slot, accessory icons per faction and slot, and the empty-slot outlines.
+export const gearSlots = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'] as const;
+export const accessorySlots = ['Amulet', 'Earrings', 'Banner', 'Talisman', 'Flasks'] as const;
+const gearPiecePath = new Map<string, string>();
+for (const [id, name] of Object.entries(setNames)) {
+  for (const slot of gearSlots) add(`gear/${slugify(name)}-${slot.toLowerCase()}.webp`, `gear/${id}_${slot}.webp`, gearPiecePath, `${id}/${slot}`);
 }
+const accessoryPath = new Map<string, string>();
+for (const f of new Set(heroes.map((h) => String(h.faction)))) {
+  for (const slot of accessorySlots) add(`gear/${slugify(f)}-${slot.toLowerCase()}.webp`, `gear/accessory_${slot}_${f}.webp`, accessoryPath, `${f}/${slot}`);
+}
+const slotPath = new Map<string, string>();
+for (const slot of [...gearSlots, ...accessorySlots]) add(`gear/empty-${slot.toLowerCase()}.webp`, `gear/slot_${slot}.webp`, slotPath, slot);
 const factionCardPath = new Map<string, string>();
 const rarityCardPath = new Map<string, string>();
 const modeArtPath = new Map<string, string>();
@@ -143,9 +143,19 @@ export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
 export const setIcon = (setId: string) => url(setIconPath.get(setId));
-/** Every gear and accessory piece picture by key ("set:<set id>:<Slot>", "accessory:<faction>:<Slot>", "slot:<Slot>"). */
+/** A set's icon for one gear slot (Weapon ... Boots). */
+export const gearPieceIcon = (setId: string, slot: string) => url(gearPiecePath.get(`${setId}/${slot}`));
+/** A faction's accessory icon for one accessory slot (Amulet ... Flasks). */
+export const accessoryIcon = (faction: string, slot: string) => url(accessoryPath.get(`${faction}/${slot}`));
+/** The empty-slot outline for a gear or accessory slot. */
+export const slotIcon = (slot: string) => url(slotPath.get(slot));
+/** Every gear and accessory piece picture by key ("set:<set id>:<Slot>", "accessory:<faction>:<Slot>", "slot:<Slot>"), for the DPS simulator. */
 export const gearIcons = (): Record<string, string> =>
-  Object.fromEntries([...gearIconPath].map(([k, served]) => [k, url(served)!]));
+  Object.fromEntries([
+    ...[...gearPiecePath].map(([k, served]) => [`set:${k.replace('/', ':')}`, url(served)!]),
+    ...[...accessoryPath].map(([k, served]) => [`accessory:${k.replace('/', ':')}`, url(served)!]),
+    ...[...slotPath].map(([k, served]) => [`slot:${k}`, url(served)!]),
+  ]);
 /** Faction card art: a tall card with a character from that faction. */
 export const factionCard = (faction: string) => url(factionCardPath.get(faction));
 /** The game's hero card background for a rarity (a colour wash, no emblem). */
