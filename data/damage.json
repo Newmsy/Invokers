@@ -49,9 +49,10 @@
  },
  "unconfirmed": [
   "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config.",
-  "How crit, ignore-DEF, damage-taken and Tolerance combine with the DEF multiplier (DamageUtils.CalculateSourceDamage / CalculateMitigatedDamage are not decoded yet).",
   "debuffLanding: which stat feeds the target 'resist bonus' and attacker 'accuracy bonus' terms (two F64 fields on the battle state), and the exact corruption types (read as type 11 on the target and Mindfog on the attacker).",
-  "Whether the in-skill cast chance ('20% chance to cast') is rolled before and separately from this resist roll (it is a separate script block, so most likely yes)."
+  "Whether the in-skill cast chance ('20% chance to cast') is rolled before and separately from this resist roll (it is a separate script block, so most likely yes).",
+  "crit: the exact crit damage formula (whether it is x(1 + critDamage) or x critDamage) was read from a long function and not verified in game.",
+  "How DEF Down / Weaken map onto defenseFactor / damageTakenFactor (from the status effect configs, not decoded yet)."
  ],
  "elements": {
   "damageMultiplier": {
@@ -85,5 +86,29 @@
   "floorCap": "No floor or cap in the roll itself: resistChance <= 0 always lands, >= 100 is always resisted.",
   "skipped": "Allies' effects are never resisted (same team). Effects marked Unresistable / CanBeResisted = false (skill_mechanics.json) skip the roll.",
   "source": "RpgStateUtils.RollResistance (read from the game code)"
+ },
+ "hit": {
+  "steps": [
+   "source damage (CalculateSourceDamage): skill multipliers x stats, crit roll, element damage multiplier",
+   "mitigation (CalculateMitigatedDamage), by damage type, below"
+  ],
+  "mitigation": {
+   "normal": "effectiveDEF = targetDEF x max(0, defenseFactor - ignoreDefense); damage = round(source x defense.formula(effectiveDEF) x damageTakenFactor x incomingDamageFactor)",
+   "bleedAndBurn": "damage = round(source x incomingDamageFactor x damageTakenFactor): DEF does not apply",
+   "corruption": "damage = round(source x corruptionCoef x incomingDamageFactor), corruptionCoef = CorruptionCoefReducedWithTolerance(target tolerance): Tolerance reduces Corruption damage",
+   "invincible": "a target with an invincibility flag takes 0 from Bleed/Burn",
+   "terms": {
+    "defenseFactor": "multiplier on the target's DEF (1 normally; DEF Down debuffs lower it)",
+    "ignoreDefense": "the hit's IgnoreDefensePercent / 100, clamped to 0..1, subtracted from defenseFactor",
+    "damageTakenFactor": "target's damage-taken multiplier (e.g. Decrease Damage Taken, Weaken)",
+    "incomingDamageFactor": "target's incoming-damage multiplier"
+   },
+   "rounding": "to the nearest whole number at the end"
+  },
+  "crit": {
+   "chance": "stat crit rate + the hit's ModifyCritChancePercent / 100 + elements.critChanceDelta / 100 (not below 0), rolled against random(0..100)",
+   "damage": "crit hits use the attacker's crit damage stat plus the hit's ModifyCritDamagePercent / 100",
+   "elementMultiplierAppliedAfterCrit": true
+  }
  }
 }
