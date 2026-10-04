@@ -7,6 +7,7 @@ import SeeAlso from '../../components/SeeAlso.astro';
 import { href } from '../../lib/data';
 import { heroByName, newsDate, newsKinds } from '../../lib/news';
 import { chaseBanner } from '../../lib/art';
+import NewsSidebar from '../../components/NewsSidebar.astro';
 
 const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const kinds = Object.entries(newsKinds).filter(([k]) => entries.some((e) => e.data.kind === k));
@@ -25,6 +26,7 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     </div>
   )}
 
+  <div class="columns">
   <ul class="entries">
     {entries.map((e) => (
       <li data-kind={e.data.kind}>
@@ -38,6 +40,9 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
       </li>
     ))}
   </ul>
+
+  <NewsSidebar />
+  </div>
 
   <SeeAlso links={[{ path: 'updates', label: 'Game updates' }, { path: 'events', label: 'Events' }, { path: 'summons', label: 'Summons' }, { path: 'blog', label: 'Blog' }]} />
 </Base>
@@ -71,7 +76,8 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     cursor: pointer;
   }
   .filters button[aria-pressed='true'] { border-color: var(--accent); color: var(--text); }
-  .entries { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; max-width: 760px; }
+  .columns { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; margin-top: 24px; }
+  .entries { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
   .entries a {
     display: block;
     padding: 20px 24px;
@@ -87,6 +93,9 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
   .entries h2 { margin: 4px 0 6px; font-size: 20px; }
   .entries p { margin: 0 0 10px; color: var(--soft); }
   .meta { font-size: 13px; color: var(--muted); }
+  @media (max-width: 1000px) {
+    .columns { grid-template-columns: 1fr; }
+  }
   @media (max-width: 720px) {
     .entries a { padding: 16px; }
     .entries h2 { font-size: 18px; }
