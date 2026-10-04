@@ -20,31 +20,52 @@ How this compares with levelling: [Levelling vs Awakening](/blog/levelling-vs-aw
 
 Gain from no Awakening to full, at 6★ level 60:
 
-| Sign | Invokers | e.g. | ATK | HP | DEF |
-|---|---|---|---|---|---|
-| Sign of Duthra | 20 | ![Devi of the Six](hero:) | +29% | +11% | +10% |
-| Sign of Temero | 72 | ![Duchess Kanraku](hero:) | +28% | +12% | +10% |
-| Sign of Vess | 49 | ![Almea](hero:) | +26% | +13% | +10% |
-| Sign of Kalibar | 43 | ![Akrila the Oathpainter](hero:) | +19% | +21% | +10% |
-| Sign of Corran | 3 | ![Charvaine the Hypnomancer](hero:) | +17% | +18% | +15% |
-| Sign of Pirea | 15 | ![Crestelle Moonveil](hero:) | +11% | +26% | +12% |
-| Sign of Actia | 26 | ![Skoloss the Tomb Baron](hero:) | +10% | +19% | +21% |
-| Sign of Magnar | 3 | ![Virtus the Heavensent](hero:) | +8% | +19% | +23% |
+| Sign | ATK | HP | DEF |
+|---|---|---|---|
+| Duthra | +29% | +11% | +10% |
+| Temero | +28% | +12% | +10% |
+| Vess | +26% | +13% | +10% |
+| Kalibar | +19% | +21% | +10% |
+| Corran | +17% | +18% | +15% |
+| Pirea | +11% | +26% | +12% |
+| Actia | +10% | +19% | +21% |
+| Magnar | +8% | +19% | +23% |
 
-## Everything else
+## Everything else, by Sign
 
-Added on top of the Invoker's own ratings:
+Added on top of the Invoker's own ratings.
 
-| Sign | Instinct | Crit | Speed | Other |
-|---|---|---|---|---|
-| Sign of Duthra | +42 | +20% Crit DMG | +25 Move SPD | +32 Mana Gen |
-| Sign of Temero | +36 | +5% Crit Rate, +10% Crit DMG | +30 Move SPD | +32 Mana Gen, +20 ACC |
-| Sign of Vess | +36 | +10% Crit Rate | +52 Combo SPD | +60 ACC |
-| Sign of Kalibar | +42 | | +40 Skill SPD, +30 Skill RECOV, +25 Move SPD | +54 ACC |
-| Sign of Corran | +42 | +16% Crit DMG | +32 Skill RECOV, +50 Move SPD | +20 RES |
-| Sign of Pirea | +42 | | +48 Skill SPD, +22 Combo SPD, +35 Move SPD | +32 RES |
-| Sign of Actia | +49 | | +40 Move SPD | +88 ACC, +60 RES, +40 Mana Gen |
-| Sign of Magnar | +56 | | +60 Combo SPD, +40 Move SPD | +72 RES |
+**Sign of Duthra** (20 Invokers, e.g. ![Devi of the Six](hero:))
+- +42 Instinct, +20% Crit DMG
+- +25 Move SPD, +32 Mana Gen
+
+**Sign of Temero** (72, e.g. ![Duchess Kanraku](hero:))
+- +36 Instinct, +5% Crit Rate, +10% Crit DMG
+- +30 Move SPD, +32 Mana Gen, +20 ACC
+
+**Sign of Vess** (49, e.g. ![Almea](hero:))
+- +36 Instinct, +10% Crit Rate
+- +52 Combo SPD, +60 ACC
+
+**Sign of Kalibar** (43, e.g. ![Akrila the Oathpainter](hero:))
+- +42 Instinct, +54 ACC
+- +40 Skill SPD, +30 Skill RECOV, +25 Move SPD
+
+**Sign of Corran** (3, e.g. ![Charvaine the Hypnomancer](hero:))
+- +42 Instinct, +16% Crit DMG, +20 RES
+- +32 Skill RECOV, +50 Move SPD
+
+**Sign of Pirea** (15, e.g. ![Crestelle Moonveil](hero:))
+- +42 Instinct, +32 RES
+- +48 Skill SPD, +22 Combo SPD, +35 Move SPD
+
+**Sign of Actia** (26, e.g. ![Skoloss the Tomb Baron](hero:))
+- +49 Instinct, +88 ACC, +60 RES
+- +40 Move SPD, +40 Mana Gen
+
+**Sign of Magnar** (3, e.g. ![Virtus the Heavensent](hero:))
+- +56 Instinct, +72 RES
+- +60 Combo SPD, +40 Move SPD
 
 Full Awakening means all six levels with every node, before any accessories it unlocks. The HP, ATK and DEF gains are the same for every Invoker of a Sign to within a point.
 
