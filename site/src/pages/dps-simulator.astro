@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { gearStatLabels, href } from '../lib/data';
+import { gearStatLabels, href, setNames } from '../lib/data';
 import { BOSS, STAGES } from '../lib/dps/data';
 import { FIGHT_SEC } from '../lib/dps/constants';
 
@@ -15,7 +15,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-seconds={FIGHT_SEC}>
+  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-seconds={FIGHT_SEC}>
     <div class="filters">
       <label>Invoker
         <select id="d-hero" disabled><option>Loading…</option></select>
@@ -62,6 +62,16 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="d-values"></tbody>
       </table>
 
+      <section id="o-box" hidden>
+        <h2>Best gear from your box</h2>
+        <p class="hint" id="o-summary"></p>
+        <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
+        <table>
+          <thead><tr><th>Slot</th><th>Now</th><th>Best</th></tr></thead>
+          <tbody id="o-rows"></tbody>
+        </table>
+      </section>
+
       <p class="hint note">
         Estimates: one target, no buffs or debuffs, average crits, a {FIGHT_SEC}-second fight. Burn and Bleed count at
         their per-tick limit. The numbers will sharpen as the battle rules are confirmed.
@@ -105,5 +115,9 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   table { width: 100%; border-collapse: collapse; }
   th, :global(td) { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
   .num, :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; }
+  .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
+  :global(td.piece) { font-size: 14px; }
+  :global(td.piece small) { display: block; color: var(--muted); }
+  :global(tr.same td) { color: var(--muted); }
   :global(.pos) { color: var(--uncommon, #7be0a0); }
 </style>

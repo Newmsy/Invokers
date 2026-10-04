@@ -7,6 +7,7 @@ import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
 import { defenseFactor, finalStat, simulate, statValues, type FightInput } from '../src/lib/dps/model';
+import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { parseComboText, parseHit, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
@@ -116,5 +117,35 @@ describe('fight', () => {
     const gain = Object.fromEntries(values.map((v) => [v.stat, v.gain]));
     for (const s of ['AttackPercent', 'CriticalRatePercent', 'CriticalDamagePercent', 'SkillRecoveryFlat']) expect(gain[s]).toBeGreaterThan(0);
     expect(gain.HealthPercent).toBe(0);
+  });
+});
+
+describe('gear optimiser', () => {
+  const configIds = new Map(heroes.map((h) => [h.id, data.heroes.find((d) => d.name === h.name)?.configId]));
+  const doc = {
+    gear: sample.gear.items,
+    accessories: sample.accessories.items,
+    heroes: (sample.heroes.items as unknown as (BoxHero & { heroId: string })[]).map((h) => ({ ...h, configId: configIds.get(h.heroId)! })),
+  } as unknown as BoxDoc;
+
+  it('never does worse than the current gear', () => {
+    for (const owned of doc.heroes) {
+      const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true });
+      if (!r) continue;
+      expect(r.after).toBeGreaterThanOrEqual(r.before);
+      for (const [slot, p] of Object.entries(r.best)) if (p) expect(p.slot).toBe(slot);
+    }
+  });
+
+  it('only takes other Invokers\' gear when allowed', () => {
+    const owned = doc.heroes[0];
+    const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: false })!;
+    for (const p of Object.values(r.best)) if (p) expect([null, owned.id]).toContain(p.equippedHeroId);
+  });
+
+  it('opens accessory slots with Awakening', () => {
+    expect(openSlots({ awakenLevel: 0 } as BoxHero)).toContain('Amulet');
+    expect(openSlots({ awakenLevel: 0 } as BoxHero)).not.toContain('Earrings');
+    expect(openSlots({ awakenLevel: 6 } as BoxHero)).toContain('Flasks');
   });
 });
