@@ -85,7 +85,10 @@ def main():
                  "skillLevel": variables.get("Boss_Skill_Level"),
                  "accuracy": (mods.get("Modifiers") or {}).get("AccuracyFlat"),
                  "resistance": (mods.get("Modifiers") or {}).get("ResistanceFlat"),
-                 "toleranceBonus": mods.get("ToleranceLevelBonus")}
+                 "toleranceBonus": mods.get("ToleranceLevelBonus"),
+                 # LevelInfo.ManaMultipliersOverride: replaces the mode's mana multiplier when above 0 (mana.json)
+                 "manaUltimate": ((info.get("ManaMultipliersOverride") or {}).get("Ultimate") or None),
+                 "manaTitan": ((info.get("ManaMultipliersOverride") or {}).get("Anima") or None)}
         stage_info[lpi["RegionId"]][lpi["Number"]] = {k: v for k, v in entry.items() if v is not None}
 
     bosses = []
