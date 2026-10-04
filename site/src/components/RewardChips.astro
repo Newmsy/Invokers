@@ -9,9 +9,11 @@ interface Props {
 const { rewards } = Astro.props;
 
 const label = (id: string) =>
-  itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '').replace(/^(\d) ★ /, '$1★ ');
+  id === 'VipPoints' ? 'VIP points'
+  : itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '').replace(/^(\d) ★ /, '$1★ ');
 const linkFor = (id: string) =>
   id === 'Memorium' ? 'gear-upgrades'
+  : id === 'VipPoints' ? 'blog/vip-levels'
   : /^ASC_/.test(id) ? 'ascension'
   : /^SIP?_/.test(id) ? 'summons'
   : /^Codex_/.test(id) ? 'skill-costs'

@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import SectionArt from '../components/SectionArt.astro';
+import RewardChips from '../components/RewardChips.astro';
+import EventRuleTable from '../components/EventRuleTable.astro';
+import { bosses, bossSlug, events, eventsCapturedAt, href, itemName, type EventPointsReward, type EventRankReward } from '../lib/data';
+import { bossArt, eventBanner } from '../lib/art';
+import { slugify } from '../lib/slugs';
+import { descriptionLines, eventLinks, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const cleanName = (id: string) => itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '');
+const bossesFor = (ids: string[]) => ids.map((id) => bosses.find((b) => b.id === id)).filter((b) => !!b);
+
+const now = Date.now();
+const cards = events.map((e) => {
+  const regions = e.scoring.rules.flatMap((r) => ('acceptedRegions' in r ? (r.acceptedRegions ?? []) : []));
+  const eventBosses = bossesFor(regions);
+  const links = [
+    ...eventBosses.map((b) => ({ path: `bosses/${bossSlug(b)}`, label: `${b.name} guide`, icon: bossArt(b.id) })),
+    ...eventLinks(e.scoring.rules).map((l) => ({ ...l, icon: undefined as string | undefined })),
+  ];
+  const tables = e.scoring.rules.flatMap((r) => ruleTables(r, cleanName, (ids) => bossesFor(ids).map((b) => b.name).join(', ')));
+  const levels = e.playerLevels.map((l) => (l.min === l.max ? `${l.min}` : `${l.min}–${l.max}`)).join(', ');
+  const day = new Date(e.start);
+  return {
+    e,
+    id: `${slugify(e.name)}-${day.getUTCDate()}-${day.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toLowerCase()}`,
+    banner: eventBanner(e.art),
+    lines: descriptionLines(e.description),
+    links,
+    tables,
+    levels,
+    joinBy: Date.parse(e.registrationEnd) < Date.parse(e.end) ? e.registrationEnd : undefined,
+  };
+});
+const groups = groupEvents(cards.map((c) => ({ ...c, start: c.e.start, end: c.e.end })), now);
+const lead = leadLine(events, now);
+
+const sections: { key: EventStatus; title: string; art: string }[] = [
+  { key: 'now', title: 'Now', art: 'item:Energy' },
+  { key: 'next', title: 'Coming up', art: 'item:Gold Trophy' },
+  { key: 'ended', title: 'Ended', art: 'item:Historic Playbook' },
+];
+
+const pointsRows = (rows: EventPointsReward[]) => [...rows].sort((a, b) => a.requiredPoints - b.requiredPoints);
+const top = (rows: EventPointsReward[]) => Math.max(0, ...rows.map((r) => r.requiredPoints));
+const rankRows = (rows: EventRankReward[]) => rankRanges(rows);
+const lastRank = (rows: EventRankReward[]) => Math.max(0, ...rows.map((r) => r.toRank));
+
+const captured = new Date(eventsCapturedAt);
+const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}, ${formatUtc(eventsCapturedAt).split(', ')[1]}`;
+---
+<Base title="Event calendar" description="Live and upcoming events: dates, points for each action, and every reward.">
+  <h1>Event calendar</h1>
+  <p class="lead" id="ec-lead">{lead}</p>
+  <nav class="jump" aria-label="On this page">
+    {sections.map((s) => <a href={`#${s.key}`} data-jump={s.key} hidden={!groups[s.key].length}>{s.title}</a>)}
+  </nav>
+
+  {sections.map((s) => (
+    <section id={s.key} class={`group group-${s.key}`} aria-labelledby={`${s.key}-title`} hidden={!groups[s.key].length}>
+      <h2 id={`${s.key}-title`}><SectionArt art={s.art} size={32} />{s.title}</h2>
+      <div class="ev-list" data-group={s.key}>
+        {groups[s.key].map((c) => (
+          <article class="ev" id={c.id} data-start={c.e.start} data-end={c.e.end} data-name={c.e.name}>
+            {c.banner ? (
+              <img class="ev-art" src={c.banner} alt="" width="1280" height="640" loading="lazy" />
+            ) : (
+              <div class="ev-art blank" aria-hidden="true"></div>
+            )}
+            <div class="ev-main">
+              <h3>{c.e.name}</h3>
+              <p class="ev-when">
+                <span>{formatUtc(c.e.start)} to {formatUtc(c.e.end)}</span>
+                <span class="ev-count" data-count>{statusText(c.e, now)}</span>
+              </p>
+              <ul class="ev-facts">
+                <li>Player level {c.levels}</li>
+                <li>Brackets of {fmt(c.e.bracketSize)}</li>
+                <li>{fmt(c.e.entryPoints)} points to join a bracket</li>
+                {c.joinBy && <li>Join by {formatUtc(c.joinBy)}</li>}
+              </ul>
+              {c.lines.length > 0 && <ul class="ev-desc">{c.lines.map((l) => <li>{l}</li>)}</ul>}
+              {c.links.length > 0 && (
+                <p class="ev-links">
+                  {c.links.map((l) => (
+                    <a href={href(l.path)}>{l.icon && <img src={l.icon} alt="" width="22" height="22" loading="lazy" />}{l.label}</a>
+                  ))}
+                </p>
+              )}
+            </div>
+            <div class="ev-body">
+              <h4 class="part">How to score</h4>
+              {c.tables.map((t) => <EventRuleTable table={t} />)}
+
+              <h4 class="part">Rewards</h4>
+              {[
+                { title: 'Your points', rows: pointsRows(c.e.personalRewards), sub: `${c.e.personalRewards.length} rewards, up to ${fmt(top(c.e.personalRewards))} points` },
+                { title: 'Milestone rewards', rows: pointsRows(c.e.milestoneRewards), sub: `${c.e.milestoneRewards.length} rewards, up to ${fmt(top(c.e.milestoneRewards))} points` },
+              ].filter((r) => r.rows.length).map((r) => (
+                <details class="fold">
+                  <summary><span>{r.title}</span><span class="sub">{r.sub}</span></summary>
+                  <div class="rt-wrap">
+                    <table>
+                      <thead><tr><th scope="col">Points</th><th scope="col">Reward</th></tr></thead>
+                      <tbody>{r.rows.map((x) => <tr><th scope="row">{fmt(x.requiredPoints)}</th><td><RewardChips rewards={x.reward} /></td></tr>)}</tbody>
+                    </table>
+                  </div>
+                </details>
+              ))}
+              {[
+                { title: 'Your bracket', rows: c.e.bracketRewards, sub: `top ${lastRank(c.e.bracketRewards)} of ${fmt(c.e.bracketSize)}` },
+                { title: 'Overall leaderboard', rows: c.e.globalRewards, sub: `top ${lastRank(c.e.globalRewards)}` },
+              ].filter((r) => r.rows.length).map((r) => (
+                <details class="fold">
+                  <summary><span>{r.title}</span><span class="sub">{r.sub}</span></summary>
+                  <div class="rt-wrap">
+                    <table>
+                      <thead><tr><th scope="col">Rank</th><th scope="col">Reward</th></tr></thead>
+                      <tbody>{rankRows(r.rows).map((x) => <tr><th scope="row">{x.label}</th><td><RewardChips rewards={x.reward} /></td></tr>)}</tbody>
+                    </table>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <p class="asof">Event list as of {asOf} UTC. Times are in UTC.</p>
+
+  <SeeAlso links={[
+    { path: 'events', label: 'Event planner' },
+    { path: 'summons', label: 'Summons' },
+    { path: 'gear-upgrades', label: 'Gear upgrades' },
+    { path: 'ascension', label: 'Ascension and Awakening' },
+    { path: 'bosses', label: 'Boss guides' },
+  ]} />
+</Base>
+
+<script>
+  import { groupEvents, leadLine, statusText, type EventStatus } from '../lib/eventCalendar';
+
+  const cards = [...document.querySelectorAll<HTMLElement>('article.ev')].map((el) => ({
+    el,
+    start: el.dataset.start!,
+    end: el.dataset.end!,
+    name: el.dataset.name!,
+  }));
+  const lead = document.getElementById('ec-lead');
+
+  function update() {
+    const now = Date.now();
+    const groups = groupEvents(cards, now);
+    for (const key of ['now', 'next', 'ended'] as EventStatus[]) {
+      const list = document.querySelector<HTMLElement>(`.ev-list[data-group="${key}"]`);
+      const section = document.getElementById(key);
+      const jump = document.querySelector<HTMLElement>(`[data-jump="${key}"]`);
+      if (!list || !section) continue;
+      const want = groups[key];
+      if (want.length !== list.children.length || want.some((c, i) => list.children[i] !== c.el)) list.append(...want.map((c) => c.el));
+      section.hidden = !want.length;
+      if (jump) jump.hidden = !want.length;
+    }
+    for (const c of cards) {
+      const count = c.el.querySelector('[data-count]');
+      if (count) count.textContent = statusText(c, now);
+    }
+    if (lead) lead.textContent = leadLine(cards, now);
+  }
+  update();
+  setInterval(update, 60_000);
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 32px 0 12px; scroll-margin-top: 80px; }
+  .lead { color: var(--soft); margin: 0; max-width: 70ch; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a { padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .jump a[hidden], .group[hidden] { display: none; }
+  .ev-list { display: grid; gap: 16px; }
+  .ev {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 0 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    overflow: hidden;
+    scroll-margin-top: 80px;
+  }
+  .ev-art { grid-column: 1 / -1; width: 100%; height: 110px; object-fit: cover; display: block; border-bottom: 1px solid var(--line); }
+  .ev-art.blank { background: linear-gradient(120deg, var(--surface-2), var(--surface-3)); height: 48px; }
+  .ev-main { padding: 12px 16px 16px; min-width: 0; }
+  .ev-body { padding: 4px 16px 16px 0; min-width: 0; }
+  h3 { margin: 0 0 4px; font-size: 18px; font-weight: 600; }
+  .ev-when { margin: 0; display: flex; flex-direction: column; gap: 2px; color: var(--soft); font-size: 14px; }
+  .ev-count { color: var(--accent); font-weight: 600; }
+  .group-ended .ev-count { color: var(--muted); font-weight: 500; }
+  .ev-facts, .ev-desc { margin: 10px 0 0; padding-left: 18px; color: var(--soft); font-size: 14px; }
+  .ev-facts li, .ev-desc li { margin: 3px 0; }
+  .ev-desc { color: var(--muted); }
+  .ev-links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; font-size: 14px; }
+  .ev-links a { display: inline-flex; align-items: center; gap: 6px; }
+  .ev-links img { width: 22px; height: 22px; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); }
+  h4.part { margin: 12px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+  h4.part + :global(*) { margin-top: 6px; }
+  .fold { margin-top: 8px; }
+  .fold summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 6px 0; font-size: 14px; font-weight: 600; color: var(--soft); }
+  .fold summary::before { content: '▸'; color: var(--muted); }
+  .fold[open] summary::before { content: '▾'; }
+  .fold summary::-webkit-details-marker { display: none; }
+  .fold .sub { color: var(--muted); font-weight: 400; font-size: 13px; }
+  .rt-wrap { max-width: 100%; width: fit-content; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  tbody th { color: var(--soft); font-weight: 500; white-space: nowrap; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  /* Ended events keep their name and dates only. */
+  .group-ended .ev { grid-template-columns: minmax(0, 1fr); }
+  .group-ended .ev-body, .group-ended .ev-facts, .group-ended .ev-desc { display: none; }
+  .group-ended .ev-art { height: 56px; }
+  .asof { margin-top: 32px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 760px) {
+    h1 { font-size: 22px; }
+    .ev { grid-template-columns: minmax(0, 1fr); }
+    .ev-art { height: 96px; }
+    .ev-body { padding: 0 14px 14px; }
+    .ev-main { padding: 12px 14px 4px; }
+  }
+</style>
