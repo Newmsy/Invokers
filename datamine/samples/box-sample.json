@@ -997,5 +997,36 @@
     ]
    }
   ]
+ },
+ "trophies": {
+  "formatVersion": 9,
+  "note": "Illustrative values (not a real account): the shape the decoder outputs for PlayerArenaModel.dat member 8.",
+  "items": [
+   {
+    "element": "Fire",
+    "stat": "AttackPercent",
+    "level": 12
+   },
+   {
+    "element": "Fire",
+    "stat": "DefensePercent",
+    "level": 7
+   },
+   {
+    "element": "Fire",
+    "stat": "HealthPercent",
+    "level": 7
+   },
+   {
+    "element": "Water",
+    "stat": "CriticalRatePercent",
+    "level": 5
+   },
+   {
+    "element": "Dark",
+    "stat": "SkillSpeedFlat",
+    "level": 3
+   }
+  ]
  }
 }
