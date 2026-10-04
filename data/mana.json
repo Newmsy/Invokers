@@ -1,0 +1,55 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "GameplayData.ManaValues (config) and the game's CharacterUtils.GenerateSkillMana (read from the game code).",
+ "formula": {
+  "when": "Every battle update while an Invoker is performing a skill or combo (ScriptUpdateSystem passes the time the skill ran), if the Invoker is alive and its team is in battle.",
+  "ultimateMana": "time x ultimatePerSecond x modeMultiplier.ultimate x (1 + manaGenerationPct/100) x manaburnFactor",
+  "titanMana": "time x titanPerSecond x modeMultiplier.titan x (1 + manaGenerationPct/100) x manaburnFactor (added to the team's shared Titan mana)",
+  "manaGenerationPct": "stat_curves.json ManaRegenRecoveryPct at the Invoker's Mana Generation rating",
+  "manaburnFactor": "CorruptionUtils.DotCorruptionReductionFactor for Manaburn Corruption (1 when the boss has no Manaburn; reduced by Manaburn Tolerance)",
+  "modeOrder": "pvp if Arena, else factionWars, else spires (Tower regions), else fourHeroes if the battle allows at most 4 heroes, else fiveHeroes. A stage's ManaMultipliersOverride value replaces the mode value when it is above 0."
+ },
+ "ultimatePerSecond": 18.33,
+ "titanPerSecond": 8,
+ "modeMultipliers": {
+  "fourHeroes": {
+   "ultimate": 2,
+   "titan": 2.5
+  },
+  "fiveHeroes": {
+   "ultimate": 1,
+   "titan": 2.4
+  },
+  "pvp": {
+   "ultimate": 2,
+   "titan": 4
+  },
+  "spires": {
+   "ultimate": 2,
+   "titan": 2.4
+  },
+  "factionWars": {
+   "ultimate": 2,
+   "titan": 2.5
+  }
+ },
+ "titan": {
+  "maxMana": 4500,
+  "cost": 3000,
+  "cooldownSec": 150,
+  "cooldownSecPvp": 90,
+  "durationSec": 12
+ },
+ "ultimateCost": "skills.json manaCost (900 or 1,100)",
+ "example": "A 4-hero PvE battle at Mana Generation 0: 18.33 x 2 = 36.66 Ultimate mana per second of skill/combo time, so a 900-mana Ultimate after ~24.5 s of acting.",
+ "notes": [
+  "Mana is gained by time spent acting, not per hit: long animations do not give more mana per second.",
+  "Extra mana from specific skills (ManaGeneration blocks) is in skill_mechanics.json `mana`.",
+  "Stage overrides: bosses.json-level stages carry ManaMultipliersOverride (e.g. relic boss stages set Ultimate 1-2, Titan 0)."
+ ],
+ "unconfirmed": [
+  "Starting mana at battle start and whether mana is gained while moving or idle (only skill/combo time is fed to GenerateSkillMana).",
+  "Whether the Ultimate's 15 s cooldown is shortened by Skill Recovery (its config has CanCooldownBeReduced = true, which suggests yes)."
+ ]
+}
