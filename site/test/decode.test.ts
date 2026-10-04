@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { decodeAccessories, decodeGear, decodeHeroes } from '../src/lib/box/decode';
-import { importBackup, partFor } from '../src/lib/box/importer';
-import { encodeAccessories, encodeGear, encodeHeroes } from './encode';
+import { decodeAccessories, decodeGear, decodeHeroes, decodeTrophies } from '../src/lib/box/decode';
+import { importBackup, importSnapshots, partFor } from '../src/lib/box/importer';
+import { encodeAccessories, encodeGear, encodeHeroes, encodeTrophies } from './encode';
 
 // The dataminer's decoded sample (datamine/samples/box-sample.json), re-encoded to the game's binary layout.
 const raw = readFileSync(new URL('../../datamine/samples/box-sample.json', import.meta.url), 'utf8');
@@ -45,8 +45,34 @@ describe('box decoder', () => {
   });
 });
 
+describe('trophy room', () => {
+  const ids = { Fire: 1, Earth: 2, Wind: 3, Water: 4, Light: 5, Dark: 6 };
+  const t = (sample as unknown as { trophies: { formatVersion: number; items: { element: string; stat: string; level: number }[] } }).trophies;
+
+  it('decodes member 8 only and drops level 0', () => {
+    const items = [...t.items, { element: 'Light', stat: 'AccuracyFlat', level: 0 }];
+    const snap = decodeTrophies(encodeTrophies({ formatVersion: t.formatVersion, revision: 7, items }, ids));
+    expect(snap.formatVersion).toBe(9);
+    expect(snap.revision).toBe('7');
+    expect(snap.items).toEqual(t.items);
+  });
+
+  it('imports alongside the other files, and a bad arena file only adds a note', async () => {
+    const good = new File([encodeTrophies({ formatVersion: 9, revision: 1, items: t.items }, ids) as BlobPart], 'PlayerArenaModel.dat');
+    const gear = new File([encodeGear(sample.gear) as BlobPart], 'PlayerRelicsModel.dat');
+    const ok = await importSnapshots([gear, good], null, '0.61');
+    expect(ok.doc.trophies).toEqual(t.items);
+    expect(ok.updated).toContain('trophies');
+    const bad = await importSnapshots([gear, new File([Uint8Array.of(9, 1)], 'PlayerArenaModel.dat')], null, '0.61');
+    expect(bad.doc.trophies).toBeUndefined();
+    expect(bad.updated).toEqual(['gear']);
+    expect(bad.notes.join(' ')).toMatch(/Trophy Room/);
+  });
+});
+
 describe('file picking', () => {
-  it('only opens the three box files', () => {
+  it('only opens the box files', () => {
+    expect(partFor('PlayerArenaModel.dat')).toBe('trophies');
     expect(partFor('PlayerHeroesModel.dat')).toBe('heroes');
     expect(partFor('playerrelicsmodel.dat')).toBe('gear');
     expect(partFor('PlayerAccessoriesModel.dat')).toBe('accessories');

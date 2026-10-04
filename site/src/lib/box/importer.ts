@@ -5,6 +5,7 @@ import {
   decodeAccessories,
   decodeGear,
   decodeHeroes,
+  decodeTrophies,
   type BoxAccessory,
   type BoxGear,
   type BoxHero,
@@ -22,9 +23,12 @@ export interface ImportResult {
   notes: string[];
 }
 
-const decoders = { heroes: decodeHeroes, gear: decodeGear, accessories: decodeAccessories };
+const decoders = { heroes: decodeHeroes, gear: decodeGear, accessories: decodeAccessories, trophies: decodeTrophies };
 
-/** Only these names are ever opened. Anything else in the folder, including the profile file, is never read. */
+/**
+ * Only these names are ever opened. Anything else in the folder, including the profile file, is never read.
+ * Of the arena file only the Trophy Room levels are decoded.
+ */
 export function partFor(name: string): BoxPart | null {
   const lower = name.toLowerCase();
   for (const [part, file] of Object.entries(BOX_FILES) as [BoxPart, string][]) {
@@ -64,6 +68,11 @@ export async function importSnapshots(files: File[], previous: BoxDoc | null, ga
     try {
       snap = decoders[part](bytes);
     } catch {
+      // The Trophy Room is a bonus: a file the site can't read yet shouldn't block the rest of the import.
+      if (part === 'trophies') {
+        notes.push(`${file.name} couldn't be read, so your Trophy Room levels weren't updated.`);
+        continue;
+      }
       throw new ImportError(
         `${file.name} couldn't be read. If the game updated recently, the site may not support the new format yet; ` +
           'otherwise close the game and try again.',
