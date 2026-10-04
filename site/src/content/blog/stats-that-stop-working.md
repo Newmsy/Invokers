@@ -1,7 +1,7 @@
 ---
 title: "Stats that stop working"
 description: "Instinct caps out at 362, and the first 100 points of Skill Speed are worth more than the 1,000 points from 1,000 to 2,000. How ratings really turn into stats."
-date: 2026-10-01
+date: 2026-09-08
 gameVersion: "0.61.1514"
 tags: [stats, gear]
 ---
