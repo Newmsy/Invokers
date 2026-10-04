@@ -137,137 +137,137 @@
   },
   "titans": {
     "campaign": {
-      "S": ["kordyne", "eldathir", "quelron"],
-      "A": ["gargoth", "bragnott", "hamaga", "mekiddo", "litria", "vollexos", "wolrath"],
-      "B": ["amprix", "wyvold", "keltaur", "reltalis", "arbarion", "minarth", "baggodal", "terravun", "ferrogar"],
-      "C": ["sionach", "carchus", "cindrake", "myrmadir", "aratax", "geodoz", "araknia", "vulkoz", "goros", "themista"],
-      "D": ["quadrax", "dathokal", "komodyre", "radlath", "cairnai", "lortan", "honoshi", "visciant", "kuramitsuga"]
+      "S": ["eldathir", "keltaur", "reltalis", "arbarion", "baggodal"],
+      "A": ["gargoth", "mekiddo", "litria", "vollexos", "kordyne", "quelron", "cindrake"],
+      "B": ["amprix", "wyvold", "minarth", "terravun", "ferrogar", "dathokal", "honoshi"],
+      "C": ["sionach", "carchus", "myrmadir", "aratax", "geodoz", "araknia", "vulkoz", "goros", "themista", "bragnott"],
+      "D": ["quadrax", "komodyre", "radlath", "cairnai", "lortan", "visciant", "kuramitsuga", "hamaga", "wolrath"]
     },
     "spires": {
-      "S": ["kordyne", "eldathir", "quelron"],
-      "A": ["gargoth", "bragnott", "hamaga", "mekiddo", "arbarion", "terravun", "vollexos"],
-      "B": ["wolrath", "baggodal", "amprix", "litria", "reltalis", "keltaur", "ferrogar", "wyvold", "minarth"],
-      "C": ["carchus", "sionach", "aratax", "vulkoz", "geodoz", "goros", "quadrax", "cindrake", "themista", "cairnai"],
-      "D": ["araknia", "myrmadir", "dathokal", "radlath", "kuramitsuga", "visciant", "komodyre", "lortan", "honoshi"]
+      "S": ["kordyne", "eldathir", "quelron", "baggodal", "litria", "reltalis", "keltaur", "wyvold", "minarth", "vulkoz", "araknia"],
+      "A": ["gargoth", "mekiddo", "arbarion", "terravun", "vollexos", "cindrake", "dathokal", "lortan", "honoshi"],
+      "B": ["amprix", "ferrogar", "myrmadir", "visciant"],
+      "C": ["carchus", "sionach", "aratax", "geodoz", "goros", "quadrax", "themista", "cairnai", "bragnott"],
+      "D": ["radlath", "kuramitsuga", "komodyre", "hamaga", "wolrath"]
     },
     "arena": {
-      "S": ["kordyne", "terravun", "cairnai"],
-      "A": ["carchus", "aratax", "geodoz", "sionach", "eldathir", "quadrax", "ferrogar"],
-      "B": ["araknia", "gargoth", "vollexos", "bragnott", "mekiddo", "baggodal", "vulkoz", "amprix", "reltalis"],
-      "C": ["quelron", "arbarion", "themista", "goros", "hamaga", "cindrake", "dathokal", "minarth", "myrmadir", "litria"],
-      "D": ["wolrath", "visciant", "kuramitsuga", "radlath", "keltaur", "lortan", "wyvold", "komodyre", "honoshi"]
+      "S": ["cairnai", "araknia", "mekiddo", "amprix", "reltalis", "quelron", "arbarion", "cindrake", "litria", "keltaur", "wyvold"],
+      "A": ["carchus", "geodoz", "sionach", "eldathir", "quadrax", "ferrogar", "kordyne", "dathokal", "minarth", "visciant"],
+      "B": ["gargoth", "vollexos", "bragnott", "baggodal", "vulkoz", "terravun", "wolrath", "komodyre"],
+      "C": ["themista", "goros", "hamaga", "myrmadir", "aratax"],
+      "D": ["kuramitsuga", "radlath", "lortan", "honoshi"]
     },
     "ulgorim": {
-      "S": ["kordyne", "mekiddo", "baggodal"],
-      "A": ["eldathir", "bragnott", "hamaga", "vulkoz", "gargoth", "ferrogar", "quadrax"],
-      "B": ["aratax", "goros", "geodoz", "terravun", "sionach", "quelron", "vollexos", "amprix", "keltaur"],
-      "C": ["carchus", "wolrath", "themista", "reltalis", "cairnai", "wyvold", "radlath", "minarth", "arbarion", "visciant"],
-      "D": ["litria", "kuramitsuga", "araknia", "cindrake", "dathokal", "honoshi", "myrmadir", "komodyre", "lortan"]
+      "S": ["quelron", "vollexos", "keltaur", "reltalis", "arbarion", "visciant", "litria", "araknia"],
+      "A": ["eldathir", "bragnott", "hamaga", "vulkoz", "gargoth", "ferrogar", "quadrax", "radlath", "minarth", "kuramitsuga", "cindrake"],
+      "B": ["aratax", "goros", "geodoz", "terravun", "sionach", "amprix", "kordyne", "mekiddo", "dathokal", "honoshi", "myrmadir", "komodyre"],
+      "C": ["carchus", "wolrath", "themista", "cairnai", "wyvold", "baggodal"],
+      "D": ["lortan"]
     },
     "althar": {
-      "S": ["kordyne", "mekiddo", "baggodal"],
-      "A": ["araknia", "bragnott", "hamaga", "eldathir", "gargoth", "ferrogar", "vulkoz"],
-      "B": ["vollexos", "quadrax", "aratax", "goros", "quelron", "keltaur", "amprix", "geodoz", "sionach"],
-      "C": ["reltalis", "wolrath", "terravun", "wyvold", "minarth", "carchus", "litria", "themista", "arbarion", "cairnai"],
-      "D": ["radlath", "cindrake", "myrmadir", "kuramitsuga", "visciant", "dathokal", "honoshi", "komodyre", "lortan"]
+      "S": ["vollexos", "quelron", "keltaur", "reltalis", "litria", "arbarion", "visciant"],
+      "A": ["araknia", "bragnott", "hamaga", "eldathir", "gargoth", "ferrogar", "vulkoz", "terravun", "minarth", "radlath", "cindrake", "kuramitsuga"],
+      "B": ["quadrax", "aratax", "goros", "amprix", "geodoz", "sionach", "kordyne", "mekiddo", "myrmadir", "dathokal", "honoshi", "komodyre"],
+      "C": ["wolrath", "wyvold", "carchus", "themista", "cairnai", "baggodal"],
+      "D": ["lortan"]
     },
     "sakiel": {
-      "S": ["kordyne", "cairnai", "quadrax"],
-      "A": ["terravun", "aratax", "carchus", "geodoz", "eldathir", "quelron", "sionach"],
-      "B": ["araknia", "wyvold", "ferrogar", "baggodal", "mekiddo", "themista", "myrmadir", "vollexos", "goros"],
-      "C": ["gargoth", "amprix", "bragnott", "dathokal", "cindrake", "hamaga", "visciant", "minarth", "komodyre", "vulkoz"],
-      "D": ["kuramitsuga", "arbarion", "reltalis", "keltaur", "lortan", "radlath", "litria", "wolrath", "honoshi"]
+      "S": ["quadrax", "araknia", "vollexos", "visciant", "arbarion", "reltalis", "keltaur", "litria"],
+      "A": ["terravun", "aratax", "eldathir", "quelron", "gargoth", "amprix", "cindrake", "minarth", "vulkoz", "kuramitsuga", "radlath"],
+      "B": ["wyvold", "ferrogar", "baggodal", "mekiddo", "myrmadir", "goros", "kordyne", "wolrath", "honoshi"],
+      "C": ["bragnott", "dathokal", "hamaga", "komodyre", "cairnai", "carchus", "geodoz", "sionach"],
+      "D": ["lortan", "themista"]
     },
     "sorgott": {
-      "S": ["quelron", "kordyne", "bragnott"],
-      "A": ["eldathir", "wyvold", "cairnai", "vulkoz", "mekiddo", "hamaga", "arbarion"],
-      "B": ["komodyre", "baggodal", "gargoth", "geodoz", "vollexos", "keltaur", "wolrath", "amprix", "litria"],
-      "C": ["ferrogar", "reltalis", "minarth", "kuramitsuga", "lortan", "goros", "sionach", "araknia", "aratax", "terravun"],
-      "D": ["cindrake", "quadrax", "myrmadir", "carchus", "radlath", "themista", "dathokal", "visciant", "honoshi"]
+      "S": ["quelron", "vollexos", "keltaur", "litria", "reltalis", "araknia", "visciant"],
+      "A": ["eldathir", "wyvold", "vulkoz", "mekiddo", "hamaga", "arbarion", "minarth", "kuramitsuga", "aratax", "terravun", "cindrake", "quadrax", "radlath"],
+      "B": ["komodyre", "baggodal", "gargoth", "geodoz", "wolrath", "amprix", "kordyne", "bragnott", "myrmadir", "dathokal", "honoshi"],
+      "C": ["ferrogar", "lortan", "goros", "sionach", "cairnai"],
+      "D": ["carchus", "themista"]
     },
     "pentiax": {
-      "S": ["kordyne", "eldathir", "quelron"],
-      "A": ["bragnott", "cairnai", "vulkoz", "quadrax", "terravun", "aratax", "baggodal"],
-      "B": ["arbarion", "mekiddo", "themista", "kuramitsuga", "geodoz", "carchus", "goros", "gargoth", "ferrogar"],
-      "C": ["sionach", "hamaga", "visciant", "radlath", "wolrath", "vollexos", "amprix", "reltalis", "keltaur", "dathokal"],
-      "D": ["lortan", "cindrake", "araknia", "minarth", "wyvold", "honoshi", "litria", "komodyre", "myrmadir"]
+      "S": ["eldathir", "quelron", "arbarion", "visciant", "vollexos", "reltalis", "keltaur", "araknia", "litria"],
+      "A": ["bragnott", "vulkoz", "quadrax", "terravun", "aratax", "radlath", "amprix", "cindrake", "minarth"],
+      "B": ["mekiddo", "kuramitsuga", "geodoz", "carchus", "goros", "gargoth", "ferrogar", "kordyne", "wyvold", "honoshi", "komodyre", "myrmadir"],
+      "C": ["sionach", "hamaga", "wolrath", "dathokal", "cairnai", "baggodal"],
+      "D": ["lortan", "themista"]
     },
     "hyxxis": {
-      "S": ["kordyne", "eldathir", "quelron"],
-      "A": ["gargoth", "mekiddo", "hamaga", "wolrath", "bragnott", "baggodal", "vollexos"],
-      "B": ["arbarion", "keltaur", "ferrogar", "wyvold", "terravun", "amprix", "reltalis", "litria", "carchus"],
-      "C": ["minarth", "vulkoz", "themista", "goros", "sionach", "aratax", "quadrax", "visciant", "geodoz", "araknia"],
-      "D": ["cindrake", "myrmadir", "radlath", "dathokal", "cairnai", "komodyre", "kuramitsuga", "lortan", "honoshi"]
+      "S": ["eldathir", "quelron", "arbarion", "keltaur", "reltalis", "litria", "visciant", "araknia"],
+      "A": ["gargoth", "mekiddo", "hamaga", "wolrath", "bragnott", "vollexos", "minarth", "vulkoz", "aratax", "quadrax", "cindrake", "radlath", "kuramitsuga"],
+      "B": ["ferrogar", "wyvold", "terravun", "amprix", "carchus", "kordyne", "myrmadir", "dathokal", "komodyre", "honoshi"],
+      "C": ["themista", "goros", "sionach", "geodoz", "baggodal"],
+      "D": ["cairnai", "lortan"]
     },
     "galvos": {
-      "S": ["eldathir", "kordyne", "terravun"],
-      "A": ["themista", "quelron", "vulkoz", "quadrax", "gargoth", "wolrath", "hamaga"],
-      "B": ["aratax", "cairnai", "geodoz", "vollexos", "goros", "ferrogar", "arbarion", "sionach", "visciant"],
-      "C": ["bragnott", "baggodal", "cindrake", "amprix", "reltalis", "radlath", "dathokal", "mekiddo", "minarth", "keltaur"],
-      "D": ["carchus", "honoshi", "litria", "wyvold", "myrmadir", "araknia", "komodyre", "kuramitsuga", "lortan"]
+      "S": ["eldathir", "terravun", "vollexos", "arbarion", "visciant", "reltalis", "keltaur", "litria", "araknia"],
+      "A": ["quelron", "vulkoz", "quadrax", "gargoth", "wolrath", "hamaga", "cindrake", "amprix", "radlath", "minarth", "kuramitsuga"],
+      "B": ["aratax", "cairnai", "geodoz", "goros", "ferrogar", "sionach", "kordyne", "honoshi", "wyvold", "myrmadir", "komodyre"],
+      "C": ["bragnott", "baggodal", "dathokal", "mekiddo"],
+      "D": ["carchus", "lortan", "themista"]
     },
     "yskara": {
-      "S": ["kordyne", "mekiddo", "hamaga"],
-      "A": ["bragnott", "eldathir", "baggodal", "gargoth", "quelron", "vollexos", "ferrogar"],
-      "B": ["keltaur", "amprix", "wyvold", "wolrath", "reltalis", "litria", "vulkoz", "minarth", "goros"],
-      "C": ["sionach", "aratax", "quadrax", "geodoz", "arbarion", "terravun", "araknia", "cindrake", "myrmadir", "carchus"],
-      "D": ["themista", "radlath", "cairnai", "dathokal", "kuramitsuga", "visciant", "komodyre", "honoshi", "lortan"]
+      "S": ["keltaur", "reltalis", "litria", "arbarion", "araknia", "visciant"],
+      "A": ["bragnott", "eldathir", "gargoth", "quelron", "vollexos", "ferrogar", "aratax", "quadrax", "terravun", "cindrake", "radlath", "kuramitsuga"],
+      "B": ["amprix", "wyvold", "wolrath", "vulkoz", "minarth", "goros", "kordyne", "mekiddo", "hamaga", "dathokal", "komodyre", "honoshi"],
+      "C": ["sionach", "geodoz", "myrmadir", "carchus", "baggodal"],
+      "D": ["themista", "cairnai", "lortan"]
     },
     "koltmos": {
-      "S": ["kordyne", "mekiddo", "baggodal"],
-      "A": ["bragnott", "hamaga", "eldathir", "gargoth", "ferrogar", "vulkoz", "vollexos"],
-      "B": ["quadrax", "aratax", "goros", "quelron", "keltaur", "amprix", "geodoz", "sionach", "reltalis"],
-      "C": ["wolrath", "terravun", "wyvold", "minarth", "carchus", "litria", "themista", "arbarion", "cairnai", "radlath"],
-      "D": ["araknia", "cindrake", "kuramitsuga", "visciant", "dathokal", "myrmadir", "honoshi", "komodyre", "lortan"]
+      "S": ["quelron", "keltaur", "reltalis", "litria", "arbarion", "araknia", "visciant"],
+      "A": ["bragnott", "hamaga", "eldathir", "gargoth", "ferrogar", "vulkoz", "vollexos", "terravun", "minarth", "radlath", "cindrake", "kuramitsuga"],
+      "B": ["quadrax", "aratax", "goros", "amprix", "geodoz", "sionach", "kordyne", "mekiddo", "dathokal", "myrmadir", "honoshi", "komodyre"],
+      "C": ["wolrath", "wyvold", "carchus", "themista", "cairnai", "baggodal"],
+      "D": ["lortan"]
     },
     "omnissi-astral": {
-      "S": ["kordyne", "eldathir", "mekiddo"],
-      "A": ["baggodal", "quelron", "vulkoz", "carchus", "quadrax", "aratax", "ferrogar"],
-      "B": ["bragnott", "geodoz", "goros", "terravun", "gargoth", "hamaga", "sionach", "visciant", "themista"],
-      "C": ["kuramitsuga", "cairnai", "vollexos", "amprix", "reltalis", "keltaur", "radlath", "araknia", "wolrath", "arbarion"],
-      "D": ["cindrake", "minarth", "dathokal", "wyvold", "litria", "lortan", "honoshi", "komodyre", "myrmadir"]
+      "S": ["eldathir", "visciant", "vollexos", "reltalis", "keltaur", "araknia", "arbarion", "litria"],
+      "A": ["quelron", "vulkoz", "quadrax", "aratax", "ferrogar", "kuramitsuga", "amprix", "radlath", "cindrake", "minarth"],
+      "B": ["bragnott", "geodoz", "goros", "terravun", "gargoth", "hamaga", "sionach", "kordyne", "mekiddo", "dathokal", "wyvold", "honoshi", "komodyre", "myrmadir"],
+      "C": ["cairnai", "wolrath", "baggodal", "carchus"],
+      "D": ["lortan", "themista"]
     },
     "omnissi-fire": {
-      "S": ["quelron", "arbarion", "cairnai"],
-      "A": ["bragnott", "kordyne", "kuramitsuga", "eldathir", "terravun", "komodyre", "vulkoz"],
-      "B": ["themista", "quadrax", "carchus", "aratax", "gargoth", "baggodal", "mekiddo", "geodoz", "goros"],
-      "C": ["ferrogar", "sionach", "lortan", "visciant", "hamaga", "wolrath", "radlath", "vollexos", "amprix", "reltalis"],
-      "D": ["keltaur", "dathokal", "cindrake", "araknia", "minarth", "wyvold", "honoshi", "litria", "myrmadir"]
+      "S": ["quelron", "arbarion", "visciant", "vollexos", "reltalis", "keltaur", "araknia", "litria"],
+      "A": ["bragnott", "kuramitsuga", "eldathir", "terravun", "komodyre", "vulkoz", "radlath", "amprix", "cindrake", "minarth"],
+      "B": ["quadrax", "carchus", "aratax", "gargoth", "baggodal", "mekiddo", "geodoz", "goros", "kordyne", "dathokal", "wyvold", "honoshi", "myrmadir"],
+      "C": ["ferrogar", "sionach", "lortan", "hamaga", "wolrath", "cairnai"],
+      "D": ["themista"]
     },
     "omnissi-dark": {
-      "S": ["kordyne", "lortan", "visciant"],
-      "A": ["aratax", "quadrax", "myrmadir", "cairnai", "keltaur", "kuramitsuga", "araknia"],
-      "B": ["eldathir", "ferrogar", "minarth", "amprix", "wyvold", "baggodal", "mekiddo", "carchus", "cindrake"],
-      "C": ["terravun", "quelron", "geodoz", "goros", "themista", "sionach", "gargoth", "bragnott", "komodyre", "hamaga"],
-      "D": ["vollexos", "vulkoz", "arbarion", "dathokal", "radlath", "reltalis", "wolrath", "honoshi", "litria"]
+      "S": ["visciant", "quelron", "vollexos", "arbarion", "reltalis", "litria"],
+      "A": ["aratax", "quadrax", "myrmadir", "keltaur", "kuramitsuga", "araknia", "terravun", "gargoth", "vulkoz", "radlath"],
+      "B": ["eldathir", "ferrogar", "minarth", "amprix", "wyvold", "baggodal", "mekiddo", "carchus", "cindrake", "kordyne", "dathokal", "wolrath", "honoshi"],
+      "C": ["geodoz", "goros", "themista", "sionach", "bragnott", "komodyre", "hamaga", "lortan", "cairnai"],
+      "D": []
     },
     "omnissi-wind": {
-      "S": ["carchus", "geodoz", "kordyne"],
-      "A": ["aratax", "visciant", "dathokal", "eldathir", "kuramitsuga", "vulkoz", "amprix"],
-      "B": ["quadrax", "terravun", "baggodal", "mekiddo", "themista", "myrmadir", "goros", "gargoth", "cindrake"],
-      "C": ["ferrogar", "quelron", "sionach", "bragnott", "cairnai", "hamaga", "radlath", "wolrath", "komodyre", "vollexos"],
-      "D": ["lortan", "arbarion", "reltalis", "keltaur", "araknia", "minarth", "wyvold", "honoshi", "litria"]
+      "S": ["quelron", "vollexos", "arbarion", "reltalis", "keltaur", "araknia", "litria"],
+      "A": ["aratax", "visciant", "dathokal", "eldathir", "kuramitsuga", "vulkoz", "amprix", "radlath", "minarth"],
+      "B": ["quadrax", "terravun", "baggodal", "mekiddo", "myrmadir", "goros", "gargoth", "cindrake", "kordyne", "wyvold", "honoshi"],
+      "C": ["ferrogar", "sionach", "bragnott", "cairnai", "hamaga", "wolrath", "komodyre", "carchus", "geodoz"],
+      "D": ["lortan", "themista"]
     },
     "omnissi-water": {
-      "S": ["quelron", "kordyne", "bragnott"],
-      "A": ["arbarion", "cairnai", "kuramitsuga", "eldathir", "terravun", "vulkoz", "themista"],
-      "B": ["quadrax", "carchus", "aratax", "gargoth", "baggodal", "mekiddo", "lortan", "geodoz", "goros"],
-      "C": ["ferrogar", "sionach", "visciant", "hamaga", "wolrath", "radlath", "vollexos", "amprix", "reltalis", "keltaur"],
-      "D": ["dathokal", "cindrake", "araknia", "minarth", "wyvold", "honoshi", "litria", "komodyre", "myrmadir"]
+      "S": ["quelron", "visciant", "vollexos", "reltalis", "keltaur", "araknia", "litria"],
+      "A": ["arbarion", "kuramitsuga", "eldathir", "terravun", "vulkoz", "radlath", "amprix", "cindrake", "minarth"],
+      "B": ["quadrax", "carchus", "aratax", "gargoth", "baggodal", "mekiddo", "lortan", "geodoz", "goros", "kordyne", "bragnott", "dathokal", "wyvold", "honoshi", "komodyre", "myrmadir"],
+      "C": ["ferrogar", "sionach", "hamaga", "wolrath", "cairnai"],
+      "D": ["themista"]
     },
     "omnissi-earth": {
-      "S": ["kordyne", "eldathir", "terravun"],
-      "A": ["geodoz", "vulkoz", "cairnai", "themista", "carchus", "gargoth", "visciant"],
-      "B": ["quelron", "wolrath", "arbarion", "quadrax", "aratax", "baggodal", "mekiddo", "goros", "ferrogar"],
-      "C": ["sionach", "bragnott", "hamaga", "komodyre", "wyvold", "radlath", "kuramitsuga", "vollexos", "amprix", "reltalis"],
-      "D": ["keltaur", "dathokal", "cindrake", "araknia", "minarth", "honoshi", "litria", "lortan", "myrmadir"]
+      "S": ["eldathir", "terravun", "quelron", "arbarion", "vollexos", "reltalis", "keltaur", "araknia", "litria"],
+      "A": ["vulkoz", "gargoth", "visciant", "radlath", "kuramitsuga", "amprix", "cindrake", "minarth"],
+      "B": ["wolrath", "quadrax", "aratax", "baggodal", "mekiddo", "goros", "ferrogar", "kordyne", "dathokal", "honoshi", "myrmadir"],
+      "C": ["sionach", "bragnott", "hamaga", "komodyre", "wyvold", "geodoz", "cairnai", "carchus"],
+      "D": ["lortan", "themista"]
     },
     "omnissi-light": {
-      "S": ["terravun", "carchus", "gargoth"],
-      "A": ["aratax", "vulkoz", "quadrax", "baggodal", "mekiddo", "geodoz", "goros"],
-      "B": ["ferrogar", "sionach", "bragnott", "arbarion", "themista", "cairnai", "hamaga", "kordyne", "radlath"],
-      "C": ["kuramitsuga", "vollexos", "amprix", "visciant", "eldathir", "reltalis", "keltaur", "litria", "dathokal", "wolrath"],
-      "D": ["cindrake", "araknia", "minarth", "wyvold", "honoshi", "quelron", "komodyre", "lortan", "myrmadir"]
+      "S": ["terravun", "gargoth", "arbarion", "vollexos", "visciant", "reltalis", "keltaur", "litria", "araknia", "quelron"],
+      "A": ["aratax", "vulkoz", "quadrax", "mekiddo", "goros", "kuramitsuga", "amprix", "eldathir", "cindrake", "minarth"],
+      "B": ["ferrogar", "sionach", "bragnott", "cairnai", "hamaga", "kordyne", "radlath", "wyvold", "honoshi", "komodyre", "myrmadir"],
+      "C": ["dathokal", "wolrath", "carchus", "baggodal", "geodoz"],
+      "D": ["lortan", "themista"]
     }
   }
 }
