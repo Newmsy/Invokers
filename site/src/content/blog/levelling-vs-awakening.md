@@ -14,6 +14,8 @@ tags: [invokers, stats, levelling, awakening]
 - Awakening percentages are of the Invoker's 1★ level 1 stats, so they add far less than the raw numbers suggest: +300% ATK becomes about +26% at level 60.
 - Awakening also unlocks accessory slots, and its bonuses are the same at every rarity; only the cost goes up.
 
+What each type of Awakening gives: [What each Awakening Sign gives](/blog/awakening-signs).
+
 Examples: ![Almea](hero:) (Epic, Melee) and ![Duchess Kanraku](hero:) (Legendary, Ranged). Costs: [Ascension and Awakening](/ascension).
 
 ## Levelling: first day vs 6★ level 60
