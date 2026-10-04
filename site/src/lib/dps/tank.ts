@@ -19,7 +19,7 @@ export interface Toughness {
 export function toughness(data: DpsData, totals: Totals, stage: BossStage): Toughness {
   const hp = finalStat(totals, 'hp');
   const def = finalStat(totals, 'def');
-  const taken = defenseFactor(data.curves.defense, def);
+  const taken = defenseFactor(data.defense, def);
   const ehp = taken > 0 ? hp / taken : Infinity;
   const bossHit = stage.atk * C.BOSS_HIT_ATK * taken;
   return { hp, def, taken, ehp, bossHit, hits: bossHit > 0 ? hp / bossHit : Infinity };

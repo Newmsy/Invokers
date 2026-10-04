@@ -42,6 +42,8 @@ DEF cuts damage slowly. Most of each hit still gets through at the DEF Invokers 
 | 2,000 | 72% |
 | 3,000 | 62% |
 
+DEF takes the same share off every hit, big or small: 1,000 DEF lets 85% of a 1,000 hit and 85% of a 2,000 hit through. It can never cut a hit by more than 85%.
+
 So 17 more DEF barely changes the share you take, while 168 HP is pure extra health.
 
 - ![Ironblade Darus](hero:) (4,115 HP, 402 DEF): **+168 HP adds 4.1%** effective HP. **+17 DEF adds 0.3%**.
