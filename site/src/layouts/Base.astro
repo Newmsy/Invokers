@@ -188,17 +188,17 @@ const crumbs = pagePath && owner
 <style is:global>
   :root {
     color-scheme: dark;
-    --bg: #16130F;
-    --surface: #1D1913;
-    --surface-2: #2A241B;
-    --surface-3: #0E0C09;
-    --line: #3A3226;
-    --frame: #5A4A2E;
-    --text: #E8DFC9;
-    --soft: #C9BEA6;
-    --muted: #8C8170;
-    --accent: #D4A64A;
-    --link: #E3B95A;
+    --bg: #110E0A;
+    --surface: #231D15;
+    --surface-2: #322A1E;
+    --surface-3: #090705;
+    --line: #54472F;
+    --frame: #8A6F3A;
+    --text: #F6EEDB;
+    --soft: #E2D7BF;
+    --muted: #B4A890;
+    --accent: #EBB84C;
+    --link: #F4C865;
     --radius: 3px;
     --display: 'Cormorant Garamond', Georgia, serif;
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
@@ -217,7 +217,7 @@ const crumbs = pagePath && owner
   a { color: var(--link); text-decoration: none; }
   a:hover { color: #F0CF85; }
   /* Grimoire look: serif display headings (scaled up to the body's x-height so small sizes stay readable). */
-  h1, h2, h3 { font-family: var(--display); line-height: 1.15; font-weight: 700; color: #F2E8D0; font-size-adjust: ex-height 0.5; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.15; font-weight: 700; color: #FFF6E0; font-size-adjust: ex-height 0.5; }
   h1 { letter-spacing: 0.005em; }
   /* Ruled tables with gold small-caps headers and faint zebra rows, whatever page they sit on. */
   main thead th { color: var(--accent) !important; background: transparent !important; text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit !important; font-size: 11.5px !important; font-weight: 600 !important; border-bottom: 1px solid var(--frame) !important; }
@@ -389,7 +389,7 @@ const crumbs = pagePath && owner
   }
   main { position: relative; z-index: 0; }
   .page-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
-  .page-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(22 19 15 / 0.05) 30%, var(--bg) 100%); }
+  .page-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(17 14 10 / 0.05) 30%, var(--bg) 100%); }
   .page-banner.tall { height: 340px; margin-bottom: -170px; }
   .page-banner.tall img { object-position: center 25%; }
   .page-banner .banner-art { position: absolute; right: 20px; bottom: 60px; z-index: 1; box-shadow: 0 8px 24px rgb(0 0 0 / 0.5); }

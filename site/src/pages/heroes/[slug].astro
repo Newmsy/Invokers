@@ -32,7 +32,7 @@ const rating = ratingFor(hero.id);
 // #skill-1, #skill-combo… for links to one skill.
 const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').toLowerCase()}`;
 const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
-const color = rarityColor[hero.rarity] ?? '#C9BEA6';
+const color = rarityColor[hero.rarity] ?? '#E2D7BF';
 
 const keyStats = statFields.slice(0, 6);
 const otherStats = statFields.slice(6);
@@ -236,7 +236,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
           {tiers.map((t) => (
             <li>
               <a href={href(`tiers/invokers/${t.list.id}`)}>
-                <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#D4A64A'}`}>{t.tier}</span>
+                <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#EBB84C'}`}>{t.tier}</span>
                 {t.list.label}
               </a>
             </li>
@@ -252,10 +252,10 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <ul class="similar">
           {similar.map(({ hero: h, best, configId: cid }) => (
             <li data-config-id={cid}>
-              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
+              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#E2D7BF'}`}>
                 <span class="similar-art">
                   <HeroArt hero={h} />
-                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#D4A64A'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
+                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#EBB84C'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
                   <span class="similar-owned">Owned</span>
                 </span>
                 <span class="similar-name">{h.name}</span>

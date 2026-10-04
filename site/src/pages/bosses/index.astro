@@ -36,7 +36,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
       <ul class="grid">
         {g.bosses.map((b) => (
           <li>
-            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#D4A64A'}` : undefined}>
+            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#EBB84C'}` : undefined}>
               {bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" loading="lazy" />}
               <span class="name">{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
               {b.title && <span class="title">{b.title}</span>}
