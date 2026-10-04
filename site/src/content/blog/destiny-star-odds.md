@@ -9,7 +9,7 @@ tags: [summons, odds]
 
 A Destiny Star gives a Legendary **0.53%** of the time. Without mercy, half of all players need **130 pulls** or more for their first one. Mercy (pity) rules change that a lot.
 
-- Mercy guarantees a first Legendary by pull 50, then one every 190 pulls at worst.
+- Mercy guarantees a first Legendary by pull 50, then one every 190 pulls at worst. A natural Legendary resets it, so you reach the 190 mercy 36.6% of the time.
 - Radiant Stars are the better way to chase one specific Light or Dark Legendary: their pool is half the size.
 - Divine Stars are a different world: a Legendary in 10 pulls is a coin flip.
 
@@ -49,20 +49,22 @@ Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 he
 
 ## The mercy counters
 
-| Item | Rarity | Mercy count | Meaning |
-|---|---|---|---|
-| ![Destiny Star](item:) | Legendary | 50 first, then 190 | First Legendary by pull 50, then one by every 190th pull without one |
-| ![Radiant Star](item:) | Legendary | 200 | One by every 200th pull without one |
-| ![Divine Star](item:) | Legendary | 15 | One by every 15th pull without one |
-| ![Wonder Orb](item:) | Legendary | 190 | As Destiny, without the first-50 rule |
-| ![Miracle Orb](item:) | Legendary | 15 | As Divine (Mythic has no mercy) |
-| Fate, Destiny, Radiant | Epic | 15, limit 3, then 30 | An Epic by pull 15 the first 3 times, then by pull 30 |
+Pulling that rarity naturally resets the count, so mercy only kicks in after a long dry run. "Reach mercy" is how often that happens.
 
-Still unknown: whether a natural Legendary resets the counter, and whether items share one.
+| Item | Rarity | Mercy count | Reach mercy |
+|---|---|---|---|
+| ![Destiny Star](item:) | Legendary | 50 first, then 190 | 77.1% for your first, then 36.6% |
+| ![Radiant Star](item:) | Legendary | 200 | 34.7% |
+| ![Divine Star](item:) | Legendary | 15 | 38.0% |
+| ![Wonder Orb](item:) | Legendary | 190 | 35.3% |
+| ![Miracle Orb](item:) | Legendary | 15 (Mythic has none) | 26.7% |
+| Fate, Destiny, Radiant | Epic | 15 the first 3 times, then 30 | 29.6%, then 8.0% |
+
+So about a third of Destiny and Radiant Legendaries after your first come from mercy. Still unknown: whether items share a count.
 
 ## Bonus summons
 
-| Use | Get | Required |
+| Use | Get | Every |
 |---|---|---|
 | ![Fate Star](item:) or ![Destiny Star](item:) | ![Divine Star](item:) | 85 |
 | ![Divine Star](item:) | Random Legendary Invoker | 45 |
@@ -70,7 +72,9 @@ Still unknown: whether a natural Legendary resets the counter, and whether items
 | ![Dream Orb](item:) or ![Wonder Orb](item:) | ![Miracle Orb](item:) | 85 |
 | ![Miracle Orb](item:) | Random Mythic Titan | 100 |
 
-With mercy and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star**, close to double the 0.53% on the label.
+These counters never reset, so they pay out every time you reach the count.
+
+With mercy and bonus Divine Stars, the long-run rate is about **0.98% per Destiny Star**, close to double the 0.53% on the label.
 
 ## Chroma
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { atLeastOne, legendaryPool, odds, pullsFor, summonItem } from '../src/lib/summons';
+import { atLeastOne, legendaryPool, mercyRate, mercyReach, odds, pullsFor, summonItem } from '../src/lib/summons';
 
 const destiny = summonItem('SI_DestinyStar')!;
 const radiant = summonItem('SI_RadiantStar')!;
@@ -36,5 +36,15 @@ describe('summon odds', () => {
 
   it('divides by the pool for one hero', () => {
     expect(odds({ item: 'SI_RadiantStar', rarity: 'Legendary', pulls: 1, poolSize: 19 }).perPull).toBeCloseTo(0.0053 / 19, 9);
+  });
+
+  it('works out how often a resetting mercy count is reached', () => {
+    expect(mercyReach(0.0053, 190)).toBeCloseTo(0.3663, 4);
+    expect(mercyReach(0.0053, 50)).toBeCloseTo(0.7708, 4);
+    expect(mercyReach(0.0833, 30)).toBeCloseTo(0.0803, 4);
+    expect(mercyRate(0.0053, 190)).toBeCloseTo(0.00834, 5);
+    // With no natural chance, mercy is reached every time.
+    expect(mercyReach(0, 15)).toBe(1);
+    expect(mercyRate(0, 15)).toBeCloseTo(1 / 15, 9);
   });
 });

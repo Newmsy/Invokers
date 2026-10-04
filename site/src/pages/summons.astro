@@ -4,7 +4,7 @@ import { heroHref } from '../lib/data';
 import SeeAlso from '../components/SeeAlso.astro';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
-import { atLeastOne, bonusLabel, legendaryPool, pullableItems, pullsFor, summonRarities, summons } from '../lib/summons';
+import { atLeastOne, bonusLabel, legendaryPool, mercyRate, mercyReach, pullableItems, pullsFor, summonRarities, summons } from '../lib/summons';
 
 const colors: Record<string, string> = { ...rarityColor, Mythic: '#FF7A7A' };
 const pct = (p: number) => {
@@ -27,8 +27,18 @@ const groups = [
 const legendaryItems = pullableItems.filter((i) => i.rates.Legendary && i.rates.Legendary < 1);
 const ladder = [10, 50, 100, 130, 200, 300, 500];
 
+// Epic mercy is 15 for the first 3 Epics, then 30.
+const epicEarly = 15;
 const mercyRows = pullableItems.flatMap((i) =>
-  Object.entries(i.mercy ?? {}).map(([rarity, count]) => ({ item: i.name, rarity, count, first: i.firstMercy?.[rarity] })),
+  Object.entries(i.mercy ?? {}).map(([rarity, count]) => {
+    const p = i.rates[rarity];
+    const first = i.firstMercy?.[rarity] ?? (rarity === 'Epic' ? epicEarly : undefined);
+    return {
+      item: i.name, rarity, count, first, special: !!i.firstMercy?.[rarity],
+      reach: mercyReach(p, count), firstReach: first ? mercyReach(p, first) : undefined,
+      rate: mercyRate(p, count), label: p,
+    };
+  }),
 );
 
 const pools = Object.fromEntries(summons.items.filter((i) => i.legendaryPool).map((i) => [i.id, legendaryPool(i)]));
@@ -156,13 +166,17 @@ const calc = {
 
   <section aria-labelledby="mercy-title">
     <h2 id="mercy-title">Mercy</h2>
-    <p class="callout">
-      Not yet known: whether a natural pull resets the counter, and whether items share one.
+    <p class="hint">
+      Pulling that rarity naturally resets its mercy count, so you only reach mercy after a long dry run. "Reach
+      mercy" is how often that happens; "Rate with mercy" is the long-run chance per pull once mercy is counted, next to the listed rate.
     </p>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th scope="col">Item</th><th scope="col">Rarity</th><th scope="col">Guaranteed by</th></tr>
+          <tr>
+            <th scope="col">Item</th><th scope="col">Rarity</th><th scope="col">Guaranteed by</th>
+            <th scope="col">Reach mercy</th><th scope="col">Rate with mercy</th>
+          </tr>
         </thead>
         <tbody>
           {mercyRows.map((m) => (
@@ -170,30 +184,35 @@ const calc = {
               <th scope="row">{m.item}</th>
               <td style={`color: ${colors[m.rarity]}`}>{m.rarity}</td>
               <td>
-                {m.first ? `pull ${m.first} for your first, then every ${m.count}` : m.rarity === 'Epic' ? `pull 15 the first 3 times, then ${m.count}` : `pull ${m.count}`}
+                {m.special ? `pull ${m.first} for your first, then ${m.count}` : m.first ? `pull ${m.first} the first 3 times, then ${m.count}` : `pull ${m.count}`}
               </td>
+              <td>{m.firstReach !== undefined ? `${pct(m.firstReach)}, then ${pct(m.reach)}` : pct(m.reach)}</td>
+              <td><span>{pct(m.rate)} <small class="was">(listed {pct(m.label)})</small></span></td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p class="hint">The calculator uses 30 for Epic mercy, the safe end of the range.</p>
+    <p class="hint">Not yet known: whether items share a mercy count. The calculator uses 30 for Epic mercy, the safe end of the range.</p>
   </section>
 
   <section aria-labelledby="bonus-title">
     <h2 id="bonus-title">Bonus summons</h2>
-    <p class="hint">Using summon items fills bonus counters that pay out extra summons.</p>
+    <p class="hint">
+      Using summon items fills bonus counters that pay out extra summons. These never reset, so every player gets one
+      on every count, whatever they pull.
+    </p>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th scope="col">Use</th><th scope="col">Get</th><th scope="col">Every</th></tr>
+          <tr><th scope="col">Use</th><th scope="col">Get</th><th scope="col">Guaranteed every</th></tr>
         </thead>
         <tbody>
           {summons.bonus.map((b) => (
             <tr>
               <th scope="row">{b.uses.map((u) => bonusLabel(u)).join(' or ')}</th>
               <td>{bonusLabel(b.gives).replace(/^r/, 'R')}</td>
-              <td>{b.every}</td>
+              <td>{b.every} uses</td>
             </tr>
           ))}
         </tbody>
@@ -379,6 +398,7 @@ const calc = {
   .callout { margin: 0 0 12px; padding: 12px 16px; border-radius: 12px; border: 1px solid #f5c45155; background: #f5c45114; color: var(--soft); font-size: 14px; max-width: 80ch; }
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
   .table-wrap.narrow { max-width: 420px; }
+  .was { color: var(--muted); font-size: 12px; white-space: nowrap; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
