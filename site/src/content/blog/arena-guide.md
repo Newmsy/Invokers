@@ -1,0 +1,60 @@
+---
+title: "Arena guide: tokens, leagues, rewards and what changes in PvP"
+description: "29 free tokens a day, a Monday reset, and skills that start at 70% cooldown. Everything the Arena does differently, with weekly chest odds and Arena Rush points per league."
+date: 2026-10-04
+gameVersion: "0.61.1516"
+art: ["item:Gold Trophy", "element:light", "element:dark"]
+tags: [arena, trophies]
+---
+
+**Play at least 10 offence battles a week, or you get no weekly reward and may drop a league.**
+
+- Free tokens: 1 an hour (stores 10) plus 5 from Playtime, **29 a day** at most. More cost 50 Gems for 10.
+- Leagues reset **Monday 11:00 UTC** to the bottom of your current league.
+- Skills start on **70% cooldown**, so Skill Recovery and fast Titans matter more than in PvE.
+
+## Teams and battles
+
+- **Defence:** at least 1 Invoker. It fights on its own.
+- **Offence:** up to 4 Invokers with Titans. You see the enemy team, levels and Power first.
+- Battles start on Auto with a **5-minute** timer. Running out of time is a loss.
+- Ultimate and Titan Mana build faster, Titan cooldowns are shorter, Titan stats are much lower.
+- ![Light](element:light) and ![Dark](element:dark) both have advantage over each other here (+30% damage). In PvE only your side gets it.
+- The opponent list refreshes free every 15 minutes, after you beat everyone on it, or for 10 Gems.
+
+## Leagues
+
+Everyone starts on 500 points and can't fall below it. Leagues run Bronze, Silver and Gold, steps 1 to 4. A week with no offence battles marks you inactive: you drop one league at the reset.
+
+## Rewards
+
+- **Trophies** come from offence wins only and are never lost: 1 Bronze per win in Bronze 1, 4 in Bronze 4, more in Silver and Gold.
+- **Arena Coins:** Bronze Trophy 1, Silver 5, Gold 10. Spend them in the Bazaar on Echoes, Codexes, Titanhearts and Stars (limits reset daily at 00:00 UTC, weekly on Monday and monthly on the 1st).
+- **Trophy Room:** spend Trophies on stat upgrades for every Invoker of one element. Costs: [Trophy Room cost](/blog/trophy-room-cost) and [Trophies](/trophies).
+- **Weekly chest:** 2 rewards in Bronze and Silver, 3 in Gold. Gems come up 55% of the time in Bronze (75 to 150) and 76% in Gold (150 to 250). Full odds: [Chest odds](/blog/chest-odds).
+
+## Arena Rush points
+
+During an Arena Rush event, each battle scores by league:
+
+| League | Win | Loss |
+|---|---|---|
+| Bronze 1 / 2 / 3 / 4 | 40 / 50 / 60 / 70 | 20 / 20 / 30 / 30 |
+| Silver 1 / 2 / 3 / 4 | 80 / 90 / 100 / 110 | 40 / 40 / 50 / 50 |
+| Gold 1 / 2 / 3 / 4 | 120 / 130 / 140 / 150 | 60 / 60 / 70 / 70 |
+
+A loss still scores about half a win, so spend every token during the event. Targets and energy: [Events](/events).
+
+## Skill timing
+
+Arena cooldowns start at 70%, then shrink with Skill Recovery: time to first cast = 0.7 × base cooldown ÷ (1 + Skill Recovery %).
+
+| Base cooldown | No Skill Recovery | +25% (100 rating) | +46% (300 rating) |
+|---|---|---|---|
+| 20s | 14.0s | 11.2s | 9.6s |
+| 25s | 17.5s | 14.0s | 12.0s |
+| 30s | 21.0s | 16.8s | 14.4s |
+
+Rating to percent: [Stats that stop working](/blog/stats-that-stop-working). Debuff chance against high-RES defenders: [How combat works](/blog/combat-basics).
+
+*Numbers for game version 0.61.1516.*
