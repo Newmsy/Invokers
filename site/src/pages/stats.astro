@@ -1,0 +1,130 @@
+---
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import curvesJson from '../../../data/stat_curves.json';
+
+interface Curve { id: string; stat: string; meaning: string; values: number[] }
+const curves = (curvesJson as unknown as { curves: Curve[] }).curves;
+const byId = (id: string) => curves.find((c) => c.id === id);
+
+const ratings = [0, 500, 1000, 1500, 2000, 3000];
+const n = (v: number, dp = 1) => v.toLocaleString('en-GB', { minimumFractionDigits: dp, maximumFractionDigits: dp });
+
+// Plain words for each curve, and how to show its value.
+const rows = [
+  { id: 'SkillSpeedFactorPct', name: 'Skill Speed', what: 'Skills play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'SkillRecoveryPct', name: 'Skill Recovery', what: 'Skill cooldowns recover faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'ManaRegenRecoveryPct', name: 'Mana Generation', what: 'More mana for the Ultimate', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'InstinctFactorPct01', name: 'Instinct', what: 'How strongly Instinct works (100% = full strength)', fmt: (v: number) => `${n(v * 100, 0)}%` },
+  { id: 'RunSpeed', name: 'Move Speed', what: 'Run speed bonus', fmt: (v: number) => (v ? `+${n(v, 2)}` : "0") },
+  { id: 'DefenseFactor', name: 'Defense', what: 'Share of damage still taken (100% = full damage)', fmt: (v: number) => `${n(v * 100)}%` },
+]
+  .map((r) => ({ ...r, curve: byId(r.id) }))
+  .filter((r) => r.curve);
+
+const instinct = byId('InstinctFactorPct01');
+const instinctFull = instinct?.values.findIndex((v) => v >= 1);
+const defense = byId('DefenseFactor');
+
+// Resist uses Resistance minus the attacker's Accuracy, stored with an offset so the middle row is "equal".
+const resist = byId('ResistChance_ResMinusAcc');
+const offset = resist ? (resist.values.length - 1) / 2 : 0;
+const diffs = [-1000, -500, -100, 0, 100, 500, 1000];
+const pctSigned = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${n(Math.abs(v))}%`;
+const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).toLocaleString('en-GB')}`;
+---
+<Base title="What stats do">
+  <h1>What stats do</h1>
+  <p class="lead">What each stat rating turns into in battle, from 0 to 3,000.</p>
+
+  <section aria-labelledby="curves-title">
+    <h2 id="curves-title">Rating to effect</h2>
+    <div class="table-wrap">
+      <table class="stack">
+        <thead>
+          <tr>
+            <th scope="col">Stat</th>
+            {ratings.map((r) => <th scope="col" class="num">{r.toLocaleString('en-GB')}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <th scope="row"><strong>{r.name}</strong><small>{r.what}</small></th>
+              {ratings.map((x) => <td class="num" data-label={`Rating ${x.toLocaleString('en-GB')}`}>{r.fmt(r.curve!.values[x])}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes">
+      <li>Every curve except Defense flattens out: the first few hundred points do the most.</li>
+      {instinctFull != null && instinctFull > 0 && <li>Instinct reaches full strength at rating {instinctFull}; more does nothing.</li>}
+      {defense && <li>Defense keeps working: 3,000 rating cuts damage taken by {n((1 - defense.values[3000]) * 100)}%.</li>}
+    </ul>
+  </section>
+
+  {resist && (
+    <section aria-labelledby="resist-title">
+      <h2 id="resist-title">Resist against Accuracy</h2>
+      <p>Resisting an effect uses <strong>your Resistance minus the attacker’s Accuracy</strong>, not either stat alone.</p>
+      <div class="table-wrap">
+        <table class="stack">
+          <thead>
+            <tr>
+              <th scope="col">RES minus ACC</th>
+              {diffs.map((d) => <th scope="col" class="num">{signed(d)}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><strong>Resist chance</strong><small>Percent</small></th>
+              {diffs.map((d) => <td class="num" data-label={`RES − ACC ${signed(d)}`}>{pctSigned(resist.values[offset + d])}</td>)}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hint">The game’s resist chance in percent for each gap between RES and ACC. 0 means RES and ACC are equal; a negative gap gives a negative chance.</p>
+    </section>
+  )}
+
+  <SeeAlso links={[
+    { path: 'blog/stats-that-stop-working', label: 'Stats that stop working' },
+    { path: 'gear', label: 'Gear sets' },
+    { path: 'tactics', label: 'Tactics' },
+    { path: 'trophies', label: 'Trophies' },
+    { path: 'heroes/compare', label: 'Compare Invokers' },
+  ]} />
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 20px; font-weight: 600; margin: 32px 0 8px; }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; }
+  .notes { max-width: 70ch; padding-left: 20px; color: var(--soft); font-size: 15px; }
+  .notes li { margin: 4px 0; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  th.num, td.num { text-align: right; white-space: nowrap; }
+  tbody th { position: sticky; left: 0; background: var(--bg); font-weight: 500; min-width: 150px; }
+  tbody th strong { display: block; color: var(--text); font-weight: 600; }
+  tbody th small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  tbody tr:last-child > * { border-bottom: 0; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    th, td { padding: 6px 8px; }
+    /* Phones: each stat becomes a card with its values in a grid, nothing scrolls sideways. */
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody { display: block; }
+    table.stack tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    table.stack tbody tr:last-child { border-bottom: 0; }
+    table.stack th, table.stack td { display: block; padding: 0; border: 0; text-align: left; position: static; min-width: 0; max-width: none; white-space: normal; background: none; }
+    table.stack tbody th { grid-column: 1 / -1; }
+    table.stack td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; }
+  }
+</style>

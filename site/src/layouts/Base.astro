@@ -11,8 +11,12 @@ import { bannerArt } from '../lib/art';
 
 interface Props {
   title: string;
+  description?: string;
 }
-const { title } = Astro.props;
+const { title, description = 'Invokers, Titans, tier lists, events, summons and guides.' } = Astro.props;
+// Absolute URLs for search engines and link previews.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const previewImage = new URL(href('icons/icon-512.png'), Astro.site);
 const updated = new Date(pack.extractedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 
@@ -39,6 +43,16 @@ const crumbs = pagePath && owner
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · Invokers Companion</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Invokers Companion" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={previewImage} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="sitemap" href={href('sitemap-index.xml')} />
     <meta name="theme-color" content="#0c0b1d" />
     <link rel="icon" href={href('icons/icon.svg')} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={href('icons/apple-touch-icon.png')} />

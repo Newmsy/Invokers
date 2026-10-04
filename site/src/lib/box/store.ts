@@ -2,6 +2,7 @@
 // Any page can read it with loadBox() and react to re-imports with onBoxChange(); later, Google sign-in
 // can sync this same document.
 import type { BoxAccessory, BoxGear, BoxHero, BoxPart } from './decode';
+import type { BoxTrophy } from './trophies';
 
 export const BOX_SCHEMA = 1;
 
@@ -16,6 +17,8 @@ export interface BoxDoc {
   heroes: BoxHero[];
   gear: BoxGear[];
   accessories: BoxAccessory[];
+  /** Trophy Room levels per room; absent until an import that includes them. */
+  trophies?: BoxTrophy[];
 }
 
 const DB = 'invokers-companion';

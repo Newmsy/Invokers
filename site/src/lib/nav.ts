@@ -34,14 +34,18 @@ export const nav: NavItem[] = [
   { path: 'bosses', banner: 'collect-dungeon-titan', label: 'Bosses', icon: 'skull', group: 'database', art: 'item:Elder Titanheart', blurb: "How to beat each boss, with its dos and don'ts" },
   { path: 'effects', banner: 'collect-dungeon-essence', label: 'Status effects', icon: 'book', group: 'database', art: 'item:Rare Codex', blurb: 'Every buff, debuff and control effect, and who brings it' },
   { path: 'gear', banner: 'upgrade-relics', label: 'Gear sets', icon: 'shield', group: 'database', art: 'item:Gear Swap Pass', blurb: 'Every gear set and who should wear it' },
+  { path: 'tactics', banner: 'clan-boss-1', label: 'Tactics', icon: 'grid', group: 'database', art: 'item:Standard Playbook', blurb: 'Every Tactic, its line bonuses and level-up cost' },
+  { path: 'stats', banner: 'upgrade-invoker', label: 'What stats do', icon: 'book', group: 'database', art: 'class:Tank', blurb: 'What each stat rating does, from 0 to 3,000' },
   { path: 'updates', banner: 'campaign-progression', label: 'Game updates', icon: 'refresh', group: 'database', art: 'item:Historic Playbook', blurb: 'What changed in each game update' },
   // Guides
   { path: 'guides', banner: 'novice-tournament', label: 'All guides', icon: 'book', group: 'guides', art: 'item:Legendary Codex', blurb: 'Every guide and article, by topic' },
   { path: 'tiers', banner: 'win-arena-medals', label: 'Tier lists', icon: 'tiers', header: true, group: 'guides', art: 'titan:Goros', blurb: 'The best Invokers and Titans for each mode and boss' },
+  { path: 'spires', banner: 'keys', label: 'Spires', icon: 'book', group: 'guides', art: 'item:Fire Spire Key', blurb: 'All 120 floors: enemies, waves, ACC/RES and rewards' },
   { path: 'ascension', banner: 'echo-legendary', label: 'Ascension and Awakening', icon: 'book', group: 'guides', art: 'item:5 star Echo', blurb: 'Star-up and awakening costs, and where materials drop' },
   { path: 'skill-costs', banner: 'upgrade-invoker', label: 'Skill costs', icon: 'book', group: 'guides', art: 'item:Rare Codex', blurb: 'What it costs to level skills, by rarity' },
   { path: 'gear-upgrades', banner: 'memorium', label: 'Gear upgrades and Memorium', icon: 'book', group: 'guides', art: 'item:Memorium', blurb: 'Gear upgrade gold, Memorium and selling' },
   { path: 'tips', banner: 'loading-screen', label: 'Loading tips', icon: 'book', group: 'guides', art: 'item:Heroic Playbook', blurb: 'Every loading screen tip with its picture' },
+  { path: 'farming', banner: 'collect-dungeon-essence', label: 'Where to farm', icon: 'book', group: 'guides', art: 'item:Ancient Eldrin Rune', blurb: 'Best stages per Energy for Memorium, Runes, Essences and more' },
   { path: 'blog', banner: 'collect-dungeon-medals', label: 'Blog', icon: 'book', header: true, group: 'guides', art: 'item:Heroic Playbook', blurb: 'The numbers behind the game, in plain language' },
   // Tools
   { path: 'events', banner: 'energy', label: 'Events', icon: 'calendar', tab: true, group: 'tools', art: 'item:Energy', blurb: 'Event targets, energy planner and Arena Rush' },
@@ -49,6 +53,7 @@ export const nav: NavItem[] = [
   { path: 'packs', banner: 'gems', label: 'Pack value', icon: 'star', group: 'tools', art: 'item:Gems', blurb: 'Which paid packs give the most per £' },
   { path: 'trophies', banner: 'gold', label: 'Trophies', icon: 'trophy', group: 'tools', art: 'item:Gold Trophy', blurb: 'Trophy Room costs, bonuses and an upgrade planner' },
   { path: 'planner', banner: 'collect-dungeon-relics-1', label: 'Planner', icon: 'list', group: 'tools', art: 'item:Legendary Codex', blurb: 'Plan skill and gear upgrades for your own box' },
+  { path: 'dps-simulator', banner: 'collect-dungeon-relics-2', label: 'DPS simulator', icon: 'grid', group: 'tools', art: 'item:Master Melee Attacker Crest', blurb: 'Estimated damage per second and what each substat is worth' },
   { path: 'team', banner: 'clan-boss-1', label: 'Team builder', icon: 'grid', group: 'tools', art: 'titan:Vulkoz', blurb: 'Build a team and check its stats and mix' },
   { path: 'heroes/compare', banner: 'novice-tournament-2', label: 'Compare Invokers', icon: 'grid', group: 'tools', art: 'hero:Ironblade Darus', blurb: 'Put up to 4 Invokers side by side' },
   // Site

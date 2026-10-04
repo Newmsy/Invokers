@@ -3,11 +3,13 @@ export interface SummonItem {
   id: string;
   name: string;
   kind: 'hero' | 'titan';
+  /** Not a real item: the guaranteed pull a bonus counter pays out. Kept for the maths, never shown as an item. */
+  pity?: boolean;
   /** Rarity → chance per pull (fraction). */
   rates: Record<string, number>;
-  /** Estimated mercy: a pull of this rarity by this many pulls without one. */
+  /** Mercy: a pull of this rarity by this many pulls without one. */
   mercy?: Record<string, number>;
-  /** Estimated first-time mercy (Destiny Star: first Legendary by pull 50). */
+  /** First-time mercy (Destiny Star: first Legendary by pull 50). */
   firstMercy?: Record<string, number>;
   /** Which heroes a Legendary pull can give: Fire/Water/Earth/Wind, or Light/Dark. */
   legendaryPool?: 'elemental' | 'lightDark';

@@ -1,6 +1,7 @@
 import { rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import { markdownArt } from './src/lib/markdown-art';
 import { markdownLinks } from './src/lib/markdown-links';
@@ -16,15 +17,15 @@ const dropSourceArt = {
   },
 };
 
-// SITE and BASE_PATH let a host serve the site from a subpath
-// (e.g. /invokers/); local dev and CI use the defaults.
+// The live site is https://invokerscompanion.app (canonical links and the sitemap use it). SITE and BASE_PATH
+// let another host serve it elsewhere or from a subpath (e.g. /invokers/).
 const base = process.env.BASE_PATH || '/';
 
 export default defineConfig({
-  site: process.env.SITE || 'http://localhost:4321',
+  site: process.env.SITE || 'https://invokerscompanion.app',
   base,
   trailingSlash: 'ignore',
-  integrations: [dropSourceArt],
+  integrations: [dropSourceArt, sitemap({ filter: (page) => !/\/share\//.test(page) })],
   // Old blog URLs keep working. Astro doesn't add the base to a redirect's target, so it is added here.
   redirects: { '/blog/levels-not-stars': `${base.replace(/\/$/, '')}/blog/levelling-vs-awakening` },
   // ![Name](hero:) and friends in blog posts become icon chips (src/lib/markdown-art.ts); links to /pages get

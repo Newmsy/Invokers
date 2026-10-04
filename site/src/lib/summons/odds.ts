@@ -9,6 +9,16 @@ export function summonItem(id: string): SummonItem | undefined {
   return summons.items.find((i) => i.id === id);
 }
 
+/** Summon items a player can own and pull (pity entries left out). */
+export const pullableItems = summons.items.filter((i) => !i.pity);
+
+/** How a summon item reads on the page: its name, or "random Legendary Invoker" for a pity entry. */
+export function bonusLabel(id: string): string {
+  const item = summonItem(id);
+  if (!item) return id;
+  return item.pity ? `random ${Object.keys(item.rates)[0]} ${item.kind === 'titan' ? 'Titan' : 'Invoker'}` : item.name;
+}
+
 /** Chance of at least one hit in n independent pulls at chance p. */
 export function atLeastOne(p: number, n: number): number {
   if (n <= 0 || p <= 0) return 0;
@@ -37,7 +47,7 @@ export interface OddsInput {
   pulls: number;
   /** Size of the hero pool when asking for one specific hero (Legendary from Destiny or Radiant Stars). */
   poolSize?: number;
-  /** Apply the estimated mercy counts. */
+  /** Apply the mercy counts. */
   mercy?: boolean;
   /** Pulls already made since the last pull of this rarity. */
   since?: number;
@@ -54,7 +64,7 @@ export interface OddsResult {
   chance: number;
   /** Average number you'd get across many players making the same pulls. */
   expected: number;
-  /** Pull count at which the estimated mercy guarantees one, if within the pulls. */
+  /** Pull count at which the mercy guarantees one, if within the pulls. */
   guaranteedBy?: number;
   /** Bonus items counted. */
   bonusItems: { item: string; count: number }[];

@@ -12,6 +12,7 @@ import {
   type StatRoll,
 } from './decode';
 import { BOX_SCHEMA, isBoxDoc, type BoxDoc } from './store';
+import { trophiesLookRight } from './trophies';
 
 export interface ImportResult {
   doc: BoxDoc;
@@ -102,5 +103,5 @@ function itemsLookRight(doc: BoxDoc): boolean {
     typeof h?.id === 'number' && typeof h.configId === 'string' && typeof h.rank === 'string' &&
     typeof h.level === 'number' && typeof h.inStorage === 'boolean' && typeof h.awakenLevel === 'number' &&
     !!h.gearBySlot && typeof h.gearBySlot === 'object';
-  return doc.heroes.every(hero) && doc.gear.every(item) && doc.accessories.every(item);
+  return doc.heroes.every(hero) && doc.gear.every(item) && doc.accessories.every(item) && trophiesLookRight(doc.trophies);
 }

@@ -1,0 +1,34 @@
+---
+// Item rewards as icon + amount + name chips, each linked to the page that explains the item when there is one.
+import { href, itemName } from '../lib/data';
+import { itemIcon } from '../lib/art';
+
+interface Props {
+  rewards: { itemId: string; amount?: number }[];
+}
+const { rewards } = Astro.props;
+
+const label = (id: string) =>
+  itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '').replace(/^(\d) ★ /, '$1★ ');
+const linkFor = (id: string) =>
+  id === 'Memorium' ? 'gear-upgrades'
+  : /^ASC_/.test(id) ? 'ascension'
+  : /^SIP?_/.test(id) ? 'summons'
+  : /^Codex_/.test(id) ? 'skill-costs'
+  : /^Prism_/.test(id) ? 'titans'
+  : undefined;
+---
+<span class="rewards">
+  {rewards.map((r) => {
+    const icon = itemIcon(r.itemId);
+    const link = linkFor(r.itemId);
+    const inner = [icon && <img src={icon} alt="" width="20" height="20" loading="lazy" />, <span>{r.amount != null && `${r.amount.toLocaleString('en-GB')} `}{label(r.itemId)}</span>];
+    return link ? <a class="reward" href={href(link)}>{inner}</a> : <span class="reward">{inner}</span>;
+  })}
+</span>
+
+<style>
+  .rewards { display: inline-flex; flex-wrap: wrap; gap: 4px 12px; }
+  .reward { display: inline-flex; align-items: center; gap: 5px; }
+  .reward img { width: 20px; height: 20px; object-fit: contain; }
+</style>

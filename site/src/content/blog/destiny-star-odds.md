@@ -1,6 +1,6 @@
 ---
 title: "What 130 Destiny Stars really buy you"
-description: "Every summon item's rates, our best estimate of the mercy rules, and the chance of a Legendary in N pulls."
+description: "Every summon item's rates, the mercy rules, and the chance of a Legendary in N pulls."
 date: 2026-09-18
 gameVersion: "0.61.1514"
 art: ["item:Destiny Star", "item:Radiant Star", "item:Divine Star", "item:Miracle Orb"]
@@ -9,7 +9,7 @@ tags: [summons, odds]
 
 A Destiny Star gives a Legendary **0.53%** of the time. Without mercy, half of all players need **130 pulls** or more for their first one. Mercy (pity) rules change that a lot.
 
-- Our best estimate: a guaranteed first Legendary by pull 50, then one every 190 pulls at worst.
+- Mercy guarantees a first Legendary by pull 50, then one every 190 pulls at worst.
 - Radiant Stars are the better way to chase one specific Light or Dark Legendary: their pool is half the size.
 - Divine Stars are a different world: a Legendary in 10 pulls is a coin flip.
 
@@ -24,7 +24,6 @@ Run your own numbers in the [Summons odds calculator](/summons).
 | ![Destiny Star](item:) | | | 91.14% | 8.33% | 0.53% |
 | ![Radiant Star](item:) | | | 91.14% | 8.33% | 0.53% |
 | ![Divine Star](item:) | | | | 93.33% | 6.67% |
-| Legendary Star | | | | | 100% |
 
 Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars only give Light and Dark heroes.
 
@@ -33,7 +32,6 @@ Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars 
 | ![Dream Orb](item:) | 92% | 8% | | |
 | ![Wonder Orb](item:) | 91.15% | 8.3% | 0.55% | |
 | ![Miracle Orb](item:) | | 90% | 9% | 1% |
-| Mythic Orb | | | | 100% |
 
 Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 heroes (every Fire, Water, Earth and Wind Legendary except ![Ardell The Torrent](hero:), who can't be summoned), so a **specific** Legendary is about **1 in 7,170 pulls**. The Radiant pool has 19, so about 1 in 3,585. [Who's in each pool](/summons#pools-title).
 
@@ -51,9 +49,7 @@ Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 he
 
 ## The mercy counters
 
-> **Estimated:** the game doesn't explain its mercy rules. This is our best estimate and hasn't been confirmed in game.
-
-| Item | Rarity | Mercy count | Most likely meaning |
+| Item | Rarity | Mercy count | Meaning |
 |---|---|---|---|
 | ![Destiny Star](item:) | Legendary | 50 first, then 190 | First Legendary by pull 50, then one by every 190th pull without one |
 | ![Radiant Star](item:) | Legendary | 200 | One by every 200th pull without one |
@@ -69,12 +65,12 @@ Still unknown: whether a natural Legendary resets the counter, and whether items
 | Use | Get | Required |
 |---|---|---|
 | ![Fate Star](item:) or ![Destiny Star](item:) | ![Divine Star](item:) | 85 |
-| ![Divine Star](item:) | Legendary Star | 45 |
+| ![Divine Star](item:) | Random Legendary Invoker | 45 |
 | ![Radiant Star](item:) | ![Radiant Star](item:) | 10 |
 | ![Dream Orb](item:) or ![Wonder Orb](item:) | ![Miracle Orb](item:) | 85 |
-| ![Miracle Orb](item:) | Mythic Orb | 100 |
+| ![Miracle Orb](item:) | Random Mythic Titan | 100 |
 
-With the estimated mercy rules and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star** (estimated), close to double the 0.53% on the label.
+With mercy and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star**, close to double the 0.53% on the label.
 
 ## Chroma
 

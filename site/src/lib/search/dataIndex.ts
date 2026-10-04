@@ -7,6 +7,7 @@ import { bossLabel, bossSlug, bosses, heroHref, heroes, href, titanHref, titans,
 import { heroArt, itemIcon, skillIcon, titanArt } from '../art';
 import { effects, heroesWith } from '../effects';
 import { className, skillTypeName } from '../format';
+import { bossesOf, floors, spires, spireSlug } from '../spires';
 import type { SearchDoc } from './match';
 
 /** Game rich text to plain text. Star icons become ★. */
@@ -23,6 +24,16 @@ export function plainText(s: string): string {
 /** True for item names that are really placeholders (e.g. "VIP_7d"): no spaces and an underscore, or equal to the code. */
 function isPlaceholder(item: Item): boolean {
   return !item.name || item.name === item.id || item.name.includes('_');
+}
+
+/**
+ * False for items players can't get or use: faction runes for factions with no Invokers (Ekkan, Oasi, Outlaws), and
+ * the generic runes, crests and essences (players only get the faction, class and element ones).
+ */
+function inGame(item: Item, factions: Set<string>): boolean {
+  if (/^(FM|RM|EE)_Tier\dGeneric$/.test(item.id)) return false;
+  const rune = /^FM_Tier\d(.+)$/.exec(item.id)?.[1];
+  return !rune || factions.has(rune);
 }
 
 /** Keeps the index small: long texts are cut at a word boundary. */
@@ -126,6 +137,13 @@ export function dataDocs(): SearchDoc[] {
     });
   }
 
+  for (const s of spires) {
+    docs.push({ kind: 'Page', title: s.name, sub: `Spire · ${s.element} Invokers only · ${floors.length} floors`, text: s.description, image: itemIcon(`TK_${s.element}`), url: href(`spires/${spireSlug(s)}`) });
+  }
+  for (const f of floors) {
+    for (const name of bossesOf(f)) docs.push({ kind: 'Page', title: name, sub: `Spire boss · floor ${f.floor} · ${f.enemyElement}`, url: href('spires#bosses-title') });
+  }
+
   for (const set of setsJson as GearSet[]) {
     docs.push({
       kind: 'Gear set',
@@ -141,8 +159,9 @@ export function dataDocs(): SearchDoc[] {
   }
 
   const seen = new Set<string>();
+  const factions = new Set(heroes.map((h) => h.faction));
   for (const item of itemsJson as Item[]) {
-    if (isPlaceholder(item)) continue;
+    if (isPlaceholder(item) || !inGame(item, factions)) continue;
     const name = plainText(item.name);
     if (seen.has(name)) continue;
     seen.add(name);
@@ -166,10 +185,14 @@ export function pageDocs(): SearchDoc[] {
     ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],
+    ['spires', 'Spires', 'All 120 Spire floors: enemy waves, bosses, element, ACC and RES, and floor rewards'],
     ['blog', 'Blog', 'The numbers behind Invokers, worked out in plain language'],
     ['team', 'Team builder', 'Build a team of Invokers and check its elements, factions and speed'],
     ['heroes/compare', 'Compare Invokers', 'Compare Invokers side by side: stats and skills'],
     ['planner', 'Planner', 'What your Invokers still need to max their skills and gear, from your imported box'],
+    ['tactics', 'Tactics', 'Every Tactic (formation): front, mid and back line bonuses by class, and the Gold and Playbooks to level it'],
+    ['farming', 'Where to farm', 'Best stages per Energy for Memorium, Echoes, Titan Sparks, Runes, Essences and Crests, plus shop packs'],
+    ['stats', 'What stats do', 'What Skill Speed, Skill Recovery, Mana Generation, Instinct, Move Speed, Defense and Resistance ratings do'],
     ['skill-costs', 'Skill upgrade costs', 'What it costs to level a skill, level by level'],
     ['my-box', 'My box', 'Import your Invokers and gear to see your roster'],
     ['about', 'About', 'About this site'],

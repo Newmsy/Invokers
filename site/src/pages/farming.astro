@@ -1,0 +1,220 @@
+---
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import { href } from '../lib/data';
+import { itemIcon } from '../lib/art';
+import { farmingFor, farmItems, stageList, type DropPart, type ShopRow } from '../lib/farming';
+import { gbp } from '../lib/packs';
+import { plainItemName } from '../lib/progression';
+
+const SHOWN = 6;
+
+const families = [
+  { id: 'memorium', title: 'Memorium', use: 'Upgrades gear.', page: { path: 'gear-upgrades', label: 'Gear upgrades' }, match: (id: string) => id === 'Memorium' },
+  { id: 'echoes', title: 'Echoes', use: 'Ascends Invokers a star.', page: { path: 'ascension', label: 'Ascension' }, match: (id: string) => id.startsWith('ASC_') },
+  { id: 'sparks', title: 'Titan Sparks', use: 'Upgrades Titans and Awakens Invokers.', page: { path: 'ascension#awaken', label: 'Awakening' }, match: (id: string) => id === 'EMP_AnimaSpark' },
+  { id: 'essences', title: 'Essences', use: 'Awakening. Element Essences match the Invoker’s element; Astral Essence is for everyone.', page: { path: 'ascension#awaken', label: 'Awakening' }, match: (id: string) => /^(AE|EE)_/.test(id) },
+  { id: 'runes', title: 'Runes', use: 'Awakening. Each faction has its own Runes.', page: { path: 'ascension#awaken', label: 'Awakening' }, match: (id: string) => id.startsWith('FM_') },
+  { id: 'crests', title: 'Crests', use: 'Awakening. Each class has its own Crests.', page: { path: 'ascension#awaken', label: 'Awakening' }, match: (id: string) => id.startsWith('RM_') },
+];
+
+// Tier 1 first, then by name; Astral Essence ahead of the element ones.
+const tierOf = (id: string) => Number(/(?:Tier|Stars)(\d)/.exec(id)?.[1] ?? 0);
+const order = (a: string, b: string) => tierOf(a) - tierOf(b) || Number(b.startsWith('AE_')) - Number(a.startsWith('AE_')) || plainItemName(a).localeCompare(plainItemName(b));
+
+const sections = families.map((f) => ({
+  ...f,
+  items: farmItems.filter(f.match).sort(order).map((id) => ({ id, name: plainItemName(id), icon: itemIcon(id), ...farmingFor(id) })),
+}));
+
+const n = (v: number, dp = 0) => v.toLocaleString('en-GB', { maximumFractionDigits: dp });
+/** Averages: whole numbers when big, 2 significant figures when small. */
+const avg = (v: number) => (v >= 100 ? n(v) : v >= 10 ? n(v, 1) : v >= 1 ? n(v, 2) : v.toLocaleString('en-GB', { maximumSignificantDigits: 2 }));
+const pct = (c: number) => `${+(c * 100).toFixed(c < 0.1 ? 1 : 0)}%`;
+const partText = (p: DropPart) =>
+  p.kind === 'battle' ? `${p.amount} in ${p.where === 'enemies' ? 'enemy' : 'chest'} loot` : p.kind === 'win' ? `${p.amount} every win` : `${p.amount} at ${pct(p.chance ?? 0)}${(p.rolls ?? 1) > 1 ? ` ×${p.rolls}` : ''}`;
+const price = (s: ShopRow) => (s.price.usd ? `£${gbp(s.price.usd)}` : Object.entries(s.price.resources).map(([k, v]) => `${n(v)} ${k === 'Gem' ? 'Gems' : plainItemName(k)}`).join(' + '));
+const titleCase = (s: string) => (s === s.toUpperCase() ? s.toLowerCase().replace(/(^|[\s-])\S/g, (c) => c.toUpperCase()) : s);
+const diff = (d: string) => (d === 'None' ? '–' : d);
+const gemIcon = itemIcon('Gem');
+---
+<Base title="Where to farm">
+  <h1>Where to farm</h1>
+  <p class="lead">The best stages for each upgrade material, ranked by average amount per Energy.</p>
+  <nav class="jump" aria-label="On this page">
+    {sections.map((s) => <a href={`#${s.id}`}>{s.items[0]?.icon && <img src={s.items[0].icon} alt="" width="20" height="20" />}{s.title}</a>)}
+  </nav>
+  <ul class="notes">
+    <li><strong>All amounts are averages</strong> over many wins. Any single run can give more, less or nothing.</li>
+    <li><strong>Estimated</strong> (*): enemy and chest loot in Campaign and event stages. How many enemies and chests a stage has isn’t known, so each loot pool is assumed to pay out its listed amount once per win, split by weight. Everything else is exact.</li>
+    <li>Stages with the same drops share a row. One-time first-clear rewards aren’t counted.</li>
+  </ul>
+
+  {sections.map((s) => (
+    <section id={s.id} aria-labelledby={`${s.id}-title`}>
+      <h2 id={`${s.id}-title`}>{s.items[0]?.icon && <img class="h-icon" src={s.items[0].icon} alt="" width="28" height="28" />}{s.title}</h2>
+      <p class="hint">{s.use} Costs: <a href={href(s.page.path)}>{s.page.label}</a>.</p>
+      {s.items.map((it) => {
+        const best = it.stages[0];
+        return (
+          <details class="item" open={s.items.length === 1 || s.id === 'echoes'}>
+            <summary>
+              <span class="name">{it.icon && <img src={it.icon} alt="" width="28" height="28" loading="lazy" />}{it.name}</span>
+              <span class="best">
+                {best
+                  ? <>Best: {best.place} {best.difficulty === 'Hard' || best.difficulty === 'Brutal' ? `${best.difficulty} ` : ''}{best.stages.length > 1 ? 'stages' : 'stage'} {stageList(best.stages)} · <strong>{avg(best.perEnergy)}</strong> per Energy{best.estimated && '*'}</>
+                  : it.spires.length ? 'Spire rewards' : it.shop.length ? 'Shop packs only' : 'No source listed'}
+              </span>
+            </summary>
+            {it.stages.length > 0 && (
+              <div class="table-wrap">
+                <table class="stack">
+                  <thead>
+                    <tr>
+                      <th scope="col">Where</th>
+                      <th scope="col">Stage</th>
+                      <th scope="col" class="num">Energy</th>
+                      <th scope="col" class="num">Avg per Energy</th>
+                      <th scope="col" class="num">Avg per run</th>
+                      <th scope="col">Drops and chance</th>
+                    </tr>
+                  </thead>
+                  {[it.stages.slice(0, SHOWN), it.stages.slice(SHOWN)].map((rows, part) => rows.length > 0 && (
+                    <tbody class:list={{ more: part === 1 }} data-more={part === 1 ? '' : undefined}>
+                      {rows.map((r) => (
+                        <tr>
+                          <th scope="row">{r.path ? <a href={href(r.path)}>{r.place}</a> : r.place}{diff(r.difficulty) !== '–' && <small>{r.difficulty}</small>}</th>
+                          <td data-label="Stage">{stageList(r.stages)}</td>
+                          <td class="num" data-label="Energy">{r.energy}</td>
+                          <td class="num strong" data-label="Avg per Energy">{avg(r.perEnergy)}{r.estimated && '*'}</td>
+                          <td class="num" data-label="Avg per run">{avg(r.perRun)}{r.estimated && '*'}</td>
+                          <td class="drops" data-label="Drops and chance">{r.parts.map(partText).join(' · ')}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  ))}
+                </table>
+              </div>
+            )}
+            {it.stages.length > SHOWN && (
+              <button type="button" class="show-more" aria-expanded="false" data-total={it.stages.length}>Show all {it.stages.length} rows</button>
+            )}
+            {it.spires.length > 0 && (
+              <>
+                <h3>Spires</h3>
+                <p class="hint">Spire floors cost Spire Keys, not Energy.</p>
+                <div class="table-wrap">
+                  <table class="stack">
+                    <thead><tr><th scope="col">Spire</th><th scope="col">Floors</th><th scope="col" class="num">Per floor</th><th scope="col" class="num">All floors</th></tr></thead>
+                    <tbody>
+                      {it.spires.map((sp) => (
+                        <tr>
+                          <th scope="row">{sp.place}</th>
+                          <td class="wide" data-label="Floors">{sp.floors === 1 ? `Floor ${sp.first}` : `${sp.floors} floors from ${sp.first} to ${sp.last}`}</td>
+                          <td class="num" data-label="Per floor">{sp.min === sp.max ? n(sp.min) : `${n(sp.min)}–${n(sp.max)}`}</td>
+                          <td class="num" data-label="All floors">{n(sp.total)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+            {it.shop.length > 0 && (
+              <p class="shop">
+                <span class="label">{gemIcon && <img src={gemIcon} alt="" width="18" height="18" />}In the shop:</span>
+                {it.shop.map((p, i) => (
+                  <>{i > 0 && ' · '}<a href={href('packs')}>{titleCase(p.pack)}</a> ({n(p.amount)} for {price(p)})</>
+                ))}
+              </p>
+            )}
+            {it.firstClear > 0 && <p class="hint">First clears give {n(it.firstClear)} more in total, once.</p>}
+          </details>
+        );
+      })}
+    </section>
+  ))}
+
+  <SeeAlso links={[
+    { path: 'gear-upgrades', label: 'Gear upgrades and Memorium' },
+    { path: 'ascension', label: 'Ascension and Awakening' },
+    { path: 'bosses', label: 'Boss guides' },
+    { path: 'packs', label: 'Pack value' },
+    { path: 'events', label: 'Energy planner' },
+  ]} />
+</Base>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.show-more')) {
+    btn.addEventListener('click', () => {
+      const more = btn.previousElementSibling?.querySelector<HTMLElement>('tbody[data-more]');
+      if (!more) return;
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      more.classList.toggle('more', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show fewer' : `Show all ${btn.dataset.total} rows`;
+    });
+  }
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 40px 0 4px; scroll-margin-top: 80px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 16px 0 4px; color: var(--soft); }
+  .h-icon { border-radius: 6px; }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 4px 0 12px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px 5px 8px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .notes { max-width: 70ch; padding-left: 20px; color: var(--soft); font-size: 14px; }
+  .notes li { margin: 4px 0; }
+  details.item { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin: 8px 0; padding: 0 12px; }
+  details.item[open] { padding-bottom: 12px; }
+  summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; min-height: 48px; cursor: pointer; padding: 6px 0; }
+  summary .name { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+  summary .name img { border-radius: 4px; }
+  summary .best { color: var(--soft); font-size: 14px; }
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  tbody th { color: var(--text); font-weight: 500; }
+  tbody th small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  thead th.num { white-space: normal; min-width: 64px; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.strong { font-weight: 600; color: var(--text); }
+  td.drops { color: var(--soft); white-space: normal; min-width: 160px; }
+  tbody.more { display: none; }
+  table > tbody:last-child tr:last-child > * { border-bottom: 0; }
+  .show-more {
+    margin-top: 8px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .shop { margin: 12px 0 0; font-size: 14px; color: var(--soft); }
+  .shop .label { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); margin-right: 6px; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    details.item { padding: 0 10px; }
+    th, td { padding: 6px 8px; }
+    /* Phones: each row becomes a small card, labels beside the values, nothing scrolls sideways. */
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody:not(.more) { display: block; }
+    table.stack tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px 8px; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    table.stack tbody:last-child tr:last-child { border-bottom: 0; }
+    table.stack th, table.stack td { display: block; padding: 0; border: 0; white-space: normal; text-align: left; min-width: 0; }
+    table.stack tbody th { grid-column: 1 / -1; font-weight: 600; }
+    table.stack tbody th small { display: inline; margin-left: 6px; }
+    table.stack td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; }
+    table.stack td.drops, table.stack td.wide { grid-column: 1 / -1; }
+  }
+</style>

@@ -18,7 +18,7 @@ tags: [vip, chests, odds]
 
 Points and cost are totals from VIP 1, where everyone starts. Login days assume you never miss a day.
 
-| VIP | Points | Cost ($/£) | Logins only | ![Gold](item:) Gold & ![XP](item:) XP | ![Memorium](item:) | ![Ancient Rune](item:) Rune drops | Battle stats | Free VIP days |
+| VIP | Points | Cost ($/£) | Logins only | ![Gold](item:) Gold & ![XP](item:) XP | ![Memorium](item:) | ![](item:ancient-rune) Rune drops | Battle stats | Free VIP days |
 |---|---|---|---|---|---|---|---|---|
 | 1 | 0 | — | — | — | — | — | — | 1 |
 | 2 | 100 | 1 | 2 days | — | +5% | — | — | 1 |
