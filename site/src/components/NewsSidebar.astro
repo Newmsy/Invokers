@@ -1,0 +1,105 @@
+---
+// The News sidebar: chase heroes, the latest update, a few headline numbers and the tools for planning.
+// On an entry page it also lists the latest news (minus the entry itself).
+import { getCollection } from 'astro:content';
+import SectionArt from './SectionArt.astro';
+import { heroArt } from '../lib/art';
+import { href, pack } from '../lib/data';
+import { nav } from '../lib/nav';
+import { heroByName, newsDate } from '../lib/news';
+import summons from '../data/summons.json';
+import scoring from '../data/event-scoring.json';
+
+interface Props {
+  /** The entry being read, to list other news. */
+  current?: string;
+}
+const { current } = Astro.props;
+const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = current ? entries.filter((e) => e.id !== current).slice(0, 5) : [];
+const chases = entries.filter((e) => e.data.kind === 'spotlight' && e.data.heroes[0]).map((e) => ({ e, hero: heroByName(e.data.heroes[0]) }));
+const latestPatch = entries.find((e) => e.data.kind === 'patch' && /^Update /.test(e.data.title));
+const pct = (x: number) => `${+(x * 100).toFixed(2)}%`;
+const rate = (id: string, r: string) => (summons.items.find((i) => i.id === id)?.rates as Record<string, number> | undefined)?.[r];
+const gear = scoring.families.find((f) => f.id === 'gear');
+const top = gear?.stages[gear.stages.length - 1];
+const sixStar = top ? top.drops.filter((d) => d.key.startsWith('6')).reduce((n, d) => n + d.chance, 0) : 0;
+const numbers = [
+  { label: 'Legendary from a Destiny Star', value: rate('SI_DestinyStar', 'Legendary'), path: 'summons' },
+  { label: 'Legendary from a Divine Star', value: rate('SI_DivineStar', 'Legendary'), path: 'summons' },
+  { label: 'Chroma when you pull a Legendary', value: summons.chroma.hero.Legendary, path: 'summons' },
+  { label: `6★ gear per drop, relic boss stage ${top?.stage}`, value: sixStar || undefined, path: 'news/six-star-gear' },
+].filter((n): n is { label: string; value: number; path: string } => typeof n.value === 'number');
+const tools = ['events', 'summons', 'packs', 'tiers'].map((p) => nav.find((n) => n.path === p)).filter((n) => !!n);
+---
+<aside class="side">
+  {latest.length > 0 && (
+    <section class="box">
+      <h2>Latest news</h2>
+      <ul class="others">
+        {latest.map((e) => <li><a href={href(`news/${e.id}`)}><strong>{e.data.title}</strong><small>{newsDate(e.data)}</small></a></li>)}
+      </ul>
+    </section>
+  )}
+    {chases.length > 0 && (
+      <section class="box">
+        <h2>Chase heroes</h2>
+        <ul class="chases">
+          {chases.map(({ e, hero }) => (
+            <li>
+              <a href={href(`news/${e.id}`)}>
+                {heroArt(hero.id) && <img src={heroArt(hero.id)} alt="" width="44" height="44" loading="lazy" />}
+                <span><strong>{hero.name}</strong><small>{newsDate(e.data)}</small></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {latestPatch && (
+      <section class="box">
+        <h2>Latest update</h2>
+        <a class="latest" href={href(`news/${latestPatch.id}`)}><strong>{latestPatch.data.title}</strong><small>{newsDate(latestPatch.data)}</small></a>
+        <a class="more" href={href('updates')}>Game version {pack.gameVersion} · what changed ›</a>
+      </section>
+    )}
+
+    <section class="box">
+      <h2>Key numbers</h2>
+      <ul class="numbers">
+        {numbers.map((n) => <li><a href={href(n.path)}><span>{n.label}</span><b>{pct(n.value)}</b></a></li>)}
+      </ul>
+    </section>
+
+    <section class="box">
+      <h2>Plan the next chase</h2>
+      <ul class="tools">
+        {tools.map((n) => <li><a href={href(n.path)}><SectionArt art={n.art} size={28} />{n.label}</a></li>)}
+      </ul>
+    </section>
+</aside>
+
+<style>
+  .side { position: sticky; top: 16px; }
+  .box { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 14px; }
+  .box h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); margin: 0 0 10px; }
+  .box ul { list-style: none; margin: 0; padding: 0; }
+  .chases a, .tools a, .numbers a { display: flex; align-items: center; gap: 10px; padding: 6px 4px; border-radius: 8px; color: var(--text); font-size: 15px; }
+  .chases a:hover, .tools a:hover, .numbers a:hover { background: var(--surface-2); }
+  .chases img { border-radius: 10px; object-fit: cover; object-position: top center; border: 1px solid var(--line); flex: none; }
+  .chases span, .latest { display: flex; flex-direction: column; gap: 2px; }
+  .chases small, .latest small { color: var(--muted); font-size: 13px; }
+  .latest { color: var(--text); }
+  .latest:hover strong { color: var(--accent); }
+  .numbers span { flex: 1; color: var(--soft); font-size: 14px; }
+  .numbers b { font-family: var(--display); color: var(--accent); }
+  .more { display: inline-block; margin-top: 10px; font-size: 14px; }
+    .side { position: static; }
+  .others a { display: flex; flex-direction: column; gap: 2px; padding: 6px 4px; border-radius: 8px; color: var(--text); font-size: 14px; }
+  .others a:hover { background: var(--surface-2); }
+  .others small { color: var(--muted); font-size: 12px; }
+  @media (max-width: 1000px) {
+    .side { position: static; }
+  }
+</style>
