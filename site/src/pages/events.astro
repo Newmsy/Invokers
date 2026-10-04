@@ -202,7 +202,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
 <script>
   import { shortfall, toFinish } from '../lib/events';
 
-  interface Line { key: string; chance: number; amount: string; points: number }
+  interface Line { key: string; perRun: number; amount: string; points: number }
   interface Option { label: string; energy: number; points: number; lines: Line[] }
   interface Data {
     farming: { id: string; name: string; target: number; perChase: number; estimated: boolean; options: Option[] }[];
@@ -243,7 +243,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
     h.textContent = `${title}: ${fmt(o.points)} points a run`;
     const table = document.createElement('table');
     const head = table.createTHead().insertRow();
-    for (const [t, n] of [['Drop', false], ['Chance', true], ['Amount', true], ['Points', true]] as const) {
+    for (const [t, n] of [['Drop', false], ['Drops a run', true], ['Amount', true], ['Points', true]] as const) {
       const th = document.createElement('th');
       th.scope = 'col';
       th.textContent = t;
@@ -253,7 +253,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
     const body = table.createTBody();
     for (const l of o.lines) {
       const tr = body.insertRow();
-      [l.key, `${(l.chance * 100).toFixed(l.chance < 0.01 ? 2 : 1)}%`, l.amount, fmt(l.points)].forEach((text, i) => {
+      [l.key, l.perRun.toLocaleString('en-GB', { maximumFractionDigits: l.perRun < 0.1 ? 3 : 2 }), l.amount, fmt(l.points)].forEach((text, i) => {
         const cell = document.createElement(i ? 'td' : 'th');
         if (i) cell.className = 'num';
         else cell.scope = 'row';
@@ -282,7 +282,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
         `${fmt(o.points)} points a run${e.estimated ? ' (est.)' : ''} · ${fmt(one.runs)} runs to ${fmt(e.target)}${e.perChase > 1 ? ` · ×${e.perChase} a chase` : ''}`;
       document.querySelector(`[data-energy="${i}"]`)!.textContent = fmt(energy);
       // Bosses that share drop tables show each stage's breakdown once.
-      const key = o.lines.map((l) => l.key + l.chance).join();
+      const key = o.lines.map((l) => l.key + l.perRun).join();
       if (o.lines.length && !seen.has(key)) {
         seen.add(key);
         how.push(breakdown(`${e.name}, ${o.label.toLowerCase()}`, o));

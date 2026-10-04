@@ -63,7 +63,7 @@ export function arena(input: ArenaInput): { perBattle: number; perDay: number; t
 export interface StageDrop {
   /** Key into the family's points table, e.g. "5★ Epic", "Legendary" or "Spark". */
   key: string;
-  /** 0 to 1, per roll. */
+  /** Chance per roll (0 to 1), or the expected number of that drop per run when the table counts rolls itself. */
   chance: number;
   min: number;
   max: number;
@@ -81,7 +81,7 @@ export interface ScoringFamily {
 
 /** Expected points from one drop line: chance × average amount × points per item. */
 export function dropPoints(drop: StageDrop, points: Record<string, number>): number {
-  const chance = Math.min(1, Math.max(0, drop.chance));
+  const chance = Math.max(0, drop.chance);
   return chance * ((drop.min + drop.max) / 2) * (points[drop.key] ?? 0);
 }
 
