@@ -102,10 +102,10 @@ def main():
     c = combos(hero_ids)
     write("combos.json", {
         "source": "Hero skill configs (base timings at Combo Speed rating 0).",
-        "note": "Use requiredSec for combo timing, not the animation lengths. preSec/castSec/endSec are how long the "
-                "animation plays (about 1.6 s for most hits), but the next hit can start once requiredSec has passed "
-                "(0.4-0.9 s on almost every step), so long animations don't make a hero's combo slower. In play, combo "
-                "timing looks largely standard across heroes; animationSec is kept for reference only.",
+        "note": "In play, combo timing is the same for every Invoker (observed in game). These per-hero values are the "
+                "raw skill config and are NOT real timing differences: preSec/castSec/endSec are animation lengths, "
+                "and requiredSec (0.4-0.9 s in config) does not translate into faster or slower combos either. Do not "
+                "rank or compare heroes by these numbers; keep them for reference only.",
         "unconfirmed": ["How Combo Speed rating scales these timings is in stat_curves.json only if the game exposes it; "
                         "StatCurves has no Combo Speed column, so the scaling is not exported yet.",
                         "animationSec sums pre+cast+end over Combo1-5; requiredSec sums ComboAnimationRequiredTime "
