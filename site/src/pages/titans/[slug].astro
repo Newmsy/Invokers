@@ -15,7 +15,9 @@ export function getStaticPaths() {
 }
 
 const { titan } = Astro.props as { titan: TitanInfo };
-const art = titanSplash(titan.id) ?? titanArt(titan.id);
+const art = titanArt(titan.id);
+// Wide key art behind the header, for Titans that have some.
+const splash = titanSplash(titan.id);
 const passive = titanPassive(titan.id);
 const full = passive.at(-1)?.bonus;
 const skills = titanSkills(titan.id);
@@ -36,6 +38,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     All Titans
   </a>
 
+  {splash && <div class="page-banner tall" aria-hidden="true"><img src={splash} alt="" width="1200" height="600" fetchpriority="high" /></div>}
   <section class="top">
     <div class="art">{art ? <img src={art} alt="" /> : <span class="ph">{initials(titan.name)}</span>}</div>
     <div>
