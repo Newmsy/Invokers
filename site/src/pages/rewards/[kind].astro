@@ -69,7 +69,7 @@ const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : pr
   <nav class="jump" aria-label="On this page">
     <a href="#total">Total</a>
     {isAch ? <a href="#tabs">By tab</a> : <a href="#split">Tasks vs pages</a>}
-    {isAch ? <a href="#biggest">Biggest Gem rewards</a> : <a href="#bands">By page</a>}
+    {isAch ? (topGems.length > 0 && <a href="#biggest">Biggest Gem rewards</a>) : <a href="#bands">By page</a>}
     <a href="#all">Full list</a>
   </nav>
 
