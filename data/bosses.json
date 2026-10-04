@@ -1,6 +1,6 @@
 {
  "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-02",
+ "extractedAt": "2026-10-04",
  "source": "Installed game files (localization table, region config, level config); nothing comes from the server.",
  "unconfirmed": [
   "mode 'other' covers the four Crest dungeon bosses (Yskara, Galvos, Hyxxis, Koltmos).",
@@ -43,7 +43,8 @@
      "def": 3050,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -55,7 +56,8 @@
      "def": 3660,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -67,7 +69,8 @@
      "def": 4880,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -79,7 +82,8 @@
      "def": 5490,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -91,7 +95,8 @@
      "def": 6100,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -103,7 +108,8 @@
      "def": 6100,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -115,7 +121,8 @@
      "def": 6710,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -127,7 +134,8 @@
      "def": 6710,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -139,7 +147,8 @@
      "def": 6710,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -151,7 +160,8 @@
      "def": 6710,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -163,7 +173,8 @@
      "def": 7320,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -175,7 +186,8 @@
      "def": 7930,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -187,7 +199,8 @@
      "def": 7930,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -199,7 +212,8 @@
      "def": 7930,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -212,7 +226,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -225,7 +240,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -238,7 +254,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -251,7 +268,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -264,7 +282,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -277,7 +296,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -314,7 +334,8 @@
      "def": 2600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -326,7 +347,8 @@
      "def": 3120,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -338,7 +360,8 @@
      "def": 4160,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -350,7 +373,8 @@
      "def": 4680,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -362,7 +386,8 @@
      "def": 4680,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -374,7 +399,8 @@
      "def": 5200,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -386,7 +412,8 @@
      "def": 5200,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -398,7 +425,8 @@
      "def": 5720,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -410,7 +438,8 @@
      "def": 5720,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -422,7 +451,8 @@
      "def": 5720,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -434,7 +464,8 @@
      "def": 6240,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -446,7 +477,8 @@
      "def": 6240,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -458,7 +490,8 @@
      "def": 6240,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -470,7 +503,8 @@
      "def": 6760,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -483,7 +517,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -496,7 +531,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -509,7 +545,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -522,7 +559,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -535,7 +573,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -548,7 +587,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -586,7 +626,8 @@
      "def": 3050,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -598,7 +639,8 @@
      "def": 3660,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -610,7 +652,8 @@
      "def": 4880,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -622,7 +665,8 @@
      "def": 5490,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -635,7 +679,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -648,7 +693,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -661,7 +707,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -674,7 +721,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -687,7 +735,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -700,7 +749,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -713,7 +763,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -726,7 +777,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -739,7 +791,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -752,7 +805,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -765,7 +819,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -778,7 +833,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -791,7 +847,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -804,7 +861,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -817,7 +875,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -830,7 +889,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -867,7 +927,8 @@
      "skillLevel": 0,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -880,7 +941,8 @@
      "skillLevel": 0,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -893,7 +955,8 @@
      "skillLevel": 0,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -906,7 +969,8 @@
      "skillLevel": 0,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -919,7 +983,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -932,7 +997,8 @@
      "skillLevel": 0,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -945,7 +1011,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -958,7 +1025,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -971,7 +1039,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -984,7 +1053,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -997,7 +1067,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -1010,7 +1081,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -1023,7 +1095,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -1036,7 +1109,8 @@
      "skillLevel": 2,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -1049,7 +1123,8 @@
      "skillLevel": 2,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -1062,7 +1137,8 @@
      "skillLevel": 3,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -1075,7 +1151,8 @@
      "skillLevel": 4,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -1088,7 +1165,8 @@
      "skillLevel": 5,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -1101,7 +1179,8 @@
      "skillLevel": 6,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -1114,7 +1193,8 @@
      "skillLevel": 7,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -1152,7 +1232,8 @@
      "def": 3050,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -1164,7 +1245,8 @@
      "def": 3660,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -1176,7 +1258,8 @@
      "def": 4880,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -1188,7 +1271,8 @@
      "def": 5490,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -1200,7 +1284,8 @@
      "def": 6100,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -1212,7 +1297,8 @@
      "def": 6100,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -1224,7 +1310,8 @@
      "def": 6710,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -1236,7 +1323,8 @@
      "def": 6710,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -1248,7 +1336,8 @@
      "def": 6710,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -1260,7 +1349,8 @@
      "def": 6710,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -1272,7 +1362,8 @@
      "def": 7320,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -1284,7 +1375,8 @@
      "def": 7930,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -1296,7 +1388,8 @@
      "def": 7930,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -1308,7 +1401,8 @@
      "def": 7930,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -1321,7 +1415,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -1334,7 +1429,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -1347,7 +1443,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -1360,7 +1457,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -1373,7 +1471,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -1386,7 +1485,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -1423,7 +1523,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -1435,7 +1536,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -1447,7 +1549,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -1459,7 +1562,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -1471,7 +1575,8 @@
      "def": 1200,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -1483,7 +1588,8 @@
      "def": 1200,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -1495,7 +1601,8 @@
      "def": 1200,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -1507,7 +1614,8 @@
      "def": 1200,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -1519,7 +1627,8 @@
      "def": 1320,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -1531,7 +1640,8 @@
      "def": 1320,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -1543,7 +1653,8 @@
      "def": 1320,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -1555,7 +1666,8 @@
      "def": 1440,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -1567,7 +1679,8 @@
      "def": 1440,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -1579,7 +1692,8 @@
      "def": 1440,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -1592,7 +1706,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -1605,7 +1720,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -1618,7 +1734,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -1631,7 +1748,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -1644,7 +1762,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -1657,7 +1776,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -1693,7 +1813,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -1705,7 +1826,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -1717,7 +1839,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -1729,7 +1852,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -1741,7 +1865,8 @@
      "def": 1200,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -1753,7 +1878,8 @@
      "def": 1200,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -1765,7 +1891,8 @@
      "def": 2000,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -1777,7 +1904,8 @@
      "def": 2000,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -1789,7 +1917,8 @@
      "def": 2000,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -1801,7 +1930,8 @@
      "def": 2000,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -1813,7 +1943,8 @@
      "def": 4000,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -1825,7 +1956,8 @@
      "def": 4000,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -1837,7 +1969,8 @@
      "def": 4000,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -1849,7 +1982,8 @@
      "def": 6000,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -1862,7 +1996,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -1875,7 +2010,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -1888,7 +2024,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -1901,7 +2038,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -1914,7 +2052,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -1927,7 +2066,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -1964,7 +2104,8 @@
      "def": 2000,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -1976,7 +2117,8 @@
      "def": 2400,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -1988,7 +2130,8 @@
      "def": 3200,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -2000,7 +2143,8 @@
      "def": 3600,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -2012,7 +2156,8 @@
      "def": 4000,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -2024,7 +2169,8 @@
      "def": 4000,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -2036,7 +2182,8 @@
      "def": 4400,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -2048,7 +2195,8 @@
      "def": 4400,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -2060,7 +2208,8 @@
      "def": 4400,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -2072,7 +2221,8 @@
      "def": 4400,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -2084,7 +2234,8 @@
      "def": 4800,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -2096,7 +2247,8 @@
      "def": 5200,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -2108,7 +2260,8 @@
      "def": 5200,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -2120,7 +2273,8 @@
      "def": 5200,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -2133,7 +2287,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -2146,7 +2301,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -2159,7 +2315,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -2172,7 +2329,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -2185,7 +2343,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -2198,7 +2357,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -2235,7 +2395,8 @@
      "def": 6100,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -2247,7 +2408,8 @@
      "def": 7320,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -2259,7 +2421,8 @@
      "def": 9760,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -2271,7 +2434,8 @@
      "def": 10980,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -2283,7 +2447,8 @@
      "def": 10980,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -2295,7 +2460,8 @@
      "def": 12200,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -2307,7 +2473,8 @@
      "def": 12200,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -2319,7 +2486,8 @@
      "def": 12200,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -2331,7 +2499,8 @@
      "def": 13420,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -2343,7 +2512,8 @@
      "def": 13420,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -2355,7 +2525,8 @@
      "def": 14640,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -2367,7 +2538,8 @@
      "def": 14640,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -2379,7 +2551,8 @@
      "def": 14640,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -2391,7 +2564,8 @@
      "def": 14640,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -2404,7 +2578,8 @@
      "skillLevel": 1,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -2417,7 +2592,8 @@
      "skillLevel": 1,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -2430,7 +2606,8 @@
      "skillLevel": 2,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -2443,7 +2620,8 @@
      "skillLevel": 3,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -2456,7 +2634,8 @@
      "skillLevel": 4,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -2469,7 +2648,8 @@
      "skillLevel": 5,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -2505,7 +2685,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -2517,7 +2698,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -2529,7 +2711,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -2541,7 +2724,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -2554,7 +2738,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -2567,7 +2752,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -2580,7 +2766,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -2593,7 +2780,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -2606,7 +2794,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -2619,7 +2808,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -2632,7 +2822,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -2645,7 +2836,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -2658,7 +2850,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -2671,7 +2864,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -2684,7 +2878,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -2697,7 +2892,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -2710,7 +2906,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -2723,7 +2920,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -2736,7 +2934,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -2749,7 +2948,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -2783,7 +2983,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -2795,7 +2996,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -2807,7 +3009,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -2819,7 +3022,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -2832,7 +3036,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -2845,7 +3050,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -2858,7 +3064,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -2871,7 +3078,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -2884,7 +3092,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -2897,7 +3106,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -2910,7 +3120,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -2923,7 +3134,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -2936,7 +3148,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -2949,7 +3162,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -2962,7 +3176,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -2975,7 +3190,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -2988,7 +3204,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -3001,7 +3218,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -3014,7 +3232,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -3027,7 +3246,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -3064,7 +3284,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -3076,7 +3297,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -3088,7 +3310,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -3100,7 +3323,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -3113,7 +3337,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -3126,7 +3351,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -3139,7 +3365,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -3152,7 +3379,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -3165,7 +3393,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -3178,7 +3407,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -3191,7 +3421,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -3204,7 +3435,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -3217,7 +3449,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -3230,7 +3463,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -3243,7 +3477,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -3256,7 +3491,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -3269,7 +3505,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -3282,7 +3519,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -3295,7 +3533,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -3308,7 +3547,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -3344,7 +3584,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -3356,7 +3597,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -3368,7 +3610,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -3380,7 +3623,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -3393,7 +3637,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -3406,7 +3651,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -3419,7 +3665,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -3432,7 +3679,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -3445,7 +3693,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -3458,7 +3707,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -3471,7 +3721,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -3484,7 +3735,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -3497,7 +3749,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -3510,7 +3763,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -3523,7 +3777,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -3536,7 +3791,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -3549,7 +3805,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -3562,7 +3819,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -3575,7 +3833,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -3588,7 +3847,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -3623,7 +3883,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -3635,7 +3896,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -3647,7 +3909,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -3659,7 +3922,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -3672,7 +3936,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -3685,7 +3950,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -3698,7 +3964,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -3711,7 +3978,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -3724,7 +3992,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -3737,7 +4006,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -3750,7 +4020,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -3763,7 +4034,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -3776,7 +4048,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -3789,7 +4062,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -3802,7 +4076,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -3815,7 +4090,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -3828,7 +4104,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -3841,7 +4118,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -3854,7 +4132,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -3867,7 +4146,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -3904,7 +4184,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -3916,7 +4197,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -3928,7 +4210,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -3940,7 +4223,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -3953,7 +4237,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -3966,7 +4251,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -3979,7 +4265,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -3992,7 +4279,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -4005,7 +4293,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -4018,7 +4307,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -4031,7 +4321,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -4044,7 +4335,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -4057,7 +4349,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -4070,7 +4363,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -4083,7 +4377,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -4096,7 +4391,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -4109,7 +4405,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -4122,7 +4419,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -4135,7 +4433,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -4148,7 +4447,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   },
@@ -4184,7 +4484,8 @@
      "def": 600,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 75
+     "toleranceBonus": 75,
+     "manaUltimate": 2
     },
     {
      "stage": 2,
@@ -4196,7 +4497,8 @@
      "def": 720,
      "accuracy": 0,
      "resistance": 50,
-     "toleranceBonus": 70
+     "toleranceBonus": 70,
+     "manaUltimate": 2
     },
     {
      "stage": 3,
@@ -4208,7 +4510,8 @@
      "def": 960,
      "accuracy": 5,
      "resistance": 50,
-     "toleranceBonus": 60
+     "toleranceBonus": 60,
+     "manaUltimate": 2
     },
     {
      "stage": 4,
@@ -4220,7 +4523,8 @@
      "def": 1080,
      "accuracy": 10,
      "resistance": 55,
-     "toleranceBonus": 50
+     "toleranceBonus": 50,
+     "manaUltimate": 2
     },
     {
      "stage": 5,
@@ -4233,7 +4537,8 @@
      "skillLevel": 1,
      "accuracy": 15,
      "resistance": 60,
-     "toleranceBonus": 45
+     "toleranceBonus": 45,
+     "manaUltimate": 2
     },
     {
      "stage": 6,
@@ -4246,7 +4551,8 @@
      "skillLevel": 1,
      "accuracy": 20,
      "resistance": 65,
-     "toleranceBonus": 40
+     "toleranceBonus": 40,
+     "manaUltimate": 2
     },
     {
      "stage": 7,
@@ -4259,7 +4565,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 75,
-     "toleranceBonus": 35
+     "toleranceBonus": 35,
+     "manaUltimate": 2
     },
     {
      "stage": 8,
@@ -4272,7 +4579,8 @@
      "skillLevel": 1,
      "accuracy": 25,
      "resistance": 110,
-     "toleranceBonus": 30
+     "toleranceBonus": 30,
+     "manaUltimate": 2
     },
     {
      "stage": 9,
@@ -4285,7 +4593,8 @@
      "skillLevel": 1,
      "accuracy": 30,
      "resistance": 115,
-     "toleranceBonus": 25
+     "toleranceBonus": 25,
+     "manaUltimate": 2
     },
     {
      "stage": 10,
@@ -4298,7 +4607,8 @@
      "skillLevel": 2,
      "accuracy": 40,
      "resistance": 174,
-     "toleranceBonus": 0
+     "toleranceBonus": 0,
+     "manaUltimate": 2
     },
     {
      "stage": 11,
@@ -4311,7 +4621,8 @@
      "skillLevel": 2,
      "accuracy": 50,
      "resistance": 275,
-     "toleranceBonus": -10
+     "toleranceBonus": -10,
+     "manaUltimate": 2
     },
     {
      "stage": 12,
@@ -4324,7 +4635,8 @@
      "skillLevel": 2,
      "accuracy": 60,
      "resistance": 310,
-     "toleranceBonus": -20
+     "toleranceBonus": -20,
+     "manaUltimate": 2
     },
     {
      "stage": 13,
@@ -4337,7 +4649,8 @@
      "skillLevel": 2,
      "accuracy": 70,
      "resistance": 345,
-     "toleranceBonus": -30
+     "toleranceBonus": -30,
+     "manaUltimate": 1.5
     },
     {
      "stage": 14,
@@ -4350,7 +4663,8 @@
      "skillLevel": 3,
      "accuracy": 80,
      "resistance": 380,
-     "toleranceBonus": -40
+     "toleranceBonus": -40,
+     "manaUltimate": 1
     },
     {
      "stage": 15,
@@ -4363,7 +4677,8 @@
      "skillLevel": 4,
      "accuracy": 90,
      "resistance": 440,
-     "toleranceBonus": -50
+     "toleranceBonus": -50,
+     "manaUltimate": 1
     },
     {
      "stage": 16,
@@ -4376,7 +4691,8 @@
      "skillLevel": 4,
      "accuracy": 105,
      "resistance": 475,
-     "toleranceBonus": -60
+     "toleranceBonus": -60,
+     "manaUltimate": 1
     },
     {
      "stage": 17,
@@ -4389,7 +4705,8 @@
      "skillLevel": 5,
      "accuracy": 115,
      "resistance": 515,
-     "toleranceBonus": -70
+     "toleranceBonus": -70,
+     "manaUltimate": 1
     },
     {
      "stage": 18,
@@ -4402,7 +4719,8 @@
      "skillLevel": 6,
      "accuracy": 140,
      "resistance": 555,
-     "toleranceBonus": -80
+     "toleranceBonus": -80,
+     "manaUltimate": 1
     },
     {
      "stage": 19,
@@ -4415,7 +4733,8 @@
      "skillLevel": 7,
      "accuracy": 150,
      "resistance": 595,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     },
     {
      "stage": 20,
@@ -4428,7 +4747,8 @@
      "skillLevel": 8,
      "accuracy": 175,
      "resistance": 635,
-     "toleranceBonus": -100
+     "toleranceBonus": -100,
+     "manaUltimate": 1
     }
    ]
   }
