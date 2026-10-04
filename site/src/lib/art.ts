@@ -69,6 +69,16 @@ for (const c of new Set(heroes.map((h) => String(h.class)))) {
   add(`icons/${slugify(c.replace(/Attacker$/, ''))}.webp`, `icons/class/${c}.webp`, classIconPath, c);
 }
 
+// Wide key art (event backgrounds, shop banners, the loading screen) for page banners and story cards,
+// served under readable names. Art whose name carries a hero code is left out.
+const bannerPath = new Map<string, string>();
+for (const source of sourceFiles) {
+  const m = source.match(/^(?:events|splash\/other)\/(?:Shop_ExclusivePack_)?([A-Za-z0-9_]+)\.webp$/) ?? (source === 'loading/loading-screen.webp' ? [source, 'LoadingScreen'] : null);
+  if (!m || /[A-Z]{3}\d{3}/.test(m[1])) continue;
+  const name = m[1].replace(/_/g, '').replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
+  add(`banners/${name}.webp`, source, bannerPath, name);
+}
+
 const url = (served: string | undefined) => (served ? href(`img/${served}`) : undefined);
 
 /** Every served image, for the img/ endpoint. */
@@ -85,6 +95,9 @@ export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
+/** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
+export const bannerArt = (name: string) => url(bannerPath.get(name));
+export const bannerNames = () => [...bannerPath.keys()];
 
 /** heroRefsByConfigId with each hero's portrait URL, for the box, share and planner pages. */
 export function heroRefsWithArt(): Record<string, HeroRef> {

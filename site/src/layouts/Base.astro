@@ -7,6 +7,7 @@ import SectionArt from '../components/SectionArt.astro';
 import Tooltips from '../components/Tooltips.astro';
 import FitTables from '../components/FitTables.astro';
 import { accountsEnabled } from '../lib/account/config';
+import { bannerArt } from '../lib/art';
 
 interface Props {
   title: string;
@@ -19,6 +20,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
 // A section's own page (not its sub-pages) shows the section picture beside its heading.
 const pagePath = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/^\/|\/$/g, '');
 const section = nav.find((n) => n.path === pagePath);
+const banner = section?.banner ? bannerArt(section.banner) : undefined;
 // Breadcrumbs: Home › menu › section › this page (when it is a sub-page of a section).
 const owner = nav.find((n) => n.path === pagePath) ?? nav.find((n) => n.path === current);
 const menu = menus.find((m) => m.group === owner?.group);
@@ -102,7 +104,14 @@ const crumbs = pagePath && owner
       </nav>
     )}
     <main class:list={{ 'has-crumbs': crumbs.length > 0 }}>
-      {section?.art && <SectionArt art={section.art} size={88} class="page-art" />}
+      {banner ? (
+        <div class="page-banner" aria-hidden="true">
+          <img src={banner} alt="" width="1280" height="640" fetchpriority="high" />
+          {section?.art && <SectionArt art={section.art} size={72} class="banner-art" />}
+        </div>
+      ) : (
+        section?.art && <SectionArt art={section.art} size={88} class="page-art" />
+      )}
       <slot />
     </main>
     <footer>
@@ -338,6 +347,21 @@ const crumbs = pagePath && owner
   .box-button[aria-current='page'] { background: var(--accent); color: var(--bg); }
   main { padding-top: 16px; padding-bottom: 32px; }
   main .page-art { float: right; margin: 12px 0 12px 16px; }
+  /* Section pages open on a wide piece of key art that fades into the page. */
+  .page-banner {
+    position: relative;
+    height: 200px;
+    margin: 8px 0 -48px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: -1;
+  }
+  main { position: relative; z-index: 0; }
+  .page-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+  .page-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(12 11 29 / 0.05) 30%, var(--bg) 100%); }
+  .page-banner.tall { height: 340px; margin-bottom: -170px; }
+  .page-banner.tall img { object-position: center 25%; }
+  .page-banner .banner-art { position: absolute; right: 20px; bottom: 60px; z-index: 1; box-shadow: 0 8px 24px rgb(0 0 0 / 0.5); }
   footer {
     color: var(--muted);
     font-size: 13px;
@@ -405,6 +429,9 @@ const crumbs = pagePath && owner
     .brand { font-size: 19px; }
     main { padding-top: 4px; }
     main .page-art { --size: 56px !important; margin: 10px 0 8px 12px; }
+    .page-banner { height: 130px; margin: 4px -16px -36px; border-radius: 0; }
+    .page-banner.tall { height: 210px; margin-bottom: -60px; }
+    .page-banner .banner-art { --size: 48px !important; right: 16px; bottom: 44px; }
     footer { font-size: 11px; }
   }
 </style>

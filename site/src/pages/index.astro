@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import SectionArt from '../components/SectionArt.astro';
 import SearchForm from '../components/SearchForm.astro';
 import { bosses, heroes, href, pack, titans } from '../lib/data';
-import { heroSplash } from '../lib/art';
+import { bannerArt, heroSplash } from '../lib/art';
 import { effects } from '../lib/effects';
 import { gearSets } from '../lib/gear';
 import { tierLists, tierRows } from '../lib/tierData';
@@ -13,10 +13,11 @@ import { allGuides } from '../lib/guides';
 import { artRef } from '../lib/markdown-art';
 
 // News entries (src/content/news) when they exist, then articles, newest first.
-interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date }
+interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date; banner?: string }
 const newsFiles = import.meta.glob<{ frontmatter: Record<string, unknown> }>('../content/news/*.md', { eager: true });
 // Labels match newsKinds in lib/news.ts (the News pages' own module).
 const newsLabels: Record<string, string> = { spotlight: 'Chase hero spotlight', patch: 'Patch notes', event: 'Event', announcement: 'Announcement' };
+const newsBanners: Record<string, string> = { spotlight: 'summon-invoker', patch: 'campaign-progression', event: 'energy', announcement: 'stars' };
 const list = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
 const hasArt = (ref: string) => { try { return !!artRef(ref); } catch { return false; } };
 const news: Story[] = hasNews
@@ -29,13 +30,14 @@ const news: Story[] = hasNews
         art: [...list(f.heroes).map((h) => `hero:${h}`), ...list(f.art)].filter(hasArt),
         tag: newsLabels[String(f.kind)] ?? 'News',
         date: new Date(String(f.date)),
+        banner: newsBanners[String(f.kind)] ?? 'campaign-progression',
       };
     })
   : [];
 const guides = await allGuides();
 const articles: Story[] = guides
   .filter((g) => g.date)
-  .map((g) => ({ path: g.path, title: g.title, blurb: g.blurb, art: g.art, tag: g.topic, date: g.date! }));
+  .map((g) => ({ path: g.path, title: g.title, blurb: g.blurb, art: g.art, tag: g.topic, date: g.date!, banner: g.banner }));
 const stories = [...news, ...articles].sort((a, b) => b.date.valueOf() - a.date.valueOf());
 const [lead, ...rest] = stories;
 const side = rest.slice(0, 2);
@@ -46,9 +48,11 @@ const featured = guides.filter((g) => g.kind === 'Guide').slice(0, 6);
 
 const campaign = tierLists.find((l) => l.id === 'campaign') ?? tierLists[0];
 const topPicks = tierRows('invokers', campaign).flatMap((r) => r.picks).filter((p) => p.art).slice(0, 8);
-// Full-size art of the lead story's first Invoker, when that art exists.
-const leadHero = lead?.art.map((a) => a.match(/^hero:(.+)$/)?.[1]).map((n) => heroes.find((h) => h.name === n)).find(Boolean);
-const splash = leadHero ? heroSplash(leadHero.id) : undefined;
+// Story pictures: full-size art of the story's first Invoker when there is some, else its topic's key art.
+const backdrop = (st: Story) => {
+  const hero = st.art.map((a) => a.match(/^hero:(.+)$/)?.[1]).map((n) => heroes.find((h) => h.name === n)).find(Boolean);
+  return (hero && heroSplash(hero.id)) || (st.banner ? bannerArt(st.banner) : undefined);
+};
 
 const counts = [
   { path: 'heroes', label: 'Invokers', n: heroes.length, art: 'hero:Admiral Gladstone' },
@@ -64,22 +68,23 @@ const counts = [
   {lead && (
     <section class="top-stories" aria-label="Latest">
       <a class="lead-story" href={href(lead.path)}>
-        <span class:list={['lead-art', { 'has-splash': splash }]}>
-          {splash ? <img class="splash" src={splash} alt="" /> : lead.art.slice(0, 3).map((a) => <SectionArt art={a} size={96} />)}
-        </span>
+        {backdrop(lead) && <img class="backdrop" src={backdrop(lead)} alt="" fetchpriority="high" />}
         <span class="text">
+          <span class="pics">{lead.art.slice(0, 3).map((a) => <SectionArt art={a} size={44} />)}</span>
           <span class="tag">{lead.tag}</span>
           <strong>{lead.title}</strong>
           <span class="blurb">{lead.blurb}</span>
           <span class="date">{fmt(lead.date)}</span>
         </span>
       </a>
-      {side.map((s) => (
-        <a class="side-story" href={href(s.path)}>
-          <span class="pics">{s.art.slice(0, 3).map((a) => <SectionArt art={a} size={48} />)}</span>
-          <span class="tag">{s.tag}</span>
-          <strong>{s.title}</strong>
-          <span class="date">{fmt(s.date)}</span>
+      {side.map((st) => (
+        <a class="side-story" href={href(st.path)}>
+          {backdrop(st) && <img class="backdrop" src={backdrop(st)} alt="" loading="lazy" />}
+          <span class="text">
+            <span class="tag">{st.tag}</span>
+            <strong>{st.title}</strong>
+            <span class="date">{fmt(st.date)}</span>
+          </span>
         </a>
       ))}
     </section>
@@ -192,18 +197,19 @@ const counts = [
   .top-stories { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; margin: 12px 0 28px; }
   .top-stories a { border-radius: 18px; border: 1px solid var(--line); background: var(--surface); color: var(--text); overflow: hidden; }
   .top-stories a:hover { border-color: var(--accent); }
-  .lead-story { grid-row: span 2; position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 320px;
-    background: radial-gradient(ellipse at 70% 20%, color-mix(in srgb, var(--accent) 22%, var(--surface-2)), var(--surface)) !important; }
-  .lead-art { position: absolute; inset: 0 0 auto auto; display: flex; gap: 12px; padding: 24px; }
-  .lead-art.has-splash { inset: 0; padding: 0; }
-  .lead-art .splash { position: absolute; right: 0; bottom: 0; height: 100%; width: 60%; object-fit: contain; object-position: bottom right; }
-  .lead-story .text { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 24px; padding-right: 35%;
-    background: linear-gradient(transparent, color-mix(in srgb, var(--surface-3) 85%, transparent) 30%); }
-  .lead-story strong { font-size: 28px; }
-  .lead-story .blurb { font-size: 15px; color: var(--soft); }
-  .side-story { display: flex; flex-direction: column; gap: 4px; padding: 16px; }
-  .side-story .pics { display: flex; gap: 6px; margin-bottom: 6px; }
-  .side-story strong { font-size: 17px; }
+  .lead-story, .side-story { position: relative; display: flex; flex-direction: column; justify-content: flex-end; isolation: isolate; }
+  .lead-story { grid-row: span 2; min-height: 360px; }
+  .side-story { min-height: 170px; }
+  .backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: -2; transition: transform 0.4s ease; }
+  .top-stories a:hover .backdrop { transform: scale(1.03); }
+  .top-stories a::before { content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgb(12 11 29 / 0) 25%, rgb(12 11 29 / 0.75) 62%, rgb(12 11 29 / 0.95) 100%); }
+  .text { display: flex; flex-direction: column; gap: 6px; padding: 22px 24px; }
+  .side-story .text { gap: 4px; padding: 16px 18px; }
+  .lead-story strong { font-size: 30px; text-shadow: 0 2px 12px rgb(0 0 0 / 0.6); }
+  .lead-story .blurb { font-size: 15px; color: var(--soft); max-width: 640px; }
+  .side-story strong { font-size: 17px; text-shadow: 0 2px 10px rgb(0 0 0 / 0.6); }
+  .top-stories .pics { display: flex; gap: 6px; margin-bottom: 4px; }
 
   .columns { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
   h2.bar { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 19px; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
@@ -252,11 +258,10 @@ const counts = [
   }
   @media (max-width: 720px) {
     .top-stories { grid-template-columns: 1fr; grid-template-rows: auto; }
-    .lead-story { grid-row: auto; min-height: 260px; }
+    .lead-story { grid-row: auto; min-height: 280px; }
     .lead-story strong { font-size: 22px; }
-    .lead-art { padding: 16px; }
-    .lead-story .text { padding: 16px; }
-    .lead-art :global(.section-art) { --size: 64px !important; }
+    .text { padding: 16px; }
+    .side-story { min-height: 150px; }
     .side-col { grid-template-columns: 1fr; }
     /* Phones have the More page for browsing, so the home page stops after the sidebar. */
     .browse, .tools-box { display: none; }

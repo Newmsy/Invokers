@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { classIcon, elementIcon, skillIcon } from '../../lib/art';
+import { classIcon, elementIcon, heroSplash, skillIcon } from '../../lib/art';
 import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
@@ -37,6 +37,8 @@ const keyStats = statFields.slice(0, 6);
 const otherStats = statFields.slice(6);
 
 // Stats tab: first day, 6★ level 60, and 6★ level 60 with every Awakening node.
+// Wide key art behind the header, for Invokers that have some.
+const splash = heroSplash(hero.id);
 const awakened = fullyAwakened(hero);
 // Overview "Max stats" matches the game's own max stats, which include full Awakening.
 const maxed = awakened?.stats ?? hero.maxStats;
@@ -94,8 +96,9 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     All Invokers
   </a>
 
+  {splash && <div class="page-banner tall" aria-hidden="true"><img src={splash} alt="" width="1200" height="600" fetchpriority="high" /></div>}
   <section class="hero" style={`--rarity: ${color}`}>
-    <div class="hero-art"><HeroArt hero={hero} large /></div>
+    <div class="hero-art"><HeroArt hero={hero} /></div>
     <div class="hero-info">
       <div class="title-row">
         <div>
