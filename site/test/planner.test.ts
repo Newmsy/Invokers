@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import sample from '../../datamine/samples/box-sample.json';
 import type { BoxGear, BoxHero } from '../src/lib/box/decode';
-import { gearCost, missing, planHero, roster, skillSchedule, totals } from '../src/lib/planner/model';
-import { plannerData } from '../src/lib/planner/data';
+import { gearCost, missing, planHero, planLevel, roster, skillSchedule, totals } from '../src/lib/planner/model';
+import { gearSalvage, plannerData } from '../src/lib/planner/data';
 import { maxAll } from '../src/lib/skillCosts';
 
 const data = plannerData();
@@ -56,8 +56,8 @@ describe('planner skills', () => {
     const t = totals(plans);
     expect(t.heroes).toBe(heroes.length);
     expect(t.skillCost.Gold).toBeGreaterThan(0);
-    // Gear prices aren't in the data pack yet.
-    if (!data.gear) expect(t.gearCost).toBeNull();
+    expect(data.gear).not.toBeNull();
+    expect(t.level.xp).toBeGreaterThan(0);
   });
 });
 
@@ -72,6 +72,29 @@ describe('planner gear', () => {
   it('counts empty slots and pieces below +20', () => {
     const first = planHero(data, heroes[0], gear);
     expect(first.gear.equipped + first.gear.empty.length).toBe(8);
+  });
+});
+
+describe('gear price list', () => {
+  it('reads every rarity and star from the data pack', () => {
+    expect(data.gear!.length).toBe(620);
+    expect(gearCost(data.gear!, { rarity: 'Legendary', rank: 'Six', level: 0 })).toEqual({ Gold: 2334830, Memorium: 6600 });
+    expect(gearCost(data.gear!, { rarity: 'Common', rank: 'One', level: 19 })?.Memorium).toBeGreaterThan(0);
+  });
+  it('reads sell, deactivate and destroy returns', () => {
+    const s = gearSalvage()!;
+    expect(s.rows.find((r) => r.stars === 6 && r.rarity === 'Legendary')).toMatchObject({ sellGold: 138000, deactivateGold: 70000 });
+    expect(s.destroyMemorium[6]).toBe(250);
+  });
+});
+
+describe('planner level', () => {
+  it('adds up XP, ascension Gold and Echoes to 6 stars and the cap', () => {
+    const l = planLevel(data, 'Legendary', 5, 1);
+    expect(l.gold).toBe(600000);
+    expect(l.echoes).toEqual({ 5: 5 });
+    expect(l.xp).toBe(data.levelling.xpTo[60]);
+    expect(planLevel(data, 'Legendary', 6, 60)).toEqual({ xp: 0, gold: 0, echoes: {} });
   });
 });
 

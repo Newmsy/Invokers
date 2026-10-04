@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { heroes } from '../src/lib/data';
-import { awakeningType, fullyAwakened } from '../src/lib/awakening';
+import { awakeningType, bonusText, fullyAwakened } from '../src/lib/awakening';
 
 const awakened = (name: string) => fullyAwakened(heroes.find((h) => h.name === name)!)!;
 
@@ -29,5 +29,15 @@ describe('fully awakened stats', () => {
     const kanraku = awakened('Duchess Kanraku');
     expect([kanraku.stats.hp, kanraku.stats.atk, kanraku.stats.def].map(Math.round)).toEqual([7330, 1290, 817]);
     expect(kanraku.titanTime).toBe(3);
+  });
+});
+
+describe('Awakening types', () => {
+  it('describes bonuses in plain language', () => {
+    expect(bonusText('AttackPercent', 0.25)).toBe('+25% ATK');
+    expect(bonusText('CriticalRatePercent', 0.005)).toBe('+0.5% Crit Rate');
+    expect(bonusText('InstinctRatingFlat', 6)).toBe('+6 Instinct');
+    expect(bonusText('AnimaDuration', 1)).toBe('+1s Titan Invokation Time');
+    expect(bonusText('ComboSpeedRating', 8)).toBe('+8 Combo Speed');
   });
 });

@@ -1,15 +1,27 @@
 // Build-time: points per run for each farming event stage, worked out from drop rates and points per drop.
-// The tables come from the event guide workbook (site/src/data/event-scoring.json) until the data pack exports
-// its own copy (data/event_scoring.json, issue #13), which then takes over.
+// Crest, Omnissi and Pentiax drops come from the stage list (data/stages.json), so they follow each game update.
+// Relic and clan boss gear keeps the event guide workbook's tables (site/src/data/event-scoring.json): the stage
+// list has each star's chance but not the rarity split within it. A data pack data/event_scoring.json overrides all.
 import guideTables from '../data/event-scoring.json';
+import stagesJson from '../../../data/stages.json';
 import { expectedPointsPerRun, type ScoringFamily } from './events';
+import { sparkDrops, tierDrops, type StageRow } from './stageDrops';
 
 const files = import.meta.glob<{ default: unknown }>('../../../data/event_scoring.json', { eager: true });
-const file = (Object.values(files)[0]?.default ?? guideTables) as { families?: unknown; arenaLeagues?: unknown };
+const exported = Object.values(files)[0]?.default as { families?: unknown; arenaLeagues?: unknown } | undefined;
+const file = (exported ?? guideTables) as { families?: unknown; arenaLeagues?: unknown };
 
-const families: ScoringFamily[] = Array.isArray(file.families)
-  ? (file.families as ScoringFamily[]).filter((f) => f && Array.isArray(f.modes) && Array.isArray(f.stages) && f.points && f.rollsPerRun > 0)
-  : [];
+const valid = (f: ScoringFamily) => f && Array.isArray(f.modes) && Array.isArray(f.stages) && f.points && f.rollsPerRun > 0;
+const fromFile: ScoringFamily[] = Array.isArray(file.families) ? (file.families as ScoringFamily[]).filter(valid) : [];
+
+// Every Crest and Omnissi dungeon shares one table, so one dungeon stands for each family.
+const stageList = (stagesJson as unknown as { stages: StageRow[] }).stages;
+const fromStages = (f: ScoringFamily): ScoringFamily => {
+  if (exported) return f;
+  const stages = f.id === 'crest' ? tierDrops(stageList, 'DungeonTank') : f.id === 'sparks' ? sparkDrops(stageList, 'DungeonTitan') : [];
+  return stages.length && stages.every((s) => s.drops.length) ? { ...f, stages } : f;
+};
+const families: ScoringFamily[] = fromFile.map(fromStages);
 
 export interface StageScore {
   pointsPerRun: number;

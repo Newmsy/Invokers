@@ -34,10 +34,12 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
         <div class="card">
           <h3>Gear</h3>
           <div id="s-gear"></div>
+          <p class="hint"><a href={href('gear-upgrades')}>Gear upgrade costs</a></p>
         </div>
         <div class="card">
           <h3>Stars and level</h3>
           <div id="s-level"></div>
+          <p class="hint">Each Echo can be a same-star invoker instead. <a href={href('ascension')}>Ascension guide</a></p>
         </div>
       </div>
     </section>
