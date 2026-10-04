@@ -10,15 +10,15 @@ tags: [stats, gear, bosses]
 
 **For toughness, pick HP rolls over DEF rolls.** One HP roll adds up to 14 times more effective HP than one DEF roll.
 
-The [DPS simulator](/dps-simulator#toughness) now has a **Toughness against Ulgorim** section for every Invoker, and a **Toughest (effective HP)** sort in the picker.
+The [DPS simulator](/dps-simulator?tab=toughness) now has a **Toughness** tab for every Invoker, with its own **Toughest gear from your box** and a **Toughest (effective HP)** sort in the picker.
 
 ![The Invoker picker sorted by toughest](/blog/tank-picker.jpg)
 
 ## How to use it
 
-1. Open the [DPS simulator](/dps-simulator) and pick an Invoker. Choose **My box** to use your own gear, or **Any Invoker** for 6★ level 60, fully awakened, with no gear.
+1. Open the [Toughness tab](/dps-simulator?tab=toughness) and pick an Invoker. Choose **My box** to use your own gear, or **Any Invoker** for 6★ level 60, fully awakened, with no gear.
 2. Pick an Ulgorim stage. Higher stages hit harder, so you survive fewer hits.
-3. Scroll to **Toughness against Ulgorim**.
+3. Read **Effective HP** and the **HP or DEF** table. With a box imported, **Toughest gear from your box** suggests swaps.
 
 No box yet? [Import it on My box](/my-box) to see your own numbers.
 

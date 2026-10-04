@@ -5,6 +5,7 @@
 import type { BoxAccessory, BoxGear, BoxHero } from '../box/decode';
 import type { BoxDoc } from '../box/store';
 import { trophyBonuses } from '../box/trophies';
+import { toughness } from './tank';
 import { simulate, totalsFor, type BossStage, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot } from './model';
 
 export const GEAR_SLOTS = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'];
@@ -31,6 +32,8 @@ export interface OptimiseOptions {
   /** Also consider pieces other Invokers are wearing. */
   takeFromOthers: boolean;
   seconds?: number;
+  /** What to maximise: estimated DPS (default) or effective HP against the stage. */
+  goal?: 'dps' | 'toughness';
 }
 
 export interface OptimiseResult {
@@ -40,7 +43,7 @@ export interface OptimiseResult {
   best: Loadout;
   /** Slots whose piece changes. */
   changed: string[];
-  /** Per changed slot: DPS gained by that swap, as best gear vs best gear with only that slot put back (fraction). */
+  /** Per changed slot: score (DPS or effective HP) gained by that swap, as best gear vs best gear with only that slot put back (fraction). */
   gainBySlot: Record<string, number>;
 }
 
@@ -71,7 +74,7 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
   const slots = openSlots(owned);
   const pool = candidates(box, owned, hero, opts.takeFromOthers);
   const skillLevels: Partial<Record<SkillSlot, number>> = {};
-  for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(11, s.level));
+  for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(11, s.level + 1));
 
   // Trophy Room bonuses count like one more piece with no set.
   const trophies: Equipment = { stats: trophyBonuses(box.trophies, hero.element) };
@@ -82,7 +85,9 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
     if (v === undefined) {
       const equipment = [trophies, ...slots.flatMap((s) => (l[s] ? [equipmentOf(l[s]!)] : []))];
       const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
-      v = simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds }).dps;
+      v = opts.goal === 'toughness'
+        ? toughness(data, totals, opts.stage).ehp
+        : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds }).dps;
       cache.set(key, v);
     }
     return v;

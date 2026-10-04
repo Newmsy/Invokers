@@ -49,7 +49,13 @@ export async function start(): Promise<void> {
     img.loading = 'lazy';
     return img;
   };
-  const others = $<HTMLInputElement>('o-others');
+  type Tab = 'dps' | 'toughness';
+  const TABS: Tab[] = ['dps', 'toughness'];
+  const tabParam = new URLSearchParams(location.search).get('tab');
+  // #toughness is the section's old anchor; keep those links working.
+  let tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : location.hash === '#toughness' ? 'toughness' : 'dps';
+  /** Each tab's own Best gear section: element id prefix. */
+  const OPT: Record<Tab, string> = { dps: 'o', toughness: 't-o' };
   /** The chosen Invoker: "box:<id>" or "any:<slug>". */
   const heroSel = { value: '' };
   const searchInput = $<HTMLInputElement>('d-search');
@@ -305,17 +311,19 @@ export async function start(): Promise<void> {
   }
 
   const optimiseMemo = new WeakMap<object, Map<string, ReturnType<typeof optimise>>>();
-  function renderOptimiser() {
+  function renderOptimiser(goal: Tab) {
+    const p = OPT[goal];
+    const others = $<HTMLInputElement>(`${p}-others`);
     const [kind, key] = heroSel.value.split(':');
     const owned = kind === 'box' ? box?.heroes.find((h) => String(h.id) === key) : undefined;
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
-    $('o-box').hidden = !owned || !stage;
+    $(`${p}-box`).hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
     // The search is slow on big boxes, so each answer is kept until the box changes.
-    const memoKey = [owned.id, modeSel.value, stage.stage, others.checked].join('|');
+    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked].join('|');
     let memo = optimiseMemo.get(box);
     if (!memo) optimiseMemo.set(box, (memo = new Map()));
-    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked }));
+    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal }));
     const r = memo.get(memoKey);
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
@@ -332,12 +340,13 @@ export async function start(): Promise<void> {
       });
       return li;
     };
-    $('o-sets').replaceChildren(setLine('Set bonuses now:', r.current), setLine('Set bonuses with the best gear:', r.best));
-    $('o-summary').textContent = r.changed.length
-      ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes estimated DPS from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
-      : 'This Invoker already wears the best gear your box has for it.';
+    $(`${p}-sets`).replaceChildren(setLine('Set bonuses now:', r.current), setLine('Set bonuses with the best gear:', r.best));
+    const what = goal === 'dps' ? 'estimated DPS' : 'effective HP';
+    $(`${p}-summary`).textContent = r.changed.length
+      ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes ${what} from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
+      : `This Invoker already wears the gear from your box with the most ${what}.`;
     const slots = openSlots(owned);
-    $('o-rows').replaceChildren(
+    $(`${p}-rows`).replaceChildren(
       ...slots.map((slot) => {
         const tr = document.createElement('tr');
         if (!r.changed.includes(slot)) tr.className = 'same';
@@ -353,17 +362,51 @@ export async function start(): Promise<void> {
     );
   }
 
+  function renderTabs() {
+    for (const t of TABS) {
+      const btn = $(`tab-${t}`);
+      btn.setAttribute('aria-selected', String(t === tab));
+      btn.tabIndex = t === tab ? 0 : -1;
+      $(`panel-${t}`).hidden = t !== tab;
+    }
+    // Mode (PvE or Arena) only changes damage.
+    $('d-mode-label').hidden = tab !== 'dps';
+  }
+
+  function setTab(next: Tab) {
+    tab = next;
+    // Sort the picker by what the tab measures, unless a non-score sort was picked.
+    if (sortSel.value === 'dps' || sortSel.value === 'tough') sortSel.value = tab === 'dps' ? 'dps' : 'tough';
+    const url = new URL(location.href);
+    if (tab === 'dps') url.searchParams.delete('tab');
+    else url.searchParams.set('tab', tab);
+    history.replaceState(null, '', url);
+    update();
+  }
+
   const update = () => {
+    renderTabs();
     renderPicker();
     render();
-    renderOptimiser();
+    // Only the open tab's gear search runs; it's the slow part.
+    renderOptimiser(tab);
   };
 
+  if (tab === 'toughness' && sortSel.value === 'dps') sortSel.value = 'tough';
   box = await loadBox();
   fillHeroes();
   update();
   for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (scoreTiles(), update()));
-  others.addEventListener('change', update);
+  for (const t of TABS) {
+    $(`${OPT[t]}-others`).addEventListener('change', update);
+    $(`tab-${t}`).addEventListener('click', () => setTab(t));
+    $(`tab-${t}`).addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const next = TABS[(TABS.indexOf(t) + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length];
+      setTab(next);
+      $(`tab-${next}`).focus();
+    });
+  }
   searchInput.addEventListener('input', () => {
     pickerOpen = true;
     renderPicker();

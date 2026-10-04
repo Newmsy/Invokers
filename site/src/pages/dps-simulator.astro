@@ -52,8 +52,13 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </div>
     </section>
 
+    <div class="tabs" role="tablist" aria-label="What to calculate">
+      <button type="button" role="tab" id="tab-dps" aria-controls="panel-dps" aria-selected="true">DPS</button>
+      <button type="button" role="tab" id="tab-toughness" aria-controls="panel-toughness" aria-selected="false" tabindex="-1">Toughness</button>
+    </div>
+
     <div class="filters">
-      <label>Mode
+      <label id="d-mode-label">Mode
         <select id="d-mode">
           <option value="pve">PvE: every skill ready</option>
           <option value="arena">Arena: skills start at half cooldown, {FIGHT_SEC.arena}-second fight</option>
@@ -67,6 +72,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     </div>
 
     <section id="d-out" hidden>
+      <div id="panel-dps" role="tabpanel" aria-labelledby="tab-dps">
       <div class="summary">
         <div class="card">
           <h2>Estimated DPS</h2>
@@ -110,7 +116,25 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="d-values"></tbody>
       </table>
 
-      <h2 id="toughness">Toughness against {BOSS}</h2>
+      <section id="o-box" hidden>
+        <h2>Best gear from your box</h2>
+        <p class="hint" id="o-summary"></p>
+        <ul class="hint sets" id="o-sets"></ul>
+        <p class="hint">Each swap's DPS gain is what that piece adds on top of the other suggested pieces, so set bonuses count.</p>
+        <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
+        <table>
+          <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">DPS gain</th></tr></thead>
+          <tbody id="o-rows"></tbody>
+        </table>
+      </section>
+
+      <p class="hint note">
+        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
+        Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
+      </p>
+      </div>
+      <div id="panel-toughness" role="tabpanel" aria-labelledby="tab-toughness" hidden>
+      <h2 id="toughness" class="first">Toughness against {BOSS}</h2>
       <p class="hint">Effective HP is how much damage this Invoker can take before falling once DEF is counted: HP divided by the share of each hit that gets through DEF.</p>
       <div class="summary">
         <div class="card">
@@ -130,22 +154,21 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="t-values"></tbody>
       </table>
 
-      <section id="o-box" hidden>
-        <h2>Best gear from your box</h2>
-        <p class="hint" id="o-summary"></p>
-        <ul class="hint sets" id="o-sets"></ul>
-        <p class="hint">Each swap's DPS gain is what that piece adds on top of the other suggested pieces, so set bonuses count.</p>
-        <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
+      <section id="t-o-box" hidden>
+        <h2>Toughest gear from your box</h2>
+        <p class="hint" id="t-o-summary"></p>
+        <ul class="hint sets" id="t-o-sets"></ul>
+        <p class="hint">Each swap's gain is the effective HP that piece adds on top of the other suggested pieces, so set bonuses count.</p>
+        <label class="check"><input type="checkbox" id="t-o-others" checked /> Use gear other Invokers are wearing</label>
         <table>
-          <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">DPS gain</th></tr></thead>
-          <tbody id="o-rows"></tbody>
+          <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">Effective HP gain</th></tr></thead>
+          <tbody id="t-o-rows"></tbody>
         </table>
       </section>
-
       <p class="hint note">
-        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
-        Burn and Bleed count at their per-tick limit and only when they land. Toughness counts HP and DEF only (no shields, healing or Tolerances), and the hits line assumes each hit deals {BOSS}'s ATK. The numbers will sharpen as the battle rules are confirmed.
+        Toughness counts HP and DEF only (no shields, healing or Tolerances), and the hits line assumes each hit deals {BOSS}'s ATK.
       </p>
+      </div>
     </section>
   </div>
 
@@ -165,6 +188,15 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; }
+  .tabs { display: flex; gap: 4px; margin: 4px 0 16px; border-bottom: 1px solid var(--line); }
+  .tabs [role='tab'] {
+    padding: 10px 18px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--soft);
+    font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; margin-bottom: -1px;
+  }
+  .tabs [role='tab']:hover { color: var(--text); }
+  .tabs [role='tab'][aria-selected='true'] { color: var(--text); border-bottom-color: var(--accent); }
+  #d-mode-label[hidden] { display: none; }
+  h2.first { margin-top: 16px; }
   h3 { font-size: 16px; font-weight: 600; margin: 20px 0 6px; }
   .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }
   .lead { color: var(--soft); max-width: 70ch; margin: 0 0 16px; }
