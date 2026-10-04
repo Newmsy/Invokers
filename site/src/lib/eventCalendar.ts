@@ -343,3 +343,31 @@ export function eventLinks(rules: EventScoringRule[]): { path: string; label: st
   }
   return out;
 }
+
+// The event planner's events and the in-game event kinds they match (by type prefix: RelicBossAlthar, ClanBoss1...).
+const plannerKinds: Record<string, string> = {
+  relic: 'RelicBoss', accessory: 'ClanBoss', arena: 'ArenaMedals', gearup: 'GearUpgrade',
+  summon: 'SummonHero', titansummon: 'SummonAnima', powerup: 'HeroUpgrade', campaign: 'Campaign',
+};
+
+interface Scored { type: string; start: string; personalRewards?: { requiredPoints: number }[]; scoring?: { rules: EventScoringRule[] } }
+
+/** The planner's targets and Campaign Rush points, taken from the newest listed event of each kind where there is one. */
+export function withLiveTargets<T extends { id: string; target: number; difficulties?: { name: string; points: number }[] }>(
+  planner: T[],
+  listed: Scored[],
+): T[] {
+  return planner.map((p) => {
+    const kind = plannerKinds[p.id];
+    const latest = kind ? listed.filter((e) => e.type.startsWith(kind)).sort((a, b) => b.start.localeCompare(a.start))[0] : undefined;
+    if (!latest) return p;
+    const top = Math.max(0, ...(latest.personalRewards ?? []).map((r) => r.requiredPoints));
+    const campaign = latest.scoring?.rules.find((r) => r.ruleType === 'CampaignBattleScoringRule');
+    const points = new Map(campaign && 'entries' in campaign ? (campaign.entries as { difficulty: string; points: number }[]).map((x) => [x.difficulty, x.points]) : []);
+    return {
+      ...p,
+      target: top || p.target,
+      ...(p.difficulties ? { difficulties: p.difficulties.map((d) => ({ ...d, points: points.get(d.name) ?? d.points })) } : {}),
+    };
+  });
+}

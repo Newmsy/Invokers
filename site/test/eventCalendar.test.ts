@@ -3,6 +3,7 @@ import eventsJson from '../../data/events.json';
 import type { EventScoringRule, GameEvent } from '../src/lib/data';
 import {
   countdown,
+  withLiveTargets,
   descriptionLines,
   eventLinks,
   eventStatus,
@@ -107,5 +108,31 @@ describe('scoring tables', () => {
       for (const r of e.scoring.rules) expect(ruleTables(r, name).length, r.ruleType).toBeGreaterThan(0);
       expect(eventLinks(e.scoring.rules).length, e.name).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('withLiveTargets', () => {
+  const planner = [
+    { id: 'campaign', target: 4800, difficulties: [{ name: 'Normal', points: 6, energy: 6 }, { name: 'Brutal', points: 16, energy: 14 }] },
+    { id: 'titansummon', target: 180000 },
+    { id: 'crest', target: 18000 },
+  ];
+  const listed = [
+    { type: 'Campaign', start: '2026-09-01T12:00:00Z', personalRewards: [{ requiredPoints: 1000 }] },
+    { type: 'Campaign', start: '2026-10-06T12:00:00Z', personalRewards: [{ requiredPoints: 600 }, { requiredPoints: 24000 }],
+      scoring: { rules: [{ ruleType: 'CampaignBattleScoringRule', entries: [{ difficulty: 'Normal', points: 60 }, { difficulty: 'Brutal', points: 160 }] }] } },
+    { type: 'SummonAnima', start: '2026-10-08T12:00:00Z', personalRewards: [{ requiredPoints: 90000 }] },
+  ] as Parameters<typeof withLiveTargets>[1];
+  const [campaign, titans, crest] = withLiveTargets(planner, listed);
+
+  it('takes the newest event of each kind', () => {
+    expect(campaign.target).toBe(24000);
+    expect(campaign.difficulties!.map((d) => d.points)).toEqual([60, 160]);
+    expect(campaign.difficulties![1].energy).toBe(14);
+    expect(titans.target).toBe(90000);
+  });
+
+  it('keeps events with no listed match', () => {
+    expect(crest).toEqual(planner[2]);
   });
 });
