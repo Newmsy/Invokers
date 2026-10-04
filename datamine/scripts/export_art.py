@@ -11,6 +11,18 @@ Sprite names -> output:
   S_<Element>_Element_Icon            icons/element/<Element>.webp (Neutral -> Astral is left as Neutral)
   S_HeroClass_<Class>                 icons/class/<Class>.webp
   S_Resource-<n>                      items/<ResourceTypeId name>.webp (enum values from the game code)
+  S_<set id>_Icon                     sets/<set id>.webp
+  S_Background_<event>                events/<event>.webp (event key art), S_GlobalEvent_Icon_<event>_Short -> events/icons/
+  S_GameModeCard_<mode>               modes/<mode>.webp
+  S_GameLoadingIllustration_custom    loading/loading-screen.webp; S_FAQRewards_Illustration_<nn> -> loading/hints/<n>.webp
+                                      (n = the hint's `order` in data/tips.json)
+  Shop_ExclusivePack_<id>, S_Background_GetLegendary<id>, S_ShopPackBackground_<id>
+                                      splash/heroes/<id>.webp or splash/titans/<id>.webp (the largest character art;
+                                      the game has no per-hero splash, these are offer and event banners)
+  other Shop_ExclusivePack_*          splash/other/<sprite name>.webp (a pack's `artLayout` in shop_packs.json)
+  S_HeroIndexFactionCard_<faction>    cards/faction/<faction>.webp (faction card with character art)
+  S_HeroCardRarityBackground_<rarity> cards/rarity/<rarity>.webp (hero card background per rarity)
+  S_DailyRewardsIllustration_<n>, S_NewPlayerRewardsPart<n>Illustration   rewards/
 
 Usage: python export_art.py [game_dir]      needs: pip install UnityPy Pillow
 """
@@ -31,6 +43,7 @@ CACHE = Path(os.environ["USERPROFILE"]) / "AppData" / "LocalLow" / "Unity" / "Hi
 OUT = REPO / "site" / "public" / "art"
 UNITY_VERSION = "6000.3.21f1"
 PORTRAIT, ICON, QUALITY = 600, 128, 80
+KEY_ART, CARD, SPLASH = 1280, 800, 1200
 
 # ResourceTypeId values (Il2CppShared enum, game 0.61.1516) for the ids in data/items.json
 RESOURCE_IDS_FILE = Path(__file__).resolve().parent / "resource_type_ids.json"
@@ -41,6 +54,7 @@ def targets():
     titans = {s["heroId"] for s in json.loads((REPO / "data" / "skills.json").read_text(encoding="utf-8")) if s["kind"] == "titan"}
     classes = {h["class"] for h in json.loads((REPO / "data" / "heroes.json").read_text(encoding="utf-8"))}
     items = {i["id"] for i in json.loads((REPO / "data" / "items.json").read_text(encoding="utf-8"))}
+    sets = {x["id"] for x in json.loads((REPO / "data" / "sets.json").read_text(encoding="utf-8"))}
     resource_ids = {str(v): k for k, v in json.loads(RESOURCE_IDS_FILE.read_text(encoding="utf-8")).items() if k in items}
 
     def plan(name):
@@ -57,6 +71,37 @@ def targets():
         m = re.fullmatch(r"S_HeroClass_(\w+)", name)
         if m and m.group(1) in classes:
             return f"icons/class/{m.group(1)}.webp", ICON
+        m = re.fullmatch(r"S_(\w+)_Icon", name)
+        if m and m.group(1) in sets:
+            return f"sets/{m.group(1)}.webp", ICON
+        m = re.fullmatch(r"S_Background_((?:Collect|Get|Upgrade|Summon|Win|Campaign|Novice|ClanBoss)\w+)", name)
+        if m:
+            return f"events/{m.group(1)}.webp", KEY_ART
+        m = re.fullmatch(r"S_GlobalEvent_Icon_(\w+)_Short", name)
+        if m:
+            return f"events/icons/{m.group(1)}.webp", ICON * 2
+        m = re.fullmatch(r"S_GameModeCard_(\w+)", name)
+        if m:
+            return f"modes/{m.group(1)}.webp", CARD
+        if name == "S_GameLoadingIllustration_custom":
+            return "loading/loading-screen.webp", 1920
+        m = re.fullmatch(r"S_FAQRewards_Illustration_(\d+)", name)
+        if m:
+            return f"loading/hints/{int(m.group(1))}.webp", CARD
+        m = re.fullmatch(r"(?:Shop_ExclusivePack_|S_Background_GetLegendary|S_ShopPackBackground_)((?:ANIM)?[A-Z]{3}\d{3})", name)
+        if m and (m.group(1) in heroes or m.group(1) in titans):
+            return ("splash/titans" if m.group(1) in titans else "splash/heroes") + f"/{m.group(1)}.webp", SPLASH
+        if re.fullmatch(r"Shop_ExclusivePack_\w+|S_ShopPackBackground_\w+", name):
+            return f"splash/other/{name}.webp", SPLASH
+        m = re.fullmatch(r"S_HeroIndexFactionCard_(\w+)", name)
+        if m:
+            return f"cards/faction/{m.group(1)}.webp", ICON * 2
+        m = re.fullmatch(r"S_HeroCardRarityBackground_(Common|Uncommon|Rare|Epic|Legendary|Mythic)", name)
+        if m:
+            return f"cards/rarity/{m.group(1)}.webp", ICON
+        m = re.fullmatch(r"S_DailyRewardsIllustration_(\d+)|S_NewPlayerRewardsPart(\d)Illustration", name)
+        if m:
+            return (f"rewards/daily-{m.group(1)}.webp" if m.group(1) else f"rewards/new-player-{m.group(2)}.webp"), CARD
         m = re.fullmatch(r"S_Resource-(\d+)", name)
         if m and m.group(1) in resource_ids:
             return f"items/{resource_ids[m.group(1)]}.webp", ICON
@@ -92,7 +137,7 @@ def main():
             except Exception as e:
                 print(f"skip {name}: {e}")
                 continue
-            image.thumbnail((target[1], target[1]))
+            image.thumbnail((target[1], target[1]))  # never upscales
             dest = OUT / target[0]
             dest.parent.mkdir(parents=True, exist_ok=True)
             image.save(dest, "WEBP", quality=QUALITY, method=6)
