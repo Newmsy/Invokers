@@ -4,7 +4,7 @@ import SeeAlso from '../../../components/SeeAlso.astro';
 import { elementIcon } from '../../../lib/art';
 import { bosses, bossSlug, href } from '../../../lib/data';
 import { elementColor, initials, tierColor } from '../../../lib/format';
-import { pools, tierLists, tierRows, tiersDraft, type PoolKind } from '../../../lib/tierData';
+import { listCorruptions, pools, tierLists, tierRows, tiersDraft, type PoolKind } from '../../../lib/tierData';
 import type { TierListDef } from '../../../lib/tiers/lists';
 
 export function getStaticPaths() {
@@ -43,6 +43,9 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
   <header class="head">
     <h1>{pool.label}: {list.label}</h1>
     <p class="lead">{list.summary}{boss && <> <a href={href(`bosses/${list.id}`)}>Boss guide</a></>}</p>
+    {kind === 'invokers' && listCorruptions.get(list.id) && (
+      <p class="lead">Invokers with {listCorruptions.get(list.id)!.join(' or ')} Tolerance rank higher here.</p>
+    )}
     {tiersDraft && <p class="draft">Draft: these tiers are still being reviewed.</p>}
   </header>
 

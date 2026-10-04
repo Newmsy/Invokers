@@ -9,12 +9,13 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { heroCandidates, titanCandidates } from '../src/lib/tiers/candidates.ts';
-import { scoreList, tierLists, tierNames, toTiers } from '../src/lib/tiers/lists.ts';
+import { bossCorruptions, scoreList, tierLists, tierNames, toTiers } from '../src/lib/tiers/lists.ts';
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (file: string) => JSON.parse(readFileSync(resolve(site, '../data', file), 'utf8'));
 const heroes = read('heroes.json');
 const skills = read('skills.json');
+const corruptions = bossCorruptions(read('bosses.json').bosses);
 const out = resolve(site, 'src/data/tiers.json');
 
 const pools = { invokers: heroCandidates(heroes, skills), titans: titanCandidates(heroes, skills) };
@@ -23,7 +24,7 @@ const doc = {
   ...Object.fromEntries(
     Object.entries(pools).map(([kind, candidates]) => [
       kind,
-      Object.fromEntries(tierLists.map((l) => [l.id, toTiers(scoreList(l, candidates))])),
+      Object.fromEntries(tierLists.map((l) => [l.id, toTiers(scoreList(l, candidates, corruptions.get(l.id)))])),
     ]),
   ),
 };

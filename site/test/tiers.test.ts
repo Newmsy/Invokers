@@ -5,7 +5,8 @@ import tiers from '../src/data/tiers.json';
 import { makeHeroSlugs } from '../src/lib/slugs';
 import { titanInfo, type HeroLike, type SkillSetLike } from '../src/lib/tiers/candidates';
 import { damageOf, readKit } from '../src/lib/tiers/kit';
-import { tierLists, tierNames, toTiers } from '../src/lib/tiers/lists';
+import bossesJson from '../../data/bosses.json';
+import { bossCorruptions, scoreList, tierLists, tierNames, toTiers, type Candidate } from '../src/lib/tiers/lists';
 
 describe('kit reading', () => {
   it('sums ATK and DEF multipliers and counts hits and targets', () => {
@@ -51,5 +52,28 @@ describe('toTiers', () => {
     expect(t.S).toHaveLength(8);
     expect(t.S[0]).toBe('h99');
     expect(t.D).toHaveLength(25);
+  });
+});
+
+describe('scoreList', () => {
+  const kit = (tags: string[] = []) => ({ single: 1, aoe: 0, tags: new Set(tags) }) as Candidate['kit'];
+  const pick = (slug: string, extra: Partial<Candidate> = {}): Candidate => ({ slug, kit: kit(), stats: { bulk: 1 }, ...extra });
+  const ulgorim = tierLists.find((l) => l.id === 'ulgorim')!;
+  const corruptions = bossCorruptions((bossesJson as { bosses: { name: string; corruptions: string[] }[] }).bosses).get('ulgorim');
+
+  it('reads every boss list its corruptions', () => {
+    expect(corruptions).toEqual(['Daze', 'Blight']);
+  });
+
+  it('ranks tolerating both corruptions above one above none', () => {
+    const s = scoreList(ulgorim, [pick('none'), pick('one', { tolerances: ['daze'] }), pick('both', { tolerances: ['daze', 'blight'] })], corruptions);
+    expect(s.get('both')!).toBeGreaterThan(s.get('one')!);
+    expect(s.get('one')!).toBeGreaterThan(s.get('none')!);
+  });
+
+  it('rewards healing on the campaign list', () => {
+    const campaign = tierLists.find((l) => l.id === 'campaign')!;
+    const s = scoreList(campaign, [pick('dps'), pick('healer', { kit: kit(['teamHeal']) })]);
+    expect(s.get('healer')! - s.get('dps')!).toBeGreaterThanOrEqual(2);
   });
 });

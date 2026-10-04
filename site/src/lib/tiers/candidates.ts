@@ -2,7 +2,7 @@
 // tier pages share it.
 import { makeHeroSlugs, slugify } from '../slugs.ts';
 import { maxText, readKit, type SkillText } from './kit.ts';
-import type { Candidate } from './lists.ts';
+import { corruptionKey, type Candidate } from './lists.ts';
 
 export interface HeroLike {
   id: string;
@@ -11,6 +11,8 @@ export interface HeroLike {
   class: string;
   faction: string;
   maxStats: { hp: number; atk: number; def: number; acc: number; res: number; skillRecovery: number; manaGen: number; runSpeed: number };
+  /** Corruption tolerance stats, e.g. ManaShockTolerance. */
+  tolerances?: { stat: string }[];
 }
 
 export interface SkillSetLike {
@@ -38,6 +40,7 @@ export function heroCandidates(heroes: HeroLike[], skillSets: SkillSetLike[]): C
       },
       class: String(h.class),
       element: h.element,
+      tolerances: (h.tolerances ?? []).map((t) => corruptionKey(t.stat)),
     };
   });
 }

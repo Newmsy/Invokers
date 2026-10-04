@@ -131,11 +131,15 @@ const tagTests: [Tag, RegExp][] = [
   ['bleedBurn', /\[[\d.%+ ]*(?:Bleed|Burn)\]/],
 ];
 
-/** Sentences that heal or buff someone other than the caster. */
+/** Sentences that heal (or give Regeneration to) or buff someone other than the caster. */
 function hasTeamHeal(text: string): boolean {
   return text
     .split(/(?<=\.)\s/)
-    .some((s) => /\bHeals?\b/.test(s) && /(all(?:y|ies)|the target|Bound Invoker|targets)/.test(s) && !/Heal Reduction/.test(s));
+    .some(
+      (s) =>
+        (/\bHeals?\b/.test(s) && /(all(?:y|ies)|the target|Bound Invoker|targets)/.test(s) && !/Heal Reduction/.test(s)) ||
+        /\[[\d.%+ ]*Regeneration\] buff on (?:the )?(?:\d+ )?(?:all(?:y|ies)|targets|Bound Invoker)/.test(s),
+    );
 }
 
 function hasTeamBuffs(text: string): boolean {
