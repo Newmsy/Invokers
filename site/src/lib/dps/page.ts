@@ -4,6 +4,7 @@ import type { BoxHero } from '../box/decode';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { finalStat, statValues, type DpsData, type Mode, type SkillSlot } from './model';
+import { openSlots, optimise, type Piece } from './optimise';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB');
@@ -33,6 +34,8 @@ function row(...cells: (string | [string, string])[]): HTMLTableRowElement {
 export async function start(): Promise<void> {
   const root = $('dps');
   const labels = JSON.parse(root.dataset.labels ?? '{}') as Record<string, string>;
+  const setNames = JSON.parse(root.dataset.sets ?? '{}') as Record<string, string>;
+  const others = $<HTMLInputElement>('o-others');
   const seconds = Number(root.dataset.seconds);
   const heroSel = $<HTMLSelectElement>('d-hero');
   const modeSel = $<HTMLSelectElement>('d-mode');
@@ -132,13 +135,62 @@ export async function start(): Promise<void> {
     );
   }
 
+  const statText = (stat: string, value: number) =>
+    stat.endsWith('Percent') ? `${labels[stat] ?? stat} ${+(value * 100).toFixed(1)}%` : `${labels[stat] ?? stat} ${Math.round(value)}`;
+
+  function pieceCell(p: Piece | undefined, ownerId: number): HTMLElement {
+    const td = el('td', undefined, 'piece');
+    if (!p) {
+      td.textContent = 'Empty';
+      return td;
+    }
+    const set = 'set' in p ? (setNames[p.set] ?? p.set) : '';
+    td.append(el('span', [`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · ')));
+    const stats = [p.mainStat, ...p.subStats].filter((s) => !!s).map((s) => statText(s!.stat, s!.value));
+    td.append(el('small', stats.join(', ')));
+    if (p.equippedHeroId !== null && p.equippedHeroId !== ownerId && box) {
+      const wearer = box.heroes.find((h) => h.id === p.equippedHeroId);
+      const name = wearer && data.heroes.find((d) => d.configId === wearer.configId)?.name;
+      td.append(el('small', `Worn by ${name ?? 'another Invoker'}`));
+    }
+    return td;
+  }
+
+  function renderOptimiser() {
+    const [kind, key] = heroSel.value.split(':');
+    const owned = kind === 'box' ? box?.heroes.find((h) => String(h.id) === key) : undefined;
+    const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
+    $('o-box').hidden = !owned || !stage;
+    if (!owned || !stage || !box) return;
+    const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, seconds });
+    if (!r) return;
+    const gain = r.before > 0 ? r.after / r.before - 1 : 0;
+    $('o-summary').textContent = r.changed.length
+      ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes estimated DPS from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
+      : 'This Invoker already wears the best gear your box has for it.';
+    const slots = openSlots(owned);
+    $('o-rows').replaceChildren(
+      ...slots.map((slot) => {
+        const tr = document.createElement('tr');
+        if (!r.changed.includes(slot)) tr.className = 'same';
+        tr.append(el('td', slot), pieceCell(r.current[slot], owned.id), r.changed.includes(slot) ? pieceCell(r.best[slot], owned.id) : el('td', 'Keep'));
+        return tr;
+      }),
+    );
+  }
+
+  const update = () => {
+    render();
+    renderOptimiser();
+  };
+
   box = await loadBox();
   fillHeroes();
-  render();
-  for (const s of [heroSel, modeSel, stageSel]) s.addEventListener('change', render);
+  update();
+  for (const s of [heroSel, modeSel, stageSel, others]) s.addEventListener('change', update);
   onBoxChange(async () => {
     box = await loadBox();
     fillHeroes();
-    render();
+    update();
   });
 }

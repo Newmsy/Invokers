@@ -48,6 +48,7 @@ export function dpsData(): DpsData {
       name: h.name,
       slug: ref.slug,
       rarity: h.rarity,
+      faction: h.faction,
       element: h.element,
       sign: h.soulSign,
       base: Object.fromEntries(

@@ -35,6 +35,7 @@ export interface DpsHero {
   name: string;
   slug: string;
   rarity: string;
+  faction: string;
   element: string;
   sign?: string;
   /** rank → level → [hp, atk, def] at the levels the data lists (1, 10, 20 …). */
