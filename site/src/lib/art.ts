@@ -4,6 +4,9 @@
 // The glob only lists files; nothing is imported.
 import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, setNames, skillsFor, titans, type HeroRef } from './data';
 import tipsJson from '../../../data/tips.json';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const sourceFiles = new Set(
   Object.keys(import.meta.glob('../../public/art/**/*.webp')).map((p) => p.replace(/^.*\/public\/art\//, '')),
@@ -55,10 +58,36 @@ for (const t of titans) {
 // Chase banners (the art for each Get Legendary chase), by the hero it gave away.
 for (const h of heroes) add(`chase/${heroSlug(h.id)}.webp`, `events/GetLegendary${h.id}.webp`, chaseBannerPath, h.id);
 // Boss art (issue #66), by boss id; shown on the boss guides when it exists.
-// Boss portraits and wide boss art (#137), by boss id.
+// Boss portraits and wide boss art (#137), by boss id. Some modes give every boss the same wide picture
+// (the Crest bosses all show one of them), so a picture shared by bosses with different names is kept for
+// the mode's section only, never shown as one boss.
+for (const b of bosses) add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);
+const fileHash = (source: string) => {
+  try {
+    return createHash('md5').update(readFileSync(resolve(process.cwd(), 'public/art', source))).digest('hex');
+  } catch {
+    return source;
+  }
+};
+const splashBosses = new Map<string, typeof bosses>();
 for (const b of bosses) {
-  add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);
-  add(`splash/bosses/${bossSlug(b)}.webp`, `bosses/large/${b.id}.webp`, bossSplashPath, b.id);
+  const source = `bosses/large/${b.id}.webp`;
+  if (!sourceFiles.has(source)) continue;
+  const hash = fileHash(source);
+  splashBosses.set(hash, [...(splashBosses.get(hash) ?? []), b]);
+}
+const modeName = (mode: string) => (mode === 'other' ? 'crest-bosses' : slugify(mode));
+const bossGroupSplashPath = new Map<string, string>();
+for (const group of splashBosses.values()) {
+  const [first] = group;
+  const source = `bosses/large/${first.id}.webp`;
+  if (group.length === 1) add(`splash/bosses/${bossSlug(first)}.webp`, source, bossSplashPath, first.id);
+  else if (new Set(group.map((b) => b.name)).size === 1) for (const b of group) add(`splash/bosses/${bossSlug(b)}.webp`, source, bossSplashPath, b.id);
+  else {
+    const served = `splash/bosses/${modeName(first.mode)}.webp`;
+    routes.set(served, source);
+    for (const b of group) bossGroupSplashPath.set(b.id, served);
+  }
 }
 for (const source of sourceFiles) {
   const [kind, file] = source.split('/');
@@ -142,6 +171,8 @@ export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
 export const bossArt = (bossId: string) => url(bossArtPath.get(bossId));
 /** Wide boss art (1280x640), for page headers and boss cards. */
 export const bossSplash = (bossId: string) => url(bossSplashPath.get(bossId));
+/** Wide art a whole mode shares (the Crest bosses), for that mode's section; undefined when the boss has its own. */
+export const bossGroupSplash = (bossId: string) => url(bossGroupSplashPath.get(bossId));
 export const chaseBanner = (heroId: string) => url(chaseBannerPath.get(heroId));
 export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
 export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));

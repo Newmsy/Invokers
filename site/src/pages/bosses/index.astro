@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
-import { bossArt, bossSplash, elementIcon } from '../../lib/art';
+import { bossArt, bossGroupSplash, bossSplash, elementIcon } from '../../lib/art';
 import { tierLists, tierRows } from '../../lib/tierData';
 
 // The first three S-tier Invokers for each boss, as small portraits on its card.
@@ -33,6 +33,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
   {groups.map((g) => (
     <section aria-labelledby={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>
       <h2 id={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>{g.title}</h2>
+      {g.bosses[0] && bossGroupSplash(g.bosses[0].id) && <img class="group-splash" src={bossGroupSplash(g.bosses[0].id)} alt="" width="1280" height="640" loading="lazy" />}
       <ul class="grid">
         {g.bosses.map((b) => (
           <li>
@@ -70,6 +71,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
   }
+  .group-splash { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; object-position: center 30%; border-radius: var(--radius); margin: 0 0 12px; }
   .boss-splash { display: block; width: calc(100% + 32px); height: auto; aspect-ratio: 2 / 1; object-fit: cover; margin: -16px -16px 0; border-radius: var(--radius) var(--radius) 0 0; }
   .boss-art { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; border: 2px solid var(--line); background: var(--surface-2); }
   .boss-splash + .name .boss-art { margin-top: -28px; box-shadow: 0 4px 12px rgb(0 0 0 / 0.5); }
