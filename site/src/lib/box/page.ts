@@ -3,6 +3,7 @@ import { avatar } from '../avatar';
 import type { BoxAccessory, BoxGear, BoxHero, StatRoll } from './decode';
 import { ImportError, importBackup, importSnapshots, partFor } from './importer';
 import { clearBox, loadBox, onBoxChange, saveBox, type BoxDoc } from './store';
+import { TROPHY_ROOMS, roomLevels, trophyBonuses } from './trophies';
 import type { HeroRef } from '../data';
 import { getAccountState, onAccountChange } from '../account/state';
 
@@ -83,6 +84,22 @@ export function start(): void {
       `imported ${when} · ${savedWhere()}`;
     for (const part of ['heroes', 'gear', 'accessories'] as const) {
       document.querySelector(`[data-count="${part}"]`)!.textContent = String(box[part].length);
+    }
+    renderTrophies();
+  }
+
+  /** One line per room with levels: the bonus every Invoker of that element gets. */
+  function renderTrophies(): void {
+    const list = $('trophy-rooms');
+    list.replaceChildren();
+    $('trophy-none').hidden = !!box?.trophies;
+    for (const element of TROPHY_ROOMS) {
+      if (!roomLevels(box?.trophies, element).length) continue;
+      const parts = trophyBonuses(box?.trophies, element).map(([stat, v]) => {
+        const label = refs.stats[stat];
+        return label?.percent ? `${label.name} +${+(v * 100).toFixed(1)}%` : `${label?.name ?? titleCase(stat)} +${v}`;
+      });
+      list.append(h('li', {}, h('strong', {}, element), `: ${parts.join(', ')}`));
     }
   }
 
