@@ -33,9 +33,9 @@ export function boxBuild(data: DpsData, box: BoxDoc, owned: BoxHero): Build | nu
     const a = acc.get(id);
     if (a) equipment.push({ stats: [a.mainStat, ...a.subStats].filter((s) => !!s).map((s) => [s!.stat, s!.value]) });
   }
-  // Box skill levels are on the same 1-11 scale as the skill text (0 = not upgraded = level 1).
+  // The box counts upgrades (0 = not upgraded = level 1), so the skill level is one more.
   const skillLevels: Partial<Record<SkillSlot, number>> = {};
-  for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(MAX_SKILL_LEVEL, s.level));
+  for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(MAX_SKILL_LEVEL, s.level + 1));
   const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
   // Trophy Room bonuses for the Invoker's element (percents are of its own stats, like gear).
   for (const [stat, v] of trophyBonuses(box.trophies, hero.element)) addStat(totals, stat, v);

@@ -2,10 +2,12 @@
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { gearStatLabels, href, setNames } from '../lib/data';
+import { setIcon } from '../lib/art';
 import { BOSS, STAGES } from '../lib/dps/data';
 import { FIGHT_SEC } from '../lib/dps/constants';
 import { rarityColor } from '../lib/format';
 
+const setIcons = Object.fromEntries(Object.keys(setNames).flatMap((id) => (setIcon(id) ? [[id, setIcon(id)]] : [])));
 const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) => [id, l.name]));
 ---
 <Base title="DPS simulator">
@@ -16,7 +18,15 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-rarity={JSON.stringify(rarityColor)}>
+  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-rarity={JSON.stringify(rarityColor)}>
+    <div id="d-nobox" class="import-cta" hidden>
+      <div>
+        <strong>See your own numbers</strong>
+        <p>Import your box to simulate your Invokers with their real gear, skill levels and Awakening, and to get the best gear swaps from what you own.</p>
+      </div>
+      <a class="btn primary" href={href('my-box')}>Import my box</a>
+    </div>
+
     <section class="picker-box" aria-label="Invoker">
       <div class="current-row">
         <div id="d-current"></div>
@@ -54,9 +64,6 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         </select>
       </label>
     </div>
-    <p id="d-nobox" class="hint" hidden>
-      <a href={href('my-box')}>Import your box</a> to simulate your own Invokers with their gear.
-    </p>
 
     <section id="d-out" hidden>
       <div class="summary">
@@ -152,6 +159,15 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .current-row #d-current { flex: 1 1 260px; min-width: 0; }
   .btn { padding: 8px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
   .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: #0c0b1d; border-color: var(--accent); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .import-cta {
+    display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between;
+    padding: 16px; margin-bottom: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--accent);
+  }
+  .import-cta[hidden] { display: none; }
+  .import-cta > div { flex: 1 1 280px; min-width: 0; }
+  .import-cta strong { font-size: 16px; }
+  .import-cta p { margin: 4px 0 0; color: var(--soft); font-size: 14px; }
   .pick-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
   .pick-bar input, .pick-bar select {
     background: var(--surface); color: var(--text); border: 1px solid var(--line);
@@ -185,6 +201,10 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
+  :global(td.piece .piece-head) { display: inline-flex; gap: 6px; align-items: center; }
+  :global(img.set-icon) { width: 22px; height: 22px; flex: none; vertical-align: middle; }
+  :global(.sets li) { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+  :global(.sets .set-chip) { display: inline-flex; gap: 4px; align-items: center; }
   :global(table.stack td.piece > div) { text-align: right; min-width: 0; }
   :global(td.piece .equipped) { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--soft); }
   :global(td.piece .equipped b) { padding: 1px 6px; margin-right: 2px; border-radius: 6px; background: var(--accent); color: #0c0b1d; font-weight: 700; }
