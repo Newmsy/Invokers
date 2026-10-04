@@ -19,7 +19,7 @@ const rows = [
   { id: 'SkillSpeedFactorPct', name: 'Combo Speed', short: 'Combo spd', what: 'Combos play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0"), sameAs: 'Skill Speed' },
   { id: 'SkillRecoveryPct', name: 'Skill Recovery', short: 'Skill rec', what: 'Skill cooldowns recover faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
   { id: 'ManaRegenRecoveryPct', name: 'Mana Generation', short: 'Mana gen', what: 'More mana for the Ultimate', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
-  { id: 'InstinctFactorPct01', name: 'Instinct', short: 'Instinct', what: 'How strongly Instinct works (100% = full strength)', fmt: (v: number) => `${n(v * 100, 0)}%` },
+  { id: 'InstinctFactorPct01', name: 'Instinct', short: 'Instinct', what: 'Chance to dodge danger zones while the AI controls the Invoker', fmt: (v: number) => `${n(v * 100, 0)}%` },
   { id: 'RunSpeed', name: 'Move Speed', short: 'Move', what: 'Run speed bonus', fmt: (v: number) => (v ? `+${n(v, 2)}` : "0") },
   { id: 'DefenseFactor', name: 'Defense', short: 'Defense', what: 'Share of damage still taken (100% = full damage)', fmt: (v: number) => `${n(v * 100)}%` },
 ]
@@ -83,7 +83,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
       </table>
     </div>
     <ul class="notes">
-      {instinctFull != null && instinctFull > 0 && <li><strong>Instinct</strong> is at full strength from rating {instinctFull}; more does nothing.</li>}
+      {instinctFull != null && instinctFull > 0 && <li><strong>Instinct</strong> is the chance an Invoker you aren't steering dodges a danger zone (and, in some fights, switches to the right target). It starts at {n((instinct?.values[0] ?? 0) * 100, 0)}% and reaches 100% at rating {instinctFull}; more does nothing. It never changes damage or crits.</li>}
       {defense && <li><strong>Defense</strong> never flattens: 3,000 rating cuts damage taken by {n((1 - defense.values[3000]) * 100)}%, and each point keeps helping.</li>}
     </ul>
   </section>
@@ -112,7 +112,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
       </div>
     ))}
     </div>
-    <p class="hint">{gridRows.map((r) => `${r.name}: ${r.what.toLowerCase()}`).join('. ')}. Combo Speed uses the Skill Speed column: same curve, for combos.</p>
+    <p class="hint">{gridRows.map((r) => `${r.name}: ${r.what[0].toLowerCase()}${r.what.slice(1)}`).join('. ')}. Combo Speed uses the Skill Speed column: same curve, for combos.</p>
   </section>
 
   {resist && (
