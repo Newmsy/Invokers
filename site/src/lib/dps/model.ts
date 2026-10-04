@@ -60,6 +60,8 @@ export interface BossStage {
   /** The boss's RES, which resists debuffs that need Accuracy. */
   res: number;
   atk: number;
+  /** PvE Ultimate mana multiplier this stage sets in place of the mode one (missing = the mode's). */
+  mana?: number;
 }
 
 export interface Curves {
@@ -320,7 +322,9 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const skillSpeed = 1 + pctOf(data.curves.skillSpeed, t.skillSpeed);
   const recovery = 1 + pctOf(data.curves.skillRecovery, t.skillRecovery);
   const comboSpeed = 1 + pctOf(data.curves.comboSpeed, t.comboSpeed);
-  const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * data.mana.multiplier[mode];
+  // A boss stage's own mana multiplier replaces the PvE one.
+  const manaMode = mode === 'pve' && stage.mana ? stage.mana : data.mana.multiplier[mode];
+  const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * manaMode;
 
   const events: Event[] = [];
   const startFactor = mode === 'arena' ? 0.5 : 0;

@@ -22,14 +22,16 @@ export const COMBO_SPEED_CURVE = 'SkillSpeedFactorPct';
  * (1 + Mana Generation %). PvE uses the 5-Invoker battle multiplier; Arena uses the PvP one.
  */
 export const MANA_MODE = { pve: 'fiveHeroes', arena: 'pvp' } as const;
+/** Ulgorim stages below this one override the PvE Ultimate mana multiplier to 2 (Newms; dataminer to confirm per stage). */
+export const BOSS_MANA_X2_BELOW_STAGE = 16;
 /** PLACEHOLDER (#124): Skill Recovery also shortens the Ultimate's own cooldown. */
 export const RECOVERY_APPLIES_TO_ULTIMATE = false;
 
 /** PLACEHOLDER (#123): ATK % bonuses multiply the Invoker's own ATK (level + Awakening), flat ATK adds after. */
 export const PERCENT_OF_BASE_ONLY = true;
-/** PLACEHOLDER (#123): crit chance is capped at 100%; a crit deals 1 + Crit DMG. */
+/** Crit chance rolls against 0-100, so anything above 100% does nothing (damage.json hit.crit); a crit deals 1 + Crit DMG. */
 export const CRIT_RATE_CAP = 1;
-/** PLACEHOLDER (#123): Burn/Bleed ticks ignore DEF and can't crit. */
+/** Burn and Bleed skip DEF (damage.json hit.mitigation.bleedAndBurn); ticks don't crit. */
 export const DOT_USES_DEF = false;
 
 /** Set bonuses: the 5-piece bonus adds on top of the 3-piece one. */

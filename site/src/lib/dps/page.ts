@@ -11,7 +11,7 @@ import { activeSets, openSlots, optimise, type Loadout, type Piece } from './opt
 
 const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = {
   advantage: (m, e) => `${m} beats ${e}: +30% damage, and debuffs land more often.`,
-  disadvantage: (m, e) => `${m} is weak against ${e}: −30% damage, 50% less Crit Rate, and debuffs land far less often.`,
+  disadvantage: (m, e) => `${m} is weak against ${e}: −30% damage, −50% Crit Rate, and debuffs land far less often.`,
   lightDark: (m, e) => `${m} against ${e}: +15% damage.`,
   neutral: () => 'No element advantage.',
 };

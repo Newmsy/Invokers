@@ -54,7 +54,8 @@ All numbers are **estimated**. Each fight assumes:
 - one target and no buffs,
 - debuffs that land don't change damage (except Burn and Bleed),
 - average crits rather than lucky ones,
-- Burn and Bleed at their per-tick limit,
-- no element advantage yet.
+- Burn and Bleed at their per-tick limit.
+
+Element advantage counts. Each Ulgorim stage has an element, so an Invoker with advantage deals +30% damage and lands debuffs more often. An Invoker at a disadvantage deals −30% damage and has 50 points less Crit Rate. Light and Dark Invokers deal +15% damage against every stage.
 
 Compare Invokers and gear against each other rather than treating the number as exact. The estimates will sharpen as more battle rules are confirmed.
