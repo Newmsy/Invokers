@@ -5,7 +5,7 @@ import { bossLabel, bosses, bossSlug, corruptionNames, heroes, heroHref, heroRef
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
 import { tierRows } from '../../lib/tierData';
-import { bossArt, setIcon, elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
+import { bossArt, bossSplash, setIcon, elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
 import { gearSets } from '../../lib/gear';
 import { corruptionKey, hasHeroTolerances, heroesWithTolerance } from '../../lib/tolerances';
 import { bossAbilities } from '../../lib/bossAbilities';
@@ -21,6 +21,7 @@ const hasTiers = !!tierList;
 const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
 const elIcon = boss.element ? elementIcon(boss.element) : undefined;
 const art = bossArt(boss.id);
+const splash = bossSplash(boss.id);
 const energyIcon = itemIcon('Energy');
 // What the boss does in battle, and Invokers that counter it.
 const fight = bossAbilities(boss.id);
@@ -101,8 +102,9 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     All bosses
   </a>
 
+  {splash && <div class="page-banner tall" aria-hidden="true"><img src={splash} alt="" width="1280" height="640" fetchpriority="high" /></div>}
   <header class="head">
-    {art && <img class="boss-art" src={art} alt={bossLabel(boss)} />}
+    {art && <img class="boss-art" src={art} alt={bossLabel(boss)} width="112" height="112" />}
     {boss.title && <span class="title">{boss.title}</span>}
     <h1>{elIcon && <img class="el" src={elIcon} alt={boss.element} width="32" height="32" />}{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
@@ -389,8 +391,8 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
   .set-icon { width: 24px; height: 26px; object-fit: contain; vertical-align: -7px; margin-right: 6px; }
-  .boss-art { float: right; width: min(40%, 320px); max-height: 320px; object-fit: contain; margin: 0 0 12px 16px; }
-  @media (max-width: 720px) { .boss-art { float: none; display: block; width: 100%; max-height: 220px; margin: 0 0 12px; } }
+  .boss-art { position: relative; float: right; width: 112px; height: 112px; object-fit: cover; border-radius: 20px; border: 2px solid var(--line); background: var(--surface-2); margin: 0 0 12px 16px; box-shadow: 0 8px 24px rgb(0 0 0 / 0.5); }
+  @media (max-width: 720px) { .boss-art { width: 80px; height: 80px; border-radius: 16px; } }
   h1 .el { vertical-align: -4px; margin-right: 10px; }
   .picks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .picks a { display: block; width: 56px; height: 56px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }

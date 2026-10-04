@@ -15,22 +15,22 @@ Every boss has two corruptions, one damage and one control. A Tolerance set give
 
 | Boss | Mode | Corruptions |
 |---|---|---|
-| [Ulgorim, the Horde King](/bosses/ulgorim) | Relic boss | Daze, Blight |
-| [Althar, the Bone Lich](/bosses/althar) | Relic boss | Crush, Fatigue |
-| [Sakiel, the Fallen Angel](/bosses/sakiel) | Relic boss | Manashock, Bloodrot |
-| [Sorgott, the Crypt King](/bosses/sorgott) | Clan boss | Crush, Manaburn |
-| [Pentiax, the Corrupted Dragon](/bosses/pentiax) | Pentiax | Nightmare, Mindfog |
-| [Hyxxis, the Brood Mother](/bosses/hyxxis) | Crest boss | Crush, Manaburn |
-| [Galvos, the Construct](/bosses/galvos) | Crest boss | Daze, Atrophy |
-| [Yskara, the Ice Queen](/bosses/yskara) | Crest boss | Frost, Fatigue |
-| [Koltmos, the Doom Shaman](/bosses/koltmos) | Crest boss | Manashock, Blight |
-| [![Omnissi (Astral)](element:astral)](/bosses/omnissi-astral) | Omnissi | Crush, Atrophy |
-| [![Omnissi (Fire)](element:fire)](/bosses/omnissi-fire) | Omnissi | Daze, Manaburn |
-| [![Omnissi (Dark)](element:dark)](/bosses/omnissi-dark) | Omnissi | Manashock, Manaburn |
-| [![Omnissi (Wind)](element:wind)](/bosses/omnissi-wind) | Omnissi | Nightmare, Fatigue |
-| [![Omnissi (Water)](element:water)](/bosses/omnissi-water) | Omnissi | Frost, Mindfog |
-| [![Omnissi (Earth)](element:earth)](/bosses/omnissi-earth) | Omnissi | Paralysis, Bloodrot |
-| [![Omnissi (Light)](element:light)](/bosses/omnissi-light) | Omnissi | Paralysis, Blight |
+| [![Ulgorim, the Horde King](boss:ulgorim)](/bosses/ulgorim) | Relic boss | Daze, Blight |
+| [![Althar, the Bone Lich](boss:althar)](/bosses/althar) | Relic boss | Crush, Fatigue |
+| [![Sakiel, the Fallen Angel](boss:sakiel)](/bosses/sakiel) | Relic boss | Manashock, Bloodrot |
+| [![Sorgott, the Crypt King](boss:sorgott)](/bosses/sorgott) | Clan boss | Crush, Manaburn |
+| [![Pentiax, the Corrupted Dragon](boss:pentiax)](/bosses/pentiax) | Pentiax | Nightmare, Mindfog |
+| [![Hyxxis, the Brood Mother](boss:hyxxis)](/bosses/hyxxis) | Crest boss | Crush, Manaburn |
+| [![Galvos, the Construct](boss:galvos)](/bosses/galvos) | Crest boss | Daze, Atrophy |
+| [![Yskara, the Ice Queen](boss:yskara)](/bosses/yskara) | Crest boss | Frost, Fatigue |
+| [![Koltmos, the Doom Shaman](boss:koltmos)](/bosses/koltmos) | Crest boss | Manashock, Blight |
+| [![Omnissi (Astral)](boss:omnissi-astral)](/bosses/omnissi-astral) | Omnissi | Crush, Atrophy |
+| [![Omnissi (Fire)](boss:omnissi-fire)](/bosses/omnissi-fire) | Omnissi | Daze, Manaburn |
+| [![Omnissi (Dark)](boss:omnissi-dark)](/bosses/omnissi-dark) | Omnissi | Manashock, Manaburn |
+| [![Omnissi (Wind)](boss:omnissi-wind)](/bosses/omnissi-wind) | Omnissi | Nightmare, Fatigue |
+| [![Omnissi (Water)](boss:omnissi-water)](/bosses/omnissi-water) | Omnissi | Frost, Mindfog |
+| [![Omnissi (Earth)](boss:omnissi-earth)](/bosses/omnissi-earth) | Omnissi | Paralysis, Bloodrot |
+| [![Omnissi (Light)](boss:omnissi-light)](/bosses/omnissi-light) | Omnissi | Paralysis, Blight |
 
 ## How many bosses each set covers
 

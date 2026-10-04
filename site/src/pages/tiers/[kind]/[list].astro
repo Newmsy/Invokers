@@ -1,4 +1,5 @@
 ---
+import { bossArt, bossSplash } from '../../../lib/art';
 import Base from '../../../layouts/Base.astro';
 import SeeAlso from '../../../components/SeeAlso.astro';
 import { elementIcon } from '../../../lib/art';
@@ -39,9 +40,10 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
     All tier lists
   </a>
+  {boss && bossSplash(boss.id) && <div class="page-banner tall" aria-hidden="true"><img src={bossSplash(boss.id)} alt="" width="1280" height="640" fetchpriority="high" /></div>}
 
   <header class="head">
-    <h1>{pool.label}: {list.label}</h1>
+    <h1>{boss && bossArt(boss.id) && <img class="boss-art" src={bossArt(boss.id)} alt="" width="48" height="48" />}{pool.label}: {list.label}</h1>
     <p class="lead">{list.summary}{boss && <> <a href={href(`bosses/${list.id}`)}>Boss guide</a></>}</p>
     {kind === 'invokers' && listCorruptions.get(list.id) && (
       <p class="lead">Invokers with {listCorruptions.get(list.id)!.join(' or ')} Tolerance rank higher here.</p>
@@ -136,6 +138,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
 </script>
 
 <style>
+  .boss-art { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; vertical-align: middle; margin-right: 12px; border: 2px solid var(--line); }
   .back { display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; color: var(--soft); font-weight: 500; }
   h1 { margin: 12px 0 6px; font-size: 28px; font-weight: 700; }
   .lead { color: var(--soft); max-width: 70ch; margin: 0; }

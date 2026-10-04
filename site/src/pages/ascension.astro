@@ -1,8 +1,9 @@
 ---
+import BossLink from '../components/BossLink.astro';
 import Base from '../layouts/Base.astro';
 import { maxVip } from '../lib/vip';
 import SeeAlso from '../components/SeeAlso.astro';
-import { bosses, bossLabel, bossSlug, heroes, heroHref, href } from '../lib/data';
+import { bosses, heroes, heroHref, href } from '../lib/data';
 import { heroArt, itemIcon } from '../lib/art';
 import { bonusText, soulSignAnchor, soulSigns, sumBonuses } from '../lib/awakening';
 import { rarityColor, rarityOrder } from '../lib/format';
@@ -347,14 +348,14 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
       <dd>
         The Garuda bosses (Omnissi) in Boss Mode, one per element; the Astral Garuda drops Astral Essence:{' '}
         {omnissi.map((b, i) => (
-          <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}`)}>{b.element}</a></>
+          <>{i > 0 && ', '}<BossLink boss={b} label={b.element} /></>
         ))}.
       </dd>
       <dt>Crests</dt>
       <dd>
         The Crest bosses:{' '}
         {crestBosses.map((b, i) => (
-          <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}`)}>{bossLabel(b)}</a></>
+          <>{i > 0 && ', '}<BossLink boss={b} /></>
         ))}.
       </dd>
     </dl>

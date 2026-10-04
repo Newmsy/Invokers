@@ -1,6 +1,7 @@
 ---
+import BossLink from '../components/BossLink.astro';
 import Base from '../layouts/Base.astro';
-import { bossLabel, bossSlug, href } from '../lib/data';
+import { href } from '../lib/data';
 import { richText } from '../lib/format';
 import { gearGroups, gearSets } from '../lib/gear';
 import { setIcon } from '../lib/art';
@@ -51,7 +52,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
               <div class="bosses">
                 <span class="label">Bosses with {s.corruption}</span>
                 <ul>
-                  {s.bosses.map((b) => <li><a href={href(`bosses/${bossSlug(b)}`)}>{bossLabel(b)}</a></li>)}
+                  {s.bosses.map((b) => <li><BossLink boss={b} /></li>)}
                 </ul>
               </div>
             )}
