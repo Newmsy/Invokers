@@ -5,7 +5,7 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
+import { buffGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
 import { toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
@@ -258,6 +258,13 @@ export async function start(): Promise<void> {
       `Stage ${stage.stage} has ${fmt(stage.res)} RES. With ${fmt(t.acc)} ACC, a debuff that needs Accuracy lands ${pct(base.accChance, 0)} of the time.`;
     $('d-debuffs').replaceChildren(
       ...base.debuffs.map((d) => row(SOURCE[d.slot], d.name, [pct(d.chance, 0), 'num'], [`${d.landed.toFixed(1)} of ${fmt(d.tries)}`, 'num'])),
+    );
+
+    // Self buffs: how long each is up and what it adds.
+    const buffs = buffGains(data, input);
+    $('d-buffs-box').hidden = !buffs.length;
+    $('d-buffs').replaceChildren(
+      ...buffs.map((b) => row(SOURCE[b.slot], `${pct(b.pct, 0)} ${b.name}`, [pct(b.uptime, 0), 'num'], [`+${pct(b.gain, 1)}`, 'num'])),
     );
 
     // Skill upgrades (box Invokers whose skills aren't maxed).

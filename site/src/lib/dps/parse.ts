@@ -30,10 +30,26 @@ export interface Debuff {
   acc: boolean;
 }
 
+/** Stats a self buff changes. Buffs multiply the final stat (Newms): ATK Up 40% = final ATK × 1.4. */
+export type BuffStat = 'atk' | 'critRate' | 'critDmg' | 'skillRecovery' | 'skillSpeed' | 'comboSpeed';
+
+/** A buff the skill casts on its own Invoker (directly, or on allies around it). */
+export interface SelfBuff {
+  /** Name as the game shows it, e.g. "Crit DMG Up". */
+  name: string;
+  stat: BuffStat;
+  /** 0.4 = +40%. */
+  pct: number;
+  sec: number;
+  /** Only cast when the hit crits. */
+  onCrit?: boolean;
+}
+
 export interface ParsedSkill {
   hits: Hit[];
   dots: Dot[];
   debuffs: Debuff[];
+  buffs: SelfBuff[];
 }
 
 const num = (s: string) => Number(s.replace(/,/g, ''));
@@ -91,8 +107,42 @@ export function parseDebuffs(text: string): Debuff[] {
   return out;
 }
 
+const BUFF_STATS: Record<string, BuffStat> = {
+  'ATK Up': 'atk',
+  'Crit Rate Up': 'critRate',
+  'Crit DMG Up': 'critDmg',
+  'Skill Recovery Up': 'skillRecovery',
+  'Skill SPD Up': 'skillSpeed',
+  'Combo SPD Up': 'comboSpeed',
+};
+const BUFF_RE = new RegExp(`\\[([\\d.]+)% (${Object.keys(BUFF_STATS).join('|')})\\] buff on (.+?),? lasting ([\\d.]+)s(.*)$`);
+
+/**
+ * Damage buffs that reach the caster: "[100% Crit DMG Up] buff on Devi of the Six, lasting 16s", or on a group of allies
+ * around it ("10 allies in a 15m radius"; "the targets" in a later sentence means the same group). Buffs that need a
+ * kill or go to a single other ally are left out; "if the hit lands as a critical hit" makes it crit-only.
+ */
+export function parseSelfBuffs(text: string, self: string): SelfBuff[] {
+  const out: SelfBuff[] = [];
+  let lastReachedSelf = false;
+  for (const sentence of plain(text).split(/(?<=\.)\s+|\n/)) {
+    const m = BUFF_RE.exec(sentence);
+    if (!m) continue;
+    const target = m[3].trim();
+    const reaches: boolean =
+      target.startsWith(self) || (/\ballies\b/.test(target) && !/^the ally\b/.test(target)) || (/^the targets?\b/.test(target) && lastReachedSelf);
+    lastReachedSelf = reaches;
+    const rest = sentence.slice(0, m.index) + ' ' + m[5];
+    if (!reaches || /kills|non-critical/.test(rest)) continue;
+    const buff: SelfBuff = { name: m[2], stat: BUFF_STATS[m[2]], pct: num(m[1]) / 100, sec: num(m[4]) };
+    if (/critical hit/.test(rest)) buff.onCrit = true;
+    out.push(buff);
+  }
+  return out;
+}
+
 /** Hits and damage-over-time debuffs of an active skill or Ultimate at one level. */
-export function parseSkillText(text: string): ParsedSkill {
+export function parseSkillText(text: string, self = ''): ParsedSkill {
   const t = plain(text);
   const hits: Hit[] = [];
   const dots: Dot[] = [];
@@ -110,7 +160,7 @@ export function parseSkillText(text: string): ParsedSkill {
       if (dot) dots.push(dot);
     }
   }
-  return { hits, dots, debuffs: parseDebuffs(text) };
+  return { hits, dots, debuffs: parseDebuffs(text), buffs: self ? parseSelfBuffs(text, self) : [] };
 }
 
 /** Combo text → the hits of each step, in order (steps 1-5). */

@@ -15,6 +15,7 @@ const compact = (p: ParsedSkill): SkillLevelT => ({
   h: p.hits.map(toHitT),
   ...(p.dots.length ? { d: p.dots } : {}),
   ...(p.debuffs.length ? { x: p.debuffs } : {}),
+  ...(p.buffs.length ? { b: p.buffs } : {}),
 });
 
 const ACTIVE_SLOTS = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Ultimate'] as const;
@@ -79,7 +80,7 @@ export function dpsData(): DpsData {
       const levels = fillLevels(s.levels ?? []);
       if (s.type === 'Combo') combo = levels.map((l) => parseComboText(l.text).map((step) => step.map(toHitT)));
       else if ((ACTIVE_SLOTS as readonly string[]).includes(s.type) && typeof s.cooldown === 'number') {
-        const skill: DpsSkill = { cooldown: s.cooldown, levels: levels.map((l) => compact(parseSkillText(l.text))) };
+        const skill: DpsSkill = { cooldown: s.cooldown, levels: levels.map((l) => compact(parseSkillText(l.text, h.name))) };
         if (s.manaCost) skill.manaCost = s.manaCost;
         skills[s.type as (typeof ACTIVE_SLOTS)[number]] = skill;
       }

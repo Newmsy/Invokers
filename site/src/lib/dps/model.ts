@@ -3,7 +3,7 @@
 // full, otherwise the readiest skill (3, 2, 1), otherwise the next combo step. Damage uses expected crits.
 // Battle rules that aren't exported yet are in constants.ts.
 import * as C from './constants';
-import type { Debuff, Dot, Hit } from './parse';
+import type { BuffStat, Debuff, Dot, Hit, SelfBuff } from './parse';
 
 // ---- Data shapes (built at build time by data.ts) ----
 
@@ -23,6 +23,8 @@ export interface SkillLevelT {
   d?: Dot[];
   /** Debuffs and control effects cast on the target. */
   x?: Debuff[];
+  /** Buffs cast on the Invoker itself. */
+  b?: SelfBuff[];
 }
 
 export interface DpsSkill {
@@ -255,6 +257,10 @@ export interface FightInput {
   mode: Mode;
   stage: BossStage;
   seconds?: number;
+  /** Leave out every self buff (to show what they add). */
+  noBuffs?: boolean;
+  /** Leave out one self buff, by "<slot>|<name>". */
+  skipBuff?: string;
 }
 
 export interface SourceResult {
@@ -303,93 +309,159 @@ interface Event {
 }
 
 /** Every damage event in a fight of `until` seconds. */
-function timeline(data: DpsData, input: FightInput, until: number): Event[] {
+/** Expected time a self buff was up in the fight (crit-only buffs weighted by the chance they were cast). */
+export interface BuffUptime {
+  slot: SkillSlot;
+  name: string;
+  stat: BuffStat;
+  pct: number;
+  /** Seconds up, out of `until`. */
+  seconds: number;
+}
+
+const buffKey = (slot: SkillSlot, b: SelfBuff) => `${slot}|${b.name}`;
+
+/** Every damage event in a fight of `until` seconds, plus how long each self buff was up. */
+function timeline(data: DpsData, input: FightInput, until: number): { events: Event[]; uptime: BuffUptime[] } {
   const { hero, totals: t, mode, stage } = input;
-  const atk = finalStat(t, 'atk');
+  const atk0 = finalStat(t, 'atk');
   const def = finalStat(t, 'def');
   const hp = finalStat(t, 'hp');
   const el = data.elements[elementEdge(hero.element, stage.element)];
-  const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate + el.crit));
-  const critFactor = 1 + critRate * t.critDmg;
   const defFactor = defenseFactor(data.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
-  const hitScale = critFactor * defFactor * el.damage;
-  const hitDamage = (h: HitT) => ((h[0] ?? 0) * atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * hitScale;
   const accChance = landChance(data.curves.resist, stage.res, t.acc, el.debuff);
-  const tickDamage = (d: Dot) =>
-    Math.min(d.pct * stage.hp, d.capAtk * atk) * (C.DOT_USES_DEF ? defFactor : 1) * (d.acc ? accChance : 1);
 
   const pctOf = (curve: number[], rating: number) => at(curve, rating) / 100;
-  const skillSpeed = 1 + pctOf(data.curves.skillSpeed, t.skillSpeed);
-  const recovery = 1 + pctOf(data.curves.skillRecovery, t.skillRecovery);
-  const comboSpeed = 1 + pctOf(data.curves.comboSpeed, t.comboSpeed);
+  const skillSpeed0 = 1 + pctOf(data.curves.skillSpeed, t.skillSpeed);
+  const recovery0 = 1 + pctOf(data.curves.skillRecovery, t.skillRecovery);
+  const comboSpeed0 = 1 + pctOf(data.curves.comboSpeed, t.comboSpeed);
   // A boss stage's own mana multiplier replaces the PvE one.
   const manaMode = mode === 'pve' && stage.mana ? stage.mana : data.mana.multiplier[mode];
   const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * manaMode;
 
+  // Self buffs multiply the final stat while they're up (Skill and Combo SPD buffs add to the speed %) (refreshing one restarts it; different buffs stack).
+  // A crit-only buff counts with the chance the cast crit, so `p` is that chance.
+  const active = new Map<string, { stat: BuffStat; pct: number; p: number; from: number; until: number }>();
+  const upFor = new Map<string, BuffUptime>();
+  const mult = (stat: BuffStat, now: number) => {
+    let m = 1;
+    for (const b of active.values()) if (b.stat === stat && b.until > now) m *= 1 + b.p * b.pct;
+    return m;
+  };
+  const add = (stat: BuffStat, now: number) => {
+    let n = 0;
+    for (const b of active.values()) if (b.stat === stat && b.until > now) n += b.p * b.pct;
+    return n;
+  };
+  const stats = (now: number) => {
+    const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate * mult('critRate', now) + el.crit));
+    return {
+      atk: atk0 * mult('atk', now),
+      critRate,
+      critFactor: 1 + critRate * t.critDmg * mult('critDmg', now),
+      recovery: recovery0 * mult('skillRecovery', now),
+      // Speed buffs add to the speed % (timing.json speedFactors).
+      skillSpeed: skillSpeed0 + add('skillSpeed', now),
+      comboSpeed: comboSpeed0 + add('comboSpeed', now),
+    };
+  };
+  const closeBuff = (key: string, b: { p: number; from: number; until: number }, at: number) => {
+    const u = upFor.get(key);
+    if (u) u.seconds += b.p * Math.max(0, Math.min(at, b.until, until) - b.from);
+  };
+
   const events: Event[] = [];
   const startFactor = mode === 'arena' ? 0.5 : 0;
-  const ready = new Map<SkillSlot, number>();
+  // Cooldowns count down in base seconds, faster while Skill Recovery is higher.
+  const cdLeft = new Map<SkillSlot, number>();
   for (const slot of ACTIVE) {
     const s = hero.skills[slot];
-    if (s?.levels.length) ready.set(slot, (s.cooldown * startFactor) / recovery);
+    if (s?.levels.length) cdLeft.set(slot, s.cooldown * startFactor);
   }
   const ult = hero.skills.Ultimate;
-  const ultRecovery = C.RECOVERY_APPLIES_TO_ULTIMATE ? recovery : 1;
-  let ultReady = ult ? (ult.cooldown * startFactor) / ultRecovery : Infinity;
+  if (ult?.levels.length) cdLeft.set('Ultimate', ult.cooldown * startFactor);
   const comboLevel = hero.combo.length ? hero.combo[levelOf(input, 'Combo', hero.combo.length)] : [];
   // Ultimate mana fills with time spent acting (mana.json), faster with Mana Generation and in Arena; it starts empty.
   const manaPerSec = data.mana.perSec * manaGain;
-  const manaFullAt = (since: number) => (ult?.manaCost ? since + ult.manaCost / manaPerSec : Infinity);
-  let ultManaFull = manaFullAt(0);
+  let mana = 0;
   let step = 0;
   let now = 0;
 
+  const advance = (dt: number, acting: boolean) => {
+    const r = stats(now).recovery;
+    for (const [slot, left] of cdLeft) {
+      const rate = slot === 'Ultimate' && !C.RECOVERY_APPLIES_TO_ULTIMATE ? 1 : r;
+      cdLeft.set(slot, Math.max(0, left - dt * rate));
+    }
+    if (acting) mana += dt * manaPerSec;
+    now += dt;
+  };
+
   const cast = (slot: SkillSlot, s: DpsSkill, castSec: number) => {
     const level = s.levels[levelOf(input, slot, s.levels.length)];
+    const st = stats(now);
+    const hitDamage = (h: HitT) => ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * defFactor * el.damage;
     events.push({ at: now, slot, damage: level.h.reduce((n, h) => n + hitDamage(h), 0), cast: true, debuffs: level.x });
     for (const d of level.d ?? []) {
+      const tick = Math.min(d.pct * stage.hp, d.capAtk * st.atk) * (C.DOT_USES_DEF ? defFactor : 1) * (d.acc ? accChance : 1);
       const ticks = Math.floor(d.durationSec / d.everySec);
-      for (let i = 1; i <= ticks; i++) events.push({ at: now + i * d.everySec, slot, damage: tickDamage(d), cast: false });
+      for (let i = 1; i <= ticks; i++) events.push({ at: now + i * d.everySec, slot, damage: tick, cast: false });
     }
-    now += castSec / skillSpeed;
+    if (!input.noBuffs) {
+      for (const b of level.b ?? []) {
+        const key = buffKey(slot, b);
+        if (input.skipBuff === key) continue;
+        const old = active.get(key);
+        if (old) closeBuff(key, old, now);
+        if (!upFor.has(key)) upFor.set(key, { slot, name: b.name, stat: b.stat, pct: b.pct, seconds: 0 });
+        active.set(key, { stat: b.stat, pct: b.pct, p: b.onCrit ? st.critRate : 1, from: now, until: now + b.sec });
+      }
+    }
+    advance(castSec / st.skillSpeed, true);
     if (C.COMBO_RESETS_AFTER_SKILL) step = 0;
   };
 
   while (now < until) {
-    if (ult?.levels.length && ult.manaCost && now >= ultManaFull && now >= ultReady) {
-      ultManaFull = manaFullAt(now);
-      ultReady = now + ult.cooldown / ultRecovery;
+    if (ult?.levels.length && ult.manaCost && mana >= ult.manaCost && (cdLeft.get('Ultimate') ?? 0) <= 0) {
+      mana -= ult.manaCost;
+      cdLeft.set('Ultimate', ult.cooldown);
       cast('Ultimate', ult, C.ULTIMATE_CAST_SEC);
       continue;
     }
-    const slot = ACTIVE.find((s) => (ready.get(s) ?? Infinity) <= now);
+    const slot = ACTIVE.find((s) => cdLeft.has(s) && cdLeft.get(s)! <= 0);
     if (slot) {
       const s = hero.skills[slot]!;
-      ready.set(slot, now + s.cooldown / recovery);
+      cdLeft.set(slot, s.cooldown);
       cast(slot, s, C.SKILL_CAST_SEC);
       continue;
     }
     if (comboLevel.length) {
+      const st = stats(now);
       const hits = comboLevel[step % comboLevel.length];
-      events.push({ at: now, slot: 'Combo', damage: hits.reduce((n, h) => n + hitDamage(h), 0), cast: true });
+      const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * defFactor * el.damage, 0);
+      events.push({ at: now, slot: 'Combo', damage, cast: true });
       step += 1;
-      now += C.COMBO_STEP_SEC / comboSpeed;
+      advance(C.COMBO_STEP_SEC / st.comboSpeed, true);
     } else {
-      // No combo to fill the gap: wait for the next cooldown.
-      const ultAt = ult?.levels.length ? Math.max(ultReady, ultManaFull) : Infinity;
-      const next = Math.min(ultAt, ...ACTIVE.map((s) => ready.get(s) ?? Infinity));
-      if (!Number.isFinite(next) || next <= now) break;
-      now = next;
+      // No combo to fill the gap: wait for the next cooldown (mana only fills while acting).
+      const r = stats(now).recovery;
+      const waits = [...cdLeft.entries()]
+        .filter(([s]) => s !== 'Ultimate')
+        .map(([, left]) => left / r);
+      const next = Math.min(...waits);
+      if (!Number.isFinite(next) || next <= 0) break;
+      advance(next, false);
     }
   }
-  return events;
+  for (const [key, b] of active) closeBuff(key, b, until);
+  return { events, uptime: [...upFor.values()] };
 }
 
 export function simulate(data: DpsData, input: FightInput): FightResult {
   const T = input.seconds ?? C.FIGHT_SEC[input.mode];
   const WINDOW = C.FIGHT_WINDOW_SEC[input.mode];
   const lo = Math.max(1, T - WINDOW);
-  const events = timeline(data, input, T + WINDOW);
+  const { events } = timeline(data, input, T + WINDOW);
   const damageBy = (until: number) => events.reduce((n, e) => (e.at < until ? n + e.damage : n), 0);
 
   let sum = 0;
@@ -478,4 +550,16 @@ export function skillGains(data: DpsData, input: FightInput): SkillGain[] {
     out.push({ slot, level, max, next: at(level + 1), toMax: at(max) });
   }
   return out.sort((a, b) => b.next - a.next);
+}
+
+/** Each self buff's uptime in the fight and the DPS it adds (DPS with it vs without it). */
+export function buffGains(data: DpsData, input: FightInput): (BuffUptime & { uptime: number; gain: number })[] {
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const { uptime } = timeline(data, input, T);
+  if (!uptime.length) return [];
+  const dps = simulate(data, input).dps;
+  return uptime.map((u) => {
+    const without = simulate(data, { ...input, skipBuff: `${u.slot}|${u.name}` }).dps;
+    return { ...u, uptime: u.seconds / T, gain: without > 0 ? dps / without - 1 : 0 };
+  });
 }

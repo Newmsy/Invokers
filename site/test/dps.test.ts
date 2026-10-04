@@ -8,10 +8,10 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { defenseFactor, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, defenseFactor, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { toughness, toughValues } from '../src/lib/dps/tank';
-import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
+import { parseComboText, parseDebuffs, parseHit, parseSelfBuffs, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
 const hero = (name: string) => data.heroes.find((h) => h.name === name)!;
@@ -65,7 +65,7 @@ describe('skill text parser', () => {
   });
 
   it('parses an Invoker with no "#N Damage" lines into nothing', () => {
-    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [] });
+    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [], buffs: [] });
   });
 
   it('lists the debuffs and control effects cast on enemies', () => {
@@ -269,5 +269,40 @@ describe('elements', () => {
     expect(vsWind.dps).toBeLessThan(vsEarth.dps);
     expect(vsFire.accChance).toBeGreaterThan(vsEarth.accChance);
     expect(vsWind.accChance).toBeLessThan(vsEarth.accChance);
+  });
+});
+
+describe('self buffs', () => {
+  it('reads buffs on the Invoker itself and on allies around it', () => {
+    const devi = 'Casts a <b>[100% Crit DMG Up]</b> buff on <b>Devi of the Six</b>, lasting <b>16s</b>.';
+    expect(parseSelfBuffs(devi, 'Devi of the Six')).toEqual([{ name: 'Crit DMG Up', stat: 'critDmg', pct: 1, sec: 16 }]);
+    const team = 'Casts a [40% Crit Rate Up] buff on 10 allies in a 15m radius, lasting 17s. Then, casts a [75% Crit DMG Up] buff on the targets, lasting 17s.';
+    expect(parseSelfBuffs(team, 'Sebastin').map((b) => b.stat)).toEqual(['critRate', 'critDmg']);
+    expect(parseSelfBuffs('Casts a [45% ATK Up] buff on Kera Deathkiss, lasting 7s, on critical hits.', 'Kera Deathkiss')[0].onCrit).toBe(true);
+    // Another Invoker's targets, a single other ally, or a kill condition don't count.
+    expect(parseSelfBuffs('Then, casts a [30% Crit Rate Up] buff on the targets, lasting 13s.', 'Furnos')).toEqual([]);
+    expect(parseSelfBuffs('Casts a [15% Skill Recovery Up] buff on the ally with the lowest current HP in a 15m radius, lasting 3s.', 'Fulrik')).toEqual([]);
+    expect(parseSelfBuffs('Casts a [55% ATK Up] buff on the 9 allies with the lowest current HP in a 15m radius, lasting 15s, if this attack kills the target.', 'Nirvelle')).toEqual([]);
+  });
+
+  it('gives Devi her Skill 2 and Skill 3 buffs, and they add DPS', () => {
+    const f = fight('Devi of the Six', { stage: stage(13) });
+    expect(f.hero.skills.ActiveSkill3!.levels[10].b?.[0]).toMatchObject({ stat: 'critDmg', pct: 1, sec: 16 });
+    expect(f.hero.skills.ActiveSkill2!.levels[10].b?.[0]).toMatchObject({ stat: 'skillRecovery', pct: 0.25, sec: 14 });
+    const withBuffs = simulate(data, f).dps;
+    const without = simulate(data, { ...f, noBuffs: true }).dps;
+    expect(withBuffs).toBeGreaterThan(without);
+    const gains = buffGains(data, f);
+    expect(gains.map((g) => g.name).sort()).toEqual(['Crit DMG Up', 'Skill Recovery Up']);
+    for (const g of gains) {
+      expect(g.uptime).toBeGreaterThan(0.2);
+      expect(g.uptime).toBeLessThanOrEqual(1);
+      expect(g.gain).toBeGreaterThanOrEqual(0);
+    }
+  });
+
+  it('multiplies final ATK while ATK Up is up', () => {
+    const f = fight('Kisanka', { stage: stage(13) });
+    expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, noBuffs: true }).dps);
   });
 });
