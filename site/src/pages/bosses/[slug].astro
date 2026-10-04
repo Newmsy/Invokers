@@ -8,6 +8,7 @@ import { tierRows } from '../../lib/tierData';
 import { bossArt, elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
 import { gearSets } from '../../lib/gear';
 import { corruptionKey, hasHeroTolerances, heroesWithTolerance } from '../../lib/tolerances';
+import { bossAbilities } from '../../lib/bossAbilities';
 
 export function getStaticPaths() {
   return bosses.map((boss) => ({ params: { slug: bossSlug(boss) }, props: { boss } }));
@@ -21,6 +22,9 @@ const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier =
 const elIcon = boss.element ? elementIcon(boss.element) : undefined;
 const art = bossArt(boss.id);
 const energyIcon = itemIcon('Energy');
+// What the boss does in battle, and Invokers that counter it.
+const fight = bossAbilities(boss.id);
+const whyLabel = (why: string) => (why === 'both' ? `${boss.corruptions.join(' + ')} Tolerance` : why === 'pick' ? 'Strong pick' : why);
 
 // Pages that help plan a run at this boss (its tolerance sets are linked from the corruption panels).
 const seeAlso = [
@@ -132,6 +136,31 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
       <ul>{boss.donts.map((d) => <li set:html={richText(d)} />)}</ul>
     </section>
   </div>
+
+  {fight && (
+    <section aria-labelledby="fight-title">
+      <h2 id="fight-title">What it does</h2>
+      <p class="passive">{fight.passive}</p>
+      <dl class="abilities">
+        {fight.abilities.map((a) => [<dt>{a.name}</dt>, <dd>{a.text}</dd>])}
+      </dl>
+      {fight.picks.length > 0 && (
+        <>
+          <h3 class="counter-title">Counter picks</h3>
+          <ul class="counters">
+            {fight.picks.map((p) => (
+              <li>
+                <a class="with-avatar" href={heroHref(p.hero.id)}>
+                  <span class="avatar" style="--size: 36px">{heroArt(p.hero.id) && <img src={heroArt(p.hero.id)} alt="" width="36" height="36" loading="lazy" />}</span>
+                  <span><strong>{p.hero.name}</strong><small>{whyLabel(p.why)}</small></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  )}
 
   {rest.length > 0 && (
     <details class="briefing">
@@ -466,4 +495,13 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
     h1 { font-size: 28px; }
     .advice { grid-template-columns: 1fr; }
   }
+  .passive { margin: 0 0 12px; padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); color: var(--text); max-width: 70ch; }
+  .abilities { margin: 0; display: grid; grid-template-columns: minmax(120px, max-content) 1fr; gap: 8px 16px; max-width: 80ch; }
+  .abilities dt { font-weight: 600; color: var(--text); }
+  .abilities dd { margin: 0; color: var(--soft); line-height: 1.5; }
+  @media (max-width: 560px) { .abilities { grid-template-columns: 1fr; gap: 2px; } .abilities dd { margin-bottom: 8px; } }
+  .counter-title { font-size: 16px; margin: 16px 0 8px; }
+  .counters { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 16px; }
+  .counters a span:last-child { display: flex; flex-direction: column; }
+  .counters small { color: var(--muted); font-size: 12px; }
 </style>
