@@ -18,13 +18,10 @@ export const COMBO_RESETS_AFTER_SKILL = false;
 export const COMBO_SPEED_CURVE = 'SkillSpeedFactorPct';
 
 /**
- * Ultimate mana fills with time, not per hit (skill_mechanics.json notes: the game's UltManaPerSec, scaled by mode
- * and Mana Generation). PLACEHOLDER (#124): the per-second value itself isn't exported yet; 45 keeps Ultimates about
- * as frequent as the earlier per-hit estimate.
+ * Ultimate mana fills with time spent acting, not per hit (data/mana.json): per second × the mode's multiplier ×
+ * (1 + Mana Generation %). PvE uses the 5-Invoker battle multiplier; Arena uses the PvP one.
  */
-export const ULT_MANA_PER_SEC = 45;
-/** Ultimate mana multiplier per mode (arena.json: pvp 2; relic bosses assumed "pve5" = 1 until #124 confirms). */
-export const MANA_MULTIPLIER = { pve: 1, arena: 2 } as const;
+export const MANA_MODE = { pve: 'fiveHeroes', arena: 'pvp' } as const;
 /** PLACEHOLDER (#124): Skill Recovery also shortens the Ultimate's own cooldown. */
 export const RECOVERY_APPLIES_TO_ULTIMATE = false;
 

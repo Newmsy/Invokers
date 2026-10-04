@@ -83,6 +83,8 @@ export interface DpsData {
   curves: Curves;
   stages: BossStage[];
   defense: DefenseRule;
+  /** Ultimate mana per second of acting, and the multiplier per mode. */
+  mana: { perSec: number; multiplier: Record<Mode, number> };
   /** One normal 5★ substat roll per stat (see NORMAL_ROLL_* in constants). */
   normalRoll: { stat: string; value: number }[];
   /** One normal 5★ roll of flat and % HP and DEF, for toughness. */
@@ -296,7 +298,7 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const skillSpeed = 1 + pctOf(data.curves.skillSpeed, t.skillSpeed);
   const recovery = 1 + pctOf(data.curves.skillRecovery, t.skillRecovery);
   const comboSpeed = 1 + pctOf(data.curves.comboSpeed, t.comboSpeed);
-  const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * C.MANA_MULTIPLIER[mode];
+  const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * data.mana.multiplier[mode];
 
   const events: Event[] = [];
   const startFactor = mode === 'arena' ? 0.5 : 0;
@@ -309,8 +311,8 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const ultRecovery = C.RECOVERY_APPLIES_TO_ULTIMATE ? recovery : 1;
   let ultReady = ult ? (ult.cooldown * startFactor) / ultRecovery : Infinity;
   const comboLevel = hero.combo.length ? hero.combo[levelOf(input, 'Combo', hero.combo.length)] : [];
-  // Ultimate mana fills with time (issue #124), faster with Mana Generation and in Arena; it starts empty.
-  const manaPerSec = C.ULT_MANA_PER_SEC * manaGain;
+  // Ultimate mana fills with time spent acting (mana.json), faster with Mana Generation and in Arena; it starts empty.
+  const manaPerSec = data.mana.perSec * manaGain;
   const manaFullAt = (since: number) => (ult?.manaCost ? since + ult.manaCost / manaPerSec : Infinity);
   let ultManaFull = manaFullAt(0);
   let step = 0;
