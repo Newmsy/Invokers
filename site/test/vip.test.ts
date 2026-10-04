@@ -64,6 +64,6 @@ describe('VIP levels post vs VIP data', () => {
   it('places the keyed perks where the post says', () => {
     expect(vipLevels.find((l) => l.chatBadge)?.level).toBe(2);
     expect(vipLevels.find((l) => l.autoCompleteDailyQuests)?.level).toBe(8);
-    expect(vipLevels.filter((l) => l.avatarFrame).map((l) => l.level)).toEqual([1, 5, 9, 13, 17, 21]);
+    expect(vipLevels.filter((l) => l.avatarFrame).map((l) => l.level)).toEqual([1, 5, 9, 13, 17, 21, 25]);
   });
 });

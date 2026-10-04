@@ -1,7 +1,5 @@
-// VIP levels from data/vip.json, numbered the way the game shows them (VIP 1 to 25).
-// The export numbers its per-level tables 0-24, but the level-keyed tables (free pass days, avatar frames, chat badge,
-// quest auto-complete) are stored under their own level number, so they are already 1-based. VIP n therefore takes its
-// points and boosts from entry n - 1 and its keyed perks from entry n. VIP 25's keyed perks are not in the export yet.
+// VIP levels from data/vip.json, numbered the way the game shows them (VIP 1 to 25). Each entry holds that level's
+// points, boosts and perks (free pass days, avatar frame, chat badge, quest auto-complete).
 import vipJson from '../../../data/vip.json';
 
 interface VipEntry {
@@ -28,7 +26,7 @@ export interface VipLevel {
   memorium: number;
   runeDrops: number;
   battleStats: number;
-  /** Undefined where the export has no value (VIP 25). */
+  /** Undefined where the export has no value. */
   freePassDays?: number;
   chatBadge?: boolean;
   autoCompleteDailyQuests?: boolean;
@@ -37,20 +35,19 @@ export interface VipLevel {
 
 const entries = vipJson.levels as VipEntry[];
 
-export const vipLevels: VipLevel[] = entries.map((e, i) => {
-  const keyed = entries[i + 1];
+export const vipLevels: VipLevel[] = entries.map((e) => {
   return {
-    level: i + 1,
+    level: e.level,
     points: e.pointsTotal,
     gold: e.goldBoost,
     xp: e.xpPotionBoost,
     memorium: e.memoriumBoost,
     runeDrops: e.runeDropMultiplier,
     battleStats: e.battleStatsBonus,
-    freePassDays: keyed?.freePassDaysOnLevelUp ?? undefined,
-    chatBadge: keyed?.chatBadge,
-    autoCompleteDailyQuests: keyed?.autoCompleteDailyQuests,
-    avatarFrame: keyed ? keyed.avatarFrame !== null : undefined,
+    freePassDays: e.freePassDaysOnLevelUp ?? undefined,
+    chatBadge: e.chatBadge,
+    autoCompleteDailyQuests: e.autoCompleteDailyQuests,
+    avatarFrame: e.avatarFrame !== null,
   };
 });
 
