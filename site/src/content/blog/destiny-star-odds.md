@@ -1,6 +1,6 @@
 ---
 title: "What 130 Destiny Stars really buy you"
-description: "Every summon item's rates, our best estimate of the mercy rules, and the chance of a Legendary in N pulls."
+description: "Every summon item's rates, the mercy rules, and the chance of a Legendary in N pulls."
 date: 2026-09-18
 gameVersion: "0.61.1514"
 art: ["item:Destiny Star", "item:Radiant Star", "item:Divine Star", "item:Miracle Orb"]
@@ -9,7 +9,7 @@ tags: [summons, odds]
 
 A Destiny Star gives a Legendary **0.53%** of the time. Without mercy, half of all players need **130 pulls** or more for their first one. Mercy (pity) rules change that a lot.
 
-- Our best estimate: a guaranteed first Legendary by pull 50, then one every 190 pulls at worst.
+- Mercy guarantees a first Legendary by pull 50, then one every 190 pulls at worst.
 - Radiant Stars are the better way to chase one specific Light or Dark Legendary: their pool is half the size.
 - Divine Stars are a different world: a Legendary in 10 pulls is a coin flip.
 
@@ -49,9 +49,7 @@ Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 he
 
 ## The mercy counters
 
-> **Estimated:** the game doesn't explain its mercy rules. This is our best estimate and hasn't been confirmed in game.
-
-| Item | Rarity | Mercy count | Most likely meaning |
+| Item | Rarity | Mercy count | Meaning |
 |---|---|---|---|
 | ![Destiny Star](item:) | Legendary | 50 first, then 190 | First Legendary by pull 50, then one by every 190th pull without one |
 | ![Radiant Star](item:) | Legendary | 200 | One by every 200th pull without one |
@@ -72,7 +70,7 @@ Still unknown: whether a natural Legendary resets the counter, and whether items
 | ![Dream Orb](item:) or ![Wonder Orb](item:) | ![Miracle Orb](item:) | 85 |
 | ![Miracle Orb](item:) | Random Mythic Titan | 100 |
 
-With the estimated mercy rules and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star** (estimated), close to double the 0.53% on the label.
+With mercy and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star**, close to double the 0.53% on the label.
 
 ## Chroma
 

@@ -1,6 +1,6 @@
 {
   "gameVersion": "0.61.1514",
-  "note": "Summon rates, mercy counts, bonus summons and chroma chances, as in the blog post 'What 130 Destiny Stars really buy you'. Rates are fractions. Mercy counts are estimates (unconfirmed in game). Items marked pity are not real items: they stand for the guaranteed pull a bonus counter pays out, and are never shown as items.",
+  "note": "Summon rates, mercy counts, bonus summons and chroma chances, as in the blog post 'What 130 Destiny Stars really buy you'. Rates are fractions. Mercy counts confirmed in game (2026-10-04). Items marked pity are not real items: they stand for the guaranteed pull a bonus counter pays out, and are never shown as items.",
   "items": [
     { "id": "SI_WildStar", "name": "Wild Star", "kind": "hero", "rates": { "Common": 0.7, "Uncommon": 0.285, "Rare": 0.015 } },
     { "id": "SI_FateStar", "name": "Fate Star", "kind": "hero", "rates": { "Rare": 0.9167, "Epic": 0.0833 }, "mercy": { "Epic": 30 } },

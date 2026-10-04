@@ -43,7 +43,7 @@ The item's rarity odds times the chroma chance.
 | ![Wonder Orb](item:) | 1 in 1,448 | Legendary: 1 in 36,364 | 25,206 |
 | ![Miracle Orb](item:) | 1 in 345 | Mythic: 1 in 5,000 | 3,466 |
 
-Mercy makes Legendaries come a little more often over a long run, so the Legendary rows are slightly better in practice. See *What 130 Destiny Stars really buy you* for how mercy works (estimated).
+Mercy makes Legendaries come a little more often over a long run, so the Legendary rows are slightly better in practice. See *What 130 Destiny Stars really buy you* for how mercy works.
 
 ## The takeaway
 
