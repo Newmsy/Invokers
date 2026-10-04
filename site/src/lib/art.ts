@@ -2,7 +2,8 @@
 // readable names (img/heroes/<hero-slug>.webp, img/skills/<hero-slug>-skill-1.webp, ...) through
 // pages/img/[...path].ts, and the build drops public/art from dist so no code appears in an image URL.
 // The glob only lists files; nothing is imported.
-import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, titans, type HeroRef } from './data';
+import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, setNames, skillsFor, titans, type HeroRef } from './data';
+import tipsJson from '../../../data/tips.json';
 
 const sourceFiles = new Set(
   Object.keys(import.meta.glob('../../public/art/**/*.webp')).map((p) => p.replace(/^.*\/public\/art\//, '')),
@@ -82,9 +83,33 @@ for (const source of sourceFiles) {
   add(`banners/${name}.webp`, source, bannerPath, name);
 }
 
-// Tall game-mode art, for page headers.
-const modePath = new Map<string, string>();
-add('modes/spires.webp', 'modes/Tower.webp', modePath, 'spires');
+// Gear set icons by set id, faction cards, rarity card backgrounds, loading-hint pictures (by the hint's
+// order in tips.json) and game mode cards, all under readable names.
+const setIconPath = new Map<string, string>();
+for (const [id, name] of Object.entries(setNames)) add(`sets/${slugify(name)}.webp`, `sets/${id}.webp`, setIconPath, id);
+const factionCardPath = new Map<string, string>();
+const rarityCardPath = new Map<string, string>();
+const modeArtPath = new Map<string, string>();
+for (const source of sourceFiles) {
+  const m = source.match(/^(cards\/faction|cards\/rarity|modes)\/([A-Za-z_]+)\.webp$/);
+  if (!m) continue;
+  const [, folder, name] = m;
+  if (folder === 'cards/faction') add(`factions/${slugify(name)}.webp`, source, factionCardPath, name);
+  else if (folder === 'cards/rarity') add(`rarity/${slugify(name)}.webp`, source, rarityCardPath, name);
+  else add(`modes/${slugify(name.replace(/([a-z])([A-Z])/g, '$1 $2'))}.webp`, source, modeArtPath, name);
+}
+const tips = (tipsJson as { tips: { order?: number; title?: string }[] }).tips;
+const hintArtPath = new Map<number, string>();
+for (const t of tips) {
+  if (t.order === undefined) continue;
+  const served = `tips/${slugify((t.title ?? '').replace(/<[^>]+>/g, '')) || t.order}.webp`;
+  if (!sourceFiles.has(`loading/hints/${t.order}.webp`) || routes.has(served)) continue;
+  routes.set(served, `loading/hints/${t.order}.webp`);
+  hintArtPath.set(t.order, served);
+}
+// Mode art by page name, for page headers.
+const towerArt = modeArtPath.get('Tower');
+if (towerArt) modeArtPath.set('spires', towerArt);
 
 const url = (served: string | undefined) => (served ? href(`img/${served}`) : undefined);
 
@@ -103,10 +128,16 @@ export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
+export const setIcon = (setId: string) => url(setIconPath.get(setId));
+/** Faction card art: a tall card with a character from that faction. */
+export const factionCard = (faction: string) => url(factionCardPath.get(faction));
+/** The game's hero card background for a rarity (a colour wash, no emblem). */
+export const rarityCard = (rarity: string) => url(rarityCardPath.get(rarity));
+export const hintArt = (order: number) => url(hintArtPath.get(order));
+/** Game mode card (tall) by file name (Arena, Tower, ClanBoss...) or page name ("spires"). */
+export const modeArt = (mode: string) => url(modeArtPath.get(mode));
 /** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
 export const bannerArt = (name: string) => url(bannerPath.get(name));
-/** Tall mode art by page name ("spires"). */
-export const modeArt = (name: string) => url(modePath.get(name));
 export const bannerNames = () => [...bannerPath.keys()];
 
 /** heroRefsByConfigId with each hero's portrait URL, for the box, share and planner pages. */

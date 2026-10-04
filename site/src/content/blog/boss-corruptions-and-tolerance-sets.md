@@ -3,7 +3,7 @@ title: "Which Tolerance set to build first"
 description: "Every boss's two corruptions in one table, which Tolerance sets cover the most bosses, and two places where the game's own text is wrong."
 date: 2026-09-15
 gameVersion: "0.61.1516"
-art: ["class:Tank", "class:Melee", "class:Ranged", "class:Support"]
+art: ["set:Crush Tolerance", "set:Manaburn Tolerance", "set:Daze Tolerance", "set:Blight Tolerance"]
 tags: [bosses, gear, sets]
 ---
 
@@ -36,12 +36,12 @@ Every boss has two corruptions, one damage and one control. A Tolerance set give
 
 | Tolerance | Bosses | Which |
 |---|---|---|
-| **[Crush](/gear#set-crush-tolerance)** | **4** | Althar, Sorgott, Hyxxis, Omnissi (Astral) |
-| **[Manaburn](/gear#set-manaburn-tolerance)** | **4** | Sorgott, Hyxxis, Omnissi (Fire), Omnissi (Dark) |
-| [Daze](/gear#set-daze-tolerance) | 3 | Ulgorim, Galvos, Omnissi (Fire) |
-| [Blight](/gear#set-blight-tolerance) | 3 | Ulgorim, Koltmos, Omnissi (Light) |
-| [Fatigue](/gear#set-fatigue-tolerance) | 3 | Althar, Yskara, Omnissi (Wind) |
-| [Manashock](/gear#set-manashock-tolerance) | 3 | Sakiel, Koltmos, Omnissi (Dark) |
+| ![](set:crush-tolerance) **[Crush](/gear#set-crush-tolerance)** | **4** | Althar, Sorgott, Hyxxis, Omnissi (Astral) |
+| ![](set:manaburn-tolerance) **[Manaburn](/gear#set-manaburn-tolerance)** | **4** | Sorgott, Hyxxis, Omnissi (Fire), Omnissi (Dark) |
+| ![](set:daze-tolerance) [Daze](/gear#set-daze-tolerance) | 3 | Ulgorim, Galvos, Omnissi (Fire) |
+| ![](set:blight-tolerance) [Blight](/gear#set-blight-tolerance) | 3 | Ulgorim, Koltmos, Omnissi (Light) |
+| ![](set:fatigue-tolerance) [Fatigue](/gear#set-fatigue-tolerance) | 3 | Althar, Yskara, Omnissi (Wind) |
+| ![](set:manashock-tolerance) [Manashock](/gear#set-manashock-tolerance) | 3 | Sakiel, Koltmos, Omnissi (Dark) |
 | Frost, Mindfog, Nightmare, Paralysis, Atrophy, Bloodrot | 2 each | |
 
 Crush is also the nastiest on paper: it stuns and makes the target take double damage from every source.
