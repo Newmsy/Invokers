@@ -51,7 +51,7 @@
   "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config.",
   "debuffLanding: which stat feeds the target 'resist bonus' and attacker 'accuracy bonus' terms (two F64 fields on the battle state), and the exact corruption types (read as type 11 on the target and Mindfog on the attacker).",
   "Whether the in-skill cast chance ('20% chance to cast') is rolled before and separately from this resist roll (it is a separate script block, so most likely yes).",
-  "How DEF Down / Weaken map onto defenseFactor / damageTakenFactor (from the status effect configs, not decoded yet)."
+  "Status effects: the 1 - X% / 1 + X% mapping is read from the effect's StatType and sign, not traced through the stat code; how two effects of the same type stack (the game usually keeps the strongest) is not decoded."
  ],
  "elements": {
   "damageMultiplier": {
@@ -114,6 +114,13 @@
     "Hits flagged no-crit (DamageOrHealEvent flag 8) never crit; OnlyCritDamage forces a crit."
    ],
    "source": "DamageUtils.CalculateSourceDamage (read from the game code)"
+  },
+  "statusEffects": {
+   "DEF Down / DEF Up": "BuffStat blocks with StatType Defense (EffectType DebuffDefense / BuffDefense) and an integer percent: they change the target's DEF multiplier, i.e. hit.mitigation defenseFactor = 1 - DEF Down% (or 1 + DEF Up%) / 100.",
+   "Weaken": "EffectType DebuffDamageTaken on StatType DecreaseDamageTaken (negative): damageTakenFactor = 1 + Weaken% / 100.",
+   "Decrease Damage Taken (buff)": "EffectType BuffDamageTaken on DecreaseDamageTaken: damageTakenFactor = 1 - X% / 100.",
+   "amounts": "the percent comes from the skill (skill_mechanics.json byLevel tables / the skill text), not from a global table.",
+   "source": "skill scripts (BuffStat blocks: Category, StatType, EffectType)"
   }
  }
 }
