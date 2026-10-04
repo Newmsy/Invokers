@@ -5,19 +5,20 @@
  "speedFactors": {
   "skillSpeed": "factor = 1 + (SkillSpeedFactorPct(Skill Speed rating) + Skill Speed buffs %) / 100, not below 0",
   "comboSpeed": "factor = 1 + (SkillSpeedFactorPct(Combo Speed rating) + Combo Speed buffs %) / 100: Combo Speed uses the SAME curve as Skill Speed (stat_curves.json SkillSpeedFactorPct)",
-  "skillRecovery": "SkillRecoveryPct(Skill Recovery rating) from stat_curves.json, applied to cooldown recovery",
+  "skillRecovery": "cooldown timers tick down by frameTime x recoveryFactor each update (UpdateCharacterCooldownsSystem), so effective cooldown = base cooldown / recoveryFactor, recoveryFactor = 1 + (SkillRecoveryPct(rating) + Skill Recovery buffs %) / 100",
   "instinct": "InstinctFactorPct01(Instinct rating)"
  },
  "cooldowns": {
   "values": "skills.json cooldown (seconds); Ultimate 15 s plus its mana cost",
   "canBeReduced": "each skill config has CanCooldownBeReduced (true for normal skills and Ultimates); Skill Recovery and cooldown-reduction effects only act on those",
   "arenaStart": "arena.json initialCooldownFactor 0.5",
-  "pveStart": "skills start ready unless their config sets ShouldStartFromCooldown / StartCooldownTime (all 0 for hero skills in this export)"
+  "pveStart": "skills start ready unless their config sets ShouldStartFromCooldown / StartCooldownTime (all 0 for hero skills in this export)",
+  "blocked": "timers are skipped while the character's skills are blocked (RpgStateUtils.IsBlocked check in the cooldown update)"
  },
  "comboTiming": "Combo timing is the same for every Invoker in play (see combos.json note); comboSpeed scales it.",
  "unconfirmed": [
   "How the speed factor is applied: read as a speed multiplier (animation time / factor); the code that consumes it is a component value not decoded yet.",
-  "Skill Recovery as cooldown / (1 + pct) vs cooldown x (1 - pct): the conversion is known, the consuming code is not decoded yet.",
-  "Auto-battle skill order (AI rules in each skill config's AiRules / TargetPriority) is not exported yet."
+  "Auto-battle skill order (AI rules in each skill config's AiRules / TargetPriority) is not exported yet.",
+  "recoveryFactor is assumed to be built like the speed factors (1 + pct/100); the tick itself (time x factor) is read from the code."
  ]
 }
