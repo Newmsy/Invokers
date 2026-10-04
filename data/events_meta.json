@@ -1,0 +1,6 @@
+{
+ "capturedAt": "2026-10-04T18:36:32Z",
+ "count": 10,
+ "source": "Live tournament catalog captured from the game client (LootDump F11).",
+ "note": "Only the player's own division is sent by the server (division field)."
+}
