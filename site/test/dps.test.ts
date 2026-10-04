@@ -8,6 +8,7 @@ import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
 import { defenseFactor, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
+import { toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
@@ -212,5 +213,22 @@ describe('gear optimiser', () => {
     expect(openSlots({ awakenLevel: 0 } as BoxHero)).toContain('Amulet');
     expect(openSlots({ awakenLevel: 0 } as BoxHero)).not.toContain('Earrings');
     expect(openSlots({ awakenLevel: 6 } as BoxHero)).toContain('Flasks');
+  });
+});
+
+describe('toughness', () => {
+  const s16 = data.stages.find((s) => s.stage === 16)!;
+  it('compares one normal roll of flat and % HP and DEF', () => {
+    expect(data.toughRoll.map((r) => r.stat).sort()).toEqual(['DefenseFlat', 'DefensePercent', 'HealthFlat', 'HealthPercent']);
+    expect(Object.fromEntries(data.toughRoll.map((r) => [r.stat, r.value])).HealthFlat).toBe(168);
+  });
+  it('gives effective HP above HP and positive gains for every roll', () => {
+    const hero = data.heroes.find((h) => h.name === 'Ironblade Darus')!;
+    const { base, values } = toughValues(data, bareBuild(data, hero).totals, s16);
+    expect(s16.atk).toBeGreaterThan(0);
+    expect(base.taken).toBeGreaterThan(0);
+    expect(base.taken).toBeLessThan(1);
+    expect(base.ehp).toBeGreaterThan(base.hp);
+    for (const v of values) expect(v.gain).toBeGreaterThan(0);
   });
 });

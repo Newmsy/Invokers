@@ -6,6 +6,7 @@ import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
 import { finalStat, simulate, skillGains, statValues, type DpsData, type Mode, type SkillSlot } from './model';
+import { toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -37,6 +38,7 @@ export async function start(): Promise<void> {
   const root = $('dps');
   const labels = JSON.parse(root.dataset.labels ?? '{}') as Record<string, string>;
   const setNames = JSON.parse(root.dataset.sets ?? '{}') as Record<string, string>;
+  const boss = root.dataset.boss ?? 'Boss';
   const setIcons = JSON.parse(root.dataset.setIcons ?? '{}') as Record<string, string>;
   const setImg = (id: string) => {
     if (!setIcons[id]) return null;
@@ -81,6 +83,7 @@ export async function start(): Promise<void> {
     pieces: number;
     build: Build | null;
     dps?: number;
+    ehp?: number;
   }
   let tiles: Tile[] = [];
   let pickerOpen = !wanted;
@@ -115,6 +118,7 @@ export async function start(): Promise<void> {
       t.dps = t.build && stage
         ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage }).dps
         : 0;
+      t.ehp = t.build && stage ? toughness(data, t.build.totals, stage).ehp : 0;
     }
   }
 
@@ -138,7 +142,7 @@ export async function start(): Promise<void> {
     const bits = [`${t.stars}★ Lv ${t.level}`];
     if (t.key.startsWith('box:')) bits.push(t.awaken ? `Awakened ${t.awaken}` : 'Not awakened', `${t.pieces} gear`);
     text.append(el('small', bits.join(' · ')));
-    text.append(el('small', `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
+    text.append(el('small', sortSel.value === 'tough' ? `${fmt(t.ehp ?? 0)} effective HP` : `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
     card.append(text);
     return card;
   }
@@ -152,6 +156,7 @@ export async function start(): Promise<void> {
         if (sort === 'name') return a.name.localeCompare(b.name);
         if (sort === 'rarity') return (RARITY_RANK[b.rarity] ?? 0) - (RARITY_RANK[a.rarity] ?? 0) || a.name.localeCompare(b.name);
         if (sort === 'stars') return b.stars - a.stars || b.level - a.level || b.awaken - a.awaken || a.name.localeCompare(b.name);
+        if (sort === 'tough') return (b.ehp ?? 0) - (a.ehp ?? 0);
         return (b.dps ?? 0) - (a.dps ?? 0);
       });
     $('d-grid').replaceChildren(...shown.map((t) => el('li', undefined, undefined)).map((li, i) => (li.append(tileEl(shown[i])), li)));
@@ -244,6 +249,27 @@ export async function start(): Promise<void> {
         const roll = percent ? `+${(v.value * 100).toFixed(1)}%` : `+${Math.round(v.value)}`;
         const gain = v.gain >= 0.0005 ? `+${pct(v.gain, 2)}` : 'No change';
         return row(`${roll} ${labels[v.stat] ?? v.stat}`, [gain, v.gain >= 0.0005 ? 'num pos' : 'num']);
+      }),
+    );
+    renderToughness(build.totals, stage);
+  }
+
+  function renderToughness(totals: Build['totals'], stage: (typeof data.stages)[number]) {
+    const { base, values } = toughValues(data, totals, stage);
+    $('t-ehp').textContent = fmt(base.ehp);
+    $('t-line').textContent = `${fmt(base.hp)} HP and ${fmt(base.def)} DEF: ${pct(base.taken, 0)} of each hit gets through.`;
+    const stats: [string, string][] = [
+      ['Stage', `${stage.stage} (level ${stage.level})`],
+      [`${boss} ATK`, fmt(stage.atk)],
+      ['One hit, estimated', fmt(base.bossHit)],
+      ['Hits survived, estimated', base.hits.toFixed(1)],
+    ];
+    $('t-stats').replaceChildren(...stats.flatMap(([k, v]) => [el('dt', k), el('dd', v)]));
+    $('t-values').replaceChildren(
+      ...values.map((v) => {
+        const roll = v.stat.endsWith('Percent') ? `+${(v.value * 100).toFixed(1)}%` : `+${Math.round(v.value)}`;
+        const good = v.gain >= 0.0005;
+        return row(`${roll} ${labels[v.stat] ?? v.stat}`, [`+${fmt(v.ehp - base.ehp)}`, 'num'], [good ? `+${pct(v.gain, 2)}` : 'No change', good ? 'num pos' : 'num']);
       }),
     );
   }
