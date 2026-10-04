@@ -1,7 +1,8 @@
 // Turns an imported box hero (or any Invoker at 6★ level 60, fully awakened, no gear) into simulator input.
 import type { BoxDoc } from '../box/store';
 import type { BoxHero } from '../box/decode';
-import { totalsFor, MAX_SKILL_LEVEL, type DpsData, type DpsHero, type Equipment, type SkillSlot, type Totals } from './model';
+import { trophyBonuses } from '../box/trophies';
+import { addStat, totalsFor, MAX_SKILL_LEVEL, type DpsData, type DpsHero, type Equipment, type SkillSlot, type Totals } from './model';
 
 export interface Build {
   hero: DpsHero;
@@ -35,9 +36,12 @@ export function boxBuild(data: DpsData, box: BoxDoc, owned: BoxHero): Build | nu
   // Box skill levels are on the same 1-11 scale as the skill text (0 = not upgraded = level 1).
   const skillLevels: Partial<Record<SkillSlot, number>> = {};
   for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(MAX_SKILL_LEVEL, s.level));
+  const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
+  // Trophy Room bonuses for the Invoker's element (percents are of its own stats, like gear).
+  for (const [stat, v] of trophyBonuses(box.trophies, hero.element)) addStat(totals, stat, v);
   return {
     hero,
-    totals: totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment),
+    totals,
     skillLevels,
     pieces: equipment.length,
   };

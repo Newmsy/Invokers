@@ -4,6 +4,7 @@
 // set filled first, then swaps one slot at a time until nothing improves.
 import type { BoxAccessory, BoxGear, BoxHero } from '../box/decode';
 import type { BoxDoc } from '../box/store';
+import { trophyBonuses } from '../box/trophies';
 import { simulate, totalsFor, type BossStage, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot } from './model';
 
 export const GEAR_SLOTS = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'];
@@ -69,12 +70,14 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
   const skillLevels: Partial<Record<SkillSlot, number>> = {};
   for (const s of owned.skills) skillLevels[s.skill as SkillSlot] = Math.max(1, Math.min(11, s.level));
 
+  // Trophy Room bonuses count like one more piece with no set.
+  const trophies: Equipment = { stats: trophyBonuses(box.trophies, hero.element) };
   const cache = new Map<string, number>();
   const score = (l: Loadout): number => {
     const key = slots.map((s) => l[s]?.id ?? '-').join(',');
     let v = cache.get(key);
     if (v === undefined) {
-      const equipment = slots.flatMap((s) => (l[s] ? [equipmentOf(l[s]!)] : []));
+      const equipment = [trophies, ...slots.flatMap((s) => (l[s] ? [equipmentOf(l[s]!)] : []))];
       const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
       v = simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds }).dps;
       cache.set(key, v);
