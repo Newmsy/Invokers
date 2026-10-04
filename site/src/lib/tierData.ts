@@ -3,10 +3,10 @@
 import skillsJson from '../../../data/skills.json';
 import tiersJson from '../data/tiers.json';
 import { titanArt, heroArt } from './art';
-import { heroes, heroHref, heroSlug, titanHref, titans, type Hero } from './data';
+import { bosses, heroes, heroHref, heroSlug, titanHref, titans, type Hero } from './data';
 import { heroCandidates, titanCandidates, type SkillSetLike } from './tiers/candidates';
 import { tagLabels, type Kit } from './tiers/kit';
-import { brings, tierLists, tierNames, type TierListDef, type TierName } from './tiers/lists';
+import { bossCorruptions, brings, matchedTolerances, tierLists, tierNames, type Candidate, type TierListDef, type TierName } from './tiers/lists';
 
 export type PoolKind = 'invokers' | 'titans';
 
@@ -38,10 +38,15 @@ export interface TierRow {
 }
 
 const skillSets = skillsJson as SkillSetLike[];
+const heroPool = heroCandidates(heroes, skillSets);
 const kits: Record<PoolKind, Map<string, Kit>> = {
-  invokers: new Map(heroCandidates(heroes, skillSets).map((c) => [c.slug, c.kit])),
+  invokers: new Map(heroPool.map((c) => [c.slug, c.kit])),
   titans: new Map(titanCandidates(heroes, skillSets).map((c) => [c.slug, c.kit])),
 };
+const heroCandidateBySlug = new Map<string, Candidate>(heroPool.map((c) => [c.slug, c]));
+
+/** Each boss list's corruptions (Daze, Blight, ...); mode lists have none. */
+export const listCorruptions = bossCorruptions(bosses);
 const heroBySlug = new Map<string, Hero>(heroes.map((h) => [heroSlug(h.id), h]));
 const titanBySlug = new Map(titans.map((t) => [t.slug, t]));
 
@@ -55,6 +60,11 @@ function pick(kind: PoolKind, list: TierListDef, slug: string): TierPick | undef
     if (!h) return undefined;
     const cls = String(h.class);
     const favoured = (list.classes?.[cls] ?? 0) > 0 || (list.elements?.[h.element] ?? 0) > 0;
+    const tolerated = matchedTolerances(heroCandidateBySlug.get(slug) ?? {}, listCorruptions.get(list.id));
+    const lead = [
+      ...(tolerated.length ? [`${tolerated.join(' + ')} Tolerance`] : []),
+      ...(favoured ? [(list.classes?.[cls] ?? 0) > 0 ? classLabel[cls] ?? cls : h.element] : []),
+    ];
     return {
       slug,
       name: h.name,
@@ -62,7 +72,7 @@ function pick(kind: PoolKind, list: TierListDef, slug: string): TierPick | undef
       art: heroArt(h.id),
       element: h.element,
       meta: `${h.rarity} · ${classLabel[cls] ?? cls}`,
-      brings: favoured ? [(list.classes?.[cls] ?? 0) > 0 ? classLabel[cls] ?? cls : h.element, ...chips].slice(0, 3) : chips,
+      brings: [...lead, ...chips].slice(0, 3),
     };
   }
   const t = titanBySlug.get(slug);
