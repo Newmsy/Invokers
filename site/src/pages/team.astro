@@ -9,7 +9,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
 ---
 <Base title="Team builder">
   <h1>Team builder</h1>
-  <p class="lead">Pick {TEAM_SIZE} Invokers to see the team's elements, factions and classes.</p>
+  <p class="lead">Pick {TEAM_SIZE} Invokers to see the team's elements, factions and classes. Line bonuses by class: <a href={href('tactics')}>Tactics</a>.</p>
 
   <div id="app" data-base={href('/')} data-version={pack.gameVersion}>
     <div class="pick-row">
@@ -64,6 +64,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
     </section>
   </div>
   <SeeAlso links={[
+    { path: 'tactics', label: 'Tactics' },
     { path: 'tiers', label: 'Tier lists' },
     { path: 'heroes/compare', label: 'Compare Invokers' },
     { path: 'heroes', label: 'All Invokers' },
