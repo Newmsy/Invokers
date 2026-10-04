@@ -8,7 +8,7 @@ import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
 import { defenseFactor, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
-import { toughValues } from '../src/lib/dps/tank';
+import { toughness, toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
@@ -200,6 +200,17 @@ describe('gear optimiser', () => {
       expect(Object.keys(r.gainBySlot).sort()).toEqual([...r.changed].sort());
       for (const g of Object.values(r.gainBySlot)) expect(g).toBeGreaterThanOrEqual(-1e-9);
       for (const [slot, p] of Object.entries(r.best)) if (p) expect(p.slot).toBe(slot);
+    }
+  });
+
+  it('can pick gear for effective HP instead of DPS', () => {
+    for (const owned of doc.heroes) {
+      const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true, goal: 'toughness' });
+      if (!r) continue;
+      const hero = data.heroes.find((h) => h.configId === owned.configId)!;
+      expect(r.before).toBeCloseTo(toughness(data, boxBuild(data, doc, owned)!.totals, stage(16)).ehp, 0);
+      expect(r.after).toBeGreaterThanOrEqual(r.before);
+      expect(hero).toBeDefined();
     }
   });
 
