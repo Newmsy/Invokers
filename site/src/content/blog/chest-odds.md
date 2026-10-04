@@ -27,9 +27,9 @@ Two rewards per chest.
 | ![Memorium](item:) | 45% · 150–250 | 44% · 200–300 | 43% · 200–300 |
 | ![Energy](item:) | 24% · 50–100 | 24% · 75–125 | 26% · 125–200 |
 | ![Gems](item:) | 14% · 15–25 | 16% · 20–30 | 15% · 25–35 |
-| ![](item:Ancient Rune) Ancient Rune, random faction | 30% · 15–25 | 28% · 25–35 | 28% · 35–45 |
-| ![](item:Enchanted Rune) Enchanted Rune, random faction | 21% · 5–15 | 20% · 8–18 | 19% · 11–22 |
-| ![](item:Divine Rune) Divine Rune, random faction | 12% · 5–10 | 15% · 7–12 | 15% · 10–15 |
+| ![](item:ancient-rune) Ancient Rune, random faction | 30% · 15–25 | 28% · 25–35 | 28% · 35–45 |
+| ![](item:enchanted-rune) Enchanted Rune, random faction | 21% · 5–15 | 20% · 8–18 | 19% · 11–22 |
+| ![](item:divine-rune) Divine Rune, random faction | 12% · 5–10 | 15% · 7–12 | 15% · 10–15 |
 | ![Fate Star](item:) or ![Dream Orb](item:) (each) | 1% | 1.2% | 1.4% |
 | ![Destiny Star](item:) or ![Wonder Orb](item:) (each) | 0.5% | 0.7% | 0.9% |
 
@@ -80,10 +80,10 @@ One reward per chest, free every day. Every fourth VIP level is shown. Bonuses, 
 | ![Titan Spark](item:) | 15% · 20 | 10% · 50 | 10% · 90 | 10% · 100 | 10% · 100 | 10% · 100 | 10% · 100 |
 | ![Multi-Battle Tokens](item:) | 10% · 10 | 10% · 10 | 10% · 10 | 10% · 10 | 10% · 10 | 10% · 10 | 10% · 10 |
 | Echo | 10% · 1★ | 10% · 2★ | 5% · 3★ | 10% · 3★ | 10% · 3★ | 10% · 3★ | 10% · 3★ |
-| ![](item:Ancient Rune) Ancient Rune, random faction | 15% · 5 | 10% · 5 | — | — | — | — | — |
-| ![](item:Enchanted Rune) Enchanted Rune, random faction | — | 5% · 3 | 10% · 5 | — | — | — | — |
-| ![](item:Raw Astral Essence) Raw Essence, random element or Astral | 15% · 5 | 10% · 5 | — | — | — | — | — |
-| ![](item:Refined Astral Essence) Refined Essence, random element or Astral | — | 5% · 3 | 10% · 5 | — | — | — | — |
+| ![](item:ancient-rune) Ancient Rune, random faction | 15% · 5 | 10% · 5 | — | — | — | — | — |
+| ![](item:enchanted-rune) Enchanted Rune, random faction | — | 5% · 3 | 10% · 5 | — | — | — | — |
+| ![](item:raw-astral-essence) Raw Essence, random element or Astral | 15% · 5 | 10% · 5 | — | — | — | — | — |
+| ![](item:refined-astral-essence) Refined Essence, random element or Astral | — | 5% · 3 | 10% · 5 | — | — | — | — |
 | ![Rare Codex](item:) or ![Rare Prism](item:) (each) | — | 1% | 5% | 5% | 5% | 5% | 6% |
 | ![Epic Codex](item:) or ![Epic Prism](item:) (each) | — | — | 1% | 5% | 5% | 5% | 6% |
 | ![Legendary Codex](item:) or ![Legendary Prism](item:) (each) | — | — | — | 1% | 3% | 5% | 6% |
