@@ -1,6 +1,7 @@
 // Build-time data for the DPS simulator, served as one JSON file (pages/dps-data.json.ts) that the page fetches.
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
+import damageJson from '../../../../data/damage.json';
 import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
@@ -127,10 +128,10 @@ export function dpsData(): DpsData {
       skillRecovery: curve('SkillRecoveryPct'),
       manaGen: curve('ManaRegenRecoveryPct'),
       comboSpeed: curve(COMBO_SPEED_CURVE),
-      defense: curve('DefenseFactor'),
       resist: curve('ResistChance_ResMinusAcc'),
     },
     stages,
+    defense: { floor: damageJson.defense.floor, scale: damageJson.defense.scale },
     normalRoll: normalRoll(NORMAL_ROLL_STATS),
     toughRoll: normalRoll(TOUGH_ROLL_STATS),
   };

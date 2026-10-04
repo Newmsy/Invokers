@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import sample from '../../datamine/samples/box-sample.json';
+import damageJson from '../../data/damage.json';
+import curvesJson from '../../data/stat_curves.json';
 import type { BoxHero } from '../src/lib/box/decode';
 import type { BoxDoc } from '../src/lib/box/store';
 import { fullyAwakened } from '../src/lib/awakening';
@@ -121,11 +123,11 @@ describe('fight', () => {
     expect(data.stages.map((s) => s.stage)).toEqual(STAGES);
   });
 
-  it('keeps the defense curve falling past 3,000 DEF', () => {
-    const c = data.curves.defense;
-    expect(defenseFactor(c, 3000)).toBeCloseTo(c[3000]);
-    expect(defenseFactor(c, 11000)).toBeLessThan(defenseFactor(c, 8540));
-    expect(defenseFactor(c, 11000)).toBeGreaterThan(0);
+  it("matches the game's DEF rule at every exported sample, including boss DEF", () => {
+    for (const s of damageJson.defense.samples) expect(defenseFactor(data.defense, s.defense)).toBeCloseTo(s.multiplier, 5);
+    // Same as the in-game rating table where both exist.
+    const curve = (curvesJson as { curves: { id: string; values: number[] }[] }).curves.find((c) => c.id === 'DefenseFactor')!.values;
+    for (const d of [0, 402, 1081, 2000, 3000]) expect(defenseFactor(data.defense, d)).toBeCloseTo(curve[d], 5);
   });
 
   it('deals damage with combos, skills and the Ultimate', () => {

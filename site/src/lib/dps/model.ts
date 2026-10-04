@@ -67,7 +67,6 @@ export interface Curves {
   skillRecovery: number[];
   manaGen: number[];
   comboSpeed: number[];
-  defense: number[];
   /** Resist chance (%) by target RES - attacker ACC + 1,500. */
   resist: number[];
 }
@@ -83,6 +82,7 @@ export interface DpsData {
   sets: Record<string, Record<string, StatPairs>>;
   curves: Curves;
   stages: BossStage[];
+  defense: DefenseRule;
   /** One normal 5★ substat roll per stat (see NORMAL_ROLL_* in constants). */
   normalRoll: { stat: string; value: number }[];
   /** One normal 5★ roll of flat and % HP and DEF, for toughness. */
@@ -201,13 +201,15 @@ export function finalStat(t: Totals, key: 'atk' | 'def' | 'hp'): number {
 
 const at = (curve: number[], rating: number) => curve[Math.max(0, Math.min(curve.length - 1, Math.round(rating)))] ?? 0;
 
-/** Damage multiplier at the target's DEF. The curve stops at 3,000; above that it keeps its last rate of decay. */
-export function defenseFactor(curve: number[], def: number): number {
-  const last = curve.length - 1;
-  if (def <= last) return at(curve, def);
-  const step = 100;
-  const decay = Math.log(curve[last - step] / curve[last]) / step;
-  return curve[last] * Math.exp(-decay * (def - last));
+/** The game's DEF rule: damage taken = floor + (1 - floor) × e^(-DEF / scale). It depends only on the defender's DEF. */
+export interface DefenseRule {
+  floor: number;
+  scale: number;
+}
+
+/** Damage multiplier at the target's DEF (1 = full damage), whatever the size of the hit. */
+export function defenseFactor(rule: DefenseRule, def: number): number {
+  return rule.floor + (1 - rule.floor) * Math.exp(-Math.max(0, def) / rule.scale);
 }
 
 /** Chance a debuff that needs Accuracy lands: 1 - resist chance at (target RES - ACC). */
@@ -283,7 +285,7 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const hp = finalStat(t, 'hp');
   const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate));
   const critFactor = 1 + critRate * t.critDmg;
-  const defFactor = defenseFactor(data.curves.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
+  const defFactor = defenseFactor(data.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
   const hitScale = critFactor * defFactor * C.ELEMENT_FACTOR;
   const hitDamage = (h: HitT) => ((h[0] ?? 0) * atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * hitScale;
   const accChance = landChance(data.curves.resist, stage.res, t.acc);
@@ -307,7 +309,10 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const ultRecovery = C.RECOVERY_APPLIES_TO_ULTIMATE ? recovery : 1;
   let ultReady = ult ? (ult.cooldown * startFactor) / ultRecovery : Infinity;
   const comboLevel = hero.combo.length ? hero.combo[levelOf(input, 'Combo', hero.combo.length)] : [];
-  let mana = 0;
+  // Ultimate mana fills with time (issue #124), faster with Mana Generation and in Arena; it starts empty.
+  const manaPerSec = C.ULT_MANA_PER_SEC * manaGain;
+  const manaFullAt = (since: number) => (ult?.manaCost ? since + ult.manaCost / manaPerSec : Infinity);
+  let ultManaFull = manaFullAt(0);
   let step = 0;
   let now = 0;
 
@@ -323,8 +328,8 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   };
 
   while (now < until) {
-    if (ult?.levels.length && ult.manaCost && mana >= ult.manaCost && now >= ultReady) {
-      mana = 0;
+    if (ult?.levels.length && ult.manaCost && now >= ultManaFull && now >= ultReady) {
+      ultManaFull = manaFullAt(now);
       ultReady = now + ult.cooldown / ultRecovery;
       cast('Ultimate', ult, C.ULTIMATE_CAST_SEC);
       continue;
@@ -333,19 +338,18 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
     if (slot) {
       const s = hero.skills[slot]!;
       ready.set(slot, now + s.cooldown / recovery);
-      mana += C.MANA_PER_SKILL_CAST * manaGain;
       cast(slot, s, C.SKILL_CAST_SEC);
       continue;
     }
     if (comboLevel.length) {
       const hits = comboLevel[step % comboLevel.length];
       events.push({ at: now, slot: 'Combo', damage: hits.reduce((n, h) => n + hitDamage(h), 0), cast: true });
-      mana += C.MANA_PER_COMBO_HIT * hits.length * manaGain;
       step += 1;
       now += C.COMBO_STEP_SEC / comboSpeed;
     } else {
       // No combo to fill the gap: wait for the next cooldown.
-      const next = Math.min(ultReady, ...ACTIVE.map((s) => ready.get(s) ?? Infinity));
+      const ultAt = ult?.levels.length ? Math.max(ultReady, ultManaFull) : Infinity;
+      const next = Math.min(ultAt, ...ACTIVE.map((s) => ready.get(s) ?? Infinity));
       if (!Number.isFinite(next) || next <= now) break;
       now = next;
     }
