@@ -6,6 +6,8 @@ import { clearBox, loadBox, onBoxChange, saveBox, type BoxDoc } from './store';
 import { TROPHY_ROOMS, roomLevels, trophyBonuses } from './trophies';
 import type { HeroRef } from '../data';
 import { getAccountState, onAccountChange } from '../account/state';
+import type { DpsData } from '../dps/model';
+import { boxPower, formatPower } from '../power';
 
 interface Refs {
   heroes: Record<string, HeroRef>;
@@ -13,6 +15,8 @@ interface Refs {
   sets: Record<string, string>;
   gameVersion: string;
   heroBase: string;
+  /** Hero stats data, fetched for power. */
+  dataUrl: string;
 }
 
 const PAGE = 150;
@@ -38,6 +42,21 @@ export function start(): void {
   let tab = 'heroes';
   let gearShown = PAGE;
   let accShown = PAGE;
+
+  // Power needs every Invoker's stats, so that data loads only once a box with invokers is shown.
+  let statData: DpsData | null = null;
+  let statDataLoading = false;
+  const loadStatData = () => {
+    if (statData || statDataLoading) return;
+    statDataLoading = true;
+    fetch(refs.dataUrl)
+      .then((r) => r.json())
+      .then((d: DpsData) => {
+        statData = d;
+        renderHeroes();
+      })
+      .catch(() => (statDataLoading = false));
+  };
 
   const heroRef = (h: BoxHero): HeroRef | undefined => refs.heroes[h.configId];
   const heroNameByInventoryId = () => {
@@ -209,15 +228,18 @@ export function start(): void {
     const grid = $('hero-grid');
     grid.replaceChildren();
     if (!box) return;
+    if (box.heroes.length) loadStatData();
+    const doc = box;
     const q = heroSearch.value.trim().toLowerCase();
     const rows = box.heroes
       .filter((hero) => heroStorage.checked || !hero.inStorage)
-      .map((hero) => ({ hero, ref: heroRef(hero) }))
+      .map((hero) => ({ hero, ref: heroRef(hero), power: statData ? boxPower(statData, doc, hero) : null }))
       .filter(({ ref }) => !q || (ref ? `${ref.name} ${ref.faction} ${ref.element} ${ref.class}` : 'unknown').toLowerCase().includes(q));
     const by = heroSort.value;
     rows.sort((a, b) => {
       const name = (a.ref?.name ?? '~').localeCompare(b.ref?.name ?? '~');
       if (by === 'name') return name;
+      if (by === 'power' && statData) return (b.power ?? -1) - (a.power ?? -1) || name;
       if (by === 'rank') return RANKS.indexOf(b.hero.rank) - RANKS.indexOf(a.hero.rank) || b.hero.level - a.hero.level || name;
       if (by === 'rarity') return RARITIES.indexOf(b.ref?.rarity ?? '') - RARITIES.indexOf(a.ref?.rarity ?? '') || name;
       return b.hero.level - a.hero.level || RANKS.indexOf(b.hero.rank) - RANKS.indexOf(a.hero.rank) || name;
@@ -226,7 +248,7 @@ export function start(): void {
       grid.append(h('p', { class: 'muted' }, 'No invokers match.'));
       return;
     }
-    for (const { hero, ref } of rows) {
+    for (const { hero, ref, power } of rows) {
       const gearCount = Object.keys(hero.gearBySlot).length;
       grid.append(
         h(
@@ -234,7 +256,7 @@ export function start(): void {
           { class: `hero-card r-${ref?.rarity ?? 'Unknown'}` },
           ref ? h('a', { href: refs.heroBase + ref.slug, class: 'with-avatar' }, avatar(ref.art, 36), ref.name) : h('strong', {}, 'Unknown invoker'),
           h('span', { class: 'sub' }, ref ? `${ref.rarity} · ${ref.faction} · ${ref.element} · ${titleCase(ref.class)}` : `config ${hero.configId}`),
-          h('span', {}, stars(hero.rank), ` Lv ${hero.level}`),
+          h('span', {}, stars(hero.rank), ` Lv ${hero.level}`, power != null ? h('span', { class: 'power' }, `Power ${formatPower(power)}`) : null),
           h('span', { class: 'sub' }, `Awakening ${hero.awakenLevel} · gear ${gearCount}/8${hero.inStorage ? ' · in storage' : ''}`),
         ),
       );
