@@ -129,7 +129,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
         {tiers.map((t) => (
           <li>
             <a href={href(`tiers/titans/${t.list.id}`)}>
-              <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#D4A64A'}`}>{t.tier}</span>
+              <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#EBB84C'}`}>{t.tier}</span>
               {t.list.label}
             </a>
           </li>
@@ -144,7 +144,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     <ul class="binders">
       {shown.map((h) => (
         <li>
-          <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
+          <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#E2D7BF'}`}>
             <span class="portrait"><HeroArt hero={h} /></span>
             <span class="name">{h.name}</span>
           </a>

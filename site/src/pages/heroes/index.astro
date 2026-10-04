@@ -89,7 +89,7 @@ const groups = [
         data-tolerance={heroTolerances.get(h.id)?.join(' ')}
         data-effect={effectsFor(h.id).map((e) => e.slug).join(' ')}
       >
-        <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
+        <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#E2D7BF'}`}>
           <div class="card-art">
             <HeroArt hero={h} />
             <span class="card-tier"><TierBadge heroId={h.id} /></span>

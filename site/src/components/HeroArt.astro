@@ -13,7 +13,7 @@ interface Props {
 const { hero, class: cls, large } = Astro.props;
 const splash = large ? heroSplash(hero.id) : undefined;
 const art = splash ?? heroArt(hero.id);
-const tint = elementColor[hero.element] ?? '#D4A64A';
+const tint = elementColor[hero.element] ?? '#EBB84C';
 ---
 {art ? (
   <img class:list={['art', { splash }, cls]} src={art} alt="" loading={large ? 'eager' : 'lazy'} />

@@ -35,7 +35,7 @@ const related = effects.filter((e) => e.group === effect.group && e.slug !== eff
   <ul class="grid">
     {list.map((h) => (
       <li>
-        <a class="card" href={`${heroHref(h.id)}#${skillAnchor(skillsWith(h.id, effect.slug)[0])}`} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
+        <a class="card" href={`${heroHref(h.id)}#${skillAnchor(skillsWith(h.id, effect.slug)[0])}`} style={`--rarity: ${rarityColor[h.rarity] ?? '#E2D7BF'}`}>
           <span class="art"><HeroArt hero={h} /><span class="tier"><TierBadge heroId={h.id} /></span></span>
           <span class="name">{h.name}</span>
           <span class="meta">{skillsWith(h.id, effect.slug).map(skillTypeName).join(', ')}</span>

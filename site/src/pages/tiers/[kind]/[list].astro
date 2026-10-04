@@ -76,14 +76,14 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
 
   <div class="rows">
     {rows.map((r) => (
-      <section class="row" style={`--tier: ${tierColor[r.tier] ?? '#D4A64A'}`} aria-label={`Tier ${r.tier}`}>
+      <section class="row" style={`--tier: ${tierColor[r.tier] ?? '#EBB84C'}`} aria-label={`Tier ${r.tier}`}>
         <span class="tier" aria-hidden="true">{r.tier}</span>
         <ul class="picks">
           {r.picks.map((p) => {
             const Tag = p.href ? 'a' : 'div';
             return (
               <li data-filter={kind === 'invokers' ? p.element : p.meta}>
-                <Tag class="pick" href={p.href} style={p.element ? `--tint: ${elementColor[p.element] ?? '#D4A64A'}` : undefined}>
+                <Tag class="pick" href={p.href} style={p.element ? `--tint: ${elementColor[p.element] ?? '#EBB84C'}` : undefined}>
                   <span class="art">
                     {p.art ? <img src={p.art} alt="" width="52" height="52" loading="lazy" /> : <span>{initials(p.name)}</span>}
                   </span>
