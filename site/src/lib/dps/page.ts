@@ -148,7 +148,7 @@ export async function start(): Promise<void> {
     const bits = [`${t.stars}★ Lv ${t.level}`];
     if (t.key.startsWith('box:')) bits.push(t.awaken ? `Awakened ${t.awaken}` : 'Not awakened', `${t.pieces} gear`);
     text.append(el('small', bits.join(' · ')));
-    text.append(el('small', sortSel.value === 'tough' ? `${fmt(t.ehp ?? 0)} effective HP` : `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
+    text.append(el('small', (sortSel.value === 'tough' || (sortSel.value !== 'dps' && tab === 'toughness')) ? `${fmt(t.ehp ?? 0)} effective HP` : `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
     card.append(text);
     return card;
   }
