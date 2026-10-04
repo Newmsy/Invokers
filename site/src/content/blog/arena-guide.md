@@ -1,6 +1,6 @@
 ---
 title: "Arena guide: tokens, leagues, rewards and what changes in PvP"
-description: "29 free tokens a day, a Monday reset, and skills that start at 70% cooldown. Everything the Arena does differently, with weekly chest odds and Arena Rush points per league."
+description: "29 free tokens a day, a Monday reset, and skills that start at 50% cooldown. Everything the Arena does differently, with weekly chest odds and Arena Rush points per league."
 date: 2026-10-04
 gameVersion: "0.61.1516"
 art: ["item:Gold Trophy", "element:light", "element:dark"]
@@ -11,7 +11,7 @@ tags: [arena, trophies]
 
 - Free tokens: 1 an hour (stores 10) plus 5 from Playtime, **29 a day** at most. More cost 50 Gems for 10.
 - Leagues reset **Monday 11:00 UTC** to the bottom of your current league.
-- Skills start on **70% cooldown**, so Skill Recovery and fast Titans matter more than in PvE.
+- Skills start on **50% cooldown**, so Skill Recovery and fast Titans matter more than in PvE.
 
 ## Teams and battles
 
@@ -67,13 +67,13 @@ A loss still scores about half a win, so spend every token during the event. Tar
 
 ## Skill timing
 
-Arena cooldowns start at 70%, then shrink with Skill Recovery: time to first cast = 0.7 × base cooldown ÷ (1 + Skill Recovery %).
+Arena cooldowns start at 50%, then shrink with Skill Recovery: time to first cast = 0.5 × base cooldown ÷ (1 + Skill Recovery %).
 
 | Base cooldown | No Skill Recovery | +25% (100 rating) | +46% (300 rating) |
 |---|---|---|---|
-| 20s | 14.0s | 11.2s | 9.6s |
-| 25s | 17.5s | 14.0s | 12.0s |
-| 30s | 21.0s | 16.8s | 14.4s |
+| 20s | 10.0s | 8.0s | 6.8s |
+| 25s | 12.5s | 10.0s | 8.6s |
+| 30s | 15.0s | 12.0s | 10.3s |
 
 Rating to percent: [Stats that stop working](/blog/stats-that-stop-working). Debuff chance against high-RES defenders: [How combat works](/blog/combat-basics).
 

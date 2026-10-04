@@ -72,3 +72,16 @@ describe('Arena guide battle rules', () => {
     expect(post).toContain(`costs ${m.titanManaCost.toLocaleString('en-GB')} of its ${m.maxTitanMana.toLocaleString('en-GB')} mana, stays ${m.titanDurationSec} seconds, and its cooldown is ${m.titanCooldownSec.pvp} seconds instead of ${m.titanCooldownSec.pve}`);
   });
 });
+
+describe('Arena guide skill timing', () => {
+  const post = readFileSync(new URL('../src/content/blog/arena-guide.md', import.meta.url), 'utf8');
+  const factor = (arenaJson as unknown as { initialCooldownFactor: number }).initialCooldownFactor;
+
+  it('starts cooldowns where the Arena data does', () => {
+    expect(post).toContain(`start at ${factor * 100}% cooldown`);
+    expect(post).toContain(`${factor} × base cooldown`);
+    for (const [base, ...cells] of [[20], [25], [30]].map(([b]) => [b, ...[0, 0.25, 0.46].map((sr) => `${((factor * b) / (1 + sr)).toFixed(1)}s`)])) {
+      expect(post).toContain(`| ${base}s | ${cells.join(' | ')} |`);
+    }
+  });
+});
