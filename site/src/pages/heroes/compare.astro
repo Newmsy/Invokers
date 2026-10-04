@@ -224,6 +224,11 @@ import { href } from '../../lib/data';
             card.append(el('p', 'No skill in this slot.', 'none'));
           } else {
             card.append(el('strong', s.title));
+            const timing = [
+              typeof s.cooldown === 'number' && `Cooldown ${s.cooldown}s`,
+              s.manaCost && `${s.manaCost.toLocaleString('en-GB')} mana`,
+            ].filter(Boolean).join(' · ');
+            if (timing) card.append(el('span', timing, 'timing'));
             const shown = s.levels.filter((l) => l.level <= lv).pop() ?? s.levels[0];
             const text = el('div', undefined, 'skill-text');
             text.innerHTML = shown.html; // built from the game text by richText(), which escapes everything else
@@ -337,6 +342,7 @@ import { href } from '../../lib/data';
   #skills :global(.skill) { padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
   #skills :global(.who) { display: block; font-size: 12px; color: var(--muted); }
   #skills :global(.skill strong) { display: block; margin: 2px 0 6px; }
+  #skills :global(.timing) { display: block; font-size: 12px; color: var(--soft); margin: -2px 0 6px; }
   #skills :global(.skill-text) { font-size: 14px; line-height: 1.55; white-space: pre-line; }
   #skills :global(.none) { color: var(--muted); margin: 4px 0 0; font-size: 14px; }
   @media (max-width: 720px) {

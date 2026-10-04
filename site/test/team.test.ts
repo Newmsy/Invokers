@@ -15,6 +15,7 @@ const hero = (slug: string, cls: string, faction: string, element: string, r: nu
   cls,
   baseRank: 'Four',
   stats: { Five: { '50': row(1, 1, 1, 1) }, Six: { '1': row(0, 0, 0, 0), '60': r } },
+  cooldowns: [],
 });
 
 describe('parseSlugs', () => {

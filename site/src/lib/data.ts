@@ -59,6 +59,10 @@ export interface SkillLevel {
 export interface Skill {
   type: string;
   title: string;
+  /** Seconds; null or missing for combos, passives and Titan skills. */
+  cooldown?: number | null;
+  /** Ultimate mana cost. */
+  manaCost?: number;
   levels?: SkillLevel[];
 }
 
