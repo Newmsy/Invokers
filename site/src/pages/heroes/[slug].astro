@@ -2,8 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { classIcon, elementIcon, factionCard, heroSplash, skillIcon } from '../../lib/art';
-import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { classIcon, elementIcon, factionCard, heroSplash, skillIcon, titanArt } from '../../lib/art';
+import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, titanHref, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -20,6 +20,7 @@ import { awakeningType, fullyAwakened, soulSignAnchor } from '../../lib/awakenin
 import { corruptionKey, corruptionLabel } from '../../lib/tolerances';
 import { effectsFor, linkEffects } from '../../lib/effects';
 import { legendaryPool, summons } from '../../lib/summons';
+import { titanPicksFor } from '../../lib/titans';
 
 export function getStaticPaths() {
   return heroes.map((hero) => ({ params: { slug: heroSlug(hero.id) }, props: { hero } }));
@@ -86,6 +87,9 @@ const similar = similarTo(hero).map((h) => ({
   best: bestTier(h.id),
   configId: Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === h.id)?.[0] ?? '',
 }));
+
+// Best Titans this Invoker can bind (same faction, or any-faction ones).
+const titanPicks = titanPicksFor(hero);
 
 // Plain-text preview of a skill for the overview list.
 const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -200,6 +204,28 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <ul class="effect-list">
           {kitEffects.map((e) => <li><a href={effectHref(e.slug)} title={e.text}>{e.name}</a></li>)}
         </ul>
+      </>
+    )}
+
+    {titanPicks.length > 0 && (
+      <>
+        <h2 id="titans">Recommended Titans</h2>
+        <p class="hint">{hero.faction} Titans, plus any that every Invoker can bind. Bonus at full Empowerment.</p>
+        <ul class="titan-picks">
+          {titanPicks.map((p) => (
+            <li>
+              <a class="titan-pick-art" href={titanHref(p.titan.slug)} tabindex="-1" aria-hidden="true">
+                {titanArt(p.titan.id) ? <img src={titanArt(p.titan.id)} alt="" width="56" height="56" loading="lazy" /> : <span>{p.titan.name[0]}</span>}
+              </a>
+              <div>
+                <a class="titan-pick-name" href={titanHref(p.titan.slug)}>{p.titan.name}</a>
+                {p.titan.rarity && <span class="titan-pick-rarity" style={`color: ${rarityColor[p.titan.rarity] ?? 'inherit'}`}>{p.titan.rarity}</span>}
+                <p>{p.reason}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p class="hint more"><a href={href(`heroes?faction=${encodeURIComponent(hero.faction)}`)}>All {hero.faction} Invokers</a> · <a href={href('titans')}>All Titans</a></p>
       </>
     )}
 
@@ -516,6 +542,14 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     font-size: 13px;
   }
 
+  .titan-picks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .titan-picks li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .titan-pick-art { flex: none; width: 56px; height: 56px; border-radius: 10px; overflow: hidden; display: grid; place-items: center; background: var(--surface-2); color: var(--muted); font-weight: 700; }
+  .titan-pick-art img { width: 100%; height: 100%; object-fit: cover; }
+  .titan-pick-name { font-weight: 700; color: var(--text); text-decoration: none; }
+  .titan-pick-name:hover { color: var(--accent); }
+  .titan-pick-rarity { margin-left: 8px; font-size: 12px; font-weight: 600; }
+  .titan-picks p { margin: 2px 0 0; color: var(--muted); font-size: 14px; line-height: 1.4; }
   .similar { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
   .similar a { display: flex; flex-direction: column; gap: 2px; color: var(--text); text-decoration: none; font-size: 13px; }
   .similar-art {
