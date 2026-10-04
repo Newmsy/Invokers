@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { maxVip } from '../lib/vip';
 import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, heroes, heroHref, href } from '../lib/data';
 import { heroArt, itemIcon } from '../lib/art';
@@ -341,7 +342,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
       <dt>Echoes</dt>
       <dd>Packs, and some Spire floor rewards.</dd>
       <dt>Runes</dt>
-      <dd>Campaign battles. The VIP bonus raises your chance of Rune drops there.</dd>
+      <dd>Campaign battles. The VIP bonus raises your chance of Rune drops there, up to ×{maxVip.runeDrops} (<a href={href('blog/vip-levels')}>VIP levels</a>).</dd>
       <dt>Essences</dt>
       <dd>
         The Garuda bosses (Omnissi) in Boss Mode, one per element; the Astral Garuda drops Astral Essence:{' '}
