@@ -51,7 +51,6 @@
   "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config.",
   "debuffLanding: which stat feeds the target 'resist bonus' and attacker 'accuracy bonus' terms (two F64 fields on the battle state), and the exact corruption types (read as type 11 on the target and Mindfog on the attacker).",
   "Whether the in-skill cast chance ('20% chance to cast') is rolled before and separately from this resist roll (it is a separate script block, so most likely yes).",
-  "crit: the exact crit damage formula (whether it is x(1 + critDamage) or x critDamage) was read from a long function and not verified in game.",
   "How DEF Down / Weaken map onto defenseFactor / damageTakenFactor (from the status effect configs, not decoded yet)."
  ],
  "elements": {
@@ -106,9 +105,15 @@
    "rounding": "to the nearest whole number at the end"
   },
   "crit": {
-   "chance": "stat crit rate + the hit's ModifyCritChancePercent / 100 + elements.critChanceDelta / 100 (not below 0), rolled against random(0..100)",
-   "damage": "crit hits use the attacker's crit damage stat plus the hit's ModifyCritDamagePercent / 100",
-   "elementMultiplierAppliedAfterCrit": true
+   "chancePct": "round(100 x max(0, attacker crit rate + the hit's ModifyCritChancePercent / 100)) + elements.critChanceDelta",
+   "roll": "crit if random integer 0..999 < 10 x chancePct (so chancePct is a plain percentage; element disadvantage -50 points)",
+   "multiplier": "1 + max(0, attacker crit damage + the hit's ModifyCritDamagePercent / 100)  (crit damage stat as a fraction: 0.5 = +50%)",
+   "order": "source damage = base x critMultiplier x element damage multiplier",
+   "exceptions": [
+    "Corruption damage (damage types 5-16: Mindfog ... Nightmare) never crits and ignores element: source = base.",
+    "Hits flagged no-crit (DamageOrHealEvent flag 8) never crit; OnlyCritDamage forces a crit."
+   ],
+   "source": "DamageUtils.CalculateSourceDamage (read from the game code)"
   }
  }
 }
