@@ -30,6 +30,7 @@ const defense = byId('DefenseFactor');
 const resist = byId('ResistChance_ResMinusAcc');
 const offset = resist ? (resist.values.length - 1) / 2 : 0;
 const diffs = [-1000, -500, -100, 0, 100, 500, 1000];
+const pctSigned = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${n(Math.abs(v))}%`;
 const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).toLocaleString('en-GB')}`;
 ---
 <Base title="What stats do">
@@ -39,7 +40,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
   <section aria-labelledby="curves-title">
     <h2 id="curves-title">Rating to effect</h2>
     <div class="table-wrap">
-      <table>
+      <table class="stack">
         <thead>
           <tr>
             <th scope="col">Stat</th>
@@ -50,7 +51,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
           {rows.map((r) => (
             <tr>
               <th scope="row"><strong>{r.name}</strong><small>{r.what}</small></th>
-              {ratings.map((x) => <td class="num">{r.fmt(r.curve!.values[x])}</td>)}
+              {ratings.map((x) => <td class="num" data-label={`Rating ${x.toLocaleString('en-GB')}`}>{r.fmt(r.curve!.values[x])}</td>)}
             </tr>
           ))}
         </tbody>
@@ -68,7 +69,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
       <h2 id="resist-title">Resist against Accuracy</h2>
       <p>Resisting an effect uses <strong>your Resistance minus the attacker’s Accuracy</strong>, not either stat alone.</p>
       <div class="table-wrap">
-        <table>
+        <table class="stack">
           <thead>
             <tr>
               <th scope="col">RES minus ACC</th>
@@ -77,16 +78,13 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><strong>Resist value</strong><small>Estimated</small></th>
-              {diffs.map((d) => <td class="num">{n(resist.values[offset + d])}</td>)}
+              <th scope="row"><strong>Resist chance</strong><small>Percent</small></th>
+              {diffs.map((d) => <td class="num" data-label={`RES − ACC ${signed(d)}`}>{pctSigned(resist.values[offset + d])}</td>)}
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="hint">
-        Estimated: the game calls this a resist chance in percent, but values run past ±100, so treat it as a scale (0 =
-        RES equals ACC) rather than an exact chance.
-      </p>
+      <p class="hint">The game’s resist chance in percent for each gap between RES and ACC. 0 means RES and ACC are equal; a negative gap gives a negative chance.</p>
     </section>
   )}
 
@@ -120,6 +118,13 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
   @media (max-width: 720px) {
     h1 { font-size: 22px; }
     th, td { padding: 6px 8px; }
-    tbody th { min-width: 120px; max-width: 140px; }
+    /* Phones: each stat becomes a card with its values in a grid, nothing scrolls sideways. */
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody { display: block; }
+    table.stack tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    table.stack tbody tr:last-child { border-bottom: 0; }
+    table.stack th, table.stack td { display: block; padding: 0; border: 0; text-align: left; position: static; min-width: 0; max-width: none; white-space: normal; background: none; }
+    table.stack tbody th { grid-column: 1 / -1; }
+    table.stack td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; }
   }
 </style>

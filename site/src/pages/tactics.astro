@@ -91,21 +91,26 @@ const firstPlaybook = itemIcon('FT_General1');
         <thead>
           <tr>
             <th scope="col">Level</th>
-            {priceItems.map((id) => (
-              <th scope="col" class="num"><span class="item">{icon(id) && <img src={icon(id)} alt="" width="20" height="20" loading="lazy" />}{plainItemName(id)}</span></th>
-            ))}
+            <th scope="col" class="num"><span class="item">{icon('Gold') && <img src={icon('Gold')} alt="" width="20" height="20" loading="lazy" />}Gold</span></th>
+            <th scope="col">Playbooks</th>
           </tr>
         </thead>
         <tbody>
           {price.map((p, i) => (
             <tr>
               <th scope="row">{i + 1} → {i + 2}</th>
-              {priceItems.map((id) => <td class="num">{p[id] ? n(p[id]) : '–'}</td>)}
+              <td class="num">{n(p.Gold ?? 0)}</td>
+              <td>{playbooks.filter((id) => p[id]).map((id) => (
+                <span class="item">{icon(id) && <img src={icon(id)} alt="" width="20" height="20" loading="lazy" />}{n(p[id])} {plainItemName(id).replace(/ Playbook$/, '')}</span>
+              ))}</td>
             </tr>
           ))}
           <tr class="total">
             <th scope="row">Total</th>
-            {priceItems.map((id) => <td class="num">{n(totals[id])}</td>)}
+            <td class="num">{n(totals.Gold)}</td>
+            <td class="totals">{playbooks.map((id) => (
+              <span class="item">{icon(id) && <img src={icon(id)} alt="" width="20" height="20" loading="lazy" />}{n(totals[id])} {plainItemName(id).replace(/ Playbook$/, '')}</span>
+            ))}</td>
           </tr>
         </tbody>
       </table>
@@ -159,9 +164,11 @@ const firstPlaybook = itemIcon('FT_General1');
   td.strong { font-weight: 600; color: var(--text); }
   .who { display: block; color: var(--muted); font-size: 12px; }
   .cls { display: inline-flex; align-items: center; gap: 3px; margin-right: 6px; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 720px; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 520px; }
   .cost thead th { background: var(--surface-3); }
   .cost th, .cost td { padding: 7px 12px; white-space: nowrap; }
+  .cost td.totals { white-space: normal; }
+  .cost .item + .item { margin-left: 10px; }
   .item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
   .item img { border-radius: 4px; }
   tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }

@@ -46,7 +46,7 @@ const gemIcon = itemIcon('Gem');
   </nav>
   <ul class="notes">
     <li><strong>All amounts are averages</strong> over many wins. Any single run can give more, less or nothing.</li>
-    <li><strong>Estimated</strong> (*): loot from enemies and chests in Campaign and event stages, worked out from each item’s share of that loot.</li>
+    <li><strong>Estimated</strong> (*): enemy and chest loot in Campaign and event stages. How many enemies and chests a stage has isn’t known, so each loot pool is assumed to pay out its listed amount once per win, split by weight. Everything else is exact.</li>
     <li>Stages with the same drops share a row. One-time first-clear rewards aren’t counted.</li>
   </ul>
 
@@ -68,7 +68,7 @@ const gemIcon = itemIcon('Gem');
             </summary>
             {it.stages.length > 0 && (
               <div class="table-wrap">
-                <table>
+                <table class="stack">
                   <thead>
                     <tr>
                       <th scope="col">Where</th>
@@ -84,11 +84,11 @@ const gemIcon = itemIcon('Gem');
                       {rows.map((r) => (
                         <tr>
                           <th scope="row">{r.path ? <a href={href(r.path)}>{r.place}</a> : r.place}{diff(r.difficulty) !== '–' && <small>{r.difficulty}</small>}</th>
-                          <td>{stageList(r.stages)}</td>
-                          <td class="num">{r.energy}</td>
-                          <td class="num strong">{avg(r.perEnergy)}{r.estimated && '*'}</td>
-                          <td class="num">{avg(r.perRun)}{r.estimated && '*'}</td>
-                          <td class="drops">{r.parts.map(partText).join(' · ')}</td>
+                          <td data-label="Stage">{stageList(r.stages)}</td>
+                          <td class="num" data-label="Energy">{r.energy}</td>
+                          <td class="num strong" data-label="Avg per Energy">{avg(r.perEnergy)}{r.estimated && '*'}</td>
+                          <td class="num" data-label="Avg per run">{avg(r.perRun)}{r.estimated && '*'}</td>
+                          <td class="drops" data-label="Drops and chance">{r.parts.map(partText).join(' · ')}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -104,15 +104,15 @@ const gemIcon = itemIcon('Gem');
                 <h3>Spires</h3>
                 <p class="hint">Spire floors cost Spire Keys, not Energy.</p>
                 <div class="table-wrap">
-                  <table>
+                  <table class="stack">
                     <thead><tr><th scope="col">Spire</th><th scope="col">Floors</th><th scope="col" class="num">Per floor</th><th scope="col" class="num">All floors</th></tr></thead>
                     <tbody>
                       {it.spires.map((sp) => (
                         <tr>
                           <th scope="row">{sp.place}</th>
-                          <td>{sp.floors === 1 ? `Floor ${sp.first}` : `${sp.floors} floors from ${sp.first} to ${sp.last}`}</td>
-                          <td class="num">{sp.min === sp.max ? n(sp.min) : `${n(sp.min)}–${n(sp.max)}`}</td>
-                          <td class="num">{n(sp.total)}</td>
+                          <td class="wide" data-label="Floors">{sp.floors === 1 ? `Floor ${sp.first}` : `${sp.floors} floors from ${sp.first} to ${sp.last}`}</td>
+                          <td class="num" data-label="Per floor">{sp.min === sp.max ? n(sp.min) : `${n(sp.min)}–${n(sp.max)}`}</td>
+                          <td class="num" data-label="All floors">{n(sp.total)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -206,5 +206,15 @@ const gemIcon = itemIcon('Gem');
     h1 { font-size: 22px; }
     details.item { padding: 0 10px; }
     th, td { padding: 6px 8px; }
+    /* Phones: each row becomes a small card, labels beside the values, nothing scrolls sideways. */
+    table.stack thead { display: none; }
+    table.stack, table.stack tbody:not(.more) { display: block; }
+    table.stack tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px 8px; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    table.stack tbody:last-child tr:last-child { border-bottom: 0; }
+    table.stack th, table.stack td { display: block; padding: 0; border: 0; white-space: normal; text-align: left; min-width: 0; }
+    table.stack tbody th { grid-column: 1 / -1; font-weight: 600; }
+    table.stack tbody th small { display: inline; margin-left: 6px; }
+    table.stack td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 11px; }
+    table.stack td.drops, table.stack td.wide { grid-column: 1 / -1; }
   }
 </style>
