@@ -49,7 +49,8 @@
   "Stage overrides: bosses.json-level stages carry ManaMultipliersOverride (e.g. relic boss stages set Ultimate 1-2, Titan 0)."
  ],
  "unconfirmed": [
-  "Starting mana at battle start and whether mana is gained while moving or idle (only skill/combo time is fed to GenerateSkillMana).",
-  "Whether the Ultimate's 15 s cooldown is shortened by Skill Recovery (its config has CanCooldownBeReduced = true, which suggests yes)."
- ]
+  "Starting mana 0 is inferred from the absence of any setting; not observed in game."
+ ],
+ "startingMana": "No starting-mana setting exists in the game config or code (searched GameplayData, ManaValues, battle setup): Ultimate and Titan mana start at 0, unless a skill script grants mana (skill_mechanics.json mana).",
+ "ultimateCooldown": "The Ultimate's 15 s cooldown is a normal skill cooldown (CanCooldownBeReduced = true), so Skill Recovery shortens it like any other: base / recovery factor (timing.json)."
 }
