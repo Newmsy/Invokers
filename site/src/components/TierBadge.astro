@@ -13,7 +13,7 @@ const label = rating ? `Tier ${rating.tier}` : 'Not rated yet';
 ---
 <span
   class:list={['tier', size, { unrated: !rating }]}
-  style={rating ? `--tier: ${tierColor[rating.tier] ?? '#5FDCF7'}` : undefined}
+  style={rating ? `--tier: ${tierColor[rating.tier] ?? '#D4A64A'}` : undefined}
   title={label}
   aria-label={label}
 >{rating ? rating.tier : '–'}</span>

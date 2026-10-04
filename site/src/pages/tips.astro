@@ -34,7 +34,7 @@ const tips = (tipsJson.tips as { order?: number; title?: string; text: string }[
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   .lead { color: var(--soft); max-width: 70ch; margin: 0 0 24px; }
   .tips { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 16px; }
-  .tips li { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .tips li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
   .tips img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; background: var(--surface-2); }
   .tips h2 { font-size: 17px; font-weight: 600; margin: 14px 16px 6px; }
   .tips p { color: var(--soft); margin: 0 16px 16px; font-size: 15px; }

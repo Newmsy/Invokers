@@ -46,7 +46,7 @@ import { href } from '../lib/data';
   .account { margin-left: auto; }
   .account-button {
     font: inherit; font-weight: 600; cursor: pointer; color: var(--text);
-    background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 8px 16px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 16px;
     display: inline-flex; align-items: center; gap: 8px; max-width: 46vw; white-space: nowrap;
   }
   .account-button:hover { border-color: var(--accent); }
@@ -59,17 +59,17 @@ import { href } from '../lib/data';
   .account-button :global(.dot.synced) { background: #7be0a0; }
   .account-button :global(.dot.error) { background: #ff7a90; }
   .account-dialog {
-    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 16px;
+    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 20px 24px; width: min(400px, calc(100vw - 32px));
   }
-  .account-dialog::backdrop { background: rgb(5 4 16 / 0.7); }
+  .account-dialog::backdrop { background: rgb(14 12 9 / 0.7); }
   .account-dialog h2 { margin: 0 0 8px; font-size: 1.3rem; }
   .close-row { float: right; margin: -8px -12px 0 0; }
   .close { background: none; border: 0; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; }
   .providers { display: grid; gap: 8px; margin: 16px 0; }
   .provider, .action {
     font: inherit; font-weight: 600; cursor: pointer; color: var(--text);
-    background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px;
   }
   .provider:hover, .action:hover { border-color: var(--accent); }
   .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }

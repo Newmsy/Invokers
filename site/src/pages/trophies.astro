@@ -233,7 +233,7 @@ const plannerData = {
   .card {
     margin-top: 24px;
     padding: 4px 20px 20px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
   }
@@ -258,7 +258,7 @@ const plannerData = {
     width: 100%;
     min-height: 40px;
     padding: 0 10px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     border: 1px solid var(--line);
     color: var(--text);
@@ -268,7 +268,7 @@ const plannerData = {
   .chip {
     min-height: 40px;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     background: transparent;
     border: 1px solid var(--line);
     color: var(--soft);
@@ -277,7 +277,7 @@ const plannerData = {
     cursor: pointer;
   }
   .chip:hover { border-color: var(--accent); color: var(--text); }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }

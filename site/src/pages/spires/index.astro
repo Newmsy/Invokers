@@ -169,7 +169,7 @@ const pct = (x: number) => `${+(x * 100).toFixed(1)}%`;
   .card {
     --tint: var(--accent);
     display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 16px;
-    border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--text);
+    border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--text);
   }
   .card:hover { color: var(--text); border-color: var(--tint); }
   .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; }

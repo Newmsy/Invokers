@@ -218,7 +218,7 @@ const contents = (p: PackValue) => p.rewards.map((r) => ({ ...r, name: rewardNam
   .verdict strong { color: var(--accent); }
   .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; max-width: 80ch; }
   .how a { color: var(--accent); }
-  .card { padding: 16px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  .card { padding: 16px 20px 20px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
   .packs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px; }
   .pack-head { display: flex; align-items: baseline; gap: 10px; }
   .pack-head h2 { margin: 0; flex: 1; font-size: 18px; }
@@ -229,7 +229,7 @@ const contents = (p: PackValue) => p.rewards.map((r) => ({ ...r, name: rewardNam
   .contents li { display: grid; justify-items: center; gap: 2px; width: 64px; text-align: center; }
   .tile {
     display: flex; align-items: center; justify-content: center;
-    width: 56px; height: 56px; border-radius: 12px;
+    width: 56px; height: 56px; border-radius: var(--radius);
     background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--accent) 18%, var(--surface-2)), var(--surface-2));
     border: 1px solid var(--line);
   }
@@ -237,17 +237,17 @@ const contents = (p: PackValue) => p.rewards.map((r) => ({ ...r, name: rewardNam
   .contents .n { font-family: var(--display); font-weight: 700; font-size: 15px; }
   .contents .what { color: var(--muted); font-size: 12px; line-height: 1.2; }
   .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; }
-  .stats div { padding: 10px 12px; border-radius: 12px; background: var(--surface-3); border: 1px solid var(--line); }
+  .stats div { padding: 10px 12px; border-radius: var(--radius); background: var(--surface-3); border: 1px solid var(--line); }
   .stats dt { color: var(--muted); font-size: 13px; }
   .stats dd { margin: 2px 0 0; font-family: var(--display); font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .stats small { font-size: 13px; color: var(--muted); font-weight: 500; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
   .chip {
-    min-height: 40px; padding: 0 16px; border-radius: 20px; background: transparent; border: 1px solid var(--line);
+    min-height: 40px; padding: 0 16px; border-radius: var(--radius); background: transparent; border: 1px solid var(--line);
     color: var(--soft); font: inherit; font-size: 14px; cursor: pointer;
   }
   .chip[aria-pressed='true'] { border-color: var(--accent); color: var(--text); font-weight: 600; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   .table-wrap + .hint { margin-top: 12px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }

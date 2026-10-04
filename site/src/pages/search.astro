@@ -119,13 +119,13 @@ import { href } from '../lib/data';
   .results :global(.hit) {
     display: block;
     padding: 14px 16px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
   }
   .results :global(.hit.has-image) { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; }
-  .results :global(.hit-image) { display: block; width: 44px; height: 44px; border-radius: 10px; object-fit: cover; object-position: top center; background: var(--surface-2); }
+  .results :global(.hit-image) { display: block; width: 44px; height: 44px; border-radius: var(--radius); object-fit: cover; object-position: top center; background: var(--surface-2); }
   .results :global(a.hit:hover),
   .results :global(a.hit:focus-visible) { border-color: var(--accent); }
   .results :global(.hit-head) { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
@@ -135,7 +135,7 @@ import { href } from '../lib/data';
     font-size: 12px;
     color: var(--accent);
     background: var(--surface-2);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 2px 10px;
   }
   .results :global(.hit p) { margin: 4px 0 0; color: var(--soft); font-size: 14px; }

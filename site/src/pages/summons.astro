@@ -362,7 +362,7 @@ const calc = {
   .card {
     margin-top: 24px;
     padding: 4px 20px 20px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
   }
@@ -373,7 +373,7 @@ const calc = {
   select, input[type='number'] {
     min-height: 44px;
     padding: 0 10px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     border: 1px solid var(--line);
     color: var(--text);
@@ -395,8 +395,8 @@ const calc = {
   dt { color: var(--muted); font-size: 14px; }
   dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
   .note { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 14px; }
-  .callout { margin: 0 0 12px; padding: 12px 16px; border-radius: 12px; border: 1px solid #f5c45155; background: #f5c45114; color: var(--soft); font-size: 14px; max-width: 80ch; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .callout { margin: 0 0 12px; padding: 12px 16px; border-radius: var(--radius); border: 1px solid #f5c45155; background: #f5c45114; color: var(--soft); font-size: 14px; max-width: 80ch; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   .table-wrap.narrow { max-width: 420px; }
   .was { color: var(--muted); font-size: 12px; white-space: nowrap; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }

@@ -73,14 +73,14 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
 
   <div class="rows">
     {rows.map((r) => (
-      <section class="row" style={`--tier: ${tierColor[r.tier] ?? '#5FDCF7'}`} aria-label={`Tier ${r.tier}`}>
+      <section class="row" style={`--tier: ${tierColor[r.tier] ?? '#D4A64A'}`} aria-label={`Tier ${r.tier}`}>
         <span class="tier" aria-hidden="true">{r.tier}</span>
         <ul class="picks">
           {r.picks.map((p) => {
             const Tag = p.href ? 'a' : 'div';
             return (
               <li data-filter={kind === 'invokers' ? p.element : p.meta}>
-                <Tag class="pick" href={p.href} style={p.element ? `--tint: ${elementColor[p.element] ?? '#5FDCF7'}` : undefined}>
+                <Tag class="pick" href={p.href} style={p.element ? `--tint: ${elementColor[p.element] ?? '#D4A64A'}` : undefined}>
                   <span class="art">
                     {p.art ? <img src={p.art} alt="" width="52" height="52" loading="lazy" /> : <span>{initials(p.name)}</span>}
                   </span>
@@ -140,19 +140,19 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     display: inline-block;
     margin: 10px 0 0;
     padding: 6px 12px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     border: 1px dashed var(--line);
     color: var(--soft);
     font-size: 14px;
   }
   .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 18px 0 10px; }
-  .pool { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
-  .pool a { padding: 7px 14px; border-radius: 999px; color: var(--soft); font-weight: 600; font-size: 14px; }
+  .pool { display: inline-flex; padding: 3px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+  .pool a { padding: 7px 14px; border-radius: var(--radius); color: var(--soft); font-weight: 600; font-size: 14px; }
   .pool a[aria-current='page'] { background: var(--accent); color: var(--bg); }
   .switch select {
     min-height: 40px;
     padding: 0 12px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface);
     color: var(--text);
     border: 1px solid var(--line);
@@ -166,7 +166,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     gap: 6px;
     min-height: 34px;
     padding: 0 12px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--soft);
@@ -181,7 +181,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     grid-template-columns: 56px 1fr;
     gap: 12px;
     padding: 12px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface-3);
     border: 1px solid var(--line);
   }
@@ -189,7 +189,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--tier);
     color: var(--bg);
     font-family: var(--display);
@@ -212,7 +212,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     align-items: center;
     height: 100%;
     padding: 8px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
@@ -222,7 +222,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
     flex-shrink: 0;
     width: 52px;
     height: 52px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -239,7 +239,7 @@ const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.eleme
   .brings { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
   .brings span {
     padding: 1px 7px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     color: var(--soft);
     font-size: 11px;

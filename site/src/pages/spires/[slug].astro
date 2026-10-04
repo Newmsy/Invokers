@@ -115,7 +115,7 @@ const others = spires.filter((s) => s.id !== spire.id);
 
 <style>
   .head { --tint: var(--accent); display: flex; gap: 20px; align-items: flex-start; margin-top: 8px; }
-  .mode-art { width: 120px; height: auto; border-radius: 12px; border: 1px solid var(--tint); flex: none; }
+  .mode-art { width: 120px; height: auto; border-radius: var(--radius); border: 1px solid var(--tint); flex: none; }
   h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
   h1 img { width: 40px; height: 40px; object-fit: contain; }
   h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
@@ -130,7 +130,7 @@ const others = spires.filter((s) => s.id !== spire.id);
   .edge-disadvantage strong, tr.edge-disadvantage .edge { color: #FF8A80; }
   .edge-slight-disadvantage strong, tr.edge-slight-disadvantage .edge { color: #FFB3A8; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-  .jump a { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; }
+  .jump a { padding: 4px 10px; border: 1px solid var(--line); border-radius: var(--radius); font-size: 14px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; border: 1px solid var(--line); margin: 12px 0; }
   th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }

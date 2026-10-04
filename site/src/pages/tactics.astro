@@ -128,14 +128,14 @@ const firstPlaybook = itemIcon('FT_General1');
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 40px 0 8px; scroll-margin-top: 80px; }
-  .h-icon { border-radius: 6px; }
+  .h-icon { border-radius: var(--radius); }
   p { max-width: 70ch; }
   .lead { color: var(--soft); margin: 0; }
   .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .jump a { padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
   .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
-  .card { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 12px 14px; scroll-margin-top: 80px; min-width: 0; }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 12px 14px; scroll-margin-top: 80px; min-width: 0; }
   .head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   h3 { margin: 0; font-size: 17px; font-weight: 600; }
   .unlock { color: var(--muted); font-size: 13px; white-space: nowrap; }
@@ -145,7 +145,7 @@ const firstPlaybook = itemIcon('FT_General1');
     gap: 6px;
     margin: 10px 0;
     padding: 8px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
   }
   .line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
@@ -164,13 +164,13 @@ const firstPlaybook = itemIcon('FT_General1');
   td.strong { font-weight: 600; color: var(--text); }
   .who { display: block; color: var(--muted); font-size: 12px; }
   .cls { display: inline-flex; align-items: center; gap: 3px; margin-right: 6px; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 520px; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); max-width: 520px; }
   .cost thead th { background: var(--surface-3); }
   .cost th, .cost td { padding: 7px 12px; white-space: nowrap; }
   .cost td.totals { white-space: normal; }
   .cost .item + .item { margin-left: 10px; }
   .item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .item img { border-radius: 4px; }
+  .item img { border-radius: var(--radius); }
   tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
 
   @media (max-width: 720px) {

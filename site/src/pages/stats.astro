@@ -149,7 +149,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
   .hint { color: var(--muted); font-size: 14px; }
   .notes { max-width: 70ch; padding-left: 20px; color: var(--soft); font-size: 15px; }
   .notes li { margin: 4px 0; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }

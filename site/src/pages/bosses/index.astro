@@ -36,7 +36,7 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
       <ul class="grid">
         {g.bosses.map((b) => (
           <li>
-            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#5FDCF7'}` : undefined}>
+            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#D4A64A'}` : undefined}>
               {bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" loading="lazy" />}
               <span class="name">{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
               {b.title && <span class="title">{b.title}</span>}
@@ -78,14 +78,14 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
     gap: 2px;
     height: 100%;
     padding: 16px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
   }
   .card:hover { color: var(--text); border-color: var(--tint); }
   .top { display: flex; gap: 4px; margin-top: 10px; }
-  .top img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; object-position: top center; }
+  .top img { width: 32px; height: 32px; border-radius: var(--radius); object-fit: cover; object-position: top center; }
   .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; }
   .title { color: var(--soft); font-size: 14px; }
   .corr { margin-top: 8px; font-size: 13px; color: var(--tint); font-weight: 600; }

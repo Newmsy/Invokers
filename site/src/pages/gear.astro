@@ -82,7 +82,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
     gap: 8px;
     min-height: 40px;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     color: var(--soft);
     text-decoration: none;
@@ -93,7 +93,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
   .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
   .card {
     padding: 16px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     display: flex;

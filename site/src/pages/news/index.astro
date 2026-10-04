@@ -67,7 +67,7 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     align-items: center;
     min-height: 40px;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     background: none;
     color: var(--soft);
@@ -83,11 +83,11 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     padding: 20px 24px;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: var(--radius);
     color: var(--text);
   }
   .entries a:hover { border-color: var(--accent); }
-  .banner { display: block; width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; }
+  .banner { display: block; width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 12px; }
   .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
   .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
   .entries h2 { margin: 4px 0 6px; font-size: 20px; }
