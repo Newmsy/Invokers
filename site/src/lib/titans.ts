@@ -1,15 +1,23 @@
 // Titans for the Titan pages: their skills, and the bonus their passive gives the bound Invoker at each Empowerment.
-import { heroes, skillsFor, titans, type Skill } from './data';
+import { heroes, skillsFor, titans, type Hero, type Skill } from './data';
 import { rarityOrder } from './format';
 import type { TitanInfo } from './tiers/candidates';
+import { parseBonus, recommendTitans, type PickTitan, type TitanBonus, type TitanPick } from './titanPicks';
 
-export interface TitanBonus {
-  /** Stat name as the game shows it, e.g. "ATK", "Combo SPD". */
-  stat: string;
-  /** "+42%" or "+196". */
-  value: string;
-  /** Bonus that applies everywhere except boss fights, when the passive splits them. */
-  elsewhere?: string;
+export { bonusLabel, parseBonus, type TitanBonus } from './titanPicks';
+
+// Titan rarity, once the data pack has it (issue #149).
+const rarityFiles = import.meta.glob<{ default: { id: string; rarity?: string }[] }>('../../../data/titans.json', { eager: true });
+const rarityById = new Map(Object.values(rarityFiles).flatMap((f) => f.default).map((t) => [t.id, t.rarity]));
+
+/** A Titan's rarity, or undefined until it's known. */
+export const titanRarity = (titanId: string): string | undefined => rarityById.get(titanId);
+
+const pickTitans: PickTitan[] = titans.map((t) => ({ ...t, rarity: titanRarity(t.id), skills: skillsFor(t.id) }));
+
+/** Top Titans for an Invoker page. */
+export function titanPicksFor(hero: Hero, count = 3): TitanPick[] {
+  return recommendTitans({ faction: hero.faction, class: String(hero.class), skills: skillsFor(hero.id) }, pickTitans, count);
 }
 
 /** Empowerments 0-6, each with its bonus. */
@@ -17,23 +25,6 @@ export interface TitanPassive {
   empowerment: number;
   bonus?: TitanBonus;
   text: string;
-}
-
-const plain = (t: string) => t.replace(/<[^>]+>/g, '');
-const line = /Increases Bound Invoker's (.+?)( in Boss Fights on Boss Mode| in all other areas)? by ([\d.]+%?)\./g;
-
-/** Reads "Increases Bound Invoker's ATK in Boss Fights on Boss Mode by 42%. … in all other areas by 24%." */
-export function parseBonus(text: string): TitanBonus | undefined {
-  const parts = [...plain(text).matchAll(line)];
-  if (!parts.length) return undefined;
-  const boss = parts.find((p) => p[2]?.includes('Boss')) ?? parts[0];
-  const other = parts.find((p) => p[2]?.includes('other'));
-  return { stat: boss[1], value: `+${boss[3]}`, elsewhere: other ? `+${other[3]}` : undefined };
-}
-
-/** "ATK +42% in boss fights, +24% elsewhere" or "HP +36%". */
-export function bonusLabel(b: TitanBonus): string {
-  return b.elsewhere ? `${b.stat} ${b.value} in boss fights, ${b.elsewhere} elsewhere` : `${b.stat} ${b.value}`;
 }
 
 export function titanPassive(titanId: string): TitanPassive[] {

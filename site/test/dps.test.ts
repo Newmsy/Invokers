@@ -40,6 +40,17 @@ describe('skill text parser', () => {
     expect(brandis.d).toBeUndefined();
   });
 
+  it('reads stacked and plural Bleed casts', () => {
+    // "Casts 2 [1.25% Bleed] debuffs on the target": two stacks, each ticking and capped on its own.
+    const dusca = hero('Mistress Dusca').skills.ActiveSkill2!.levels.at(-1)!;
+    expect(dusca.d).toHaveLength(1);
+    expect(dusca.d![0].pct).toBeCloseTo(0.025);
+    expect(dusca.d![0].capAtk).toBeCloseTo(10); // 500% ATK limit per stack
+    for (const [name, slot] of [['Veilstalker Nyctra', 'ActiveSkill3'], ['Duchess Kanraku', 'ActiveSkill3'], ['Tyxil the Adder', 'Ultimate'], ['Nightcap Zirdel', 'ActiveSkill2'], ['Ballus the Bull', 'Ultimate']] as const) {
+      expect(hero(name).skills[slot]!.levels.at(-1)!.d, name).toBeDefined();
+    }
+  });
+
   it('reads five combo steps', () => {
     const steps = parseComboText('#1 Attacks 1 enemy.<br>Damage: 41% ATK\n\n#2 Attacks 1 enemy.<br>Damage: 62% ATK');
     expect(steps).toEqual([[{ atk: 0.41, def: 0, hp: 0 }], [{ atk: 0.62, def: 0, hp: 0 }]]);

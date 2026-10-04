@@ -304,13 +304,19 @@ export async function start(): Promise<void> {
     return td;
   }
 
+  const optimiseMemo = new WeakMap<object, Map<string, ReturnType<typeof optimise>>>();
   function renderOptimiser() {
     const [kind, key] = heroSel.value.split(':');
     const owned = kind === 'box' ? box?.heroes.find((h) => String(h.id) === key) : undefined;
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
     $('o-box').hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
-    const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked });
+    // The search is slow on big boxes, so each answer is kept until the box changes.
+    const memoKey = [owned.id, modeSel.value, stage.stage, others.checked].join('|');
+    let memo = optimiseMemo.get(box);
+    if (!memo) optimiseMemo.set(box, (memo = new Map()));
+    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked }));
+    const r = memo.get(memoKey);
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
     const setLine = (label: string, l: Loadout) => {

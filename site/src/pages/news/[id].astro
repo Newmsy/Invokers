@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import ArtStrip from '../../components/ArtStrip.astro';
 import HeroNumbers from '../../components/HeroNumbers.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
+import NewsSidebar from '../../components/NewsSidebar.astro';
 import { heroSlug, href, pack } from '../../lib/data';
 import { heroByName, newsDate, newsKinds } from '../../lib/news';
 import { chaseBanner } from '../../lib/art';
@@ -30,6 +31,7 @@ const heroLinks = d.heroes.map((n) => {
 const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.heroes[0]).id) : undefined;
 ---
 <Base title={d.title}>
+  <div class="columns">
   <article>
     <a class="back" href={href('news')}>← News</a>
     {banner && <img class="banner" src={banner} alt={`${d.heroes[0]} chase`} loading="lazy" />}
@@ -47,10 +49,13 @@ const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.
     {d.heroes.map((n) => <HeroNumbers name={n} />)}
     <SeeAlso links={[...heroLinks, ...more, { path: 'news', label: 'All news' }]} />
   </article>
+  <NewsSidebar current={entry.id} />
+  </div>
 </Base>
 
 <style>
-  article { max-width: 760px; }
+  .columns { display: grid; grid-template-columns: minmax(0, 760px) 320px; gap: 40px; align-items: start; justify-content: space-between; }
+  article { min-width: 0; }
   .back { font-size: 14px; }
   .kind { margin: 16px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
   h1 { font-size: 34px; margin: 6px 0 8px; }
@@ -70,6 +75,9 @@ const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.
   .body :global(a.art-chip:hover span) { color: var(--accent); }
   .body :global(blockquote) { margin: 20px 0; padding: 12px 18px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; }
   .body :global(blockquote p) { margin: 0; }
+  @media (max-width: 1000px) {
+    .columns { grid-template-columns: 1fr; }
+  }
   @media (max-width: 720px) {
     h1 { font-size: 26px; }
     .body { font-size: 16px; }

@@ -1,0 +1,198 @@
+---
+// Free rewards: every Achievement (/rewards/achievements) and every Progress Quest (/rewards/progress-quests),
+// added up. Each page is only built once its data is in the pack.
+import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import SectionArt from '../../components/SectionArt.astro';
+import RewardTotals from '../../components/RewardTotals.astro';
+import { achievements, hasAchievements, hasProgressQuests, progressPages } from '../../lib/questData';
+import { achievementSections, amountOf, biggest, pageBands, progressSummary, sumRewards, type QuestReward } from '../../lib/questRewards';
+import { artRefPath } from '../../lib/markdown-art';
+
+export function getStaticPaths() {
+  return [
+    ...(hasAchievements ? [{ params: { kind: 'achievements' } }] : []),
+    ...(hasProgressQuests ? [{ params: { kind: 'progress-quests' } }] : []),
+  ];
+}
+
+const { kind } = Astro.params;
+const n = (v: number) => v.toLocaleString('en-GB');
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+// Achievement tabs get the picture of what they're about, where there is one.
+const tabArt: Record<string, string> = {
+  General: 'item:Gems',
+  Summon: 'item:Destiny Star',
+  Development: 'item:5 star Echo',
+  Gear: 'item:Gear Swap Pass',
+  Battle: 'item:Gold Trophy',
+};
+const artFor = (section: string) => {
+  const ref = tabArt[section];
+  return ref && artRefPath(ref.split(':')[0], ref.split(':').slice(1).join(':')) ? ref : undefined;
+};
+const gemsAndGold = (rewards: QuestReward[]) => {
+  const t = sumRewards(rewards);
+  return [amountOf(t, 'Gem') && `${n(amountOf(t, 'Gem'))} Gems`, amountOf(t, 'Gold') && `${n(amountOf(t, 'Gold'))} Gold`].filter(Boolean).join(' and ');
+};
+
+const isAch = kind === 'achievements';
+const sections = isAch ? achievementSections(achievements) : [];
+const achTotals = isAch ? sumRewards(achievements.flatMap((a) => a.rewards)) : [];
+const topGems = isAch ? biggest(achievements, 'Gem', 5) : [];
+const gemSection = [...sections].sort((a, b) => amountOf(b.totals, 'Gem') - amountOf(a.totals, 'Gem'))[0];
+
+const pq = !isAch ? progressSummary(progressPages) : undefined;
+const bands = !isAch ? pageBands(progressPages) : [];
+const pages = [...progressPages].sort((a, b) => a.page - b.page);
+const bestPages = !isAch
+  ? biggest(pages.map((p) => ({ ...p, rewards: [...p.tasks.flatMap((t) => t.rewards), ...p.completionReward] })), 'Gem', 3)
+  : [];
+
+const title = isAch ? 'Achievement rewards' : 'Progress Quest rewards';
+const totals = isAch ? achTotals : pq!.all;
+const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : progressPages.flatMap((p) => [...p.tasks.flatMap((t) => t.rewards), ...p.completionReward]));
+---
+<Base title={title} description={`Everything ${isAch ? 'every Achievement' : 'all Progress Quests'} give${isAch ? '' : 's'} for free, added up.`}>
+  <h1>{title}</h1>
+  {isAch ? (
+    <p class="lead">
+      All {n(achievements.length)} Achievements across {sections.length} tabs give <strong>{headline}</strong>, plus everything below. It's all free and one-off.
+    </p>
+  ) : (
+    <p class="lead">
+      All {pq!.pages} pages of Progress Quests ({n(pq!.tasks)} tasks) give <strong>{headline}</strong>, plus everything below. Each page also has a completion reward.
+    </p>
+  )}
+
+  <nav class="jump" aria-label="On this page">
+    <a href="#total">Total</a>
+    {isAch ? <a href="#tabs">By tab</a> : <a href="#split">Tasks vs pages</a>}
+    {isAch ? <a href="#biggest">Biggest Gem rewards</a> : <a href="#bands">By page</a>}
+    <a href="#all">Full list</a>
+  </nav>
+
+  <section id="total" aria-labelledby="total-title">
+    <h2 id="total-title"><SectionArt art="item:Gems" size={32} />Everything added up</h2>
+    <RewardTotals totals={totals} size="big" />
+  </section>
+
+  {isAch ? (
+    <>
+      <section id="tabs" aria-labelledby="tabs-title">
+        <h2 id="tabs-title"><SectionArt art="item:Gold Trophy" size={32} />By tab</h2>
+        {gemSection && amountOf(gemSection.totals, 'Gem') > 0 && (
+          <p class="hint"><strong>{gemSection.section}</strong> gives the most Gems: {n(amountOf(gemSection.totals, 'Gem'))}.</p>
+        )}
+        <ul class="cards">
+          {sections.map((s) => (
+            <li class="card">
+              <h3><SectionArt art={artFor(s.section)} size={28} />{s.section}<small>{s.count} achievements</small></h3>
+              <RewardTotals totals={s.totals} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {topGems.length > 0 && (
+        <section id="biggest" aria-labelledby="biggest-title">
+          <h2 id="biggest-title"><SectionArt art="item:Gems" size={32} />Biggest Gem rewards</h2>
+          <ol class="top">
+            {topGems.map((a) => (
+              <li><span class="amt">{n(a.amount)} Gems</span><span>{a.task} <small>({a.section})</small></span></li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      <section id="all" aria-labelledby="all-title">
+        <h2 id="all-title"><SectionArt art="item:Legendary Codex" size={32} />Every achievement</h2>
+        {sections.map((s) => (
+          <details id={`tab-${slug(s.section)}`}>
+            <summary>{s.section} <small>{s.count}</small></summary>
+            <ul class="list">
+              {achievements.filter((a) => a.section === s.section).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((a) => (
+                <li><span class="task">{a.task}</span><RewardTotals totals={sumRewards(a.rewards)} /></li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </section>
+    </>
+  ) : (
+    <>
+      <section id="split" aria-labelledby="split-title">
+        <h2 id="split-title"><SectionArt art="item:Gold" size={32} />Tasks vs page completion</h2>
+        <ul class="cards two">
+          <li class="card"><h3>From the {n(pq!.tasks)} tasks</h3><RewardTotals totals={pq!.fromTasks} /></li>
+          <li class="card"><h3>From completing all {pq!.pages} pages</h3><RewardTotals totals={pq!.fromCompletion} /></li>
+        </ul>
+        {bestPages.length > 0 && (
+          <p class="hint">Most Gems on one page: {bestPages.map((p) => `page ${p.page} (${n(p.amount)})`).join(', ')}.</p>
+        )}
+      </section>
+
+      <section id="bands" aria-labelledby="bands-title">
+        <h2 id="bands-title"><SectionArt art="item:Energy" size={32} />By page</h2>
+        <ul class="cards">
+          {bands.map((b) => (
+            <li class="card">
+              <h3>Pages {b.from}–{b.to}<small>{b.tasks} tasks</small></h3>
+              <RewardTotals totals={b.totals} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="all" aria-labelledby="all-title">
+        <h2 id="all-title"><SectionArt art="item:Legendary Codex" size={32} />Every page</h2>
+        {pages.map((p) => (
+          <details id={`page-${p.page}`}>
+            <summary>Page {p.page} <small>{p.tasks.length} tasks</small></summary>
+            <ul class="list">
+              {p.tasks.map((t) => <li><span class="task">{t.task}</span><RewardTotals totals={sumRewards(t.rewards)} /></li>)}
+              <li class="done"><span class="task">Page {p.page} completion</span><RewardTotals totals={sumRewards(p.completionReward)} /></li>
+            </ul>
+          </details>
+        ))}
+      </section>
+    </>
+  )}
+
+  <SeeAlso links={[
+    ...(isAch && hasProgressQuests ? [{ path: 'rewards/progress-quests', label: 'Progress Quest rewards' }] : []),
+    ...(!isAch && hasAchievements ? [{ path: 'rewards/achievements', label: 'Achievement rewards' }] : []),
+    { path: 'summons', label: 'Summons' },
+    { path: 'packs', label: 'Pack value' },
+    { path: 'farming', label: 'Where to farm' },
+  ]} />
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 36px 0 12px; scroll-margin-top: 80px; }
+  h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+  h3 small, summary small, .top small { color: var(--muted); font-weight: 400; font-size: 13px; }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 12px 0; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 12px 14px; min-width: 0; font-size: 14px; }
+  .top { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+  .top li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .amt { font-weight: 700; color: var(--text); min-width: 7ch; font-variant-numeric: tabular-nums; }
+  details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin-bottom: 8px; scroll-margin-top: 80px; }
+  summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
+  .list { list-style: none; margin: 0; padding: 0 14px 10px; font-size: 14px; }
+  .list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 7px 0; border-top: 1px solid var(--line); }
+  .task { flex: 1 1 260px; min-width: 0; }
+  .done .task { font-weight: 600; }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

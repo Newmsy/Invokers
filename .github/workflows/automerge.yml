@@ -1,0 +1,68 @@
+name: Auto-merge
+
+# Squash-merges open PRs once CI passes on their latest commit, so no one has to click merge.
+# Skipped: drafts, PRs from forks, and PRs labelled "no-automerge".
+# The repo is private on a free plan, so GitHub's own auto-merge (which needs branch protection) isn't available.
+# No PR code is ever checked out or run here.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  # A PR marked ready, or with "no-automerge" removed, after CI already passed.
+  pull_request_target:
+    types: [ready_for_review, unlabeled]
+  # Run by hand to sweep every open PR.
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: automerge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Merge green PRs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -uo pipefail
+          if [ -n "$PR_NUMBER" ]; then
+            prs=$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq '[.]')
+          else
+            prs=$(gh api --paginate "repos/$REPO/pulls?state=open&per_page=100" | jq -s 'add')
+          fi
+          # Only the PR(s) whose head is the commit CI just passed on, when triggered by CI.
+          [ -n "$RUN_SHA" ] && prs=$(jq --arg s "$RUN_SHA" '[.[] | select(.head.sha == $s)]' <<<"$prs")
+
+          jq -c '.[] | select(.state == "open" and (.draft | not)
+                   and .head.repo.full_name == .base.repo.full_name
+                   and ([.labels[].name] | index("no-automerge") | not))
+                 | {number, sha: .head.sha, title}' <<<"$prs" |
+          while read -r pr; do
+            n=$(jq -r .number <<<"$pr"); sha=$(jq -r .sha <<<"$pr"); title=$(jq -r .title <<<"$pr")
+            # CI (this repo's ci.yml) must have succeeded on this exact commit.
+            ok=$(gh api "repos/$REPO/actions/runs?head_sha=$sha&event=pull_request&per_page=100" \
+              --jq '[.workflow_runs[] | select(.path == ".github/workflows/ci.yml")] | sort_by(.created_at) | last | .conclusion // ""')
+            if [ "$ok" != "success" ]; then echo "#$n: CI not green on $sha ($ok), skipping"; continue; fi
+            # sha pins the merge to the commit CI checked; a newer push makes this fail safely.
+            if gh api -X PUT "repos/$REPO/pulls/$n/merge" -f merge_method=squash -f sha="$sha" \
+                 -f commit_title="$title (#$n)" >/dev/null; then
+              echo "#$n: merged"
+            else
+              echo "::warning::#$n could not be merged (conflict or newer commit)"
+            fi
+          done

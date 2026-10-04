@@ -77,13 +77,16 @@ describe('planner gear', () => {
 
 describe('gear price list', () => {
   it('reads every rarity and star from the data pack', () => {
-    expect(data.gear!.length).toBe(620);
+    // 5 rarities × 6 stars × 20 levels; the pack's "Greater" tier isn't in the game, so it's left out.
+    expect(data.gear!.length).toBe(600);
+    expect(data.gear!.some((r) => r.rarity === 'Greater')).toBe(false);
     expect(gearCost(data.gear!, { rarity: 'Legendary', rank: 'Six', level: 0 })).toEqual({ Gold: 2334830, Memorium: 6600 });
     expect(gearCost(data.gear!, { rarity: 'Common', rank: 'One', level: 19 })?.Memorium).toBeGreaterThan(0);
   });
-  it('reads sell, deactivate and destroy returns', () => {
+  it('reads sell and destroy returns', () => {
     const s = gearSalvage()!;
-    expect(s.rows.find((r) => r.stars === 6 && r.rarity === 'Legendary')).toMatchObject({ sellGold: 138000, deactivateGold: 70000 });
+    expect(s.rows.find((r) => r.stars === 6 && r.rarity === 'Legendary')).toEqual({ rarity: 'Legendary', stars: 6, sellGold: 138000 });
+    expect(s.rows.some((r) => r.rarity === 'Greater')).toBe(false);
     expect(s.destroyMemorium[6]).toBe(250);
   });
 });

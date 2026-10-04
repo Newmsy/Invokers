@@ -2,6 +2,7 @@
 // Used by the Guides hub and the home page.
 import { getCollection } from 'astro:content';
 import { nav } from './nav';
+import { hasAchievements, hasProgressQuests } from './questData';
 
 export interface GuideEntry {
   path: string;
@@ -20,7 +21,7 @@ export const topics: { name: string; blurb: string; art: string; banner: string;
   { name: 'Progression', banner: 'echo-legendary', blurb: 'Levels, stars, awakening and skills', art: 'item:5 star Echo', tags: ['levelling', 'awakening', 'skills', 'codex', 'trophies'], pages: ['ascension', 'farming', 'skill-costs', 'trophies'] },
   { name: 'Gear', banner: 'upgrade-relics', blurb: 'Sets, upgrades and where the gold goes', art: 'item:Gear Swap Pass', tags: ['gear', 'sets'], pages: ['gear', 'gear-upgrades'] },
   { name: 'Bosses and events', banner: 'clan-boss-1', blurb: 'Boss mechanics, scaling and event targets', art: 'item:Elder Titanheart', tags: ['bosses', 'stages', 'clan', 'arena', 'spires'], pages: ['bosses', 'spires', 'events'] },
-  { name: 'Summons and value', banner: 'summon-invoker', blurb: 'Odds, chests and which packs are worth it', art: 'item:Destiny Star', tags: ['summons', 'odds', 'chests', 'chroma'], pages: ['summons', 'packs'] },
+  { name: 'Summons and value', banner: 'summon-invoker', blurb: 'Odds, chests and which packs are worth it', art: 'item:Destiny Star', tags: ['summons', 'odds', 'chests', 'chroma'], pages: ['summons', 'packs', ...(hasAchievements ? ['rewards/achievements'] : []), ...(hasProgressQuests ? ['rewards/progress-quests'] : [])] },
   { name: 'Tips', banner: 'novice-tournament', blurb: 'Quick answers and fact checks', art: 'item:Heroic Playbook', tags: ['tips', 'guides'], pages: ['tips'] },
 ];
 

@@ -1,0 +1,49 @@
+---
+// Reward totals as icon tiles (big) or inline chips (compact), each linked to the page that explains the item.
+import { rewardView } from '../lib/questData';
+import { short, type Total } from '../lib/questRewards';
+
+interface Props {
+  totals: Total[];
+  size?: 'big' | 'compact';
+  limit?: number;
+}
+const { totals, size = 'compact', limit } = Astro.props;
+const shown = (limit ? totals.slice(0, limit) : totals).map((t) => ({ ...t, view: rewardView(t) }));
+const n = (v: number) => (size === 'big' ? short(v) : v.toLocaleString('en-GB'));
+---
+{size === 'big' ? (
+  <ul class="tiles">
+    {shown.map((t) => {
+      const inner = [
+        <span class:list={['tile', { portrait: t.view.portrait }]}>{t.view.icon && <img src={t.view.icon} alt="" width="48" height="48" loading="lazy" />}</span>,
+        <span class="n">{n(t.amount)}</span>,
+        <span class="what">{t.view.name}</span>,
+      ];
+      return <li>{t.view.link ? <a href={t.view.link}>{inner}</a> : <span class="cell">{inner}</span>}</li>;
+    })}
+  </ul>
+) : (
+  <span class="chips">
+    {shown.map((t) => {
+      const inner = [t.view.icon && <img class:list={{ portrait: t.view.portrait }} src={t.view.icon} alt="" width="20" height="20" loading="lazy" />, <span>{n(t.amount)} {t.view.name}</span>];
+      return t.view.link ? <a class="chip" href={t.view.link}>{inner}</a> : <span class="chip">{inner}</span>;
+    })}
+  </span>
+)}
+
+<style>
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 10px; }
+  .tiles li > * { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: inherit; text-align: center; height: 100%; }
+  .tiles a:hover { border-color: var(--accent); }
+  .tile { width: 52px; height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: var(--surface-2); overflow: hidden; }
+  .tile img { width: 44px; height: 44px; object-fit: contain; }
+  .tile.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .n { font-size: 18px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+  .what { font-size: 12px; color: var(--soft); line-height: 1.25; overflow-wrap: anywhere; }
+  .chips { display: inline-flex; flex-wrap: wrap; gap: 4px 12px; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; color: inherit; }
+  .chip img { width: 20px; height: 20px; object-fit: contain; border-radius: 4px; }
+  .chip img.portrait { object-fit: cover; object-position: top center; border-radius: 50%; }
+  a.chip:hover span { text-decoration: underline; }
+</style>

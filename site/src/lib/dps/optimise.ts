@@ -19,6 +19,7 @@ export const ACCESSORY_SLOTS: [slot: string, awakenLevel: number][] = [
 const KEEP_PER_SLOT = 6;
 const KEEP_PER_SET_SLOT = 2;
 const MAX_PASSES = 6;
+const MAX_SET_SEEDS = 6;
 
 export type Piece = (BoxGear | BoxAccessory) & { kind: 'gear' | 'accessory' };
 /** Slot → chosen piece (missing = empty). */
@@ -115,14 +116,22 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
   const bestSingle: Loadout = Object.fromEntries(slots.map((s) => [s, shortlist[s][0]]));
   const seeds: Loadout[] = [current, bestSingle];
   const sets = new Set(slots.flatMap((s) => shortlist[s].filter((p) => p.kind === 'gear').map((p) => (p as BoxGear).set)));
+  // One seed per set that can reach a set bonus (3+ slots), best first and capped: the climb is the slow part.
+  const setSeeds: { seed: Loadout; v: number }[] = [];
   for (const set of sets) {
     const seed: Loadout = { ...bestSingle };
+    let pieces = 0;
     for (const s of GEAR_SLOTS) {
       const pick = shortlist[s]?.find((p) => p.kind === 'gear' && (p as BoxGear).set === set);
-      if (pick) seed[s] = pick;
+      if (pick) {
+        seed[s] = pick;
+        pieces++;
+      }
     }
-    seeds.push(seed);
+    if (pieces >= 3) setSeeds.push({ seed, v: score(seed) });
   }
+  setSeeds.sort((a, b) => b.v - a.v);
+  seeds.push(...setSeeds.slice(0, MAX_SET_SEEDS).map((x) => x.seed));
 
   // A piece can only be worn once: slots never share a piece because each slot only holds its own slot's pieces.
   let best = current;

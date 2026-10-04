@@ -59,11 +59,13 @@ export function parseHit(formula: string): Hit | null {
 }
 
 function dotFor(kind: string, capAtk: number, text: string): Dot | null {
-  // "[1.5% Burn] debuff on the target, lasting 4s. The [Burn] ticks every 2s, damaging targets by 1.5% of their MAX HP"
-  const cast = new RegExp(`\\[[\\d.]+% ${kind}\\] debuff on (?:the targets?|\\d+ enem)[^\\n]*?lasting ([\\d.]+)s`).exec(text);
+  // "[1.5% Burn] debuff on the target, lasting 4s. The [Burn] ticks every 2s, damaging targets by 1.5% of their MAX HP".
+  // "Casts 2 [1.25% Bleed] debuffs on …" puts two stacks on, each ticking and capped on its own.
+  const cast = new RegExp(`(?:(\\d+) )?\\[[\\d.]+% ${kind}\\] debuffs? on (?:the targets?|each target|\\d+ enem)[^\\n]*?lasting ([\\d.]+)s`).exec(text);
   const tick = new RegExp(`\\[${kind}\\] ticks every ([\\d.]+)s, damaging targets by ([\\d.]+)% of their MAX HP`).exec(text);
   if (!cast || !tick) return null;
-  return { kind, pct: num(tick[2]) / 100, capAtk, everySec: num(tick[1]), durationSec: num(cast[1]) };
+  const stacks = cast[1] ? Number(cast[1]) : 1;
+  return { kind, pct: (stacks * num(tick[2])) / 100, capAtk: stacks * capAtk, everySec: num(tick[1]), durationSec: num(cast[2]) };
 }
 
 // Who a "[X] debuff on …" lands on: enemies only (not the caster or allies).
