@@ -1,0 +1,158 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import RewardChips from '../../components/RewardChips.astro';
+import { href } from '../../lib/data';
+import { className, elementColor } from '../../lib/format';
+import { classIcon, elementIcon, itemIcon, modeArt } from '../../lib/art';
+import { boostText, bossesOf, climbTotals, edge, edgeLabel, floorGroups, floorRewards, floors, spireRules, spires, spireSlug, type Spire } from '../../lib/spires';
+
+export function getStaticPaths() {
+  return spires.map((spire) => ({ params: { slug: spireSlug(spire) }, props: { spire } }));
+}
+
+const { spire } = Astro.props as { spire: Spire };
+const key = `TK_${spire.element}`;
+const art = modeArt('spires');
+
+const rows = floors.map((f) => ({ f, edge: edge(spire.element, f.enemyElement), groups: floorGroups(f), rewards: floorRewards(spire, f.floor), boost: boostText(f), bosses: bossesOf(f) }));
+// Which floor elements help or hurt this Spire's team.
+const summary = (['advantage', 'disadvantage', 'slight-advantage', 'slight-disadvantage'] as const)
+  .map((k) => ({ k, els: [...new Set(rows.filter((r) => r.edge === k).map((r) => r.f.enemyElement))], count: rows.filter((r) => r.edge === k).length }))
+  .filter((x) => x.count > 0);
+const chunks = Array.from({ length: Math.ceil(floors.length / 20) }, (_, i) => rows.slice(i * 20, i * 20 + 20));
+const others = spires.filter((s) => s.id !== spire.id);
+---
+<Base title={spire.name}>
+  <a class="back" href={href('spires')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    All Spires
+  </a>
+
+  <header class="head" style={`--tint: ${elementColor[spire.element] ?? 'var(--accent)'}`}>
+    {art && <img class="mode-art" src={art} alt="" width="157" height="400" />}
+    <div>
+      <h1>{itemIcon(key) && <img src={itemIcon(key)} alt="" width="40" height="40" />}{spire.name}</h1>
+      <p class="desc">{spire.description}</p>
+      <ul class="facts">
+        <li>
+          Only <a class="el" href={href(`heroes?element=${spire.element}`)}>{elementIcon(spire.element) && <img src={elementIcon(spire.element)} alt="" width="18" height="18" />}{spire.element} Invokers</a> can enter.
+        </li>
+        <li>{spireRules.keysPerDayPerSpire} {spire.element} Spire Keys a day. A key is only used when you win.</li>
+        <li>{floors.length} floors, reset {spireRules.reset}.</li>
+        {summary.map((x) => (
+          <li class={`edge-${x.k}`}>
+            <strong>{edgeLabel[x.k]}</strong> on {x.count} floors ({x.els.join(', ')} enemies)
+          </li>
+        ))}
+      </ul>
+      <p class="links">
+        <a href={href('tiers/invokers/spires')}>Spires tier list</a> · <a href={href('blog/combat-basics')}>Element matchups</a>
+      </p>
+    </div>
+  </header>
+
+  <section aria-labelledby="total-title">
+    <h2 id="total-title">Full climb rewards</h2>
+    <p class="hint">Clear rewards for all {floors.length} floors plus the first-clear Gems. Every win also rolls for star and orb fragments (<a href={href('spires#rewards-title')}>odds</a>).</p>
+    <RewardChips rewards={climbTotals(spire)} />
+  </section>
+
+  <section aria-labelledby="floors-title">
+    <h2 id="floors-title">Floors</h2>
+    <nav class="jump" aria-label="Floors">
+      {chunks.map((c) => <a href={`#floor-${c[0].f.floor}`}>{c[0].f.floor}–{c[c.length - 1].f.floor}</a>)}
+    </nav>
+    {chunks.map((c) => (
+      <table>
+        <thead>
+          <tr><th>Floor</th><th>Enemies</th><th>Waves</th><th>Clear reward</th></tr>
+        </thead>
+        <tbody>
+          {c.map((r) => (
+            <tr id={`floor-${r.f.floor}`} class={`edge-${r.edge}`}>
+              <td class="floor">
+                <strong>{r.f.floor}</strong>
+                {r.bosses.length > 0 && <span class="boss-tag">Boss</span>}
+              </td>
+              <td class="enemy"><div class="cell">
+                <span class="el">{elementIcon(r.f.enemyElement) && <img src={elementIcon(r.f.enemyElement)} alt="" width="18" height="18" />}{r.f.enemyElement}</span>
+                {r.edge !== 'neutral' && <span class="edge">{edgeLabel[r.edge]}</span>}
+                <span class="stats">Lv {r.f.enemyLevel} · ACC {r.f.accuracy} · RES {r.f.resistance}</span>
+                {r.boost && <span class="stats">Enemy {r.boost}</span>}
+              </div></td>
+              <td class="waves"><div class="cell">
+                {r.groups.map((g) => (
+                  <div class="wave">
+                    <span class="wave-name">{g.label}</span>
+                    <span class="foes">
+                      {g.enemies.map((e) => (
+                        <span class={e.role === 'Boss' ? 'foe boss' : 'foe'}>
+                          {classIcon(e.class) && <img src={classIcon(e.class)} alt={className(e.class)} title={className(e.class)} width="16" height="16" />}
+                          {e.count > 1 ? `${e.count} ` : ''}{e.name}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+              </div></td>
+              <td class="reward"><div class="cell">
+                <RewardChips rewards={r.rewards.clear} />
+                {r.rewards.first.length > 0 && <span class="first">First clear: <RewardChips rewards={r.rewards.first} /></span>}
+              </div></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ))}
+  </section>
+
+  <SeeAlso links={[
+    ...others.map((s) => ({ path: `spires/${spireSlug(s)}`, label: s.name })),
+    { path: 'tiers/invokers/spires', label: 'Spires tier list' },
+  ]} />
+</Base>
+
+<style>
+  .head { --tint: var(--accent); display: flex; gap: 20px; align-items: flex-start; margin-top: 8px; }
+  .mode-art { width: 120px; height: auto; border-radius: 12px; border: 1px solid var(--tint); flex: none; }
+  h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  h1 img { width: 40px; height: 40px; object-fit: contain; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+  .desc { color: var(--soft); max-width: 70ch; margin: 0 0 10px; }
+  .hint { color: var(--soft); max-width: 70ch; font-size: 14px; margin: 0 0 8px; }
+  .facts { padding-left: 20px; margin: 0; display: grid; gap: 4px; max-width: 70ch; }
+  .links { margin: 10px 0 0; font-size: 14px; }
+  .el { display: inline-flex; align-items: center; gap: 4px; }
+  .el img { width: 18px; height: 18px; }
+  .edge-advantage strong, tr.edge-advantage .edge { color: #7BE0A0; }
+  .edge-slight-advantage strong, tr.edge-slight-advantage .edge { color: #A8E6C0; }
+  .edge-disadvantage strong, tr.edge-disadvantage .edge { color: #FF8A80; }
+  .edge-slight-disadvantage strong, tr.edge-slight-disadvantage .edge { color: #FFB3A8; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .jump a { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; border: 1px solid var(--line); margin: 12px 0; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  tr { scroll-margin-top: 80px; }
+  tr:target { background: var(--surface-2); }
+  .floor { font-size: 16px; }
+  .cell { min-width: 0; text-align: left; }
+  .enemy .cell > span, .floor > span { display: block; }
+  .enemy .cell > .el { display: flex; }
+  .boss-tag { margin-top: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--tint, #F5C451); }
+  .edge { font-size: 13px; font-weight: 600; }
+  .stats { color: var(--soft); font-size: 13px; }
+  .wave + .wave { margin-top: 4px; }
+  .wave-name { display: block; color: var(--muted); font-size: 12px; }
+  .foes { display: flex; flex-wrap: wrap; gap: 2px 12px; }
+  .foe { display: inline-flex; align-items: center; gap: 4px; }
+  .foe img { width: 16px; height: 16px; opacity: 0.8; }
+  .foe.boss { font-weight: 700; color: #F5C451; }
+  .first { display: block; margin-top: 4px; color: var(--soft); font-size: 13px; }
+  @media (max-width: 720px) {
+    .head { flex-direction: column; }
+    .mode-art { display: none; }
+    h1 { font-size: 22px; }
+  }
+</style>

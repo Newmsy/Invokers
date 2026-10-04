@@ -7,6 +7,7 @@ import { bossLabel, bossSlug, bosses, heroHref, heroes, href, titanHref, titans,
 import { heroArt, itemIcon, skillIcon, titanArt } from '../art';
 import { effects, heroesWith } from '../effects';
 import { className, skillTypeName } from '../format';
+import { bossesOf, floors, spires, spireSlug } from '../spires';
 import type { SearchDoc } from './match';
 
 /** Game rich text to plain text. Star icons become ★. */
@@ -126,6 +127,13 @@ export function dataDocs(): SearchDoc[] {
     });
   }
 
+  for (const s of spires) {
+    docs.push({ kind: 'Page', title: s.name, sub: `Spire · ${s.element} Invokers only · ${floors.length} floors`, text: s.description, image: itemIcon(`TK_${s.element}`), url: href(`spires/${spireSlug(s)}`) });
+  }
+  for (const f of floors) {
+    for (const name of bossesOf(f)) docs.push({ kind: 'Page', title: name, sub: `Spire boss · floor ${f.floor} · ${f.enemyElement}`, url: href('spires#bosses-title') });
+  }
+
   for (const set of setsJson as GearSet[]) {
     docs.push({
       kind: 'Gear set',
@@ -166,6 +174,7 @@ export function pageDocs(): SearchDoc[] {
     ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],
     ['trophies', 'Trophy Room', 'Trophy upgrade costs and the stats each level gives'],
     ['bosses', 'Boss guides', 'Dos and don’ts for every boss'],
+    ['spires', 'Spires', 'All 120 Spire floors: enemy waves, bosses, element, ACC and RES, and floor rewards'],
     ['blog', 'Blog', 'The numbers behind Invokers, worked out in plain language'],
     ['team', 'Team builder', 'Build a team of Invokers and check its elements, factions and speed'],
     ['heroes/compare', 'Compare Invokers', 'Compare Invokers side by side: stats and skills'],

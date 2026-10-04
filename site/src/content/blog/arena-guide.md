@@ -22,6 +22,26 @@ tags: [arena, trophies]
 - ![Light](element:light) and ![Dark](element:dark) both have advantage over each other here (+30% damage). In PvE only your side gets it.
 - The opponent list refreshes free every 15 minutes, after you beat everyone on it, or for 10 Gems.
 
+## Battle rules
+
+**Control effects and big buffs last about half as long in the Arena.** Share of the normal duration, single target (AoE in brackets):
+
+| Effect | Skill 1 | Skills 2–3 | Ultimate | Titan skills |
+|---|---|---|---|---|
+| Stun, Sleep, Freeze, Shock, Launch | 50% (AoE 35%) | 50% (AoE 35%) | 65% (AoE 50%) | 50% (AoE 40%) |
+| Root | 50% (AoE 40%) | 50% | 65% | 60% (AoE 50%) |
+| Taunt | 50% | 65% | 65% | 60% (AoE 50%) |
+| Unkillable, Invincibility | 50% | 50% | 50% (AoE 40%) | 50% |
+
+All other buffs and debuffs last their normal time. Who brings each: [Stun](/effects/stun), [Freeze](/effects/freeze), [Shock](/effects/shock), [Launch](/effects/launch), [Taunt](/effects/taunt), [Unkillable](/effects/unkillable), [Invincibility](/effects/invincibility).
+
+**Control gets weaker when chained.** The first Control debuff starts a 10-second window. Control placed inside it lasts less:
+
+- 1st: full time. 2nd: 60%. 3rd: 40%. 4th: 20%.
+- Then the target is immune to Control for **7 seconds**, counted from when its last Control debuff ends.
+
+**Titans come sooner.** Ultimate mana builds ×2 and Titan mana ×4 (×1 and ×2.4 in 5-Invoker PvE). A Titan costs 3,000 of its 4,500 mana, stays 12 seconds, and its cooldown is 90 seconds instead of 150.
+
 ## Leagues
 
 Everyone starts on 500 points and can't fall below it. Leagues run Bronze, Silver and Gold, steps 1 to 4. A week with no offence battles marks you inactive: you drop one league at the reset.

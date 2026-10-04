@@ -82,6 +82,10 @@ for (const source of sourceFiles) {
   add(`banners/${name}.webp`, source, bannerPath, name);
 }
 
+// Tall game-mode art, for page headers.
+const modePath = new Map<string, string>();
+add('modes/spires.webp', 'modes/Tower.webp', modePath, 'spires');
+
 const url = (served: string | undefined) => (served ? href(`img/${served}`) : undefined);
 
 /** Every served image, for the img/ endpoint. */
@@ -101,6 +105,8 @@ export const elementIcon = (element: string) => url(elementIconPath.get(element)
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
 /** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
 export const bannerArt = (name: string) => url(bannerPath.get(name));
+/** Tall mode art by page name ("spires"). */
+export const modeArt = (name: string) => url(modePath.get(name));
 export const bannerNames = () => [...bannerPath.keys()];
 
 /** heroRefsByConfigId with each hero's portrait URL, for the box, share and planner pages. */

@@ -29,7 +29,8 @@ const seeAlso = [
         { path: `heroes/compare?h=${topSlugs.slice(0, 4).join(',')}`, label: 'Compare the top 4' },
       ]
     : []),
-  ...(list.id === 'arena' ? [{ path: 'trophies', label: 'Trophy Room' }, { path: 'events#arena-title', label: 'Arena Rush calculator' }] : []),
+  ...(list.id === 'spires' ? [{ path: 'spires', label: 'Spire floors guide' }] : []),
+  ...(list.id === 'arena' ? [{ path: 'blog/arena-guide', label: 'Arena guide' }, { path: 'trophies', label: 'Trophy Room' }, { path: 'events#arena-title', label: 'Arena Rush calculator' }] : []),
 ];
 const filterValues = [...new Set(picks.map((p) => (kind === 'invokers' ? p.element : p.meta) ?? ''))].filter(Boolean).sort();
 ---
