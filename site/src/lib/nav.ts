@@ -20,6 +20,7 @@ export interface NavItem {
 }
 
 import { heroes } from './data';
+import { hasAchievements, hasProgressQuests } from './questData';
 
 // The News pages come from their own work; the nav links them only once they exist, so the link checker stays green.
 export const hasNews = Object.keys(import.meta.glob('../pages/news/index.astro')).length > 0;
@@ -46,6 +47,12 @@ export const nav: NavItem[] = [
   { path: 'gear-upgrades', banner: 'memorium', label: 'Gear upgrades and Memorium', icon: 'book', group: 'guides', art: 'item:Memorium', blurb: 'Gear upgrade gold, Memorium and selling' },
   { path: 'tips', banner: 'loading-screen', label: 'Loading tips', icon: 'book', group: 'guides', art: 'item:Heroic Playbook', blurb: 'Every loading screen tip with its picture' },
   { path: 'farming', banner: 'collect-dungeon-essence', label: 'Where to farm', icon: 'book', group: 'guides', art: 'item:Ancient Eldrin Rune', blurb: 'Best stages per Energy for Memorium, Runes, Essences and more' },
+  ...(hasAchievements
+    ? [{ path: 'rewards/achievements', banner: 'gift', label: 'Achievement rewards', icon: 'trophy', group: 'guides', art: 'item:Gold Trophy', blurb: 'Every free reward from Achievements, added up' } satisfies NavItem]
+    : []),
+  ...(hasProgressQuests
+    ? [{ path: 'rewards/progress-quests', banner: 'campaign-progression', label: 'Progress Quest rewards', icon: 'list', group: 'guides', art: 'item:Gems', blurb: 'Every free reward from all Progress Quest pages' } satisfies NavItem]
+    : []),
   { path: 'blog', banner: 'collect-dungeon-medals', label: 'Blog', icon: 'book', header: true, group: 'guides', art: 'item:Heroic Playbook', blurb: 'The numbers behind the game, in plain language' },
   // Tools
   { path: 'events', banner: 'energy', label: 'Events', icon: 'calendar', tab: true, group: 'tools', art: 'item:Energy', blurb: 'Event targets, energy planner and Arena Rush' },
