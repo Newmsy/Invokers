@@ -51,6 +51,10 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       <p class="hint">Rank 6, level 60, without gear or awakening. The best value in each column is highlighted.</p>
       <div class="table-wrap"><table id="team-stats"></table></div>
 
+      <h2>Skill cooldowns</h2>
+      <p class="hint">Base cooldowns in seconds, with the Ultimate's mana cost. The shortest in each column is highlighted.</p>
+      <div class="table-wrap"><table id="team-cooldowns"></table></div>
+
     </section>
 
     <section id="saved-wrap" hidden>
@@ -225,6 +229,35 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
     avg.append(el('th', 'Team average'), ...cols.map(({ f, i }) => el('td', formatStat(t.average[i], f.percent))));
     body.append(avg);
     (document.getElementById('team-stats') as HTMLTableElement).replaceChildren(head, body);
+
+    // Cooldowns per skill slot, in the order the skills come.
+    const slotsSeen: { type: string; label: string }[] = [];
+    for (const h of list) for (const c of h.cooldowns) if (!slotsSeen.some((x) => x.type === c.type)) slotsSeen.push(c);
+    const cdHead = el('thead');
+    const cdHr = el('tr');
+    cdHr.append(el('th', 'Invoker'), ...slotsSeen.map((x) => el('th', x.label)));
+    cdHead.append(cdHr);
+    const cdBody = el('tbody');
+    const shortest = slotsSeen.map((x) => {
+      const vals = list.flatMap((h) => h.cooldowns.filter((c) => c.type === x.type).map((c) => c.cooldown));
+      return vals.length > 1 && vals.some((v) => v !== vals[0]) ? Math.min(...vals) : null;
+    });
+    for (const h of list) {
+      const tr = el('tr');
+      const th = el('th');
+      th.scope = 'row';
+      const a = el('a', h.name);
+      a.href = `${base}/heroes/${h.slug}`;
+      th.append(a);
+      tr.append(th, ...slotsSeen.map((x, i) => {
+        const c = h.cooldowns.find((y) => y.type === x.type);
+        const td = el('td', c ? `${c.cooldown}s${c.manaCost ? ` · ${c.manaCost.toLocaleString('en-GB')} mana` : ''}` : '–');
+        if (c && c.cooldown === shortest[i]) td.className = 'best';
+        return td;
+      }));
+      cdBody.append(tr);
+    }
+    (document.getElementById('team-cooldowns') as HTMLTableElement).replaceChildren(cdHead, cdBody);
   }
 
   function renderSaved() {
