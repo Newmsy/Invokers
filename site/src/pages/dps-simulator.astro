@@ -15,7 +15,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-seconds={FIGHT_SEC}>
+  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)}>
     <div class="filters">
       <label>Invoker
         <select id="d-hero" disabled><option>Loading…</option></select>
@@ -23,7 +23,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       <label>Mode
         <select id="d-mode">
           <option value="pve">PvE: every skill ready</option>
-          <option value="arena">Arena: skills start at half cooldown</option>
+          <option value="arena">Arena: skills start at half cooldown, {FIGHT_SEC.arena}-second fight</option>
         </select>
       </label>
       <label>{BOSS} stage
@@ -93,7 +93,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </section>
 
       <p class="hint note">
-        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC}-second fight.
+        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
         Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
     </section>

@@ -37,7 +37,6 @@ export async function start(): Promise<void> {
   const labels = JSON.parse(root.dataset.labels ?? '{}') as Record<string, string>;
   const setNames = JSON.parse(root.dataset.sets ?? '{}') as Record<string, string>;
   const others = $<HTMLInputElement>('o-others');
-  const seconds = Number(root.dataset.seconds);
   const heroSel = $<HTMLSelectElement>('d-hero');
   const modeSel = $<HTMLSelectElement>('d-mode');
   const stageSel = $<HTMLSelectElement>('d-stage');
@@ -53,18 +52,27 @@ export async function start(): Promise<void> {
 
   const wanted = new URLSearchParams(location.search).get('hero');
 
+  const nameOf = (h: BoxHero) => data.heroes.find((d) => d.configId === h.configId)?.name ?? '';
+
   function fillHeroes() {
     const keep = heroSel.value || (wanted ? `any:${wanted}` : '');
     heroSel.replaceChildren();
     const owned = (box?.heroes ?? [])
       .filter((h) => data.heroes.some((d) => d.configId === h.configId))
-      .sort((a, b) => (RANK_STARS[b.rank] ?? 0) - (RANK_STARS[a.rank] ?? 0) || b.level - a.level);
+      .sort(
+        (a, b) =>
+          (RANK_STARS[b.rank] ?? 0) - (RANK_STARS[a.rank] ?? 0) ||
+          b.level - a.level ||
+          nameOf(a).localeCompare(nameOf(b)) ||
+          (b.awakenLevel ?? 0) - (a.awakenLevel ?? 0),
+      );
     if (owned.length) {
       const group = document.createElement('optgroup');
       group.label = 'My box (with gear)';
       for (const h of owned) {
         const d = data.heroes.find((x) => x.configId === h.configId)!;
-        const o = new Option(`${d.name} · ${RANK_STARS[h.rank] ?? '?'}★ Lv ${h.level}`, `box:${h.id}`);
+        const awake = h.awakenLevel ? ` · Awakened ${h.awakenLevel}` : '';
+        const o = new Option(`${d.name} · ${RANK_STARS[h.rank] ?? '?'}★ Lv ${h.level}${awake}`, `box:${h.id}`);
         group.append(o);
       }
       heroSel.append(group);
@@ -100,11 +108,11 @@ export async function start(): Promise<void> {
       $('d-out').hidden = true;
       return;
     }
-    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, seconds };
+    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage };
     const { base, values } = statValues(data, input);
     $('d-out').hidden = false;
     $('d-dps').textContent = fmt(base.dps);
-    $('d-total').textContent = `${fmt(base.total)} damage in ${seconds} seconds against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
+    $('d-total').textContent = `${fmt(base.total)} damage in a ${base.seconds}-second fight against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
 
     const t = build.totals;
     const stats: [string, string][] = [
@@ -186,7 +194,7 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
     $('o-box').hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
-    const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, seconds });
+    const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked });
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
     const setLine = (l: Loadout) =>

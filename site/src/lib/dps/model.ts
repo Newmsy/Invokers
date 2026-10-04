@@ -243,7 +243,7 @@ export interface DebuffResult {
 }
 
 export interface FightResult {
-  /** Average damage per second over fights of WINDOW seconds either side of `seconds` (smooths out cooldown timing). */
+  /** Average damage per second over fights of FIGHT_WINDOW_SEC either side of `seconds` (smooths out cooldown timing). */
   dps: number;
   /** Damage in a fight of exactly `seconds`. */
   total: number;
@@ -254,8 +254,6 @@ export interface FightResult {
   accChance: number;
 }
 
-/** Fight lengths averaged for the DPS figure: `seconds` ± this many, every half second. */
-export const WINDOW = 30;
 
 const levelOf = (input: FightInput, slot: SkillSlot, count: number) =>
   Math.max(1, Math.min(count, input.skillLevels[slot] ?? count)) - 1;
@@ -349,7 +347,8 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
 }
 
 export function simulate(data: DpsData, input: FightInput): FightResult {
-  const T = input.seconds ?? C.FIGHT_SEC;
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const WINDOW = C.FIGHT_WINDOW_SEC[input.mode];
   const lo = Math.max(1, T - WINDOW);
   const events = timeline(data, input, T + WINDOW);
   const damageBy = (until: number) => events.reduce((n, e) => (e.at < until ? n + e.damage : n), 0);
