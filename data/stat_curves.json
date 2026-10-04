@@ -9036,7 +9036,7 @@
   {
    "id": "InstinctFactorPct01",
    "stat": "InstinctRatingFlat",
-   "meaning": "Instinct: the factor the game reads for Instinct (0-1 scale)",
+   "meaning": "Instinct: chance (0-1) that an AI-controlled Invoker dodges a danger zone; no effect on damage or crit",
    "ratingFrom": 0,
    "values": [
     0.3,
