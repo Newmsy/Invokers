@@ -4,7 +4,7 @@ import { heroHref } from '../lib/data';
 import SeeAlso from '../components/SeeAlso.astro';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
-import { atLeastOne, legendaryPool, pullsFor, summonItem, summonRarities, summons } from '../lib/summons';
+import { atLeastOne, bonusLabel, legendaryPool, pullableItems, pullsFor, summonRarities, summons } from '../lib/summons';
 
 const colors: Record<string, string> = { ...rarityColor, Mythic: '#FF7A7A' };
 const pct = (p: number) => {
@@ -14,21 +14,20 @@ const pct = (p: number) => {
   return `${v < 1 ? v.toFixed(3).replace(/0+$/, '') : v.toFixed(2).replace(/0+$/, '')}%`.replace(/\.%$/, '%');
 };
 const fmt = (n: number) => n.toLocaleString('en-GB');
-const itemLabel = (id: string) => summonItem(id)?.name ?? id;
 
 const groups = [
   { kind: 'hero' as const, title: 'Invoker stars' },
   { kind: 'titan' as const, title: 'Titan orbs' },
 ].map((g) => {
-  const items = summons.items.filter((i) => i.kind === g.kind);
+  const items = pullableItems.filter((i) => i.kind === g.kind);
   const rarities = summonRarities.filter((r) => items.some((i) => i.rates[r]));
   return { ...g, items, rarities };
 });
 
-const legendaryItems = summons.items.filter((i) => i.rates.Legendary && i.rates.Legendary < 1);
+const legendaryItems = pullableItems.filter((i) => i.rates.Legendary && i.rates.Legendary < 1);
 const ladder = [10, 50, 100, 130, 200, 300, 500];
 
-const mercyRows = summons.items.flatMap((i) =>
+const mercyRows = pullableItems.flatMap((i) =>
   Object.entries(i.mercy ?? {}).map(([rarity, count]) => ({ item: i.name, rarity, count, first: i.firstMercy?.[rarity] })),
 );
 
@@ -36,7 +35,7 @@ const pools = Object.fromEntries(summons.items.filter((i) => i.legendaryPool).ma
 
 // What the calculator needs in the browser; the maths itself is imported by the script below.
 const calc = {
-  items: summons.items.map((i) => ({ id: i.id, name: i.name, rarities: summonRarities.filter((r) => i.rates[r]) })),
+  items: pullableItems.map((i) => ({ id: i.id, name: i.name, rarities: summonRarities.filter((r) => i.rates[r]) })),
   pools,
 };
 ---
@@ -184,7 +183,7 @@ const calc = {
 
   <section aria-labelledby="bonus-title">
     <h2 id="bonus-title">Bonus summons</h2>
-    <p class="hint">Using summon items fills bonus counters that pay out more summon items.</p>
+    <p class="hint">Using summon items fills bonus counters that pay out extra summons.</p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -193,8 +192,8 @@ const calc = {
         <tbody>
           {summons.bonus.map((b) => (
             <tr>
-              <th scope="row">{b.uses.map(itemLabel).join(' or ')}</th>
-              <td>{itemLabel(b.gives)}</td>
+              <th scope="row">{b.uses.map((u) => bonusLabel(u)).join(' or ')}</th>
+              <td>{bonusLabel(b.gives).replace(/^r/, 'R')}</td>
               <td>{b.every}</td>
             </tr>
           ))}
@@ -244,7 +243,7 @@ const calc = {
 </Base>
 
 <script>
-  import { odds, pullsFor, summonItem } from '../lib/summons/odds';
+  import { bonusLabel, odds, pullsFor, summonItem } from '../lib/summons/odds';
 
   interface Data {
     items: { id: string; name: string; rarities: string[] }[];
@@ -315,7 +314,7 @@ const calc = {
 
     const notes: string[] = [];
     if (r.bonusItems.length) {
-      notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${summonItem(b.item)?.name ?? b.item}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
+      notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
     }
     if (r.guaranteedBy) notes.push(`If the estimated mercy rule holds, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
     if (specific) notes.push(`One of ${pool!.length} equally likely Legendaries. Mercy and bonus summons aren't counted for one specific Invoker.`);

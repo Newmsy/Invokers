@@ -1,17 +1,17 @@
 {
   "gameVersion": "0.61.1514",
-  "note": "Summon rates, mercy counts, bonus summons and chroma chances, as in the blog post 'What 130 Destiny Stars really buy you'. Rates are fractions. Mercy counts are estimates (unconfirmed in game).",
+  "note": "Summon rates, mercy counts, bonus summons and chroma chances, as in the blog post 'What 130 Destiny Stars really buy you'. Rates are fractions. Mercy counts are estimates (unconfirmed in game). Items marked pity are not real items: they stand for the guaranteed pull a bonus counter pays out, and are never shown as items.",
   "items": [
     { "id": "SI_WildStar", "name": "Wild Star", "kind": "hero", "rates": { "Common": 0.7, "Uncommon": 0.285, "Rare": 0.015 } },
     { "id": "SI_FateStar", "name": "Fate Star", "kind": "hero", "rates": { "Rare": 0.9167, "Epic": 0.0833 }, "mercy": { "Epic": 30 } },
     { "id": "SI_DestinyStar", "name": "Destiny Star", "kind": "hero", "rates": { "Rare": 0.9114, "Epic": 0.0833, "Legendary": 0.0053 }, "mercy": { "Epic": 30, "Legendary": 190 }, "firstMercy": { "Legendary": 50 }, "legendaryPool": "elemental" },
     { "id": "SI_RadiantStar", "name": "Radiant Star", "kind": "hero", "rates": { "Rare": 0.9114, "Epic": 0.0833, "Legendary": 0.0053 }, "mercy": { "Epic": 30, "Legendary": 200 }, "legendaryPool": "lightDark" },
     { "id": "SI_DivineStar", "name": "Divine Star", "kind": "hero", "rates": { "Epic": 0.9333, "Legendary": 0.0667 }, "mercy": { "Legendary": 15 } },
-    { "id": "SI_LegendaryStar", "name": "Legendary Star", "kind": "hero", "rates": { "Legendary": 1 } },
+    { "id": "SI_LegendaryStar", "name": "Legendary Star", "kind": "hero", "pity": true, "rates": { "Legendary": 1 } },
     { "id": "SI_DreamOrb", "name": "Dream Orb", "kind": "titan", "rates": { "Rare": 0.92, "Epic": 0.08 } },
     { "id": "SI_WonderOrb", "name": "Wonder Orb", "kind": "titan", "rates": { "Rare": 0.9115, "Epic": 0.083, "Legendary": 0.0055 }, "mercy": { "Legendary": 190 } },
     { "id": "SI_MiracleOrb", "name": "Miracle Orb", "kind": "titan", "rates": { "Epic": 0.9, "Legendary": 0.09, "Mythic": 0.01 }, "mercy": { "Legendary": 15 } },
-    { "id": "SI_MythicOrb", "name": "Mythic Orb", "kind": "titan", "rates": { "Mythic": 1 } }
+    { "id": "SI_MythicOrb", "name": "Mythic Orb", "kind": "titan", "pity": true, "rates": { "Mythic": 1 } }
   ],
   "bonus": [
     { "uses": ["SI_FateStar", "SI_DestinyStar"], "gives": "SI_DivineStar", "every": 85 },

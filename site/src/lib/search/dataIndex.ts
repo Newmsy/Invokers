@@ -25,6 +25,16 @@ function isPlaceholder(item: Item): boolean {
   return !item.name || item.name === item.id || item.name.includes('_');
 }
 
+/**
+ * False for items players can't get or use: faction runes for factions with no Invokers (Ekkan, Oasi, Outlaws), and
+ * the generic runes, crests and essences (players only get the faction, class and element ones).
+ */
+function inGame(item: Item, factions: Set<string>): boolean {
+  if (/^(FM|RM|EE)_Tier\dGeneric$/.test(item.id)) return false;
+  const rune = /^FM_Tier\d(.+)$/.exec(item.id)?.[1];
+  return !rune || factions.has(rune);
+}
+
 /** Keeps the index small: long texts are cut at a word boundary. */
 export function clip(s: string, max = 240): string {
   return s.length <= max ? s : `${s.slice(0, s.lastIndexOf(' ', max))}…`;
@@ -141,8 +151,9 @@ export function dataDocs(): SearchDoc[] {
   }
 
   const seen = new Set<string>();
+  const factions = new Set(heroes.map((h) => h.faction));
   for (const item of itemsJson as Item[]) {
-    if (isPlaceholder(item)) continue;
+    if (isPlaceholder(item) || !inGame(item, factions)) continue;
     const name = plainText(item.name);
     if (seen.has(name)) continue;
     seen.add(name);

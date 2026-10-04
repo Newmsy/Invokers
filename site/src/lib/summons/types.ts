@@ -3,6 +3,8 @@ export interface SummonItem {
   id: string;
   name: string;
   kind: 'hero' | 'titan';
+  /** Not a real item: the guaranteed pull a bonus counter pays out. Kept for the maths, never shown as an item. */
+  pity?: boolean;
   /** Rarity → chance per pull (fraction). */
   rates: Record<string, number>;
   /** Estimated mercy: a pull of this rarity by this many pulls without one. */

@@ -24,7 +24,6 @@ Run your own numbers in the [Summons odds calculator](/summons).
 | ![Destiny Star](item:) | | | 91.14% | 8.33% | 0.53% |
 | ![Radiant Star](item:) | | | 91.14% | 8.33% | 0.53% |
 | ![Divine Star](item:) | | | | 93.33% | 6.67% |
-| Legendary Star | | | | | 100% |
 
 Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars only give Light and Dark heroes.
 
@@ -33,7 +32,6 @@ Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars 
 | ![Dream Orb](item:) | 92% | 8% | | |
 | ![Wonder Orb](item:) | 91.15% | 8.3% | 0.55% | |
 | ![Miracle Orb](item:) | | 90% | 9% | 1% |
-| Mythic Orb | | | | 100% |
 
 Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 heroes (every Fire, Water, Earth and Wind Legendary except ![Ardell The Torrent](hero:), who can't be summoned), so a **specific** Legendary is about **1 in 7,170 pulls**. The Radiant pool has 19, so about 1 in 3,585. [Who's in each pool](/summons#pools-title).
 
@@ -69,10 +67,10 @@ Still unknown: whether a natural Legendary resets the counter, and whether items
 | Use | Get | Required |
 |---|---|---|
 | ![Fate Star](item:) or ![Destiny Star](item:) | ![Divine Star](item:) | 85 |
-| ![Divine Star](item:) | Legendary Star | 45 |
+| ![Divine Star](item:) | Random Legendary Invoker | 45 |
 | ![Radiant Star](item:) | ![Radiant Star](item:) | 10 |
 | ![Dream Orb](item:) or ![Wonder Orb](item:) | ![Miracle Orb](item:) | 85 |
-| ![Miracle Orb](item:) | Mythic Orb | 100 |
+| ![Miracle Orb](item:) | Random Mythic Titan | 100 |
 
 With the estimated mercy rules and bonus Divine Stars, the long-run rate is about **0.94% per Destiny Star** (estimated), close to double the 0.53% on the label.
 
