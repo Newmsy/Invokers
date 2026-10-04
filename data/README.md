@@ -20,7 +20,15 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `awakening.json` | Awakening (issue #26): `soulSigns[]` (8 soul classes) with English `name` (e.g. Vess), `title` (Sign of Vess), `description`, `baseBonus` and `levels[]` (awaken levels 1-6) of `nodes[]` `{id, parentId, bonuses[], costByRarity}`; `materialTiers` (tier 1 = levels 1-2, 2 = 3-4, 3 = 5-6) |
 | `gear_costs.json` | Gear and accessory costs: `upgrade[]` `{rank, rarity, toLevel, gold, memorium}`, `sell`, `deactivate`, `destroy` |
 | `sources.json` | Where Memorium, runes, essences, crests, Titan Sparks, Echoes and the Memorium/Rune boosters come from: `items.<itemId>[]` of stage drops `{source, region, difficulty, stage, energy, drop, min, max, chancePerRoll, rolls, expectedPerRun}` and shop packs `{source: Shop, packId, pack, price, amount}` |
+| `stages.json` | Every stage (issue #25): `id`, `area`, `region`, `difficulty`, `stage`, `energy`, `drops[]` `{source, itemId, min, max, chancePerRoll, rolls, expectedPerWin}`; in-battle `<kind> entry` drops carry a `weight` instead of a chance. `lootDistribution` says how those spread over enemies, destructibles and chests (see below) |
+| `chests.json` | Clan activity, clan boss, PvP and VIP chests: `chest`, `tier`, `picks`, `items[]` `{group, itemId, amount, weight, groupChanceInPicks}`; `rules` explains the picking |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's
 `<color>`/`<b>`/`<br>` tags; the site decides how to render them.
+
+How stage drops combine (`stages.json`): `Victory` rows are rolled once per win, so `expectedPerWin` = `chancePerRoll`
+x `rolls` x average amount. `Repeat` is given on every win and `FirstClear` once. In-battle loot (`Enemies` /
+`Destructibles` / `Chests` `entry` rows) is shared out per loot source: each enemy, object or chest of a
+`lootDistribution` source drops with its `dropChance`, `iterations` times, picking one of the stage's entries of that
+kind by `weight`. `<kind> table` rows expand the tables an entry links to.

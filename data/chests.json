@@ -1,0 +1,5142 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "Static game config via the LootDump export (Levels.csv, LootDistribution.csv, ChestOdds.csv).",
+ "rules": "Each chest gives `picks` rewards. A reward is picked by weight among groups; the same group is never picked twice. Within a group, the item and amount are picked by weight. groupChanceInPicks = chance that group is among the chest's rewards.",
+ "unconfirmed": [
+  "No-repeat picking is how the config is shaped; it has not been checked against the server."
+ ],
+ "chests": [
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 75000,
+     "weight": 100,
+     "groupChanceInPicks": 0.510985
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 80000,
+     "weight": 75,
+     "groupChanceInPicks": 0.510985
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 90000,
+     "weight": 70,
+     "groupChanceInPicks": 0.510985
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 15,
+     "weight": 30,
+     "groupChanceInPicks": 0.142432
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 20,
+     "weight": 20,
+     "groupChanceInPicks": 0.142432
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 25,
+     "weight": 10,
+     "groupChanceInPicks": 0.142432
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 50,
+     "weight": 40,
+     "groupChanceInPicks": 0.243102
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 75,
+     "weight": 35,
+     "groupChanceInPicks": 0.243102
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 100,
+     "weight": 30,
+     "groupChanceInPicks": 0.243102
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 150,
+     "weight": 80,
+     "groupChanceInPicks": 0.451731
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 200,
+     "weight": 70,
+     "groupChanceInPicks": 0.451731
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 250,
+     "weight": 60,
+     "groupChanceInPicks": 0.451731
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 15,
+     "weight": 60,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 20,
+     "weight": 51,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 25,
+     "weight": 45,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 5,
+     "weight": 42,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 10,
+     "weight": 36,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 15,
+     "weight": 30,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 5,
+     "weight": 24,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 7,
+     "weight": 21,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 10,
+     "weight": 18,
+     "groupChanceInPicks": 0.622587
+    },
+    {
+     "group": 6,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.029163
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.029163
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.029163
+    },
+    {
+     "group": 6,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.029163
+    }
+   ],
+   "chest": "Activity",
+   "tier": "Bronze",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 85000,
+     "weight": 100,
+     "groupChanceInPicks": 0.497396
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 90000,
+     "weight": 75,
+     "groupChanceInPicks": 0.497396
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 100000,
+     "weight": 70,
+     "groupChanceInPicks": 0.497396
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 20,
+     "weight": 34,
+     "groupChanceInPicks": 0.157611
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 25,
+     "weight": 23,
+     "groupChanceInPicks": 0.157611
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 30,
+     "weight": 12,
+     "groupChanceInPicks": 0.157611
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 75,
+     "weight": 40,
+     "groupChanceInPicks": 0.235246
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 100,
+     "weight": 35,
+     "groupChanceInPicks": 0.235246
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 125,
+     "weight": 30,
+     "groupChanceInPicks": 0.235246
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 200,
+     "weight": 80,
+     "groupChanceInPicks": 0.438856
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 250,
+     "weight": 70,
+     "groupChanceInPicks": 0.438856
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 300,
+     "weight": 60,
+     "groupChanceInPicks": 0.438856
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 25,
+     "weight": 51,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 30,
+     "weight": 60,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 35,
+     "weight": 45,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 8,
+     "weight": 36,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 13,
+     "weight": 42,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 18,
+     "weight": 30,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 7,
+     "weight": 28,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 10,
+     "weight": 32,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 12,
+     "weight": 25,
+     "groupChanceInPicks": 0.633405
+    },
+    {
+     "group": 6,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.037485
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.037485
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.037485
+    },
+    {
+     "group": 6,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.037485
+    }
+   ],
+   "chest": "Activity",
+   "tier": "Silver",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 95000,
+     "weight": 100,
+     "groupChanceInPicks": 0.487275
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 110000,
+     "weight": 75,
+     "groupChanceInPicks": 0.487275
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 125000,
+     "weight": 70,
+     "groupChanceInPicks": 0.487275
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 25,
+     "weight": 34,
+     "groupChanceInPicks": 0.153983
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 30,
+     "weight": 23,
+     "groupChanceInPicks": 0.153983
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 35,
+     "weight": 12,
+     "groupChanceInPicks": 0.153983
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 125,
+     "weight": 45,
+     "groupChanceInPicks": 0.260537
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 150,
+     "weight": 40,
+     "groupChanceInPicks": 0.260537
+    },
+    {
+     "group": 3,
+     "itemId": "Energy",
+     "amount": 200,
+     "weight": 35,
+     "groupChanceInPicks": 0.260537
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 200,
+     "weight": 80,
+     "groupChanceInPicks": 0.429583
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 250,
+     "weight": 70,
+     "groupChanceInPicks": 0.429583
+    },
+    {
+     "group": 4,
+     "itemId": "Memorium",
+     "amount": 300,
+     "weight": 60,
+     "groupChanceInPicks": 0.429583
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 35,
+     "weight": 45,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 40,
+     "weight": 51,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 45,
+     "weight": 60,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 11,
+     "weight": 30,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 17,
+     "weight": 36,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 22,
+     "weight": 42,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 10,
+     "weight": 25,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 13,
+     "weight": 28,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier3Eldrin, FM_Tier3Magi, FM_Tier3Stonehearts, FM_Tier3Freeborn, FM_Tier3Beastbloods, FM_Tier3Nocturna, FM_Tier3Ironbands, FM_Tier3Cambion, FM_Tier3Lightseekers)",
+     "amount": 15,
+     "weight": 32,
+     "groupChanceInPicks": 0.622943
+    },
+    {
+     "group": 6,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.045678
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.045678
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.045678
+    },
+    {
+     "group": 6,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.045678
+    }
+   ],
+   "chest": "Activity",
+   "tier": "Gold",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 25000,
+     "weight": 450,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 35000,
+     "weight": 400,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 45000,
+     "weight": 350,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 500,
+     "weight": 250,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 600,
+     "weight": 200,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 700,
+     "weight": 150,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.145143
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 35,
+     "groupChanceInPicks": 0.145143
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Bronze1",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 35000,
+     "weight": 450,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 45000,
+     "weight": 400,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 55000,
+     "weight": 350,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 600,
+     "weight": 250,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 700,
+     "weight": 200,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 800,
+     "weight": 150,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.145143
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 35,
+     "groupChanceInPicks": 0.145143
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Bronze2",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 45000,
+     "weight": 450,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 55000,
+     "weight": 400,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 65000,
+     "weight": 350,
+     "groupChanceInPicks": 0.963914
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 700,
+     "weight": 250,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 800,
+     "weight": 200,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 900,
+     "weight": 150,
+     "groupChanceInPicks": 0.890943
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.145143
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 35,
+     "groupChanceInPicks": 0.145143
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Bronze3",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 55000,
+     "weight": 450,
+     "groupChanceInPicks": 0.955643
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 65000,
+     "weight": 400,
+     "groupChanceInPicks": 0.955643
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 75000,
+     "weight": 350,
+     "groupChanceInPicks": 0.955643
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 800,
+     "weight": 250,
+     "groupChanceInPicks": 0.869115
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 900,
+     "weight": 200,
+     "groupChanceInPicks": 0.869115
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 150,
+     "groupChanceInPicks": 0.869115
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.141555
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 35,
+     "groupChanceInPicks": 0.141555
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.033686
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Bronze4",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 65000,
+     "weight": 450,
+     "groupChanceInPicks": 0.797887
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 75000,
+     "weight": 400,
+     "groupChanceInPicks": 0.797887
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 85000,
+     "weight": 350,
+     "groupChanceInPicks": 0.797887
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 45,
+     "weight": 125,
+     "groupChanceInPicks": 0.339081
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 45,
+     "weight": 115,
+     "groupChanceInPicks": 0.339081
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 100,
+     "groupChanceInPicks": 0.339081
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 900,
+     "weight": 250,
+     "groupChanceInPicks": 0.557798
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 200,
+     "groupChanceInPicks": 0.557798
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1100,
+     "weight": 150,
+     "groupChanceInPicks": 0.557798
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 15,
+     "weight": 200,
+     "groupChanceInPicks": 0.205439
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.089173
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 35,
+     "groupChanceInPicks": 0.089173
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.010623
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Silver1",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 75000,
+     "weight": 450,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 85000,
+     "weight": 400,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 95000,
+     "weight": 350,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 125,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 115,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 100,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 250,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1100,
+     "weight": 200,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1200,
+     "weight": 150,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 20,
+     "weight": 200,
+     "groupChanceInPicks": 0.202733
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 35,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Silver2",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 85000,
+     "weight": 450,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 95000,
+     "weight": 400,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 105000,
+     "weight": 350,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 125,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 115,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 100,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1100,
+     "weight": 250,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1200,
+     "weight": 200,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1300,
+     "weight": 150,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 25,
+     "weight": 200,
+     "groupChanceInPicks": 0.202733
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 35,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Silver3",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 95000,
+     "weight": 450,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 105000,
+     "weight": 400,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 115000,
+     "weight": 350,
+     "groupChanceInPicks": 0.792375
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 125,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 115,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 60,
+     "weight": 100,
+     "groupChanceInPicks": 0.334666
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1200,
+     "weight": 250,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1300,
+     "weight": 200,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1400,
+     "weight": 150,
+     "groupChanceInPicks": 0.550825
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 30,
+     "weight": 200,
+     "groupChanceInPicks": 0.202733
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 35,
+     "groupChanceInPicks": 0.087991
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.020929
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.010481
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Silver4",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 105000,
+     "weight": 300,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 115000,
+     "weight": 250,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 125000,
+     "weight": 200,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 125,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 115,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 100,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1300,
+     "weight": 150,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1400,
+     "weight": 100,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1500,
+     "weight": 75,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 30,
+     "weight": 150,
+     "groupChanceInPicks": 0.199724
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 70,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 40,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 30,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 2,
+     "weight": 15,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.041253
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.041253
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Gold1",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 115000,
+     "weight": 300,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 125000,
+     "weight": 250,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 135000,
+     "weight": 200,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 125,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 115,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 50,
+     "weight": 100,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1400,
+     "weight": 150,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1500,
+     "weight": 100,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1600,
+     "weight": 75,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 35,
+     "weight": 150,
+     "groupChanceInPicks": 0.199724
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 70,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 40,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 30,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 2,
+     "weight": 15,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.041253
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.041253
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Gold2",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 125000,
+     "weight": 300,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 135000,
+     "weight": 250,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 145000,
+     "weight": 200,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 125,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 115,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 100,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1500,
+     "weight": 150,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1600,
+     "weight": 100,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1700,
+     "weight": 75,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 40,
+     "weight": 150,
+     "groupChanceInPicks": 0.199724
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 70,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 40,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 30,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 2,
+     "weight": 15,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.041253
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 2,
+     "weight": 10,
+     "groupChanceInPicks": 0.041253
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Gold3",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 135000,
+     "weight": 300,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 145000,
+     "weight": 250,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 155000,
+     "weight": 200,
+     "groupChanceInPicks": 0.71737
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 125,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 55,
+     "weight": 115,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 60,
+     "weight": 100,
+     "groupChanceInPicks": 0.424073
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1600,
+     "weight": 150,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1700,
+     "weight": 100,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 3,
+     "itemId": "Memorium",
+     "amount": 1800,
+     "weight": 75,
+     "groupChanceInPicks": 0.40779
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 40,
+     "weight": 150,
+     "groupChanceInPicks": 0.199724
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 70,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 5,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 40,
+     "groupChanceInPicks": 0.148141
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 30,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Epic",
+     "amount": 2,
+     "weight": 15,
+     "groupChanceInPicks": 0.061649
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.041253
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Legendary",
+     "amount": 2,
+     "weight": 10,
+     "groupChanceInPicks": 0.041253
+    }
+   ],
+   "chest": "Boss",
+   "tier": "Gold4",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 50000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 75000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 100000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 75,
+     "weight": 850,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 125,
+     "weight": 500,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.021839
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 500,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 350,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 150,
+     "groupChanceInPicks": 0.086747
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.086747
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Bronze1",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 55000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 80000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 105000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 80,
+     "weight": 850,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 130,
+     "weight": 500,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.021839
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 500,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 350,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 150,
+     "groupChanceInPicks": 0.086747
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.086747
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Bronze2",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 60000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 85000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 110000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 90,
+     "weight": 850,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 140,
+     "weight": 500,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.021839
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 500,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 350,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 150,
+     "groupChanceInPicks": 0.086747
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.086747
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Bronze3",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 65000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 90000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 115000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.901175
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 100,
+     "weight": 850,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 150,
+     "weight": 500,
+     "groupChanceInPicks": 0.547028
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.021839
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.043578
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 500,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 350,
+     "groupChanceInPicks": 0.356056
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 150,
+     "groupChanceInPicks": 0.086747
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 50,
+     "groupChanceInPicks": 0.086747
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Bronze4",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 100000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 150000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 200000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 100,
+     "weight": 850,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 150,
+     "weight": 500,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 160,
+     "groupChanceInPicks": 0.099394
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.099394
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Silver1",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 110000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 160000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 205000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 110,
+     "weight": 850,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 160,
+     "weight": 500,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 160,
+     "groupChanceInPicks": 0.099394
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.099394
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Silver2",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 115000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 165000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 210000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 120,
+     "weight": 850,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 170,
+     "weight": 500,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 160,
+     "groupChanceInPicks": 0.099394
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.099394
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Silver3",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 120000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 170000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 215000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.889041
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 130,
+     "weight": 850,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 180,
+     "weight": 500,
+     "groupChanceInPicks": 0.52331
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.049982
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.033383
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.321523
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 160,
+     "groupChanceInPicks": 0.099394
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.099394
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Silver4",
+   "picks": 2
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 250000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 300000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 350000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 150,
+     "weight": 700,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 200,
+     "weight": 500,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 5,
+     "itemId": "SI_DivineStar",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 8,
+     "itemId": "SI_MiracleOrb",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 300,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 160,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.238443
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Gold1",
+   "picks": 3
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 300000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 350000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 400000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 160,
+     "weight": 700,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 210,
+     "weight": 500,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 5,
+     "itemId": "SI_DivineStar",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 8,
+     "itemId": "SI_MiracleOrb",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 300,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 160,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.238443
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Gold2",
+   "picks": 3
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 350000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 400000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 450000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 170,
+     "weight": 700,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 220,
+     "weight": 500,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 5,
+     "itemId": "SI_DivineStar",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 8,
+     "itemId": "SI_MiracleOrb",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 300,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 160,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.238443
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Gold3",
+   "picks": 3
+  },
+  {
+   "items": [
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 400000,
+     "weight": 2000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 450000,
+     "weight": 1500,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 500000,
+     "weight": 1000,
+     "groupChanceInPicks": 0.976949
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 200,
+     "weight": 700,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 250,
+     "weight": 500,
+     "groupChanceInPicks": 0.759884
+    },
+    {
+     "group": 3,
+     "itemId": "SI_FateStar",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 4,
+     "itemId": "SI_DestinyStar",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 5,
+     "itemId": "SI_DivineStar",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 6,
+     "itemId": "SI_DreamOrb",
+     "amount": 1,
+     "weight": 120,
+     "groupChanceInPicks": 0.113131
+    },
+    {
+     "group": 7,
+     "itemId": "SI_WonderOrb",
+     "amount": 1,
+     "weight": 100,
+     "groupChanceInPicks": 0.094623
+    },
+    {
+     "group": 8,
+     "itemId": "SI_MiracleOrb",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.019192
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 300,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars4",
+     "amount": 1,
+     "weight": 400,
+     "groupChanceInPicks": 0.570831
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 2,
+     "weight": 160,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 80,
+     "groupChanceInPicks": 0.238443
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 20,
+     "groupChanceInPicks": 0.238443
+    }
+   ],
+   "chest": "PvP",
+   "tier": "Gold4",
+   "picks": 3
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 10000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 5,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 20,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars1",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 0",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 200,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 20000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 10,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 20,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars1",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 1",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 300,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 30000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 15,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 30,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars1",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 2",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 400,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 40000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 18,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 5,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 40,
+     "weight": 15,
+     "groupChanceInPicks": 0.15
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars1",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 3",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 500,
+     "weight": 13,
+     "groupChanceInPicks": 0.13
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 50000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 20,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 3,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 3,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 50,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 8,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars2",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 4",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 600,
+     "weight": 11,
+     "groupChanceInPicks": 0.11
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 60000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 22,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 6,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 3,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 6,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 3,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 60,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 8,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars2",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 5",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 700,
+     "weight": 9,
+     "groupChanceInPicks": 0.09
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 70000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 25,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 7,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 4,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 7,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 4,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 70,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 8,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars2",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 6",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 800,
+     "weight": 7,
+     "groupChanceInPicks": 0.07
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 80000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 25,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier1Fire, EE_Tier1Wind, EE_Tier1Earth, EE_Tier1Water, EE_Tier1Light, EE_Tier1Dark, AE_ManaTier1)",
+     "amount": 8,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 4,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 5,
+     "itemId": "one of (FM_Tier1Eldrin, FM_Tier1Magi, FM_Tier1Stonehearts, FM_Tier1Freeborn, FM_Tier1Beastbloods, FM_Tier1Nocturna, FM_Tier1Ironbands, FM_Tier1Cambion, FM_Tier1Lightseekers)",
+     "amount": 8,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 4,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 80,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 8,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 9,
+     "itemId": "ASC_Stars2",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 10,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 7",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 900,
+     "weight": 18,
+     "groupChanceInPicks": 0.18
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 90000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 30,
+     "weight": 20,
+     "groupChanceInPicks": 0.2
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 90,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 8",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 26,
+     "groupChanceInPicks": 0.26
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 100000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 70,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 9",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 24,
+     "groupChanceInPicks": 0.24
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 110000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 75,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 10",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 22,
+     "groupChanceInPicks": 0.22
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 120000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 80,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "one of (EE_Tier2Fire, EE_Tier2Wind, EE_Tier2Earth, EE_Tier2Water, EE_Tier2Light, EE_Tier2Dark, AE_ManaTier2)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "one of (FM_Tier2Eldrin, FM_Tier2Magi, FM_Tier2Stonehearts, FM_Tier2Freeborn, FM_Tier2Beastbloods, FM_Tier2Nocturna, FM_Tier2Ironbands, FM_Tier2Cambion, FM_Tier2Lightseekers)",
+     "amount": 5,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 7,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 11",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 33,
+     "groupChanceInPicks": 0.33
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 130000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 90,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 12",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 33,
+     "groupChanceInPicks": 0.33
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 140000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 1,
+     "groupChanceInPicks": 0.01
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 13",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 31,
+     "groupChanceInPicks": 0.31
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 150000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 14",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 31,
+     "groupChanceInPicks": 0.31
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 160000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 110,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 2,
+     "groupChanceInPicks": 0.02
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 15",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 29,
+     "groupChanceInPicks": 0.29
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 170000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 110,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 16",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 29,
+     "groupChanceInPicks": 0.29
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 180000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 120,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 3,
+     "groupChanceInPicks": 0.03
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 17",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 27,
+     "groupChanceInPicks": 0.27
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 190000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 120,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 18",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 27,
+     "groupChanceInPicks": 0.27
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 200000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 130,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 4,
+     "groupChanceInPicks": 0.04
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 19",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 25,
+     "groupChanceInPicks": 0.25
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 210000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 140,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 20",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 25,
+     "groupChanceInPicks": 0.25
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 220000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 150,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 21",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 23,
+     "groupChanceInPicks": 0.23
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 230000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 160,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 22",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 23,
+     "groupChanceInPicks": 0.23
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 240000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 180,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 23",
+   "picks": 1
+  },
+  {
+   "items": [
+    {
+     "group": 0,
+     "itemId": "Memorium",
+     "amount": 1000,
+     "weight": 19,
+     "groupChanceInPicks": 0.19
+    },
+    {
+     "group": 1,
+     "itemId": "Gold",
+     "amount": 250000,
+     "weight": 5,
+     "groupChanceInPicks": 0.05
+    },
+    {
+     "group": 2,
+     "itemId": "Gem",
+     "amount": 200,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 3,
+     "itemId": "EMP_AnimaSpark",
+     "amount": 100,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 4,
+     "itemId": "Token_MultiBattle",
+     "amount": 10,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 5,
+     "itemId": "ASC_Stars3",
+     "amount": 1,
+     "weight": 10,
+     "groupChanceInPicks": 0.1
+    },
+    {
+     "group": 6,
+     "itemId": "Codex_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 7,
+     "itemId": "Codex_Epic",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 8,
+     "itemId": "Codex_Legendary",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 9,
+     "itemId": "Prism_Rare",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 10,
+     "itemId": "Prism_Epic",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    },
+    {
+     "group": 11,
+     "itemId": "Prism_Legendary",
+     "amount": 1,
+     "weight": 6,
+     "groupChanceInPicks": 0.06
+    }
+   ],
+   "chest": "VIP",
+   "tier": "VIP 24",
+   "picks": 1
+  }
+ ]
+}
