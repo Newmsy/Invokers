@@ -46,6 +46,11 @@ describe('points per run from drop rates', () => {
     expect(expectedPointsPerRun({ ...family, rollsPerRun: 1 }, [{ key: 'Spark', chance: 1, min: 216, max: 264 }])).toBe(240);
   });
 
+  it('counts an expected number of drops above 1 in full', () => {
+    // Tables that give drops a run (2 items) rather than a chance per roll.
+    expect(expectedPointsPerRun({ ...family, rollsPerRun: 1 }, [{ key: '5★ Epic', chance: 2, min: 1, max: 1 }])).toBe(600);
+  });
+
   it('scores unknown drops as nothing', () => {
     expect(expectedPointsPerRun(family, [{ key: 'Gold', chance: 1, min: 1, max: 1 }])).toBe(0);
   });
