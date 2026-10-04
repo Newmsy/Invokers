@@ -32,6 +32,17 @@ function curve(id: string): number[] {
   return c.values;
 }
 
+/** One entry per skill level 1..max. Some skills skip levels; a skipped level uses the last listed one below it. */
+function fillLevels<L extends { level: number }>(listed: L[]): L[] {
+  const out: L[] = [];
+  const max = listed.at(-1)?.level ?? 0;
+  for (let n = 1, i = 0; n <= max; n++) {
+    while (i + 1 < listed.length && listed[i + 1].level <= n) i++;
+    out.push(listed[i]);
+  }
+  return out;
+}
+
 /** First roll of each stat on 5★ gear at the normal quality; flat stats round to a whole number per roll. */
 function normalRoll(): DpsData['normalRoll'] {
   const rows = gearRollsJson.gear.subStats.filter((r) => r.rank === NORMAL_ROLL_RANK);
@@ -52,7 +63,7 @@ export function dpsData(): DpsData {
     const skills: DpsHero['skills'] = {};
     let combo: DpsHero['combo'] = [];
     for (const s of skillsFor(h.id)) {
-      const levels = s.levels ?? [];
+      const levels = fillLevels(s.levels ?? []);
       if (s.type === 'Combo') combo = levels.map((l) => parseComboText(l.text).map((step) => step.map(toHitT)));
       else if ((ACTIVE_SLOTS as readonly string[]).includes(s.type) && typeof s.cooldown === 'number') {
         const skill: DpsSkill = { cooldown: s.cooldown, levels: levels.map((l) => compact(parseSkillText(l.text))) };
