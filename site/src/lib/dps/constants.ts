@@ -29,8 +29,6 @@ export const RECOVERY_APPLIES_TO_ULTIMATE = false;
 export const PERCENT_OF_BASE_ONLY = true;
 /** PLACEHOLDER (#123): crit chance is capped at 100%; a crit deals 1 + Crit DMG. */
 export const CRIT_RATE_CAP = 1;
-/** PLACEHOLDER (#123): element advantage is not modelled yet (factor 1 for every pairing). */
-export const ELEMENT_FACTOR = 1;
 /** PLACEHOLDER (#123): Burn/Bleed ticks ignore DEF and can't crit. */
 export const DOT_USES_DEF = false;
 

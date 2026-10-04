@@ -8,7 +8,7 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { defenseFactor, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { defenseFactor, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { toughness, toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
@@ -158,7 +158,7 @@ describe('fight', () => {
   });
 
   it('values every damage stat above zero', () => {
-    const { values } = statValues(data, fight('Ironblade Darus'));
+    const { values } = statValues(data, fight('Ironblade Darus', { stage: stage(13) }));
     const gain = Object.fromEntries(values.map((v) => [v.stat, v.gain]));
     for (const s of ['AttackPercent', 'CriticalRatePercent', 'CriticalDamagePercent', 'SkillRecoveryFlat']) expect(gain[s]).toBeGreaterThan(0);
     expect(gain.HealthPercent).toBe(0);
@@ -243,5 +243,31 @@ describe('toughness', () => {
     expect(base.taken).toBeLessThan(1);
     expect(base.ehp).toBeGreaterThan(base.hp);
     for (const v of values) expect(v.gain).toBeGreaterThan(0);
+  });
+});
+
+describe('elements', () => {
+  it('reads the element rules from damage.json', () => {
+    expect(elementEdge('Water', 'Fire')).toBe('advantage');
+    expect(elementEdge('Fire', 'Water')).toBe('disadvantage');
+    expect(elementEdge('Light', 'Earth')).toBe('lightDark');
+    expect(elementEdge('Fire', 'Wind')).toBe('neutral');
+    expect(data.elements.advantage).toEqual({ damage: 1.3, crit: 0, debuff: 20 });
+    expect(data.elements.disadvantage).toEqual({ damage: 0.7, crit: -0.5, debuff: -50 });
+  });
+
+  it('hits harder with advantage and lands debuffs more often', () => {
+    const hero = data.heroes.find((h) => h.element === 'Water')!;
+    const totals = bareBuild(data, hero).totals;
+    const base = { hero, totals, skillLevels: {}, mode: 'pve' as const };
+    const s = data.stages[0];
+    const vsFire = simulate(data, { ...base, stage: { ...s, element: 'Fire', res: 100 } });
+    const vsWind = simulate(data, { ...base, stage: { ...s, element: 'Wind', res: 100 } });
+    const vsEarth = simulate(data, { ...base, stage: { ...s, element: 'Earth', res: 100 } });
+    expect(vsFire.edge).toBe('advantage');
+    expect(vsFire.dps).toBeGreaterThan(vsEarth.dps);
+    expect(vsWind.dps).toBeLessThan(vsEarth.dps);
+    expect(vsFire.accChance).toBeGreaterThan(vsEarth.accChance);
+    expect(vsWind.accChance).toBeLessThan(vsEarth.accChance);
   });
 });

@@ -56,6 +56,17 @@ function normalRoll(stats: readonly string[]): DpsData['normalRoll'] {
   });
 }
 
+function elementRules(): DpsData['elements'] {
+  const e = damageJson.elements;
+  const rule = (k: 'advantage' | 'disadvantage' | 'neutral') => ({
+    damage: e.damageMultiplier[k],
+    crit: e.critChanceDelta[k] / 100,
+    debuff: e.debuffApplicationChance[k],
+  });
+  // Light/Dark Invoker vs a basic element (player side): x1.15 damage and +10 to landing debuffs (damage.json lightDark notes).
+  return { advantage: rule('advantage'), disadvantage: rule('disadvantage'), neutral: rule('neutral'), lightDark: { damage: 1.15, crit: 0, debuff: 10 } };
+}
+
 export function dpsData(): DpsData {
   const configIds = new Map(Object.entries(heroRefsByConfigId).map(([cid, r]) => [r.id, { cid, slug: r.slug }]));
   const list: DpsHero[] = [];
@@ -133,6 +144,7 @@ export function dpsData(): DpsData {
     },
     stages,
     defense: { floor: damageJson.defense.floor, scale: damageJson.defense.scale },
+    elements: elementRules(),
     mana: {
       perSec: manaJson.ultimatePerSecond,
       multiplier: { pve: manaJson.modeMultipliers[MANA_MODE.pve].ultimate, arena: manaJson.modeMultipliers[MANA_MODE.arena].ultimate },

@@ -83,6 +83,7 @@ export interface DpsData {
   curves: Curves;
   stages: BossStage[];
   defense: DefenseRule;
+  elements: Record<ElementEdge, ElementRule>;
   /** Ultimate mana per second of acting, and the multiplier per mode. */
   mana: { perSec: number; multiplier: Record<Mode, number> };
   /** One normal 5★ substat roll per stat (see NORMAL_ROLL_* in constants). */
@@ -215,9 +216,27 @@ export function defenseFactor(rule: DefenseRule, def: number): number {
 }
 
 /** Chance a debuff that needs Accuracy lands: 1 - resist chance at (target RES - ACC). */
-export function landChance(curve: number[], res: number, acc: number): number {
+export function landChance(curve: number[], res: number, acc: number, bonus = 0): number {
   const offset = (curve.length - 1) / 2;
-  return 1 - Math.max(0, Math.min(100, at(curve, res - acc + offset))) / 100;
+  return 1 - Math.max(0, Math.min(100, at(curve, res - acc + offset) - bonus)) / 100;
+}
+
+/** Element rules (damage.json): damage multiplier, crit chance change and debuff landing bonus (points off the resist chance). */
+export interface ElementRule {
+  damage: number;
+  crit: number;
+  debuff: number;
+}
+export type ElementEdge = 'advantage' | 'disadvantage' | 'lightDark' | 'neutral';
+const BEATS: Record<string, string> = { Water: 'Fire', Fire: 'Earth', Earth: 'Wind', Wind: 'Water' };
+const LIGHT_DARK = new Set(['Light', 'Dark']);
+
+/** The Invoker's edge against a boss stage's element (PvE: the player side gets the Light/Dark bonus). */
+export function elementEdge(mine: string, enemy: string): ElementEdge {
+  if (BEATS[mine] === enemy) return 'advantage';
+  if (BEATS[enemy] === mine) return 'disadvantage';
+  if (LIGHT_DARK.has(mine) && BEATS[enemy]) return 'lightDark';
+  return 'neutral';
 }
 
 // ---- Fight ----
@@ -263,6 +282,8 @@ export interface FightResult {
   debuffs: DebuffResult[];
   /** Chance a debuff that needs Accuracy lands on this boss stage. */
   accChance: number;
+  /** The Invoker's element edge against this stage. */
+  edge: ElementEdge;
 }
 
 
@@ -285,12 +306,13 @@ function timeline(data: DpsData, input: FightInput, until: number): Event[] {
   const atk = finalStat(t, 'atk');
   const def = finalStat(t, 'def');
   const hp = finalStat(t, 'hp');
-  const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate));
+  const el = data.elements[elementEdge(hero.element, stage.element)];
+  const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate + el.crit));
   const critFactor = 1 + critRate * t.critDmg;
   const defFactor = defenseFactor(data.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
-  const hitScale = critFactor * defFactor * C.ELEMENT_FACTOR;
+  const hitScale = critFactor * defFactor * el.damage;
   const hitDamage = (h: HitT) => ((h[0] ?? 0) * atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * hitScale;
-  const accChance = landChance(data.curves.resist, stage.res, t.acc);
+  const accChance = landChance(data.curves.resist, stage.res, t.acc, el.debuff);
   const tickDamage = (d: Dot) =>
     Math.min(d.pct * stage.hp, d.capAtk * atk) * (C.DOT_USES_DEF ? defFactor : 1) * (d.acc ? accChance : 1);
 
@@ -382,7 +404,8 @@ export function simulate(data: DpsData, input: FightInput): FightResult {
     results.set(e.slot, r);
   }
   const sources = [...results.values()].sort((a, b) => b.damage - a.damage);
-  const accChance = landChance(data.curves.resist, input.stage.res, input.totals.acc);
+  const edge = elementEdge(input.hero.element, input.stage.element);
+  const accChance = landChance(data.curves.resist, input.stage.res, input.totals.acc, data.elements[edge].debuff);
   const debuffs = new Map<string, DebuffResult>();
   for (const e of events) {
     if (e.at >= T || !e.debuffs) continue;
@@ -395,7 +418,7 @@ export function simulate(data: DpsData, input: FightInput): FightResult {
       debuffs.set(key, r);
     }
   }
-  return { dps: sum / count, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance };
+  return { dps: sum / count, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance, edge };
 }
 
 // ---- Stat value table ----
