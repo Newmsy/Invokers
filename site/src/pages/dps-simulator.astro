@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import { gearStatLabels, href } from '../lib/data';
+import { BOSS, STAGES } from '../lib/dps/data';
+import { FIGHT_SEC } from '../lib/dps/constants';
+
+const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) => [id, l.name]));
+---
+<Base title="DPS simulator">
+  <h1>DPS simulator</h1>
+  <p class="lead">
+    Estimated damage per second for one Invoker against {BOSS}, and how much one normal 5★ substat roll of each stat
+    would add. Pick an Invoker from your box to use its own gear, or any Invoker at 6★ level 60, fully awakened, with
+    no gear.
+  </p>
+
+  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-seconds={FIGHT_SEC}>
+    <div class="filters">
+      <label>Invoker
+        <select id="d-hero" disabled><option>Loading…</option></select>
+      </label>
+      <label>Mode
+        <select id="d-mode">
+          <option value="pve">PvE: every skill ready</option>
+          <option value="arena">Arena: skills start at half cooldown</option>
+        </select>
+      </label>
+      <label>{BOSS} stage
+        <select id="d-stage">
+          {STAGES.map((s) => <option value={s} selected={s === 16}>Stage {s}</option>)}
+        </select>
+      </label>
+    </div>
+    <p id="d-nobox" class="hint" hidden>
+      <a href={href('my-box')}>Import your box</a> to simulate your own Invokers with their gear.
+    </p>
+
+    <section id="d-out" hidden>
+      <div class="summary">
+        <div class="card">
+          <h2>Estimated DPS</h2>
+          <p class="big" id="d-dps"></p>
+          <p class="hint" id="d-total"></p>
+        </div>
+        <div class="card">
+          <h2>Stats used</h2>
+          <dl class="stats" id="d-stats"></dl>
+        </div>
+      </div>
+
+      <h2>Where the damage comes from</h2>
+      <table>
+        <thead><tr><th>Source</th><th class="num">Uses</th><th class="num">Damage</th><th class="num">Share</th></tr></thead>
+        <tbody id="d-sources"></tbody>
+      </table>
+
+      <h2>What one more substat roll is worth</h2>
+      <p class="hint">DPS gained by adding one normal (B grade) 5★ substat roll to this build.</p>
+      <table>
+        <thead><tr><th>Substat roll</th><th class="num">DPS gain</th></tr></thead>
+        <tbody id="d-values"></tbody>
+      </table>
+
+      <p class="hint note">
+        Estimates: one target, no buffs or debuffs, average crits, a {FIGHT_SEC}-second fight. Burn and Bleed count at
+        their per-tick limit. The numbers will sharpen as the battle rules are confirmed.
+      </p>
+    </section>
+  </div>
+
+  <SeeAlso links={[
+    { path: 'my-box', label: 'My box' },
+    { path: 'bosses', label: 'Bosses' },
+    { path: 'gear', label: 'Gear sets' },
+    { path: 'planner', label: 'Planner' },
+  ]} />
+</Base>
+
+<script>
+  import { start } from '../lib/dps/page';
+  start();
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; }
+  .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0 0 16px; }
+  .hint { color: var(--muted); font-size: 14px; }
+  .note { margin-top: 20px; max-width: 70ch; }
+  .filters { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+  .filters label { display: grid; gap: 4px; color: var(--muted); font-size: 13px; min-width: 0; flex: 1 1 200px; }
+  .filters select {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+    border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 15px; width: 100%; min-width: 0;
+  }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 16px; }
+  .card { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+  .big { font-family: var(--display); font-weight: 700; font-size: 36px; margin: 0; }
+  .card .hint { margin: 4px 0 0; }
+  .stats { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 4px 16px; margin: 0; font-variant-numeric: tabular-nums; }
+  :global(.stats dt) { color: var(--muted); }
+  :global(.stats dd) { margin: 0; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; }
+  th, :global(td) { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  .num, :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; }
+  :global(.pos) { color: var(--uncommon, #7be0a0); }
+</style>
