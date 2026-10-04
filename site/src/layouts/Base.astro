@@ -76,6 +76,13 @@ const section = nav.find((n) => n.path === pagePath);
       })}
     </nav>
     {import.meta.env.PROD && (
+      <Fragment>
+        {/* Cookieless visitor counts (Vercel Web Analytics); the script only exists on Vercel deploys. */}
+        <script is:inline>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+        <script is:inline defer src="/_vercel/insights/script.js"></script>
+      </Fragment>
+    )}
+    {import.meta.env.PROD && (
       <script is:inline define:vars={{ sw: href('sw.js'), scope: href('/') }}>
         // Keeps opened pages and images for offline use (pages/sw.js.ts).
         if ('serviceWorker' in navigator) navigator.serviceWorker.register(sw, { scope }).catch(() => {});
