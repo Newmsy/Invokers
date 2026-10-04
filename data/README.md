@@ -26,6 +26,7 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `stat_curves.json` | Rating → effect for Skill Speed, Skill Recovery, Mana Generation, Instinct, Move Speed, Defense and resist chance: `curves[]` `{id, stat, meaning, values[rating 0..3000]}` |
 | `tactics.json` | Tactics (formations): `tactics[]` `{id, name, requiredPlayerLevel, slots[] {position, line, enemiesCount}, bonuses[] {line, class, stats, valueType, valuesByLevel[1..20]}}`, `levelUpPrice`, `maxLevel` |
 | `arena.json` | Arena PvP rules (issue #55): `healthBonus`, `titanStatsMultiplier`, `initialCooldownFactor`, `mana` multipliers per mode and Titan cooldowns, `controlDiminishingReturns`, `effectDurationPercent` per effect and skill kind, the game's own help `texts` |
+| `spires.json` | Spires (issue #55): `rules` (entry by element, 5 keys a day per Spire, monthly reset), `spires[]` (6, with names and descriptions), `floors[]` (1-120, shared by all six Spires): `enemyLevel`, `enemyElement`, `accuracy`, `resistance`, `toleranceBonus`, `ultimateManaMultiplier`, `heroSlots`, `waveNames`, `waves[]` `{wave, name, enemies[] {code, name, class, count}}`, `enemiesWithoutWave` (role-only spawners), `enemyStatBoosts` (floors 1-10), `hasInteractables`. Rewards are in `stages.json` |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's

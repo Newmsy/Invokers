@@ -30,6 +30,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | - | Awakening, gear costs, Memorium/rune sources (issue #26) | Done | `data/awakening.json`, `gear_costs.json`, `sources.json` from `scripts/build_awakening.py`. Quests and login rewards not in `sources.json` yet. |
 | - | Stage drops and chest odds (issue #25) | Done | `data/stages.json`, `data/chests.json` from `scripts/build_stages.py` (LootDump F9 CSVs). |
 | - | Combos, cooldowns, stat curves, Tactics (issue #31) | Done | `data/combos.json`, `stat_curves.json`, `tactics.json` from `scripts/build_combat.py`; cooldowns and Ultimate mana in `skills.json` (`build_pack.py`). No Combo Speed curve yet. |
+| - | Spires and Arena (issue #55) | Done | `data/spires.json` (`scripts/build_spires.py`, needs the F11 level dump) and `data/arena.json` (`scripts/build_arena.py`). |
 | - | Arena trophy room | Done | `data/trophies.json` (issue #4): 15 levels per stat, bonus and medal cost per level. |
 
 ## Facts worth knowing
