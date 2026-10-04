@@ -5,7 +5,13 @@ import NavIcon from '../components/NavIcon.astro';
 import SectionArt from '../components/SectionArt.astro';
 import SearchForm from '../components/SearchForm.astro';
 import { href } from '../lib/data';
-import { nav } from '../lib/nav';
+import { inGroup, menus, nav } from '../lib/nav';
+
+const groups = [
+  ...(nav[0].path === 'news' ? [{ label: 'News', items: [nav[0]] }] : []),
+  ...menus.map((m) => ({ label: m.label, items: inGroup(m.group) })),
+  { label: 'Site', items: inGroup('site') },
+];
 ---
 <Base title="More">
   <h1>All sections</h1>
@@ -18,8 +24,10 @@ import { nav } from '../lib/nav';
     </div>
     <button type="button" id="install-button" hidden>Install</button>
   </section>
+  {groups.map((g) => (<>
+  <h2>{g.label}</h2>
   <ul class="list">
-    {nav.map((n) => (
+    {g.items.map((n) => (
       <li>
         <a href={href(n.path)}>
           {n.art ? <SectionArt art={n.art} size={36} /> : <NavIcon icon={n.icon} />}
@@ -29,6 +37,7 @@ import { nav } from '../lib/nav';
       </li>
     ))}
   </ul>
+  </>))}
 </Base>
 
 <script>
@@ -60,6 +69,7 @@ import { nav } from '../lib/nav';
 <style>
   h1 { margin: 16px 0 12px; font-size: 22px; font-weight: 700; }
   .search { margin-bottom: 12px; }
+  h2 { margin: 20px 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); }
   .install {
     display: flex;
     align-items: center;
