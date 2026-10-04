@@ -42,10 +42,11 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   <section class="top">
     <div class="art">{art ? <img src={art} alt="" /> : <span class="ph">{initials(titan.name)}</span>}</div>
     <div>
-      <span class="kind">Titan</span>
+      <span class="kind" style={titan.rarity ? `color: ${rarityColor[titan.rarity] ?? 'inherit'}` : undefined}>{titan.rarity ? `${titan.rarity} Titan` : 'Titan'}</span>
       <h1>{titan.name}</h1>
       <ul class="tags">
         <li>{titan.faction ? <a href={allBinders}>Bound by {titan.faction} Invokers</a> : <a href={allBinders}>Any Invoker can bind it</a>}</li>
+        {titan.role && <li>{titan.role}</li>}
         {full && <li>{bonusLabel(full)}</li>}
       </ul>
       <a class="button" href={href('team')}>

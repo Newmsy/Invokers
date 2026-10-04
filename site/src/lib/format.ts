@@ -5,6 +5,7 @@ export const rarityOrder = ['Legendary', 'Epic', 'Rare', 'Uncommon', 'Common'];
 export const rankOrder = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 
 export const rarityColor: Record<string, string> = {
+  Mythical: '#F0645A',
   Legendary: '#F5C451',
   Epic: '#C29BFF',
   Rare: '#6FB8FF',

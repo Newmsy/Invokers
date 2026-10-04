@@ -10,6 +10,7 @@ import trophiesJson from '../../../data/trophies.json';
 import itemsJson from '../../../data/items.json';
 import heroesRaw from '../../../data/heroes.json?raw';
 import statsJson from '../../../data/stats.json';
+import titansJson from '../../../data/titans.json';
 import setsJson from '../../../data/sets.json';
 // Ratings are the site's own (Newms's scores), so they live under site/.
 import ratingsJson from '../data/ratings.json';
@@ -293,7 +294,12 @@ export function ratingFor(heroId: string): Rating | undefined {
 const heroSlugs = makeHeroSlugs(heroes);
 
 /** The 38 Titans: name, page slug and the faction that can bind them (none = any). */
-export const titans: TitanInfo[] = titanInfo(heroes, skillSets);
+const titanFacts = new Map((titansJson as { id: string; rarity: string; role: string }[]).map((t) => [t.id, t]));
+export const titans: TitanInfo[] = titanInfo(heroes, skillSets).map((t) => ({
+  ...t,
+  rarity: titanFacts.get(t.id)?.rarity,
+  role: titanFacts.get(t.id)?.role,
+}));
 
 /** Titan pages live at /titans/<name>, e.g. /titans/visciant. */
 export function titanHref(slug: string): string {

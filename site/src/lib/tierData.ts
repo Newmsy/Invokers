@@ -29,6 +29,8 @@ export interface TierPick {
   element?: string;
   /** Short line under the name: class for Invokers, faction for Titans. */
   meta: string;
+  /** Titans only: shown before the faction, in its colour. */
+  rarity?: string;
   brings: string[];
 }
 
@@ -77,7 +79,7 @@ function pick(kind: PoolKind, list: TierListDef, slug: string): TierPick | undef
   }
   const t = titanBySlug.get(slug);
   if (!t) return undefined;
-  return { slug, name: t.name, href: titanHref(t.slug), art: titanArt(t.id), meta: t.faction ?? 'Any faction', brings: chips };
+  return { slug, name: t.name, href: titanHref(t.slug), art: titanArt(t.id), meta: t.faction ?? 'Any faction', rarity: t.rarity, brings: chips };
 }
 
 /** The rows of one list, S to D. Names in tiers.json that don't match a hero or Titan are skipped. */
