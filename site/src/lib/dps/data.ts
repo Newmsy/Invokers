@@ -2,11 +2,12 @@
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
 import damageJson from '../../../../data/damage.json';
+import manaJson from '../../../../data/mana.json';
 import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { COMBO_SPEED_CURVE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
+import { COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -132,6 +133,10 @@ export function dpsData(): DpsData {
     },
     stages,
     defense: { floor: damageJson.defense.floor, scale: damageJson.defense.scale },
+    mana: {
+      perSec: manaJson.ultimatePerSecond,
+      multiplier: { pve: manaJson.modeMultipliers[MANA_MODE.pve].ultimate, arena: manaJson.modeMultipliers[MANA_MODE.arena].ultimate },
+    },
     normalRoll: normalRoll(NORMAL_ROLL_STATS),
     toughRoll: normalRoll(TOUGH_ROLL_STATS),
   };
