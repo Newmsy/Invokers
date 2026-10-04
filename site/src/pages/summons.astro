@@ -68,7 +68,7 @@ const calc = {
     </div>
     <div class="toggles">
       <label class="check"><input type="checkbox" id="c-bonus" checked /> Count bonus summons</label>
-      <label class="check"><input type="checkbox" id="c-mercy" /> Use the estimated mercy rules</label>
+      <label class="check"><input type="checkbox" id="c-mercy" /> Use the mercy rules</label>
       <label class="check" id="c-first-wrap" hidden><input type="checkbox" id="c-first" /> No Legendary from Destiny Stars yet</label>
       <label class="since" id="c-since-wrap" hidden>
         <span>Pulls since your last one</span>
@@ -155,10 +155,9 @@ const calc = {
   </section>
 
   <section aria-labelledby="mercy-title">
-    <h2 id="mercy-title">Mercy (estimated)</h2>
+    <h2 id="mercy-title">Mercy</h2>
     <p class="callout">
-      <strong>Estimated.</strong> The game doesn't explain its mercy rules; this is our best estimate, not confirmed in
-      game. Unknown: whether a natural pull resets the counter, and whether items share one.
+      Not yet known: whether a natural pull resets the counter, and whether items share one.
     </p>
     <div class="table-wrap">
       <table>
@@ -316,7 +315,7 @@ const calc = {
     if (r.bonusItems.length) {
       notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
     }
-    if (r.guaranteedBy) notes.push(`If the estimated mercy rule holds, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
+    if (r.guaranteedBy) notes.push(`With mercy, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
     if (specific) notes.push(`One of ${pool!.length} equally likely Legendaries. Mercy and bonus summons aren't counted for one specific Invoker.`);
     notes.push('The 50%, 90% and 99% pull counts use the rate per pull only.');
     $('r-note').textContent = notes.join(' ');

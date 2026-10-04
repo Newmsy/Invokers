@@ -47,7 +47,7 @@ export interface OddsInput {
   pulls: number;
   /** Size of the hero pool when asking for one specific hero (Legendary from Destiny or Radiant Stars). */
   poolSize?: number;
-  /** Apply the estimated mercy counts. */
+  /** Apply the mercy counts. */
   mercy?: boolean;
   /** Pulls already made since the last pull of this rarity. */
   since?: number;
@@ -64,7 +64,7 @@ export interface OddsResult {
   chance: number;
   /** Average number you'd get across many players making the same pulls. */
   expected: number;
-  /** Pull count at which the estimated mercy guarantees one, if within the pulls. */
+  /** Pull count at which the mercy guarantees one, if within the pulls. */
   guaranteedBy?: number;
   /** Bonus items counted. */
   bonusItems: { item: string; count: number }[];
