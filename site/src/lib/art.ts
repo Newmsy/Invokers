@@ -22,6 +22,7 @@ const titanArtPath = new Map<string, string>();
 const heroSplashPath = new Map<string, string>();
 const titanSplashPath = new Map<string, string>();
 const bossArtPath = new Map<string, string>();
+const chaseBannerPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -49,6 +50,8 @@ for (const t of titans) {
     add(`skills/titan-${t.slug}-skill-${skillPart(s.type)}.webp`, `skills/${t.id}_${s.type}.webp`, skillIconPath, `${t.id}/${s.type}`);
   }
 }
+// Chase banners (the art for each Get Legendary chase), by the hero it gave away.
+for (const h of heroes) add(`chase/${heroSlug(h.id)}.webp`, `events/GetLegendary${h.id}.webp`, chaseBannerPath, h.id);
 // Boss art (issue #66), by boss id; shown on the boss guides when it exists.
 for (const b of bosses) add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);
 for (const source of sourceFiles) {
@@ -89,6 +92,7 @@ export function artRoutes(): { served: string; source: string }[] {
 export const heroArt = (heroId: string) => url(heroArtPath.get(heroId));
 export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
 export const bossArt = (bossId: string) => url(bossArtPath.get(bossId));
+export const chaseBanner = (heroId: string) => url(chaseBannerPath.get(heroId));
 export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
 export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));
 export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get(`${heroId}/${type}`));
