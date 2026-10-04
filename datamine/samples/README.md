@@ -12,6 +12,7 @@ Answers issue #5. `box-sample.json` is a trimmed, decoded sample (5 heroes, 10 g
 | `PlayerHeroesModel.dat` | Every hero owned: level, ascension rank, skill levels, awakening, equipped gear/accessory ids | Yes |
 | `PlayerRelicsModel.dat` | Every gear piece ("relics" in game code) | Yes |
 | `PlayerAccessoriesModel.dat` | Every accessory | Yes |
+| `PlayerArenaModel.dat` | Trophy Room levels (model member 8 only, format 9 at 0.61.x) | Yes, member 8 only |
 | `PlayerAnimasModel.dat` | Titans | Later |
 | `PlayerModel.dat` | Profile (name, account) | **No - never read this one** |
 
@@ -57,3 +58,17 @@ in-game "1" arrows), `rollsSum` (sum of roll qualities 0.7/0.8/0.9/1.0). Percent
 
 None of the three import files holds an account id, player name, clan, device id or token. Inventory ids are
 per-account counters only.
+
+## Trophy Room (`PlayerArenaModel.dat`)
+
+Read **only model member 8**: a list of `{Element (int32), Stat (CharacterStatBonus int32), Level (int32)}`, each a
+3-member version-tolerant object. Element values: 1 Fire, 2 Earth, 3 Wind, 4 Water, 5 Light, 6 Dark. `Stat` names match
+`data/trophies.json` `trophies[].id`; `level` is 0-15 (0 = not bought). Output shape in `box-sample.json` `trophies`
+(illustrative values).
+
+Do not decode the other members: they hold Arena opponents (other players' names, ids and teams), the player's
+defense team, shop state and battle stats. The two large members (tens to hundreds of KB) are the opponent lists.
+
+Other files in `aggregate_snapshots/` (not needed for import): `PlayerBattleModel.dat` (drop seeds, battle state),
+`PlayerClanModel.dat`, `PlayerGlobalEventsModel.dat` (event progress), `PlayerInboxModel.dat`, `PlayerQuestsModel.dat`,
+`PlayerShopModel.dat`, and `PlayerModel.dat` (profile; never read).

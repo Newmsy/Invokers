@@ -1,7 +1,7 @@
 """Decode the game's local "box" snapshots (heroes, gear, accessories) into JSON. Reference for the site's importer.
 
 Files: %USERPROFILE%/AppData/LocalLow/Hit_Zone/Invokers/aggregate_snapshots/
-  PlayerHeroesModel.dat, PlayerRelicsModel.dat (gear), PlayerAccessoriesModel.dat
+  PlayerHeroesModel.dat, PlayerRelicsModel.dat (gear), PlayerAccessoriesModel.dat, PlayerArenaModel.dat (Trophy Room only)
 
 Layout of each file:
   byte 0      format version (4)
@@ -76,6 +76,25 @@ def accessories(snapshot_dir: Path):
     return meta, items
 
 
+ELEMENTS = {1: "Fire", 2: "Earth", 3: "Wind", 4: "Water", 5: "Light", 6: "Dark", 7: "Neutral"}
+
+
+def trophies(snapshot_dir: Path):
+    # PlayerArenaModel.dat (format 9 at 0.61.x): the Trophy Room is model member 8, a list of PlayerArenaHallBonus
+    # {Element, Stat (CharacterStatBonus), Level}. ONLY member 8 is read: other members hold Arena opponents (other
+    # players' names, ids and teams), the player's defense team and shop state, and must not be decoded or uploaded.
+    meta, model = read_snapshot(snapshot_dir / "PlayerArenaModel.dat")
+    r = Reader(model[8])
+    out = []
+    for _ in range(max(0, r.i32())):
+        m = r.object()
+        level = i32(m[2])
+        if level:
+            out.append({"element": ELEMENTS.get(i32(m[0]), str(i32(m[0]))), "stat": enum("CharacterStatBonus", i32(m[1])),
+                        "level": level})
+    return meta, out
+
+
 def heroes(snapshot_dir: Path, code_by_config: dict):
     # PlayerHeroesModel: LastId, HeroesById, LobbyHeroIds, SeenHeroConfigIds, ReceivedHeroesCount, StarterHeroId, ...
     # PlayerHero is stored with 22 members (removed fields stay as empty slots, newer ones are appended):
@@ -116,10 +135,11 @@ def main():
     hm, hs = heroes(snap, code_by_config)
     gm, gs = gear(snap)
     am, acs = accessories(snap)
+    tm, trs = trophies(snap)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"heroes": {**hm, "items": hs}, "gear": {**gm, "items": gs},
-                               "accessories": {**am, "items": acs}}, indent=1), encoding="utf-8")
-    print(f"{len(hs)} heroes, {len(gs)} gear, {len(acs)} accessories -> {out}")
+                               "accessories": {**am, "items": acs}, "trophies": {**tm, "items": trs}}, indent=1), encoding="utf-8")
+    print(f"{len(hs)} heroes, {len(gs)} gear, {len(acs)} accessories, {len(trs)} trophy levels -> {out}")
 
 
 if __name__ == "__main__":
