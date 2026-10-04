@@ -55,6 +55,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
 <Base title="Event calendar" description="Live and upcoming events: dates, points for each action, and every reward.">
   <h1>Event calendar</h1>
   <p class="lead" id="ec-lead">{lead}</p>
+  <p class="bracket-note">Points and rewards shown are for the Veteran bracket (level 46+). Beginner (levels 1–30) and Intermediate (31–45) need fewer points and earn the same Crowns.</p>
   <nav class="jump" aria-label="On this page">
     {sections.map((s) => <a href={`#${s.key}`} data-jump={s.key} hidden={!groups[s.key].length}>{s.title}</a>)}
   </nav>
@@ -180,6 +181,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 32px 0 12px; scroll-margin-top: 80px; }
   .lead { color: var(--soft); margin: 0; max-width: 70ch; }
+  .bracket-note { color: var(--muted); font-size: 14px; margin: 6px 0 0; max-width: 70ch; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .jump a { padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
   .jump a[hidden], .group[hidden] { display: none; }

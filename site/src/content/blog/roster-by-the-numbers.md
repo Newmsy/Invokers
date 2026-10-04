@@ -12,7 +12,7 @@ tags: [invokers, roster]
 - **Rarity:** 78 Rare, 61 Epic and 58 Legendary, with only 34 Common and Uncommon.
 - **Class:** 110 ![Melee](class:), 47 ![Support](class:), 44 ![Ranged](class:) and 30 ![Tank](class:).
 - **Element:** ![Fire](element:) leads with 50. ![Light](element:) has the fewest at 30.
-- **Can't be summoned:** ![Ardell The Torrent](hero:) is the only Invoker that no summon item gives.
+- **Chase Legendaries can be summoned too:** ![Ardell The Torrent](hero:), Taranis and Senhachi joined the Star summons when their chases began.
 
 Browse them all on the [Invokers](/heroes) page.
 

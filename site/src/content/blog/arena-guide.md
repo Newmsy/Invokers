@@ -49,9 +49,17 @@ Everyone starts on 500 points and can't fall below it. Leagues run Bronze, Silve
 ## Rewards
 
 - **Trophies** come from offence wins only and are never lost: 1 Bronze per win in Bronze 1, 4 in Bronze 4, more in Silver and Gold.
-- **Arena Coins:** Bronze Trophy 1, Silver 5, Gold 10. Spend them in the Bazaar on Echoes, Codexes, Titanhearts and Stars (limits reset daily at 00:00 UTC, weekly on Monday and monthly on the 1st).
+- **Arena Coins** come from every offence win (table below) and from melting Trophies: Bronze 1, Silver 5, Gold 10 Coins each. Spend them in the Bazaar on Echoes, Codexes, Prisms, Titanhearts and Stars (limits reset daily at 00:00 UTC, weekly on Monday and monthly on the 1st). A ![Rare Codex](item:) costs 1,000 (daily); ![Rare Prism](item:) 1,500, ![Epic Codex](item:) 3,000 and ![Epic Prism](item:) 3,500, five of each a week.
 - **Trophy Room:** spend Trophies on stat upgrades for every Invoker of one element. Costs: [Trophy Room cost](/blog/trophy-room-cost) and [Trophies](/trophies).
 - **Weekly chest:** 2 rewards in Bronze and Silver, 3 in Gold. Gems come up 55% of the time in Bronze (75 to 150) and 76% in Gold (150 to 250). Full odds: [Chest odds](/blog/chest-odds).
+
+**Arena Coins per offence win**
+
+| League | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| Bronze | 50 | 60 | 70 | 80 |
+| Silver | 90 | 100 | 120 | 140 |
+| Gold | 160 | 200 | 240 | 320 |
 
 ## Arena Rush points
 

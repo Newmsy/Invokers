@@ -1,9 +1,8 @@
 ---
 title: "Chase hero spotlight: Taranis the Bolt Regent"
-description: "The first chase ever, from mid-July 2026. Taranis Shocks, cripples ACC and ATK, and feeds on debuffs."
+description: "The first chase ever, 13 July to 2 August 2026. Taranis Shocks, cripples ACC and ATK, and feeds on debuffs."
 date: 2026-07-13
-until: 2026-08-03
-datesEstimated: true
+until: 2026-08-02
 kind: spotlight
 gameVersion: "0.61.1516"
 heroes: ["Taranis the Bolt Regent"]
@@ -13,7 +12,9 @@ official: "https://invokers.com/news/52/"
 
 ## What happened
 
-Update 0.59 brought Events and Tournaments, and with them the first chase: the **Taranis Chase**. It started the week after the 7 July update and ran for 3 weeks. Players earned ![Crown](item:) Crowns from the tournaments inside it, with double points during the chase, and spent them in the Event Shop on ![Taranis the Bolt Regent](hero:). Update 0.60 later fixed Taranis's Ultimate, Pulse Singularity.
+Update 0.59 brought Events and Tournaments, and with them the first chase: the **Taranis Chase**. It ran for 3 weeks, from Monday 13 July to Sunday 2 August, and Taranis joined the Star summons the day it started. Players earned ![Crown](item:) Crowns from the tournaments inside it, with double points during the chase, and spent them in the Event Shop on ![Taranis the Bolt Regent](hero:).
+
+A 22 July fix made 10x summons score full points in the Summon Surge, with 20 Crowns and a Codex of each rarity as an apology. Crowns missing at the end were restored on 3 August. Update 0.60 later fixed Taranis's Ultimate, Pulse Singularity.
 
 ## Our take
 

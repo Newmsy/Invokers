@@ -69,7 +69,7 @@ export function heroFacts(name: string): HeroFacts {
     })),
     tiers,
     topTiers: tiers.filter((t) => t.tier === 'S').length,
-    summonable: !summons.unsummonable.includes(hero.name),
+    summonable: !(summons.unsummonable as string[]).includes(hero.name),
     similar: similarTo(hero, 4),
   };
 }
