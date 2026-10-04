@@ -49,6 +49,10 @@ export interface Hero {
   maxStats: HeroStats;
   /** rank ("One".."Six") → level ("1", "10", …) → stats */
   statsByRank: Record<string, Record<string, HeroStats>>;
+  /** Awakening type, matches a soul sign in awakening.json. */
+  soulSign?: string;
+  /** The Invoker's own tolerances: tolerance percent by skill level 1–11. */
+  tolerances?: { slot: string; stat: string; byLevel: { level: number; percent: number }[] }[];
 }
 
 export interface SkillLevel {
