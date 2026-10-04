@@ -6,9 +6,9 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { defenseFactor, finalStat, simulate, statValues, type FightInput } from '../src/lib/dps/model';
+import { defenseFactor, finalStat, landChance, simulate, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
-import { parseComboText, parseHit, parseSkillText } from '../src/lib/dps/parse';
+import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
 const hero = (name: string) => data.heroes.find((h) => h.name === name)!;
@@ -34,7 +34,7 @@ describe('skill text parser', () => {
 
   it('reads Burn from the sentence that casts it, and skips self-Burn', () => {
     const bosko = hero('Bosko').skills.ActiveSkill2!.levels.at(-1)!;
-    expect(bosko.d).toEqual([{ kind: 'Burn', pct: 0.015, capAtk: 3, everySec: 2, durationSec: 4 }]);
+    expect(bosko.d).toEqual([{ kind: 'Burn', acc: true, pct: 0.015, capAtk: 3, everySec: 2, durationSec: 4 }]);
     const brandis = hero('Brandis').skills.ActiveSkill1!.levels.at(-1)!;
     expect(brandis.d).toBeUndefined();
   });
@@ -51,7 +51,15 @@ describe('skill text parser', () => {
   });
 
   it('parses an Invoker with no "#N Damage" lines into nothing', () => {
-    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [] });
+    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [] });
+  });
+
+  it('lists the debuffs and control effects cast on enemies', () => {
+    expect(hero('Ironblade Darus').skills.Ultimate!.levels.at(-1)!.x).toEqual([{ name: 'DEF Down', chance: 1, acc: true }]);
+    expect(hero('Sanctus the Valiant').skills.ActiveSkill3!.levels.at(-1)!.x!.map((d) => d.name)).toEqual(['Stun', 'Launch']);
+    // Brandis burns himself: not a debuff on the enemy.
+    expect(hero('Brandis').skills.ActiveSkill1!.levels.at(-1)!.x).toBeUndefined();
+    expect(parseDebuffs('Has a 20% chance to casts a [4% Burn] debuff on the target, lasting 6s.')).toEqual([{ name: 'Burn', chance: 0.2, acc: false }]);
   });
 });
 
@@ -120,6 +128,27 @@ describe('fight', () => {
   });
 });
 
+describe('debuffs', () => {
+  it('lands every debuff when ACC beats RES, and fewer as RES climbs', () => {
+    const c = data.curves.resist;
+    expect(landChance(c, 50, 100)).toBe(1);
+    expect(landChance(c, 100, 100)).toBe(1);
+    expect(landChance(c, 150, 100)).toBeCloseTo(0.5);
+    expect(landChance(c, 475, 0)).toBe(0);
+  });
+
+  it('counts the debuffs each skill lands on the boss', () => {
+    const f = fight('Ironblade Darus', { stage: stage(1) });
+    f.totals.acc = 100;
+    const r = simulate(data, f);
+    const defDown = r.debuffs.find((d) => d.name === 'DEF Down')!;
+    expect(defDown.slot).toBe('Ultimate');
+    expect(defDown.landed).toBeCloseTo(defDown.tries);
+    const high = simulate(data, { ...f, stage: stage(20) });
+    expect(high.debuffs.find((d) => d.name === 'DEF Down')!.landed).toBe(0);
+  });
+});
+
 describe('gear optimiser', () => {
   const configIds = new Map(heroes.map((h) => [h.id, data.heroes.find((d) => d.name === h.name)?.configId]));
   const doc = {
@@ -133,6 +162,8 @@ describe('gear optimiser', () => {
       const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true });
       if (!r) continue;
       expect(r.after).toBeGreaterThanOrEqual(r.before);
+      expect(Object.keys(r.gainBySlot).sort()).toEqual([...r.changed].sort());
+      for (const g of Object.values(r.gainBySlot)) expect(g).toBeGreaterThanOrEqual(-1e-9);
       for (const [slot, p] of Object.entries(r.best)) if (p) expect(p.slot).toBe(slot);
     }
   });

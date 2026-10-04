@@ -12,15 +12,28 @@ export interface Hit {
 /** A damage-over-time debuff on the target: `pct` of the target's max HP per tick, capped at `capAtk` × ATK. */
 export interface Dot {
   kind: string;
+  /** Needs Accuracy to land (listed under "Accuracy required for"). */
+  acc?: boolean;
   pct: number;
   capAtk: number;
   everySec: number;
   durationSec: number;
 }
 
+/** A debuff or control effect the skill puts on enemies. */
+export interface Debuff {
+  /** Effect name as the game shows it, e.g. "DEF Down", "Stun", "Launch". */
+  name: string;
+  /** Chance the skill tries to cast it (1 unless the text gives "Has a 20% chance"). */
+  chance: number;
+  /** True when the text lists it under "Accuracy required for" (the target's RES can resist it). */
+  acc: boolean;
+}
+
 export interface ParsedSkill {
   hits: Hit[];
   dots: Dot[];
+  debuffs: Debuff[];
 }
 
 const num = (s: string) => Number(s.replace(/,/g, ''));
@@ -53,6 +66,29 @@ function dotFor(kind: string, capAtk: number, text: string): Dot | null {
   return { kind, pct: num(tick[2]) / 100, capAtk, everySec: num(tick[1]), durationSec: num(cast[1]) };
 }
 
+// Who a "[X] debuff on …" lands on: enemies only (not the caster or allies).
+const ENEMY_TARGET = /^(?:the targets?|\d+ (?:random )?enem|each target|all enemies|the \d+ enemies)/;
+
+/** Debuffs and control effects cast on enemies, from "[18% DEF Down] debuff on the targets" and "Accuracy required for". */
+export function parseDebuffs(text: string): Debuff[] {
+  const t = plain(text);
+  const needAcc = new Set(
+    [...t.matchAll(/Accuracy required for:\s*([^\n#]+)/g)].flatMap((m) => m[1].split(',').map((x) => x.trim()).filter(Boolean)),
+  );
+  const out: Debuff[] = [];
+  const seen = new Set<string>();
+  for (const m of t.matchAll(/(?:Has an? ([\d.]+)% chance to casts? an? )?\[(?:[\d.]+% )?([^\]]+)\] debuff(?: on ([^,.\n]+))?/g)) {
+    const name = m[2].trim();
+    seen.add(name);
+    // "[Shock] debuff, lasting 6s, instead of the [Stun]" names no target: it goes where the skill's other debuff goes.
+    if (m[3] && !ENEMY_TARGET.test(m[3].trim())) continue;
+    out.push({ name, chance: m[1] ? Number(m[1]) / 100 : 1, acc: needAcc.has(name) });
+  }
+  // Control effects that aren't bracketed (Launch, Pull, Buff Steal …) still need Accuracy to land.
+  for (const name of needAcc) if (!seen.has(name)) out.push({ name, chance: 1, acc: true });
+  return out;
+}
+
 /** Hits and damage-over-time debuffs of an active skill or Ultimate at one level. */
 export function parseSkillText(text: string): ParsedSkill {
   const t = plain(text);
@@ -68,10 +104,11 @@ export function parseSkillText(text: string): ParsedSkill {
     const limit = /^\s*#\d+\s+(\w+) Damage Limit:\s*([\d,.]+)% ATK per tick/.exec(line);
     if (limit) {
       const dot = dotFor(limit[1], num(limit[2]) / 100, t);
+      if (dot && new RegExp(`Accuracy required for:[^\\n]*\\b${limit[1]}\\b`).test(t)) dot.acc = true;
       if (dot) dots.push(dot);
     }
   }
-  return { hits, dots };
+  return { hits, dots, debuffs: parseDebuffs(text) };
 }
 
 /** Combo text → the hits of each step, in order (steps 1-5). */

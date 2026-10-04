@@ -39,6 +39,8 @@ export interface OptimiseResult {
   best: Loadout;
   /** Slots whose piece changes. */
   changed: string[];
+  /** Per changed slot: DPS gained by that swap, as best gear vs best gear with only that slot put back (fraction). */
+  gainBySlot: Record<string, number>;
 }
 
 const equipmentOf = (p: Piece): Equipment => ({
@@ -150,11 +152,22 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
     }
   }
 
-  return {
-    before: score(current),
-    after: bestScore,
-    current,
-    best,
-    changed: slots.filter((s) => current[s]?.id !== best[s]?.id || current[s]?.kind !== best[s]?.kind),
-  };
+  const changed = slots.filter((s) => current[s]?.id !== best[s]?.id || current[s]?.kind !== best[s]?.kind);
+  const gainBySlot = Object.fromEntries(
+    changed.map((s) => {
+      const without = score({ ...best, [s]: current[s] });
+      return [s, without > 0 ? bestScore / without - 1 : 0];
+    }),
+  );
+  return { before: score(current), after: bestScore, current, best, changed, gainBySlot };
+}
+
+/** Gear sets a loadout completes: set id, pieces worn and the bonus tiers (3, 5 …) that are active. */
+export function activeSets(data: DpsData, loadout: Loadout): { set: string; pieces: number; tiers: number[] }[] {
+  const counts = new Map<string, number>();
+  for (const p of Object.values(loadout)) if (p?.kind === 'gear') counts.set((p as BoxGear).set, (counts.get((p as BoxGear).set) ?? 0) + 1);
+  return [...counts]
+    .map(([set, pieces]) => ({ set, pieces, tiers: Object.keys(data.sets[set] ?? {}).map(Number).filter((n) => n <= pieces).sort((a, b) => a - b) }))
+    .filter((s) => s.tiers.length)
+    .sort((a, b) => b.pieces - a.pieces);
 }
