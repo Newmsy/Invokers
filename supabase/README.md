@@ -22,11 +22,12 @@ which returns no owner details; nobody can list other players' shares.
    `https://<project>.supabase.co/auth/v1/callback`). Paste the client ID and secret into that Supabase page and enable it.
 3. **Discord.** In the Discord Developer Portal, create an application. Under **OAuth2**, add the same Supabase
    callback URL as a redirect. Paste the client ID and secret into **Authentication > Providers > Discord** and enable it.
-4. **Site URLs.** In **Authentication > URL Configuration**, set the Site URL to the live site and add
-   `http://localhost:4321/**` and `https://<live-site>/**` to Redirect URLs.
+4. **Site URLs.** In **Authentication > URL Configuration**, set the Site URL to `https://invokerscompanion.app` and add
+   `http://localhost:4321/**` and `https://invokerscompanion.app/**` to Redirect URLs.
 5. **Build settings.** From **Project Settings > API**, copy the project URL and the `anon` public key. Set them as
    `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` wherever the site is built: in `site/.env` locally, as
-   GitHub Actions variables (Settings > Secrets and variables > Actions > Variables), and on the host later.
+   GitHub Actions variables (Settings > Secrets and variables > Actions > Variables), and in the Vercel project
+   (Settings > Environment Variables).
    Never use the `service_role` key in the site.
 
 More providers (GitHub, Twitch, Apple, X) work the same way: enable them in Supabase and list them in

@@ -2,15 +2,20 @@
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
 import setsJson from '../../../../data/sets.json';
+import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
 import { COMBO_SPEED_CURVE } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
-const compact = (p: ParsedSkill): SkillLevelT => (p.dots.length ? { h: p.hits.map(toHitT), d: p.dots } : { h: p.hits.map(toHitT) });
+const compact = (p: ParsedSkill): SkillLevelT => ({
+  h: p.hits.map(toHitT),
+  ...(p.dots.length ? { d: p.dots } : {}),
+  ...(p.debuffs.length ? { x: p.debuffs } : {}),
+});
 
 const ACTIVE_SLOTS = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Ultimate'] as const;
-const FIXED = ['critRate', 'critDmg', 'comboSpeed', 'skillSpeed', 'skillRecovery', 'manaGen', 'instinct'] as const;
+const FIXED = ['critRate', 'critDmg', 'acc', 'comboSpeed', 'skillSpeed', 'skillRecovery', 'manaGen', 'instinct'] as const;
 /** The Ulgorim stages players can pick. */
 export const STAGES = [1, 4, 7, 10, 13, 16, 20];
 export const BOSS = 'Ulgorim';
@@ -47,6 +52,7 @@ export function dpsData(): DpsData {
       configId: ref.cid,
       name: h.name,
       slug: ref.slug,
+      art: heroArt(h.id),
       rarity: h.rarity,
       faction: h.faction,
       element: h.element,
@@ -85,7 +91,7 @@ export function dpsData(): DpsData {
   const boss = bosses.find((b) => b.name === BOSS);
   const stages = (boss?.stages ?? [])
     .filter((s) => STAGES.includes(s.stage) && s.hp && s.def)
-    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def! }));
+    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0 }));
 
   return {
     gameVersion: pack.gameVersion,
@@ -99,6 +105,7 @@ export function dpsData(): DpsData {
       manaGen: curve('ManaRegenRecoveryPct'),
       comboSpeed: curve(COMBO_SPEED_CURVE),
       defense: curve('DefenseFactor'),
+      resist: curve('ResistChance_ResMinusAcc'),
     },
     stages,
   };

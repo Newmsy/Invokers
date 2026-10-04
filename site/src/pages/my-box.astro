@@ -61,6 +61,11 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
 
   <div id="box-views" hidden>
     <p class="plan-link"><a href={href('planner')}>See what your invokers still need in the Planner</a></p>
+    <div class="trophy-box">
+      <h2><a href={href('trophies')}>Trophy Room</a></h2>
+      <ul id="trophy-rooms"></ul>
+      <p id="trophy-none" class="muted" hidden>Your Trophy Room levels aren't in the import yet, so the DPS simulator leaves them out for now.</p>
+    </div>
     <div class="tabs" role="tablist">
       <button role="tab" data-tab="heroes" aria-selected="true">Invokers <span data-count="heroes"></span></button>
       <button role="tab" data-tab="gear" aria-selected="false">Gear <span data-count="gear"></span></button>
@@ -119,6 +124,10 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
   }
   .status { color: var(--muted); }
   .plan-link { margin: 16px 0 0; }
+  .trophy-box { margin: 16px 0 0; }
+  .trophy-box h2 { font-size: 1rem; margin: 0 0 6px; }
+  .trophy-box ul { margin: 0; padding-left: 18px; }
+  .trophy-box p { margin: 0; }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .spacer { flex: 1; }
   :global(.button) {

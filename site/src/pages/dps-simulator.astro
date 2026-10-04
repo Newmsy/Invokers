@@ -4,6 +4,7 @@ import SeeAlso from '../components/SeeAlso.astro';
 import { gearStatLabels, href, setNames } from '../lib/data';
 import { BOSS, STAGES } from '../lib/dps/data';
 import { FIGHT_SEC } from '../lib/dps/constants';
+import { rarityColor } from '../lib/format';
 
 const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) => [id, l.name]));
 ---
@@ -15,15 +16,36 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-seconds={FIGHT_SEC}>
+  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-rarity={JSON.stringify(rarityColor)}>
+    <section class="picker-box" aria-label="Invoker">
+      <div class="current-row">
+        <div id="d-current"></div>
+        <button type="button" class="btn" id="d-change" hidden>Change Invoker</button>
+      </div>
+      <div id="d-browse">
+        <div class="pick-bar">
+          <input id="d-search" type="search" placeholder="Search Invokers" autocomplete="off" />
+          <select id="d-source" aria-label="Which Invokers">
+            <option value="box">My box (with gear)</option>
+            <option value="any">Any Invoker (6★, fully awakened, no gear)</option>
+          </select>
+          <select id="d-sort" aria-label="Sort">
+            <option value="dps">Highest DPS</option>
+            <option value="stars">Stars and level</option>
+            <option value="rarity">Rarity</option>
+            <option value="name">Name</option>
+          </select>
+        </div>
+        <ul class="pick-grid" id="d-grid"></ul>
+        <p class="hint" id="d-grid-empty" hidden>No Invokers match.</p>
+      </div>
+    </section>
+
     <div class="filters">
-      <label>Invoker
-        <select id="d-hero" disabled><option>Loading…</option></select>
-      </label>
       <label>Mode
         <select id="d-mode">
           <option value="pve">PvE: every skill ready</option>
-          <option value="arena">Arena: skills start at half cooldown</option>
+          <option value="arena">Arena: skills start at half cooldown, {FIGHT_SEC.arena}-second fight</option>
         </select>
       </label>
       <label>{BOSS} stage
@@ -55,6 +77,24 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="d-sources"></tbody>
       </table>
 
+      <section id="d-skills-box" hidden>
+        <h2>What levelling a skill is worth</h2>
+        <p class="hint">DPS gained by levelling each skill that isn't maxed yet.</p>
+        <table>
+          <thead><tr><th>Skill</th><th class="num">Level</th><th class="num">+1 level</th><th class="num">To max</th></tr></thead>
+          <tbody id="d-skills"></tbody>
+        </table>
+      </section>
+
+      <section id="d-debuffs-box" hidden>
+        <h2>Debuffs on the boss</h2>
+        <p class="hint" id="d-acc"></p>
+        <table>
+          <thead><tr><th>Skill</th><th>Debuff</th><th class="num">Lands</th><th class="num">Landed in the fight</th></tr></thead>
+          <tbody id="d-debuffs"></tbody>
+        </table>
+      </section>
+
       <h2>What one more substat roll is worth</h2>
       <p class="hint">DPS gained by adding one normal (B grade) 5★ substat roll to this build.</p>
       <table>
@@ -65,16 +105,18 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       <section id="o-box" hidden>
         <h2>Best gear from your box</h2>
         <p class="hint" id="o-summary"></p>
+        <ul class="hint sets" id="o-sets"></ul>
+        <p class="hint">Each swap's DPS gain is what that piece adds on top of the other suggested pieces, so set bonuses count.</p>
         <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
         <table>
-          <thead><tr><th>Slot</th><th>Now</th><th>Best</th></tr></thead>
+          <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">DPS gain</th></tr></thead>
           <tbody id="o-rows"></tbody>
         </table>
       </section>
 
       <p class="hint note">
-        Estimates: one target, no buffs or debuffs, average crits, a {FIGHT_SEC}-second fight. Burn and Bleed count at
-        their per-tick limit. The numbers will sharpen as the battle rules are confirmed.
+        Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
+        Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
     </section>
   </div>
@@ -105,6 +147,31 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     background: var(--surface); color: var(--text); border: 1px solid var(--line);
     border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 15px; width: 100%; min-width: 0;
   }
+  .picker-box { margin-bottom: 16px; }
+  .current-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .current-row #d-current { flex: 1 1 260px; min-width: 0; }
+  .btn { padding: 8px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
+  .btn:hover { border-color: var(--accent); }
+  .pick-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .pick-bar input, .pick-bar select {
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+    border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 15px; min-width: 0; flex: 1 1 180px;
+  }
+  .pick-grid {
+    list-style: none; margin: 0; padding: 2px; display: grid; gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); max-height: 420px; overflow-y: auto;
+  }
+  :global(.tile) {
+    display: flex; gap: 10px; align-items: center; width: 100%; text-align: left; padding: 8px 10px;
+    border-radius: 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--rarity);
+    color: var(--text); font: inherit; cursor: pointer; min-width: 0;
+  }
+  :global(button.tile:hover), :global(.tile.on) { border-color: var(--accent); border-left-color: var(--rarity); }
+  :global(div.tile) { cursor: default; }
+  :global(.tile-text) { display: grid; min-width: 0; }
+  :global(.tile-text strong) { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  :global(.tile-text small) { color: var(--muted); font-size: 12px; }
+  :global(.tile-text .tile-dps) { color: var(--soft); font-weight: 600; }
   .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 16px; }
   .card { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
   .big { font-family: var(--display); font-weight: 700; font-size: 36px; margin: 0; }
@@ -118,6 +185,10 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
+  :global(table.stack td.piece > div) { text-align: right; min-width: 0; }
+  :global(td.piece .equipped) { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--soft); }
+  :global(td.piece .equipped b) { padding: 1px 6px; margin-right: 2px; border-radius: 6px; background: var(--accent); color: #0c0b1d; font-weight: 700; }
+  .sets { margin: 0 0 8px; padding-left: 18px; }
   :global(tr.same td) { color: var(--muted); }
   :global(.pos) { color: var(--uncommon, #7be0a0); }
 </style>

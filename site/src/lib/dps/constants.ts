@@ -2,8 +2,10 @@
 // exported (GitHub issues #123 damage, #124 mana, #125 timing, #126 gear rolls); each one lives here so swapping in
 // the real value is a one-line change. Everything else comes from the data pack.
 
-/** Length of the simulated fight, seconds. */
-export const FIGHT_SEC = 60;
+/** Length of the simulated fight, seconds: PvE boss fights run long; top-level Arena fights last about 25 s (Newms). */
+export const FIGHT_SEC = { pve: 60, arena: 25 } as const;
+/** DPS is averaged over fights this many seconds either side of FIGHT_SEC, so cooldown timing doesn't make it jump. */
+export const FIGHT_WINDOW_SEC = { pve: 30, arena: 5 } as const;
 
 /** PLACEHOLDER (#125): seconds per combo step at Combo Speed 0. Combo timing is the same for every Invoker. */
 export const COMBO_STEP_SEC = 1.0;
@@ -47,6 +49,7 @@ export const NORMAL_ROLL: { stat: string; value: number }[] = [
   { stat: 'SkillSpeedFlat', value: 7 },
   { stat: 'ComboSpeedFlat', value: 7 },
   { stat: 'ManaGenerationFlat', value: 7 },
+  { stat: 'AccuracyFlat', value: 14 },
   { stat: 'DefensePercent', value: 0.027 * 0.8 },
   { stat: 'HealthPercent', value: 0.027 * 0.8 },
 ];
