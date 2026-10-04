@@ -25,13 +25,12 @@ Full cost tables and where Memorium comes from: [Gear upgrades and Memorium](/ge
 | Rare | 10,720 | 57,770 | 284,220 | 1,444,400 | 1,797,110 |
 | Epic | 12,000 | 64,700 | 318,330 | 1,617,730 | 2,012,760 |
 | Legendary | 13,920 | 75,060 | 369,270 | 1,876,580 | 2,334,830 |
-| Greater | 19,210 | 103,590 | 509,590 | 2,589,670 | 3,222,060 |
 
 About **80% of the gold** goes on +15 to +20 for every rarity. The single step from +19 to +20 on a 6★ Legendary is **605,350 gold**, over a quarter of the total.
 
 ## Rarity barely changes the price
 
-A Legendary costs **1.46 times** a Common of the same stars to max, and Greater 1.38 times a Legendary. Memorium doesn't change with rarity: every 6★ piece needs 6,600, split 300 / 739 / 2,385 / 3,176 across the brackets.
+A Legendary costs **1.46 times** a Common of the same stars to max. Memorium doesn't change with rarity: every 6★ piece needs 6,600, split 300 / 739 / 2,385 / 3,176 across the brackets.
 
 A Legendary also starts with 4 substats against a Common's 0 (Uncommon 1, Rare 2, Epic 3), so gold is almost always better spent on the higher-rarity piece.
 
