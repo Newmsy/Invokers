@@ -1,10 +1,11 @@
 // Build-time data for the DPS simulator, served as one JSON file (pages/dps-data.json.ts) that the page fetches.
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
+import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { COMBO_SPEED_CURVE } from './constants';
+import { COMBO_SPEED_CURVE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -29,6 +30,17 @@ function curve(id: string): number[] {
   const c = (curvesJson as { curves: { id: string; values: number[] }[] }).curves.find((x) => x.id === id);
   if (!c) throw new Error(`stat_curves.json has no ${id}`);
   return c.values;
+}
+
+/** First roll of each stat on 5★ gear at the normal quality; flat stats round to a whole number per roll. */
+function normalRoll(): DpsData['normalRoll'] {
+  const rows = gearRollsJson.gear.subStats.filter((r) => r.rank === NORMAL_ROLL_RANK);
+  return NORMAL_ROLL_STATS.flatMap((stat) => {
+    const row = rows.find((r) => r.stat === stat);
+    if (!row) return [];
+    const raw = row.baseByRoll[0] * NORMAL_ROLL_QUALITY;
+    return [{ stat, value: stat.endsWith('Flat') ? Math.round(raw) : Math.round(raw * 1e6) / 1e6 }];
+  });
 }
 
 export function dpsData(): DpsData {
@@ -108,5 +120,6 @@ export function dpsData(): DpsData {
       resist: curve('ResistChance_ResMinusAcc'),
     },
     stages,
+    normalRoll: normalRoll(),
   };
 }

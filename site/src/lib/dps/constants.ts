@@ -38,18 +38,21 @@ export const DOT_USES_DEF = false;
 export const SET_BONUSES_STACK = true;
 
 /**
- * One "normal" 5★ substat roll (B grade), used by the stat value table. PROVISIONAL (#126): the best rolls seen in
- * imported boxes × 0.8 until the grade table is exported.
+ * One "normal" 5★ substat roll (B grade), used by the stat value table: a substat's first roll on 5★ gear at the
+ * B-grade roll quality. Roll sizes come from gear_rolls.json; reading B as the 0.8 quality step (of 0.7/0.8/0.9/1.0)
+ * is an inference.
  */
-export const NORMAL_ROLL: { stat: string; value: number }[] = [
-  { stat: 'AttackPercent', value: 0.027 * 0.8 },
-  { stat: 'CriticalRatePercent', value: 0.032 * 0.8 },
-  { stat: 'CriticalDamagePercent', value: 0.038 * 0.8 },
-  { stat: 'SkillRecoveryFlat', value: 7 },
-  { stat: 'SkillSpeedFlat', value: 7 },
-  { stat: 'ComboSpeedFlat', value: 7 },
-  { stat: 'ManaGenerationFlat', value: 7 },
-  { stat: 'AccuracyFlat', value: 14 },
-  { stat: 'DefensePercent', value: 0.027 * 0.8 },
-  { stat: 'HealthPercent', value: 0.027 * 0.8 },
-];
+export const NORMAL_ROLL_RANK = 'Five';
+export const NORMAL_ROLL_QUALITY = 0.8;
+export const NORMAL_ROLL_STATS = [
+  'AttackPercent',
+  'CriticalRatePercent',
+  'CriticalDamagePercent',
+  'SkillRecoveryFlat',
+  'SkillSpeedFlat',
+  'ComboSpeedFlat',
+  'ManaGenerationFlat',
+  'AccuracyFlat',
+  'DefensePercent',
+  'HealthPercent',
+] as const;

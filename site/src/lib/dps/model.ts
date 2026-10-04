@@ -82,6 +82,8 @@ export interface DpsData {
   sets: Record<string, Record<string, StatPairs>>;
   curves: Curves;
   stages: BossStage[];
+  /** One normal 5★ substat roll per stat (see NORMAL_ROLL_* in constants). */
+  normalRoll: { stat: string; value: number }[];
 }
 
 // ---- Stats ----
@@ -398,7 +400,7 @@ export interface StatValue {
 }
 
 /** DPS gained from one normal 5★ substat roll of each stat, largest first. */
-export function statValues(data: DpsData, input: FightInput, rolls = C.NORMAL_ROLL): { base: FightResult; values: StatValue[] } {
+export function statValues(data: DpsData, input: FightInput, rolls = data.normalRoll): { base: FightResult; values: StatValue[] } {
   const base = simulate(data, input);
   const values = rolls.map(({ stat, value }) => {
     const totals: Totals = structuredClone(input.totals);
