@@ -339,7 +339,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   const manaMode = mode === 'pve' && stage.mana ? stage.mana : data.mana.multiplier[mode];
   const manaGain = (1 + pctOf(data.curves.manaGen, t.manaGen)) * manaMode;
 
-  // Self buffs multiply the final stat while they're up (refreshing one restarts it; different buffs stack).
+  // Self buffs multiply the final stat while they're up (Skill and Combo SPD buffs add to the speed %) (refreshing one restarts it; different buffs stack).
   // A crit-only buff counts with the chance the cast crit, so `p` is that chance.
   const active = new Map<string, { stat: BuffStat; pct: number; p: number; from: number; until: number }>();
   const upFor = new Map<string, BuffUptime>();
@@ -348,6 +348,11 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     for (const b of active.values()) if (b.stat === stat && b.until > now) m *= 1 + b.p * b.pct;
     return m;
   };
+  const add = (stat: BuffStat, now: number) => {
+    let n = 0;
+    for (const b of active.values()) if (b.stat === stat && b.until > now) n += b.p * b.pct;
+    return n;
+  };
   const stats = (now: number) => {
     const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate * mult('critRate', now) + el.crit));
     return {
@@ -355,8 +360,9 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
       critRate,
       critFactor: 1 + critRate * t.critDmg * mult('critDmg', now),
       recovery: recovery0 * mult('skillRecovery', now),
-      skillSpeed: skillSpeed0 * mult('skillSpeed', now),
-      comboSpeed: comboSpeed0 * mult('comboSpeed', now),
+      // Speed buffs add to the speed % (timing.json speedFactors).
+      skillSpeed: skillSpeed0 + add('skillSpeed', now),
+      comboSpeed: comboSpeed0 + add('comboSpeed', now),
     };
   };
   const closeBuff = (key: string, b: { p: number; from: number; until: number }, at: number) => {

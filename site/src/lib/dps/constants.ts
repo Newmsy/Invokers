@@ -24,8 +24,8 @@ export const COMBO_SPEED_CURVE = 'SkillSpeedFactorPct';
 export const MANA_MODE = { pve: 'fiveHeroes', arena: 'pvp' } as const;
 /** Ulgorim stages below this one override the PvE Ultimate mana multiplier to 2 (Newms; dataminer to confirm per stage). */
 export const BOSS_MANA_X2_BELOW_STAGE = 16;
-/** PLACEHOLDER (#124): Skill Recovery also shortens the Ultimate's own cooldown. */
-export const RECOVERY_APPLIES_TO_ULTIMATE = false;
+/** Skill Recovery also shortens the Ultimate's own cooldown (timing.json: CanCooldownBeReduced is true for Ultimates). */
+export const RECOVERY_APPLIES_TO_ULTIMATE = true;
 
 /** PLACEHOLDER (#123): ATK % bonuses multiply the Invoker's own ATK (level + Awakening), flat ATK adds after. */
 export const PERCENT_OF_BASE_ONLY = true;
