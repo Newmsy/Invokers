@@ -36,6 +36,8 @@ export interface DpsHero {
   configId: string;
   name: string;
   slug: string;
+  /** Portrait URL. */
+  art?: string;
   rarity: string;
   faction: string;
   element: string;

@@ -2,6 +2,7 @@
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
 import setsJson from '../../../../data/sets.json';
+import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
 import { COMBO_SPEED_CURVE } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
@@ -51,6 +52,7 @@ export function dpsData(): DpsData {
       configId: ref.cid,
       name: h.name,
       slug: ref.slug,
+      art: heroArt(h.id),
       rarity: h.rarity,
       faction: h.faction,
       element: h.element,
