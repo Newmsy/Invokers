@@ -40,6 +40,7 @@ export const nav: NavItem[] = [
   // Guides
   { path: 'guides', banner: 'novice-tournament', label: 'All guides', icon: 'book', group: 'guides', art: 'item:Legendary Codex', blurb: 'Every guide and article, by topic' },
   { path: 'tiers', banner: 'win-arena-medals', label: 'Tier lists', icon: 'tiers', header: true, group: 'guides', art: 'titan:Goros', blurb: 'The best Invokers and Titans for each mode and boss' },
+  { path: 'spires', banner: 'keys', label: 'Spires', icon: 'book', group: 'guides', art: 'item:Fire Spire Key', blurb: 'All 120 floors: enemies, waves, ACC/RES and rewards' },
   { path: 'ascension', banner: 'echo-legendary', label: 'Ascension and Awakening', icon: 'book', group: 'guides', art: 'item:5 star Echo', blurb: 'Star-up and awakening costs, and where materials drop' },
   { path: 'skill-costs', banner: 'upgrade-invoker', label: 'Skill costs', icon: 'book', group: 'guides', art: 'item:Rare Codex', blurb: 'What it costs to level skills, by rarity' },
   { path: 'gear-upgrades', banner: 'memorium', label: 'Gear upgrades and Memorium', icon: 'book', group: 'guides', art: 'item:Memorium', blurb: 'Gear upgrade gold, Memorium and selling' },

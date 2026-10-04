@@ -44,7 +44,7 @@ export const tierLists: TierListDef[] = [
     id: 'arena',
     label: 'Arena',
     group: 'Modes',
-    summary: 'Skills start at 70% cooldown: control, burst, Skill Recovery and an early Titan win fights.',
+    summary: 'Skills start at 50% cooldown: control, burst, Skill Recovery and an early Titan win fights.',
     weights: {
       single: 2.5, aoe: 0.5, bulk: 1, hardCC: 2, taunt: 0.5, acc: 0.8, skillRecovery: 0.8, manaGen: 0.6, titanMana: 0.8,
       stripBuffs: 0.6, stealBuffs: 0.8, immunity: 0.7, cleanse: 0.7, revive: 0.6, unkillable: 0.6, blockRevive: 0.6,

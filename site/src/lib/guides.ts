@@ -19,7 +19,7 @@ export const topics: { name: string; blurb: string; art: string; banner: string;
   { name: 'Invokers and teams', banner: 'loading-screen', blurb: 'Who to build and how stats work', art: 'hero:Admiral Gladstone', tags: ['invokers', 'roster', 'stats'], pages: ['tiers', 'team', 'tactics', 'stats'] },
   { name: 'Progression', banner: 'echo-legendary', blurb: 'Levels, stars, awakening and skills', art: 'item:5 star Echo', tags: ['levelling', 'awakening', 'skills', 'codex', 'trophies'], pages: ['ascension', 'farming', 'skill-costs', 'trophies'] },
   { name: 'Gear', banner: 'upgrade-relics', blurb: 'Sets, upgrades and where the gold goes', art: 'item:Gear Swap Pass', tags: ['gear', 'sets'], pages: ['gear', 'gear-upgrades'] },
-  { name: 'Bosses and events', banner: 'clan-boss-1', blurb: 'Boss mechanics, scaling and event targets', art: 'item:Elder Titanheart', tags: ['bosses', 'stages', 'clan', 'arena'], pages: ['bosses', 'events'] },
+  { name: 'Bosses and events', banner: 'clan-boss-1', blurb: 'Boss mechanics, scaling and event targets', art: 'item:Elder Titanheart', tags: ['bosses', 'stages', 'clan', 'arena', 'spires'], pages: ['bosses', 'spires', 'events'] },
   { name: 'Summons and value', banner: 'summon-invoker', blurb: 'Odds, chests and which packs are worth it', art: 'item:Destiny Star', tags: ['summons', 'odds', 'chests', 'chroma'], pages: ['summons', 'packs'] },
   { name: 'Tips', banner: 'novice-tournament', blurb: 'Quick answers and fact checks', art: 'item:Heroic Playbook', tags: ['tips', 'guides'], pages: [] },
 ];

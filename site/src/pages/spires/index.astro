@@ -1,0 +1,193 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import RewardChips from '../../components/RewardChips.astro';
+import { href, itemName } from '../../lib/data';
+import { elementColor } from '../../lib/format';
+import { elementIcon, itemIcon } from '../../lib/art';
+import { bands, bossesOf, climbTotals, edge, floors, spireRules, spires, spireSlug, winDrops } from '../../lib/spires';
+
+const n = (v: number) => v.toLocaleString('en-GB');
+const range = ([a, b]: [number, number]) => (a === b ? n(a) : `${n(a)}–${n(b)}`);
+const keyOf = (element: string) => `TK_${element}`;
+
+// Element order as the floors cycle through it.
+const cycle = floors.slice(0, 6).map((f) => f.enemyElement);
+const countEdge = (element: string, kind: string) => floors.filter((f) => edge(element, f.enemyElement) === kind).length;
+const cards = spires.map((s) => ({
+  s,
+  strong: [...new Set(floors.filter((f) => edge(s.element, f.enemyElement) === 'advantage').map((f) => f.enemyElement))],
+  weak: [...new Set(floors.filter((f) => edge(s.element, f.enemyElement) === 'disadvantage').map((f) => f.enemyElement))],
+  slight: countEdge(s.element, 'slight-advantage'),
+  slightDown: countEdge(s.element, 'slight-disadvantage'),
+}));
+
+// Climb totals: Spires that give exactly the same are shown together.
+const groups: { names: string[]; elements: string[]; totals: ReturnType<typeof climbTotals> }[] = [];
+for (const s of spires) {
+  const totals = climbTotals(s);
+  const same = groups.find((g) => JSON.stringify(g.totals) === JSON.stringify(totals));
+  if (same) {
+    same.names.push(s.name);
+    same.elements.push(s.element);
+  } else groups.push({ names: [s.name], elements: [s.element], totals });
+}
+const items = [...new Set(groups.flatMap((g) => g.totals.map((t) => t.itemId)))];
+const amount = (g: (typeof groups)[number], id: string) => g.totals.find((t) => t.itemId === id)?.amount;
+
+const bossFloors = floors.filter((f) => bossesOf(f).length > 0);
+const drops = winDrops();
+const label = (id: string) =>
+  itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '').replace(/^(\d) ★ /, '$1★ ');
+const edgeLine = (strong: string[], weak: string[], slight: number, slightDown: number) =>
+  [
+    strong.length ? `Strong on ${strong.join(' and ')} floors` : '',
+    slight ? `+15% on ${slight} floors` : '',
+    weak.length ? `weak on ${weak.join(' and ')}` : '',
+    slightDown ? `−15% on ${slightDown} Light and Dark floors` : '',
+  ].filter(Boolean).join(', ');
+const pct = (x: number) => `${+(x * 100).toFixed(1)}%`;
+---
+<Base title="Spires">
+  <h1>Spires</h1>
+  <p class="lead">
+    Six Spires, one per element. Only Invokers of that element can enter. All six share the same 120 floors, and the
+    enemies' element changes every floor.
+  </p>
+  <ul class="facts">
+    <li><strong>{spireRules.keysPerDayPerSpire} keys a day</strong> for each Spire. A key is only used when you win.</li>
+    <li>Floors reset <strong>{spireRules.reset}</strong>, and their clear rewards come again.</li>
+    <li>
+      Enemy element cycles every floor:
+      {cycle.map((e, i) => <>{i > 0 && ' → '}<span class="el">{elementIcon(e) && <img src={elementIcon(e)} alt="" width="18" height="18" />}{e}</span></>)}.
+      Each element gets {floors.length / cycle.length} floors.
+    </li>
+    <li>No energy cost. Every floor is 5 Invokers against waves of enemies.</li>
+  </ul>
+
+  <section aria-labelledby="spires-title">
+    <h2 id="spires-title">The six Spires</h2>
+    <ul class="grid">
+      {cards.map(({ s, strong, weak, slight, slightDown }) => (
+        <li>
+          <a class="card" href={href(`spires/${spireSlug(s)}`)} style={`--tint: ${elementColor[s.element] ?? 'var(--accent)'}`}>
+            <span class="name">
+              {itemIcon(keyOf(s.element)) && <img src={itemIcon(keyOf(s.element))} alt="" width="32" height="32" />}
+              {s.name}
+            </span>
+            <span class="who">{elementIcon(s.element) && <img src={elementIcon(s.element)} alt="" width="18" height="18" />}{s.element} Invokers only</span>
+            <span class="edge">{edgeLine(strong, weak, slight, slightDown)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="scaling-title">
+    <h2 id="scaling-title">How the floors get harder</h2>
+    <p class="hint">
+      Enemy level, Accuracy and Resistance by floor. Match your ACC to the enemy RES to land debuffs
+      (<a href={href('blog/combat-basics')}>how debuff chance works</a>). Ultimates also charge faster on the early floors.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Floors</th><th class="num">Enemy level</th><th class="num">Enemy ACC</th><th class="num">Enemy RES</th><th class="num">Ultimate charge</th></tr>
+      </thead>
+      <tbody>
+        {bands().map((b) => (
+          <tr>
+            <td><a href={href(`spires/${spireSlug(spires[0])}#floor-${b.from}`)}>{b.from}–{b.to}</a></td>
+            <td class="num">{range(b.level)}</td>
+            <td class="num">{range(b.acc)}</td>
+            <td class="num">{range(b.res)}</td>
+            <td class="num">{b.mana.map((m) => `×${m}`).join(' / ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section aria-labelledby="bosses-title">
+    <h2 id="bosses-title">Boss floors</h2>
+    <ul class="bosses">
+      {bossFloors.map((f) => (
+        <li>
+          <span class="floor">Floor {f.floor}</span>
+          <span>{bossesOf(f).join(' and ')}</span>
+          <span class="el">{elementIcon(f.enemyElement) && <img src={elementIcon(f.enemyElement)} alt="" width="18" height="18" />}{f.enemyElement}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="rewards-title">
+    <h2 id="rewards-title">Rewards for clearing every floor</h2>
+    <p class="hint">Totals for one full climb of one Spire: clear rewards on all {floors.length} floors plus the one-time first-clear Gems.</p>
+    <table>
+      <thead>
+        <tr><th>Reward</th>{groups.map((g) => <th class="num">{g.elements.join(', ')}</th>)}</tr>
+      </thead>
+      <tbody>
+        {items.map((id) => (
+          <tr>
+            <td>{itemIcon(id) && <img class="icon" src={itemIcon(id)} alt="" width="20" height="20" loading="lazy" />}{label(id)}</td>
+            {groups.map((g) => <td class="num">{amount(g, id) != null ? n(amount(g, id)!) : '–'}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <h3>Random drops on every win</h3>
+    <p class="hint">Every win rolls {drops[0]?.rolls ?? 2} times for each of these, on any floor of any Spire.</p>
+    <ul class="drops">
+      {drops.map((d) => (
+        <li>
+          <RewardChips rewards={[{ itemId: d.itemId }]} />
+          <span class="chance">{pct(d.chance)} a roll</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <SeeAlso links={[
+    { path: 'tiers/invokers/spires', label: 'Spires tier list' },
+    { path: 'blog/combat-basics', label: 'Elements and debuff chance' },
+    { path: 'summons', label: 'What star and orb fragments summon' },
+    { path: 'bosses', label: 'Boss guides' },
+  ]} />
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .hint { color: var(--soft); max-width: 70ch; font-size: 14px; margin: 0 0 8px; }
+  .facts { max-width: 70ch; padding-left: 20px; margin: 12px 0 0; display: grid; gap: 4px; }
+  .el { display: inline-flex; align-items: center; gap: 4px; }
+  .el img { width: 18px; height: 18px; }
+  .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .card {
+    --tint: var(--accent);
+    display: flex; flex-direction: column; gap: 4px; height: 100%; padding: 16px;
+    border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--text);
+  }
+  .card:hover { color: var(--text); border-color: var(--tint); }
+  .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+  .name img { width: 32px; height: 32px; object-fit: contain; }
+  .who { display: flex; align-items: center; gap: 6px; color: var(--soft); font-size: 14px; }
+  .edge { margin-top: 6px; font-size: 13px; color: var(--tint); font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; border: 1px solid var(--line); }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td .icon { width: 20px; height: 20px; object-fit: contain; vertical-align: middle; margin-right: 6px; }
+  .bosses, .drops { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .bosses li { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+  .floor { font-weight: 600; min-width: 72px; }
+  .drops li { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+  .chance { color: var(--soft); font-size: 14px; }
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
