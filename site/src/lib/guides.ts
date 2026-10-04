@@ -21,7 +21,7 @@ export const topics: { name: string; blurb: string; art: string; banner: string;
   { name: 'Gear', banner: 'upgrade-relics', blurb: 'Sets, upgrades and where the gold goes', art: 'item:Gear Swap Pass', tags: ['gear', 'sets'], pages: ['gear', 'gear-upgrades'] },
   { name: 'Bosses and events', banner: 'clan-boss-1', blurb: 'Boss mechanics, scaling and event targets', art: 'item:Elder Titanheart', tags: ['bosses', 'stages', 'clan', 'arena'], pages: ['bosses', 'events'] },
   { name: 'Summons and value', banner: 'summon-invoker', blurb: 'Odds, chests and which packs are worth it', art: 'item:Destiny Star', tags: ['summons', 'odds', 'chests', 'chroma'], pages: ['summons', 'packs'] },
-  { name: 'Tips', banner: 'novice-tournament', blurb: 'Quick answers and fact checks', art: 'item:Heroic Playbook', tags: ['tips', 'guides'], pages: [] },
+  { name: 'Tips', banner: 'novice-tournament', blurb: 'Quick answers and fact checks', art: 'item:Heroic Playbook', tags: ['tips', 'guides'], pages: ['tips'] },
 ];
 
 const toolPages = new Set(['team', 'trophies', 'events', 'summons', 'packs']);

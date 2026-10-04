@@ -36,4 +36,6 @@ Of the 40 loading-screen tips, the checkable ones mostly hold up. One gets the m
 
 Elemental advantage (+30% damage dealt, 30% less taken), Titan Invokation lasting 12 seconds, and AoE target limits by rarity (7 for Common and Uncommon, 8 Rare, 9 Epic, 10 Legendary).
 
+Every tip with its picture: [Loading tips](/tips).
+
 *Numbers for game version 0.61.1516.*

@@ -41,6 +41,7 @@ export const nav: NavItem[] = [
   { path: 'ascension', banner: 'echo-legendary', label: 'Ascension and Awakening', icon: 'book', group: 'guides', art: 'item:5 star Echo', blurb: 'Star-up and awakening costs, and where materials drop' },
   { path: 'skill-costs', banner: 'upgrade-invoker', label: 'Skill costs', icon: 'book', group: 'guides', art: 'item:Rare Codex', blurb: 'What it costs to level skills, by rarity' },
   { path: 'gear-upgrades', banner: 'memorium', label: 'Gear upgrades and Memorium', icon: 'book', group: 'guides', art: 'item:Memorium', blurb: 'Gear upgrade gold, Memorium and selling' },
+  { path: 'tips', banner: 'loading-screen', label: 'Loading tips', icon: 'book', group: 'guides', art: 'item:Heroic Playbook', blurb: 'Every loading screen tip with its picture' },
   { path: 'blog', banner: 'collect-dungeon-medals', label: 'Blog', icon: 'book', header: true, group: 'guides', art: 'item:Heroic Playbook', blurb: 'The numbers behind the game, in plain language' },
   // Tools
   { path: 'events', banner: 'energy', label: 'Events', icon: 'calendar', tab: true, group: 'tools', art: 'item:Energy', blurb: 'Event targets, energy planner and Arena Rush' },
