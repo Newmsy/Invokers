@@ -5,7 +5,7 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { buffGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
+import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
 import { toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
@@ -265,6 +265,18 @@ export async function start(): Promise<void> {
     $('d-buffs-box').hidden = !buffs.length;
     $('d-buffs').replaceChildren(
       ...buffs.map((b) => row(SOURCE[b.slot], `${pct(b.pct, 0)} ${b.name}`, [pct(b.uptime, 0), 'num'], [`+${pct(b.gain, 1)}`, 'num'])),
+    );
+    const fx = effectGains(data, input);
+    $('d-fx-box').hidden = !fx.length;
+    $('d-fx').replaceChildren(
+      ...fx.map((e) =>
+        row(
+          SOURCE[e.slot],
+          e.kind === 'cooldown' ? 'Cuts its own cooldowns' : 'Ultimate Mana',
+          [e.kind === 'cooldown' ? `${e.total.toFixed(e.total < 10 ? 1 : 0)}s cut` : `+${fmt(e.total)}`, 'num'],
+          [`+${pct(e.gain, 1)}`, 'num'],
+        ),
+      ),
     );
 
     // Skill upgrades (box Invokers whose skills aren't maxed).

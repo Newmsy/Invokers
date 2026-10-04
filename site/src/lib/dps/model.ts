@@ -3,7 +3,7 @@
 // full, otherwise the readiest skill (3, 2, 1), otherwise the next combo step. Damage uses expected crits.
 // Battle rules that aren't exported yet are in constants.ts.
 import * as C from './constants';
-import type { BuffStat, Debuff, Dot, Hit, SelfBuff } from './parse';
+import type { BuffStat, Debuff, Dot, Hit, SelfBuff, SelfEffect } from './parse';
 
 // ---- Data shapes (built at build time by data.ts) ----
 
@@ -25,6 +25,8 @@ export interface SkillLevelT {
   x?: Debuff[];
   /** Buffs cast on the Invoker itself. */
   b?: SelfBuff[];
+  /** Cooldown cuts and Ultimate Mana for the Invoker itself. */
+  e?: SelfEffect[];
 }
 
 export interface DpsSkill {
@@ -51,6 +53,8 @@ export interface DpsHero {
   skills: Partial<Record<'ActiveSkill1' | 'ActiveSkill2' | 'ActiveSkill3' | 'Ultimate', DpsSkill>>;
   /** Combo hits per step, index = skill level - 1. */
   combo: HitT[][][];
+  /** Cooldown cuts and Ultimate Mana per combo step, same shape as `combo` (missing = none). */
+  comboFx?: SelfEffect[][][];
 }
 
 export interface BossStage {
@@ -257,9 +261,9 @@ export interface FightInput {
   mode: Mode;
   stage: BossStage;
   seconds?: number;
-  /** Leave out every self buff (to show what they add). */
+  /** Leave out every self buff, cooldown cut and bonus mana (to show what they add). */
   noBuffs?: boolean;
-  /** Leave out one self buff, by "<slot>|<name>". */
+  /** Leave out one self buff ("<slot>|<buff name>") or one skill's cooldown cuts or mana ("<slot>|cooldown", "<slot>|mana"). */
   skipBuff?: string;
 }
 
@@ -321,8 +325,15 @@ export interface BuffUptime {
 
 const buffKey = (slot: SkillSlot, b: SelfBuff) => `${slot}|${b.name}`;
 
+/** Cooldown seconds cut or Ultimate Mana gained by one skill's self effects in the fight. */
+export interface EffectTotal {
+  slot: SkillSlot;
+  kind: SelfEffect['kind'];
+  total: number;
+}
+
 /** Every damage event in a fight of `until` seconds, plus how long each self buff was up. */
-function timeline(data: DpsData, input: FightInput, until: number): { events: Event[]; uptime: BuffUptime[] } {
+function timeline(data: DpsData, input: FightInput, until: number): { events: Event[]; uptime: BuffUptime[]; effects: EffectTotal[] } {
   const { hero, totals: t, mode, stage } = input;
   const atk0 = finalStat(t, 'atk');
   const def = finalStat(t, 'def');
@@ -381,6 +392,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   const ult = hero.skills.Ultimate;
   if (ult?.levels.length) cdLeft.set('Ultimate', ult.cooldown * startFactor);
   const comboLevel = hero.combo.length ? hero.combo[levelOf(input, 'Combo', hero.combo.length)] : [];
+  const comboFx = hero.comboFx?.[levelOf(input, 'Combo', hero.comboFx.length)];
   // Ultimate mana fills with time spent acting (mana.json), faster with Mana Generation and in Arena; it starts empty.
   const manaPerSec = data.mana.perSec * manaGain;
   let mana = 0;
@@ -395,6 +407,39 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     }
     if (acting) mana += dt * manaPerSec;
     now += dt;
+  };
+
+  // Cooldown cuts and bonus mana, as expected values: a crit-only effect counts by the chance of a crit.
+  const fxTotals = new Map<string, EffectTotal>();
+  const applyEffects = (slot: SkillSlot, fx: SelfEffect[] | undefined, hits: number, critRate: number) => {
+    let lastMana = 0;
+    for (const e of fx ?? []) {
+      const key = `${slot}|${e.kind}`;
+      const p = e.when === 'crit' ? critRate : e.when === 'noncrit' ? 1 - critRate : e.when === 'anycrit' ? 1 - (1 - critRate) ** Math.max(1, hits) : 1;
+      const times = e.each ? Math.max(1, hits) : 1;
+      let amount = e.amount * p * times;
+      if (e.kind === 'mana') {
+        if (e.instead) amount = (e.amount - lastMana) * p * times;
+        else lastMana = e.amount;
+      }
+      if (input.noBuffs || input.skipBuff === key || amount <= 0) continue;
+      const tot = fxTotals.get(key) ?? { slot, kind: e.kind, total: 0 };
+      tot.total += amount;
+      fxTotals.set(key, tot);
+      if (e.kind === 'mana') {
+        mana += amount;
+        continue;
+      }
+      // "A random Active Skill" picks among the ones still cooling down.
+      const targets: SkillSlot[] =
+        e.skill === 'all'
+          ? [...ACTIVE]
+          : e.skill === 'random'
+            ? ACTIVE.filter((x) => (cdLeft.get(x) ?? 0) > 0)
+            : [`ActiveSkill${e.skill}` as SkillSlot];
+      const each = e.skill === 'random' ? amount / Math.max(1, targets.length) : amount;
+      for (const x of targets) if (cdLeft.has(x)) cdLeft.set(x, Math.max(0, cdLeft.get(x)! - each));
+    }
   };
 
   const cast = (slot: SkillSlot, s: DpsSkill, castSec: number) => {
@@ -417,6 +462,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
         active.set(key, { stat: b.stat, pct: b.pct, p: b.onCrit ? st.critRate : 1, from: now, until: now + b.sec });
       }
     }
+    applyEffects(slot, level.e, level.h.length, st.critRate);
     advance(castSec / st.skillSpeed, true);
     if (C.COMBO_RESETS_AFTER_SKILL) step = 0;
   };
@@ -440,6 +486,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
       const hits = comboLevel[step % comboLevel.length];
       const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * defFactor * el.damage, 0);
       events.push({ at: now, slot: 'Combo', damage, cast: true });
+      applyEffects('Combo', comboFx?.[step % comboLevel.length], hits.length, st.critRate);
       step += 1;
       advance(C.COMBO_STEP_SEC / st.comboSpeed, true);
     } else {
@@ -454,7 +501,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     }
   }
   for (const [key, b] of active) closeBuff(key, b, until);
-  return { events, uptime: [...upFor.values()] };
+  return { events, uptime: [...upFor.values()], effects: [...fxTotals.values()] };
 }
 
 export function simulate(data: DpsData, input: FightInput): FightResult {
@@ -561,5 +608,17 @@ export function buffGains(data: DpsData, input: FightInput): (BuffUptime & { upt
   return uptime.map((u) => {
     const without = simulate(data, { ...input, skipBuff: `${u.slot}|${u.name}` }).dps;
     return { ...u, uptime: u.seconds / T, gain: without > 0 ? dps / without - 1 : 0 };
+  });
+}
+
+/** Each skill's cooldown cuts and bonus Ultimate Mana in the fight, and the DPS they add. */
+export function effectGains(data: DpsData, input: FightInput): (EffectTotal & { gain: number })[] {
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const { effects } = timeline(data, input, T);
+  if (!effects.length) return [];
+  const dps = simulate(data, input).dps;
+  return effects.map((e) => {
+    const without = simulate(data, { ...input, skipBuff: `${e.slot}|${e.kind}` }).dps;
+    return { ...e, gain: without > 0 ? dps / without - 1 : 0 };
   });
 }
