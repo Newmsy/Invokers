@@ -59,6 +59,7 @@ export interface BossStage {
   def: number;
   /** The boss's RES, which resists debuffs that need Accuracy. */
   res: number;
+  atk: number;
 }
 
 export interface Curves {
@@ -84,6 +85,8 @@ export interface DpsData {
   stages: BossStage[];
   /** One normal 5★ substat roll per stat (see NORMAL_ROLL_* in constants). */
   normalRoll: { stat: string; value: number }[];
+  /** One normal 5★ roll of flat and % HP and DEF, for toughness. */
+  toughRoll: { stat: string; value: number }[];
 }
 
 // ---- Stats ----

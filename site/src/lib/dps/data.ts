@@ -5,7 +5,7 @@ import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { COMBO_SPEED_CURVE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS } from './constants';
+import { COMBO_SPEED_CURVE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -44,9 +44,9 @@ function fillLevels<L extends { level: number }>(listed: L[]): L[] {
 }
 
 /** First roll of each stat on 5★ gear at the normal quality; flat stats round to a whole number per roll. */
-function normalRoll(): DpsData['normalRoll'] {
+function normalRoll(stats: readonly string[]): DpsData['normalRoll'] {
   const rows = gearRollsJson.gear.subStats.filter((r) => r.rank === NORMAL_ROLL_RANK);
-  return NORMAL_ROLL_STATS.flatMap((stat) => {
+  return stats.flatMap((stat) => {
     const row = rows.find((r) => r.stat === stat);
     if (!row) return [];
     const raw = row.baseByRoll[0] * NORMAL_ROLL_QUALITY;
@@ -114,7 +114,7 @@ export function dpsData(): DpsData {
   const boss = bosses.find((b) => b.name === BOSS);
   const stages = (boss?.stages ?? [])
     .filter((s) => STAGES.includes(s.stage) && s.hp && s.def)
-    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0 }));
+    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0 }));
 
   return {
     gameVersion: pack.gameVersion,
@@ -131,6 +131,7 @@ export function dpsData(): DpsData {
       resist: curve('ResistChance_ResMinusAcc'),
     },
     stages,
-    normalRoll: normalRoll(),
+    normalRoll: normalRoll(NORMAL_ROLL_STATS),
+    toughRoll: normalRoll(TOUGH_ROLL_STATS),
   };
 }

@@ -18,7 +18,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-rarity={JSON.stringify(rarityColor)}>
+  <div id="dps" data-base={href('/')} data-boss={BOSS} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-rarity={JSON.stringify(rarityColor)}>
     <div id="d-nobox" class="import-cta" hidden>
       <div>
         <strong>See your own numbers</strong>
@@ -41,6 +41,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
           </select>
           <select id="d-sort" aria-label="Sort">
             <option value="dps">Highest DPS</option>
+            <option value="tough">Toughest (effective HP)</option>
             <option value="stars">Stars and level</option>
             <option value="rarity">Rarity</option>
             <option value="name">Name</option>
@@ -109,6 +110,26 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <tbody id="d-values"></tbody>
       </table>
 
+      <h2 id="toughness">Toughness against {BOSS}</h2>
+      <p class="hint">Effective HP is how much damage this Invoker can take before falling once DEF is counted: HP divided by the share of each hit that gets through DEF.</p>
+      <div class="summary">
+        <div class="card">
+          <h2>Effective HP</h2>
+          <p class="big" id="t-ehp"></p>
+          <p class="hint" id="t-line"></p>
+        </div>
+        <div class="card">
+          <h2>Against this stage</h2>
+          <dl class="stats" id="t-stats"></dl>
+        </div>
+      </div>
+      <h3>HP or DEF: what one more roll adds</h3>
+      <p class="hint">Effective HP gained by one normal (B grade) 5★ roll of flat or % HP and DEF.</p>
+      <table>
+        <thead><tr><th>Substat roll</th><th class="num">Effective HP</th><th class="num">Gain</th></tr></thead>
+        <tbody id="t-values"></tbody>
+      </table>
+
       <section id="o-box" hidden>
         <h2>Best gear from your box</h2>
         <p class="hint" id="o-summary"></p>
@@ -123,7 +144,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
 
       <p class="hint note">
         Estimates: one target, no buffs, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
-        Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
+        Burn and Bleed count at their per-tick limit and only when they land. Toughness counts HP and DEF only (no shields, healing or Tolerances), and the hits line assumes each hit deals {BOSS}'s ATK. The numbers will sharpen as the battle rules are confirmed.
       </p>
     </section>
   </div>
@@ -144,6 +165,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 18px; font-weight: 600; margin: 28px 0 10px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 20px 0 6px; }
   .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }
   .lead { color: var(--soft); max-width: 70ch; margin: 0 0 16px; }
   .hint { color: var(--muted); font-size: 14px; }

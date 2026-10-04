@@ -56,3 +56,11 @@ export const NORMAL_ROLL_STATS = [
   'DefensePercent',
   'HealthPercent',
 ] as const;
+/** The HP and DEF substats compared for toughness: flat and % of each. */
+export const TOUGH_ROLL_STATS = ['HealthFlat', 'HealthPercent', 'DefenseFlat', 'DefensePercent'] as const;
+
+/**
+ * PLACEHOLDER (#160): one of Ulgorim's hits deals this × his ATK before DEF.
+ * Only the "hits survived" line uses it; effective HP doesn't depend on it.
+ */
+export const BOSS_HIT_ATK = 1;
