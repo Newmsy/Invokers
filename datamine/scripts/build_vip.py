@@ -20,24 +20,26 @@ def main():
     manifest = json.loads((REPO / "data" / "manifest.json").read_text(encoding="utf-8"))
     frames = {lvl: name for name, lvl in v["AvatarFrameUnlockLevels"].items()}
     levels, total = [], 0
-    # The per-level arrays have 25 entries (index 0-24) and VipPointsForLevel has 24 thresholds, so levels are read
-    # as 0-24 here; the config's MaxVipLevel (25), frame and free-day tables also mention a level 25 (see unconfirmed).
-    for lvl in range(len(v["GoldBoostByLevel"])):
-        if lvl > 0:
-            total += v["VipPointsForLevel"][lvl - 1]
+    # Levels 1-25 (issue #145): the per-level arrays have 25 entries (index 0-24 = VIP 1-25) and VipPointsForLevel has
+    # 24 thresholds (index 0 = points from VIP 1 to VIP 2); the level-keyed tables (frames, free pass days) use the
+    # level number itself, including 25.
+    for lvl in range(1, v["MaxVipLevel"] + 1):
+        i = lvl - 1
+        if lvl > 1:
+            total += v["VipPointsForLevel"][lvl - 2]
         levels.append({
             "level": lvl,
-            "pointsFromPrevious": v["VipPointsForLevel"][lvl - 1] if lvl > 0 else 0,
+            "pointsFromPrevious": v["VipPointsForLevel"][lvl - 2] if lvl > 1 else 0,
             "pointsTotal": total,
-            "battleStatsBonus": r(v["DungeonCampaignStatsByLevel"][lvl]),
-            "goldBoost": r(v["GoldBoostByLevel"][lvl]),
-            "xpPotionBoost": r(v["XpBoostByLevel"][lvl]),
-            "memoriumBoost": r(v["MemoriumBoostByLevel"][lvl]),
-            "runeDropMultiplier": r(v["RunesBoostByLevel"][lvl]),
+            "battleStatsBonus": r(v["DungeonCampaignStatsByLevel"][i]),
+            "goldBoost": r(v["GoldBoostByLevel"][i]),
+            "xpPotionBoost": r(v["XpBoostByLevel"][i]),
+            "memoriumBoost": r(v["MemoriumBoostByLevel"][i]),
+            "runeDropMultiplier": r(v["RunesBoostByLevel"][i]),
             "chatBadge": lvl >= v["ChatIconMinVipLevel"],
             "autoCompleteDailyQuests": lvl >= v["AutoDailyQuestCompleteMinVipLevel"],
             "avatarFrame": frames.get(lvl),
-            "portraitGroup": v["PortraitGroupByLevel"][lvl],
+            "portraitGroup": v["PortraitGroupByLevel"][i],
             "freePassDaysOnLevelUp": v["FreeActivationDaysByVipLevel"].get(str(lvl)),
         })
     out = {
@@ -61,9 +63,9 @@ def main():
             "VIP chest contents per level are in chests.json (chest VIP).",
         ],
         "unconfirmed": [
-            "Level numbering: every per-level table has 25 entries and there are 24 point thresholds, so levels are "
-            "exported as 0-24. But MaxVipLevel is 25 and the avatar-frame and free-pass-day tables name level 25, so the "
-            "in-game labels may be 1-25 (shift every level by +1). Needs a check against the VIP screen.",
+            "Level numbering: exported as VIP 1-25 (issue #145). The 25-entry per-level tables are read as VIP 1-25 and "
+            "the 24 point thresholds as the points for VIP 2-25, so VIP 1 needs 0 points here; the level-keyed tables "
+            "(frames, free pass days) use their own level numbers. Not yet checked against the VIP screen.",
             "runeDropMultiplier: 'Increases your chance of getting Rune Drops from Campaign Battles'; read as a "
             "multiplier on the drop chance (1 = no change).",
             "dailyLoginByStreakDay: day 17 onwards stays at the last value.",
