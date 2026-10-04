@@ -27,6 +27,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 | - | Boss guides (issue #11) | Done | `data/bosses.json` from `scripts/build_bosses.py`: 16 bosses with their Do/Don't lists, Corruptions, and per-stage HP/ATK/DEF, level, element and ACC/RES (from the F11 level dump). Boss skills not yet. |
 | - | Shop packs | Done | `data/shop_packs.json` from `scripts/decode_shop.py`: every pack in the game's local shop cache (`LocalLow/.../shop/packs/*.dat`, MemoryPack + Brotli localization). Only packs the server has sent to this client; re-run after new offers appear. Local store prices (`skus_prices.dat`) are the player's own currency and are not exported. |
 | - | Invoker progression (issue #22) | Done | `data/progression.json` from `scripts/build_progression.py` (HeroData, ResourcesData). |
+| - | Awakening, gear costs, Memorium/rune sources (issue #26) | Done | `data/awakening.json`, `gear_costs.json`, `sources.json` from `scripts/build_awakening.py`. Quests and login rewards not in `sources.json` yet. |
 | - | Arena trophy room | Done | `data/trophies.json` (issue #4): 15 levels per stat, bonus and medal cost per level. |
 
 ## Facts worth knowing
