@@ -67,6 +67,22 @@ Added on top of the Invoker's own ratings.
 - +56 Instinct, +72 RES
 - +60 Combo SPD, +40 Move SPD
 
+## What it takes
+
+Awakening stars can't pass the Invoker's Ascension stars, so a 4★ Invoker stops at Awakening 4★.
+
+| Awakening | Essence | Crest | Rune | Also opens |
+|---|---|---|---|---|
+| 1★-2★ | Raw | Novice | Ancient | Earrings slot at 2★ |
+| 3★-4★ | Refined | Expert | Enchanted | Banner slot at 4★ |
+| 5★-6★ | Pure | Master | Divine | Talisman at 5★, Flask at 6★ |
+
+- Every node takes Astral Essence too. Stat nodes add the Invoker's class Crest and faction Rune; each star's first node and the movement and Instinct nodes add its element's Essence.
+- The Invokation nodes at 2★, 4★ and 6★ take ![Titan Spark](item:) instead: 100, 500 and 2,500 for a Legendary (50, 200 and 1,000 up to Rare). Each adds 1s of Titan time.
+- The Item Trader swaps 10 of a material for 1 of the next tier up, never down.
+
+Amounts per rarity: [Ascension and Awakening](/ascension). Accessory slots: [Relics and accessories](/blog/relics-and-accessories).
+
 Full Awakening means all six levels with every node, before any accessories it unlocks. The HP, ATK and DEF gains are the same for every Invoker of a Sign to within a point.
 
 *Base stats without gear, game version 0.61.1516.*

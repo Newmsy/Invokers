@@ -49,6 +49,12 @@ No plateau. 200 rating cuts damage by only about 3%, but 3,000 reaches a **38.4%
 
 ## Resistance against Accuracy
 
-Resist uses **Resistance minus the attacker's Accuracy**. The first 50 points of difference count one for one; the first 100 are worth about 90 on the curve, and the next 1,400 add only about 155 more. We're not quoting a percentage chance yet. A small edge over enemy Accuracy is worth a lot; a huge one isn't worth much more.
+The target's RES minus the attacker's ACC is the resist chance, one for one up to 50, then tapering:
+
+| RES minus ACC | 0 | 50 | 75 | 100 | 110 | 120 |
+|---|---|---|---|---|---|---|
+| Resist chance | 0% | 50% | 73.1% | 89.6% | 95.0% | 100% |
+
+A 120-point edge resists everything before element and buff modifiers. ACC needed for every boss stage: [How combat works](/blog/combat-basics).
 
 *Numbers for game version 0.61.1514.*
