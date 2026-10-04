@@ -42,6 +42,7 @@ const breakpoints = rows.map((r) => {
 const instinct = byId('InstinctFactorPct01');
 const instinctFull = instinct?.values.findIndex((v) => v >= 1);
 const defense = byId('DefenseFactor');
+const recovery = byId('SkillRecoveryPct');
 
 // Resist uses Resistance minus the attacker's Accuracy, stored with an offset so the middle row is "equal".
 const resist = byId('ResistChance_ResMinusAcc');
@@ -84,6 +85,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
     </div>
     <ul class="notes">
       {instinctFull != null && instinctFull > 0 && <li><strong>Instinct</strong> is the chance an Invoker you aren't steering dodges a danger zone (and, in some fights, switches to the right target). It starts at {n((instinct?.values[0] ?? 0) * 100, 0)}% and reaches 100% at rating {instinctFull}; more does nothing. It never changes damage or crits.</li>}
+      {recovery && <li><strong>Skill Recovery</strong> divides cooldowns: +{n(recovery.values[500], 0)}% (rating 500) turns a 10-second cooldown into {n(10 / (1 + recovery.values[500] / 100))} seconds, and +100% halves it. Cooldowns don't tick while the Invoker can't use skills.</li>}
       {defense && <li><strong>Defense</strong> never flattens: 3,000 rating cuts damage taken by {n((1 - defense.values[3000]) * 100)}%, and each point keeps helping.</li>}
     </ul>
   </section>
