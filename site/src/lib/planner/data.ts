@@ -6,14 +6,13 @@ import { ascensionTable, echoFor, maxLevel, plainItemName, xpToLevel } from '../
 import { RANKS, type GearCostRow, type PlanData } from './model';
 
 
-// Gear upgrade prices, sell, deactivate and destroy returns (data/gear_costs.json). Globbed so the page still builds
+// Gear upgrade prices, sell and destroy returns (data/gear_costs.json). Globbed so the page still builds
 // without the file; gear Gold and Memorium then show as "coming soon".
 interface Upgrade { rank: string; rarity: string; toLevel: number; gold?: number; memorium?: number }
 type ByRank<T> = Record<string, T>;
 interface GearSide {
   upgrade?: Upgrade[];
   sell?: ByRank<Record<string, { Gold?: number }>>;
-  deactivate?: ByRank<Record<string, { Gold?: number }>>;
   destroy?: ByRank<{ Memorium?: number }>;
 }
 interface GearFile extends GearSide {
@@ -25,14 +24,16 @@ const gearFiles = import.meta.glob<{ default: unknown }>('../../../../data/gear_
 const gearFile = Object.values(gearFiles)[0]?.default as GearFile | unknown[] | undefined;
 const gearSide: GearSide | undefined = Array.isArray(gearFile) ? { upgrade: gearFile as Upgrade[] } : (gearFile?.gear ?? gearFile);
 
+// Rarities the game doesn't have yet are left out (the price list carries a "Greater" tier).
+const inGame = (rarity: string) => rarity !== 'Greater';
+
 const starsOf = (rank: unknown): number => (typeof rank === 'number' ? rank : RANKS.indexOf(String(rank)) + 1);
 
-/** Sell, deactivate and destroy returns per star and rarity (rarity '' = any), or null until they exist. */
+/** Sell and destroy returns per star and rarity (rarity '' = any), or null until they exist. */
 export interface SalvageRow {
   rarity: string;
   stars: number;
   sellGold?: number;
-  deactivateGold?: number;
 }
 export interface Salvage {
   rows: SalvageRow[];
@@ -45,7 +46,7 @@ export function gearSalvage(): Salvage | null {
   const rows: SalvageRow[] = [];
   for (const [rank, byRarity] of Object.entries(sell)) {
     for (const [rarity, v] of Object.entries(byRarity)) {
-      rows.push({ rarity, stars: starsOf(rank), sellGold: v?.Gold, deactivateGold: gearSide?.deactivate?.[rank]?.[rarity]?.Gold });
+      if (inGame(rarity)) rows.push({ rarity, stars: starsOf(rank), sellGold: v?.Gold });
     }
   }
   const destroyMemorium = Object.fromEntries(
@@ -63,7 +64,7 @@ export function gearCosts(): GearCostRow[] | null {
   if (!Array.isArray(raw)) return null;
   const rows = raw
     .map((r) => (r && typeof r === 'object' ? { ...r, stars: starsOf((r as { stars?: number }).stars ?? r.rank) } : null))
-    .filter((r): r is Upgrade & { stars: number } => !!r && typeof r.rarity === 'string' && r.stars > 0 && typeof r.toLevel === 'number')
+    .filter((r): r is Upgrade & { stars: number } => !!r && typeof r.rarity === 'string' && inGame(r.rarity) && r.stars > 0 && typeof r.toLevel === 'number')
     .map(({ rarity, stars, toLevel, gold, memorium }) => ({ rarity, stars, toLevel, gold, memorium }));
   return rows.length ? rows : null;
 }

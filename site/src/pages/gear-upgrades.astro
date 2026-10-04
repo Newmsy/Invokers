@@ -9,8 +9,7 @@ import snapshot from '../data/gear-upgrade-brackets.json';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
-const greaterColor = '#FF8A65';
-const colorOf = (r: string) => rarityColor[r] ?? greaterColor;
+const colorOf = (r: string) => rarityColor[r];
 const rarityRank = (r: string) => {
   const i = [...rarityOrder].reverse().indexOf(r);
   return i < 0 ? 99 : i;
@@ -48,10 +47,10 @@ const rarityRatio = (sum(leg6.gold) / sum(com6.gold)).toFixed(2);
 const memRatio = Math.round(leg6s.memorium / leg1.memorium);
 const goldRatio = (sum(leg6s.gold) / sum(leg1.gold)).toFixed(1);
 
-// Sell / deactivate returns: one row per star, one column per rarity.
+// Sell returns: one row per star, one column per rarity.
 const salvageRarities = salvage ? [...new Set(salvage.rows.map((r) => r.rarity))].sort((a, b) => rarityRank(a) - rarityRank(b)) : [];
 const salvageStars = salvage ? [...new Set(salvage.rows.map((r) => r.stars))].sort((a, b) => a - b) : [];
-const salvageCell = (stars: number, rarity: string, key: 'sellGold' | 'deactivateGold') =>
+const salvageCell = (stars: number, rarity: string, key: 'sellGold') =>
   salvage?.rows.find((r) => r.stars === stars && r.rarity === rarity)?.[key];
 const sell6Leg = salvageCell(6, 'Legendary', 'sellGold');
 
@@ -188,9 +187,9 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
   </section>
 
   <section id="selling" aria-labelledby="selling-title">
-    <h2 id="selling-title">Selling, deactivating and destroying</h2>
+    <h2 id="selling-title">Selling and destroying</h2>
     <p>
-      Spare gear can be <strong>sold</strong> or <strong>deactivated for {goldName}</strong>, or <strong>destroyed for {memoriumName}</strong> to fund your best pieces.
+      Spare gear can be <strong>sold for {goldName}</strong> or <strong>destroyed for {memoriumName}</strong> to fund your best pieces.
       Base returns by stars and rarity are below.{sell6Leg != null && ` A 6★ Legendary sells for ${fmt(sell6Leg)} ${goldName}.`}
     </p>
     {salvage ? (
@@ -202,18 +201,6 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
             <tbody>
               {salvageStars.map((st) => (
                 <tr><th scope="row">{st}★</th>{salvageRarities.map((r) => { const v = salvageCell(st, r, 'sellGold'); return <td>{v != null ? fmt(v) : '–'}</td>; })}</tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h3><span class="col-icon">{goldIcon && <img src={goldIcon} alt="" width="18" height="18" />}Deactivate for {goldName}</span></h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th scope="col">Stars</th>{salvageRarities.map((r) => <th scope="col" style={`color: ${colorOf(r)}`}>{r}</th>)}</tr></thead>
-            <tbody>
-              {salvageStars.map((st) => (
-                <tr><th scope="row">{st}★</th>{salvageRarities.map((r) => { const v = salvageCell(st, r, 'deactivateGold'); return <td>{v != null ? fmt(v) : '–'}</td>; })}</tr>
               ))}
             </tbody>
           </table>
@@ -234,7 +221,7 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
             </div>
           </>
         )}
-        <p class="hint after">Accessories sell for the same as gear. Greater pieces are 6★ only.</p>
+        <p class="hint after">Accessories sell for the same as gear.</p>
       </>
     ) : (
       <p class="gap">How much each piece returns, by rarity, stars and upgrade level, isn't on the site yet.</p>
