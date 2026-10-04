@@ -200,7 +200,8 @@ const crumbs = pagePath && owner
     --accent: #EBB84C;
     --link: #F4C865;
     --radius: 3px;
-    --display: 'Cormorant Garamond', Georgia, serif;
+    --display: 'IBM Plex Sans', system-ui, sans-serif;
+    --serif: 'Cormorant Garamond', Georgia, serif;
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
@@ -216,9 +217,8 @@ const crumbs = pagePath && owner
   td, .num, [class*='stat'] { font-variant-numeric: lining-nums tabular-nums; }
   a { color: var(--link); text-decoration: none; }
   a:hover { color: #F0CF85; }
-  /* Grimoire look: serif display headings (scaled up to the body's x-height so small sizes stay readable). */
-  h1, h2, h3 { font-family: var(--display); line-height: 1.15; font-weight: 700; color: #FFF6E0; font-size-adjust: ex-height 0.5; }
-  h1 { letter-spacing: 0.005em; }
+  /* Headings in a bold sans for legibility; the serif is kept for the logo only. */
+  h1, h2, h3 { font-family: var(--display); line-height: 1.2; font-weight: 700; color: #FFF6E0; letter-spacing: -0.01em; }
   /* Ruled tables with gold small-caps headers and faint zebra rows, whatever page they sit on. */
   main thead th { color: var(--accent) !important; background: transparent !important; text-transform: uppercase; letter-spacing: 0.08em; font-family: inherit !important; font-size: 11.5px !important; font-weight: 600 !important; border-bottom: 1px solid var(--frame) !important; }
   main tbody tr:nth-child(even) > * { background-color: rgb(255 240 200 / 0.025); }
@@ -268,7 +268,7 @@ const crumbs = pagePath && owner
     font-size: 22px;
     color: var(--text);
   }
-  .brand { font-weight: 700; font-size: 25px; color: var(--accent); letter-spacing: 0.01em; font-size-adjust: none; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 25px; color: var(--accent); letter-spacing: 0.01em; }
   .brand span { color: inherit; }
   /* The header sits on a darker full-width bar ruled off from the page. */
   body::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 72px; background: var(--surface-3); border-bottom: 1px solid var(--line); z-index: -1; }
