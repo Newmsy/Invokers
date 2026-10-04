@@ -3,7 +3,7 @@ title: "How bosses get harder, stage by stage"
 description: "Every boss shares one difficulty curve for level, enemy ACC and RES, and your Tolerance bonus. Stage 10 is where the bonus runs out; the big HP walls sit around stage 15."
 date: 2026-09-25
 gameVersion: "0.61.1516"
-art: ["element:Fire", "element:Earth", "element:Wind", "element:Water"]
+art: ["boss:Ulgorim", "boss:Sorgott", "boss:Pentiax", "boss:Omnissi Fire"]
 tags: [bosses, stages]
 ---
 
@@ -37,15 +37,15 @@ The wall is the stage from 10 on where HP grows most over the stage before.
 
 | Boss | HP, stage 1 → 20 | Growth | Biggest wall |
 |---|---|---|---|
-| [Ulgorim](/bosses/ulgorim) | 15K → 9M | ×600 | Stage 15: 700K → 1.35M |
-| [Althar](/bosses/althar) | 30K → 6M | ×200 | Stage 16: 1.75M → 3M |
-| [Sakiel](/bosses/sakiel) | 15K → 4M | ×267 | Stage 16: 800K → 1.25M |
-| [Sorgott](/bosses/sorgott) | 15K → 8M | ×533 | Stage 15: 775K → 2.5M |
-| [Pentiax](/bosses/pentiax) | 14K → 10M | ×714 | Stage 15: 650K → 1.3M |
-| [Hyxxis](/bosses/hyxxis) | 12.5K → 10M | ×800 | Stage 14: 1.25M → 2M |
-| [Galvos](/bosses/galvos) | 40K → 16M | ×400 | Stage 13: 1.5M → 2.75M |
-| [Yskara](/bosses/yskara) | 3.3K → 650K | ×197 | Stage 17: 205K → 325K |
-| [Koltmos](/bosses/koltmos) | 25K → 5.5M | ×220 | Stage 15: 650K → 1.15M |
+| [![Ulgorim](boss:ulgorim)](/bosses/ulgorim) | 15K → 9M | ×600 | Stage 15: 700K → 1.35M |
+| [![Althar](boss:althar)](/bosses/althar) | 30K → 6M | ×200 | Stage 16: 1.75M → 3M |
+| [![Sakiel](boss:sakiel)](/bosses/sakiel) | 15K → 4M | ×267 | Stage 16: 800K → 1.25M |
+| [![Sorgott](boss:sorgott)](/bosses/sorgott) | 15K → 8M | ×533 | Stage 15: 775K → 2.5M |
+| [![Pentiax](boss:pentiax)](/bosses/pentiax) | 14K → 10M | ×714 | Stage 15: 650K → 1.3M |
+| [![Hyxxis](boss:hyxxis)](/bosses/hyxxis) | 12.5K → 10M | ×800 | Stage 14: 1.25M → 2M |
+| [![Galvos](boss:galvos)](/bosses/galvos) | 40K → 16M | ×400 | Stage 13: 1.5M → 2.75M |
+| [![Yskara](boss:yskara)](/bosses/yskara) | 3.3K → 650K | ×197 | Stage 17: 205K → 325K |
+| [![Koltmos](boss:koltmos)](/bosses/koltmos) | 25K → 5.5M | ×220 | Stage 15: 650K → 1.15M |
 | [Omnissi ![](element:Astral)](/bosses/omnissi-astral) | 53K → 9.5M | ×179 | Stage 16: 3.2M → 4.9M |
 | [Omnissi ![](element:Fire)](/bosses/omnissi-fire) | 45K → 12M | ×267 | **Stage 20: 4M → 12M (×3)** |
 | [Omnissi ![](element:Dark)](/bosses/omnissi-dark) | 30K → 6M | ×200 | Stage 14: 1M → 2M |

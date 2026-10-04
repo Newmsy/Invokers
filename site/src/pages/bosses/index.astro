@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
-import { bossArt, elementIcon } from '../../lib/art';
+import { bossArt, bossSplash, elementIcon } from '../../lib/art';
 import { tierLists, tierRows } from '../../lib/tierData';
 
 // The first three S-tier Invokers for each boss, as small portraits on its card.
@@ -37,8 +37,8 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
         {g.bosses.map((b) => (
           <li>
             <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#EBB84C'}` : undefined}>
-              {bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" loading="lazy" />}
-              <span class="name">{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
+              {bossSplash(b.id) && <img class="boss-splash" src={bossSplash(b.id)} alt="" width="1280" height="640" loading="lazy" />}
+              <span class="name">{bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" width="48" height="48" loading="lazy" />}{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
               {b.title && <span class="title">{b.title}</span>}
               <span class="corr">{b.corruptions.join(' · ')}</span>
               {topArt(b).length > 0 && (
@@ -70,9 +70,12 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
   }
-  .boss-art { width: 100%; height: 140px; object-fit: contain; margin-bottom: 8px; }
+  .boss-splash { display: block; width: calc(100% + 32px); height: auto; aspect-ratio: 2 / 1; object-fit: cover; margin: -16px -16px 0; border-radius: var(--radius) var(--radius) 0 0; }
+  .boss-art { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; border: 2px solid var(--line); background: var(--surface-2); }
+  .boss-splash + .name .boss-art { margin-top: -28px; box-shadow: 0 4px 12px rgb(0 0 0 / 0.5); }
   .card {
     --tint: var(--accent);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 2px;

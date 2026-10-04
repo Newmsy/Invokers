@@ -1,0 +1,19 @@
+---
+// A boss name with its portrait, linked to its boss guide.
+import { bossArt } from '../lib/art';
+import { bossLabel, bossSlug, href, type Boss } from '../lib/data';
+
+interface Props {
+  boss: Boss;
+  label?: string;
+  hash?: string;
+}
+const { boss, label = bossLabel(boss), hash = '' } = Astro.props;
+const art = bossArt(boss.id);
+---
+<a class="boss-link" href={href(`bosses/${bossSlug(boss)}${hash}`)}>{art && <img src={art} alt="" width="20" height="20" loading="lazy" />}{label}</a>
+
+<style>
+  .boss-link { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .boss-link img { width: 20px; height: 20px; border-radius: 6px; object-fit: cover; flex: none; }
+</style>

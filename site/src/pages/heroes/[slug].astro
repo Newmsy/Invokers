@@ -1,9 +1,10 @@
 ---
+import BossLink from '../../components/BossLink.astro';
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import { classIcon, elementIcon, factionCard, heroSplash, skillIcon, titanArt } from '../../lib/art';
-import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, titanHref, type Hero } from '../../lib/data';
+import { bosses, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, titanHref, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -177,7 +178,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
               <span class="tol-pct">{t.low.percent}% → {t.high.percent}%</span>
               {t.bosses.length > 0 && (
                 <span class="tol-bosses">
-                  {t.bosses.map((b, i) => <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}#corr-${t.key}`)}>{bossLabel(b)}</a></>)}
+                  {t.bosses.map((b, i) => <>{i > 0 && ', '}<BossLink boss={b} hash={`#corr-${t.key}`} /></>)}
                 </span>
               )}
             </li>
