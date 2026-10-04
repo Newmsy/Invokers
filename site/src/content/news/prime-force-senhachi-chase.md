@@ -42,4 +42,6 @@ The **Senhachi Chase** ran from Monday 7 to Monday 28 September 2026 (12:00 UTC)
 - **Single-target setup.** Skill 2 lands **45% DEF Down** and **25% Skill Recovery Down** for 15s.
 - **Where Senhachi shines:** S on Pentiax, Koltmos and Omnissi (Wind). Senhachi is also in the summon pool.
 
+**25 September: Gear Up compensation.** The chase's Gear Up tournament didn't count Accessory upgrades, so everyone got 10 Crowns, 500,000 Gold, 2,000 Memorium and 10 Multi-Battle Tokens. Gear Up counts Accessories from the next tournament on.
+
 To plan the next chase, see [Events](/events).

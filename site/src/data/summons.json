@@ -24,5 +24,5 @@
     "hero": { "Common": 0.00033, "Uncommon": 0.0005, "Rare": 0.002, "Epic": 0.01, "Legendary": 0.02 },
     "titan": { "Rare": 0.0005, "Epic": 0.0025, "Legendary": 0.005, "Mythic": 0.02 }
   },
-  "unsummonable": ["Ardell The Torrent"]
+  "unsummonable": []
 }

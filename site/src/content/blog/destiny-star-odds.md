@@ -33,7 +33,7 @@ Wild Star Uncommon is 25.65% elemental plus 2.85% Light and Dark. Radiant Stars 
 | ![Wonder Orb](item:) | 91.15% | 8.3% | 0.55% | |
 | ![Miracle Orb](item:) | | 90% | 9% | 1% |
 
-Every hero in a rarity has the same weight. The Destiny Legendary pool has 38 heroes (every Fire, Water, Earth and Wind Legendary except ![Ardell The Torrent](hero:), who can't be summoned), so a **specific** Legendary is about **1 in 7,170 pulls**. The Radiant pool has 19, so about 1 in 3,585. [Who's in each pool](/summons#pools-title).
+Every hero in a rarity has the same weight. The Destiny Legendary pool has 39 heroes (every Fire, Water, Earth and Wind Legendary), so a **specific** Legendary is about **1 in 7,360 pulls**. The Radiant pool has 19, so about 1 in 3,585. [Who's in each pool](/summons#pools-title).
 
 ## Chance of at least one Legendary (no mercy)
 

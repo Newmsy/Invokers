@@ -9,13 +9,13 @@ describe('summon odds', () => {
     expect(atLeastOne(0.0053, 130)).toBeCloseTo(0.499, 3);
     expect(atLeastOne(0.0667, 10)).toBeCloseTo(0.499, 3);
     expect(pullsFor(0.0053, 0.5)).toBe(131);
-    expect(legendaryPool(destiny)).toHaveLength(38);
+    expect(legendaryPool(destiny)).toHaveLength(39);
     expect(legendaryPool(radiant)).toHaveLength(19);
-    expect(Math.round(38 / 0.0053)).toBe(7170);
+    expect(Math.round(39 / 0.0053 / 10) * 10).toBe(7360);
   });
 
-  it('leaves out heroes no star can summon', () => {
-    expect(legendaryPool(destiny).some((h) => h.name === 'Ardell The Torrent')).toBe(false);
+  it('includes chase Legendaries, who join the Star summons when their chase starts', () => {
+    expect(legendaryPool(destiny).some((h) => h.name === 'Ardell The Torrent')).toBe(true);
   });
 
   it('applies estimated mercy only when asked', () => {
