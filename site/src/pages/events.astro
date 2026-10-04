@@ -1,21 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { bosses, bossSlug, href } from '../lib/data';
+import { bosses, bossSlug, events, href } from '../lib/data';
 import guide from '../data/event-guide.json';
+import { withLiveTargets } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
 import { shop } from '../lib/packs';
 import { arena } from '../lib/events';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
+// Targets and Campaign Rush points follow the newest listed event of each kind; the rest are from recent events.
+const plannerEvents = withLiveTargets(guide.events, events);
 const energyIcon = itemIcon('Energy');
 const gemIcon = itemIcon('Gem');
 const arenaIcon = itemIcon('Arena_Token');
 
 // Energy per stage for each farming event, from the boss list (every boss of a kind costs the same).
 // One row per farming event, or per boss where each relic boss has its own event: pick a stage, the rest is worked out.
-const farming = guide.events
+const farming = plannerEvents
   .filter((e) => e.bossMode || e.difficulties)
   .flatMap((e) => {
     const perBoss = 'perBoss' in e ? (e.perBoss as Record<string, number>) : undefined;
@@ -41,7 +44,7 @@ const farming = guide.events
   })
   .filter((e) => e.options.length);
 
-const arenaEvent = guide.events.find((e) => e.id === 'arena')!;
+const arenaEvent = plannerEvents.find((e) => e.id === 'arena')!;
 const recharge = Math.floor((24 * 60) / guide.income.rechargeMinutes);
 // Gems buy energy at the Gem Shop's unlimited energy price (the cheaper daily offers are one a day, in the income list).
 const gemEnergy = shop.packs.find(
@@ -169,7 +172,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
       <table class="list">
         <thead><tr><th scope="col">Event</th><th scope="col" class="num">Final reward</th><th scope="col">How it scores</th></tr></thead>
         <tbody>
-          {guide.events.map((e) => (
+          {plannerEvents.map((e) => (
             <tr>
               <th scope="row">{e.name}</th>
               <td class="num">{fmt(e.target)}</td>
