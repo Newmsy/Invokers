@@ -1,38 +1,75 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { href, pack } from '../lib/data';
+import { href, itemName, pack } from '../lib/data';
 import { itemIcon } from '../lib/art';
-import { rarityColor } from '../lib/format';
+import { rarityColor, rarityOrder } from '../lib/format';
 import { gearCosts, gearSalvage } from '../lib/planner/data';
-import brackets from '../data/gear-upgrade-brackets.json';
+import snapshot from '../data/gear-upgrade-brackets.json';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 const greaterColor = '#FF8A65';
 const colorOf = (r: string) => rarityColor[r] ?? greaterColor;
+const rarityRank = (r: string) => {
+  const i = [...rarityOrder].reverse().indexOf(r);
+  return i < 0 ? 99 : i;
+};
 
-// The full per-level price list and the sell/crush returns appear as soon as they're available.
 const perLevel = gearCosts();
 const salvage = gearSalvage();
-const rarities = perLevel ? [...new Set(perLevel.map((r) => r.rarity))] : [];
+const rarities = perLevel ? [...new Set(perLevel.map((r) => r.rarity))].sort((a, b) => rarityRank(a) - rarityRank(b)) : [];
 const starsList = perLevel ? [...new Set(perLevel.map((r) => r.stars))].sort((a, b) => a - b) : [];
+const maxStars = Math.max(...starsList, 6);
 const calc = perLevel?.map((r) => [r.rarity, r.stars, r.toLevel, r.gold ?? 0, r.memorium ?? 0]) ?? [];
-const salvageMax = salvage?.filter((r) => r.level === 0 || r.level === 20) ?? [];
+
+// Totals per block of five levels, worked out from the per-level price list (snapshot only if that's missing).
+const brackets = ['+0 → +5', '+5 → +10', '+10 → +15', '+15 → +20'];
+const blocks = (rarity: string, stars: number, key: 'gold' | 'memorium') =>
+  [0, 1, 2, 3].map((b) =>
+    sum((perLevel ?? []).filter((r) => r.rarity === rarity && r.stars === stars && r.toLevel > b * 5 && r.toLevel <= b * 5 + 5).map((r) => r[key] ?? 0)),
+  );
+const byRarity6 = perLevel
+  ? rarities.filter((r) => perLevel.some((x) => x.rarity === r && x.stars === maxStars)).map((rarity) => ({ rarity, gold: blocks(rarity, maxStars, 'gold') }))
+  : snapshot.byRarity6Star;
+const memorium6 = perLevel ? blocks('Legendary', maxStars, 'memorium') : snapshot.memorium6Star;
+const legendaryByStars = perLevel
+  ? starsList.map((stars) => ({ stars, gold: blocks('Legendary', stars, 'gold'), memorium: sum(blocks('Legendary', stars, 'memorium')) }))
+  : snapshot.legendaryByStars;
+
+// Takeaways, worked out from the tables above.
+const leg6 = byRarity6.find((r) => r.rarity === 'Legendary')!;
+const com6 = byRarity6.find((r) => r.rarity === 'Common')!;
+const leg1 = legendaryByStars[0];
+const leg6s = legendaryByStars[legendaryByStars.length - 1];
+const lastShare = Math.round((leg6.gold[3] / sum(leg6.gold)) * 100);
+const to15Share = (sum(leg6.gold.slice(0, 3)) / sum(leg6.gold)) * 100;
+const rarityRatio = (sum(leg6.gold) / sum(com6.gold)).toFixed(2);
+const memRatio = Math.round(leg6s.memorium / leg1.memorium);
+const goldRatio = (sum(leg6s.gold) / sum(leg1.gold)).toFixed(1);
+
+// Sell / deactivate returns: one row per star, one column per rarity.
+const salvageRarities = salvage ? [...new Set(salvage.rows.map((r) => r.rarity))].sort((a, b) => rarityRank(a) - rarityRank(b)) : [];
+const salvageStars = salvage ? [...new Set(salvage.rows.map((r) => r.stars))].sort((a, b) => a - b) : [];
+const salvageCell = (stars: number, rarity: string, key: 'sellGold' | 'deactivateGold') =>
+  salvage?.rows.find((r) => r.stars === stars && r.rarity === rarity)?.[key];
+const sell6Leg = salvageCell(6, 'Legendary', 'sellGold');
 
 const memoriumIcon = itemIcon('Memorium');
 const goldIcon = itemIcon('Gold');
-const sameVersion = brackets.gameVersion === pack.gameVersion;
+const goldName = itemName('Gold');
+const memoriumName = itemName('Memorium');
+const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
 ---
 <Base title="Gear upgrades and Memorium">
   <h1>Gear upgrades and Memorium</h1>
   <p class="lead">
-    Gear upgrade costs from +0 to +20, selling and crushing, and where Memorium comes from.
+    Gear upgrade costs from +0 to +20, what spare gear returns, and where Memorium comes from.
   </p>
   <nav class="jump" aria-label="On this page">
     <a href="#upgrading">Upgrading</a>
     <a href="#cost">Upgrade cost</a>
-    <a href="#selling">Selling and crushing</a>
+    <a href="#selling">Selling and destroying</a>
     <a href="#memorium">Where Memorium comes from</a>
   </nav>
 
@@ -47,7 +84,7 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
       <table>
         <thead><tr><th scope="col">Rarity</th><th scope="col">Substats at +0</th></tr></thead>
         <tbody>
-          {Object.entries(brackets.substatsAtZero).map(([r, n]) => (
+          {Object.entries(snapshot.substatsAtZero).map(([r, n]) => (
             <tr><th scope="row" style={`color: ${colorOf(r)}`}>{r}</th><td>{n}</td></tr>
           ))}
         </tbody>
@@ -58,34 +95,34 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   <section id="cost" aria-labelledby="cost-title">
     <h2 id="cost-title">Upgrade cost</h2>
     <p class="hint">
-      Totals for each block of five levels.{!sameVersion && ` Prices as of game version ${brackets.gameVersion}.`}
+      Totals for each block of five levels.{!sameVersion && ` Prices as of game version ${snapshot.gameVersion}.`}
     </p>
 
-    <h3>6★ gear by rarity</h3>
+    <h3>{maxStars}★ gear by rarity</h3>
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
             <th scope="col">Rarity</th>
-            {brackets.brackets.map((b) => <th scope="col">{b}</th>)}
+            {brackets.map((b) => <th scope="col">{b}</th>)}
             <th scope="col">Gold to +20</th>
             <th scope="col">Memorium to +20</th>
           </tr>
         </thead>
         <tbody>
-          {brackets.byRarity6Star.map((r) => (
+          {byRarity6.map((r) => (
             <tr>
               <th scope="row" style={`color: ${colorOf(r.rarity)}`}>{r.rarity}</th>
               {r.gold.map((g) => <td>{fmt(g)}</td>)}
               <td class="strong">{fmt(sum(r.gold))}</td>
-              <td>{fmt(sum(brackets.memorium6Star))}</td>
+              <td>{fmt(sum(memorium6))}</td>
             </tr>
           ))}
           <tr class="total">
             <th scope="row">Memorium, any rarity</th>
-            {brackets.memorium6Star.map((m) => <td>{fmt(m)}</td>)}
+            {memorium6.map((m) => <td>{fmt(m)}</td>)}
             <td>–</td>
-            <td>{fmt(sum(brackets.memorium6Star))}</td>
+            <td>{fmt(sum(memorium6))}</td>
           </tr>
         </tbody>
       </table>
@@ -97,13 +134,13 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
         <thead>
           <tr>
             <th scope="col">Stars</th>
-            {brackets.brackets.map((b) => <th scope="col">{b}</th>)}
+            {brackets.map((b) => <th scope="col">{b}</th>)}
             <th scope="col">Gold to +20</th>
             <th scope="col">Memorium to +20</th>
           </tr>
         </thead>
         <tbody>
-          {brackets.legendaryByStars.map((r) => (
+          {legendaryByStars.map((r) => (
             <tr>
               <th scope="row">{r.stars}★</th>
               {r.gold.map((g) => <td>{fmt(g)}</td>)}
@@ -116,21 +153,30 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
     </div>
 
     <ul class="facts takeaways">
-      <li><strong>About 80% of the gold goes on +15 to +20.</strong> +15 costs under a fifth of the full price, so push to +20 only on pieces you'll keep.</li>
-      <li><strong>Rarity barely changes the price.</strong> A 6★ Legendary costs 1.46 times a 6★ Common to max, and the Memorium is the same for every rarity.</li>
-      <li><strong>Stars change it a lot.</strong> A 6★ piece takes 33 times the Memorium of a 1★ piece, against 4.6 times the gold.</li>
+      <li><strong>About {lastShare}% of the gold goes on +15 to +20.</strong> +15 costs under {to15Share < 20 ? 'a fifth' : 'a quarter'} of the full price, so push to +20 only on pieces you'll keep.</li>
+      <li><strong>Rarity barely changes the price.</strong> A {maxStars}★ Legendary costs {rarityRatio} times a {maxStars}★ Common to max, and the Memorium is the same for every rarity.</li>
+      <li><strong>Stars change it a lot.</strong> A {leg6s.stars}★ piece takes {memRatio} times the Memorium of a {leg1.stars}★ piece, against {goldRatio} times the gold.</li>
+      <li><strong>Accessories cost the same</strong> as gear of the same stars and rarity.</li>
     </ul>
 
     {perLevel ? (
       <section class="card" aria-labelledby="calc-title">
         <h3 id="calc-title">Cost per level</h3>
         <div class="calc">
-          <label><span>Rarity</span><select id="g-rarity">{rarities.map((r) => <option value={r}>{r}</option>)}</select></label>
-          <label><span>Stars</span><select id="g-stars">{starsList.map((s) => <option value={s} selected={s === Math.max(...starsList)}>{s}★</option>)}</select></label>
+          <label><span>Rarity</span><select id="g-rarity">{rarities.map((r) => <option value={r} selected={r === 'Legendary'}>{r}</option>)}</select></label>
+          <label><span>Stars</span><select id="g-stars">{starsList.map((s) => <option value={s} selected={s === maxStars}>{s}★</option>)}</select></label>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th scope="col">To level</th><th scope="col">Gold</th><th scope="col">Memorium</th><th scope="col">Gold from +0</th><th scope="col">Memorium from +0</th></tr></thead>
+            <thead>
+              <tr>
+                <th scope="col">To level</th>
+                <th scope="col"><span class="col-icon">{goldIcon && <img src={goldIcon} alt="" width="16" height="16" />}{goldName}</span></th>
+                <th scope="col"><span class="col-icon">{memoriumIcon && <img src={memoriumIcon} alt="" width="16" height="16" />}{memoriumName}</span></th>
+                <th scope="col">{goldName} from +0</th>
+                <th scope="col">{memoriumName} from +0</th>
+              </tr>
+            </thead>
             <tbody id="g-rows"></tbody>
           </table>
         </div>
@@ -142,27 +188,54 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   </section>
 
   <section id="selling" aria-labelledby="selling-title">
-    <h2 id="selling-title">Selling and crushing</h2>
+    <h2 id="selling-title">Selling, deactivating and destroying</h2>
     <p>
-      Spare gear can be <strong>sold for Gold</strong> or <strong>crushed for Memorium</strong> to fund your best pieces.
+      Spare gear can be <strong>sold</strong> or <strong>deactivated for {goldName}</strong>, or <strong>destroyed for {memoriumName}</strong> to fund your best pieces.
+      Base returns by stars and rarity are below.{sell6Leg != null && ` A 6★ Legendary sells for ${fmt(sell6Leg)} ${goldName}.`}
     </p>
     {salvage ? (
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">Rarity</th><th scope="col">Stars</th><th scope="col">Level</th><th scope="col">Sell for Gold</th><th scope="col">Crush for Memorium</th></tr></thead>
-          <tbody>
-            {salvageMax.map((r) => (
-              <tr>
-                <th scope="row" style={`color: ${colorOf(r.rarity)}`}>{r.rarity}</th>
-                <td>{r.stars}★</td>
-                <td>+{r.level}</td>
-                <td>{r.sellGold != null ? fmt(r.sellGold) : '–'}</td>
-                <td>{r.crushMemorium != null ? fmt(r.crushMemorium) : '–'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <>
+        <h3><span class="col-icon">{goldIcon && <img src={goldIcon} alt="" width="18" height="18" />}Sell for {goldName}</span></h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Stars</th>{salvageRarities.map((r) => <th scope="col" style={`color: ${colorOf(r)}`}>{r}</th>)}</tr></thead>
+            <tbody>
+              {salvageStars.map((st) => (
+                <tr><th scope="row">{st}★</th>{salvageRarities.map((r) => { const v = salvageCell(st, r, 'sellGold'); return <td>{v != null ? fmt(v) : '–'}</td>; })}</tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="col-icon">{goldIcon && <img src={goldIcon} alt="" width="18" height="18" />}Deactivate for {goldName}</span></h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Stars</th>{salvageRarities.map((r) => <th scope="col" style={`color: ${colorOf(r)}`}>{r}</th>)}</tr></thead>
+            <tbody>
+              {salvageStars.map((st) => (
+                <tr><th scope="row">{st}★</th>{salvageRarities.map((r) => { const v = salvageCell(st, r, 'deactivateGold'); return <td>{v != null ? fmt(v) : '–'}</td>; })}</tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {Object.keys(salvage.destroyMemorium).length > 0 && (
+          <>
+            <h3><span class="col-icon">{memoriumIcon && <img src={memoriumIcon} alt="" width="18" height="18" />}Destroy for {memoriumName}</span></h3>
+            <div class="table-wrap narrow">
+              <table>
+                <thead><tr><th scope="col">Stars</th><th scope="col">{memoriumName}, any rarity</th></tr></thead>
+                <tbody>
+                  {Object.entries(salvage.destroyMemorium).map(([st, m]) => (
+                    <tr><th scope="row">{st}★</th><td>{fmt(m)}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+        <p class="hint after">Accessories sell for the same as gear. Greater pieces are 6★ only.</p>
+      </>
     ) : (
       <p class="gap">How much each piece returns, by rarity, stars and upgrade level, isn't on the site yet.</p>
     )}
@@ -174,7 +247,7 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
     <ul class="sources">
       <li><strong>Campaign battles.</strong> Memorium drops from Campaign fights.</li>
       <li><strong>Spires.</strong> Clearing Spire floors gives Memorium among the rewards.</li>
-      <li><strong>Crushing gear</strong> you don't need, as above.</li>
+      <li><strong>Destroying gear</strong> you don't need, as above.</li>
       <li><strong>VIP.</strong> The VIP bonus multiplies the Memorium you win from battles.</li>
     </ul>
     <p>The best stages per Energy, Spire floor rewards and Memorium packs: <a href={href('farming#memorium')}>Where to farm Memorium</a>.</p>
@@ -204,6 +277,13 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
       const picked = rows.filter((r) => r[0] === rarity.value && r[1] === Number(stars.value)).sort((a, b) => a[2] - b[2]);
       let gold = 0;
       let mem = 0;
+      if (!picked.length) {
+        const only = [...new Set(rows.filter((r) => r[0] === rarity.value).map((r) => `${r[1]}★`))].join(', ');
+        const tr = document.createElement('tr');
+        tr.append(Object.assign(document.createElement('td'), { colSpan: 5, className: 'none', textContent: `${rarity.value} gear is ${only} only.` }));
+        body.replaceChildren(tr);
+        return;
+      }
       body.replaceChildren(
         ...picked.map((r) => {
           gold += r[3];
@@ -213,6 +293,13 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
           tr.append(th, td(fmt(r[3])), td(r[4] ? fmt(r[4]) : '–'), td(fmt(gold)), td(mem ? fmt(mem) : '–'));
           return tr;
         }),
+        (() => {
+          const tr = document.createElement('tr');
+          tr.className = 'total';
+          const th = Object.assign(document.createElement('th'), { scope: 'row', textContent: `Total to +${picked[picked.length - 1][2]}` });
+          tr.append(th, td(fmt(gold)), td(fmt(mem)), td(''), td(''));
+          return tr;
+        })(),
       );
     };
     rarity.addEventListener('change', update);
@@ -268,7 +355,14 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
   tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
   tbody tr:last-child > * { border-bottom: 0; }
   td.strong { font-weight: 600; color: var(--text); }
-  tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
+  .col-icon { display: inline-flex; align-items: center; gap: 6px; }
+  .hint.after { margin-top: 8px; }
+  /* Rows built by the script below don't get scoped styles. */
+  :global(#g-rows th), :global(#g-rows td) { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  :global(#g-rows th) { text-align: left; color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--surface); }
+  :global(#g-rows tr:last-child > *) { border-bottom: 0; }
+  :global(#g-rows td.none) { text-align: left; color: var(--muted); }
+  tr.total > *, :global(#g-rows tr.total > *) { font-weight: 600; color: var(--text); background: var(--surface-3); }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }

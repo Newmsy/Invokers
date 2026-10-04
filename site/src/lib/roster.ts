@@ -20,12 +20,24 @@ export interface RosterHero {
   configId?: string;
   /** rank → level → values in statFields order. */
   stats: Record<string, Record<string, number[]>>;
+  /** Skills that have a cooldown, in skill order. */
+  cooldowns: SkillTiming[];
+}
+
+export interface SkillTiming {
+  type: string;
+  label: string;
+  /** Seconds. */
+  cooldown: number;
+  manaCost?: number;
 }
 
 export interface RosterSkill {
   type: string;
   label: string;
   title: string;
+  cooldown?: number;
+  manaCost?: number;
   /** Level → safe HTML. Some skills skip levels; the last listed one at or below a level applies. */
   levels: { level: number; html: string }[];
 }
@@ -46,6 +58,7 @@ export function roster(): RosterHero[] {
     baseRank: h.baseRank,
     art: heroArt(h.id),
     configId: configIds.get(h.id),
+    cooldowns: timings(h.id),
     stats: Object.fromEntries(
       Object.entries(h.statsByRank).map(([rank, byLevel]) => [
         rank,
@@ -55,6 +68,14 @@ export function roster(): RosterHero[] {
   }));
 }
 
+function timings(heroId: string): SkillTiming[] {
+  return skillsFor(heroId).flatMap((s) =>
+    typeof s.cooldown === 'number'
+      ? [{ type: s.type, label: skillTypeName(s.type), cooldown: s.cooldown, ...(s.manaCost ? { manaCost: s.manaCost } : {}) }]
+      : [],
+  );
+}
+
 export function rosterSkills(heroId: string): RosterSkill[] {
   return skillsFor(heroId)
     .filter((s) => s.levels && s.levels.length > 0)
@@ -62,6 +83,8 @@ export function rosterSkills(heroId: string): RosterSkill[] {
       type: s.type,
       label: skillTypeName(s.type),
       title: s.title,
+      ...(typeof s.cooldown === 'number' ? { cooldown: s.cooldown } : {}),
+      ...(s.manaCost ? { manaCost: s.manaCost } : {}),
       levels: s.levels!.map((l) => ({ level: l.level, html: richText(l.text) })),
     }));
 }

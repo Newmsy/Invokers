@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { bosses, bossLabel, bossSlug, heroes, href } from '../lib/data';
-import { itemIcon } from '../lib/art';
+import { bosses, bossLabel, bossSlug, heroes, heroHref, href } from '../lib/data';
+import { heroArt, itemIcon } from '../lib/art';
+import { bonusText, soulSignAnchor, soulSigns, sumBonuses } from '../lib/awakening';
 import { rarityColor, rarityOrder } from '../lib/format';
 import {
   MAX_AWAKENING,
@@ -63,6 +64,21 @@ const materialRows = awakeningTiers.flatMap((t, i) =>
 );
 const spark = 'EMP_AnimaSpark';
 
+// Awakening types: base ratings, what each level's nodes add, and a few Invokers of each.
+const types = soulSigns.map((sign) => {
+  const users = heroes.filter((h) => h.soulSign === sign.soulSign);
+  const examples = [...users].sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || a.name.localeCompare(b.name)).slice(0, 4);
+  return {
+    sign,
+    anchor: soulSignAnchor(sign),
+    base: Object.entries(sign.baseBonus).map(([stat, v]) => bonusText(stat, v)),
+    levels: sign.levels.map((l) => ({ level: l.awakenLevel, nodes: l.nodes.length, bonuses: [...sumBonuses(sign, [l.awakenLevel])].map(([k, v]) => bonusText(k, v)) })),
+    total: [...sumBonuses(sign)].map(([k, v]) => bonusText(k, v)),
+    count: users.length,
+    examples,
+  };
+});
+
 const omnissi = bosses.filter((b) => b.mode === 'Omnissi');
 const crestBosses = bosses.filter((b) => b.mode === 'other');
 ---
@@ -77,6 +93,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
     <a href="#food">Food from Commons</a>
     <a href="#rarity">Full ascension by rarity</a>
     <a href="#awaken">Awakening</a>
+    <a href="#types">Awakening types</a>
     <a href="#where">Where to get them</a>
   </nav>
 
@@ -271,6 +288,53 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
     <p>Awakening also unlocks accessory slots and can extend how long your Titan's Invokation lasts.</p>
   </section>
 
+  <section id="types" aria-labelledby="types-title">
+    <h2 id="types-title">Awakening types</h2>
+    <p>
+      Every Invoker has one of {types.length} Awakening types. It sets the Invoker's built-in ratings and what each
+      Awakening level's {types[0].levels[0].nodes} nodes give. Percent bonuses are of the Invoker's 1★ level 1 HP, ATK
+      and DEF.
+    </p>
+    <div class="type-tabs" role="tablist" aria-label="Awakening type" hidden>
+      {types.map((t, i) => (
+        <button type="button" role="tab" id={`tab-${t.anchor}`} aria-controls={t.anchor} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{t.sign.name}</button>
+      ))}
+    </div>
+    {types.map((t) => (
+      <article class="type" id={t.anchor} role="tabpanel" aria-labelledby={`tab-${t.anchor}`}>
+        <h3>{t.sign.title}</h3>
+        <p class="type-desc">{t.sign.description}. {t.count} Invokers, for example{' '}
+          {t.examples.map((h, i) => (
+            <>{i > 0 && ', '}<a class="with-avatar" href={heroHref(h.id)}><span class="avatar" style="--size: 24px">{heroArt(h.id) && <img src={heroArt(h.id)} alt="" width="24" height="24" loading="lazy" />}</span>{h.name}</a></>
+          ))}.
+        </p>
+        <p class="type-base"><strong>Built-in ratings:</strong> {t.base.join(', ')}</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Level</th>
+                <th scope="col">All its nodes give</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t.levels.map((l) => (
+                <tr>
+                  <th scope="row">{l.level}</th>
+                  <td class="bonuses">{l.bonuses.join(', ')}</td>
+                </tr>
+              ))}
+              <tr class="total">
+                <th scope="row">1–{MAX_AWAKENING}</th>
+                <td class="bonuses"><strong>{t.total.join(', ')}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    ))}
+  </section>
+
   <section id="where" aria-labelledby="where-title">
     <h2 id="where-title">Where to get them</h2>
     <dl class="where">
@@ -305,6 +369,45 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   ]} />
 </Base>
 
+<script>
+  // Awakening type tabs; #type-<name> opens one. Without JavaScript every type shows in turn.
+  const list = document.querySelector<HTMLElement>('.type-tabs');
+  if (list) {
+    const tabs = [...list.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')!)!);
+    list.hidden = false;
+    const select = (id: string, focus = false) => {
+      tabs.forEach((t, i) => {
+        const on = t.getAttribute('aria-controls') === id;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[i].hidden = !on;
+        if (on && focus) t.focus();
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => {
+        select(t.getAttribute('aria-controls')!);
+        history.replaceState(null, '', `#${t.getAttribute('aria-controls')}`);
+      });
+      t.addEventListener('keydown', (e) => {
+        const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (step) select(tabs[(i + step + tabs.length) % tabs.length].getAttribute('aria-controls')!, true);
+      });
+    });
+    const fromHash = () => {
+      const id = location.hash.slice(1);
+      if (panels.some((p) => p.id === id)) {
+        select(id);
+        document.getElementById('types-title')?.scrollIntoView();
+      }
+    };
+    select(panels[0].id);
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+  }
+</script>
+
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 20px; font-weight: 600; margin: 40px 0 8px; scroll-margin-top: 80px; }
@@ -331,6 +434,25 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   .notes li { margin: 4px 0; }
   .notes .muted { color: var(--muted); font-size: 14px; }
   details { margin: 12px 0; }
+  .type-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+  .type-tabs button {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .type-tabs button[aria-selected='true'] { border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .type { scroll-margin-top: 80px; }
+  .type h3 { margin-top: 16px; }
+  .type-desc, .type-base { color: var(--soft); margin: 4px 0; line-height: 1.7; }
+  .type-desc .with-avatar { vertical-align: middle; }
+  td.bonuses { line-height: 1.5; }
+  tr.total th, tr.total td { background: var(--surface-2); }
   summary { cursor: pointer; color: var(--soft); font-weight: 600; }
   .where { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; max-width: 70ch; color: var(--soft); }
   .where dt { font-weight: 600; color: var(--text); }

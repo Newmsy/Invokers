@@ -18,6 +18,14 @@ export interface GearCostRow {
   memorium?: number;
 }
 
+export interface Levelling {
+  maxLevel: number;
+  /** Total XP from level 1 to each level (index = level). */
+  xpTo: number[];
+  /** One row per ascension: `count` Echoes (or same-star invokers) named `echo`, and Gold by rarity. */
+  ascension: { from: number; count: number; echo: string; gold: Record<string, number> }[];
+}
+
 /** Hero facts the planner needs, keyed by the box's exact config id. */
 export interface PlanHero {
   id: string;
@@ -37,6 +45,8 @@ export interface PlanData {
   skills: Record<string, Record<string, SkillStep[]>>;
   /** Gear upgrade prices, or null until they are in the data pack. */
   gear: GearCostRow[] | null;
+  /** XP per level and ascension steps, for what's left to 6 stars and the level cap. */
+  levelling: Levelling;
   heroes: Record<string, PlanHero>;
   gameVersion: string;
   heroBase: string;
@@ -104,6 +114,35 @@ export interface HeroPlan {
   gear: GearPlan;
   /** 6 stars and level 60. */
   maxedLevel: boolean;
+  level: LevelPlan;
+}
+
+export interface LevelPlan {
+  /** XP still needed to reach the level cap at 6 stars. */
+  xp: number;
+  /** Ascension Gold still to pay. */
+  gold: number;
+  /** Echoes (or same-star invokers) still needed, by the star they ascend from. */
+  echoes: Record<number, number>;
+}
+
+/** XP, ascension Gold and Echoes to take an invoker from its stars and level to 6 stars and the level cap. */
+export function planLevel(data: PlanData, rarity: string | undefined, heroStars: number, level: number): LevelPlan {
+  const l = data.levelling;
+  const xpTo = (n: number) => l.xpTo[Math.min(Math.max(n, 0), l.maxLevel)] ?? 0;
+  const out: LevelPlan = { xp: Math.max(0, xpTo(l.maxLevel) - xpTo(level)), gold: 0, echoes: {} };
+  for (const step of l.ascension) {
+    if (step.from < heroStars) continue;
+    out.gold += (rarity && step.gold[rarity]) || 0;
+    out.echoes[step.from] = (out.echoes[step.from] ?? 0) + step.count;
+  }
+  return out;
+}
+
+export function addLevel(a: LevelPlan, b: LevelPlan): LevelPlan {
+  const echoes = { ...a.echoes };
+  for (const [k, v] of Object.entries(b.echoes)) echoes[Number(k)] = (echoes[Number(k)] ?? 0) + v;
+  return { xp: a.xp + b.xp, gold: a.gold + b.gold, echoes };
 }
 
 export function planSkills(data: PlanData, rarity: string | undefined, hero: BoxHero): SkillPlan[] {
@@ -161,6 +200,7 @@ export function planHero(data: PlanData, hero: BoxHero, gearById: Map<number, Bo
     skillCost: priced.reduce((acc, s) => addCost(acc, s.cost), {} as Cost),
     gear: planGear(data, hero, gearById),
     maxedLevel: stars(hero.rank) >= MAX_STARS && hero.level >= MAX_HERO_LEVEL,
+    level: planLevel(data, ref?.rarity, stars(hero.rank), hero.level),
   };
 }
 
@@ -173,6 +213,7 @@ export interface PlanTotals {
   /** Null when any piece's price is unknown. */
   gearCost: Cost | null;
   belowMaxLevel: number;
+  level: LevelPlan;
 }
 
 export function totals(plans: HeroPlan[]): PlanTotals {
@@ -186,6 +227,7 @@ export function totals(plans: HeroPlan[]): PlanTotals {
     gearBelowMax: plans.reduce((n, p) => n + p.gear.belowMax, 0),
     gearCost: gearCostSum,
     belowMaxLevel: plans.filter((p) => !p.maxedLevel).length,
+    level: plans.reduce((acc, p) => addLevel(acc, p.level), { xp: 0, gold: 0, echoes: {} } as LevelPlan),
   };
 }
 

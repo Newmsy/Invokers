@@ -1,8 +1,7 @@
 // Ascension and Awakening: which items an Invoker needs at each step. Ascension counts, Gold and XP come from
-// data/progression.json. Awakening amounts come from data/awakening.json once it lands (PR #75); until then a
-// per-rarity snapshot of the same numbers is used.
+// data/progression.json, Awakening amounts from data/awakening.json.
 import progressionJson from '../../../data/progression.json';
-import awakeningSnapshot from '../data/awakening-costs.json';
+import awakeningJson from '../../../data/awakening.json';
 import type { Hero } from './data';
 import { itemName } from './data';
 import { rankNumber, rankOrder } from './format';
@@ -163,25 +162,21 @@ export function fullAscension(rarity: string, startStars: number) {
 // ---- Awakening amounts per rarity ----
 
 type Costs = Record<string, number>;
-interface AwakeningFile {
+const awakeningFile = awakeningJson as unknown as {
   soulSigns: { levels: { nodes: { costByRarity: Record<string, { itemId: string; amount: number }[]> }[] }[] }[];
-}
-const awakeningFiles = import.meta.glob<{ default: AwakeningFile }>('../../../data/awakening.json', { eager: true });
-const awakeningFile = Object.values(awakeningFiles)[0]?.default;
+};
 
 /** Items per Awakening level for each rarity (index 0 = level 1). The same for every Invoker of a rarity. */
-export const awakeningByRarity: Record<string, Costs[]> = awakeningFile
-  ? Object.fromEntries(
-      Object.keys(awakeningFile.soulSigns[0].levels[0].nodes[0].costByRarity).map((rarity) => [
-        rarity,
-        awakeningFile.soulSigns[0].levels.map((level) => {
-          const c: Costs = {};
-          for (const node of level.nodes) for (const { itemId, amount } of node.costByRarity[rarity] ?? []) c[itemId] = (c[itemId] ?? 0) + amount;
-          return c;
-        }),
-      ]),
-    )
-  : (awakeningSnapshot.byRarity as unknown as Record<string, Costs[]>);
+export const awakeningByRarity: Record<string, Costs[]> = Object.fromEntries(
+  Object.keys(awakeningFile.soulSigns[0].levels[0].nodes[0].costByRarity).map((rarity) => [
+    rarity,
+    awakeningFile.soulSigns[0].levels.map((level) => {
+      const c: Costs = {};
+      for (const node of level.nodes) for (const { itemId, amount } of node.costByRarity[rarity] ?? []) c[itemId] = (c[itemId] ?? 0) + amount;
+      return c;
+    }),
+  ]),
+);
 
 /** Totals from Awakening 0 to 6 for a rarity. */
 export function awakeningTotal(rarity: string): Costs {

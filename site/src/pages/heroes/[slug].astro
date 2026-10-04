@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import { classIcon, elementIcon, skillIcon } from '../../lib/art';
-import { heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
@@ -16,7 +16,8 @@ import {
 } from '../../lib/format';
 import { bestTier, heroTiers, tierNames } from '../../lib/tierData';
 import { similarTo } from '../../lib/similar';
-import { fullyAwakened } from '../../lib/awakening';
+import { awakeningType, fullyAwakened, soulSignAnchor } from '../../lib/awakening';
+import { corruptionKey, corruptionLabel } from '../../lib/tolerances';
 import { effectsFor, linkEffects } from '../../lib/effects';
 import { legendaryPool, summons } from '../../lib/summons';
 
@@ -44,6 +45,25 @@ const statCols = [
   { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
   ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60', stats: awakened.stats }] : []),
 ];
+
+// Awakening type, linked to its section on the Ascension page.
+const sign = awakeningType(hero);
+const signHref = sign && href(`ascension#${soulSignAnchor(sign)}`);
+
+// The Invoker's own tolerances at skill levels 1 and 11, with the bosses whose corruption they counter.
+const heroTols = (hero.tolerances ?? []).map((t) => {
+  const key = corruptionKey(t.stat);
+  const at = (level: number) => t.byLevel.find((l) => l.level === level)?.percent;
+  const first = t.byLevel[0];
+  const last = t.byLevel[t.byLevel.length - 1];
+  return {
+    key,
+    label: corruptionLabel(key),
+    low: { level: first?.level ?? 1, percent: at(1) ?? first?.percent },
+    high: { level: last?.level ?? 11, percent: at(11) ?? last?.percent },
+    bosses: bosses.filter((b) => b.corruptions.some((c) => corruptionKey(c) === key)),
+  };
+});
 
 // Where this Invoker sits on each tier list, best first.
 const tiers = heroTiers(hero.id).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier));
@@ -89,6 +109,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <li><a href={href(`heroes?faction=${encodeURIComponent(hero.faction)}`)} title={`All ${hero.faction} Invokers`}>{hero.faction}</a></li>
         <li><a href={href(`heroes?class=${encodeURIComponent(String(hero.class))}`)} title={`All ${className(hero.class)} Invokers`}>{classIcon(String(hero.class)) && <img src={classIcon(String(hero.class))} alt="" width="18" height="18" />}{className(hero.class)}</a></li>
         <li>Starts at {rankNumber(hero.baseRank)}★</li>
+        {sign && <li><a href={signHref} title={`${sign.title}: what each Awakening level gives`}>Awakening: {sign.title}</a></li>}
       </ul>
       {hasCompare && (
         <a class="compare" href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>
@@ -131,6 +152,26 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         </div>
       ))}
     </dl>
+
+    {heroTols.length > 0 && (
+      <>
+        <h2>Tolerances</h2>
+        <p class="hint">Resists these boss corruptions. Percent at skill level {heroTols[0].low.level} and {heroTols[0].high.level}.</p>
+        <ul class="tol-list">
+          {heroTols.map((t) => (
+            <li>
+              <a class="tol-name" href={href(`heroes?tolerance=${t.key}`)} title={`All Invokers with ${t.label} Tolerance`}>{t.label}</a>
+              <span class="tol-pct">{t.low.percent}% → {t.high.percent}%</span>
+              {t.bosses.length > 0 && (
+                <span class="tol-bosses">
+                  {t.bosses.map((b, i) => <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}#corr-${t.key}`)}>{bossLabel(b)}</a></>)}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
 
     <h2>Skills</h2>
     <ul class="skill-list">
@@ -226,7 +267,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
     <h2>Stats</h2>
-    <p class="hint">Without gear. Awakened has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
+    <p class="hint">Without gear. Awakened has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. {sign && <><a href={signHref}>{sign.title} nodes</a> · </>}<a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
     <div class="table-wrap">
       <table class="stat-cols">
         <caption class="visually-hidden">{hero.name} stats at level 1, level 60 and fully awakened</caption>
@@ -407,6 +448,23 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .panel h2 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
   .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
 
+  .tol-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .tol-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  /* The site menu's global .panel a rule would turn these into padded blocks. */
+  .tol-list a { display: inline; padding: 0; border-radius: 0; color: var(--accent); background: none; }
+  .tol-name { font-weight: 600; font-size: 15px; }
+  .tol-pct { color: var(--text); font-variant-numeric: tabular-nums; }
+  .tol-bosses { color: var(--soft); flex-basis: 100%; }
   .effect-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
   .effect-list a {
     display: inline-flex;

@@ -4,6 +4,7 @@ import NavIcon from '../components/NavIcon.astro';
 import { headerNav, inGroup, menus, myBox, nav, tabs } from '../lib/nav';
 import Account from '../components/Account.astro';
 import SectionArt from '../components/SectionArt.astro';
+import Tooltips from '../components/Tooltips.astro';
 import { accountsEnabled } from '../lib/account/config';
 
 interface Props {
@@ -118,6 +119,7 @@ const crumbs = pagePath && owner
         Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
       </p>
     </footer>
+    <Tooltips />
     <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabs.length}`}>
       {tabs.map((n) => {
         const here = n.path === 'more' ? !tabs.some((t) => t.path === current) && nav.some((t) => t.path === current) : current === n.path;
@@ -129,6 +131,13 @@ const crumbs = pagePath && owner
         );
       })}
     </nav>
+    {import.meta.env.PROD && (
+      <Fragment>
+        {/* Cookieless visitor counts (Vercel Web Analytics); the script only exists on Vercel deploys. */}
+        <script is:inline>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+        <script is:inline defer src="/_vercel/insights/script.js"></script>
+      </Fragment>
+    )}
     {import.meta.env.PROD && (
       <script is:inline define:vars={{ sw: href('sw.js'), scope: href('/') }}>
         // Keeps opened pages and images for offline use (pages/sw.js.ts).
