@@ -46,7 +46,7 @@ export async function allGuides(): Promise<GuideEntry[]> {
         kind: 'Article',
         date: p.data.date,
         topic: topic.name,
-        banner: topic.banner,
+        banner: p.data.banner ?? topic.banner,
       } satisfies GuideEntry;
     });
   return [...pages, ...posts];

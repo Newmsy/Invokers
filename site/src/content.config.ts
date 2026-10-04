@@ -15,6 +15,8 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     // Header art as "kind:Name" (hero, titan, item, element, class), e.g. "item:Destiny Star".
     art: z.array(z.string()).default([]),
+    // Wide key art across the top of the post (lib/art bannerArt name, e.g. "summon-invoker").
+    banner: z.string().optional(),
   }),
 });
 
