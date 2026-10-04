@@ -25,8 +25,10 @@ each run as the `site` artifact.
 
 ## Hosting
 
-Vercel deploys the site from this repo through its GitHub integration (project
-root `site`, Astro preset), so there is no deploy workflow or secret here. Every
+The site lives at https://invokerscompanion.app (set as `site` in
+`site/astro.config.mjs`, which canonical links and the sitemap use). Vercel deploys it
+from this repo through its GitHub integration (project root `site`, Astro preset), so
+there is no deploy workflow or secret here. Every
 push to `main` updates the live site, and every other branch gets a preview link.
 Deployment Protection (Vercel Authentication, all deployments) keeps it private
 to the owner's Vercel login.
