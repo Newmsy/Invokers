@@ -34,7 +34,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
       <button id="delete" class="button danger" type="button" disabled>Delete my box</button>
     </div>
 
-    <div id="drop" class="drop">Or drop the three files here</div>
+    <div id="drop" class="drop">Or drop the files here</div>
     <p id="box-message" class="message" role="status" aria-live="polite"></p>
 
     <details id="howto" class="howto">
@@ -45,16 +45,20 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
           Open this folder by pasting it into the File Explorer address bar (AppData is hidden otherwise):
           <span class="path"><code id="folder-path">{folder}</code><button id="copy-path" class="link" type="button">Copy</button></span>
         </li>
-        <li>Pick <code>{BOX_FILES.heroes}</code>, <code>{BOX_FILES.gear}</code> and <code>{BOX_FILES.accessories}</code>.</li>
+        <li>
+          Pick <code>{BOX_FILES.heroes}</code>, <code>{BOX_FILES.gear}</code>, <code>{BOX_FILES.accessories}</code>
+          and <code>{BOX_FILES.trophies}</code> (your Trophy Room).
+        </li>
       </ol>
       <p class="muted">
         Your files are read in this browser and saved here.{' '}
         {accountsEnabled
           ? 'Nothing is uploaded unless you sign in, and then only your list of invokers and gear goes to your account.'
           : 'Nothing is uploaded.'}{' '}
-        Only those three files are ever
-        opened: if you pick the whole folder, the profile file next to them (with your account name) is skipped
-        without being read. Re-import whenever you've upgraded gear.
+        Only those four files are ever
+        opened, and from the arena file only your Trophy Room levels are read (never other players' names or teams).
+        If you pick the whole folder, the profile file next to them (with your account name) is skipped without being
+        read. Re-import whenever you've upgraded gear or trophies.
       </p>
     </details>
   </section>
@@ -64,7 +68,7 @@ const folder = '%USERPROFILE%\\AppData\\LocalLow\\Hit_Zone\\Invokers\\aggregate_
     <div class="trophy-box">
       <h2><a href={href('trophies')}>Trophy Room</a></h2>
       <ul id="trophy-rooms"></ul>
-      <p id="trophy-none" class="muted" hidden>Your Trophy Room levels aren't in the import yet, so the DPS simulator leaves them out for now.</p>
+      <p id="trophy-none" class="muted" hidden>No Trophy Room levels yet. Import <code>{BOX_FILES.trophies}</code> with your other files to add them.</p>
     </div>
     <div class="tabs" role="tablist">
       <button role="tab" data-tab="heroes" aria-selected="true">Invokers <span data-count="heroes"></span></button>
