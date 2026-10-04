@@ -7,20 +7,30 @@ interface Curve { id: string; stat: string; meaning: string; values: number[] }
 const curves = (curvesJson as unknown as { curves: Curve[] }).curves;
 const byId = (id: string) => curves.find((c) => c.id === id);
 
-const ratings = [0, 500, 1000, 1500, 2000, 3000];
+// Small steps where the curves change fastest, wider ones once they flatten.
+const ratings = [0, 25, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000, 3000];
 const n = (v: number, dp = 1) => v.toLocaleString('en-GB', { minimumFractionDigits: dp, maximumFractionDigits: dp });
 
 // Plain words for each curve, and how to show its value.
 const rows = [
-  { id: 'SkillSpeedFactorPct', name: 'Skill Speed', what: 'Skills play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
-  { id: 'SkillRecoveryPct', name: 'Skill Recovery', what: 'Skill cooldowns recover faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
-  { id: 'ManaRegenRecoveryPct', name: 'Mana Generation', what: 'More mana for the Ultimate', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
-  { id: 'InstinctFactorPct01', name: 'Instinct', what: 'How strongly Instinct works (100% = full strength)', fmt: (v: number) => `${n(v * 100, 0)}%` },
-  { id: 'RunSpeed', name: 'Move Speed', what: 'Run speed bonus', fmt: (v: number) => (v ? `+${n(v, 2)}` : "0") },
-  { id: 'DefenseFactor', name: 'Defense', what: 'Share of damage still taken (100% = full damage)', fmt: (v: number) => `${n(v * 100)}%` },
+  { id: 'SkillSpeedFactorPct', name: 'Skill Speed', short: 'Skill spd', what: 'Skills play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'SkillRecoveryPct', name: 'Skill Recovery', short: 'Skill rec', what: 'Skill cooldowns recover faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'ManaRegenRecoveryPct', name: 'Mana Generation', short: 'Mana gen', what: 'More mana for the Ultimate', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  { id: 'InstinctFactorPct01', name: 'Instinct', short: 'Instinct', what: 'How strongly Instinct works (100% = full strength)', fmt: (v: number) => `${n(v * 100, 0)}%` },
+  { id: 'RunSpeed', name: 'Move Speed', short: 'Move', what: 'Run speed bonus', fmt: (v: number) => (v ? `+${n(v, 2)}` : "0") },
+  { id: 'DefenseFactor', name: 'Defense', short: 'Defense', what: 'Share of damage still taken (100% = full damage)', fmt: (v: number) => `${n(v * 100)}%` },
 ]
   .map((r) => ({ ...r, curve: byId(r.id) }))
   .filter((r) => r.curve);
+
+const fmtRating = (r: number) => r.toLocaleString('en-GB');
+// Breakpoints: the rating that gives half, three quarters and 90% of the effect a 3,000 rating gives.
+const shares = [0.5, 0.75, 0.9];
+const breakpoints = rows.map((r) => {
+  const v = r.curve!.values;
+  const span = v[3000] - v[0];
+  return { ...r, at: shares.map((s) => v.findIndex((x) => (x - v[0]) / span >= s - 1e-9)), top: v[3000] };
+});
 
 const instinct = byId('InstinctFactorPct01');
 const instinctFull = instinct?.values.findIndex((v) => v >= 1);
@@ -29,58 +39,92 @@ const defense = byId('DefenseFactor');
 // Resist uses Resistance minus the attacker's Accuracy, stored with an offset so the middle row is "equal".
 const resist = byId('ResistChance_ResMinusAcc');
 const offset = resist ? (resist.values.length - 1) / 2 : 0;
-const diffs = [-1000, -500, -100, 0, 100, 500, 1000];
+const diffs = [-1000, -500, -300, -200, -150, -100, -75, -50, -25, 0, 25, 50, 75, 100, 150, 200, 300, 500, 1000];
+const resistAt = (pct: number) => (resist ? resist.values.findIndex((x) => x >= pct) - offset : 0);
 const pctSigned = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${n(Math.abs(v))}%`;
 const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).toLocaleString('en-GB')}`;
 ---
 <Base title="What stats do">
   <h1>What stats do</h1>
-  <p class="lead">What each stat rating turns into in battle, from 0 to 3,000.</p>
+  <p class="lead">What each stat rating turns into in battle, from 0 to 3,000. The first few hundred points do the most.</p>
 
-  <section aria-labelledby="curves-title">
-    <h2 id="curves-title">Rating to effect</h2>
+  <section aria-labelledby="breaks-title">
+    <h2 id="breaks-title">Breakpoints</h2>
+    <p>The rating where each stat gives half, three quarters and 90% of what 3,000 rating gives. Past the 90% mark, extra points add very little.</p>
     <div class="table-wrap">
-      <table class="stack">
+      <table class="stack breaks">
         <thead>
           <tr>
             <th scope="col">Stat</th>
-            {ratings.map((r) => <th scope="col" class="num">{r.toLocaleString('en-GB')}</th>)}
+            <th scope="col" class="num">Half</th>
+            <th scope="col" class="num">75%</th>
+            <th scope="col" class="num">90%</th>
+            <th scope="col" class="num">At 3,000</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {breakpoints.map((r) => (
             <tr>
               <th scope="row"><strong>{r.name}</strong><small>{r.what}</small></th>
-              {ratings.map((x) => <td class="num" data-label={`Rating ${x.toLocaleString('en-GB')}`}>{r.fmt(r.curve!.values[x])}</td>)}
+              {r.at.map((x, i) => <td class="num" data-label={['Half', '75%', '90%'][i]}>{fmtRating(x)}</td>)}
+              <td class="num" data-label="At 3,000">{r.fmt(r.top)}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
     <ul class="notes">
-      <li>Every curve except Defense flattens out: the first few hundred points do the most.</li>
-      {instinctFull != null && instinctFull > 0 && <li>Instinct reaches full strength at rating {instinctFull}; more does nothing.</li>}
-      {defense && <li>Defense keeps working: 3,000 rating cuts damage taken by {n((1 - defense.values[3000]) * 100)}%.</li>}
+      {instinctFull != null && instinctFull > 0 && <li><strong>Instinct</strong> is at full strength from rating {instinctFull}; more does nothing.</li>}
+      {defense && <li><strong>Defense</strong> never flattens: 3,000 rating cuts damage taken by {n((1 - defense.values[3000]) * 100)}%, and each point keeps helping.</li>}
     </ul>
+  </section>
+
+  <section aria-labelledby="curves-title">
+    <h2 id="curves-title">Rating to effect</h2>
+    <div class="table-wrap">
+      <table class="grid">
+        <thead>
+          <tr>
+            <th scope="col">Rating</th>
+            {rows.map((r) => <th scope="col" class="num"><span class="long">{r.name}</span><span class="short" aria-hidden="true">{r.short}</span></th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {ratings.map((x) => (
+            <tr>
+              <th scope="row" class="num">{fmtRating(x)}</th>
+              {rows.map((r) => <td class="num">{r.fmt(r.curve!.values[x])}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="hint">{rows.map((r) => `${r.name}: ${r.what.toLowerCase()}`).join('. ')}.</p>
   </section>
 
   {resist && (
     <section aria-labelledby="resist-title">
       <h2 id="resist-title">Resist against Accuracy</h2>
       <p>Resisting an effect uses <strong>your Resistance minus the attacker’s Accuracy</strong>, not either stat alone.</p>
-      <div class="table-wrap">
-        <table class="stack">
+      <ul class="notes">
+        <li>Each point of gap is worth <strong>1%</strong> up to a gap of 50 either way; after that each point is worth less.</li>
+        <li>A gap of <strong>+{resistAt(100)}</strong> already gives a resist chance of 100%.</li>
+      </ul>
+      <div class="table-wrap narrow">
+        <table class="grid">
           <thead>
             <tr>
               <th scope="col">RES minus ACC</th>
-              {diffs.map((d) => <th scope="col" class="num">{signed(d)}</th>)}
+              <th scope="col" class="num">Resist chance</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"><strong>Resist chance</strong><small>Percent</small></th>
-              {diffs.map((d) => <td class="num" data-label={`RES − ACC ${signed(d)}`}>{pctSigned(resist.values[offset + d])}</td>)}
-            </tr>
+            {diffs.map((d) => (
+              <tr class={d === 0 ? 'even' : undefined}>
+                <th scope="row" class="num">{signed(d)}</th>
+                <td class="num">{pctSigned(resist.values[offset + d])}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -115,7 +159,18 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
   tbody th small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
   tbody tr:last-child > * { border-bottom: 0; }
 
+  .narrow { max-width: 360px; }
+  table.grid .short { display: none; }
+  table.grid tbody th { min-width: 0; font-weight: 600; }
+  tr.even > * { background: var(--surface-3); }
+  table.grid thead th { white-space: normal; vertical-align: bottom; }
+
   @media (max-width: 720px) {
+    table.grid { font-size: 11px; }
+    table.grid th, table.grid td { padding: 5px 3px; }
+    table.grid thead th { font-size: 10px; }
+    table.grid .long { display: none; }
+    table.grid .short { display: inline; }
     h1 { font-size: 22px; }
     th, td { padding: 6px 8px; }
     /* Phones: each stat becomes a card with its values in a grid, nothing scrolls sideways. */
