@@ -40,6 +40,19 @@ export async function start(): Promise<void> {
   const setNames = JSON.parse(root.dataset.sets ?? '{}') as Record<string, string>;
   const boss = root.dataset.boss ?? 'Boss';
   const setIcons = JSON.parse(root.dataset.setIcons ?? '{}') as Record<string, string>;
+  const gearIcons = JSON.parse(root.dataset.gearIcons ?? '{}') as Record<string, string>;
+  const gearImg = (src: string | undefined, className: string) => {
+    if (!src) return null;
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    img.className = className;
+    img.loading = 'lazy';
+    return img;
+  };
+  // The piece's own picture: gear by set and slot, accessories by faction and slot.
+  const pieceImg = (p: Piece) =>
+    gearImg('set' in p ? gearIcons[`set:${p.set}:${p.slot}`] : gearIcons[`accessory:${(p as { faction?: string }).faction}:${p.slot}`], 'gear-icon');
   const setImg = (id: string) => {
     if (!setIcons[id]) return null;
     const img = document.createElement('img');
@@ -292,20 +305,24 @@ export async function start(): Promise<void> {
       wrap.textContent = 'Empty';
       return td;
     }
+    // Picture on the left, details beside it; the set's own icon stays as a fallback.
+    const pic = pieceImg(p) ?? ('set' in p ? setImg(p.set) : null);
+    const info = el('div', undefined, 'piece-info');
+    if (pic) {
+      wrap.className = 'piece-wrap';
+      wrap.append(pic);
+    }
+    wrap.append(info);
     const set = 'set' in p ? (setNames[p.set] ?? p.set) : '';
-    const head = el('span', undefined, 'piece-head');
-    const icon = 'set' in p ? setImg(p.set) : null;
-    if (icon) head.append(icon);
-    head.append([`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · '));
-    wrap.append(head);
+    info.append(el('span', [`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · '), 'piece-head'));
     const stats = [p.mainStat, ...p.subStats].filter((s) => !!s).map((s) => statText(s!.stat, s!.value));
-    wrap.append(el('small', stats.join(', ')));
+    info.append(el('small', stats.join(', ')));
     if (p.equippedHeroId !== null && p.equippedHeroId !== ownerId && box) {
       const wearer = box.heroes.find((h) => h.id === p.equippedHeroId);
       const name = wearer && data.heroes.find((d) => d.configId === wearer.configId)?.name;
       const badge = el('span', undefined, 'equipped');
       badge.append(el('b', 'Equipped'), ` by ${name ?? 'another Invoker'}`);
-      wrap.append(badge);
+      info.append(badge);
     }
     return td;
   }
@@ -351,8 +368,17 @@ export async function start(): Promise<void> {
         const tr = document.createElement('tr');
         if (!r.changed.includes(slot)) tr.className = 'same';
         const g = r.gainBySlot[slot];
+        const slotTd = el('td', undefined, 'slot-cell');
+        const slotSpan = el('span');
+        const outline = gearImg(gearIcons[`slot:${slot}`], '');
+        if (outline) {
+          outline.loading = 'eager';
+          slotSpan.append(outline);
+        }
+        slotSpan.append(slot);
+        slotTd.append(slotSpan);
         tr.append(
-          el('td', slot),
+          slotTd,
           pieceCell(r.current[slot], owned.id),
           r.changed.includes(slot) ? pieceCell(r.best[slot], owned.id) : el('td', 'Keep'),
           g === undefined ? el('td', '', 'num') : el('td', g >= 0.0005 ? `+${pct(g, 1)}` : g <= -0.0005 ? `${pct(g, 1)}` : '+0.0%', g >= 0.0005 ? 'num pos' : 'num'),

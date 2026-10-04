@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { gearStatLabels, href, setNames } from '../lib/data';
-import { setIcon } from '../lib/art';
+import { gearIcons, setIcon } from '../lib/art';
 import { BOSS, STAGES } from '../lib/dps/data';
 import { FIGHT_SEC } from '../lib/dps/constants';
 import { rarityColor } from '../lib/format';
@@ -18,7 +18,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     no gear.
   </p>
 
-  <div id="dps" data-base={href('/')} data-boss={BOSS} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-rarity={JSON.stringify(rarityColor)}>
+  <div id="dps" data-base={href('/')} data-boss={BOSS} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-gear-icons={JSON.stringify(gearIcons())} data-rarity={JSON.stringify(rarityColor)}>
     <div id="d-nobox" class="import-cta" hidden>
       <div>
         <strong>See your own numbers</strong>
@@ -255,7 +255,12 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
-  :global(td.piece .piece-head) { display: inline-flex; gap: 6px; align-items: center; }
+  :global(td.piece .piece-wrap) { display: flex; gap: 10px; align-items: flex-start; }
+  :global(td.piece .piece-info) { min-width: 0; }
+  :global(table.stack td.piece .piece-wrap) { justify-content: flex-end; }
+  :global(img.gear-icon) { width: 40px; height: 40px; flex: none; border-radius: var(--radius); border: 1px solid var(--line, rgba(255, 255, 255, 0.12)); background: rgba(0, 0, 0, 0.25); }
+  :global(td.slot-cell span) { display: inline-flex; gap: 8px; align-items: center; }
+  :global(td.slot-cell img) { width: 28px; height: 28px; opacity: 0.7; flex: none; }
   :global(img.set-icon) { width: 22px; height: 22px; flex: none; vertical-align: middle; }
   :global(.sets li) { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
   :global(.sets .set-chip) { display: inline-flex; gap: 4px; align-items: center; }

@@ -156,6 +156,13 @@ export const gearPieceIcon = (setId: string, slot: string) => url(gearPiecePath.
 export const accessoryIcon = (faction: string, slot: string) => url(accessoryPath.get(`${faction}/${slot}`));
 /** The empty-slot outline for a gear or accessory slot. */
 export const slotIcon = (slot: string) => url(slotPath.get(slot));
+/** Every gear and accessory piece picture by key ("set:<set id>:<Slot>", "accessory:<faction>:<Slot>", "slot:<Slot>"), for the DPS simulator. */
+export const gearIcons = (): Record<string, string> =>
+  Object.fromEntries([
+    ...[...gearPiecePath].map(([k, served]) => [`set:${k.replace('/', ':')}`, url(served)!]),
+    ...[...accessoryPath].map(([k, served]) => [`accessory:${k.replace('/', ':')}`, url(served)!]),
+    ...[...slotPath].map(([k, served]) => [`slot:${k}`, url(served)!]),
+  ]);
 /** Faction card art: a tall card with a character from that faction. */
 export const factionCard = (faction: string) => url(factionCardPath.get(faction));
 /** The game's hero card background for a rarity (a colour wash, no emblem). */
