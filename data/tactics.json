@@ -1,0 +1,3787 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "BattleData.FormationTypes.",
+ "unconfirmed": [
+  "Team size: 4- and 5-slot Tactics exist (plus 1-slot ones used in special modes); which modes use which is not in this file."
+ ],
+ "maxLevel": 20,
+ "teamPresetsLimit": 10,
+ "levelUpPrice": {
+  "fourSlot": [
+   {
+    "Gold": 10000,
+    "FT_General1": 4
+   },
+   {
+    "Gold": 13500,
+    "FT_General1": 10
+   },
+   {
+    "Gold": 18200,
+    "FT_General1": 20
+   },
+   {
+    "Gold": 24600,
+    "FT_General1": 32
+   },
+   {
+    "Gold": 33200,
+    "FT_General1": 48
+   },
+   {
+    "Gold": 44800,
+    "FT_General1": 56
+   },
+   {
+    "Gold": 60500,
+    "FT_General1": 68
+   },
+   {
+    "Gold": 81700,
+    "FT_General2": 12
+   },
+   {
+    "Gold": 110300,
+    "FT_General2": 20
+   },
+   {
+    "Gold": 148900,
+    "FT_General2": 32
+   },
+   {
+    "Gold": 201000,
+    "FT_General2": 48
+   },
+   {
+    "Gold": 271300,
+    "FT_General2": 56
+   },
+   {
+    "Gold": 366200,
+    "FT_General2": 68
+   },
+   {
+    "Gold": 494400,
+    "FT_General3": 12
+   },
+   {
+    "Gold": 667300,
+    "FT_General3": 20
+   },
+   {
+    "Gold": 900800,
+    "FT_General3": 32
+   },
+   {
+    "Gold": 1216000,
+    "FT_General3": 48
+   },
+   {
+    "Gold": 1641400,
+    "FT_General3": 56
+   },
+   {
+    "Gold": 2215600,
+    "FT_General3": 68
+   }
+  ],
+  "fiveSlot": [
+   {
+    "Gold": 10000,
+    "FT_General1": 4
+   },
+   {
+    "Gold": 13500,
+    "FT_General1": 10
+   },
+   {
+    "Gold": 18200,
+    "FT_General1": 20
+   },
+   {
+    "Gold": 24600,
+    "FT_General1": 32
+   },
+   {
+    "Gold": 33200,
+    "FT_General1": 48
+   },
+   {
+    "Gold": 44800,
+    "FT_General1": 56
+   },
+   {
+    "Gold": 60500,
+    "FT_General1": 68
+   },
+   {
+    "Gold": 81700,
+    "FT_General2": 12
+   },
+   {
+    "Gold": 110300,
+    "FT_General2": 20
+   },
+   {
+    "Gold": 148900,
+    "FT_General2": 32
+   },
+   {
+    "Gold": 201000,
+    "FT_General2": 48
+   },
+   {
+    "Gold": 271300,
+    "FT_General2": 56
+   },
+   {
+    "Gold": 366200,
+    "FT_General2": 68
+   },
+   {
+    "Gold": 494400,
+    "FT_General3": 12
+   },
+   {
+    "Gold": 667300,
+    "FT_General3": 20
+   },
+   {
+    "Gold": 900800,
+    "FT_General3": 32
+   },
+   {
+    "Gold": 1216000,
+    "FT_General3": 48
+   },
+   {
+    "Gold": 1641400,
+    "FT_General3": 56
+   },
+   {
+    "Gold": 2215600,
+    "FT_General3": 68
+   }
+  ]
+ },
+ "tactics": [
+  {
+   "id": "One1",
+   "name": "Attack",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One2",
+   "name": "Health",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One3",
+   "name": "Defense",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One4",
+   "name": "Mana Generation",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One5",
+   "name": "Skill Recovery",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One6",
+   "name": "Combo Speed",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "One7",
+   "name": "Movement Speed",
+   "requiredPlayerLevel": 1,
+   "layout": "OneA",
+   "slots": [
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "RunSpeedBonusOutOfCombat"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1,
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2,
+      2.2,
+      2.4,
+      2.6,
+      2.8,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four1",
+   "name": "Default",
+   "requiredPlayerLevel": 0,
+   "layout": "FourB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "IncreaseHealingDone",
+      "IncreaseShieldDone"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four2",
+   "name": "Support",
+   "requiredPlayerLevel": 0,
+   "layout": "FourC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four3",
+   "name": "Tank",
+   "requiredPlayerLevel": 0,
+   "layout": "FourA",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DecreaseDamageTaken"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.055,
+      0.06,
+      0.069,
+      0.078,
+      0.087,
+      0.096,
+      0.105,
+      0.114,
+      0.123,
+      0.132,
+      0.141,
+      0.15
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four4",
+   "name": "Assault",
+   "requiredPlayerLevel": 9,
+   "layout": "FourB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker"
+     ],
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four5",
+   "name": "Sniper",
+   "requiredPlayerLevel": 3,
+   "layout": "FourC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "CriticalDamagePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.045,
+      0.06,
+      0.075,
+      0.09,
+      0.105,
+      0.12,
+      0.135,
+      0.15,
+      0.165,
+      0.18,
+      0.26,
+      0.28,
+      0.3,
+      0.32,
+      0.34,
+      0.36,
+      0.38,
+      0.4,
+      0.42,
+      0.45
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four6",
+   "name": "Lance",
+   "requiredPlayerLevel": 15,
+   "layout": "FourC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker"
+     ],
+     "stats": [
+      "IgnoreDefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.016,
+      0.018,
+      0.02,
+      0.023,
+      0.027,
+      0.03,
+      0.034,
+      0.038,
+      0.043,
+      0.048,
+      0.052,
+      0.058,
+      0.063,
+      0.069,
+      0.075,
+      0.081,
+      0.087,
+      0.093,
+      0.1
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four7",
+   "name": "Blitz",
+   "requiredPlayerLevel": 21,
+   "layout": "FourB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker",
+      "RangedAttacker"
+     ],
+     "stats": [
+      "CriticalDamagePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.045,
+      0.06,
+      0.075,
+      0.09,
+      0.105,
+      0.12,
+      0.135,
+      0.15,
+      0.165,
+      0.18,
+      0.26,
+      0.28,
+      0.3,
+      0.32,
+      0.34,
+      0.36,
+      0.38,
+      0.4,
+      0.42,
+      0.45
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four8",
+   "name": "Brawl",
+   "requiredPlayerLevel": 27,
+   "layout": "FourA",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "MeleeAttacker"
+     ],
+     "stats": [
+      "IgnoreDefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.016,
+      0.018,
+      0.02,
+      0.023,
+      0.027,
+      0.03,
+      0.034,
+      0.038,
+      0.043,
+      0.048,
+      0.052,
+      0.058,
+      0.063,
+      0.069,
+      0.075,
+      0.081,
+      0.087,
+      0.093,
+      0.1
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "Support"
+     ],
+     "stats": [
+      "IncreaseHealingDone",
+      "IncreaseShieldDone"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Four9",
+   "name": "Ranger",
+   "requiredPlayerLevel": 33,
+   "layout": "FourB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "IncreaseHealingDone",
+      "IncreaseShieldDone"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five1",
+   "name": "Standard",
+   "requiredPlayerLevel": 0,
+   "layout": "FiveC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "IncreaseHealingDone",
+      "IncreaseShieldDone"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five2",
+   "name": "Stonewall",
+   "requiredPlayerLevel": 0,
+   "layout": "FiveB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five3",
+   "name": "Tower",
+   "requiredPlayerLevel": 0,
+   "layout": "FiveA",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DecreaseDamageTaken"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.055,
+      0.06,
+      0.069,
+      0.078,
+      0.087,
+      0.096,
+      0.105,
+      0.114,
+      0.123,
+      0.132,
+      0.141,
+      0.15
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      69,
+      78,
+      87,
+      96,
+      105,
+      114,
+      123,
+      132,
+      141,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five4",
+   "name": "Vanguard",
+   "requiredPlayerLevel": 12,
+   "layout": "FiveC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker",
+      "RangedAttacker"
+     ],
+     "stats": [
+      "CriticalRatePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five5",
+   "name": "Phalanx",
+   "requiredPlayerLevel": 6,
+   "layout": "FiveB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DecreaseDamageTaken"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.055,
+      0.06,
+      0.069,
+      0.078,
+      0.087,
+      0.096,
+      0.105,
+      0.114,
+      0.123,
+      0.132,
+      0.141,
+      0.15
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "Support"
+     ],
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "ComboSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "MeleeAttacker",
+      "RangedAttacker"
+     ],
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five6",
+   "name": "Spearhead",
+   "requiredPlayerLevel": 18,
+   "layout": "FiveC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five7",
+   "name": "Siege",
+   "requiredPlayerLevel": 24,
+   "layout": "FiveC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "ResistanceFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100,
+      105,
+      110,
+      120,
+      130,
+      140,
+      150
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillRecoveryFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker"
+     ],
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "ManaGenerationFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five8",
+   "name": "Artillery",
+   "requiredPlayerLevel": 30,
+   "layout": "FiveB",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    },
+    {
+     "position": "Front2",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "Support"
+     ],
+     "stats": [
+      "IncreaseHealingDone",
+      "IncreaseShieldDone"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "RangedAttacker"
+     ],
+     "stats": [
+      "IgnoreDefensePercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.016,
+      0.018,
+      0.02,
+      0.023,
+      0.027,
+      0.03,
+      0.034,
+      0.038,
+      0.043,
+      0.048,
+      0.052,
+      0.058,
+      0.063,
+      0.069,
+      0.075,
+      0.081,
+      0.087,
+      0.093,
+      0.1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Five9",
+   "name": "Marksman",
+   "requiredPlayerLevel": 9,
+   "layout": "FiveC",
+   "slots": [
+    {
+     "position": "Back1",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Back2",
+     "line": "Back",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid1",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Mid2",
+     "line": "Mid",
+     "enemiesCount": 1
+    },
+    {
+     "position": "Front1",
+     "line": "Front",
+     "enemiesCount": 2
+    }
+   ],
+   "bonuses": [
+    {
+     "line": "Front",
+     "class": null,
+     "stats": [
+      "DecreaseDamageTaken"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.015,
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04,
+      0.045,
+      0.05,
+      0.055,
+      0.06,
+      0.069,
+      0.078,
+      0.087,
+      0.096,
+      0.105,
+      0.114,
+      0.123,
+      0.132,
+      0.141,
+      0.15
+     ]
+    },
+    {
+     "line": "Front",
+     "class": [
+      "Tank"
+     ],
+     "stats": [
+      "HealthPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.25,
+      0.255,
+      0.26,
+      0.265,
+      0.27,
+      0.275,
+      0.28,
+      0.285,
+      0.29,
+      0.295,
+      0.3,
+      0.305,
+      0.31,
+      0.315,
+      0.32,
+      0.325,
+      0.33,
+      0.335,
+      0.34,
+      0.35
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": null,
+     "stats": [
+      "AccuracyFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      69,
+      78,
+      87,
+      96,
+      105,
+      114,
+      123,
+      132,
+      141,
+      150
+     ]
+    },
+    {
+     "line": "Mid",
+     "class": [
+      "MeleeAttacker",
+      "RangedAttacker"
+     ],
+     "stats": [
+      "AttackPercent"
+     ],
+     "valueType": "percent",
+     "valuesByLevel": [
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2,
+      0.21,
+      0.22,
+      0.23,
+      0.25
+     ]
+    },
+    {
+     "line": "Back",
+     "class": null,
+     "stats": [
+      "AccuracyFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    },
+    {
+     "line": "Back",
+     "class": [
+      "Support"
+     ],
+     "stats": [
+      "SkillSpeedFlat"
+     ],
+     "valueType": "flat",
+     "valuesByLevel": [
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      100
+     ]
+    }
+   ]
+  }
+ ]
+}

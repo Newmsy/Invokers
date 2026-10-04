@@ -7,7 +7,7 @@ build time and never writes to them. Game version and extraction date: `manifest
 | --- | --- |
 | `manifest.json` | `gameVersion`, `extractedAt`, `schemaVersion` |
 | `heroes.json` | The 231 playable heroes: `id` (internal code, e.g. `FRB003`, also used for art file names), `configId`, English `name`, `rarity`, `faction`, `element`, `class`, `baseRank`, `maxStats` (rank Six, level 60, no gear or awakening), `statsByRank` (rank → level → stats, levels 1/10/…/60 that the rank allows), `soulSign` (Awakening type, matches `awakening.json`), `tolerances[]` `{slot: Tolerance1/Tolerance2, stat: the tolerance set id e.g. DazeTolerance, byLevel[] {level 1-11, percent}}` |
-| `skills.json` | Skills for every playable hero and all 38 Titans: `heroId`, `kind` (`hero`/`titan`), `name`, `skills[]` with `type`, `title`, `cooldown` (s), `levels[]` (`level` 1–11, `text` with the game's rich-text tags); Titan `PassiveBonus` has `empowerments[]` (0–6) instead |
+| `skills.json` | Skills for every playable hero and all 38 Titans: `heroId`, `kind` (`hero`/`titan`), `name`, `skills[]` with `type`, `title`, `cooldown` (seconds, Active skills and Ultimate), `manaCost` (Ultimate), `levels[]` (`level` 1–11, `text` with the game's rich-text tags); Titan `PassiveBonus` has `empowerments[]` (0–6) instead |
 | `skill_costs.json` | Skill upgrade cost by hero rarity, skill kind and target level |
 | `items.json` | Resources, currencies, summon items and materials: `id` (game enum name), English `name`, `description` |
 | `stats.json` | Stat names: stat bonuses (`AttackPercent`, …, `percent` flag) and character stat ratings (`kind: rating`) |
@@ -22,6 +22,9 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `sources.json` | Where Memorium, runes, essences, crests, Titan Sparks, Echoes and the Memorium/Rune boosters come from: `items.<itemId>[]` of stage drops `{source, region, difficulty, stage, energy, drop, min, max, chancePerRoll, rolls, expectedPerRun}` and shop packs `{source: Shop, packId, pack, price, amount}` |
 | `stages.json` | Every stage (issue #25): `id`, `area`, `region`, `difficulty`, `stage`, `energy`, `drops[]` `{source, itemId, min, max, chancePerRoll, rolls, expectedPerWin}`; in-battle `<kind> entry` drops carry a `weight` instead of a chance. `lootDistribution` says how those spread over enemies, destructibles and chests (see below) |
 | `chests.json` | Clan activity, clan boss, PvP and VIP chests: `chest`, `tier`, `picks`, `items[]` `{group, itemId, amount, weight, groupChanceInPicks}`; `rules` explains the picking |
+| `combos.json` | Combo chain per hero (issue #31): `steps[]` `{step, cooldown, preSec, castSec, endSec, requiredSec, resetSec, range}` at Combo Speed 0, plus `animationSec` and `requiredSec` totals |
+| `stat_curves.json` | Rating → effect for Skill Speed, Skill Recovery, Mana Generation, Instinct, Move Speed, Defense and resist chance: `curves[]` `{id, stat, meaning, values[rating 0..3000]}` |
+| `tactics.json` | Tactics (formations): `tactics[]` `{id, name, requiredPlayerLevel, slots[] {position, line, enemiesCount}, bonuses[] {line, class, stats, valueType, valuesByLevel[1..20]}}`, `levelUpPrice`, `maxLevel` |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's

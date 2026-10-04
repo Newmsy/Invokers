@@ -7,7 +7,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Iron Kick",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -58,7 +58,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Iron Swing",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -109,7 +109,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Iron Wrath",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -160,7 +160,8 @@
    {
     "type": "Ultimate",
     "title": "Iron Whirlwind",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -268,7 +269,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bosko Boom",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -319,7 +320,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bosko Burn",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -370,7 +371,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bosko Break",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -421,7 +422,8 @@
    {
     "type": "Ultimate",
     "title": "Bosko Blast",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -529,7 +531,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cannon Blast",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -580,7 +582,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Iron Rain",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -631,7 +633,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Savage Claw",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -682,7 +684,8 @@
    {
     "type": "Ultimate",
     "title": "Ursine Tremor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -790,7 +793,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Grand Pummel",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -841,7 +844,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Double Impact",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -892,7 +895,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ragdoll Slam",
-    "cooldown": {},
+    "cooldown": 34,
     "levels": [
      {
       "level": 1,
@@ -943,7 +946,8 @@
    {
     "type": "Ultimate",
     "title": "Grandstand",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -1051,7 +1055,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Jade Spike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -1102,7 +1106,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Underhanded",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -1153,7 +1157,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Deceit",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -1204,7 +1208,8 @@
    {
     "type": "Ultimate",
     "title": "Showoff",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -1312,7 +1317,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Blood Scythe",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -1363,7 +1368,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Soulshredder",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -1414,7 +1419,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hellfall",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -1465,7 +1470,8 @@
    {
     "type": "Ultimate",
     "title": "Deathcharm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -1573,7 +1579,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Godspike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -1624,7 +1630,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Destiny Lance",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -1675,7 +1681,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Divine Spire",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -1726,7 +1732,8 @@
    {
     "type": "Ultimate",
     "title": "Divine Retribution",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -1830,7 +1837,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Awesome Backhand",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -1881,7 +1888,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Heroic Hammerclap",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -1932,7 +1939,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Early Victory Pose",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -1963,7 +1970,8 @@
    {
     "type": "Ultimate",
     "title": "The Encore",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -2071,7 +2079,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Vision of Chains",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -2122,7 +2130,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Vision of Weakness",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -2173,7 +2181,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Vision of Vitality",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -2212,7 +2220,8 @@
    {
     "type": "Ultimate",
     "title": "Vision of Rebirth",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -2316,7 +2325,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Scourge And Protect",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -2367,7 +2376,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Surge And Purge",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -2418,7 +2427,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Restrain And Detain",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -2469,7 +2478,8 @@
    {
     "type": "Ultimate",
     "title": "Wield And Shield",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -2577,7 +2587,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Piercing Truth",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -2628,7 +2638,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Swift Justice",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -2679,7 +2689,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Blinding Sacrament",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -2730,7 +2740,8 @@
    {
     "type": "Ultimate",
     "title": "Heavenly Verdict",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -2838,7 +2849,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Brand Heresy",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -2889,7 +2900,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fiery Prayer",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -2940,7 +2951,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Litany of Flames",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -2991,7 +3002,8 @@
    {
     "type": "Ultimate",
     "title": "Conflagration",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -3099,7 +3111,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Path of Pain",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -3150,7 +3162,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Touch of Despair",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -3201,7 +3213,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bleeding Shadows",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -3252,7 +3264,8 @@
    {
     "type": "Ultimate",
     "title": "Void Assassin",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -3360,7 +3373,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pure Fury",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -3411,7 +3424,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Holy Cleave",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -3462,7 +3475,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sacred Discipline",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -3513,7 +3526,8 @@
    {
     "type": "Ultimate",
     "title": "Righteous Blessing",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -3621,7 +3635,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Blademaster",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -3672,7 +3686,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mighty Rend",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -3723,7 +3737,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Broken Oath",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -3774,7 +3788,8 @@
    {
     "type": "Ultimate",
     "title": "Raging Truth",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -3882,7 +3897,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Time Reap",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -3933,7 +3948,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Soul Torture",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -3984,7 +3999,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Eye of the Void",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -4035,7 +4050,8 @@
    {
     "type": "Ultimate",
     "title": "Soul Reap",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -4143,7 +4159,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Aspersion",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -4194,7 +4210,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Well of Faith",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -4245,7 +4261,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Fount of Strength",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -4284,7 +4300,8 @@
    {
     "type": "Ultimate",
     "title": "Hymn of Vitality",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -4384,7 +4401,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Prestige",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -4435,7 +4452,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Pirouette",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -4486,7 +4503,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Poise",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -4537,7 +4554,8 @@
    {
     "type": "Ultimate",
     "title": "Petalfall",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -4645,7 +4663,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Betrayal",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -4696,7 +4714,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Illusion",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -4747,7 +4765,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Duplicity",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -4798,7 +4816,8 @@
    {
     "type": "Ultimate",
     "title": "Last Sight",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -4906,7 +4925,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Deep Hook",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -4957,7 +4976,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Crushing Waters",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -5008,7 +5027,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Drowning Whirl",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -5059,7 +5078,8 @@
    {
     "type": "Ultimate",
     "title": "Wrath of the Krakens",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -5167,7 +5187,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Mutiny",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -5218,7 +5238,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Chainbreaker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -5269,7 +5289,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Decksmasher",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -5320,7 +5340,8 @@
    {
     "type": "Ultimate",
     "title": "Drop Anchor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -5428,7 +5449,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Beast Calmer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -5479,7 +5500,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bonebreaker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -5530,7 +5551,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Demoralizer",
-    "cooldown": {},
+    "cooldown": 31,
     "levels": [
      {
       "level": 1,
@@ -5581,7 +5602,8 @@
    {
     "type": "Ultimate",
     "title": "Finisher",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -5689,7 +5711,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ultraviolence",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -5740,7 +5762,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Blind Lust",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -5791,7 +5813,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Lovesick",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -5842,7 +5864,8 @@
    {
     "type": "Ultimate",
     "title": "Sweet Death",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -5950,7 +5973,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Blazing Will",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -6001,7 +6024,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Smoldering Rage",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -6048,7 +6071,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Burning Hate",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -6099,7 +6122,8 @@
    {
     "type": "Ultimate",
     "title": "Dragon Breath",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -6207,7 +6231,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Void Punish",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -6258,7 +6282,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Void Clap",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -6309,7 +6333,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Void Crash",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -6360,7 +6384,8 @@
    {
     "type": "Ultimate",
     "title": "Void Fury",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -6468,7 +6493,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cinder Blast",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -6519,7 +6544,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Scorching Fervor",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -6570,7 +6595,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Magma Vein",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -6621,7 +6646,8 @@
    {
     "type": "Ultimate",
     "title": "Bloodboil",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -6729,7 +6755,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Dark Rage",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -6780,7 +6806,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Dark Impact",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -6831,7 +6857,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Dark Might",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -6882,7 +6908,8 @@
    {
     "type": "Ultimate",
     "title": "Dark Storm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -6990,7 +7017,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Frostshatter",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -7041,7 +7068,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fracture",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -7092,7 +7119,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Cold Iron Swing",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -7143,7 +7170,8 @@
    {
     "type": "Ultimate",
     "title": "Death Blizzard",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -7251,7 +7279,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Saber Slash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -7302,7 +7330,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Gut Lunge",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -7353,7 +7381,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Flourish",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -7404,7 +7432,8 @@
    {
     "type": "Ultimate",
     "title": "Flashbang",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -7512,7 +7541,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Char",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -7563,7 +7592,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Sear",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -7614,7 +7643,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Roast",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -7665,7 +7694,8 @@
    {
     "type": "Ultimate",
     "title": "Incinerate",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -7773,7 +7803,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Frostbite",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -7824,7 +7854,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ice Fang",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -7875,7 +7905,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Icebreaker",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -7926,7 +7956,8 @@
    {
     "type": "Ultimate",
     "title": "Cold Rage",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -8034,7 +8065,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Backlash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -8085,7 +8116,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Granite Will",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -8136,7 +8167,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Stonewall",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -8187,7 +8218,8 @@
    {
     "type": "Ultimate",
     "title": "Seismic Quake",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -8295,7 +8327,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Void Splinter",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -8346,7 +8378,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Soul Scourge",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -8397,7 +8429,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Demon Shredder",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -8448,7 +8480,8 @@
    {
     "type": "Ultimate",
     "title": "Dark Hail",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -8556,7 +8589,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Seasick",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -8607,7 +8640,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Watchful Eye",
-    "cooldown": {},
+    "cooldown": 20,
     "levels": [
      {
       "level": 1,
@@ -8638,7 +8671,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Thalassic Terror",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -8689,7 +8722,8 @@
    {
     "type": "Ultimate",
     "title": "Blinding Storm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -8797,7 +8831,7 @@
    {
     "type": "ActiveSkill1",
     "title": "The Admiral's Blade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -8848,7 +8882,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Howl of the Deep",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -8899,7 +8933,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hand of Greed",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -8950,7 +8984,8 @@
    {
     "type": "Ultimate",
     "title": "The Master's Command",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -9058,7 +9093,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Scorched Earth",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -9109,7 +9144,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Burning Skewer",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -9160,7 +9195,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Blazing Lift",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -9211,7 +9246,8 @@
    {
     "type": "Ultimate",
     "title": "Ember Strike",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -9319,7 +9355,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cinderfall",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -9370,7 +9406,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Emberfang",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -9421,7 +9457,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Pyroclas",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -9472,7 +9508,8 @@
    {
     "type": "Ultimate",
     "title": "Incanis",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -9580,7 +9617,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Tenderize",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -9631,7 +9668,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Maim",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -9682,7 +9719,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Raze",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -9733,7 +9770,8 @@
    {
     "type": "Ultimate",
     "title": "Sunder",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -9841,7 +9879,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Vengeful Blade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -9892,7 +9930,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Hateshot",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -9943,7 +9981,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hookshot",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -9994,7 +10032,8 @@
    {
     "type": "Ultimate",
     "title": "Final Revenge",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -10102,7 +10141,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Sole Breaker",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -10153,7 +10192,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Quick Slow",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -10204,7 +10243,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sight Unseen",
-    "cooldown": {},
+    "cooldown": 31,
     "levels": [
      {
       "level": 1,
@@ -10255,7 +10294,8 @@
    {
     "type": "Ultimate",
     "title": "Violent Silence",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -10363,7 +10403,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Parted Kin",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -10414,7 +10454,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cross Hack",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -10465,7 +10505,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Upswing",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -10516,7 +10556,8 @@
    {
     "type": "Ultimate",
     "title": "Split Mind",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -10624,7 +10665,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Harsh Respite",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -10675,7 +10716,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ice Vice",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -10726,7 +10767,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Frostwind",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -10777,7 +10818,8 @@
    {
     "type": "Ultimate",
     "title": "Winterfall",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -10885,7 +10927,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Show of Discipline",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -10936,7 +10978,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Show of Might",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -10987,7 +11029,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Show of Truth",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -11038,7 +11080,8 @@
    {
     "type": "Ultimate",
     "title": "Show of Glory",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -11146,7 +11189,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Eclipse Piercer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -11197,7 +11240,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Callous Sorrow",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -11248,7 +11291,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Trinity Torment",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -11299,7 +11342,8 @@
    {
     "type": "Ultimate",
     "title": "Remorse and Regret",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -11407,7 +11451,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shadow Snipe",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -11458,7 +11502,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Trickshot",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -11509,7 +11553,7 @@
    {
     "type": "ActiveSkill3",
     "title": "High Caliber",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -11560,7 +11604,8 @@
    {
     "type": "Ultimate",
     "title": "The Cleanup",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -11668,7 +11713,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Twilight Mark",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -11719,7 +11764,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Broken Hope",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -11770,7 +11815,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Twin Damnation",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -11821,7 +11866,8 @@
    {
     "type": "Ultimate",
     "title": "Hateful Handgrenade",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -11929,7 +11975,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Deathchord",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -11980,7 +12026,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fortissimo",
-    "cooldown": {},
+    "cooldown": 24,
     "levels": [
      {
       "level": 1,
@@ -12031,7 +12077,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Concerto",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -12082,7 +12128,8 @@
    {
     "type": "Ultimate",
     "title": "Crescendo",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -12190,7 +12237,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Batting Practice",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -12241,7 +12288,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mound Pound",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -12292,7 +12339,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Big Swing",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -12343,7 +12390,8 @@
    {
     "type": "Ultimate",
     "title": "Home Run",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -12451,7 +12499,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Light Slap",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -12502,7 +12550,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Impact Test",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -12553,7 +12601,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Command Attention",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -12604,7 +12652,8 @@
    {
     "type": "Ultimate",
     "title": "End Session",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -12712,7 +12761,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Lover's Lunge",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -12763,7 +12812,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Devout Denial",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -12814,7 +12863,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Haunted Rebuke",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -12865,7 +12914,8 @@
    {
     "type": "Ultimate",
     "title": "Unbroken Vow",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -12973,7 +13023,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Spider Singe",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -13024,7 +13074,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Webspin Vortex",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -13075,7 +13125,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Silken Embrace",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -13126,7 +13176,8 @@
    {
     "type": "Ultimate",
     "title": "Deathweave",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -13234,7 +13285,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cursed Tether",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -13285,7 +13336,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Lost Gaze",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -13336,7 +13387,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Abyssal Blossom",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -13387,7 +13438,8 @@
    {
     "type": "Ultimate",
     "title": "Eyes of Madness",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -13495,7 +13547,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Sai Split",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -13546,7 +13598,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cutting Crest",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -13597,7 +13649,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Pounding Surf",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -13648,7 +13700,8 @@
    {
     "type": "Ultimate",
     "title": "Wave Breaker",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -13756,7 +13809,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Secret of Dreams",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -13807,7 +13860,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Secret of Hurt",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -13858,7 +13911,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Secret of Despair",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -13909,7 +13962,8 @@
    {
     "type": "Ultimate",
     "title": "Secret of Hope",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -14017,7 +14071,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Tainted Might",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -14068,7 +14122,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cursed Fury",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -14119,7 +14173,7 @@
    {
     "type": "ActiveSkill3",
     "title": "True Disdain",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -14170,7 +14224,8 @@
    {
     "type": "Ultimate",
     "title": "Dynast Unleashed",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -14278,7 +14333,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bottle Opener",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -14329,7 +14384,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mixer",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -14380,7 +14435,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Deadly Cocktail",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -14431,7 +14486,8 @@
    {
     "type": "Ultimate",
     "title": "Last Orders",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -14539,7 +14595,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Unchained Claw",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -14590,7 +14646,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Abyssal Hands",
-    "cooldown": {},
+    "cooldown": 24,
     "levels": [
      {
       "level": 1,
@@ -14641,7 +14697,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Rift Collapse",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -14692,7 +14748,8 @@
    {
     "type": "Ultimate",
     "title": "Oblivion Crush",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -14800,7 +14857,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cutting Crane",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -14851,7 +14908,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Hunting Falcon",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -14902,7 +14959,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Darting Panther",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -14953,7 +15010,8 @@
    {
     "type": "Ultimate",
     "title": "Slicing Mantis",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -15061,7 +15119,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Malakan's Arc",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -15112,7 +15170,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Malakan's Sever",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -15163,7 +15221,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Malakan's Rebuke",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -15214,7 +15272,8 @@
    {
     "type": "Ultimate",
     "title": "Malakan's Return",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -15322,7 +15381,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ghostbolt",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -15373,7 +15432,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Spiritshock",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -15424,7 +15483,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ghostburn Shell",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -15475,7 +15534,8 @@
    {
     "type": "Ultimate",
     "title": "Spirit Spite",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -15583,7 +15643,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Volcano's Flare",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -15634,7 +15694,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Volcano's Touch",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -15685,7 +15745,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Volcano's Breath",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -15736,7 +15796,8 @@
    {
     "type": "Ultimate",
     "title": "Volcano's Rage",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -15844,7 +15905,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Manacut",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -15895,7 +15956,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fellblades",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -15946,7 +16007,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Deathstrikes",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -15997,7 +16058,8 @@
    {
     "type": "Ultimate",
     "title": "Dagger Surge",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -16105,7 +16167,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Riku's Rage",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -16156,7 +16218,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Kaito's Barrage",
-    "cooldown": {},
+    "cooldown": 24,
     "levels": [
      {
       "level": 1,
@@ -16207,7 +16269,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Soul Salvo",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -16258,7 +16320,8 @@
    {
     "type": "Ultimate",
     "title": "Wrath of the Bound",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -16366,7 +16429,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Mindful Mask",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -16417,7 +16480,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Watchful Mask",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -16468,7 +16531,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Controlling Mask",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -16519,7 +16582,8 @@
    {
     "type": "Ultimate",
     "title": "Benevolent Mask",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -16627,7 +16691,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Starsweep",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -16678,7 +16742,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Radiant Division",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -16729,7 +16793,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Mana Driver",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -16780,7 +16844,8 @@
    {
     "type": "Ultimate",
     "title": "Glimmering End",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -16888,7 +16953,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Brutal Fury",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -16939,7 +17004,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ancestral Wardens",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -16990,7 +17055,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Primal Rush",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -17041,7 +17106,8 @@
    {
     "type": "Ultimate",
     "title": "Temporal Spines",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -17149,7 +17215,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Economy of Force",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -17200,7 +17266,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Center of Gravity",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -17251,7 +17317,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Rapid Dominance",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -17302,7 +17368,8 @@
    {
     "type": "Ultimate",
     "title": "Stroke of Grace",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -17410,7 +17477,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Resonant Crash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -17461,7 +17528,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Strength of Amber",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -17512,7 +17579,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Deep Ignition",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -17563,7 +17630,8 @@
    {
     "type": "Ultimate",
     "title": "Greenfire Within",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -17671,7 +17739,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Spore Burst",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -17722,7 +17790,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Life Bloom",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -17757,7 +17825,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Seed Magic",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -17808,7 +17876,8 @@
    {
     "type": "Ultimate",
     "title": "Growth and Decay",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -17916,7 +17985,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Filri's Ire",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -17967,7 +18036,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Twisting Tangle",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -18018,7 +18087,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Agony Thorns",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -18069,7 +18138,8 @@
    {
     "type": "Ultimate",
     "title": "Writhing Vines",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -18177,7 +18247,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wildland Rebuke",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -18228,7 +18298,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Untamed Heart",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -18279,7 +18349,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Monarchic Decree",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -18330,7 +18400,8 @@
    {
     "type": "Ultimate",
     "title": "Will of the Land",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -18438,7 +18509,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Twisting Ravens",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -18489,7 +18560,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Corvan Eye",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -18540,7 +18611,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Whispers of Weakness",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -18591,7 +18662,8 @@
    {
     "type": "Ultimate",
     "title": "Shred the Cursed",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -18699,7 +18771,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Spark Slam",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -18750,7 +18822,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cannon Sling",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -18801,7 +18873,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Pauldron Clap",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -18852,7 +18924,8 @@
    {
     "type": "Ultimate",
     "title": "Cut & Crater",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -18960,7 +19033,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wildshot",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -19011,7 +19084,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Preybreaker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -19062,7 +19135,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Maimbarb",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -19113,7 +19186,8 @@
    {
     "type": "Ultimate",
     "title": "Deathquiver",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -19221,7 +19295,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Lightning Kick",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -19272,7 +19346,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Tempest Call",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -19323,7 +19397,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Doom Spark",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -19374,7 +19448,8 @@
    {
     "type": "Ultimate",
     "title": "Unleash the Storm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -19482,7 +19557,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Piercing Grace",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -19533,7 +19608,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Center Mark",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -19584,7 +19659,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sky Call",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -19635,7 +19710,8 @@
    {
     "type": "Ultimate",
     "title": "One Bolt Salute",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -19743,7 +19819,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Miserichord",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -19794,7 +19870,7 @@
    {
     "type": "ActiveSkill2",
     "title": "High Note",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -19845,7 +19921,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Amplifier",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -19896,7 +19972,8 @@
    {
     "type": "Ultimate",
     "title": "Sagastorm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -20004,7 +20081,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Mana Ram",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -20055,7 +20132,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Disorienting Dust",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -20106,7 +20183,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Stubborn Force",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -20157,7 +20234,8 @@
    {
     "type": "Ultimate",
     "title": "Rage Ritual",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -20265,7 +20343,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Mana Lash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -20316,7 +20394,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bloody Sunlight",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -20367,7 +20445,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Prize Catch",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -20418,7 +20496,8 @@
    {
     "type": "Ultimate",
     "title": "Feeding Frenzy",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -20526,7 +20605,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Viridia Press",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -20577,7 +20656,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Viridia Curse",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -20628,7 +20707,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Viridia Malediction",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -20679,7 +20758,8 @@
    {
     "type": "Ultimate",
     "title": "Viridia Drain",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -20787,7 +20867,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Blood Letter",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -20838,7 +20918,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Essence Taker",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -20889,7 +20969,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Lasting Afflictions",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -20940,7 +21020,8 @@
    {
     "type": "Ultimate",
     "title": "Fueled by Malaise",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -21048,7 +21129,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Righteous Thrust",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -21099,7 +21180,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Staggering Justice",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -21150,7 +21231,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Protector's Lament",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -21201,7 +21282,8 @@
    {
     "type": "Ultimate",
     "title": "Royal Recourse",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -21309,7 +21391,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Red Rose Thirst",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -21360,7 +21442,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Vine and Thorn",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -21411,7 +21493,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bed of Agony",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -21462,7 +21544,8 @@
    {
     "type": "Ultimate",
     "title": "Root of Entanglement",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -21570,7 +21653,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cracked Ivory",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -21621,7 +21704,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Charred Bone",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -21672,7 +21755,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Dark Ignition",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -21723,7 +21806,8 @@
    {
     "type": "Ultimate",
     "title": "Demon Drive",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -21831,7 +21915,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Royal Hope",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -21882,7 +21966,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Battle Princess",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -21933,7 +22017,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Regal Pledge",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -21984,7 +22068,8 @@
    {
     "type": "Ultimate",
     "title": "High Decree",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -22092,7 +22177,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shatter Stance",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -22143,7 +22228,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Protector Stance",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -22194,7 +22279,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Drain Dishonor",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -22245,7 +22330,8 @@
    {
     "type": "Ultimate",
     "title": "Enforce Honor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -22353,7 +22439,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Twin Virtue",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -22404,7 +22490,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Might of Constraint",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -22455,7 +22541,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Breath of the Drake",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -22506,7 +22592,8 @@
    {
     "type": "Ultimate",
     "title": "Duality of Light",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -22614,7 +22701,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Lightcrash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -22665,7 +22752,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Smitebringer",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -22716,7 +22803,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sacral Spike",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -22767,7 +22854,8 @@
    {
     "type": "Ultimate",
     "title": "Winds of Serenity",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -22875,7 +22963,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bloomshred",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -22926,7 +23014,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Reaping Crescent",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -22977,7 +23065,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bloodpetal Harvest",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -23028,7 +23116,8 @@
    {
     "type": "Ultimate",
     "title": "Sanguine Thorns",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -23136,7 +23225,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Howling Fang",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -23187,7 +23276,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Biting Shadow",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -23238,7 +23327,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Phantom Claws",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -23289,7 +23378,8 @@
    {
     "type": "Ultimate",
     "title": "Eternal Pack",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -23397,7 +23487,7 @@
    {
     "type": "ActiveSkill1",
     "title": "The Tenderizer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -23448,7 +23538,7 @@
    {
     "type": "ActiveSkill2",
     "title": "The Backhand",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -23499,7 +23589,7 @@
    {
     "type": "ActiveSkill3",
     "title": "The Stinger",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -23550,7 +23640,8 @@
    {
     "type": "Ultimate",
     "title": "The Obliterator",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -23658,7 +23749,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Squish",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -23709,7 +23800,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Crumple",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -23760,7 +23851,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Splatter",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -23811,7 +23902,8 @@
    {
     "type": "Ultimate",
     "title": "Pulverize",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -23919,7 +24011,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pure Pleasure",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -23970,7 +24062,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Broken Inhibition",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -24021,7 +24113,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Essence Drinker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -24072,7 +24164,8 @@
    {
     "type": "Ultimate",
     "title": "Premature Respite",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -24180,7 +24273,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Break the Haunter",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -24231,7 +24324,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Scour the Manipulator",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -24282,7 +24375,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Expose the Deceiver",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -24333,7 +24426,8 @@
    {
     "type": "Ultimate",
     "title": "Condemn the Damned",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -24441,7 +24535,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Duskbolt",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -24492,7 +24586,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Umbral Familiar",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -24543,7 +24637,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Twilight Riot",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -24594,7 +24688,8 @@
    {
     "type": "Ultimate",
     "title": "Shade Kin",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -24702,7 +24797,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Seraphic Smite",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -24753,7 +24848,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Radiant Onslaught",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -24804,7 +24899,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Shattered Requiem",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -24855,7 +24950,8 @@
    {
     "type": "Ultimate",
     "title": "Exalted Reckoning",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -24963,7 +25059,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Tracker's Vigor",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -25014,7 +25110,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Seeker's Spear",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -25065,7 +25161,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Predator's Pounce",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -25116,7 +25212,8 @@
    {
     "type": "Ultimate",
     "title": "Hunter's Flash",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -25224,7 +25321,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Studied Remark",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -25275,7 +25372,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Biting Riposte",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -25326,7 +25423,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Erudite Flash",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -25377,7 +25474,8 @@
    {
     "type": "Ultimate",
     "title": "Strength of Knowledge",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -25485,7 +25583,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Dream of Magic",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -25536,7 +25634,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Dream of Celerity",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -25587,7 +25685,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Dream of Vitality",
-    "cooldown": {},
+    "cooldown": 32,
     "levels": [
      {
       "level": 1,
@@ -25630,7 +25728,8 @@
    {
     "type": "Ultimate",
     "title": "Dream of Destruction",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -25738,7 +25837,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Drakebrand",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -25789,7 +25888,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Crushwing",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -25840,7 +25939,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Cauterize",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -25891,7 +25990,8 @@
    {
     "type": "Ultimate",
     "title": "Dragon Will",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -25999,7 +26099,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Glimmer Rush",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -26050,7 +26150,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shattered Fortune",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -26101,7 +26201,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Prismal Fade",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -26152,7 +26252,8 @@
    {
     "type": "Ultimate",
     "title": "Vitric Curse",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -26260,7 +26361,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ring of Truth",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -26311,7 +26412,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ring of Lifeleech",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -26362,7 +26463,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ring of Retribution",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -26413,7 +26514,8 @@
    {
     "type": "Ultimate",
     "title": "Ring of Protection",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -26521,7 +26623,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Extend Sentence",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -26572,7 +26674,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Scour Healing",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -26623,7 +26725,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Vigilant Eye",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -26674,7 +26776,8 @@
    {
     "type": "Ultimate",
     "title": "Make Peace",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -26782,7 +26885,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wingbeat",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -26833,7 +26936,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Rending Wind",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -26884,7 +26987,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Fresh Air",
-    "cooldown": {},
+    "cooldown": 31,
     "levels": [
      {
       "level": 1,
@@ -26915,7 +27018,8 @@
    {
     "type": "Ultimate",
     "title": "Raptor Torrent",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -27023,7 +27127,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Darklit Spirits",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -27074,7 +27178,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Encumbered Souls",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -27125,7 +27229,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Beyond Life",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -27176,7 +27280,8 @@
    {
     "type": "Ultimate",
     "title": "Hexed Realm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -27284,7 +27389,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Humble the Mighty",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -27335,7 +27440,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Monarch Tempo",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -27386,7 +27491,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Dark Gambit",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -27437,7 +27542,8 @@
    {
     "type": "Ultimate",
     "title": "Crowning Salvo",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -27545,7 +27651,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Heartpiercer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -27596,7 +27702,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Heartlifter",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -27647,7 +27753,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Heartstopper",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -27698,7 +27804,8 @@
    {
     "type": "Ultimate",
     "title": "Heartbreaker",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -27806,7 +27913,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Windblade Spark",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -27857,7 +27964,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shrike's Blast",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -27908,7 +28015,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Protective Zephyr",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -27943,7 +28050,8 @@
    {
     "type": "Ultimate",
     "title": "Hurricane Spire",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -28051,7 +28159,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Sudden Stab",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -28102,7 +28210,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Uppercut Cut",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -28153,7 +28261,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sweeping Swing",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -28204,7 +28312,8 @@
    {
     "type": "Ultimate",
     "title": "Devastate Defenses",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -28312,7 +28421,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hack Job",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -28363,7 +28472,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Drop Chop",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -28414,7 +28523,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Razor Cleave",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -28465,7 +28574,8 @@
    {
     "type": "Ultimate",
     "title": "Dragon Wings",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -28573,7 +28683,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pound Fools",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -28624,7 +28734,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Draw Strength",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -28675,7 +28785,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Reverb Crater",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -28726,7 +28836,8 @@
    {
     "type": "Ultimate",
     "title": "Collect Dues",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -28834,7 +28945,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Suffer Pain",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -28885,7 +28996,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Burn Fear",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -28936,7 +29047,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Lament Weakness",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -28987,7 +29098,8 @@
    {
     "type": "Ultimate",
     "title": "Quell Cowardice",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -29095,7 +29207,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Iron Nail",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -29146,7 +29258,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Hammer Bolt",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -29197,7 +29309,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Blood Barb",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -29248,7 +29360,8 @@
    {
     "type": "Ultimate",
     "title": "Hot Rain",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -29356,7 +29469,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Sunder Mist",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -29407,7 +29520,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Recovery Stance",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -29458,7 +29571,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Empowering Flurry",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -29509,7 +29622,8 @@
    {
     "type": "Ultimate",
     "title": "Perfect Feint",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -29617,7 +29731,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Celestial Flare",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -29668,7 +29782,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Sentinel Crash",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -29719,7 +29833,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Legion Shield",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -29762,7 +29876,8 @@
    {
     "type": "Ultimate",
     "title": "Imperial Gaze",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -29870,7 +29985,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hex Pulse",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -29921,7 +30036,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Grinning Fate",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -29972,7 +30087,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Calamity Needles",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -30023,7 +30138,8 @@
    {
     "type": "Ultimate",
     "title": "Doom Strings",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -30131,7 +30247,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Smackka",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -30182,7 +30298,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Whackka",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -30233,7 +30349,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hackka",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -30284,7 +30400,8 @@
    {
     "type": "Ultimate",
     "title": "Stackka",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -30392,7 +30509,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Scolding Brew",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -30443,7 +30560,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bad Concoction",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -30494,7 +30611,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Potent Remedy",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -30525,7 +30642,8 @@
    {
     "type": "Ultimate",
     "title": "Arcane Potion",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -30625,7 +30743,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shock Hide",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -30676,7 +30794,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mana Draw",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -30727,7 +30845,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Skyward Scour",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -30778,7 +30896,8 @@
    {
     "type": "Ultimate",
     "title": "Call the Storm",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -30886,7 +31005,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Maulmare",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -30937,7 +31056,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bearserk",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -30988,7 +31107,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Tremoroar",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -31039,7 +31158,8 @@
    {
     "type": "Ultimate",
     "title": "Ursault",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -31147,7 +31267,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Barbican Blade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -31198,7 +31318,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Radial Mortality",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -31249,7 +31369,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Channel Apocalypse",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -31300,7 +31420,8 @@
    {
     "type": "Ultimate",
     "title": "Shredding Eye",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -31408,7 +31529,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Panache",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -31459,7 +31580,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bow Out",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -31510,7 +31631,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Acrobat Flair",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -31561,7 +31682,8 @@
    {
     "type": "Ultimate",
     "title": "Nightwire",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -31669,7 +31791,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Polewave",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -31720,7 +31842,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Tidal Blow",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -31771,7 +31893,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Rapid Rebuke",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -31822,7 +31944,8 @@
    {
     "type": "Ultimate",
     "title": "Mercy Strike",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -31930,7 +32053,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wolf Claw",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -31981,7 +32104,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Scrambler",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -32032,7 +32155,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Guttercut",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -32083,7 +32206,8 @@
    {
     "type": "Ultimate",
     "title": "Double Down",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -32191,7 +32315,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Umbral Dawn",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -32242,7 +32366,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fall of Night",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -32293,7 +32417,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Dark Star",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -32344,7 +32468,8 @@
    {
     "type": "Ultimate",
     "title": "Condemn to Dusk",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -32452,7 +32577,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wanewood Shot",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -32503,7 +32628,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Curse of Endings",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -32554,7 +32679,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Autumnal Power",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -32605,7 +32730,8 @@
    {
     "type": "Ultimate",
     "title": "Bolts of Stolen Strength",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -32713,7 +32839,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Opening Gambit",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -32764,7 +32890,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Board Reposition",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -32803,7 +32929,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Power Play",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -32854,7 +32980,8 @@
    {
     "type": "Ultimate",
     "title": "Execute Checkmate",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -32962,7 +33089,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Prolong Destiny",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -33013,7 +33140,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Weaken Future",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -33064,7 +33191,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Power of Probability",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -33115,7 +33242,8 @@
    {
     "type": "Ultimate",
     "title": "Final Fate",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -33223,7 +33351,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Starstrike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -33274,7 +33402,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mana Glimmer",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -33325,7 +33453,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Starlight Shield",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -33368,7 +33496,8 @@
    {
     "type": "Ultimate",
     "title": "Astral Incantation",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -33476,7 +33605,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Empire's Judgment",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -33527,7 +33656,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Headsman's Way",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -33578,7 +33707,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Emperor's Hand",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -33629,7 +33758,8 @@
    {
     "type": "Ultimate",
     "title": "Imperial Sentence",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -33737,7 +33867,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pivot Punch",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -33788,7 +33918,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Vigor Ruin",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -33839,7 +33969,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Fulcrum Impact",
-    "cooldown": {},
+    "cooldown": 32,
     "levels": [
      {
       "level": 1,
@@ -33890,7 +34020,8 @@
    {
     "type": "Ultimate",
     "title": "Focal Disruptor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -33998,7 +34129,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Candle Cuddle",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -34049,7 +34180,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Scorching Orb",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -34100,7 +34231,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Skink Burst",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -34151,7 +34282,8 @@
    {
     "type": "Ultimate",
     "title": "Candle's Flame",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -34259,7 +34391,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Fell Sweep",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -34310,7 +34442,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Call Torpor",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -34361,7 +34493,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Destiny Chance",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -34412,7 +34544,8 @@
    {
     "type": "Ultimate",
     "title": "Twist Fate",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -34520,7 +34653,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wonder Wrench",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -34571,7 +34704,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bzzt!",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -34622,7 +34755,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Zap Fence",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -34673,7 +34806,8 @@
    {
     "type": "Ultimate",
     "title": "Hyper Mega Barrier",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -34781,7 +34915,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Champion's Glory",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -34832,7 +34966,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Justiciar's Condemnation",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -34883,7 +35017,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Mage-Knight's Power",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -34934,7 +35068,8 @@
    {
     "type": "Ultimate",
     "title": "Indomitable Princess",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -35042,7 +35177,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Honest Blade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -35093,7 +35228,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Archivist Strike",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -35144,7 +35279,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Defender of Truth",
-    "cooldown": {},
+    "cooldown": 31,
     "levels": [
      {
       "level": 1,
@@ -35195,7 +35330,8 @@
    {
     "type": "Ultimate",
     "title": "Serenity's Judgement",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -35303,7 +35439,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Boot Blade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -35354,7 +35490,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Knife Scatter",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -35405,7 +35541,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Weakening Daggers",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -35456,7 +35592,8 @@
    {
     "type": "Ultimate",
     "title": "Spellknife Twistcord",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -35564,7 +35701,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Cold Snap",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -35615,7 +35752,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Winter Call",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -35666,7 +35803,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Borealis Blast",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -35717,7 +35854,8 @@
    {
     "type": "Ultimate",
     "title": "Winterpage Blizzard",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -35825,7 +35963,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Life Reap",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -35876,7 +36014,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Twisted Vision",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -35927,7 +36065,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Vitality Shift",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -35978,7 +36116,8 @@
    {
     "type": "Ultimate",
     "title": "Soulraiser",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -36086,7 +36225,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Heinous Chop",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -36137,7 +36276,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Signature Cut",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -36188,7 +36327,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Giantskull Charge",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -36239,7 +36378,8 @@
    {
     "type": "Ultimate",
     "title": "This Land's Mine!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -36347,7 +36487,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Lunar Ray",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -36398,7 +36538,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Skyblind Burst",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -36449,7 +36589,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Eclipse Channel",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -36500,7 +36640,8 @@
    {
     "type": "Ultimate",
     "title": "Shadelight Debility",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -36608,7 +36749,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Stonehand Slam",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -36659,7 +36800,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Solid Snapkick",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -36710,7 +36851,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Gargoyle's Strength",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -36753,7 +36894,8 @@
    {
     "type": "Ultimate",
     "title": "Adamant Uppercrush",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -36861,7 +37003,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Drum Drubbing",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -36912,7 +37054,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Combat Tempo",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -36963,7 +37105,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Recovery Rhythm",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -36994,7 +37136,8 @@
    {
     "type": "Ultimate",
     "title": "Battle Beat",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -37102,7 +37245,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Incandescent Fury",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -37153,7 +37296,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Alabaster Pyre",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -37204,7 +37347,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Lucent Apex",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -37255,7 +37398,8 @@
    {
     "type": "Ultimate",
     "title": "Serenity's Castigation",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -37363,7 +37507,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ghostly Jackhammer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -37414,7 +37558,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ghostgranite Piledrive",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -37465,7 +37609,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Haunted Landslide",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -37516,7 +37660,8 @@
    {
     "type": "Ultimate",
     "title": "Revenant Crush",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -37624,7 +37769,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Artful Purge",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -37675,7 +37820,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Blinding Chroma",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -37726,7 +37871,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Purifying Brush",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -37777,7 +37922,8 @@
    {
     "type": "Ultimate",
     "title": "Painted Voidlings",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -37885,7 +38031,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Spirit Branch",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -37936,7 +38082,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Windshoot Field",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -37987,7 +38133,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Swift Life Chant",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -38026,7 +38172,8 @@
    {
     "type": "Ultimate",
     "title": "Sky Forest Blessing",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -38134,7 +38281,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Break Calm",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -38185,7 +38332,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Healing Serenity",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -38236,7 +38383,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Press Burdens",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -38287,7 +38434,8 @@
    {
     "type": "Ultimate",
     "title": "Curse of Peace",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -38395,7 +38543,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Her Crippling Strength",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -38446,7 +38594,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Her Glorious Mercy",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -38497,7 +38645,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Her Glittering Shield",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -38548,7 +38696,8 @@
    {
     "type": "Ultimate",
     "title": "Her Deadly Command",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -38656,7 +38805,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hypnoray",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -38707,7 +38856,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Phantasm Lash",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -38758,7 +38907,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hat of Visions",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -38809,7 +38958,8 @@
    {
     "type": "Ultimate",
     "title": "Conjure Dreams",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -38917,7 +39067,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Taste the Brew",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -38968,7 +39118,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cheerful Round",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -39019,7 +39169,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Keg Roller",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -39070,7 +39220,8 @@
    {
     "type": "Ultimate",
     "title": "Barrel of the Best",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -39178,7 +39329,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bull Crush",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -39229,7 +39380,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bull Horn",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -39280,7 +39431,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bull Rage",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -39331,7 +39482,8 @@
    {
     "type": "Ultimate",
     "title": "Bull Rush",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -39439,7 +39591,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Essence Spike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -39490,7 +39642,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Curse Drinker",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -39541,7 +39693,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Strength Scour",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -39592,7 +39744,8 @@
    {
     "type": "Ultimate",
     "title": "Unleash Stolen Life",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -39700,7 +39853,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Brittling Tooth",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -39751,7 +39904,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Beastly Steel",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -39802,7 +39955,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ironhorn Ward",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -39845,7 +39998,8 @@
    {
     "type": "Ultimate",
     "title": "Jaws of Iron",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -39953,7 +40107,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shock Zone",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -40004,7 +40158,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Tailwind Vortex",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -40055,7 +40209,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Arc Lightning",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -40106,7 +40260,8 @@
    {
     "type": "Ultimate",
     "title": "Cyclonic Surge",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -40214,7 +40369,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Kinetic Spur",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -40265,7 +40420,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Binate Disarm",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -40316,7 +40471,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Electrokinetic Sweep",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -40367,7 +40522,8 @@
    {
     "type": "Ultimate",
     "title": "Full-Force Rupture",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -40475,7 +40631,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bolt Hammer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -40526,7 +40682,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Storm Fang",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -40577,7 +40733,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Peal of Thunder",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -40628,7 +40784,8 @@
    {
     "type": "Ultimate",
     "title": "Tempest Dragon",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -40736,7 +40893,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Accelerator Round",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -40787,7 +40944,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Empyreal Calibration",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -40838,7 +40995,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Eliminator Bolt",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -40889,7 +41046,8 @@
    {
     "type": "Ultimate",
     "title": "Soulpunch Driver",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -40997,7 +41155,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Spectral Straight",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -41048,7 +41206,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Skyward Breaker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -41099,7 +41257,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Astral Blows",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -41150,7 +41308,8 @@
    {
     "type": "Ultimate",
     "title": "Six-Fold Beatdown",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -41258,7 +41417,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Drown Magic",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -41309,7 +41468,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fear the Seascales",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -41360,7 +41519,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Great Serpent's Gaze",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -41411,7 +41570,8 @@
    {
     "type": "Ultimate",
     "title": "Deep Lord's Fang",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -41519,7 +41679,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Deepdrop Kick",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -41570,7 +41730,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Reef Barrier",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -41621,7 +41781,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Spines of the Sea",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -41672,7 +41832,8 @@
    {
     "type": "Ultimate",
     "title": "Cursebound Anchor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -41780,7 +41941,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Glowburst",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -41831,7 +41992,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cinderlily Spark",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -41882,7 +42043,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Flutterflash",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -41933,7 +42094,8 @@
    {
     "type": "Ultimate",
     "title": "Monarch's Mark",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -42041,7 +42203,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Darkened Crash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -42092,7 +42254,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Inflict Impurity",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -42143,7 +42305,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Drain Darkness",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -42194,7 +42356,8 @@
    {
     "type": "Ultimate",
     "title": "Sundering Crystals",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -42302,7 +42465,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Thornbarb",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -42353,7 +42516,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Creeper Vine",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -42404,7 +42567,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Tangleroot",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -42455,7 +42618,8 @@
    {
     "type": "Ultimate",
     "title": "Heady Aroma",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -42563,7 +42727,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Diamond Tip",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -42614,7 +42778,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Pressure Point",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -42665,7 +42829,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Gritty Grind",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -42716,7 +42880,8 @@
    {
     "type": "Ultimate",
     "title": "Drill Down",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -42824,7 +42989,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Flare Knife",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -42875,7 +43040,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Punisher Slugs",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -42926,7 +43091,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Firecap Round",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -42977,7 +43142,8 @@
    {
     "type": "Ultimate",
     "title": "Volcan Magazine",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -43085,7 +43251,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bottle Brawler",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -43136,7 +43302,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Stiff Drink",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -43187,7 +43353,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Liven the Party",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -43222,7 +43388,8 @@
    {
     "type": "Ultimate",
     "title": "Never Go Down",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -43330,7 +43497,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Blunt Approach",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -43381,7 +43548,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Backblast",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -43432,7 +43599,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Curative Solution",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -43463,7 +43630,8 @@
    {
     "type": "Ultimate",
     "title": "Fiery Inspiration",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -43571,7 +43739,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Underland Sweep",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -43622,7 +43790,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Debilitating Pummel",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -43673,7 +43841,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Everdeep Shieldwall",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -43724,7 +43892,8 @@
    {
     "type": "Ultimate",
     "title": "Surface Defenses",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -43832,7 +44001,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Invigoration Bolt",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -43883,7 +44052,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Heal Quartz",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -43934,7 +44103,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Up And At 'Em!",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -43985,7 +44154,8 @@
    {
     "type": "Ultimate",
     "title": "Animator Beam",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -44093,7 +44263,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Flamerake",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -44144,7 +44314,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Cinderthrust",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -44195,7 +44365,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Burnished Hawk",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -44246,7 +44416,8 @@
    {
     "type": "Ultimate",
     "title": "Feather Comet",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -44354,7 +44525,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Fractal Ray",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -44405,7 +44576,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Pendulum Laser",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -44456,7 +44627,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Refraction Piercer",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -44507,7 +44678,8 @@
    {
     "type": "Ultimate",
     "title": "Prismatic Burst",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -44615,7 +44787,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shining Sweep",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -44666,7 +44838,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Back, Fiend!",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -44717,7 +44889,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Stern Rebuke",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -44768,7 +44940,8 @@
    {
     "type": "Ultimate",
     "title": "Beneath My Heel",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -44876,7 +45049,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hammer Slammer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -44927,7 +45100,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Knock Knock!",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -44978,7 +45151,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Cracks of History",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -45029,7 +45202,8 @@
    {
     "type": "Ultimate",
     "title": "Sealed Shut",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -45137,7 +45311,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Deep Star",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -45188,7 +45362,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Open The Way",
-    "cooldown": {},
+    "cooldown": 24,
     "levels": [
      {
       "level": 1,
@@ -45239,7 +45413,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Shaft of Light",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -45290,7 +45464,8 @@
    {
     "type": "Ultimate",
     "title": "Crack the Sky",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -45398,7 +45573,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Miner's Strike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -45449,7 +45624,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bolstering Boot",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -45500,7 +45675,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Heave Ho!",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -45551,7 +45726,8 @@
    {
     "type": "Ultimate",
     "title": "Overtime Shift",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -45659,7 +45835,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Breaking Ground",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -45710,7 +45886,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Maniac Miner",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -45761,7 +45937,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Strike The Earth",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -45812,7 +45988,8 @@
    {
     "type": "Ultimate",
     "title": "Pulverizer Pick",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -45920,7 +46097,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ceiling Smasher",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -45971,7 +46148,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bedrock Bash",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -46022,7 +46199,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Stalagmite Crush",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -46073,7 +46250,8 @@
    {
     "type": "Ultimate",
     "title": "Geode Buster",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -46181,7 +46359,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Track Shift",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -46232,7 +46410,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Heal Pistons",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -46283,7 +46461,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Gear Spinner",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -46334,7 +46512,8 @@
    {
     "type": "Ultimate",
     "title": "Fume Driver",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -46442,7 +46621,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Halt, Miscreant!",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -46493,7 +46672,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Face Justice!",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -46544,7 +46723,7 @@
    {
     "type": "ActiveSkill3",
     "title": "And Be Judged!",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -46595,7 +46774,8 @@
    {
     "type": "Ultimate",
     "title": "In The King's Name!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -46703,7 +46883,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Rime Headbutt",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -46754,7 +46934,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Snow Drift",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -46805,7 +46985,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Biting Tundra",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -46856,7 +47036,8 @@
    {
     "type": "Ultimate",
     "title": "Frozen Avenger",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -46964,7 +47145,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pay Attention!",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -47015,7 +47196,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Wake Up!",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -47066,7 +47247,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Tough It Out!",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -47097,7 +47278,8 @@
    {
     "type": "Ultimate",
     "title": "Donate Blood!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -47205,7 +47387,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Boring Bolt",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -47256,7 +47438,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Rock Exploder",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -47307,7 +47489,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Drill Rocket",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -47358,7 +47540,8 @@
    {
     "type": "Ultimate",
     "title": "Pierce The Surface",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -47466,7 +47649,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Ram Raid",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -47517,7 +47700,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Spinning Justice",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -47568,7 +47751,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Throw Up The Horns!",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -47619,7 +47802,8 @@
    {
     "type": "Ultimate",
     "title": "Knockout Clang",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -47727,7 +47911,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Prune Darkness",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -47778,7 +47962,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Branch Bludgeon",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -47829,7 +48013,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Briar Bulwark",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -47880,7 +48064,8 @@
    {
     "type": "Ultimate",
     "title": "Puregrove's Will",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -47988,7 +48173,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Stick 'Em Up!",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -48039,7 +48224,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Eat Lead!",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -48090,7 +48275,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Safe Cracker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -48141,7 +48326,8 @@
    {
     "type": "Ultimate",
     "title": "Running Riot!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -48249,7 +48435,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Magma Hammer",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -48300,7 +48486,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Molten Crucible",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -48351,7 +48537,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Helter Smelter",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -48402,7 +48588,8 @@
    {
     "type": "Ultimate",
     "title": "Forge Destiny",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -48510,7 +48697,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Royal Mandate",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -48561,7 +48748,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Crush Dissent",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -48612,7 +48799,7 @@
    {
     "type": "ActiveSkill3",
     "title": "From On High",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -48663,7 +48850,8 @@
    {
     "type": "Ultimate",
     "title": "Lineage of Kings",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -48771,7 +48959,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Wrangler Blow",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -48822,7 +49010,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shackle Striker",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -48873,7 +49061,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ensnare The Guilty",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -48924,7 +49112,8 @@
    {
     "type": "Ultimate",
     "title": "Spikegust",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -49032,7 +49221,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Sunburst Arrow",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -49083,7 +49272,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Long Draw",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -49134,7 +49323,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Nova Burst",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -49185,7 +49374,8 @@
    {
     "type": "Ultimate",
     "title": "Twin Comets",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -49293,7 +49483,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Twilight Wisp",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -49344,7 +49534,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shadefire",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -49395,7 +49585,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Shadowpad",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -49438,7 +49628,8 @@
    {
     "type": "Ultimate",
     "title": "Knife In The Dark",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -49546,7 +49737,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Tidal Cutter",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -49597,7 +49788,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fillet-O-Foes",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -49648,7 +49839,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Catch of the Day",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -49699,7 +49890,8 @@
    {
     "type": "Ultimate",
     "title": "Hook, Line, and Goner",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -49807,7 +49999,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Falling Moon",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -49858,7 +50050,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Life Phase",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -49909,7 +50101,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Curse Orbit",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -49960,7 +50152,8 @@
    {
     "type": "Ultimate",
     "title": "Broken Bloodnight",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -50068,7 +50261,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Mallet Smasher",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -50119,7 +50312,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Doom Oculus",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -50170,7 +50363,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Hold The Gates",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -50221,7 +50414,8 @@
    {
     "type": "Ultimate",
     "title": "Jaws of Hatred",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -50329,7 +50523,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bilge Cleaver",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -50380,7 +50574,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Abyssal Chomp",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -50431,7 +50625,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Writhing Broadside",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -50482,7 +50676,8 @@
    {
     "type": "Ultimate",
     "title": "Release the Squid!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -50590,7 +50785,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Meaty Haunch",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -50641,7 +50836,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Prime Cut",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -50692,7 +50887,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Butcher's Hook",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -50743,7 +50938,8 @@
    {
     "type": "Ultimate",
     "title": "Chop Shop",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -50851,7 +51047,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Deepwater Stab",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -50902,7 +51098,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Waveripper",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -50953,7 +51149,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Cresting Blade",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -51004,7 +51200,8 @@
    {
     "type": "Ultimate",
     "title": "Ocean Terror",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -51112,7 +51309,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Azure Thrust",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -51163,7 +51360,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Helm Breaker",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -51214,7 +51411,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ice Field",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -51265,7 +51462,8 @@
    {
     "type": "Ultimate",
     "title": "Sever Evil",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -51373,7 +51571,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Crypt Crusher",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -51424,7 +51622,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Revenant Charge",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -51475,7 +51673,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Graveyard Smash",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -51526,7 +51724,8 @@
    {
     "type": "Ultimate",
     "title": "Vitality Siphon",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -51634,7 +51833,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Swordthirst",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -51685,7 +51884,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Beast Lunge",
-    "cooldown": {},
+    "cooldown": 24,
     "levels": [
      {
       "level": 1,
@@ -51736,7 +51935,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Bladeclaw",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -51787,7 +51986,8 @@
    {
     "type": "Ultimate",
     "title": "Wild Frenzy",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -51895,7 +52095,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Whirling Fang",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -51946,7 +52146,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Viper Heel",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -51997,7 +52197,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Cobra Surge",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -52048,7 +52248,8 @@
    {
     "type": "Ultimate",
     "title": "Dagger Flicker",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -52156,7 +52357,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Burning Justice!",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -52207,7 +52408,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Volcanic Sphere!",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -52258,7 +52459,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Librum Laser!",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -52309,7 +52510,8 @@
    {
     "type": "Ultimate",
     "title": "Ultimate Corona Explosion!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -52417,7 +52619,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Throwing Knife",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -52468,7 +52670,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Bullseye!",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -52519,7 +52721,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Booster Shell",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -52570,7 +52772,8 @@
    {
     "type": "Ultimate",
     "title": "Double Tap",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -52678,7 +52881,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Vicious Halberd",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -52729,7 +52932,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Streaming Sun",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -52780,7 +52983,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Luster Wave",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -52831,7 +53034,8 @@
    {
     "type": "Ultimate",
     "title": "Shining Dragoon",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -52939,7 +53143,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Skrimp Kick!",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -52990,7 +53194,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Flying Skrimp!",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -53041,7 +53245,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Skrimp Smash!",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -53092,7 +53296,8 @@
    {
     "type": "Ultimate",
     "title": "Skrimp Tornado!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -53200,7 +53405,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Curseblade",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -53251,7 +53456,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Excise Soul",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -53302,7 +53507,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ancient Scar",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -53353,7 +53558,8 @@
    {
     "type": "Ultimate",
     "title": "Millennium Shade",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -53461,7 +53667,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Crimson Stinger",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -53512,7 +53718,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Vermillion Arc",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -53563,7 +53769,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ravenous Edge",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -53614,7 +53820,8 @@
    {
     "type": "Ultimate",
     "title": "Phantom Feast",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -53722,7 +53929,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Focused Flux",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -53773,7 +53980,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Lambent Halo",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -53824,7 +54031,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Energy Squall",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -53875,7 +54082,8 @@
    {
     "type": "Ultimate",
     "title": "Pulse Singularity",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -53983,7 +54191,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Word of Power",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -54034,7 +54242,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mightier Than The Sword",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -54085,7 +54293,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Censure Weakness",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -54136,7 +54344,8 @@
    {
     "type": "Ultimate",
     "title": "Sainted Tract",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -54244,7 +54453,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bladeswell",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -54295,7 +54504,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Water's Edge",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -54346,7 +54555,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Overflow",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -54397,7 +54606,8 @@
    {
     "type": "Ultimate",
     "title": "Raging River",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -54505,7 +54715,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bilge Bubble",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -54556,7 +54766,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Drowned Page",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -54607,7 +54817,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sunken Logbook",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -54658,7 +54868,8 @@
    {
     "type": "Ultimate",
     "title": "Blackwater Ripple",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -54766,7 +54977,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Double Trouble",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -54817,7 +55028,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Spike Splat",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -54868,7 +55079,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Gumm Sling",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -54919,7 +55130,8 @@
    {
     "type": "Ultimate",
     "title": "Chomp, Chomp, Chomp!",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -55027,7 +55239,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hungering Shell",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -55078,7 +55290,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Ravager Blast",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -55129,7 +55341,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ichor Bullet",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -55180,7 +55392,8 @@
    {
     "type": "Ultimate",
     "title": "Black Wolf Vulcan",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -55288,7 +55501,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Pinion Blast",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -55339,7 +55552,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Flamecrest",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -55390,7 +55603,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Phoenix Rite",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -55425,7 +55638,8 @@
    {
     "type": "Ultimate",
     "title": "Will of the Crystal Egg",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -55533,7 +55747,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Jawbreaker",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -55584,7 +55798,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Both Barrels",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -55635,7 +55849,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Voidstormer Lariat",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -55686,7 +55900,8 @@
    {
     "type": "Ultimate",
     "title": "Slugg Special",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -55794,7 +56009,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Duo Kick",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -55845,7 +56060,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Duality Slash",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -55896,7 +56111,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ebb and Flow",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -55947,7 +56162,8 @@
    {
     "type": "Ultimate",
     "title": "Judgment Nexus",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -56055,7 +56271,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Shattergem",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -56106,7 +56322,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Glitterflash",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -56157,7 +56373,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Crown Jewel",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -56204,7 +56420,8 @@
    {
     "type": "Ultimate",
     "title": "Lustrous Gift",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -56312,7 +56529,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Horn Driver",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -56363,7 +56580,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Rampager Ax",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -56414,7 +56631,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Beast Somersault",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -56465,7 +56682,8 @@
    {
     "type": "Ultimate",
     "title": "Demon Twister",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -56573,7 +56791,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Rising Star",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -56624,7 +56842,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Setting Sun",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -56675,7 +56893,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Silent Earth",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -56726,7 +56944,8 @@
    {
     "type": "Ultimate",
     "title": "Twilight Moon",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -56834,7 +57053,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Hull Smasher",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -56885,7 +57104,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Tentacle Blitz",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -56936,7 +57155,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Seafoam Spiral",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -56987,7 +57206,8 @@
    {
     "type": "Ultimate",
     "title": "Explosive Whirlpool",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -57095,7 +57315,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Splitter Lens",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -57146,7 +57366,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Mystic Centrifuge",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -57197,7 +57417,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Memorium Seal",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -57248,7 +57468,8 @@
    {
     "type": "Ultimate",
     "title": "Arcane Disintegrator",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -57356,7 +57577,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Causality Blow",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -57407,7 +57628,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Destructor Shard",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -57458,7 +57679,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Void Striker",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -57509,7 +57730,8 @@
    {
     "type": "Ultimate",
     "title": "Reality Ripple",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -57617,7 +57839,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Jetstream",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -57668,7 +57890,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shock Shoal",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -57719,7 +57941,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Jellyfish Flop",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -57770,7 +57992,8 @@
    {
     "type": "Ultimate",
     "title": "Deepblue Bolt",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -57878,7 +58101,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Lava Hail",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -57929,7 +58152,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Fumescream",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -57980,7 +58203,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Vortex Flame",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -58031,7 +58254,8 @@
    {
     "type": "Ultimate",
     "title": "Searing Prophecy",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -58139,7 +58363,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Umbra Slash",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -58190,7 +58414,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Shadow Arcs",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -58241,7 +58465,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Assassin Flip",
-    "cooldown": {},
+    "cooldown": 30,
     "levels": [
      {
       "level": 1,
@@ -58292,7 +58516,8 @@
    {
     "type": "Ultimate",
     "title": "Shredderglaive",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -58400,7 +58625,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Afterimage Strike",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -58451,7 +58676,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Temporal Dilation",
-    "cooldown": {},
+    "cooldown": 32,
     "levels": [
      {
       "level": 1,
@@ -58502,7 +58727,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Time Accelerant",
-    "cooldown": {},
+    "cooldown": 45,
     "levels": [
      {
       "level": 1,
@@ -58553,7 +58778,8 @@
    {
     "type": "Ultimate",
     "title": "Infinity Domain",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -58661,7 +58887,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Force Palm",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -58712,7 +58938,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Harmonic Disturbance",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -58763,7 +58989,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Gravity Geyser",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -58814,7 +59040,8 @@
    {
     "type": "Ultimate",
     "title": "Almighty Repulsor",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -58922,7 +59149,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Megaton Fist",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -58973,7 +59200,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Crusher Rake",
-    "cooldown": {},
+    "cooldown": 26,
     "levels": [
      {
       "level": 1,
@@ -59024,7 +59251,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Giganto Swing",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -59075,7 +59302,8 @@
    {
     "type": "Ultimate",
     "title": "Ol' Thumpy",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -59183,7 +59411,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Moonlight Lantern",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -59234,7 +59462,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Lunar Veil",
-    "cooldown": {},
+    "cooldown": 25,
     "levels": [
      {
       "level": 1,
@@ -59277,7 +59505,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Crescent Blessing",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -59328,7 +59556,8 @@
    {
     "type": "Ultimate",
     "title": "Wreathed in Silver",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 1100,
     "levels": [
      {
       "level": 1,
@@ -59428,7 +59657,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Bronze Knuckle",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -59479,7 +59708,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Granite Cleaver",
-    "cooldown": {},
+    "cooldown": 27,
     "levels": [
      {
       "level": 1,
@@ -59530,7 +59759,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Ax Grinder",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -59581,7 +59810,8 @@
    {
     "type": "Ultimate",
     "title": "Terra Pummel",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -59689,7 +59919,7 @@
    {
     "type": "ActiveSkill1",
     "title": "Courage Aura",
-    "cooldown": {},
+    "cooldown": 10,
     "levels": [
      {
       "level": 1,
@@ -59740,7 +59970,7 @@
    {
     "type": "ActiveSkill2",
     "title": "Sanctified Ground",
-    "cooldown": {},
+    "cooldown": 28,
     "levels": [
      {
       "level": 1,
@@ -59791,7 +60021,7 @@
    {
     "type": "ActiveSkill3",
     "title": "Sword of Glory",
-    "cooldown": {},
+    "cooldown": 29,
     "levels": [
      {
       "level": 1,
@@ -59842,7 +60072,8 @@
    {
     "type": "Ultimate",
     "title": "Solar Trinity",
-    "cooldown": {},
+    "cooldown": 15,
+    "manaCost": 900,
     "levels": [
      {
       "level": 1,
@@ -59950,7 +60181,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Due Punishment",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60001,7 +60231,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Seal of Serenity",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60193,7 +60422,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Impelled Rage",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60244,7 +60472,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Impelled Justice",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60436,7 +60663,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Depthcaller",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60487,7 +60713,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Dreadwake",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60679,7 +60904,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Deep Might",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60730,7 +60954,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Eldritch Heresy",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60922,7 +61145,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Veil Ripper",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -60973,7 +61195,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Nightfire Surge",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61165,7 +61386,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Horror Within",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61216,7 +61436,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Nightmare Torment",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61408,7 +61627,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Blood for Blood",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61459,7 +61677,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Blood for Life",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61651,7 +61868,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Sanction of Haste",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61702,7 +61918,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Sanction of Life",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61894,7 +62109,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Beyond Sin",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -61945,7 +62159,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Above Morality",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62137,7 +62350,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Ghostfire Thrust",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62188,7 +62400,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Cruel Tempest",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62380,7 +62591,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Unforgotten Fury",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62431,7 +62641,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Unforgotten Wrath",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62623,7 +62832,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Celestial Burst",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62674,7 +62882,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Starlight Pulse",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62866,7 +63073,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Radiant Attraction",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -62917,7 +63123,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Searing Expulsion",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63109,7 +63314,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Spear of the Earth",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63160,7 +63364,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Ambernode Impact",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63352,7 +63555,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Breaker of Blades",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63403,7 +63605,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Bringer of Victory",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63595,7 +63796,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Shield of the Conclave",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63646,7 +63846,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Undefeated Heart",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63838,7 +64037,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Diamond Tail",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -63889,7 +64087,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Meteor Drop",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64081,7 +64278,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Arcana Lock",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64132,7 +64328,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Arcana Nexus",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64324,7 +64519,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Reality Vortex",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64375,7 +64569,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Haptic Catalyst",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64567,7 +64760,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Defend the Dusk",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64618,7 +64810,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Conquer the Night",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64810,7 +65001,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Empassioned Arc",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -64861,7 +65051,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Flash Crescent",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65053,7 +65242,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Shattered Shard",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65104,7 +65292,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Crushed Steel",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65296,7 +65483,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Melter Cannon",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65347,7 +65533,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Pyroclasm Barrage",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65539,7 +65724,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Ancient Whirl",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65590,7 +65774,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Column Clobber",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65782,7 +65965,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Flame Belch",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -65833,7 +66015,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Blade Eruption",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66025,7 +66206,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Voltaic Fist",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66076,7 +66256,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Crackling Coils",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66268,7 +66447,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Galactic Slam",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66319,7 +66497,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Supernova Smash",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66511,7 +66688,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Deep Iron Drill",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66562,7 +66738,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Furnace Blaster",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66754,7 +66929,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Depth Charge",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66805,7 +66979,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Chum The Water",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -66997,7 +67170,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Threads of Fate",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67048,7 +67220,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Eternity Web",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67240,7 +67411,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Wheel of Creation",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67291,7 +67461,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Gentle Obliteration",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67483,7 +67652,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Wisp Flight",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67534,7 +67702,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Twilight Flicker",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67726,7 +67893,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Bedrock Demolisher",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67777,7 +67943,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Gargantuan Hammer",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -67969,7 +68134,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Gem Tackle",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68020,7 +68184,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Weight Of Legacy",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68212,7 +68375,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Arboris Arrow",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68263,7 +68425,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Silvan Volley",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68455,7 +68616,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Putrid Orb",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68506,7 +68666,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Chaos Quagmire",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68698,7 +68857,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Searing Updraft",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68749,7 +68907,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Tephra Hail",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68941,7 +69098,6 @@
    {
     "type": "ActiveSkill1",
     "title": "Lightning Quake",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,
@@ -68992,7 +69148,6 @@
    {
     "type": "ActiveSkill2",
     "title": "Annihilator Wing",
-    "cooldown": {},
     "levels": [
      {
       "level": 1,

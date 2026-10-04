@@ -120,10 +120,15 @@ def main():
         if entry["kind"] == "hero" and str(entry["id"]) not in playable:
             continue
         out = []
+        # cooldown (seconds) and the Ultimate's mana cost from the hero's own skill configs (HeroData)
+        configs = {c["Type"]: c for c in hero_data["HeroById"].get(str(entry["id"]), {}).get("Skills") or []}
         for sk in entry.get("skills", []):
             item = {"type": sk["type"], "title": sk.get("title") or None}
-            if "cooldown" in sk:
-                item["cooldown"] = sk["cooldown"]
+            cfg = configs.get(sk["type"])
+            if cfg and cfg.get("Cooldown"):
+                item["cooldown"] = cfg["Cooldown"]
+            if cfg and cfg.get("Cost"):
+                item["manaCost"] = cfg["Cost"]
             if "levels" in sk:
                 item["levels"] = [lv for lv in sk["levels"] if lv["level"] <= MAX_SKILL_LEVEL]
             if "empowerments" in sk:
