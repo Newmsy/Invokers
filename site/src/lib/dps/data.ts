@@ -7,7 +7,7 @@ import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { BOSS_MANA_X2_BELOW_STAGE, COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
+import { COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboEffects, parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -135,7 +135,7 @@ export function dpsData(): DpsData {
   const boss = bosses.find((b) => b.name === BOSS);
   const stages = (boss?.stages ?? [])
     .filter((s) => STAGES.includes(s.stage) && s.hp && s.def)
-    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0, ...(s.stage < BOSS_MANA_X2_BELOW_STAGE ? { mana: 2 } : {}) }));
+    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0, ...(s.manaUltimate ? { mana: s.manaUltimate } : {}) }));
 
   return {
     gameVersion: pack.gameVersion,

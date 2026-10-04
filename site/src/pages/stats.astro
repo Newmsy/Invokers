@@ -15,6 +15,8 @@ const n = (v: number, dp = 1) => v.toLocaleString('en-GB', { minimumFractionDigi
 // Plain words for each curve, and how to show its value.
 const rows = [
   { id: 'SkillSpeedFactorPct', name: 'Skill Speed', short: 'Skill spd', what: 'Skills play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
+  // Combo Speed uses the same curve as Skill Speed: listed with the breakpoints, not repeated in the rating grid.
+  { id: 'SkillSpeedFactorPct', name: 'Combo Speed', short: 'Combo spd', what: 'Combos play out faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0"), sameAs: 'Skill Speed' },
   { id: 'SkillRecoveryPct', name: 'Skill Recovery', short: 'Skill rec', what: 'Skill cooldowns recover faster', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
   { id: 'ManaRegenRecoveryPct', name: 'Mana Generation', short: 'Mana gen', what: 'More mana for the Ultimate', fmt: (v: number) => (v ? `+${n(v)}%` : "0") },
   { id: 'InstinctFactorPct01', name: 'Instinct', short: 'Instinct', what: 'How strongly Instinct works (100% = full strength)', fmt: (v: number) => `${n(v * 100, 0)}%` },
@@ -24,6 +26,10 @@ const rows = [
   .map((r) => ({ ...r, curve: byId(r.id) }))
   .filter((r) => r.curve);
 
+// The rating grid skips stats that share another stat's curve.
+const gridRows = rows.filter((r) => !('sameAs' in r));
+// Two tables of three stats each, so every column fits on a phone without stacking.
+const gridParts = [gridRows.slice(0, 3), gridRows.slice(3)].filter((p) => p.length);
 const fmtRating = (r: number) => r.toLocaleString('en-GB');
 // Breakpoints: the rating that gives half, three quarters and 90% of the effect a 3,000 rating gives.
 const shares = [0.5, 0.75, 0.9];
@@ -84,25 +90,29 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
 
   <section aria-labelledby="curves-title">
     <h2 id="curves-title">Rating to effect</h2>
-    <div class="table-wrap">
-      <table class="grid">
-        <thead>
-          <tr>
-            <th scope="col">Rating</th>
-            {rows.map((r) => <th scope="col" class="num"><span class="long">{r.name}</span><span class="short" aria-hidden="true">{r.short}</span></th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {ratings.map((x) => (
+    <div class="grids">
+    {gridParts.map((part) => (
+      <div class="table-wrap">
+        <table class="grid">
+          <thead>
             <tr>
-              <th scope="row" class="num">{fmtRating(x)}</th>
-              {rows.map((r) => <td class="num">{r.fmt(r.curve!.values[x])}</td>)}
+              <th scope="col">Rating</th>
+              {part.map((r) => <th scope="col" class="num"><span class="long">{r.name}</span><span class="short" aria-hidden="true">{r.short}</span></th>)}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {ratings.map((x) => (
+              <tr>
+                <th scope="row" class="num">{fmtRating(x)}</th>
+                {part.map((r) => <td class="num">{r.fmt(r.curve!.values[x])}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ))}
     </div>
-    <p class="hint">{rows.map((r) => `${r.name}: ${r.what.toLowerCase()}`).join('. ')}.</p>
+    <p class="hint">{gridRows.map((r) => `${r.name}: ${r.what.toLowerCase()}`).join('. ')}. Combo Speed uses the Skill Speed column: same curve, for combos.</p>
   </section>
 
   {resist && (
@@ -160,6 +170,8 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
   .notes { max-width: 70ch; padding-left: 20px; color: var(--soft); font-size: 15px; }
   .notes li { margin: 4px 0; }
   .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
+  .grids { display: grid; gap: 12px; }
+  @media (min-width: 900px) { .grids { grid-template-columns: 1fr 1fr; align-items: start; } }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }
