@@ -122,5 +122,9 @@
    "amounts": "the percent comes from the skill (skill_mechanics.json byLevel tables / the skill text), not from a global table.",
    "source": "skill scripts (BuffStat blocks: Category, StatType, EffectType)"
   }
+ },
+ "instinct": {
+  "effect": "Instinct does not change damage or crit. It is the chance an Invoker not under manual control dodges a danger zone (and switches targets correctly in some encounters): CharacterUtils.DoInstinctCheck rolls stat_curves.json InstinctFactorPct01 (0.3 at rating 0, 1.0 at high ratings).",
+  "inGameText": "Improves AI decision-making during battle. Increases the chance to dodge dangerous zones and correctly switch targets in certain encounters."
  }
 }
