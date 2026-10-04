@@ -7,15 +7,16 @@ import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { BOSS_MANA_X2_BELOW_STAGE, COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
+import { COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
-import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
+import { parseComboEffects, parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
 const compact = (p: ParsedSkill): SkillLevelT => ({
   h: p.hits.map(toHitT),
   ...(p.dots.length ? { d: p.dots } : {}),
   ...(p.debuffs.length ? { x: p.debuffs } : {}),
   ...(p.buffs.length ? { b: p.buffs } : {}),
+  ...(p.effects.length ? { e: p.effects } : {}),
 });
 
 const ACTIVE_SLOTS = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Ultimate'] as const;
@@ -76,9 +77,14 @@ export function dpsData(): DpsData {
     if (!ref) continue;
     const skills: DpsHero['skills'] = {};
     let combo: DpsHero['combo'] = [];
+    let comboFx: DpsHero['comboFx'];
     for (const s of skillsFor(h.id)) {
       const levels = fillLevels(s.levels ?? []);
-      if (s.type === 'Combo') combo = levels.map((l) => parseComboText(l.text).map((step) => step.map(toHitT)));
+      if (s.type === 'Combo') {
+        combo = levels.map((l) => parseComboText(l.text).map((step) => step.map(toHitT)));
+        const fx = levels.map((l) => parseComboEffects(l.text, h.name));
+        if (fx.some((lv) => lv.some((step) => step.length))) comboFx = fx;
+      }
       else if ((ACTIVE_SLOTS as readonly string[]).includes(s.type) && typeof s.cooldown === 'number') {
         const skill: DpsSkill = { cooldown: s.cooldown, levels: levels.map((l) => compact(parseSkillText(l.text, h.name))) };
         if (s.manaCost) skill.manaCost = s.manaCost;
@@ -103,6 +109,7 @@ export function dpsData(): DpsData {
       fixed: Object.fromEntries(FIXED.map((k) => [k, round(h.maxStats[k])])),
       skills,
       combo,
+      ...(comboFx ? { comboFx } : {}),
     });
   }
 
@@ -128,7 +135,7 @@ export function dpsData(): DpsData {
   const boss = bosses.find((b) => b.name === BOSS);
   const stages = (boss?.stages ?? [])
     .filter((s) => STAGES.includes(s.stage) && s.hp && s.def)
-    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0, ...(s.stage < BOSS_MANA_X2_BELOW_STAGE ? { mana: 2 } : {}) }));
+    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0, ...(s.manaUltimate ? { mana: s.manaUltimate } : {}) }));
 
   return {
     gameVersion: pack.gameVersion,

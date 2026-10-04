@@ -8,10 +8,10 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { buffGains, defenseFactor, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { toughness, toughValues } from '../src/lib/dps/tank';
-import { parseComboText, parseDebuffs, parseHit, parseSelfBuffs, parseSkillText } from '../src/lib/dps/parse';
+import { parseComboText, parseDebuffs, parseHit, parseSelfBuffs, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
 const hero = (name: string) => data.heroes.find((h) => h.name === name)!;
@@ -65,7 +65,7 @@ describe('skill text parser', () => {
   });
 
   it('parses an Invoker with no "#N Damage" lines into nothing', () => {
-    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [], buffs: [] });
+    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [], buffs: [], effects: [] });
   });
 
   it('lists the debuffs and control effects cast on enemies', () => {
@@ -303,6 +303,33 @@ describe('self buffs', () => {
 
   it('multiplies final ATK while ATK Up is up', () => {
     const f = fight('Kisanka', { stage: stage(13) });
+    expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, noBuffs: true }).dps);
+  });
+});
+
+describe('cooldown cuts and bonus mana', () => {
+  it("reads Devi's cooldown cuts and mana", () => {
+    const devi = hero('Devi of the Six');
+    expect(devi.skills.ActiveSkill2!.levels[10].e).toEqual([{ kind: 'mana', amount: 20, each: true }]);
+    expect(devi.skills.Ultimate!.levels[10].e).toEqual([{ kind: 'cooldown', skill: 'random', amount: 6, when: 'crit' }]);
+    expect(devi.comboFx?.[10][4]).toEqual([
+      { kind: 'cooldown', skill: 2, amount: 1, when: 'noncrit' },
+      { kind: 'cooldown', skill: 2, amount: 3, when: 'crit' },
+    ]);
+    // Effects that need a kill or debuff count, or go to allies, are left out.
+    expect(parseSelfEffects('Reduces the cooldown of all Active Skills on X by 4s if this attack kills the target.', 'X')).toEqual([]);
+    expect(parseSelfEffects('Reduces the cooldown of a random Active Skill on 1 random ally by 6s in a 15m radius.', 'X')).toEqual([]);
+    expect(parseSelfEffects('If the hit lands as a critical hit X gains 40 Ultimate Mana instead.', 'X')).toEqual([{ kind: 'mana', amount: 40, when: 'crit', instead: true }]);
+  });
+
+  it('adds DPS through faster skills and earlier Ultimates', () => {
+    const f = fight('Devi of the Six', { stage: stage(13) });
+    const gains = effectGains(data, f);
+    const mana = gains.find((g) => g.slot === 'ActiveSkill2' && g.kind === 'mana')!;
+    expect(mana.total).toBeGreaterThan(0);
+    const combo = gains.find((g) => g.slot === 'Combo' && g.kind === 'cooldown')!;
+    expect(combo.total).toBeGreaterThan(5);
+    expect(combo.gain).toBeGreaterThan(0);
     expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, noBuffs: true }).dps);
   });
 });

@@ -112,6 +112,8 @@ export interface BossStage {
   accuracy?: number;
   resistance?: number;
   toleranceBonus?: number;
+  /** Ultimate mana multiplier this stage sets in place of the mode one. */
+  manaUltimate?: number;
 }
 
 export interface StatInfo {

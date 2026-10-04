@@ -45,11 +45,27 @@ export interface SelfBuff {
   onCrit?: boolean;
 }
 
+/** Something a skill does for its own Invoker besides damage: cuts its own cooldowns or adds Ultimate Mana. */
+export interface SelfEffect {
+  kind: 'cooldown' | 'mana';
+  /** Seconds cut, or mana gained. */
+  amount: number;
+  /** Which cooldown: Skill 1-3, a random one, or all three (cooldown cuts only). */
+  skill?: 1 | 2 | 3 | 'random' | 'all';
+  /** Only on a crit, only on a non-crit, or if any hit crits. */
+  when?: 'crit' | 'noncrit' | 'anycrit';
+  /** Once per hit instead of once per use. */
+  each?: boolean;
+  /** "…gains 40 instead" on a crit: replaces the amount before it rather than adding. */
+  instead?: boolean;
+}
+
 export interface ParsedSkill {
   hits: Hit[];
   dots: Dot[];
   debuffs: Debuff[];
   buffs: SelfBuff[];
+  effects: SelfEffect[];
 }
 
 const num = (s: string) => Number(s.replace(/,/g, ''));
@@ -141,6 +157,39 @@ export function parseSelfBuffs(text: string, self: string): SelfBuff[] {
   return out;
 }
 
+/**
+ * Cooldown cuts and Ultimate Mana the skill gives its own Invoker: "Reduces the cooldown of Active Skill 2 on Devi of
+ * the Six by 3s, if the hit lands as a critical hit", "Each hit Devi of the Six gains 20 Ultimate Mana". Effects that
+ * depend on kills, debuff or buff counts, or that give a % of the bar, are left out.
+ */
+export function parseSelfEffects(text: string, self: string): SelfEffect[] {
+  const out: SelfEffect[] = [];
+  for (const sentence of plain(text).split(/(?<=\.)\s+|\n/)) {
+    if (!sentence.includes(self) || /kills|debuff|buffs|control|allies|ally|per |Miniboss/.test(sentence)) continue;
+    const when: SelfEffect['when'] = /non-critical/.test(sentence)
+      ? 'noncrit'
+      : /any hit lands as a critical/.test(sentence)
+        ? 'anycrit'
+        : /critical hit/.test(sentence)
+          ? 'crit'
+          : undefined;
+    const each = /^\s*Each hit|on each hit|for each (?:non-)?critical hit/.test(sentence);
+    const cd = new RegExp(`[Rr]educes? the cooldown of (Active Skill (\\d)|a random Active Skill|all Active Skills) on ${escape(self)} by ([\\d.]+)s(?: (\\d+) times)?`).exec(sentence);
+    if (cd) {
+      const skill = cd[2] ? (Number(cd[2]) as 1 | 2 | 3) : cd[1].startsWith('a random') ? 'random' : 'all';
+      out.push({ kind: 'cooldown', skill, amount: num(cd[3]) * (cd[4] ? Number(cd[4]) : 1), ...(when ? { when } : {}), ...(each ? { each } : {}) });
+      continue;
+    }
+    const mana = new RegExp(`${escape(self)} gains ([\\d,.]+) Ultimate Mana`).exec(sentence);
+    if (mana) {
+      const instead = /instead/.test(sentence);
+      out.push({ kind: 'mana', amount: num(mana[1]), ...(when ? { when } : {}), ...(each ? { each } : {}), ...(instead ? { instead } : {}) });
+    }
+  }
+  return out;
+}
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 /** Hits and damage-over-time debuffs of an active skill or Ultimate at one level. */
 export function parseSkillText(text: string, self = ''): ParsedSkill {
   const t = plain(text);
@@ -160,7 +209,15 @@ export function parseSkillText(text: string, self = ''): ParsedSkill {
       if (dot) dots.push(dot);
     }
   }
-  return { hits, dots, debuffs: parseDebuffs(text), buffs: self ? parseSelfBuffs(text, self) : [] };
+  return { hits, dots, debuffs: parseDebuffs(text), buffs: self ? parseSelfBuffs(text, self) : [], effects: self ? parseSelfEffects(text, self) : [] };
+}
+
+/** Combo text → the cooldown cuts and Ultimate Mana each step gives its own Invoker. */
+export function parseComboEffects(text: string, self: string): SelfEffect[][] {
+  return plain(text)
+    .split(/(?:^|\n)\s*#\d+\s+/)
+    .slice(1)
+    .map((block) => parseSelfEffects(block, self));
 }
 
 /** Combo text → the hits of each step, in order (steps 1-5). */
