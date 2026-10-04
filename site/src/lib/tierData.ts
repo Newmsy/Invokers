@@ -3,7 +3,7 @@
 import skillsJson from '../../../data/skills.json';
 import tiersJson from '../data/tiers.json';
 import { titanArt, heroArt } from './art';
-import { heroes, heroHref, heroSlug, titans, type Hero } from './data';
+import { heroes, heroHref, heroSlug, titanHref, titans, type Hero } from './data';
 import { heroCandidates, titanCandidates, type SkillSetLike } from './tiers/candidates';
 import { tagLabels, type Kit } from './tiers/kit';
 import { brings, tierLists, tierNames, type TierListDef, type TierName } from './tiers/lists';
@@ -67,7 +67,7 @@ function pick(kind: PoolKind, list: TierListDef, slug: string): TierPick | undef
   }
   const t = titanBySlug.get(slug);
   if (!t) return undefined;
-  return { slug, name: t.name, art: titanArt(t.id), meta: t.faction ?? 'Any faction', brings: chips };
+  return { slug, name: t.name, href: titanHref(t.slug), art: titanArt(t.id), meta: t.faction ?? 'Any faction', brings: chips };
 }
 
 /** The rows of one list, S to D. Names in tiers.json that don't match a hero or Titan are skipped. */
@@ -87,6 +87,20 @@ export function heroTiers(heroId: string): { list: TierListDef; tier: TierName }
     const tier = tierNames.find((t) => tiers[t]?.includes(slug));
     return tier ? [{ list, tier }] : [];
   });
+}
+
+/** Tier of one Titan on every list, for the Titan page. */
+export function titanTiers(slug: string): { list: TierListDef; tier: TierName }[] {
+  return tierLists.flatMap((list) => {
+    const tiers = file.titans?.[list.id] ?? {};
+    const tier = tierNames.find((t) => tiers[t]?.includes(slug));
+    return tier ? [{ list, tier }] : [];
+  });
+}
+
+/** A hero's best tier on any list, with that list, or undefined if no list has them. */
+export function bestTier(heroId: string): { list: TierListDef; tier: TierName } | undefined {
+  return heroTiers(heroId).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier))[0];
 }
 
 export { tierLists, tierNames };

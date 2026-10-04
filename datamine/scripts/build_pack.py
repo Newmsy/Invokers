@@ -88,18 +88,29 @@ def main():
 
     # ---- heroes ----
     stats_by_id = {str(h["id"]): h for h in load(DUMP / "hero_stats.json")}
+    # Tolerance skills: HeroData lists each hero's corruptions in slot order (Tolerance1, Tolerance2); the tolerance %
+    # per skill level comes from ToleranceSkillProgressions by rarity (progression level 0 = skill level 1).
+    set_by_lower = {k.lower(): k for k in relic_data["SetInfoBySet"] if k.endswith("Tolerance")}
+    tol_by_rarity = {}
+    for row in hero_data["ToleranceSkillProgressions"]:
+        tol_by_rarity.setdefault(row["Rarity"], {})[row["Level"] + 1] = row["Value"]
     heroes = []
     for cid in sorted(playable, key=lambda i: chars.get(i, {}).get("LocalizedName") or ""):
         c = chars.get(cid)
         if not c:
             continue
         s = stats_by_id.get(cid, {})
+        hd = hero_data["HeroById"].get(cid, {})
         by_rank = {r: s.get("byRank", {}).get(r, {}) for r in RANKS}
         max_stats = by_rank["Six"].get("60")
         heroes.append({
             "id": c["Name"], "configId": int(cid), "name": c["LocalizedName"] or c["Name"],
             "rarity": c["Rarity"], "faction": c["Faction"], "element": c["Element"], "class": c["Class"],
             "baseRank": s.get("baseRank"), "maxStats": max_stats, "statsByRank": by_rank,
+            "soulSign": hd.get("SoulSign"),
+            "tolerances": [{"slot": f"Tolerance{i + 1}", "stat": set_by_lower[t.lower() + "tolerance"],
+                            "byLevel": [{"level": lv, "percent": v} for lv, v in sorted(tol_by_rarity.get(c["Rarity"], {}).items())]}
+                           for i, t in enumerate(hd.get("Tolerances") or [])],
         })
     write("heroes.json", heroes)
 
@@ -109,10 +120,15 @@ def main():
         if entry["kind"] == "hero" and str(entry["id"]) not in playable:
             continue
         out = []
+        # cooldown (seconds) and the Ultimate's mana cost from the hero's own skill configs (HeroData)
+        configs = {c["Type"]: c for c in hero_data["HeroById"].get(str(entry["id"]), {}).get("Skills") or []}
         for sk in entry.get("skills", []):
             item = {"type": sk["type"], "title": sk.get("title") or None}
-            if "cooldown" in sk:
-                item["cooldown"] = sk["cooldown"]
+            cfg = configs.get(sk["type"])
+            if cfg and cfg.get("Cooldown"):
+                item["cooldown"] = cfg["Cooldown"]
+            if cfg and cfg.get("Cost"):
+                item["manaCost"] = cfg["Cost"]
             if "levels" in sk:
                 item["levels"] = [lv for lv in sk["levels"] if lv["level"] <= MAX_SKILL_LEVEL]
             if "empowerments" in sk:

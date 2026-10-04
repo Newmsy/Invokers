@@ -62,26 +62,10 @@ const older = post.data.gameVersion !== pack.gameVersion;
     padding: 8px 14px;
     border-bottom: 1px solid var(--line);
     text-align: right;
-    white-space: nowrap;
   }
   .body :global(th:first-child), .body :global(td:first-child) { text-align: left; }
   .body :global(th) { color: var(--text); font-family: var(--display); font-weight: 600; background: var(--surface); }
   .cover:not(:empty) { margin-top: 20px; }
-  .body :global(.art-chip) {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    vertical-align: middle;
-    white-space: nowrap;
-  }
-  .body :global(.art-chip img) {
-    width: 24px;
-    height: 24px;
-    flex: none;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 6px;
-  }
   .body :global(a.art-chip span) { color: var(--text); }
   .body :global(a.art-chip:hover span) { color: var(--accent); }
   .body :global(blockquote) {

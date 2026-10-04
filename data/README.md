@@ -6,8 +6,8 @@ build time and never writes to them. Game version and extraction date: `manifest
 | File | What it holds |
 | --- | --- |
 | `manifest.json` | `gameVersion`, `extractedAt`, `schemaVersion` |
-| `heroes.json` | The 231 playable heroes: `id` (internal code, e.g. `FRB003`, also used for art file names), `configId`, English `name`, `rarity`, `faction`, `element`, `class`, `baseRank`, `maxStats` (rank Six, level 60, no gear or awakening), `statsByRank` (rank → level → stats, levels 1/10/…/60 that the rank allows) |
-| `skills.json` | Skills for every playable hero and all 38 Titans: `heroId`, `kind` (`hero`/`titan`), `name`, `skills[]` with `type`, `title`, `cooldown` (s), `levels[]` (`level` 1–11, `text` with the game's rich-text tags); Titan `PassiveBonus` has `empowerments[]` (0–6) instead |
+| `heroes.json` | The 231 playable heroes: `id` (internal code, e.g. `FRB003`, also used for art file names), `configId`, English `name`, `rarity`, `faction`, `element`, `class`, `baseRank`, `maxStats` (rank Six, level 60, no gear or awakening), `statsByRank` (rank → level → stats, levels 1/10/…/60 that the rank allows), `soulSign` (Awakening type, matches `awakening.json`), `tolerances[]` `{slot: Tolerance1/Tolerance2, stat: the tolerance set id e.g. DazeTolerance, byLevel[] {level 1-11, percent}}` |
+| `skills.json` | Skills for every playable hero and all 38 Titans: `heroId`, `kind` (`hero`/`titan`), `name`, `skills[]` with `type`, `title`, `cooldown` (seconds, Active skills and Ultimate), `manaCost` (Ultimate), `levels[]` (`level` 1–11, `text` with the game's rich-text tags); Titan `PassiveBonus` has `empowerments[]` (0–6) instead |
 | `skill_costs.json` | Skill upgrade cost by hero rarity, skill kind and target level |
 | `items.json` | Resources, currencies, summon items and materials: `id` (game enum name), English `name`, `description` |
 | `stats.json` | Stat names: stat bonuses (`AttackPercent`, …, `percent` flag) and character stat ratings (`kind: rating`) |
@@ -17,7 +17,22 @@ build time and never writes to them. Game version and extraction date: `manifest
 | `bosses.json` | Dungeon and clan bosses (issue #11): `id` (region), `name`, `title`, `mode` (`relic boss`/`clan boss`/`Omnissi`/`Pentiax`/`other` = Crest bosses), `element` (Omnissi only; `Astral` for the neutral one), `description`, `dos`, `donts` (the game's own lines, in order), `corruptions`, `stages[]` `{stage, energy, level, element, hp, atk, def, skillLevel, accuracy, resistance, toleranceBonus}` (boss base stats, the enemy team's flat ACC/RES and the stage's Tolerance bonus or penalty) |
 | `shop_packs.json` | Shop packs (96): `id`, English `name`/`description`/`shortName` (`{0}` is filled in by the game, usually with the main reward amount), `kind`, `type`, `tab`, `price` (`usd` whole-dollar price tier and store `sku` for real-money packs, or `resources` e.g. `{"Gem": 300}` for Gem-shop packs), `rewards[]` `{type, id, amount, secondary}`, `steps[]` for login calendars, `purchaseLimit`/`purchaseLimitCount`, `durationHours`, `discount`/`bonus` (percent shown on the pack), `artLayout` (the pack's art), `platform`, `replacesPackId` |
 | `progression.json` | Road to 6★ (issue #22): `maxLevelByRank`, `xpPerLevel[]` `{level, xpToNext, totalXp}` (one table for every rarity), `levelCost` (empty: levelling is free), `ascension[]` `{fromRank, toRank, levelRequired, fodderCount, fodder, goldByRarity}`, `fodderXp` (by rank and by level), `xpItems` (potion XP); `unconfirmed` lists the rules the config doesn't state |
+| `awakening.json` | Awakening (issue #26): `soulSigns[]` (8 soul classes) with English `name` (e.g. Vess), `title` (Sign of Vess), `description`, `baseBonus` and `levels[]` (awaken levels 1-6) of `nodes[]` `{id, parentId, bonuses[], costByRarity}`; `materialTiers` (tier 1 = levels 1-2, 2 = 3-4, 3 = 5-6) |
+| `gear_costs.json` | Gear and accessory costs: `upgrade[]` `{rank, rarity, toLevel, gold, memorium}`, `sell`, `deactivate`, `destroy` |
+| `sources.json` | Where Memorium, runes, essences, crests, Titan Sparks, Echoes and the Memorium/Rune boosters come from: `items.<itemId>[]` of stage drops `{source, region, difficulty, stage, energy, drop, min, max, chancePerRoll, rolls, expectedPerRun}` and shop packs `{source: Shop, packId, pack, price, amount}` |
+| `stages.json` | Every stage (issue #25): `id`, `area`, `region`, `difficulty`, `stage`, `energy`, `drops[]` `{source, itemId, min, max, chancePerRoll, rolls, expectedPerWin}`; in-battle `<kind> entry` drops carry a `weight` instead of a chance. `lootDistribution` says how those spread over enemies, destructibles and chests (see below) |
+| `chests.json` | Clan activity, clan boss, PvP and VIP chests: `chest`, `tier`, `picks`, `items[]` `{group, itemId, amount, weight, groupChanceInPicks}`; `rules` explains the picking |
+| `combos.json` | Combo chain per hero (issue #31): `steps[]` `{step, cooldown, preSec, castSec, endSec, requiredSec, resetSec, range}` at Combo Speed 0, plus `animationSec` and `requiredSec` totals. **Combo timing is the same for every Invoker in play**; these are raw config values (animation lengths and config timings), not real differences, so don't compare heroes by them |
+| `stat_curves.json` | Rating → effect for Skill Speed, Skill Recovery, Mana Generation, Instinct, Move Speed, Defense and resist chance: `curves[]` `{id, stat, meaning, values[rating 0..3000]}` |
+| `tactics.json` | Tactics (formations): `tactics[]` `{id, name, requiredPlayerLevel, slots[] {position, line, enemiesCount}, bonuses[] {line, class, stats, valueType, valuesByLevel[1..20]}}`, `levelUpPrice`, `maxLevel` |
+| `arena.json` | Arena PvP rules (issue #55): `healthBonus`, `titanStatsMultiplier`, `initialCooldownFactor`, `mana` multipliers per mode and Titan cooldowns, `controlDiminishingReturns`, `effectDurationPercent` per effect and skill kind, the game's own help `texts` |
 | `events.json` | Placeholder (not exported yet) |
 
 Notes: stat values are as the game stores them (percent stats as fractions, e.g. `0.15` = 15%). Text keeps the game's
 `<color>`/`<b>`/`<br>` tags; the site decides how to render them.
+
+How stage drops combine (`stages.json`): `Victory` rows are rolled once per win, so `expectedPerWin` = `chancePerRoll`
+x `rolls` x average amount. `Repeat` is given on every win and `FirstClear` once. In-battle loot (`Enemies` /
+`Destructibles` / `Chests` `entry` rows) is shared out per loot source: each enemy, object or chest of a
+`lootDistribution` source drops with its `dropChance`, `iterations` times, picking one of the stage's entries of that
+kind by `weight`. `<kind> table` rows expand the tables an entry links to.

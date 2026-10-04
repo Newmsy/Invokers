@@ -1,7 +1,7 @@
 ---
 title: "Which Tolerance set to build first"
 description: "Every boss's two corruptions in one table, which Tolerance sets cover the most bosses, and two places where the game's own text is wrong."
-date: 2026-10-01
+date: 2026-09-15
 gameVersion: "0.61.1516"
 art: ["class:Tank", "class:Melee", "class:Ranged", "class:Support"]
 tags: [bosses, gear, sets]
@@ -50,6 +50,18 @@ Crush is also the nastiest on paper: it stuns and makes the target take double d
 
 - **Crush and Manaburn sets forget the clan boss.** Their descriptions leave out Sorgott, whose corruptions are exactly Crush and Manaburn (its boss guide says most of its damage is Manaburn). The other ten sets list their bosses correctly.
 - **Koltmos's tip names the wrong Tolerance.** It says Bloodrot and Manashock, but its corruptions are Manashock and **Blight**. Bring Blight.
+
+## Tolerance on your Invokers
+
+| Rarity | Tolerances | Start | Max (+10% per upgrade) |
+|---|---|---|---|
+| Common, Uncommon, Rare | 1 | 50% | 150% |
+| Epic | 2 | 50% each | 150% each |
+| Legendary | 2 | 100% each | 200% each |
+
+- Control corruptions get shorter by your Tolerance; damage corruptions hit softer. At 100%, Daze can't purge buffs, and Paralysis and Nightmare can't add cooldowns.
+- Boss stages shift every Tolerance: **+75% on stage 1**, 0 from stage 10, **-100% on stages 19-20** (never below 0). Per stage: [How bosses scale](/blog/how-bosses-scale).
+- Fatigue (46 Invokers) and Crush (43) are the most common innate Tolerances; Paralysis is the rarest (17). Crush has the most Legendaries (22).
 
 ## Boss tips worth knowing
 

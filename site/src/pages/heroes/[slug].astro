@@ -2,20 +2,23 @@
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
-import { classIcon, elementIcon, skillIcon } from '../../lib/art';
-import { heroes, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
+import { classIcon, elementIcon, heroSplash, skillIcon } from '../../lib/art';
+import { bossLabel, bosses, bossSlug, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, type Hero } from '../../lib/data';
 import {
   className,
   formatStat,
   rankNumber,
-  rankOrder,
   rarityColor,
   richText,
   skillTypeName,
   statFields,
   tierColor,
 } from '../../lib/format';
-import { heroTiers, tierNames } from '../../lib/tierData';
+import { bestTier, heroTiers, tierNames } from '../../lib/tierData';
+import { similarTo } from '../../lib/similar';
+import { awakeningType, fullyAwakened, soulSignAnchor } from '../../lib/awakening';
+import { corruptionKey, corruptionLabel } from '../../lib/tolerances';
+import { effectsFor, linkEffects } from '../../lib/effects';
 import { legendaryPool, summons } from '../../lib/summons';
 
 export function getStaticPaths() {
@@ -33,10 +36,36 @@ const color = rarityColor[hero.rarity] ?? '#B5B1D3';
 const keyStats = statFields.slice(0, 6);
 const otherStats = statFields.slice(6);
 
-const ranks = rankOrder.filter((r) => hero.statsByRank[r]);
-const levelsOf = (rank: string) =>
-  Object.keys(hero.statsByRank[rank] ?? {}).sort((a, b) => Number(a) - Number(b));
-const topRank = ranks[ranks.length - 1];
+// Stats tab: first day, 6★ level 60, and 6★ level 60 with every Awakening node.
+// Wide key art behind the header, for Invokers that have some.
+const splash = heroSplash(hero.id);
+const awakened = fullyAwakened(hero);
+// Overview "Max stats" matches the game's own max stats, which include full Awakening.
+const maxed = awakened?.stats ?? hero.maxStats;
+const statCols = [
+  { label: 'Lv 1', sub: `${rankNumber(hero.baseRank)}★`, stats: hero.statsByRank[hero.baseRank]['1'] },
+  { label: 'Lv 60', sub: '6★', stats: hero.maxStats },
+  ...(awakened ? [{ label: 'Awakened', sub: 'Lv 60', stats: awakened.stats }] : []),
+];
+
+// Awakening type, linked to its section on the Ascension page.
+const sign = awakeningType(hero);
+const signHref = sign && href(`ascension#${soulSignAnchor(sign)}`);
+
+// The Invoker's own tolerances at skill levels 1 and 11, with the bosses whose corruption they counter.
+const heroTols = (hero.tolerances ?? []).map((t) => {
+  const key = corruptionKey(t.stat);
+  const at = (level: number) => t.byLevel.find((l) => l.level === level)?.percent;
+  const first = t.byLevel[0];
+  const last = t.byLevel[t.byLevel.length - 1];
+  return {
+    key,
+    label: corruptionLabel(key),
+    low: { level: first?.level ?? 1, percent: at(1) ?? first?.percent },
+    high: { level: last?.level ?? 11, percent: at(11) ?? last?.percent },
+    bosses: bosses.filter((b) => b.corruptions.some((c) => corruptionKey(c) === key)),
+  };
+});
 
 // Where this Invoker sits on each tier list, best first.
 const tiers = heroTiers(hero.id).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier));
@@ -47,6 +76,17 @@ const hasCompare = Object.keys(import.meta.glob('./compare.astro')).length > 0;
 // Summon items whose Legendary pool includes this Invoker.
 const summonedBy = summons.items.filter((i) => legendaryPool(i).some((h) => h.id === hero.id)).map((i) => i.name);
 
+// Buffs, debuffs and control in this kit, linked to the glossary; skill texts link each bracketed effect too.
+const kitEffects = effectsFor(hero.id);
+const effectHref = (slug: string) => href(`effects/${slug}`);
+
+// Stand-ins for this Invoker; the ones in the player's box get marked by the script below.
+const similar = similarTo(hero).map((h) => ({
+  hero: h,
+  best: bestTier(h.id),
+  configId: Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === h.id)?.[0] ?? '',
+}));
+
 // Plain-text preview of a skill for the overview list.
 const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 ---
@@ -56,8 +96,9 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     All Invokers
   </a>
 
+  {splash && <div class="page-banner tall" aria-hidden="true"><img src={splash} alt="" width="1200" height="600" fetchpriority="high" /></div>}
   <section class="hero" style={`--rarity: ${color}`}>
-    <div class="hero-art"><HeroArt hero={hero} large /></div>
+    <div class="hero-art"><HeroArt hero={hero} /></div>
     <div class="hero-info">
       <div class="title-row">
         <div>
@@ -71,6 +112,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <li><a href={href(`heroes?faction=${encodeURIComponent(hero.faction)}`)} title={`All ${hero.faction} Invokers`}>{hero.faction}</a></li>
         <li><a href={href(`heroes?class=${encodeURIComponent(String(hero.class))}`)} title={`All ${className(hero.class)} Invokers`}>{classIcon(String(hero.class)) && <img src={classIcon(String(hero.class))} alt="" width="18" height="18" />}{className(hero.class)}</a></li>
         <li>Starts at {rankNumber(hero.baseRank)}★</li>
+        {sign && <li><a href={signHref} title={`${sign.title}: what each Awakening level gives`}>Awakening: {sign.title}</a></li>}
       </ul>
       {hasCompare && (
         <a class="compare" href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>
@@ -96,12 +138,12 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   <section id="overview" class="panel" role="tabpanel" aria-labelledby="tab-overview">
     <h2>Max stats</h2>
-    <p class="hint">Rank 6, level 60, without gear or awakening. <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
+    <p class="hint">{awakened ? '6★, level 60, fully awakened, without gear.' : '6★, level 60, without gear or awakening.'} <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
     <div class="stat-grid">
       {keyStats.map((f) => (
         <div class="stat">
           <span class="stat-label">{f.short}</span>
-          <span class="stat-value">{formatStat(hero.maxStats[f.key], f.percent)}</span>
+          <span class="stat-value">{formatStat(maxed[f.key], f.percent)}</span>
         </div>
       ))}
     </div>
@@ -109,10 +151,30 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       {otherStats.map((f) => (
         <div>
           <dt>{f.label}</dt>
-          <dd>{formatStat(hero.maxStats[f.key], f.percent)}</dd>
+          <dd>{formatStat(maxed[f.key], f.percent)}</dd>
         </div>
       ))}
     </dl>
+
+    {heroTols.length > 0 && (
+      <>
+        <h2>Tolerances</h2>
+        <p class="hint">Resists these boss corruptions. Percent at skill level {heroTols[0].low.level} and {heroTols[0].high.level}.</p>
+        <ul class="tol-list">
+          {heroTols.map((t) => (
+            <li>
+              <a class="tol-name" href={href(`heroes?tolerance=${t.key}`)} title={`All Invokers with ${t.label} Tolerance`}>{t.label}</a>
+              <span class="tol-pct">{t.low.percent}% → {t.high.percent}%</span>
+              {t.bosses.length > 0 && (
+                <span class="tol-bosses">
+                  {t.bosses.map((b, i) => <>{i > 0 && ', '}<a href={href(`bosses/${bossSlug(b)}#corr-${t.key}`)}>{bossLabel(b)}</a></>)}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
 
     <h2>Skills</h2>
     <ul class="skill-list">
@@ -128,6 +190,15 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       ))}
     </ul>
 
+    {kitEffects.length > 0 && (
+      <>
+        <h2>Effects</h2>
+        <ul class="effect-list">
+          {kitEffects.map((e) => <li><a href={effectHref(e.slug)} title={e.text}>{e.name}</a></li>)}
+        </ul>
+      </>
+    )}
+
     {tiers.length > 0 && (
       <>
         <h2>Tier lists</h2>
@@ -141,6 +212,29 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
             </li>
           ))}
         </ul>
+      </>
+    )}
+
+    {similar.length > 0 && (
+      <>
+        <h2 id="similar">Similar Invokers</h2>
+        <p class="hint">Same class, {hero.element} first. <span id="similar-owned" hidden>Ones in your box are marked.</span></p>
+        <ul class="similar">
+          {similar.map(({ hero: h, best, configId: cid }) => (
+            <li data-config-id={cid}>
+              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+                <span class="similar-art">
+                  <HeroArt hero={h} />
+                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#5FDCF7'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
+                  <span class="similar-owned">Owned</span>
+                </span>
+                <span class="similar-name">{h.name}</span>
+                <span class="similar-meta">{elementIcon(h.element) && <img src={elementIcon(h.element)} alt="" width="14" height="14" loading="lazy" />}{h.element} · {h.rarity}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="hint more"><a href={href(`heroes?class=${encodeURIComponent(String(hero.class))}&element=${encodeURIComponent(hero.element)}`)}>All {hero.element} {className(hero.class)} Invokers</a> · <a href={href(`heroes/compare?h=${[hero, ...similar.slice(0, 3).map((x) => x.hero)].map((x) => heroSlug(x.id)).join(',')}`)}>Compare with the top 3</a></p>
       </>
     )}
   </section>
@@ -167,7 +261,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
             </label>
           )}
           {levels.map((l, i) => (
-            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={richText(l.text)} />
+            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={linkEffects(richText(l.text), effectHref)} />
           ))}
         </article>
       );
@@ -175,34 +269,27 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   </section>
 
   <section id="stats" class="panel" role="tabpanel" aria-labelledby="tab-stats">
-    <h2>Stats by rank and level</h2>
-    <p class="hint">Base stats without gear or awakening. <a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levels-not-stars')}>Why levels matter more than stars</a></p>
-    <div class="rank-picker" role="group" aria-label="Rank">
-      {ranks.map((r) => (
-        <button type="button" class="chip" data-rank={r} aria-pressed={r === topRank ? 'true' : 'false'}>{rankNumber(r)}★</button>
-      ))}
-    </div>
-    {ranks.map((r) => (
-      <div class="table-wrap" data-rank-table={r} hidden={r !== topRank}>
-        <table>
-          <caption class="visually-hidden">Rank {rankNumber(r)} stats</caption>
-          <thead>
+    <h2>Stats</h2>
+    <p class="hint">Without gear. Awakened has every Awakening node{awakened?.titanTime ? `, plus +${awakened.titanTime}s Titan Invokation Time` : ''}. {sign && <><a href={signHref}>{sign.title} nodes</a> · </>}<a href={href('ascension')}>Ascension costs</a> · <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a></p>
+    <div class="table-wrap">
+      <table class="stat-cols">
+        <caption class="visually-hidden">{hero.name} stats at level 1, level 60 and fully awakened</caption>
+        <thead>
+          <tr>
+            <th scope="col">Stat</th>
+            {statCols.map((c) => <th scope="col">{c.label}<span class="sub">{c.sub}</span></th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {statFields.map((f) => (
             <tr>
-              <th scope="col">Level</th>
-              {levelsOf(r).map((lv) => <th scope="col">{lv}</th>)}
+              <th scope="row">{f.short}</th>
+              {statCols.map((c) => <td>{formatStat(c.stats[f.key], f.percent)}</td>)}
             </tr>
-          </thead>
-          <tbody>
-            {statFields.map((f) => (
-              <tr>
-                <th scope="row">{f.short}</th>
-                {levelsOf(r).map((lv) => <td>{formatStat(hero.statsByRank[r][lv][f.key], f.percent)}</td>)}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    ))}
+          ))}
+        </tbody>
+      </table>
+    </div>
   </section>
 </Base>
 
@@ -224,6 +311,18 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     link.textContent = 'My box';
     el.append(link);
     el.hidden = false;
+  });
+
+  // Marks the Similar Invokers the player owns.
+  loadBox().then((box) => {
+    const owned = new Set(box?.heroes.map((h) => h.configId) ?? []);
+    let any = false;
+    for (const li of document.querySelectorAll<HTMLElement>('.similar [data-config-id]')) {
+      const has = owned.has(li.dataset.configId ?? '');
+      li.classList.toggle('is-owned', has);
+      any ||= has;
+    }
+    document.getElementById('similar-owned')!.hidden = !any;
   });
 </script>
 
@@ -272,17 +371,6 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
       const level = Number(input.value);
       const shown = texts.filter((t) => Number(t.dataset.level) <= level).pop();
       for (const t of texts) t.hidden = t !== shown;
-    });
-  }
-
-  // Rank picker on the stats tab.
-  const rankButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-rank]')];
-  for (const b of rankButtons) {
-    b.addEventListener('click', () => {
-      for (const o of rankButtons) o.setAttribute('aria-pressed', String(o === b));
-      for (const t of document.querySelectorAll<HTMLElement>('[data-rank-table]')) {
-        t.hidden = t.dataset.rankTable !== b.dataset.rank;
-      }
     });
   }
 </script>
@@ -363,6 +451,37 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .panel h2 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
   .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
 
+  .tol-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .tol-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  /* The site menu's global .panel a rule would turn these into padded blocks. */
+  .tol-list a { display: inline; padding: 0; border-radius: 0; color: var(--accent); background: none; }
+  .tol-name { font-weight: 600; font-size: 15px; }
+  .tol-pct { color: var(--text); font-variant-numeric: tabular-nums; }
+  .tol-bosses { color: var(--soft); flex-basis: 100%; }
+  .effect-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .effect-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 14px;
+  }
+  .effect-list a:hover { border-color: var(--accent); }
+  .skill-text :global(.effect-link) { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
   .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
   .tier-list a {
     display: inline-flex;
@@ -391,6 +510,53 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     font-weight: 800;
     font-size: 13px;
   }
+
+  .similar { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
+  .similar a { display: flex; flex-direction: column; gap: 2px; color: var(--text); text-decoration: none; font-size: 13px; }
+  .similar-art {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-bottom: 2px solid var(--rarity);
+    margin-bottom: 4px;
+  }
+  .similar a:hover .similar-art { border-color: var(--accent); }
+  .similar-tier {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tier);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 12px;
+  }
+  .similar-owned {
+    display: none;
+    position: absolute;
+    left: 6px;
+    bottom: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .similar .is-owned .similar-owned { display: block; }
+  .similar .is-owned .similar-art { border-color: var(--accent); }
+  .similar-name { font-weight: 600; line-height: 1.25; }
+  .similar-meta { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 12px; }
+  .hint.more { margin: 10px 0 0; }
 
   .stat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
   .stat {
@@ -465,25 +631,14 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .skill h3 { margin: 0; font-size: 18px; font-weight: 600; }
   .level { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--soft); margin-bottom: 10px; max-width: 320px; }
   .level input { accent-color: var(--accent); width: 100%; min-height: 32px; }
-  .skill-text { font-size: 15px; line-height: 1.6; }
+  .skill-text { font-size: 15px; line-height: 1.6; white-space: pre-line; }
   .skill-text[hidden] { display: none; }
 
-  .rank-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .chip {
-    min-height: 40px;
-    padding: 0 16px;
-    border-radius: 20px;
-    background: transparent;
-    border: 1px solid var(--line);
-    color: var(--soft);
-    font: inherit;
-    cursor: pointer;
-  }
-  .chip[aria-pressed='true'] { background: var(--surface-2); border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .stat-cols th .sub { display: block; font-size: 0.8em; font-weight: 400; color: var(--muted); }
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
   .table-wrap[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
-  th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   thead th:first-child { text-align: left; }
   tbody th { text-align: left; color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }

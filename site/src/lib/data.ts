@@ -49,6 +49,10 @@ export interface Hero {
   maxStats: HeroStats;
   /** rank ("One".."Six") → level ("1", "10", …) → stats */
   statsByRank: Record<string, Record<string, HeroStats>>;
+  /** Awakening type, matches a soul sign in awakening.json. */
+  soulSign?: string;
+  /** The Invoker's own tolerances: tolerance percent by skill level 1–11. */
+  tolerances?: { slot: string; stat: string; byLevel: { level: number; percent: number }[] }[];
 }
 
 export interface SkillLevel {
@@ -59,6 +63,10 @@ export interface SkillLevel {
 export interface Skill {
   type: string;
   title: string;
+  /** Seconds; null or missing for combos, passives and Titan skills. */
+  cooldown?: number | null;
+  /** Ultimate mana cost. */
+  manaCost?: number;
   levels?: SkillLevel[];
 }
 
@@ -208,6 +216,11 @@ const heroSlugs = makeHeroSlugs(heroes);
 
 /** The 38 Titans: name, page slug and the faction that can bind them (none = any). */
 export const titans: TitanInfo[] = titanInfo(heroes, skillSets);
+
+/** Titan pages live at /titans/<name>, e.g. /titans/visciant. */
+export function titanHref(slug: string): string {
+  return href(`titans/${slug}`);
+}
 
 export function heroSlug(heroId: string): string {
   return heroSlugs.get(heroId) ?? slugify(heroId);

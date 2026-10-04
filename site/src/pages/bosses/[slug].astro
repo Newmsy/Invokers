@@ -5,7 +5,7 @@ import { bossLabel, bosses, bossSlug, corruptionNames, heroes, heroHref, heroRef
 import { richText } from '../../lib/format';
 import { tierLists } from '../../lib/tiers/lists';
 import { tierRows } from '../../lib/tierData';
-import { elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
+import { bossArt, elementIcon, heroArt, heroRefsWithArt, itemIcon } from '../../lib/art';
 import { gearSets } from '../../lib/gear';
 import { corruptionKey, hasHeroTolerances, heroesWithTolerance } from '../../lib/tolerances';
 
@@ -19,6 +19,7 @@ const hasTiers = !!tierList;
 // The S tier's Invokers, as portraits under the header.
 const topPicks = tierList ? (tierRows('invokers', tierList).find((r) => r.tier === 'S')?.picks ?? []).filter((p) => p.art).slice(0, 8) : [];
 const elIcon = boss.element ? elementIcon(boss.element) : undefined;
+const art = bossArt(boss.id);
 const energyIcon = itemIcon('Energy');
 
 // Pages that help plan a run at this boss (its tolerance sets are linked from the corruption panels).
@@ -31,6 +32,30 @@ const stages = [...boss.stages].sort((a, b) => a.stage - b.stage);
 const num = (v: number | undefined) => (v == null ? '–' : v.toLocaleString('en-GB'));
 const signed = (v: number | undefined) => (v == null ? '–' : v > 0 ? `+${v}%` : v < 0 ? `−${-v}%` : '0%');
 const hasSkillLevel = stages.some((s) => s.skillLevel != null);
+
+// How the boss scales, for the summary above the stage table.
+const firstStage = stages[0];
+const lastStage = stages[stages.length - 1];
+const grow = (a?: number, b?: number) => (a && b ? b / a : 0);
+const times = (x: number) => `×${x >= 10 ? Math.round(x).toLocaleString('en-GB') : (Math.round(x * 10) / 10).toString()}`;
+const short = (v: number | undefined) =>
+  v == null ? '–' : v >= 1e6 ? `${Math.round(v / 1e5) / 10}M` : v >= 1e4 ? `${Math.round(v / 1e3)}K` : v.toLocaleString('en-GB');
+// The wall: from stage 10 on, the stage whose HP grows most over the one before.
+const lateSteps = stages.slice(1).map((s, i) => ({ s, prev: stages[i] })).filter(({ s }) => s.stage >= 10);
+const wall = lateSteps.reduce<(typeof lateSteps)[number] | undefined>(
+  (best, x) => (!best || grow(x.prev.hp, x.s.hp) > grow(best.prev.hp, best.s.hp) ? x : best),
+  undefined,
+);
+const tolZero = stages.find((s) => (s.toleranceBonus ?? 0) <= 0);
+const tolWorst = Math.min(...stages.map((s) => s.toleranceBonus ?? 0));
+const tolWorstAt = stages.find((s) => s.toleranceBonus === tolWorst);
+// Runs of stages with the same energy cost: "8 (1–6), 12 (7–12) ...".
+const energyBands = stages.reduce<{ energy: number; from: number; to: number }[]>((bands, s) => {
+  const last = bands[bands.length - 1];
+  if (last && last.energy === s.energy) last.to = s.stage;
+  else bands.push({ energy: s.energy, from: s.stage, to: s.stage });
+  return bands;
+}, []);
 
 // The tolerance help texts end with "Useful against: …"; on a boss page only the effect matters.
 // A boss's own Do list sometimes names a tolerance its corruption list leaves out (Koltmos: Bloodrot),
@@ -73,6 +98,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   </a>
 
   <header class="head">
+    {art && <img class="boss-art" src={art} alt={bossLabel(boss)} />}
     {boss.title && <span class="title">{boss.title}</span>}
     <h1>{elIcon && <img class="el" src={elIcon} alt={boss.element} width="32" height="32" />}{bossLabel(boss)}</h1>
     {intro && <p class="desc" set:html={richText(intro)} />}
@@ -181,6 +207,32 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
       The boss's level, element and base stats on each stage, the enemy team's Accuracy and Resistance, and the
       bonus (+) or penalty (−) the stage gives your Invokers' Tolerances.
     </p>
+    {firstStage && lastStage && (
+      <ul class="scaling">
+        <li>
+          <strong>HP {times(grow(firstStage.hp, lastStage.hp))}</strong> from stage {firstStage.stage} to {lastStage.stage}
+          ({short(firstStage.hp)} → {short(lastStage.hp)}). ATK {times(grow(firstStage.atk, lastStage.atk))}.
+        </li>
+        {wall && (
+          <li>
+            <strong>Biggest wall: stage {wall.s.stage}.</strong> HP jumps {times(grow(wall.prev.hp, wall.s.hp))} over stage {wall.prev.stage}
+            ({short(wall.prev.hp)} → {short(wall.s.hp)}).
+          </li>
+        )}
+        {tolZero && (
+          <li>
+            <strong>Tolerance bonus gone at stage {tolZero.stage}.</strong> It starts at {signed(firstStage.toleranceBonus)}, turns into a penalty after
+            stage {tolZero.stage}{tolWorstAt && tolWorst < 0 && <> and reaches {signed(tolWorst)} at stage {tolWorstAt.stage}</>}.
+          </li>
+        )}
+        <li>
+          <strong>Enemy RES {num(firstStage.resistance)} → {num(lastStage.resistance)}</strong>, ACC {num(firstStage.accuracy)} → {num(lastStage.accuracy)}.
+        </li>
+        <li>
+          <strong>Energy per run:</strong> {energyBands.map((b, i) => <>{i > 0 && ', '}{b.energy} ({b.from === b.to ? `stage ${b.from}` : `${b.from}–${b.to}`})</>)}.
+        </li>
+      </ul>
+    )}
     <div class="table-wrap">
       <table class="stage-table">
         <thead>
@@ -200,7 +252,7 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
         </thead>
         <tbody>
           {stages.map((s) => (
-            <tr>
+            <tr class:list={{ wall: wall?.s.stage === s.stage }}>
               <th scope="row">{s.stage}</th>
               <td><span class="energy">{energyIcon && <img src={energyIcon} alt="" width="16" height="16" />}{s.energy}</span></td>
               <td>{num(s.level)}</td>
@@ -307,6 +359,8 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
   .tiers { margin: 10px 0 0; color: var(--soft); font-weight: 500; }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .head { margin-bottom: 24px; }
+  .boss-art { float: right; width: min(40%, 320px); max-height: 320px; object-fit: contain; margin: 0 0 12px 16px; }
+  @media (max-width: 720px) { .boss-art { float: none; display: block; width: 100%; max-height: 220px; margin: 0 0 12px; } }
   h1 .el { vertical-align: -4px; margin-right: 10px; }
   .picks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .picks a { display: block; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
@@ -396,12 +450,15 @@ const rest = longBriefing ? paragraphs.slice(1) : [];
 
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
   .stage-table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
-  .stage-table th, .stage-table td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  .stage-table th, .stage-table td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   .stage-table thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   .stage-table th:first-child { text-align: left; }
   .stage-table tbody th { color: var(--soft); font-weight: 600; position: sticky; left: 0; background: var(--bg); }
   .stage-table tbody tr:last-child > * { border-bottom: 0; }
   .stage-table .energy, .stage-table .el span { display: inline-flex; align-items: center; gap: 6px; }
+  .stage-table tr.wall > * { background: color-mix(in srgb, var(--accent) 12%, var(--bg)); }
+  .scaling { margin: 0 0 14px; padding-left: 20px; color: var(--soft); line-height: 1.6; font-size: 15px; }
+  .scaling strong { color: var(--text); }
   .stage-table .tol.up { color: #7be0a0; }
   .stage-table .tol.down { color: #ff8a65; }
 

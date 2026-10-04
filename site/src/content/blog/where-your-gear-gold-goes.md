@@ -1,7 +1,7 @@
 ---
 title: "Where your gold goes on gear"
 description: "80% of the gold to max a 6★ piece is spent between +15 and +20, and a Legendary costs only 1.46 times as much as a Common."
-date: 2026-10-01
+date: 2026-09-07
 gameVersion: "0.61.1514"
 art: ["item:Gold", "item:Memorium"]
 tags: [gear, gold]

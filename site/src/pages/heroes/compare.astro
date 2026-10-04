@@ -43,7 +43,7 @@ import { href } from '../../lib/data';
   <SeeAlso links={[
     { path: 'tiers', label: 'Tier lists' },
     { path: 'team', label: 'Team builder' },
-    { path: 'blog/levels-not-stars', label: 'Levels, not stars' },
+    { path: 'blog/levelling-vs-awakening', label: 'Levelling vs Awakening' },
   ]} />
 </Base>
 
@@ -224,6 +224,11 @@ import { href } from '../../lib/data';
             card.append(el('p', 'No skill in this slot.', 'none'));
           } else {
             card.append(el('strong', s.title));
+            const timing = [
+              typeof s.cooldown === 'number' && `Cooldown ${s.cooldown}s`,
+              s.manaCost && `${s.manaCost.toLocaleString('en-GB')} mana`,
+            ].filter(Boolean).join(' · ');
+            if (timing) card.append(el('span', timing, 'timing'));
             const shown = s.levels.filter((l) => l.level <= lv).pop() ?? s.levels[0];
             const text = el('div', undefined, 'skill-text');
             text.innerHTML = shown.html; // built from the game text by richText(), which escapes everything else
@@ -322,7 +327,7 @@ import { href } from '../../lib/data';
   }
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
-  table :global(th), table :global(td) { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  table :global(th), table :global(td) { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   table :global(thead th) { background: var(--surface-3); font-weight: 600; }
   table :global(thead th a) { color: var(--text); }
   table :global(thead th:first-child) { text-align: left; color: var(--muted); }
@@ -337,6 +342,7 @@ import { href } from '../../lib/data';
   #skills :global(.skill) { padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
   #skills :global(.who) { display: block; font-size: 12px; color: var(--muted); }
   #skills :global(.skill strong) { display: block; margin: 2px 0 6px; }
+  #skills :global(.timing) { display: block; font-size: 12px; color: var(--soft); margin: -2px 0 6px; }
   #skills :global(.skill-text) { font-size: 14px; line-height: 1.55; white-space: pre-line; }
   #skills :global(.none) { color: var(--muted); margin: 4px 0 0; font-size: 14px; }
   @media (max-width: 720px) {

@@ -1,7 +1,7 @@
 // Search matching, shared by the search page (in the browser) and the tests.
 // The index is small (a few hundred entries), so a plain scan is fast enough.
 
-export type SearchKind = 'Invoker' | 'Skill' | 'Item' | 'Gear set' | 'Boss' | 'Trophy' | 'Guide' | 'Page';
+export type SearchKind = 'Invoker' | 'Titan' | 'Skill' | 'Item' | 'Gear set' | 'Boss' | 'Trophy' | 'Guide' | 'Page';
 
 export interface SearchDoc {
   kind: SearchKind;
@@ -41,6 +41,7 @@ export function tokens(query: string): string[] {
 // Kinds people most often look for come first when scores tie.
 const kindRank: Record<SearchKind, number> = {
   Invoker: 0,
+  Titan: 1,
   Boss: 1,
   'Gear set': 2,
   Trophy: 3,

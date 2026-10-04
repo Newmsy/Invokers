@@ -1,113 +1,107 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { bosses, bossLabel, bossSlug, heroes, href } from '../lib/data';
-import { itemIcon } from '../lib/art';
+import { bosses, bossLabel, bossSlug, heroes, heroHref, href } from '../lib/data';
+import { heroArt, itemIcon } from '../lib/art';
+import { bonusText, soulSignAnchor, soulSigns, sumBonuses } from '../lib/awakening';
 import { rarityColor, rarityOrder } from '../lib/format';
 import {
   MAX_AWAKENING,
   MAX_STARS,
-  ascensionSteps,
   ascensionTable,
+  awakeningByRarity,
   awakeningMaterials,
   awakeningTiers,
+  awakeningTotal,
   baseStars,
   echoFor,
+  foodCost,
+  foodStep,
+  fullAscension,
   levelCap,
   maxLevel,
   plainItemName,
   xpToLevel,
 } from '../lib/progression';
 
-// One row per rarity: where it starts and the Echoes it uses on the way to 6★.
-const byRarity = [...rarityOrder].reverse().map((rarity) => {
-  const hero = heroes.find((h) => h.rarity === rarity)!;
-  const stars = baseStars(hero);
-  const steps = ascensionSteps(stars, rarity);
-  return { rarity, stars, steps, gold: steps.reduce((sum, s) => sum + (s.gold ?? 0), 0) };
-});
 const n = (v: number) => v.toLocaleString('en-GB');
 const rarities = [...rarityOrder].reverse();
+const icon = (id: string) => itemIcon(id);
 
-// Tier words ("Ancient", "Raw", "Novice", …) are the first word of each item's name.
+// Ascension paid with food Invokers built from 1★ Commons, per step and per rarity.
+const foodSteps = ascensionTable.map((row) => foodStep(row.from));
+const byRarity = rarities.map((rarity) => fullAscension(rarity, baseStars(heroes.find((h) => h.rarity === rarity)!)));
+const legendary = byRarity.find((r) => r.rarity === 'Legendary')!;
+const ownXp = xpToLevel(levelCap(MAX_STARS - 1));
+// What a higher-rarity Invoker saves when used as food at its starting star.
+const saved = (stars: number) => foodCost[stars - 1];
+
+// Awakening materials shown generically: tier word plus what varies. Icons are one example of each.
 const sample = awakeningMaterials(heroes[0]);
 const tierWord = (id: string) => plainItemName(id).split(' ')[0];
-const tierRows = awakeningTiers.map((t, i) => ({
-  ...t,
-  rune: `${tierWord(sample[i].rune)} Rune`,
-  essence: `${tierWord(sample[i].essence)} Essence`,
-  astral: plainItemName(sample[i].astral),
-  crest: `${tierWord(sample[i].crest)} Crest`,
-}));
+const kinds = [
+  { key: 'FM', noun: 'Rune', varies: 'faction', example: (i: number) => sample[i].rune },
+  { key: 'EE', noun: 'Essence', varies: 'element', example: (i: number) => sample[i].essence },
+  { key: 'AE', noun: '', varies: '', example: (i: number) => sample[i].astral },
+  { key: 'RM', noun: 'Crest', varies: 'class', example: (i: number) => sample[i].crest },
+];
+const itemId = (key: string, tier: number) => (key === 'AE' ? `AE_ManaTier${tier}` : `${key}_Tier${tier}Generic`);
+const label = (k: (typeof kinds)[number], i: number) => (k.noun ? `${tierWord(k.example(i))} ${k.noun}` : plainItemName(k.example(i)));
+const iconFor = (k: (typeof kinds)[number], i: number) => icon(itemId(k.key, i + 1)) ?? icon(k.example(i));
 
-// Everything the per-Invoker list needs, keyed by item code so each name and icon is sent once.
-const items: Record<string, [string, string | null]> = {};
-const use = (id: string) => {
-  items[id] ??= [plainItemName(id), itemIcon(id) ?? null];
-  return id;
-};
-for (let s = 1; s < MAX_STARS; s++) use(echoFor(s));
-use('EMP_AnimaSpark');
-const list = [...heroes]
-  .sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || a.name.localeCompare(b.name))
-  .map((h) => ({
-    name: h.name,
-    rarity: h.rarity,
-    stars: baseStars(h),
-    steps: ascensionSteps(baseStars(h), h.rarity).map((s) => [s.count ?? 0, s.gold ?? 0]),
-    tiers: awakeningMaterials(h).map((m) => [use(m.rune), use(m.essence), use(m.astral), use(m.crest)]),
-  }));
+// Common, Uncommon and Rare cost the same, so they share a column.
+const groups = [
+  { label: 'Common–Rare', rarity: 'Rare', color: rarityColor.Rare },
+  { label: 'Epic', rarity: 'Epic', color: rarityColor.Epic },
+  { label: 'Legendary', rarity: 'Legendary', color: rarityColor.Legendary },
+];
+const same = (a: string, b: string) => JSON.stringify(awakeningByRarity[a]) === JSON.stringify(awakeningByRarity[b]);
+const lowSame = same('Common', 'Rare') && same('Uncommon', 'Rare');
+const cols = lowSame ? groups : rarities.map((r) => ({ label: r, rarity: r, color: rarityColor[r] }));
+const totals = Object.fromEntries(cols.map((c) => [c.rarity, awakeningTotal(c.rarity)]));
+const materialRows = awakeningTiers.flatMap((t, i) =>
+  kinds.map((k) => ({ tier: t, id: itemId(k.key, t.tier), name: label(k, i), varies: k.varies, icon: iconFor(k, i) })),
+);
+const spark = 'EMP_AnimaSpark';
+
+// Awakening types: base ratings, what each level's nodes add, and a few Invokers of each.
+const types = soulSigns.map((sign) => {
+  const users = heroes.filter((h) => h.soulSign === sign.soulSign);
+  const examples = [...users].sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity) || a.name.localeCompare(b.name)).slice(0, 4);
+  return {
+    sign,
+    anchor: soulSignAnchor(sign),
+    base: Object.entries(sign.baseBonus).map(([stat, v]) => bonusText(stat, v)),
+    levels: sign.levels.map((l) => ({ level: l.awakenLevel, nodes: l.nodes.length, bonuses: [...sumBonuses(sign, [l.awakenLevel])].map(([k, v]) => bonusText(k, v)) })),
+    total: [...sumBonuses(sign)].map(([k, v]) => bonusText(k, v)),
+    count: users.length,
+    examples,
+  };
+});
 
 const omnissi = bosses.filter((b) => b.mode === 'Omnissi');
 const crestBosses = bosses.filter((b) => b.mode === 'other');
-const icon = (id: string) => itemIcon(id);
 ---
 <Base title="Ascension and Awakening">
   <h1>Ascension and Awakening</h1>
   <p class="lead">
-    Maxing an Invoker means ascending to {MAX_STARS}★ (level cap {levelCap(MAX_STARS)}) and Awakening to level
-    {MAX_AWAKENING}. What each rarity needs, and where to get it.
+    Maxing an Invoker means ascending to {MAX_STARS}★ (level cap {levelCap(MAX_STARS)}) and Awakening to level{' '}
+    {MAX_AWAKENING}. What each rarity costs, with Echoes or with food Invokers.
   </p>
   <nav class="jump" aria-label="On this page">
     <a href="#ascend">Ascending</a>
+    <a href="#food">Food from Commons</a>
+    <a href="#rarity">Full ascension by rarity</a>
     <a href="#awaken">Awakening</a>
-    <a href="#mine">For one Invoker</a>
+    <a href="#types">Awakening types</a>
     <a href="#where">Where to get them</a>
   </nav>
 
   <section id="ascend" aria-labelledby="ascend-title">
     <h2 id="ascend-title">Ascending to {MAX_STARS}★</h2>
     <p>
-      Each ascension uses <strong>Echoes of the Invoker's current star</strong> (a 3★ Echo takes a 3★ Invoker to 4★). Every
-      star adds ten levels to the cap and unlocks Awakening.
-    </p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th scope="col">Rarity</th><th scope="col">Starts at</th><th scope="col">Ascensions</th><th scope="col">Echoes used</th><th scope="col">Gold</th><th scope="col">Level cap</th></tr>
-        </thead>
-        <tbody>
-          {byRarity.map((r) => (
-            <tr>
-              <th scope="row" style={`color: ${rarityColor[r.rarity]}`}>{r.rarity}</th>
-              <td>{r.stars}★</td>
-              <td>{r.steps.length}</td>
-              <td class="items">
-                {r.steps.map((s) => (
-                  <span class="item">{s.count ? `${s.count}× ` : ''}{icon(s.echo) && <img src={icon(s.echo)} alt="" width="22" height="22" loading="lazy" />}{plainItemName(s.echo)}</span>
-                ))}
-              </td>
-              <td class="num">{r.gold ? n(r.gold) : '–'}</td>
-              <td>{levelCap(r.stars)} → {levelCap(MAX_STARS)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <h3>Each ascension</h3>
-    <p>
-      The Invoker must be at its level cap first. The game takes the Echoes shown, or Invokers in their place. Gold
-      depends on the Invoker's rarity.
+      Level the Invoker to its cap, then feed it <strong>Echoes or Invokers of its current star</strong>. Going 5★ to
+      6★ takes five 5★ Echoes or five 5★ Invokers of any rarity.
     </p>
     <div class="table-wrap">
       <table>
@@ -115,7 +109,7 @@ const icon = (id: string) => itemIcon(id);
           <tr>
             <th scope="col">Step</th>
             <th scope="col">Level needed</th>
-            <th scope="col">Echoes</th>
+            <th scope="col">Takes</th>
             {rarities.map((r) => <th scope="col" class="num" style={`color: ${rarityColor[r]}`}>{r} Gold</th>)}
           </tr>
         </thead>
@@ -124,68 +118,228 @@ const icon = (id: string) => itemIcon(id);
             <tr>
               <th scope="row">{row.from}★ → {row.to}★</th>
               <td>{row.levelRequired}</td>
-              <td class="items"><span class="item">{row.count}× {icon(echoFor(row.from)) && <img src={icon(echoFor(row.from))} alt="" width="22" height="22" loading="lazy" />}{plainItemName(echoFor(row.from))}</span></td>
+              <td class="items">
+                <span class="item">{row.count}× {icon(echoFor(row.from)) && <img src={icon(echoFor(row.from))} alt="" width="22" height="22" loading="lazy" />}{plainItemName(echoFor(row.from))}</span>
+                <span class="or">or {row.count}× {row.from}★ Invoker{row.count > 1 ? 's' : ''}</span>
+              </td>
               {rarities.map((r) => <td class="num">{row.gold[r] != null ? n(row.gold[r]) : '–'}</td>)}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-    <p>Levelling itself costs no Gold. Level 1 to {maxLevel} takes {n(xpToLevel(maxLevel))} XP in total.</p>
+    <p>
+      Levelling costs no Gold. Level 1 to 50 (needed for the last ascension) takes {n(ownXp)} XP; level 1 to {maxLevel}{' '}
+      takes {n(xpToLevel(maxLevel))}.
+    </p>
+  </section>
+
+  <section id="food" aria-labelledby="food-title">
+    <h2 id="food-title">Building food from 1★ Commons</h2>
+    <p>
+      Echoes mostly come from packs, so food Invokers are the usual route. Starting from 1★ Commons only, each step's food
+      costs:
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Step</th>
+            <th scope="col">Food needed</th>
+            <th scope="col" class="num wide">Commons per food</th>
+            <th scope="col" class="num">Commons</th>
+            <th scope="col" class="num">XP</th>
+            <th scope="col" class="num">Gold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {foodSteps.map((s) => (
+            <tr>
+              <th scope="row">{s.from}★ → {s.to}★</th>
+              <td>{s.count}× {s.from}★</td>
+              <td class="num wide">{n(s.perFood)}</td>
+              <td class="num"><strong>{n(s.commons)}</strong></td>
+              <td class="num">{n(s.xp)}</td>
+              <td class="num">{n(s.gold)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes">
+      <li>
+        A Legendary from 5★ to 6★: <strong>{n(legendary.commons)} Commons</strong>, {n(legendary.foodXp)} XP and{' '}
+        {n(legendary.foodGold)} Gold to build the five 5★ food, plus its own {n(legendary.ownGold)} Gold.
+      </li>
+      <li>XP and Gold are for levelling and ascending the food. Food itself is fed at any level.</li>
+      <li>
+        Spare higher-rarity Invokers skip steps. Used as food, a 3★ Rare saves {n(saved(3).commons)} Commons,{' '}
+        {n(saved(3).xp)} XP and {n(saved(3).gold)} Gold; a 4★ Epic saves {n(saved(4).commons)} Commons,{' '}
+        {n(saved(4).xp)} XP and {n(saved(4).gold)} Gold.
+      </li>
+      <li class="muted">Estimated: assumes food can be any level and ascending keeps the Invoker's level.</li>
+    </ul>
+  </section>
+
+  <section id="rarity" aria-labelledby="rarity-title">
+    <h2 id="rarity-title">Full ascension by rarity</h2>
+    <p>From the starting star to {MAX_STARS}★, paid all in Echoes or all in food built from Commons.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Rarity</th>
+            <th scope="col">Starts</th>
+            <th scope="col" class="num">Echoes</th>
+            <th scope="col" class="num">or Commons</th>
+            <th scope="col" class="num">Food XP</th>
+            <th scope="col" class="num">Gold (Echoes)</th>
+            <th scope="col" class="num">Gold (Commons)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[...byRarity].reverse().map((r) => (
+            <tr>
+              <th scope="row" style={`color: ${rarityColor[r.rarity]}`}>{r.rarity}</th>
+              <td>{r.startStars}★</td>
+              <td class="num">{n(r.echoes)}</td>
+              <td class="num"><strong>{n(r.commons)}</strong></td>
+              <td class="num">{n(r.foodXp)}</td>
+              <td class="num">{n(r.ownGold)}</td>
+              <td class="num">{n(r.ownGold + r.foodGold)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
     <p class="aside">
-      Stars mostly matter for the levels they unlock: see the blog post <a href={href('blog/levels-not-stars')}>Levels, not stars</a>.
+      Echoes are spread across the steps (for example 1 + 2 + 3 + 4 + 5 from 1★). The Invoker's own levelling to 50 adds{' '}
+      {n(ownXp)} XP either way. How much levelling and Awakening each add:{' '}
+      <a href={href('blog/levelling-vs-awakening')}>Levelling vs Awakening</a>.
     </p>
   </section>
 
   <section id="awaken" aria-labelledby="awaken-title">
     <h2 id="awaken-title">Awakening to level {MAX_AWAKENING}</h2>
     <p>
-      Awakening uses a <strong>Rune</strong> for the Invoker's faction, an <strong>Essence</strong> for its element,
-      <strong>Astral Essence</strong> (all Invokers), a <strong>Crest</strong> for its class, and Titan Sparks. The tier
-      goes up every two levels:
+      Each Awakening level needs that star reached (level 6 needs {MAX_STARS}★). Costs depend only on rarity: two
+      Legendaries pay the same. Runes match the Invoker's faction, Essences its element, Crests its class.
     </p>
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th scope="col">Awakening</th><th scope="col">Rune (faction)</th><th scope="col">Essence (element)</th><th scope="col">Astral</th><th scope="col">Crest (class)</th></tr>
+          <tr>
+            <th scope="col">Material</th>
+            {cols.map((c) => <th scope="col" class="num" style={`color: ${c.color}`}>{c.label}</th>)}
+          </tr>
         </thead>
         <tbody>
-          {tierRows.map((t) => (
+          {materialRows.map((m, i) => (
+            <>
+            {i % kinds.length === 0 && <tr class="tierhead"><th scope="colgroup" colspan={cols.length + 1}>Awakening levels {m.tier.levels.join('–')}</th></tr>}
             <tr>
-              <th scope="row">Levels {t.levels.join('–')}</th>
-              <td>{t.rune}</td>
-              <td>{t.essence}</td>
-              <td>{t.astral}</td>
-              <td>{t.crest}</td>
+              <td class="items">
+                <span class="item">{m.icon && <img src={m.icon} alt="" width="22" height="22" loading="lazy" />}{m.name}</span>
+                {m.varies && <span class="varies">by {m.varies}</span>}
+              </td>
+              {cols.map((c) => <td class="num">{n(totals[c.rarity][m.id] ?? 0)}</td>)}
             </tr>
+            </>
           ))}
+          <tr class="tierhead"><th scope="colgroup" colspan={cols.length + 1}>Awakening levels 1–6</th></tr>
+          <tr>
+            <td class="items"><span class="item">{icon(spark) && <img src={icon(spark)} alt="" width="22" height="22" loading="lazy" />}{plainItemName(spark)}</span></td>
+            {cols.map((c) => <td class="num">{n(totals[c.rarity][spark] ?? 0)}</td>)}
+          </tr>
         </tbody>
       </table>
     </div>
-    <p>Awakening can also extend how long your Titan's Invokation lasts, and it unlocks accessory slots.</p>
-    <p class="gap">The amount of each material per Awakening level, by rarity, isn't on the site yet.</p>
+    <details>
+      <summary>Per Awakening level</summary>
+      {cols.map((c) => (
+        <>
+          <h3 style={`color: ${c.color}`}>{c.label}</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Level</th>
+                  {kinds.map((k) => <th scope="col" class="num">{k.noun || 'Astral'}</th>)}
+                  <th scope="col" class="num">Sparks</th>
+                </tr>
+              </thead>
+              <tbody>
+                {awakeningByRarity[c.rarity].map((lvl, i) => {
+                  const tier = Math.floor(i / 2) + 1;
+                  return (
+                    <tr>
+                      <th scope="row">{i + 1}</th>
+                      {kinds.map((k) => <td class="num">{n(lvl[itemId(k.key, tier)] ?? 0)}</td>)}
+                      <td class="num">{lvl[spark] ? n(lvl[spark]) : '–'}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ))}
+    </details>
+    <p>Awakening also unlocks accessory slots and can extend how long your Titan's Invokation lasts.</p>
   </section>
 
-  <section id="mine" class="card" aria-labelledby="mine-title">
-    <h2 id="mine-title">What one Invoker needs</h2>
-    <label class="pick">
-      <span>Invoker</span>
-      <select id="a-hero">
-        {[...rarityOrder].map((r) => (
-          <optgroup label={r}>
-            {list.map((h, i) => h.rarity === r && <option value={i}>{h.name}</option>)}
-          </optgroup>
-        ))}
-      </select>
-    </label>
-    <div id="a-out" aria-live="polite"></div>
+  <section id="types" aria-labelledby="types-title">
+    <h2 id="types-title">Awakening types</h2>
+    <p>
+      Every Invoker has one of {types.length} Awakening types. It sets the Invoker's built-in ratings and what each
+      Awakening level's {types[0].levels[0].nodes} nodes give. Percent bonuses are of the Invoker's 1★ level 1 HP, ATK
+      and DEF.
+    </p>
+    <div class="type-tabs" role="tablist" aria-label="Awakening type" hidden>
+      {types.map((t, i) => (
+        <button type="button" role="tab" id={`tab-${t.anchor}`} aria-controls={t.anchor} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>{t.sign.name}</button>
+      ))}
+    </div>
+    {types.map((t) => (
+      <article class="type" id={t.anchor} role="tabpanel" aria-labelledby={`tab-${t.anchor}`}>
+        <h3>{t.sign.title}</h3>
+        <p class="type-desc">{t.sign.description}. {t.count} Invokers, for example{' '}
+          {t.examples.map((h, i) => (
+            <>{i > 0 && ', '}<a class="with-avatar" href={heroHref(h.id)}><span class="avatar" style="--size: 24px">{heroArt(h.id) && <img src={heroArt(h.id)} alt="" width="24" height="24" loading="lazy" />}</span>{h.name}</a></>
+          ))}.
+        </p>
+        <p class="type-base"><strong>Built-in ratings:</strong> {t.base.join(', ')}</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Level</th>
+                <th scope="col">All its nodes give</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t.levels.map((l) => (
+                <tr>
+                  <th scope="row">{l.level}</th>
+                  <td class="bonuses">{l.bonuses.join(', ')}</td>
+                </tr>
+              ))}
+              <tr class="total">
+                <th scope="row">1–{MAX_AWAKENING}</th>
+                <td class="bonuses"><strong>{t.total.join(', ')}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    ))}
   </section>
 
   <section id="where" aria-labelledby="where-title">
     <h2 id="where-title">Where to get them</h2>
     <dl class="where">
       <dt>Echoes</dt>
-      <dd>Spire floor rewards include Echoes.</dd>
+      <dd>Packs, and some Spire floor rewards.</dd>
       <dt>Runes</dt>
       <dd>Campaign battles. The VIP bonus raises your chance of Rune drops there.</dd>
       <dt>Essences</dt>
@@ -208,71 +362,49 @@ const icon = (id: string) => itemIcon(id);
 
   <SeeAlso links={[
     { path: 'planner', label: 'Planner' },
+    { path: 'summons', label: 'Summons' },
     { path: 'skill-costs', label: 'Skill upgrade costs' },
     { path: 'gear-upgrades', label: 'Gear upgrades and Memorium' },
-    { path: 'heroes/compare', label: 'Compare Invokers' },
   ]} />
-
-  <script type="application/json" id="asc-data" set:html={JSON.stringify({ items, list, max: MAX_STARS }).replace(/</g, '\\u003c')} />
 </Base>
 
 <script>
-  interface Data {
-    items: Record<string, [string, string | null]>;
-    list: { name: string; rarity: string; stars: number; steps: [number, number][]; tiers: string[][] }[];
-    max: number;
-  }
-  const data: Data = JSON.parse(document.getElementById('asc-data')!.textContent!);
-  const select = document.getElementById('a-hero') as HTMLSelectElement;
-  const out = document.getElementById('a-out')!;
-
-  const el = (tag: string, cls?: string, text?: string) => {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text) e.textContent = text;
-    return e;
-  };
-  const chip = (id: string) => {
-    const [name, src] = data.items[id] ?? [id, null];
-    const span = el('span', 'item');
-    if (src) span.append(Object.assign(document.createElement('img'), { src, alt: '', width: 22, height: 22 }));
-    span.append(name);
-    return span;
-  };
-
-  function render() {
-    const h = data.list[Number(select.value)];
-    const asc = el('div', 'block');
-    asc.append(el('h3', '', 'Ascending'));
-    if (h.stars >= data.max) asc.append(el('p', '', `Already ${data.max}★.`));
-    else {
-      const p = el('p', 'chips');
-      h.steps.forEach(([count, ], i) => {
-        const c = chip(`ASC_Stars${h.stars + i}`);
-        if (count) c.prepend(`${count}× `);
-        p.append(c);
+  // Awakening type tabs; #type-<name> opens one. Without JavaScript every type shows in turn.
+  const list = document.querySelector<HTMLElement>('.type-tabs');
+  if (list) {
+    const tabs = [...list.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')!)!);
+    list.hidden = false;
+    const select = (id: string, focus = false) => {
+      tabs.forEach((t, i) => {
+        const on = t.getAttribute('aria-controls') === id;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[i].hidden = !on;
+        if (on && focus) t.focus();
       });
-      const gold = h.steps.reduce((sum, [, g]) => sum + g, 0);
-      const goldText = gold ? ` and ${gold.toLocaleString('en-GB')} Gold` : '';
-      asc.append(el('p', 'muted', `${h.stars}★ to ${data.max}★: ${data.max - h.stars} ascension${data.max - h.stars > 1 ? 's' : ''}${goldText}.`), p);
-    }
-    const awk = el('div', 'block');
-    awk.append(el('h3', '', 'Awakening'));
-    h.tiers.forEach((ids, i) => {
-      const row = el('div', 'tier');
-      row.append(el('span', 'lvl', `Levels ${i * 2 + 1}–${i * 2 + 2}`));
-      const p = el('p', 'chips');
-      ids.forEach((id) => p.append(chip(id)));
-      row.append(p);
-      awk.append(row);
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => {
+        select(t.getAttribute('aria-controls')!);
+        history.replaceState(null, '', `#${t.getAttribute('aria-controls')}`);
+      });
+      t.addEventListener('keydown', (e) => {
+        const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (step) select(tabs[(i + step + tabs.length) % tabs.length].getAttribute('aria-controls')!, true);
+      });
     });
-    const also = el('p', 'chips');
-    also.append(el('span', 'lvl', 'Also used:\u00a0'), chip('EMP_AnimaSpark'));
-    awk.append(also);
-    out.replaceChildren(asc, awk);
+    const fromHash = () => {
+      const id = location.hash.slice(1);
+      if (panels.some((p) => p.id === id)) {
+        select(id);
+        document.getElementById('types-title')?.scrollIntoView();
+      }
+    };
+    select(panels[0].id);
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
   }
-  select.addEventListener('change', render);
-  render();
 </script>
 
 <style>
@@ -284,44 +416,55 @@ const icon = (id: string) => itemIcon(id);
   .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
   .gap { padding: 12px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
   .aside { color: var(--soft); }
-  .card { margin-top: 40px; padding: 4px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
-  .card h2 { margin-top: 16px; }
-  .pick { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); max-width: 360px; }
-  select {
-    min-height: 44px;
-    padding: 0 10px;
-    border-radius: 10px;
-    background: var(--surface-2);
-    border: 1px solid var(--line);
-    color: var(--text);
-    font: inherit;
-    font-size: 15px;
-  }
   .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); margin: 12px 0; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
-  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; white-space: nowrap; }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   h3 { font-size: 16px; font-weight: 600; margin: 24px 0 4px; }
-  tbody th { color: var(--soft); font-weight: 500; white-space: nowrap; }
+  tbody th { color: var(--soft); font-weight: 500; }
   tbody tr:last-child > * { border-bottom: 0; }
   :global(.item) { display: inline-flex; align-items: center; gap: 6px; margin: 2px 12px 2px 0; white-space: nowrap; }
   :global(.item img) { border-radius: 4px; }
-  #a-out :global(.block) { margin-top: 16px; }
-  #a-out :global(h3) { font-size: 15px; font-weight: 600; margin: 0 0 6px; color: var(--soft); }
-  #a-out :global(.muted) { color: var(--muted); font-size: 14px; margin: 0 0 4px; }
-  #a-out :global(.chips) { display: flex; flex-wrap: wrap; margin: 0; }
-  #a-out :global(.tier) { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: center; padding: 6px 0; border-top: 1px solid var(--line); }
-  #a-out :global(.lvl) { color: var(--muted); font-size: 13px; }
+  .or { color: var(--muted); white-space: nowrap; }
+  .varies { color: var(--muted); font-size: 12px; }
+  tr.tierhead th { background: var(--surface-2); color: var(--muted); font-size: 13px; }
+  .notes { max-width: 70ch; padding-left: 20px; color: var(--soft); }
+  .notes li { margin: 4px 0; }
+  .notes .muted { color: var(--muted); font-size: 14px; }
+  details { margin: 12px 0; }
+  .type-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+  .type-tabs button {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .type-tabs button[aria-selected='true'] { border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .type { scroll-margin-top: 80px; }
+  .type h3 { margin-top: 16px; }
+  .type-desc, .type-base { color: var(--soft); margin: 4px 0; line-height: 1.7; }
+  .type-desc .with-avatar { vertical-align: middle; }
+  td.bonuses { line-height: 1.5; }
+  tr.total th, tr.total td { background: var(--surface-2); }
+  summary { cursor: pointer; color: var(--soft); font-weight: 600; }
   .where { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; max-width: 70ch; color: var(--soft); }
   .where dt { font-weight: 600; color: var(--text); }
   .where dd { margin: 0; }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }
-    .card { padding: 4px 14px 14px; }
     .where { grid-template-columns: 1fr; }
     .where dd { margin-bottom: 8px; }
-    #a-out :global(.tier) { grid-template-columns: 1fr; }
+    th, td { padding: 6px 8px; }
+    .wide { display: none; }
+    .varies { display: block; }
+    thead th { white-space: normal; }
+    :global(.item) { margin-right: 0; white-space: normal; }
   }
 </style>

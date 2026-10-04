@@ -1,0 +1,311 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroArt from '../../components/HeroArt.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import { skillIcon, titanArt, titanSplash } from '../../lib/art';
+import { heroHref, href, titanHref, titans } from '../../lib/data';
+import { initials, rarityColor, richText, skillTypeName, tierColor } from '../../lib/format';
+import { tierNames, titanTiers } from '../../lib/tierData';
+import { binders, bonusLabel, titanPassive, titanSkills } from '../../lib/titans';
+import { effectsFor, linkEffects } from '../../lib/effects';
+import type { TitanInfo } from '../../lib/tiers/candidates';
+
+export function getStaticPaths() {
+  return titans.map((titan) => ({ params: { slug: titan.slug }, props: { titan } }));
+}
+
+const { titan } = Astro.props as { titan: TitanInfo };
+const art = titanArt(titan.id);
+// Wide key art behind the header, for Titans that have some.
+const splash = titanSplash(titan.id);
+const passive = titanPassive(titan.id);
+const full = passive.at(-1)?.bonus;
+const skills = titanSkills(titan.id);
+const tiers = titanTiers(titan.slug).sort((a, b) => tierNames.indexOf(a.tier) - tierNames.indexOf(b.tier));
+const bound = binders(titan);
+const shown = bound.slice(0, 12);
+const typeName = (t: string) => (t === 'Invocation' ? 'Invokation' : skillTypeName(t));
+const anchor = (t: string) => `skill-${t.replace(/^ActiveSkill/, '').toLowerCase()}`;
+// Same-faction Titans, for the foot of the page.
+const siblings = titans.filter((t) => t.faction === titan.faction && t.id !== titan.id);
+const kitEffects = effectsFor(titan.id);
+const effectHref = (slug: string) => href(`effects/${slug}`);
+const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(titan.faction)}`) : href('heroes');
+---
+<Base title={`${titan.name} (Titan)`}>
+  <a class="back" href={href('titans')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    All Titans
+  </a>
+
+  {splash && <div class="page-banner tall" aria-hidden="true"><img src={splash} alt="" width="1200" height="600" fetchpriority="high" /></div>}
+  <section class="top">
+    <div class="art">{art ? <img src={art} alt="" /> : <span class="ph">{initials(titan.name)}</span>}</div>
+    <div>
+      <span class="kind">Titan</span>
+      <h1>{titan.name}</h1>
+      <ul class="tags">
+        <li>{titan.faction ? <a href={allBinders}>Bound by {titan.faction} Invokers</a> : <a href={allBinders}>Any Invoker can bind it</a>}</li>
+        {full && <li>{bonusLabel(full)}</li>}
+      </ul>
+      <a class="button" href={href('team')}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3 3-5 6-5s6 2 6 5M16 5a3 3 0 010 6M18 15c2 .5 3 2.5 3 5"></path></svg>
+        Build a team
+      </a>
+    </div>
+  </section>
+
+  {passive.length > 0 && (
+    <section>
+      <h2 id="bonus">Bound Invoker bonus</h2>
+      <p class="hint">Rises with each Empowerment (Titanhearts).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Empowerment</th>
+              <th scope="col">{full?.elsewhere ? 'Boss fights' : 'Bonus'}</th>
+              {full?.elsewhere && <th scope="col">Elsewhere</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {passive.map((p) => (
+              <tr>
+                <th scope="row">{p.empowerment}</th>
+                {p.bonus ? (
+                  <>
+                    <td>{p.bonus.stat} {p.bonus.value}</td>
+                    {full?.elsewhere && <td>{p.bonus.elsewhere ? `${p.bonus.stat} ${p.bonus.elsewhere}` : ''}</td>}
+                  </>
+                ) : (
+                  <td colspan={full?.elsewhere ? 2 : 1} set:html={richText(p.text)} />
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <section>
+    <h2>Skills</h2>
+    {kitEffects.length > 0 && (
+      <ul class="effect-list">
+        {kitEffects.map((e) => <li><a href={effectHref(e.slug)} title={e.text}>{e.name}</a></li>)}
+      </ul>
+    )}
+    {skills.map((s) => {
+      const levels = s.levels!;
+      const max = levels[levels.length - 1].level;
+      const icon = skillIcon(titan.id, s.type);
+      return (
+        <article class="skill" id={anchor(s.type)}>
+          <header>
+            {icon && <span class="skill-icon"><img src={icon} alt="" width="48" height="48" loading="lazy" /></span>}
+            <div>
+              <span class="skill-type">{typeName(s.type)}</span>
+              {s.title && <h3>{s.title}</h3>}
+            </div>
+          </header>
+          {levels.length > 1 && (
+            <label class="level">
+              <span>Level <output>{levels[0].level}</output> of {max}</span>
+              <input type="range" min={levels[0].level} max={max} step="1" value={levels[0].level} />
+            </label>
+          )}
+          {levels.map((l, i) => (
+            <div class="skill-text" data-level={l.level} hidden={i > 0} set:html={linkEffects(richText(l.text), effectHref)} />
+          ))}
+        </article>
+      );
+    })}
+  </section>
+
+  {tiers.length > 0 && (
+    <section>
+      <h2>Tier lists</h2>
+      <ul class="tier-list">
+        {tiers.map((t) => (
+          <li>
+            <a href={href(`tiers/titans/${t.list.id}`)}>
+              <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#5FDCF7'}`}>{t.tier}</span>
+              {t.list.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section>
+    <h2>Who can bind {titan.name}</h2>
+    <p class="hint">{bound.length} Invokers{titan.faction ? ` from ${titan.faction}` : ''}. <a href={allBinders}>See them all</a></p>
+    <ul class="binders">
+      {shown.map((h) => (
+        <li>
+          <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+            <span class="portrait"><HeroArt hero={h} /></span>
+            <span class="name">{h.name}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {siblings.length > 0 && (
+    <section>
+      <h2>Other {titan.faction ?? 'any-faction'} Titans</h2>
+      <ul class="binders">
+        {siblings.map((t) => (
+          <li>
+            <a href={titanHref(t.slug)}>
+              <span class="portrait">{titanArt(t.id) ? <img src={titanArt(t.id)} alt="" loading="lazy" /> : <span class="ph">{initials(t.name)}</span>}</span>
+              <span class="name">{t.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <SeeAlso links={[
+    { path: 'titans', label: 'All Titans' },
+    { path: 'tiers/titans/campaign', label: 'Titan tier lists' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'bosses', label: 'Boss guides' },
+  ]} />
+</Base>
+
+<script>
+  // Skill level sliders. Some skills skip levels; between them the last listed text still applies.
+  for (const skill of document.querySelectorAll<HTMLElement>('.skill')) {
+    const input = skill.querySelector<HTMLInputElement>('input[type=range]');
+    if (!input) continue;
+    const out = skill.querySelector('output')!;
+    const texts = [...skill.querySelectorAll<HTMLElement>('.skill-text')];
+    input.addEventListener('input', () => {
+      out.textContent = input.value;
+      const level = Number(input.value);
+      const shown = texts.filter((t) => Number(t.dataset.level) <= level).pop();
+      for (const t of texts) t.hidden = t !== shown;
+    });
+  }
+</script>
+
+<style>
+  .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
+  .top { display: grid; grid-template-columns: 240px 1fr; gap: 32px; align-items: end; margin-bottom: 8px; }
+  .art {
+    height: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-bottom: 3px solid var(--accent);
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .art img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .ph { font-family: var(--display); font-weight: 800; font-size: 36px; color: var(--muted); }
+  .kind { color: var(--accent); font-weight: 600; font-size: 14px; }
+  h1 { margin: 4px 0 0; font-size: 40px; font-weight: 700; }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 0; }
+  .tags li { padding: 6px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+  .tags a { color: inherit; text-decoration: none; }
+  .tags li:has(a:hover) { border-color: var(--accent); }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    margin-top: 12px;
+    padding: 0 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .button:hover { border-color: var(--accent); color: var(--text); }
+  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
+  .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
+
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 560px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
+  tbody th { color: var(--soft); font-weight: 500; width: 1%; white-space: nowrap; text-align: center; }
+  tbody tr:last-child > * { border-bottom: 0; }
+
+  .skill { padding: 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; scroll-margin-top: 16px; }
+  .skill header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .skill header > div { display: flex; flex-direction: column; gap: 2px; }
+  .skill-icon { width: 48px; height: 48px; flex: none; border-radius: 10px; background: var(--surface-2); overflow: hidden; }
+  .skill-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .skill-type { font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+  .skill h3 { margin: 0; font-size: 18px; font-weight: 600; }
+  .level { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--soft); margin-bottom: 10px; max-width: 320px; }
+  .level input { accent-color: var(--accent); width: 100%; min-height: 32px; }
+  .skill-text { font-size: 15px; line-height: 1.6; white-space: pre-line; }
+  .skill-text[hidden] { display: none; }
+
+  .effect-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .effect-list a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; }
+  .effect-list a:hover { border-color: var(--accent); }
+  .skill-text :global(.effect-link) { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+  .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tier-list a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 12px 0 4px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .tier-list a:hover { border-color: var(--accent); }
+  .tier-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--tier);
+    color: var(--bg);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 13px;
+  }
+
+  .binders { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+  .binders a { display: flex; flex-direction: column; gap: 6px; color: var(--text); text-decoration: none; font-size: 13px; }
+  .portrait {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-bottom: 2px solid var(--rarity, var(--line));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  .binders a:hover .portrait { border-color: var(--accent); }
+  .name { text-align: center; line-height: 1.25; }
+
+  @media (max-width: 720px) {
+    .top { grid-template-columns: 1fr; gap: 16px; }
+    .art { height: 220px; }
+    h1 { font-size: 28px; }
+    .binders { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
 title: "The loading screen tips, fact-checked"
 description: "The game shows 40 tips while it loads. We checked the ones that make claims against the numbers."
-date: 2026-10-01
+date: 2026-09-05
 gameVersion: "0.61.1516"
 art: ["item:1 day XP Boost", "item:Fire Spire Key"]
 tags: [tips, guides]
@@ -13,7 +13,7 @@ Of the 40 loading-screen tips, the checkable ones mostly hold up. One gets the m
 
 | Tip | Verdict |
 |---|---|
-| "Ascending your Invokers increases their level cap." | True, and it's most of what ascending does: a star alone adds about 5% to base stats. 5★ level 50 to 6★ is about +7%; the ten levels after add +31%. ([Levels, not stars](/blog/levels-not-stars)) |
+| "Ascending your Invokers increases their level cap." | True: each star adds 10 levels to the cap, up to level 60 at 6★. ([Levelling vs Awakening](/blog/levelling-vs-awakening)) |
 | "Upgrading Skills Unlocks New Strength." | Every hero damage skill hits exactly twice as hard at level 11 as at level 1. ([Maxing a skill doubles its damage](/blog/maxing-a-skill)) |
 | "A Relic's Rarity decides how many Substats it has at Level 0." | Common 0, Uncommon 1, Rare 2, Epic 3, Legendary 4. +5, +10, +15 and +20 add a substat until there are 4, then upgrade one, so a Legendary spends all four on upgrades and a Common on unlocks. |
 | "Equip 3 or 5 Relics from the same Set." | None of the [31 sets](/gear) has a bonus beyond 5 pieces. |
