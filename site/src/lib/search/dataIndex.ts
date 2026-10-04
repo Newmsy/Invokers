@@ -26,13 +26,13 @@ function isPlaceholder(item: Item): boolean {
 }
 
 /**
- * False for items players can't get or use: faction runes for factions with no Invokers (Ekkan, Oasi, Outlaws),
- * and the generic tier-2 crest whose name copies the Melee Attacker one.
+ * False for items players can't get or use: faction runes for factions with no Invokers (Ekkan, Oasi, Outlaws), and
+ * the generic runes, crests and essences (players only get the faction, class and element ones).
  */
 function inGame(item: Item, factions: Set<string>): boolean {
+  if (/^(FM|RM|EE)_Tier\dGeneric$/.test(item.id)) return false;
   const rune = /^FM_Tier\d(.+)$/.exec(item.id)?.[1];
-  if (rune && rune !== 'Generic' && !factions.has(rune)) return false;
-  return item.id !== 'RM_Tier2Generic';
+  return !rune || factions.has(rune);
 }
 
 /** Keeps the index small: long texts are cut at a word boundary. */

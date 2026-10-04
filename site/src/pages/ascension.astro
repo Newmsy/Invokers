@@ -46,8 +46,8 @@ const kinds = [
   { key: 'RM', noun: 'Crest', varies: 'class', example: (i: number) => sample[i].crest },
 ];
 const itemId = (key: string, tier: number) => (key === 'AE' ? `AE_ManaTier${tier}` : `${key}_Tier${tier}Generic`);
-const label = (k: (typeof kinds)[number], i: number) => (k.noun ? `${tierWord(k.example(i))} ${k.noun}` : plainItemName(k.example(i)));
-const iconFor = (k: (typeof kinds)[number], i: number) => icon(itemId(k.key, i + 1)) ?? icon(k.example(i));
+const label = (k: (typeof kinds)[number], i: number) => (k.noun ? `${tierWord(k.example(i))} ${k.varies} ${k.noun}` : plainItemName(k.example(i)));
+const iconFor = (k: (typeof kinds)[number], i: number) => icon(k.example(i)) ?? icon(itemId(k.key, i + 1));
 
 // Common, Uncommon and Rare cost the same, so they share a column.
 const groups = [
@@ -60,7 +60,7 @@ const lowSame = same('Common', 'Rare') && same('Uncommon', 'Rare');
 const cols = lowSame ? groups : rarities.map((r) => ({ label: r, rarity: r, color: rarityColor[r] }));
 const totals = Object.fromEntries(cols.map((c) => [c.rarity, awakeningTotal(c.rarity)]));
 const materialRows = awakeningTiers.flatMap((t, i) =>
-  kinds.map((k) => ({ tier: t, id: itemId(k.key, t.tier), name: label(k, i), varies: k.varies, icon: iconFor(k, i) })),
+  kinds.map((k) => ({ tier: t, id: itemId(k.key, t.tier), name: label(k, i), varies: k.varies && `e.g. ${plainItemName(k.example(i))}`, icon: iconFor(k, i) })),
 );
 const spark = 'EMP_AnimaSpark';
 
@@ -240,7 +240,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
             <tr>
               <td class="items">
                 <span class="item">{m.icon && <img src={m.icon} alt="" width="22" height="22" loading="lazy" />}{m.name}</span>
-                {m.varies && <span class="varies">by {m.varies}</span>}
+                {m.varies && <span class="varies">{m.varies}</span>}
               </td>
               {cols.map((c) => <td class="num">{n(totals[c.rarity][m.id] ?? 0)}</td>)}
             </tr>
