@@ -1,0 +1,54 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "The game's own RpgStateUtils.DefenseRatingToFactor, called in game (LootDump F11 damage probe) at DEF 0-50,000.",
+ "defense": {
+  "formula": "damageMultiplier = 0.15 + 0.85 * exp(-DEF / 5000)",
+  "floor": 0.15,
+  "scale": 5000,
+  "maxError": 0.0,
+  "notes": [
+   "The multiplier depends only on the defender's DEF: every hit is reduced by the same percentage, whatever its size (1000 DEF = x0.846 on a 1,000 or a 2,000 hit).",
+   "DEF can never reduce a hit by more than 85% (floor 0.15).",
+   "Boss DEF above 3,000 (e.g. Ulgorim stage 20, 11,000) uses the same curve."
+  ],
+  "samples": [
+   {
+    "defense": 0,
+    "multiplier": 1
+   },
+   {
+    "defense": 1000,
+    "multiplier": 0.845921
+   },
+   {
+    "defense": 3000,
+    "multiplier": 0.61649
+   },
+   {
+    "defense": 5000,
+    "multiplier": 0.462698
+   },
+   {
+    "defense": 8540,
+    "multiplier": 0.304044
+   },
+   {
+    "defense": 10000,
+    "multiplier": 0.265035
+   },
+   {
+    "defense": 20000,
+    "multiplier": 0.165568
+   },
+   {
+    "defense": 50000,
+    "multiplier": 0.150039
+   }
+  ]
+ },
+ "unconfirmed": [
+  "How ignore-DEF, element advantage, crit, damage-taken effects and tolerance combine with this multiplier: the in-game probe of the full damage function did not return usable values yet (issue #123).",
+  "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config."
+ ]
+}
