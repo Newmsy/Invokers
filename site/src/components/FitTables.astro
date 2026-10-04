@@ -1,0 +1,96 @@
+---
+// Every table fits its column: cells wrap, and a table that is still too wide becomes a stack of cards,
+// one per row, each cell labelled with its column heading. Works for tables in posts and on pages, and for
+// tables that scripts fill in later.
+---
+<script>
+  function label(table: HTMLTableElement) {
+    const heads = [...(table.tHead?.rows[0]?.cells ?? [])].map((c) => c.textContent?.trim() ?? '');
+    if (!heads.length) return false;
+    for (const body of table.tBodies) {
+      for (const row of body.rows) {
+        let col = 0;
+        for (const cell of row.cells) {
+          if (!cell.dataset.label) cell.dataset.label = heads[col] ?? '';
+          col += cell.colSpan;
+        }
+      }
+    }
+    return true;
+  }
+
+  function fit() {
+    for (const table of document.querySelectorAll('table')) {
+      if (!table.offsetParent && !table.classList.contains('stack')) continue;
+      table.classList.remove('stack');
+      // The space the table may use: its scrolling wrapper, or else its parent.
+      let box = table.parentElement!;
+      while (box !== document.body && getComputedStyle(box).overflowX === 'visible' && getComputedStyle(box).display === 'contents') box = box.parentElement!;
+      const room = box.clientWidth - parseFloat(getComputedStyle(box).paddingLeft) - parseFloat(getComputedStyle(box).paddingRight);
+      if (table.scrollWidth > room + 2 && label(table)) table.classList.add('stack');
+    }
+  }
+
+  let queued = false;
+  const later = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; fit(); });
+  };
+  fit();
+  addEventListener('resize', later);
+  addEventListener('load', later);
+  document.fonts?.ready.then(later);
+  // Tables that scripts build or refill (planner, team builder, compare, My box).
+  new MutationObserver((records) => {
+    if (records.some((r) => (r.target as Element).closest?.('table') || [...r.addedNodes].some((n) => n instanceof Element && (n.matches('table') || n.querySelector('table'))))) later();
+  }).observe(document.body, { childList: true, subtree: true });
+</script>
+
+<style is:global>
+  /* Cells wrap rather than push the table wider than the page. */
+  td, th { overflow-wrap: break-word; }
+  table.stack, table.stack tbody, table.stack tr, table.stack td, table.stack tbody th { display: block !important; width: auto !important; }
+  table.stack { overflow: visible !important; border: 0 !important; background: none !important; min-width: 0 !important; }
+  table.stack thead { display: none !important; }
+  table.stack caption { display: block; text-align: left; }
+  table.stack tr {
+    margin: 0 0 10px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  table.stack td, table.stack tbody th {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent) !important;
+    text-align: right !important;
+    white-space: normal !important;
+    position: static !important;
+    background: none !important;
+  }
+  table.stack tr > :last-child { border-bottom: 0 !important; }
+  table.stack td::before, table.stack tbody th::before {
+    content: attr(data-label);
+    flex: none;
+    max-width: 50%;
+    color: var(--muted);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+  }
+  /* The row's first cell (usually its name) is the card's title. */
+  table.stack tr > :first-child { justify-content: flex-start; text-align: left !important; font-weight: 600; color: var(--text); }
+  table.stack tr > :first-child::before { display: none; }
+  table.stack td[data-label='']::before { display: none; }
+  table.stack td:empty { display: none !important; }
+  table.stack .art-chip { white-space: normal; }
+  /* Wrappers that scrolled sideways no longer need to. */
+  .table-wrap:has(table.stack), :has(> table.stack) { overflow-x: visible !important; border: 0 !important; }
+</style>

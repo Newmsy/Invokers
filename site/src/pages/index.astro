@@ -46,7 +46,9 @@ const featured = guides.filter((g) => g.kind === 'Guide').slice(0, 6);
 
 const campaign = tierLists.find((l) => l.id === 'campaign') ?? tierLists[0];
 const topPicks = tierRows('invokers', campaign).flatMap((r) => r.picks).filter((p) => p.art).slice(0, 8);
-const splash = heroes.map((h) => heroSplash(h.id)).find(Boolean);
+// Full-size art of the lead story's first Invoker, when that art exists.
+const leadHero = lead?.art.map((a) => a.match(/^hero:(.+)$/)?.[1]).map((n) => heroes.find((h) => h.name === n)).find(Boolean);
+const splash = leadHero ? heroSplash(leadHero.id) : undefined;
 
 const counts = [
   { path: 'heroes', label: 'Invokers', n: heroes.length, art: 'hero:Admiral Gladstone' },
@@ -62,7 +64,7 @@ const counts = [
   {lead && (
     <section class="top-stories" aria-label="Latest">
       <a class="lead-story" href={href(lead.path)}>
-        <span class="lead-art">
+        <span class:list={['lead-art', { 'has-splash': splash }]}>
           {splash ? <img class="splash" src={splash} alt="" /> : lead.art.slice(0, 3).map((a) => <SectionArt art={a} size={96} />)}
         </span>
         <span class="text">
@@ -193,7 +195,8 @@ const counts = [
   .lead-story { grid-row: span 2; position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 320px;
     background: radial-gradient(ellipse at 70% 20%, color-mix(in srgb, var(--accent) 22%, var(--surface-2)), var(--surface)) !important; }
   .lead-art { position: absolute; inset: 0 0 auto auto; display: flex; gap: 12px; padding: 24px; }
-  .lead-art .splash { position: absolute; right: 0; top: 0; height: 100%; width: auto; max-width: 60%; object-fit: contain; object-position: bottom right; }
+  .lead-art.has-splash { inset: 0; padding: 0; }
+  .lead-art .splash { position: absolute; right: 0; bottom: 0; height: 100%; width: 60%; object-fit: contain; object-position: bottom right; }
   .lead-story .text { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 24px; padding-right: 35%;
     background: linear-gradient(transparent, color-mix(in srgb, var(--surface-3) 85%, transparent) 30%); }
   .lead-story strong { font-size: 28px; }
