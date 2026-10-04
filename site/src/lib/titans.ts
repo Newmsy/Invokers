@@ -6,14 +6,7 @@ import { parseBonus, recommendTitans, type PickTitan, type TitanBonus, type Tita
 
 export { bonusLabel, parseBonus, type TitanBonus } from './titanPicks';
 
-// Titan rarity, once the data pack has it (issue #149).
-const rarityFiles = import.meta.glob<{ default: { id: string; rarity?: string }[] }>('../../../data/titans.json', { eager: true });
-const rarityById = new Map(Object.values(rarityFiles).flatMap((f) => f.default).map((t) => [t.id, t.rarity]));
-
-/** A Titan's rarity, or undefined until it's known. */
-export const titanRarity = (titanId: string): string | undefined => rarityById.get(titanId);
-
-const pickTitans: PickTitan[] = titans.map((t) => ({ ...t, rarity: titanRarity(t.id), skills: skillsFor(t.id) }));
+const pickTitans: PickTitan[] = titans.map((t) => ({ ...t, skills: skillsFor(t.id) }));
 
 /** Top Titans for an Invoker page. */
 export function titanPicksFor(hero: Hero, count = 3): TitanPick[] {

@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { titanArt } from '../../lib/art';
 import { href, titanHref, titans } from '../../lib/data';
-import { initials } from '../../lib/format';
+import { initials, rarityColor } from '../../lib/format';
 import { bonusLabel, maxBonus, titansByFaction } from '../../lib/titans';
 
 const groups = titansByFaction();
@@ -35,6 +35,7 @@ const groups = titansByFaction();
               <a class="card" href={titanHref(t.slug)}>
                 <span class="card-art">{art ? <img src={art} alt="" loading="lazy" /> : <span class="ph">{initials(t.name)}</span>}</span>
                 <span class="card-name">{t.name}</span>
+                {t.rarity && <span class="card-rarity" style={`color: ${rarityColor[t.rarity] ?? 'inherit'}`}>{t.rarity}{t.role && ` · ${t.role}`}</span>}
                 {bonus && <span class="card-meta">{bonusLabel(bonus)}</span>}
               </a>
             </li>
@@ -61,6 +62,7 @@ const groups = titansByFaction();
   .group h2 { display: flex; align-items: baseline; gap: 8px; font-size: 18px; margin: 28px 0 12px; }
   .group h2 a { color: var(--text); }
   .sub { color: var(--muted); font-size: 14px; font-weight: 400; }
+  .card-rarity { padding: 0 12px; font-size: 12px; font-weight: 600; }
   .grid {
     list-style: none;
     margin: 0;

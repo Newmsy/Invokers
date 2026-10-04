@@ -93,6 +93,19 @@ for (const source of sourceFiles) {
 // order in tips.json) and game mode cards, all under readable names.
 const setIconPath = new Map<string, string>();
 for (const [id, name] of Object.entries(setNames)) add(`sets/${slugify(name)}.webp`, `sets/${id}.webp`, setIconPath, id);
+// Gear piece icons per set and slot, accessory icons per faction and slot, and the empty-slot outlines.
+export const gearSlots = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'] as const;
+export const accessorySlots = ['Amulet', 'Earrings', 'Banner', 'Talisman', 'Flasks'] as const;
+const gearPiecePath = new Map<string, string>();
+for (const [id, name] of Object.entries(setNames)) {
+  for (const slot of gearSlots) add(`gear/${slugify(name)}-${slot.toLowerCase()}.webp`, `gear/${id}_${slot}.webp`, gearPiecePath, `${id}/${slot}`);
+}
+const accessoryPath = new Map<string, string>();
+for (const f of new Set(heroes.map((h) => String(h.faction)))) {
+  for (const slot of accessorySlots) add(`gear/${slugify(f)}-${slot.toLowerCase()}.webp`, `gear/accessory_${slot}_${f}.webp`, accessoryPath, `${f}/${slot}`);
+}
+const slotPath = new Map<string, string>();
+for (const slot of [...gearSlots, ...accessorySlots]) add(`gear/empty-${slot.toLowerCase()}.webp`, `gear/slot_${slot}.webp`, slotPath, slot);
 const factionCardPath = new Map<string, string>();
 const rarityCardPath = new Map<string, string>();
 const modeArtPath = new Map<string, string>();
@@ -137,6 +150,12 @@ export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
 export const setIcon = (setId: string) => url(setIconPath.get(setId));
+/** A set's icon for one gear slot (Weapon ... Boots). */
+export const gearPieceIcon = (setId: string, slot: string) => url(gearPiecePath.get(`${setId}/${slot}`));
+/** A faction's accessory icon for one accessory slot (Amulet ... Flasks). */
+export const accessoryIcon = (faction: string, slot: string) => url(accessoryPath.get(`${faction}/${slot}`));
+/** The empty-slot outline for a gear or accessory slot. */
+export const slotIcon = (slot: string) => url(slotPath.get(slot));
 /** Faction card art: a tall card with a character from that faction. */
 export const factionCard = (faction: string) => url(factionCardPath.get(faction));
 /** The game's hero card background for a rarity (a colour wash, no emblem). */

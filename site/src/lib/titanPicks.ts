@@ -45,6 +45,8 @@ export interface PickTitan {
   faction?: string;
   /** Rare, Epic, Legendary or Mythical, once known. */
   rarity?: string;
+  /** "Tank" or "Melee Attacker". */
+  role?: string;
   skills: SkillText[];
 }
 
@@ -109,7 +111,7 @@ const statWhy: Record<Stat, string> = {
 
 const roleNoun: Record<Role, string> = { attacker: 'damage dealer', support: 'support', tank: 'tank' };
 
-/** Rarity counts most. Until it's known, a Titan's bonus against the best bonus for that stat stands in for it. */
+/** Rarity counts most. A Titan without one falls back to its bonus against the best bonus for that stat. */
 const rarityScore: Record<string, number> = { Rare: 0.25, Epic: 0.5, Legendary: 0.8, Mythical: 1 };
 
 const weights = { rarity: 0.5, stat: 0.35, kit: 0.15 };
@@ -138,18 +140,21 @@ export function recommendTitans(hero: PickHero, titans: PickTitan[], count = 3):
   const accHungry = needsAccuracy(hero.skills);
   const bonuses = new Map(titans.map((t) => [t.id, parseBonus(passiveText(t))]));
 
-  // Best bonus per stat across every Titan, for the rarity stand-in.
+  // Best bonus per stat across every Titan.
   const bestFor = new Map<string, number>();
   for (const b of bonuses.values()) if (b) bestFor.set(b.stat, Math.max(bestFor.get(b.stat) ?? 0, bonusNumber(b)));
 
   const picks = bindable(hero, titans).map((titan) => {
     const bonus = bonuses.get(titan.id);
     const stat = statOf(bonus);
-    const rarity = titan.rarity
-      ? (rarityScore[titan.rarity] ?? 0.5)
-      : bonus ? bonusNumber(bonus) / (bestFor.get(bonus.stat) || 1) : 0;
-    let fit = stat ? statFit[role][stat] : 0;
+    // This Titan's bonus against the best bonus for that stat, 0-1.
+    const strength = bonus ? bonusNumber(bonus) / (bestFor.get(bonus.stat) || 1) : 0;
+    const rarity = titan.rarity ? (rarityScore[titan.rarity] ?? 0.5) : strength;
+    // A bigger bonus of the same stat edges ahead.
+    let fit = stat ? statFit[role][stat] * (0.85 + 0.15 * strength) : 0;
     if (stat === 'ACC' && accHungry) fit = Math.min(1, fit + 0.3);
+    // Tank Titans suit tank Invokers.
+    if (role === 'tank' && titan.role === 'Tank') fit = Math.min(1, fit + 0.15);
     const kit = readKit(titan.skills.filter((s) => s.type !== 'PassiveBonus'));
     const helps = (Object.entries(tagFit[role]) as [Tag, number][]).filter(([tag]) => kit.tags.has(tag));
     const kitScore = Math.min(1, helps.reduce((sum, [, w]) => sum + w, 0));

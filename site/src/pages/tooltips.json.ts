@@ -51,7 +51,7 @@ export function GET() {
     tips[key(titanHref(t.slug))] = {
       n: t.name,
       a: titanArt(t.id),
-      s: `Titan · ${t.faction ?? 'Any faction'}`,
+      s: [t.rarity, 'Titan', t.faction ?? 'Any faction'].filter(Boolean).join(' · '),
       t: best && { label: `${best.tier} tier · ${best.list.label}`, color: tierColor[best.tier] },
       r: bonus ? [['Max bonus', bonusLabel(bonus)]] : [],
       l: titanSkills(t.id).filter((s) => s.title && s.type !== 'Combo').map((s) => `${skillTypeName(s.type)}: ${s.title}`),
