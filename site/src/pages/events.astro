@@ -369,7 +369,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
-  tbody th { color: var(--text); font-weight: 500; white-space: nowrap; }
+  tbody th { color: var(--text); font-weight: 500; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   td.wrap { color: var(--soft); min-width: 260px; }
   tbody tr:last-child > * { border-bottom: 0; }
@@ -384,8 +384,8 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .row.fixed { min-height: 32px; }
   .how :global(h3) { margin: 16px 0 8px; }
   .arena-table { margin-top: 12px; }
-  .arena-table :global(tbody th), .arena-table :global(tbody td) { white-space: nowrap; padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
-  .arena-table :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .arena-table :global(tbody th), .arena-table :global(tbody td) { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+  .arena-table :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; }
   .arena-table :global(tbody tr:last-child > *) { border-bottom: 0; }
   .arena-table :global(td.yes), .arena-table :global(td.no) { text-align: left; }
   .arena-table :global(td.yes) { color: var(--accent); font-weight: 600; }
@@ -397,8 +397,8 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .how .hint { margin-top: 8px; }
   /* The breakdown rows are built by the script, so they need global selectors. */
   .how :global(tbody th), .how :global(tbody td) { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: left; }
-  .how :global(tbody th) { color: var(--text); font-weight: 500; white-space: nowrap; }
-  .how :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .how :global(tbody th) { color: var(--text); font-weight: 500; }
+  .how :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; }
   .how :global(tbody tr:last-child > *) { border-bottom: 0; }
 
   @media (max-width: 720px) {

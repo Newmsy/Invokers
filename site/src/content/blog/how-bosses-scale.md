@@ -1,7 +1,7 @@
 ---
 title: "How bosses get harder, stage by stage"
 description: "Every boss shares one difficulty curve for level, enemy ACC and RES, and your Tolerance bonus. Stage 10 is where the bonus runs out; the big HP walls sit around stage 15."
-date: 2026-10-03
+date: 2026-09-25
 gameVersion: "0.61.1516"
 art: ["element:Fire", "element:Earth", "element:Wind", "element:Water"]
 tags: [bosses, stages]

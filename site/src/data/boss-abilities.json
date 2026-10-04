@@ -1,0 +1,637 @@
+{
+  "note": "What each boss does in battle, in our words, plus Invokers that counter it. Keyed by boss id from data/bosses.json. pick.why is either 'both' (has both of the boss's corruption tolerances, checked by the boss-abilities test) or an effect the Invoker brings (checked against its skill text).",
+  "bosses": {
+    "DungeonRelics1": {
+      "passive": "Immune to crowd control.",
+      "abilities": [
+        {
+          "name": "Cloud Splitter",
+          "text": "Hits the 2 furthest Invokers with an 8s Daze that purges 2 buffs, then leaps and launches everyone near the target for 4s, draining 35% Ultimate Mana."
+        },
+        {
+          "name": "Ogryn Fury",
+          "text": "Hits the whole arena and adds a Blight stack to everyone."
+        },
+        {
+          "name": "Ancestral Wards",
+          "text": "Summons 2 Heal Totems (1% of his max HP every 1.5s) and a Bone Totem that adds Blight every 3s. Kill the Bone Totem first."
+        },
+        {
+          "name": "Warchant",
+          "text": "At 66% and 33% HP he channels, invincible, while 4 Power Totems heal him up to 12.5% each over 30s. He then gains +1.68% ATK per 1% healed. Break the totems and bring Heal Reduction."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Virtus the Heavensent",
+          "why": "both"
+        },
+        {
+          "name": "Duchess Kanraku",
+          "why": "both"
+        },
+        {
+          "name": "Gawara the United",
+          "why": "both"
+        }
+      ]
+    },
+    "DungeonRelics2": {
+      "passive": "Gains 10s of Invincibility every time a Bleed lands on him. Never bring Bleed.",
+      "abilities": [
+        {
+          "name": "Shadefall",
+          "text": "Hits everyone and adds a Fatigue stack per hit (0.5% max HP every 10s, -2% Move SPD each)."
+        },
+        {
+          "name": "Realmbreak",
+          "text": "Two launches, the second throwing targets 10m for 3s. Move SPD gets you back in."
+        },
+        {
+          "name": "Necrocall",
+          "text": "Summons alternating waves of Undead (up to 2 Minibosses and 10 Minions) and casts a 7s Crush."
+        },
+        {
+          "name": "Lifereap",
+          "text": "Teleports to your furthest Invoker, pushes them 11m and casts a 15s Crush. Keep the team together."
+        },
+        {
+          "name": "Deadraise",
+          "text": "Revives every minion and heals them to full with double ATK. Its cooldown doubles each use, so Block Revive and Hex win the race."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Gurgos Ironchain",
+          "why": "both"
+        },
+        {
+          "name": "Khrono the Timewinder",
+          "why": "both"
+        },
+        {
+          "name": "Devi of the Six",
+          "why": "both"
+        },
+        {
+          "name": "Azuma Thunderclap",
+          "why": "both"
+        }
+      ]
+    },
+    "DungeonRelics6": {
+      "passive": "Gains 3 random buffs every 20s (all 5 in Demon form). Burn and Bleed hurt him half as much and shorten his cooldowns. Mindworm stops it.",
+      "abilities": [
+        {
+          "name": "Lost Sword",
+          "text": "Three hits on one Invoker: 20% RES Down, 20% ACC Down, 5% Skill Recovery Down. Cleanses 2 of his debuffs."
+        },
+        {
+          "name": "Demon Vein",
+          "text": "One of three arena strips erupts after 5s (two in Demon form) and adds Bloodrot. Move out."
+        },
+        {
+          "name": "Stolen Wings",
+          "text": "Charges your highest-HP% Invoker, steals a buff from each target and casts an 8s Manashock. In Demon form he also heals 2.5% max HP a second for 4s."
+        },
+        {
+          "name": "Demon form",
+          "text": "At 0 HP he returns fully healed. Black Reach hits everyone with 20% ATK Down, 10% Crit Rate Down and a heavier Bloodrot, and his combo drains Titan Mana."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Nautila the Unfathomable",
+          "why": "both"
+        },
+        {
+          "name": "Vanato the Fiend",
+          "why": "both"
+        },
+        {
+          "name": "Ardell The Torrent",
+          "why": "both"
+        },
+        {
+          "name": "Kingpin Tatsulow",
+          "why": "both"
+        },
+        {
+          "name": "Admiral Gladstone",
+          "why": "both"
+        },
+        {
+          "name": "Quinnto the Proclaimer",
+          "why": "both"
+        },
+        {
+          "name": "Realm Wanderer Sakamoji",
+          "why": "both"
+        },
+        {
+          "name": "Valentu the Devoted",
+          "why": "Mindworm"
+        },
+        {
+          "name": "Shredripper Matescu",
+          "why": "Heal Reduction"
+        }
+      ]
+    },
+    "ClanBoss1": {
+      "passive": "+20% DEF per buff on him and +5% ATK per debuff on your team. Mindworm doesn't stop it.",
+      "abilities": [
+        {
+          "name": "Combo attacks",
+          "text": "Damage is a share of your max HP plus Manaburn, so DEF barely helps. The third combo heals his Crypt Rats."
+        },
+        {
+          "name": "Regal Edge",
+          "text": "Three hits on one Invoker: DEF Down, Weaken and 25% Heal Reduction, while he gains DEF Up and Harden."
+        },
+        {
+          "name": "Avarice Crush",
+          "text": "Hits everyone with ATK Down, Combo SPD Down, a 3s Crush and Manaburn."
+        },
+        {
+          "name": "Vermincall",
+          "text": "Puts Swarm on one Invoker for 20s (can't be cleansed or shortened) with heavy slows, and summons 8 Crypt Rats, then 8 more. Clear them with AoE."
+        },
+        {
+          "name": "Immortal Thief",
+          "text": "Charges the Swarmed Invoker and steals 3 buffs. Jinx keeps his buffs off; Immunity keeps your debuffs off."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Crestelle Moonveil",
+          "why": "both"
+        },
+        {
+          "name": "Jutsubo",
+          "why": "both"
+        },
+        {
+          "name": "Valentu the Devoted",
+          "why": "both"
+        },
+        {
+          "name": "Kosmi the Voidsmith",
+          "why": "both"
+        },
+        {
+          "name": "Kyoze the Testament",
+          "why": "both"
+        },
+        {
+          "name": "Tassia the Lost",
+          "why": "both"
+        },
+        {
+          "name": "Erdix",
+          "why": "both"
+        },
+        {
+          "name": "Virtus the Heavensent",
+          "why": "Immunity"
+        },
+        {
+          "name": "Luxare the Prismatic",
+          "why": "Immunity"
+        }
+      ]
+    },
+    "DungeonTitan": {
+      "passive": "Takes 50% more damage from Titans and 50% less from everything else. Bind a Titan to every Invoker.",
+      "abilities": [
+        {
+          "name": "Hail of Voidfire",
+          "text": "Falling rocks add a Burn and Mindfog, leaving fire pools for 12s."
+        },
+        {
+          "name": "Breath of Soulburn",
+          "text": "A 5s sweeping breath that extends every Burn by 5s each tick. Bring Burn removal or Immunity."
+        },
+        {
+          "name": "Melody of Darkstone",
+          "text": "Nightmare on everyone for 10s while stones fall and stun for 1s."
+        },
+        {
+          "name": "Roar of the Eternal",
+          "text": "A big breath that summons 5 Fire Elementals."
+        }
+      ],
+      "picks": []
+    },
+    "DungeonTank": {
+      "passive": "Each Burn or Bleed on her cuts 1s off Ensacment. Immune to crowd control.",
+      "abilities": [
+        {
+          "name": "Ensacment",
+          "text": "Seals one Invoker (Tanks first) for 10s, taking 10% HP a second: current HP for Tanks, max HP for everyone else. Titans die instantly. Rotate two Tanks."
+        },
+        {
+          "name": "Parasitis",
+          "text": "Hits everyone twice: a 5s Crush, then Manaburn."
+        },
+        {
+          "name": "Dreadscutter",
+          "text": "Tramples toward your furthest Invoker, stunning for 3s."
+        },
+        {
+          "name": "Probosis",
+          "text": "Acid puddle in front of her for 6s."
+        },
+        {
+          "name": "Scudbirth",
+          "text": "Shields for 30% of her max HP and lays 4 eggs that hatch in 10s. Break them first."
+        }
+      ],
+      "picks": []
+    },
+    "DungeonSupport": {
+      "passive": "Deals 5% less damage per buff on the target and takes 5% more per debuff on him. Stack buffs on your Tank and debuffs on him.",
+      "abilities": [
+        {
+          "name": "Rival",
+          "text": "His first combo marks one Invoker for 15s: they deal 50% more damage to him and take 25% more from him."
+        },
+        {
+          "name": "Burning Salvo",
+          "text": "Atrophy, then a rocket barrage with a Daze that purges 2 buffs. Dodge the second hit."
+        },
+        {
+          "name": "Seismic Pumps",
+          "text": "Expanding rings that Daze. Dash toward him to avoid them."
+        },
+        {
+          "name": "Steel Entanglement",
+          "text": "Pulls everyone in, then Dazes after 5s. Move away in time."
+        },
+        {
+          "name": "Combustive Power",
+          "text": "Burns a Power Cell for +30% ATK, +10% Crit Rate and +15% Crit DMG for the rest of the fight. Kill him fast."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Akrila the Oathpainter",
+          "why": "pick"
+        },
+        {
+          "name": "Tassia the Lost",
+          "why": "pick"
+        },
+        {
+          "name": "Jutsubo",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonMelee": {
+      "passive": "Revives at full HP after 30s until the Heart of Ice is destroyed. Each time she falls, the Heart loses 10%.",
+      "abilities": [
+        {
+          "name": "Call of the Tundra",
+          "text": "A 10s blizzard: 50% Move SPD Down that skips Melee Attackers, plus 2 Fatigue stacks (0.5% max HP a tick, -3% Move SPD each)."
+        },
+        {
+          "name": "Winter's Fury",
+          "text": "Hits your furthest Invoker with a 3s Frost that stops their cooldowns."
+        },
+        {
+          "name": "Elemental Shards",
+          "text": "Hold the three shards to turn Frost Shards into Flame Shards and break the Heart."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Devi of the Six",
+          "why": "pick"
+        },
+        {
+          "name": "Lithat",
+          "why": "pick"
+        },
+        {
+          "name": "Elder King Thalbrennar",
+          "why": "pick"
+        },
+        {
+          "name": "Tuskax the Rampage",
+          "why": "pick"
+        },
+        {
+          "name": "Almea",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonRanged": {
+      "passive": "Takes 80% less damage from Bleed. Never bring Bleed.",
+      "abilities": [
+        {
+          "name": "Claws of the Great Cult",
+          "text": "Four hits on one Invoker that grow with every ally within 5m: Manashock on the first, Blight on the last. Spread out."
+        },
+        {
+          "name": "Burn Unsacred Blood",
+          "text": "Blight on everyone, then 50% ATK Down on anyone within 5m."
+        },
+        {
+          "name": "Creeping Doom",
+          "text": "His lizard charges your furthest Invoker, casting Manashock on each hit."
+        },
+        {
+          "name": "Deadsun Ritual",
+          "text": "A 15s channel that wipes the team unless he loses 10% max HP. It summons 4 Doomclaws across the river either way."
+        },
+        {
+          "name": "Donate the Worthy",
+          "text": "Eats the Doomclaws for 5% HP each and permanent ATK and Crit. Only Ranged Attackers can reach them."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Vanato the Fiend",
+          "why": "pick"
+        },
+        {
+          "name": "Duchess Kanraku",
+          "why": "pick"
+        },
+        {
+          "name": "Marilla the Black Salvo",
+          "why": "pick"
+        },
+        {
+          "name": "Aldous the Atomage",
+          "why": "pick"
+        },
+        {
+          "name": "Taranis the Bolt Regent",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonEssenceNeutral": {
+      "passive": "50% chance to steal a buff with every attack. Astral, so no Invoker has element advantage or disadvantage.",
+      "abilities": [
+        {
+          "name": "Celestial Rage",
+          "text": "Marks 3 Invokers and blasts around them, adding Atrophy (0.5% max HP every 10s, -1% RES a stack)."
+        },
+        {
+          "name": "Astral Waves",
+          "text": "Waves sweep the arena's three lanes one by one: 15s Crush and Atrophy. Step out of the charging lane."
+        },
+        {
+          "name": "Cosmic Dive",
+          "text": "Dives at your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Astral Rain",
+          "text": "Shields for 30% of max HP and rains on everyone until it loses 10% max HP. Burst it down."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Mistress Dusca",
+          "why": "both"
+        },
+        {
+          "name": "Trench Horror Cezal",
+          "why": "both"
+        },
+        {
+          "name": "MOLDAK",
+          "why": "both"
+        },
+        {
+          "name": "Lusis",
+          "why": "both"
+        },
+        {
+          "name": "Zirthia the Witness",
+          "why": "both"
+        }
+      ]
+    },
+    "DungeonEssenceFire": {
+      "passive": "Every 15s, everyone takes 0.5% max HP as Manaburn and a 1% Burn that splashes onto nearby allies. Immune to Burn.",
+      "abilities": [
+        {
+          "name": "Ignic Hail",
+          "text": "Marks 3 Invokers, extends all their debuffs by 5s and adds Manaburn."
+        },
+        {
+          "name": "Scorched Breath",
+          "text": "Lane-by-lane flame gusts: Daze, Manaburn and 5% Crit Rate Down."
+        },
+        {
+          "name": "Searing Fury",
+          "text": "Charges your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Ruptured Sky",
+          "text": "Shields for 30% of max HP and rains lava until it loses 10% max HP."
+        }
+      ],
+      "picks": []
+    },
+    "DungeonEssenceDark": {
+      "passive": "Reflects 55% of Active Skill damage back at the caster, unless it has Combo SPD Down on it.",
+      "abilities": [
+        {
+          "name": "Falling Eclipse",
+          "text": "Marks 3 Invokers, removes a buff per hit and adds Manaburn."
+        },
+        {
+          "name": "Paths of the Penumbra",
+          "text": "Lane-by-lane waves: Manaburn and Manashock, which also drains 50% Ultimate Mana."
+        },
+        {
+          "name": "Hunt of the Dark",
+          "text": "Dives at your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Shimmer of the Void",
+          "text": "Shields for 30% of max HP and rains on everyone until it loses 10% max HP."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Ravizia",
+          "why": "pick"
+        },
+        {
+          "name": "Raziel",
+          "why": "pick"
+        },
+        {
+          "name": "Lektrine the Storm Witch",
+          "why": "pick"
+        },
+        {
+          "name": "Saducine",
+          "why": "pick"
+        },
+        {
+          "name": "Nautila the Unfathomable",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonEssenceWind": {
+      "passive": "Dodges 60% of combo attacks, unless it has Move SPD Down on it.",
+      "abilities": [
+        {
+          "name": "Tempest Crush",
+          "text": "Marks 3 Invokers, adds Fatigue and shortens every debuff on it by 5s. Keep Move SPD Down topped up."
+        },
+        {
+          "name": "Deadwind",
+          "text": "Lane-by-lane waves: Nightmare and Fatigue."
+        },
+        {
+          "name": "Gustfall",
+          "text": "Dives at your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Nature's Embrace",
+          "text": "Shields for 30% of max HP and rains on everyone until it loses 10% max HP."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Virtus the Heavensent",
+          "why": "pick"
+        },
+        {
+          "name": "Realm Wanderer Sakamoji",
+          "why": "pick"
+        },
+        {
+          "name": "Ravizia",
+          "why": "pick"
+        },
+        {
+          "name": "Brandis",
+          "why": "pick"
+        },
+        {
+          "name": "Nirvelle the Soulraiser",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonEssenceWater": {
+      "passive": "Every 15s, everyone takes 0.5% max HP as Mindfog and 70% Move SPD Down for 10s. Her skills hit 50% harder per debuff on the target.",
+      "abilities": [
+        {
+          "name": "Dewburst",
+          "text": "Marks 3 Invokers and adds Mindfog (-3% ACC a stack). Damage grows 50% per debuff on each target, so cleanse often."
+        },
+        {
+          "name": "Pulltide",
+          "text": "Lane-by-lane tidal waves: 15s Frost, Mindfog and 5% Weaken for 20s."
+        },
+        {
+          "name": "Floodwings",
+          "text": "Dives at your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Eternal Downpour",
+          "text": "Shields for 30% of max HP and rains on everyone until it loses 10% max HP."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Realm Wanderer Sakamoji",
+          "why": "pick"
+        },
+        {
+          "name": "Virtus the Heavensent",
+          "why": "pick"
+        },
+        {
+          "name": "Azuma Thunderclap",
+          "why": "pick"
+        },
+        {
+          "name": "Nirvelle the Soulraiser",
+          "why": "pick"
+        },
+        {
+          "name": "Custodian Plumia",
+          "why": "pick"
+        }
+      ]
+    },
+    "DungeonEssenceEarth": {
+      "passive": "At 75%, 50% and 25% HP, everyone gets a 15s Paralysis, then a random skill on 30s cooldown. Immune to Bleed.",
+      "abilities": [
+        {
+          "name": "Torrent of Earth",
+          "text": "Marks 3 Invokers and adds Bloodrot (-3% healing a stack) while it gains +35% Crit Rate. Purge or steal its buffs."
+        },
+        {
+          "name": "Gale of Stonewind",
+          "text": "Lane-by-lane gales: 15s Paralysis, Bloodrot and Crit Rate Down."
+        },
+        {
+          "name": "Wings of Swiftstone",
+          "text": "Dives at your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Song of the Monolith",
+          "text": "Shields for 30% of max HP and rains on everyone until it loses 10% max HP."
+        }
+      ],
+      "picks": []
+    },
+    "DungeonEssenceLight": {
+      "passive": "Whenever an Invoker heals, their max HP drops by half the amount healed, for the rest of the fight. Use shields and Invincibility, not heals.",
+      "abilities": [
+        {
+          "name": "Twisted Prism",
+          "text": "Marks 3 Invokers and adds Blight (-3% Skill Recovery a stack)."
+        },
+        {
+          "name": "Fractured Spectrum",
+          "text": "Lane-by-lane light waves: 15s Paralysis and Blight."
+        },
+        {
+          "name": "Glimmerflash",
+          "text": "Charges your furthest Invoker and launches everyone in the path."
+        },
+        {
+          "name": "Beams of Radiance",
+          "text": "Shields for 30% of max HP and beams everyone until it loses 10% max HP."
+        }
+      ],
+      "picks": [
+        {
+          "name": "Ravizia",
+          "why": "pick"
+        },
+        {
+          "name": "Charvaine the Hypnomancer",
+          "why": "pick"
+        },
+        {
+          "name": "Luxare the Prismatic",
+          "why": "pick"
+        },
+        {
+          "name": "Ruthos the Enthralled",
+          "why": "pick"
+        },
+        {
+          "name": "Gondo The Watchman",
+          "why": "pick"
+        }
+      ]
+    }
+  }
+}

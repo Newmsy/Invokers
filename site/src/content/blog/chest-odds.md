@@ -1,8 +1,8 @@
 ---
 title: "What's in clan, arena and VIP chests"
 description: "The odds for every clan activity, clan boss, weekly arena and VIP chest, and which ones are worth climbing for."
-date: 2026-10-02
-gameVersion: "0.61.1514"
+date: 2026-09-24
+gameVersion: "0.61.1516"
 art: ["item:Legendary Codex", "item:Memorium", "item:Divine Star", "item:Gold"]
 tags: [odds, chests, clan, arena]
 ---
@@ -11,11 +11,11 @@ tags: [odds, chests, clan, arena]
 
 - **Clan boss chests are for Memorium.** You get ![Memorium](item:) from 89% of Bronze chests, about 520–770 per chest on average.
 - **Clan activity chests** are mostly Gold, Memorium and Runes. A summon item turns up in only 2.9–4.6% of them.
-- **VIP chests** give one reward. ![Legendary Codex](item:) and ![Legendary Prism](item:) start at VIP 12 (1% each) and reach 6% at VIP 24.
+- **VIP chests** give one reward. ![Legendary Codex](item:) and ![Legendary Prism](item:) start at VIP 13 (1% each) and reach 6% at VIP 25.
 
 Each cell shows the chance the chest includes that reward, then the amount. These are odds over many chests, not a forecast of your next one.
 
-> **Estimated:** for chests with two or three rewards, the chances assume one chest never gives the same reward twice. Which VIP level gets which chest is estimated too.
+> **Estimated:** for chests with two or three rewards, the chances assume one chest never gives the same reward twice.
 
 ## Clan activity chests
 
@@ -71,9 +71,9 @@ Two rewards a week in Bronze and Silver, **three in Gold**. The chances are the 
 
 ## VIP chests
 
-One reward per chest. Every fourth VIP level is shown.
+One reward per chest, free every day. Every fourth VIP level is shown. Bonuses, points and cost per level: [What each VIP level gets you](/blog/vip-levels).
 
-| Reward | VIP 0 | VIP 4 | VIP 8 | VIP 12 | VIP 16 | VIP 20 | VIP 24 |
+| Reward | VIP 1 | VIP 5 | VIP 9 | VIP 13 | VIP 17 | VIP 21 | VIP 25 |
 |---|---|---|---|---|---|---|---|
 | ![Memorium](item:) | 10% · 100 | 13% · 500 | 18% · 900 | 33% · 1,000 | 29% · 1,000 | 25% · 1,000 | 19% · 1,000 |
 | ![Gold](item:) | 5% · 10K | 5% · 50K | 5% · 90K | 5% · 130K | 5% · 170K | 5% · 210K | 5% · 250K |
@@ -96,6 +96,6 @@ Codex, Prism and Echo rewards are one item. Runes come in a random faction, and 
 - **Reach Gold league in arena.** Average gold jumps from about 140K a week (Silver 4) to 282K (Gold 1), and the third reward more than doubles your summon item and Codex odds.
 - **Clan boss: Gold tiers for Codex, not Memorium.** Average Memorium per chest stays at 520–770 at every tier, but the Legendary Codex chance goes from 1% (Silver 2–4) to 4.1%.
 - **Clan activity: aim for the Gold chest.** Average Energy more than doubles (18 to 40) and average gold rises from 41K to 53K.
-- **VIP: Memorium peaks at VIP 12–13** (33%). Higher levels trade some of it for better Codex and Prism odds.
+- **VIP: Memorium peaks at VIP 13–14** (33%). Higher levels trade some of it for better Codex and Prism odds.
 
 Where Codex goes: [Skill costs](/skill-costs). Memorium: [Gear upgrades and Memorium](/gear-upgrades). Echoes, Runes and Essences: [Ascension and Awakening](/ascension). Summon item odds: [Summons](/summons).

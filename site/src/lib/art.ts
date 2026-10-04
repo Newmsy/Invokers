@@ -22,6 +22,7 @@ const titanArtPath = new Map<string, string>();
 const heroSplashPath = new Map<string, string>();
 const titanSplashPath = new Map<string, string>();
 const bossArtPath = new Map<string, string>();
+const chaseBannerPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -49,6 +50,8 @@ for (const t of titans) {
     add(`skills/titan-${t.slug}-skill-${skillPart(s.type)}.webp`, `skills/${t.id}_${s.type}.webp`, skillIconPath, `${t.id}/${s.type}`);
   }
 }
+// Chase banners (the art for each Get Legendary chase), by the hero it gave away.
+for (const h of heroes) add(`chase/${heroSlug(h.id)}.webp`, `events/GetLegendary${h.id}.webp`, chaseBannerPath, h.id);
 // Boss art (issue #66), by boss id; shown on the boss guides when it exists.
 for (const b of bosses) add(`bosses/${bossSlug(b)}.webp`, `bosses/${b.id}.webp`, bossArtPath, b.id);
 for (const source of sourceFiles) {
@@ -69,6 +72,16 @@ for (const c of new Set(heroes.map((h) => String(h.class)))) {
   add(`icons/${slugify(c.replace(/Attacker$/, ''))}.webp`, `icons/class/${c}.webp`, classIconPath, c);
 }
 
+// Wide key art (event backgrounds, shop banners, the loading screen) for page banners and story cards,
+// served under readable names. Art whose name carries a hero code is left out.
+const bannerPath = new Map<string, string>();
+for (const source of sourceFiles) {
+  const m = source.match(/^(?:events|splash\/other)\/(?:Shop_ExclusivePack_)?([A-Za-z0-9_]+)\.webp$/) ?? (source === 'loading/loading-screen.webp' ? [source, 'LoadingScreen'] : null);
+  if (!m || /[A-Z]{3}\d{3}/.test(m[1])) continue;
+  const name = m[1].replace(/_/g, '').replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
+  add(`banners/${name}.webp`, source, bannerPath, name);
+}
+
 const url = (served: string | undefined) => (served ? href(`img/${served}`) : undefined);
 
 /** Every served image, for the img/ endpoint. */
@@ -79,12 +92,16 @@ export function artRoutes(): { served: string; source: string }[] {
 export const heroArt = (heroId: string) => url(heroArtPath.get(heroId));
 export const titanArt = (titanId: string) => url(titanArtPath.get(titanId));
 export const bossArt = (bossId: string) => url(bossArtPath.get(bossId));
+export const chaseBanner = (heroId: string) => url(chaseBannerPath.get(heroId));
 export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
 export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));
 export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get(`${heroId}/${type}`));
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
+/** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
+export const bannerArt = (name: string) => url(bannerPath.get(name));
+export const bannerNames = () => [...bannerPath.keys()];
 
 /** heroRefsByConfigId with each hero's portrait URL, for the box, share and planner pages. */
 export function heroRefsWithArt(): Record<string, HeroRef> {

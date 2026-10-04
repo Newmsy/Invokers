@@ -1,7 +1,7 @@
 ---
 title: "The roster by the numbers"
 description: "All 231 Invokers split by rarity, element, faction and class, plus the gaps: Legendary class and element combos that don't exist yet."
-date: 2026-10-03
+date: 2026-09-30
 gameVersion: "0.61.1516"
 art: ["element:Fire", "class:Melee", "hero:Ardell The Torrent", "class:Tank"]
 tags: [invokers, roster]

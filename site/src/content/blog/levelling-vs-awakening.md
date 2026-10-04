@@ -1,7 +1,7 @@
 ---
 title: "Levelling vs Awakening"
 description: "Levelling to 6★ level 60 multiplies base stats by about 10. Full Awakening then adds roughly +10% to +30% on top, plus big flat bonuses."
-date: 2026-10-02
+date: 2026-09-20
 gameVersion: "0.61.1516"
 art: ["hero:Almea", "hero:Duchess Kanraku", "item:5 star Echo"]
 tags: [invokers, stats, levelling, awakening]

@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import SectionArt from '../components/SectionArt.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../lib/data';
-import { bossArt } from '../lib/art';
+import { bannerArt, bossArt } from '../lib/art';
 import { allGuides, topics } from '../lib/guides';
 import { slugify } from '../lib/slugs';
 
@@ -42,7 +42,9 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
     const list = guides.filter((g) => g.topic === t.name);
     return list.length > 0 && (
       <section id={slugify(t.name)}>
-        <h2><SectionArt art={t.art} size={40} />{t.name}<small>{t.blurb}</small></h2>
+        <header class="topic" style={bannerArt(t.banner) ? `--banner: url(${bannerArt(t.banner)})` : undefined}>
+          <h2><SectionArt art={t.art} size={40} />{t.name}<small>{t.blurb}</small></h2>
+        </header>
         <ul class="cards">
           {list.map((g) => (
             <li>
@@ -77,6 +79,18 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
   .jump a:hover { border-color: var(--accent); }
   section { margin-bottom: 32px; scroll-margin-top: 16px; }
   h2 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; font-size: 21px; margin: 0 0 12px; }
+  .topic {
+    display: flex;
+    align-items: flex-end;
+    min-height: 120px;
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: linear-gradient(90deg, rgb(12 11 29 / 0.92) 20%, rgb(12 11 29 / 0.2)), var(--banner, var(--surface)) center 35% / cover;
+    border: 1px solid var(--line);
+  }
+  .topic h2 { margin: 0; }
+  .topic h2 small { color: var(--soft); }
   h2 small { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; font-size: 14px; color: var(--muted); }
   .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
   .cards.wide { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }

@@ -1,0 +1,242 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "Static game config (GameplayData.Pvp, GameplayData.ManaValues) and the in-game Arena help popup.",
+ "healthBonus": 8,
+ "titanStatsMultiplier": 0.05,
+ "initialCooldownFactor": 0.5,
+ "endBattleDelaySec": 1.5,
+ "mana": {
+  "pvp": {
+   "ultimate": 2,
+   "titan": 4
+  },
+  "pve4": {
+   "ultimate": 2,
+   "titan": 2.5
+  },
+  "pve5": {
+   "ultimate": 1,
+   "titan": 2.4
+  },
+  "spires": {
+   "ultimate": 2,
+   "titan": 2.4
+  },
+  "titanCooldownSec": {
+   "pvp": 90,
+   "pve": 150
+  },
+  "titanDurationSec": 12,
+  "titanManaCost": 3000,
+  "maxTitanMana": 4500
+ },
+ "controlDiminishingReturns": {
+  "windowSec": 10,
+  "immunitySec": 7,
+  "durationMultipliers": [
+   1,
+   0.6,
+   0.4,
+   0.2
+  ]
+ },
+ "effectDurationPercent": [
+  {
+   "effect": "Stun",
+   "skill1": 50,
+   "skill1AOE": 35,
+   "skill23": 50,
+   "skill23AOE": 35,
+   "ultimate": 65,
+   "ultimateAOE": 50,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 40,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 40,
+   "animaOut": 100
+  },
+  {
+   "effect": "Sleep",
+   "skill1": 50,
+   "skill1AOE": 35,
+   "skill23": 50,
+   "skill23AOE": 35,
+   "ultimate": 65,
+   "ultimateAOE": 50,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 40,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 40,
+   "animaOut": 100
+  },
+  {
+   "effect": "Freeze",
+   "skill1": 50,
+   "skill1AOE": 35,
+   "skill23": 50,
+   "skill23AOE": 35,
+   "ultimate": 65,
+   "ultimateAOE": 50,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 40,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 40,
+   "animaOut": 100
+  },
+  {
+   "effect": "Shock",
+   "skill1": 50,
+   "skill1AOE": 35,
+   "skill23": 50,
+   "skill23AOE": 35,
+   "ultimate": 65,
+   "ultimateAOE": 50,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 40,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 40,
+   "animaOut": 100
+  },
+  {
+   "effect": "Root",
+   "skill1": 50,
+   "skill1AOE": 40,
+   "skill23": 50,
+   "skill23AOE": 50,
+   "ultimate": 65,
+   "ultimateAOE": 65,
+   "animaIn": 50,
+   "animaSkill1": 60,
+   "animaSkill1AOE": 50,
+   "animaSkill2": 60,
+   "animaSkill2AOE": 50,
+   "animaOut": 100
+  },
+  {
+   "effect": "Taunt",
+   "skill1": 50,
+   "skill1AOE": 50,
+   "skill23": 65,
+   "skill23AOE": 65,
+   "ultimate": 65,
+   "ultimateAOE": 65,
+   "animaIn": 50,
+   "animaSkill1": 60,
+   "animaSkill1AOE": 50,
+   "animaSkill2": 60,
+   "animaSkill2AOE": 50,
+   "animaOut": 100
+  },
+  {
+   "effect": "Unkillable",
+   "skill1": 50,
+   "skill1AOE": 50,
+   "skill23": 50,
+   "skill23AOE": 50,
+   "ultimate": 50,
+   "ultimateAOE": 40,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 50,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 50,
+   "animaOut": 100
+  },
+  {
+   "effect": "Invincibility",
+   "skill1": 50,
+   "skill1AOE": 50,
+   "skill23": 50,
+   "skill23AOE": 50,
+   "ultimate": 50,
+   "ultimateAOE": 40,
+   "animaIn": 100,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 50,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 50,
+   "animaOut": 50
+  },
+  {
+   "effect": "Launch",
+   "skill1": 50,
+   "skill1AOE": 35,
+   "skill23": 50,
+   "skill23AOE": 35,
+   "ultimate": 65,
+   "ultimateAOE": 50,
+   "animaIn": 50,
+   "animaSkill1": 50,
+   "animaSkill1AOE": 40,
+   "animaSkill2": 50,
+   "animaSkill2AOE": 40,
+   "animaOut": 50
+  },
+  {
+   "effect": "BlockActiveSkills",
+   "skill1": 100,
+   "skill1AOE": 100,
+   "skill23": 100,
+   "skill23AOE": 100,
+   "ultimate": 100,
+   "ultimateAOE": 100,
+   "animaIn": 100,
+   "animaSkill1": 100,
+   "animaSkill1AOE": 100,
+   "animaSkill2": 100,
+   "animaSkill2AOE": 100,
+   "animaOut": 100
+  },
+  {
+   "effect": "BlockPassiveEffects",
+   "skill1": 100,
+   "skill1AOE": 100,
+   "skill23": 100,
+   "skill23AOE": 100,
+   "ultimate": 100,
+   "ultimateAOE": 100,
+   "animaIn": 100,
+   "animaSkill1": 100,
+   "animaSkill1AOE": 100,
+   "animaSkill2": 100,
+   "animaSkill2AOE": 100,
+   "animaOut": 100
+  },
+  {
+   "effect": "BlockAnimaSkill",
+   "skill1": 100,
+   "skill1AOE": 100,
+   "skill23": 100,
+   "skill23AOE": 100,
+   "ultimate": 100,
+   "ultimateAOE": 100,
+   "animaIn": 100,
+   "animaSkill1": 100,
+   "animaSkill1AOE": 100,
+   "animaSkill2": 100,
+   "animaSkill2AOE": 100,
+   "animaOut": 100
+  }
+ ],
+ "texts": {
+  "description": "In the Arena, Invoker and Titan Stats are modified to ensure fast Battles, more Titans, and better balance.",
+  "effects-scaling-title": "Certain buffs and debuffs will have their durations modified, based on the Skill they are applied by and the number of targets they affect.",
+  "diminishing-title": "Whenever someone receives a Control debuff, a 10-second timer starts: the Diminishing Durations Window. Subsequent Control debuffs placed within this 10-second window will have Diminished Durations.",
+  "diminishing-mid": "The timer starts as soon as the Control debuff is placed",
+  "diminishing-first": "The next Control debuff placed within the 10-second window will have a diminished duration",
+  "diminishing-last": "The target is now effectively immune to Control debuffs for 7 seconds once the last active Control debuff expires",
+  "diminishing-example": "Example: The first Control debuff placed was a 10 second Stun. During those 10 seconds, 4 more Control debuffs were placed on the target, each for 5 seconds. The 7-second immunity window only begins once the initial 10-second Stun debuff expires.",
+  "titan-bound-effet": "Bound Effects work as normal."
+ },
+ "unconfirmed": [
+  "healthBonus (8): read as Invoker HP x8 in Arena; the config gives the number only.",
+  "titanStatsMultiplier (0.05): what the Titan's stats are multiplied by in Arena (as named in the config).",
+  "initialCooldownFactor is 0.5 in config, so skills would start with cooldowns 50% done (or 50% remaining). The in-battle PvP tip says 70%; the tip may be outdated.",
+  "effectDurationPercent: percent of the normal duration a buff/debuff lasts in Arena, by the kind of skill that applied it (single-target or AOE)."
+ ]
+}

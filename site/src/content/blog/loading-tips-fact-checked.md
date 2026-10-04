@@ -1,7 +1,7 @@
 ---
 title: "The loading screen tips, fact-checked"
 description: "The game shows 40 tips while it loads. We checked the ones that make claims against the numbers."
-date: 2026-10-01
+date: 2026-09-05
 gameVersion: "0.61.1516"
 art: ["item:1 day XP Boost", "item:Fire Spire Key"]
 tags: [tips, guides]

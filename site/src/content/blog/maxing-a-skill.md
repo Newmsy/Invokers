@@ -1,7 +1,7 @@
 ---
 title: "Maxing a skill doubles its damage, and the cheap levels come first"
 description: "Every hero damage skill hits exactly twice as hard at level 11 as at level 1. Here is what each level adds and costs."
-date: 2026-10-01
+date: 2026-09-14
 gameVersion: "0.61.1516"
 art: ["hero:Ironblade Darus", "item:Legendary Codex", "item:Gold"]
 tags: [skills, codex, gold]
