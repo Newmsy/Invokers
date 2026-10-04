@@ -1,0 +1,71 @@
+{
+ "gameVersion": "0.61.1516",
+ "extractedAt": "2026-10-04",
+ "source": "The game's own CharacterPowerCalculator, called in game for 616 owned Invokers (LootDump F11 power probe); formula fitted and checked against every one.",
+ "formula": {
+  "power": "multiplier * (ATK + DEF + HP / 10)",
+  "multiplier": "0.97667 * (1 + 0.5 * skill) * (1 + 0.4 * awaken) * (1 + 0.6 * nodes)",
+  "base": 0.97667,
+  "skill": "average upgrade level of ActiveSkill1-3, Ultimate and Combo (the levels stored in the box, i.e. upgrades done, max 10), divided by 10. Tolerance and Passive skills are ignored.",
+  "awaken": "awakenLevel / 6",
+  "nodes": "number of unlocked awakening nodes that are not a level's root node (node id % 100 != 1), divided by 60",
+  "statWeights": {
+   "AttackFlat": 1,
+   "DefenseFlat": 1,
+   "HealthFlat": 0.1,
+   "everythingElse": 0
+  },
+  "maxError": "multiplier reproduced within 4e-6 for all 616 Invokers"
+ },
+ "checks": [
+  {
+   "boxHeroId": 1,
+   "heroId": "NOC020",
+   "rank": "Five",
+   "level": 50,
+   "awakeLevel": 3,
+   "multiplier": 1.816366,
+   "gamePowerWithoutGear": 2280.13
+  },
+  {
+   "boxHeroId": 2,
+   "heroId": "IRN026",
+   "rank": "Four",
+   "level": 30,
+   "awakeLevel": 0,
+   "multiplier": 1.015733,
+   "gamePowerWithoutGear": 624.43
+  },
+  {
+   "boxHeroId": 22,
+   "heroId": "MAG004",
+   "rank": "Six",
+   "level": 60,
+   "awakeLevel": 6,
+   "multiplier": 3.074312,
+   "gamePowerWithoutGear": 7793.43
+  },
+  {
+   "boxHeroId": 23,
+   "heroId": "CAM013",
+   "rank": "Four",
+   "level": 30,
+   "awakeLevel": 3,
+   "multiplier": 1.465,
+   "gamePowerWithoutGear": 902.87
+  },
+  {
+   "boxHeroId": 74,
+   "heroId": "NOC021",
+   "rank": "Five",
+   "level": 50,
+   "awakeLevel": 3,
+   "multiplier": 1.41812,
+   "gamePowerWithoutGear": 2146.41
+  }
+ ],
+ "unconfirmed": [
+  "Which stats feed ATK/DEF/HP: the probe's power (gamePowerWithoutGear) was computed by the game with no gear bonuses. If the collection screen's number is higher, it also counts gear/accessory stats; compare one card (e.g. a 6-star level 60 Invoker) to confirm.",
+  "The 0.97667 base was measured (identical for every Invoker), not read from config."
+ ]
+}
