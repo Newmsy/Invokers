@@ -18,9 +18,11 @@ The sets that give these ratings: [Gear sets](/gear) and [Every gear set, by the
 
 | Instinct rating | 0 | 50 | 100 | 200 | 300 | 362 | 500+ |
 |---|---|---|---|---|---|---|---|
-| Effect | 0.30 | 0.53 | 0.70 | 0.86 | 0.95 | 1.00 | 1.00 |
+| Dodge chance | 30% | 53% | 70% | 86% | 95% | 100% | 100% |
 
-The effect maxes at **1.00** by rating **362** (exactly 1.0 at 378). Half the gain is in by 85, and 90% by 280. Instinct past 362 is wasted.
+Instinct is the chance an Invoker the AI is steering dodges a danger zone, and in some fights switches to the right target. It never changes damage or crits.
+
+The chance shows as **100%** by rating **362** (exactly 100% at 378). Half the gain is in by 85, and 90% by 280. Instinct past 362 is wasted.
 
 ## Skill Speed: the first 100 points do the work
 
