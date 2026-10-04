@@ -31,7 +31,7 @@ const rating = ratingFor(hero.id);
 // #skill-1, #skill-combo… for links to one skill.
 const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').toLowerCase()}`;
 const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
-const color = rarityColor[hero.rarity] ?? '#B5B1D3';
+const color = rarityColor[hero.rarity] ?? '#C9BEA6';
 
 const keyStats = statFields.slice(0, 6);
 const otherStats = statFields.slice(6);
@@ -210,7 +210,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
           {tiers.map((t) => (
             <li>
               <a href={href(`tiers/invokers/${t.list.id}`)}>
-                <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#5FDCF7'}`}>{t.tier}</span>
+                <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#D4A64A'}`}>{t.tier}</span>
                 {t.list.label}
               </a>
             </li>
@@ -226,10 +226,10 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
         <ul class="similar">
           {similar.map(({ hero: h, best, configId: cid }) => (
             <li data-config-id={cid}>
-              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+              <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
                 <span class="similar-art">
                   <HeroArt hero={h} />
-                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#5FDCF7'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
+                  {best && <span class="similar-tier" style={`--tier: ${tierColor[best.tier] ?? '#D4A64A'}`} title={`${best.tier} on ${best.list.label}`}>{best.tier}</span>}
                   <span class="similar-owned">Owned</span>
                 </span>
                 <span class="similar-name">{h.name}</span>
@@ -381,7 +381,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
 <style>
   .faction-art { border-radius: 50%; object-fit: cover; object-position: 50% 18%; }
-  .owned { margin: 12px 0 0; background: var(--surface-2); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: 8px; }
+  .owned { margin: 12px 0 0; background: var(--surface-2); border-left: 3px solid var(--accent); padding: 8px 12px; border-radius: var(--radius); }
   .compare {
     display: inline-flex;
     align-items: center;
@@ -389,7 +389,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     min-height: 36px;
     margin-top: 12px;
     padding: 0 14px;
-    border-radius: 18px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     color: var(--soft);
     font-size: 14px;
@@ -413,7 +413,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   }
   .hero-art {
     height: 360px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--line);
     border-bottom: 3px solid var(--rarity);
@@ -424,7 +424,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 0; }
   .tags li {
     padding: 6px 12px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     font-size: 14px;
@@ -463,7 +463,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     align-items: baseline;
     gap: 4px 12px;
     padding: 10px 14px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     font-size: 14px;
@@ -479,7 +479,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     align-items: center;
     min-height: 32px;
     padding: 0 12px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
@@ -494,7 +494,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     gap: 8px;
     min-height: 36px;
     padding: 0 12px 0 4px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
@@ -521,7 +521,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .similar-art {
     position: relative;
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: hidden;
     background: var(--surface-2);
     border: 1px solid var(--line);
@@ -551,7 +551,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     left: 6px;
     bottom: 6px;
     padding: 2px 8px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--accent);
     color: var(--bg);
     font-size: 11px;
@@ -566,7 +566,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .stat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
   .stat {
     padding: 12px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface);
     display: flex;
     flex-direction: column;
@@ -597,7 +597,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     align-items: center;
     gap: 2px 12px;
     padding: 12px 14px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background: var(--surface);
     color: var(--text);
   }
@@ -607,7 +607,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .skill-icon {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     overflow: hidden;
   }
@@ -624,7 +624,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
 
   .skill {
     padding: 16px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     margin-bottom: 12px;
@@ -640,7 +640,7 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .skill-text[hidden] { display: none; }
 
   .stat-cols th .sub { display: block; font-size: 0.8em; font-weight: 400; color: var(--muted); }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   .table-wrap[hidden] { display: none; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }

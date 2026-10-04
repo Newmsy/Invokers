@@ -227,27 +227,27 @@ type Change = ValueChange;
   h2 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
   h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--soft); }
   h4 { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
-  .face { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; object-position: top center; vertical-align: -6px; margin-right: 6px; }
+  .face { width: 24px; height: 24px; border-radius: var(--radius); object-fit: cover; object-position: top center; vertical-align: -6px; margin-right: 6px; }
   p { margin: 0 0 8px; }
   .lead { color: var(--soft); max-width: 70ch; margin: 0; }
   .hint, .meta, .muted { color: var(--muted); font-size: 14px; }
   .summary { color: var(--text); font-weight: 500; }
   .card {
     padding: 16px 20px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
   }
   .empty { margin-top: 32px; }
   .empty p { color: var(--soft); margin: 0; }
-  .card.small { padding: 12px 16px; border-radius: 12px; min-width: 0; }
+  .card.small { padding: 12px 16px; border-radius: var(--radius); min-width: 0; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
   .chip {
     display: inline-flex;
     align-items: center;
     min-height: 40px;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     color: var(--soft);
     font-size: 14px;
@@ -260,11 +260,11 @@ type Change = ValueChange;
   .diff { margin: 4px 0 0; font-size: 14px; color: var(--soft); overflow-wrap: anywhere; }
   del { color: #ff8a8a; text-decoration: line-through; text-decoration-thickness: 1px; }
   ins { color: #7be0a0; text-decoration: none; font-weight: 600; }
-  .diff del, .diff ins { padding: 0 2px; border-radius: 4px; }
+  .diff del, .diff ins { padding: 0 2px; border-radius: var(--radius); }
   .diff del { background: rgba(255, 138, 138, 0.1); }
   .diff ins { background: rgba(123, 224, 160, 0.12); }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }

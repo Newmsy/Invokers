@@ -306,7 +306,7 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
   .jump a {
     padding: 6px 14px;
-    border-radius: 18px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     color: var(--soft);
     font-size: 14px;
@@ -316,25 +316,25 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
   .takeaways { margin-top: 16px; }
   .gap {
     padding: 12px 16px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     border: 1px dashed var(--line);
     color: var(--muted);
     font-size: 14px;
   }
-  .card { margin-top: 24px; padding: 4px 20px 20px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); }
+  .card { margin-top: 24px; padding: 4px 20px 20px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
   .calc { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
   .calc label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
   select {
     min-height: 44px;
     padding: 0 10px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     border: 1px solid var(--line);
     color: var(--text);
     font: inherit;
     font-size: 15px;
   }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   .table-wrap.narrow { max-width: 420px; margin-top: 12px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }

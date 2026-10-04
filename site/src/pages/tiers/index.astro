@@ -50,7 +50,7 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
     display: inline-block;
     margin: 12px 0 0;
     padding: 6px 12px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     border: 1px dashed var(--line);
     color: var(--soft);
     font-size: 14px;
@@ -61,7 +61,7 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
     align-items: center;
     min-height: 40px;
     padding: 0 14px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);

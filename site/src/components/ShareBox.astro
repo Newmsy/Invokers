@@ -29,10 +29,10 @@
 
 <style>
   .share-dialog {
-    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 16px;
+    background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 20px 24px; width: min(460px, calc(100vw - 32px));
   }
-  .share-dialog::backdrop { background: rgb(5 4 16 / 0.7); }
+  .share-dialog::backdrop { background: rgb(14 12 9 / 0.7); }
   .share-dialog h2 { margin: 0 0 8px; font-size: 1.3rem; }
   .share-dialog h3 { margin: 20px 0 8px; font-size: 1rem; }
   .close-row { float: right; margin: -8px -12px 0 0; }
@@ -40,7 +40,7 @@
   .muted { color: var(--muted); font-size: 0.9rem; }
   .field { display: grid; gap: 4px; margin: 12px 0; }
   .field input, .result input {
-    background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px;
+    background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 8px 10px; font: inherit; min-width: 0;
   }
   .check { display: flex; gap: 8px; align-items: flex-start; margin: 8px 0; }

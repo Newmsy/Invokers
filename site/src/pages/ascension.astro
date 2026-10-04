@@ -415,10 +415,10 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   p { max-width: 70ch; }
   .lead { color: var(--soft); margin: 0; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
-  .gap { padding: 12px 16px; border-radius: 12px; border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
+  .jump a { padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .gap { padding: 12px 16px; border-radius: var(--radius); border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
   .aside { color: var(--soft); }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); margin: 12px 0; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin: 12px 0; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
@@ -427,7 +427,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   tbody th { color: var(--soft); font-weight: 500; }
   tbody tr:last-child > * { border-bottom: 0; }
   :global(.item) { display: inline-flex; align-items: center; gap: 6px; margin: 2px 12px 2px 0; white-space: nowrap; }
-  :global(.item img) { border-radius: 4px; }
+  :global(.item img) { border-radius: var(--radius); }
   .or { color: var(--muted); white-space: nowrap; }
   .varies { color: var(--muted); font-size: 12px; }
   tr.tierhead th { background: var(--surface-2); color: var(--muted); font-size: 13px; }
@@ -439,7 +439,7 @@ const crestBosses = bosses.filter((b) => b.mode === 'other');
   .type-tabs button {
     min-height: 36px;
     padding: 0 14px;
-    border-radius: 18px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     background: var(--surface);
     color: var(--soft);

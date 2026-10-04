@@ -104,7 +104,7 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
     --epic: #c29bff;
     --rare: #6fb8ff;
     --uncommon: #7be0a0;
-    --common: #b5b1d3;
+    --common: #C9BEA6;
   }
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { font-size: 18px; font-weight: 600; margin: 32px 0 12px; }
@@ -113,16 +113,16 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
   .lead { color: var(--soft); max-width: 70ch; margin: 0; }
   .status, .hint, :global(.muted) { color: var(--muted); font-size: 14px; }
   .count { color: var(--muted); font-weight: 400; font-size: 14px; }
-  .card { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+  .card { padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); min-width: 0; }
   .empty[hidden] { display: none; }
   .empty { margin-top: 24px; display: grid; gap: 12px; justify-items: start; }
   .empty p { margin: 0; }
   .button {
-    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px;
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--radius);
     border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; cursor: pointer;
   }
   .button:hover { border-color: var(--accent); }
-  .button.primary { background: var(--accent); color: #0c0b1d; border-color: var(--accent); font-weight: 700; }
+  .button.primary { background: var(--accent); color: #16130F; border-color: var(--accent); font-weight: 700; }
 
   .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   :global(.big) { font-family: var(--display); font-weight: 600; font-size: 18px; margin: 0 0 8px; }
@@ -135,7 +135,7 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
   .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; align-items: center; }
   .filters input[type='search'], .filters select {
     background: var(--surface); color: var(--text); border: 1px solid var(--line);
-    border-radius: 10px; padding: 8px 10px; font: inherit; max-width: 100%;
+    border-radius: var(--radius); padding: 8px 10px; font: inherit; max-width: 100%;
   }
   .filters input[type='search'] { flex: 1 1 200px; }
   .check { color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
@@ -143,7 +143,7 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
 
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; align-items: start; }
   :global(.plan-card) {
-    background: var(--surface); border-radius: 12px; padding: 12px; border-left: 3px solid var(--line);
+    background: var(--surface); border-radius: var(--radius); padding: 12px; border-left: 3px solid var(--line);
     display: grid; gap: 6px; min-width: 0; align-content: start;
   }
   :global(.plan-card.off) { opacity: 0.55; }
@@ -170,7 +170,7 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
   :global(.r-Common) { border-left-color: var(--common) !important; }
 
   .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-  :global(table.roster) { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--surface); border-radius: 12px; overflow: hidden; }
+  :global(table.roster) { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
   :global(table.roster caption) { text-align: left; font-weight: 600; color: var(--soft); padding: 0 0 6px; }
   :global(table.roster th) { text-align: left; font-weight: 500; padding: 6px 10px; }
   :global(table.roster td) { padding: 6px 10px; }
@@ -179,7 +179,7 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
 
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   .chip {
-    min-height: 40px; padding: 0 16px; border-radius: 20px; background: transparent;
+    min-height: 40px; padding: 0 16px; border-radius: var(--radius); background: transparent;
     border: 1px solid var(--line); color: var(--soft); font: inherit; font-size: 14px; cursor: pointer;
   }
   .chip span { color: var(--muted); }

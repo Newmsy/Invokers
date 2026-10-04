@@ -82,12 +82,12 @@ const tools = ['events', 'summons', 'packs', 'tiers'].map((p) => nav.find((n) =>
 
 <style>
   .side { position: sticky; top: 16px; }
-  .box { padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 14px; }
+  .box { padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); margin-bottom: 14px; }
   .box h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); margin: 0 0 10px; }
   .box ul { list-style: none; margin: 0; padding: 0; }
-  .chases a, .tools a, .numbers a { display: flex; align-items: center; gap: 10px; padding: 6px 4px; border-radius: 8px; color: var(--text); font-size: 15px; }
+  .chases a, .tools a, .numbers a { display: flex; align-items: center; gap: 10px; padding: 6px 4px; border-radius: var(--radius); color: var(--text); font-size: 15px; }
   .chases a:hover, .tools a:hover, .numbers a:hover { background: var(--surface-2); }
-  .chases img { border-radius: 10px; object-fit: cover; object-position: top center; border: 1px solid var(--line); flex: none; }
+  .chases img { border-radius: var(--radius); object-fit: cover; object-position: top center; border: 1px solid var(--line); flex: none; }
   .chases span, .latest { display: flex; flex-direction: column; gap: 2px; }
   .chases small, .latest small { color: var(--muted); font-size: 13px; }
   .latest { color: var(--text); }
@@ -96,7 +96,7 @@ const tools = ['events', 'summons', 'packs', 'tiers'].map((p) => nav.find((n) =>
   .numbers b { font-family: var(--display); color: var(--accent); }
   .more { display: inline-block; margin-top: 10px; font-size: 14px; }
     .side { position: static; }
-  .others a { display: flex; flex-direction: column; gap: 2px; padding: 6px 4px; border-radius: 8px; color: var(--text); font-size: 14px; }
+  .others a { display: flex; flex-direction: column; gap: 2px; padding: 6px 4px; border-radius: var(--radius); color: var(--text); font-size: 14px; }
   .others a:hover { background: var(--surface-2); }
   .others small { color: var(--muted); font-size: 12px; }
   @media (max-width: 1000px) {

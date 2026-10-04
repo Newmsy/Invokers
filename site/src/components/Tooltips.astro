@@ -70,8 +70,8 @@ import { href } from '../lib/data';
     z-index: 50;
     width: 300px;
     padding: 12px 14px;
-    border-radius: 14px;
-    background: #100e28;
+    border-radius: var(--radius);
+    background: #12100C;
     border: 1px solid var(--line);
     box-shadow: 0 16px 36px rgb(0 0 0 / 0.55);
     pointer-events: none;
@@ -80,11 +80,11 @@ import { href } from '../lib/data';
   }
   .tooltip[hidden] { display: none; }
   .tt-head { display: flex; gap: 12px; align-items: center; }
-  .tt-head > img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; object-position: top center; border: 1px solid var(--line); flex: none; }
+  .tt-head > img { width: 56px; height: 56px; border-radius: var(--radius); object-fit: cover; object-position: top center; border: 1px solid var(--line); flex: none; }
   .tt-head div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
   .tt-head strong { font-family: var(--display); font-size: 16px; color: var(--text); line-height: 1.2; }
   .tt-sub { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; font-weight: 600; }
-  .tt-tier { align-self: flex-start; margin-top: 2px; padding: 0 8px; border-radius: 10px; font-size: 11.5px; font-weight: 700; color: #0c0b1d; background: var(--tier); }
+  .tt-tier { align-self: flex-start; margin-top: 2px; padding: 0 8px; border-radius: var(--radius); font-size: 11.5px; font-weight: 700; color: #16130F; background: var(--tier); }
   .tooltip dl { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 10px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
   .tooltip dl div { display: flex; gap: 5px; }
   .tooltip dt { color: var(--muted); }

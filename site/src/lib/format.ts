@@ -9,7 +9,7 @@ export const rarityColor: Record<string, string> = {
   Epic: '#C29BFF',
   Rare: '#6FB8FF',
   Uncommon: '#7BE0A0',
-  Common: '#B5B1D3',
+  Common: '#C9BEA6',
 };
 
 export const elementColor: Record<string, string> = {
@@ -23,10 +23,10 @@ export const elementColor: Record<string, string> = {
 
 export const tierColor: Record<string, string> = {
   S: '#F5C451',
-  A: '#5FDCF7',
+  A: '#E8875A',
   B: '#7BE0A0',
   C: '#C29BFF',
-  D: '#B5B1D3',
+  D: '#C9BEA6',
 };
 
 const classNames: Record<string, string> = {

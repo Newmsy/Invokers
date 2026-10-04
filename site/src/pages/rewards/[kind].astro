@@ -178,13 +178,13 @@ const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : pr
   .lead { color: var(--soft); margin: 0; }
   .hint { color: var(--muted); font-size: 14px; margin: 12px 0; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .jump a { padding: 6px 14px; border-radius: var(--radius); border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
   .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-  .card { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 12px 14px; min-width: 0; font-size: 14px; }
+  .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 12px 14px; min-width: 0; font-size: 14px; }
   .top { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
   .top li { display: flex; flex-wrap: wrap; gap: 4px 12px; }
   .amt { font-weight: 700; color: var(--text); min-width: 7ch; font-variant-numeric: tabular-nums; }
-  details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin-bottom: 8px; scroll-margin-top: 80px; }
+  details { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); margin-bottom: 8px; scroll-margin-top: 80px; }
   summary { cursor: pointer; padding: 10px 14px; font-weight: 600; }
   .list { list-style: none; margin: 0; padding: 0 14px 10px; font-size: 14px; }
   .list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 7px 0; border-top: 1px solid var(--line); }

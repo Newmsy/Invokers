@@ -89,7 +89,7 @@ const groups = [
         data-tolerance={heroTolerances.get(h.id)?.join(' ')}
         data-effect={effectsFor(h.id).map((e) => e.slug).join(' ')}
       >
-        <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+        <a class="card" href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
           <div class="card-art">
             <HeroArt hero={h} />
             <span class="card-tier"><TierBadge heroId={h.id} /></span>
@@ -203,7 +203,7 @@ const groups = [
     max-width: 360px;
     height: 44px;
     padding: 0 16px;
-    border-radius: 22px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--muted);
@@ -223,14 +223,14 @@ const groups = [
   .panel[hidden] { display: none; }
   .panel {
     padding: 12px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
   }
   .chip {
     min-height: 40px;
     padding: 0 16px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     background: transparent;
     border: 1px solid var(--line);
     color: var(--soft);
@@ -263,7 +263,7 @@ const groups = [
     display: flex;
     flex-direction: column;
     height: 300px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     overflow: hidden;
     background: var(--surface-2);
     border: 1px solid var(--line);

@@ -129,7 +129,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
         {tiers.map((t) => (
           <li>
             <a href={href(`tiers/titans/${t.list.id}`)}>
-              <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#5FDCF7'}`}>{t.tier}</span>
+              <span class="tier-letter" style={`--tier: ${tierColor[t.tier] ?? '#D4A64A'}`}>{t.tier}</span>
               {t.list.label}
             </a>
           </li>
@@ -144,7 +144,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     <ul class="binders">
       {shown.map((h) => (
         <li>
-          <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#B5B1D3'}`}>
+          <a href={heroHref(h.id)} style={`--rarity: ${rarityColor[h.rarity] ?? '#C9BEA6'}`}>
             <span class="portrait"><HeroArt hero={h} /></span>
             <span class="name">{h.name}</span>
           </a>
@@ -198,7 +198,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   .top { display: grid; grid-template-columns: 240px 1fr; gap: 32px; align-items: end; margin-bottom: 8px; }
   .art {
     height: 280px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--line);
     border-bottom: 3px solid var(--accent);
@@ -212,7 +212,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   .kind { color: var(--accent); font-weight: 600; font-size: 14px; }
   h1 { margin: 4px 0 0; font-size: 40px; font-weight: 700; }
   .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 0; }
-  .tags li { padding: 6px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+  .tags li { padding: 6px 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
   .tags a { color: inherit; text-decoration: none; }
   .tags li:has(a:hover) { border-color: var(--accent); }
   .button {
@@ -222,7 +222,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     min-height: 36px;
     margin-top: 12px;
     padding: 0 14px;
-    border-radius: 18px;
+    border-radius: var(--radius);
     border: 1px solid var(--line);
     color: var(--soft);
     font-size: 14px;
@@ -233,17 +233,17 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   h2 { font-size: 18px; font-weight: 600; margin: 28px 0 8px; }
   .hint { color: var(--muted); font-size: 14px; margin: -4px 0 12px; }
 
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 560px; }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); max-width: 560px; }
   table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
   th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   tbody th { color: var(--soft); font-weight: 500; width: 1%; white-space: nowrap; text-align: center; }
   tbody tr:last-child > * { border-bottom: 0; }
 
-  .skill { padding: 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; scroll-margin-top: 16px; }
+  .skill { padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); margin-bottom: 12px; scroll-margin-top: 16px; }
   .skill header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .skill header > div { display: flex; flex-direction: column; gap: 2px; }
-  .skill-icon { width: 48px; height: 48px; flex: none; border-radius: 10px; background: var(--surface-2); overflow: hidden; }
+  .skill-icon { width: 48px; height: 48px; flex: none; border-radius: var(--radius); background: var(--surface-2); overflow: hidden; }
   .skill-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .skill-type { font-size: 12px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
   .skill h3 { margin: 0; font-size: 18px; font-weight: 600; }
@@ -253,7 +253,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   .skill-text[hidden] { display: none; }
 
   .effect-list { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .effect-list a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; }
+  .effect-list a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; }
   .effect-list a:hover { border-color: var(--accent); }
   .skill-text :global(.effect-link) { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
   .tier-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -263,7 +263,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     gap: 8px;
     min-height: 36px;
     padding: 0 12px 0 4px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
@@ -289,7 +289,7 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
   .binders a { display: flex; flex-direction: column; gap: 6px; color: var(--text); text-decoration: none; font-size: 13px; }
   .portrait {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: hidden;
     background: var(--surface-2);
     border: 1px solid var(--line);

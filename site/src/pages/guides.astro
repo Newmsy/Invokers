@@ -75,7 +75,7 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
   h1 { margin: 16px 0 4px; font-size: 28px; }
   .lede { color: var(--soft); margin: 0 0 16px; }
   .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; font-weight: 500; }
+  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; font-weight: 500; }
   .jump a:hover { border-color: var(--accent); }
   section { margin-bottom: 32px; scroll-margin-top: 16px; }
   h2 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; font-size: 21px; margin: 0 0 12px; }
@@ -85,8 +85,8 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
     min-height: 120px;
     margin-bottom: 12px;
     padding: 16px 18px;
-    border-radius: 16px;
-    background: linear-gradient(90deg, rgb(12 11 29 / 0.92) 20%, rgb(12 11 29 / 0.2)), var(--banner, var(--surface)) center 35% / cover;
+    border-radius: var(--radius);
+    background: linear-gradient(90deg, rgb(22 19 15 / 0.92) 20%, rgb(22 19 15 / 0.2)), var(--banner, var(--surface)) center 35% / cover;
     border: 1px solid var(--line);
   }
   .topic h2 { margin: 0; }
@@ -101,7 +101,7 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
     align-content: start;
     height: 100%;
     padding: 14px;
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--text);
@@ -116,7 +116,7 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
   strong { font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.3; margin: 2px 0 4px; }
   .blurb { color: var(--muted); font-size: 14px; }
   .bosses { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .bosses a { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 16px; background: var(--surface-3); border: 1px solid var(--line); color: var(--soft); font-size: 13px; }
+  .bosses a { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius); background: var(--surface-3); border: 1px solid var(--line); color: var(--soft); font-size: 13px; }
   .bosses a:hover { color: var(--text); border-color: var(--accent); }
-  .bosses img { border-radius: 6px; object-fit: cover; }
+  .bosses img { border-radius: var(--radius); object-fit: cover; }
 </style>

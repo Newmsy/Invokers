@@ -309,7 +309,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .card {
     margin-top: 24px;
     padding: 4px 20px 20px;
-    border-radius: 16px;
+    border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
   }
@@ -320,7 +320,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   select, input[type='number'] {
     min-height: 44px;
     padding: 0 10px;
-    border-radius: 10px;
+    border-radius: var(--radius);
     background: var(--surface-2);
     border: 1px solid var(--line);
     color: var(--text);
@@ -336,7 +336,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .chip {
     min-height: 44px;
     padding: 0 18px;
-    border-radius: 22px;
+    border-radius: var(--radius);
     background: transparent;
     border: 1px solid var(--accent);
     color: var(--text);
@@ -347,9 +347,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   }
   .plan { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 6px; }
   /* Plan rows are built by the script, so they need global selectors. */
-  .plan :global(li) { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--surface-2); }
+  .plan :global(li) { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--radius); background: var(--surface-2); }
   .plan :global(.n) { font-variant-numeric: tabular-nums; font-weight: 600; }
-  .plan :global(.remove) { min-height: 36px; padding: 0 12px; border-radius: 18px; background: transparent; border: 1px solid var(--line); color: var(--soft); font: inherit; font-size: 13px; cursor: pointer; }
+  .plan :global(.remove) { min-height: 36px; padding: 0 12px; border-radius: var(--radius); background: transparent; border: 1px solid var(--line); color: var(--soft); font: inherit; font-size: 13px; cursor: pointer; }
   .empty { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
   .empty[hidden] { display: none; }
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -359,13 +359,13 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .row.fixed span:last-child, .row.total span:last-child { text-align: right; padding-right: 11px; font-variant-numeric: tabular-nums; }
   .row.total { border-top: 1px solid var(--line); font-weight: 600; color: var(--text); }
   .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
-  .summary div { padding: 12px 14px; border-radius: 12px; background: var(--surface-3); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+  .summary div { padding: 12px 14px; border-radius: var(--radius); background: var(--surface-3); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
   .summary .label { color: var(--muted); font-size: 13px; }
   .summary .value { font-family: var(--display); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
   .plan-actions { margin-top: 16px; }
   .plan-actions .chip { border-color: var(--line); color: var(--soft); font-weight: 500; }
   .result { margin: 16px 0 0; font-family: var(--display); font-weight: 600; font-size: 18px; }
-  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); }
   table { border-collapse: collapse; width: 100%; font-size: 14px; }
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
@@ -375,7 +375,7 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   tbody tr:last-child > * { border-bottom: 0; }
   .table-wrap + .hint { margin-top: 12px; }
   .farm { display: grid; gap: 6px; }
-  .frow { display: grid; grid-template-columns: minmax(150px, 1fr) 220px minmax(0, 1.4fr) 90px; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--surface-2); }
+  .frow { display: grid; grid-template-columns: minmax(150px, 1fr) 220px minmax(0, 1.4fr) 90px; gap: 12px; align-items: center; padding: 8px 12px; border-radius: var(--radius); background: var(--surface-2); }
   .frow.total { background: transparent; border-top: 1px solid var(--line); border-radius: 0; grid-template-columns: 1fr auto; font-weight: 600; }
   .fname { font-weight: 600; }
   .fmeta { color: var(--muted); font-size: 13px; }
