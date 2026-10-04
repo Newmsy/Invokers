@@ -23,6 +23,9 @@ Sprite names -> output:
   S_HeroIndexFactionCard_<faction>    cards/faction/<faction>.webp (faction card with character art)
   S_HeroCardRarityBackground_<rarity> cards/rarity/<rarity>.webp (hero card background per rarity)
   S_DailyRewardsIllustration_<n>, S_NewPlayerRewardsPart<n>Illustration   rewards/
+  boss portraits (BOSS_SPRITES below)  bosses/<region id>.webp, the ids in data/bosses.json
+
+Set ART_ONLY_FILES (a file with one bundle path per line) to scan only those bundles.
 
 Usage: python export_art.py [game_dir]      needs: pip install UnityPy Pillow
 """
@@ -46,6 +49,17 @@ PORTRAIT, ICON, QUALITY = 600, 128, 80
 KEY_ART, CARD, SPLASH = 1280, 800, 1200
 
 # ResourceTypeId values (Il2CppShared enum, game 0.61.1516) for the ids in data/items.json
+# boss portrait sprite -> data/bosses.json id (Omnissi has one portrait per element; Space = Astral)
+BOSS_SPRITES = {
+    "S_BOSS_OGR049_Large": "DungeonRelics1", "S_NEC009_Large": "DungeonRelics2", "S_BOSS091_Large": "DungeonRelics6",
+    "S_BOSS031_Large": "ClanBoss1", "S_BOSS008_Large": "DungeonTitan", "S_BRD001_Large": "DungeonTank",
+    "S_VOL012_Large": "DungeonSupport", "S_GIA043_Large": "DungeonMelee", "S_TRO012_Large": "DungeonRanged",
+    "S_BOSS001_Space_Large": "DungeonEssenceNeutral", "S_BOSS001_Fire_Large": "DungeonEssenceFire",
+    "S_BOSS001_Water_Large": "DungeonEssenceWater", "S_BOSS001_Wind_Large": "DungeonEssenceWind",
+    "S_BOSS001_Earth_Large": "DungeonEssenceEarth", "S_BOSS001_Light_Large": "DungeonEssenceLight",
+    "S_BOSS001_Dark_Large": "DungeonEssenceDark",
+}
+
 RESOURCE_IDS_FILE = Path(__file__).resolve().parent / "resource_type_ids.json"
 
 
@@ -58,6 +72,8 @@ def targets():
     resource_ids = {str(v): k for k, v in json.loads(RESOURCE_IDS_FILE.read_text(encoding="utf-8")).items() if k in items}
 
     def plan(name):
+        if name in BOSS_SPRITES:
+            return f"bosses/{BOSS_SPRITES[name]}.webp", PORTRAIT
         m = re.fullmatch(r"S_([A-Z]{3}\d{3}|ANIM[A-Z]{3}\d{3})_(Large|Skill_\d|Skill_Ultimate|Passive_1)", name)
         if m and (m.group(1) in heroes or m.group(1) in titans):
             code, part = m.groups()
@@ -116,6 +132,9 @@ def main():
     plan = targets()
     files = sorted((GAME / "Invokers_Data" / "StreamingAssets" / "aa" / "StandaloneWindows64").glob("*.bundle"))
     files += sorted(CACHE.glob("*/*/__data"))
+    if os.environ.get("ART_ONLY_FILES"):
+        only = {Path(l.strip()).resolve() for l in open(os.environ["ART_ONLY_FILES"], encoding="utf-8") if l.strip()}
+        files = [f for f in files if f.resolve() in only]
     done = {}
     for path in files:
         try:
