@@ -45,8 +45,9 @@ def awakening(hero):
             "costByRarity": {r: costs(node["Prices"][r]) for r in RARITIES if r in node["Prices"]},
         })
     base = {sign: {k: v for k, v in b.items() if k != "$type" and v} for sign, b in hero["BaseAwakeBonusBySoulSign"].items()}
+    names = soul_sign_names()
     return {
-        "soulSigns": [{"soulSign": sign, "baseBonus": base.get(sign, {}),
+        "soulSigns": [{"soulSign": sign, **names.get(sign, {}), "baseBonus": base.get(sign, {}),
                        "levels": [{"awakenLevel": lvl, "nodes": nodes} for lvl, nodes in sorted(levels.items())]}
                       for sign, levels in trees.items()],
         "materialTiers": {"1": "awaken levels 1-2", "2": "awaken levels 3-4", "3": "awaken levels 5-6"},
@@ -59,6 +60,18 @@ def awakening(hero):
             "baseBonus is the soul class's flat rating bonus from BaseAwakeBonusBySoulSign; when it applies is not stated.",
         ],
     }
+
+
+def soul_sign_names():
+    """md-SoulSign-<n> (name, e.g. Vess), md-SoulSign-Title-<n> (Sign of Vess), md-SoulSign-Description-<n>."""
+    from decode_localization import DEFAULT_GAME, fnv1a64, newest_package, read_package
+    _v, _p, strings = read_package(newest_package(DEFAULT_GAME))
+    out = {}
+    for n, sign in SOUL_SIGNS.items():
+        get = lambda key: strings.get(fnv1a64(key))
+        out[sign] = {k: v for k, v in {"name": get(f"md-SoulSign-{n}"), "title": get(f"md-SoulSign-Title-{n}"),
+                                        "description": get(f"md-SoulSign-Description-{n}")}.items() if v}
+    return out
 
 
 def gear_costs(relic, accessory):

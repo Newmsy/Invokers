@@ -1,10 +1,13 @@
 {
  "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-02",
+ "extractedAt": "2026-10-04",
  "source": "Static game config (HeroData.AwakeNodes).",
  "soulSigns": [
   {
    "soulSign": "BladeDancer",
+   "name": "Vess",
+   "title": "Sign of Vess",
+   "description": "Serenity's First Bladedancer",
    "baseBonus": {
     "InstinctRating": 5,
     "ComboSpeedRating": 8,
@@ -4263,6 +4266,9 @@
   },
   {
    "soulSign": "Assassin",
+   "name": "Temero",
+   "title": "Sign of Temero",
+   "description": "Serenity's First Assassin",
    "baseBonus": {
     "AccuracyRating": 3,
     "InstinctRating": 5,
@@ -8522,6 +8528,9 @@
   },
   {
    "soulSign": "Gladiator",
+   "name": "Corran",
+   "title": "Sign of Corran",
+   "description": "Serenity's First Gladiator",
    "baseBonus": {
     "InstinctRating": 5,
     "ComboSpeedRating": 4,
@@ -12780,6 +12789,9 @@
   },
   {
    "soulSign": "Templar",
+   "name": "Actia",
+   "title": "Sign of Actia",
+   "description": "Serenity's First Templar",
    "baseBonus": {
     "AccuracyRating": 4,
     "ResistanceRating": 6,
@@ -17040,6 +17052,9 @@
   },
   {
    "soulSign": "Sentinel",
+   "name": "Magnar",
+   "title": "Sign of Magnar",
+   "description": "Serenity's First Sentinel",
    "baseBonus": {
     "ResistanceRating": 8,
     "InstinctRating": 5,
@@ -21299,6 +21314,9 @@
   },
   {
    "soulSign": "Cleric",
+   "name": "Pirea",
+   "title": "Sign of Pirea",
+   "description": "Serenity's First Cleric",
    "baseBonus": {
     "ResistanceRating": 3,
     "InstinctRating": 5,
@@ -25558,6 +25576,9 @@
   },
   {
    "soulSign": "Warlock",
+   "name": "Kalibar",
+   "title": "Sign of Kalibar",
+   "description": "Serenity's First Warlock",
    "baseBonus": {
     "AccuracyRating": 4,
     "InstinctRating": 5,
@@ -29817,6 +29838,9 @@
   },
   {
    "soulSign": "Slayer",
+   "name": "Duthra",
+   "title": "Sign of Duthra",
+   "description": "Serenity's First Slayer",
    "baseBonus": {
     "InstinctRating": 5,
     "SkillSpeedRating": 7,

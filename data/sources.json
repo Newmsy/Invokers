@@ -1,6 +1,6 @@
 {
  "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-02",
+ "extractedAt": "2026-10-04",
  "source": "Stage loot from the level config (Levels.csv) and shop packs (shop_packs.json).",
  "drops": {
   "Victory": "per win (boss/dungeon victory table)",
