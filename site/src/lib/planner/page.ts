@@ -13,6 +13,7 @@ import {
   totals,
   type Cost,
   type HeroPlan,
+  type LevelPlan,
   type PlanData,
 } from './model';
 
@@ -82,6 +83,19 @@ export function start(): void {
     );
   };
 
+  const echoName = (from: number) => data.levelling.ascension.find((a) => a.from === from)?.echo ?? `${from}★ Echo`;
+  const levelList = (l: LevelPlan): HTMLElement => {
+    const echoes = Object.entries(l.echoes).sort((a, b) => Number(a[0]) - Number(b[0]));
+    if (!l.xp && !l.gold && !echoes.length) return h('p', { class: 'done' }, 'Nothing left to pay.');
+    return h(
+      'dl',
+      { class: 'cost' },
+      ...(l.xp ? [h('dt', {}, 'XP'), h('dd', {}, fmt(l.xp))] : []),
+      ...(l.gold ? [h('dt', {}, 'Ascension Gold'), h('dd', {}, fmt(l.gold))] : []),
+      ...echoes.flatMap(([from, n]) => [h('dt', {}, echoName(Number(from))), h('dd', {}, fmt(n))]),
+    );
+  };
+
   // ---------- filters ----------
   const search = $<HTMLInputElement>('p-search');
   const minStars = $<HTMLSelectElement>('p-stars');
@@ -131,7 +145,7 @@ export function start(): void {
 
     $('s-level').replaceChildren(
       h('p', { class: 'big' }, `${fmt(t.belowMaxLevel)} below ${MAX_STARS}★ level ${MAX_HERO_LEVEL}`),
-      h('p', { class: 'soon' }, 'XP, food and ascension costs coming soon'),
+      levelList(t.level),
     );
   }
 

@@ -2,37 +2,79 @@
 import { heroArt } from '../art';
 import { heroRefsByConfigId, href, itemName, pack } from '../data';
 import { calculatorData, currencies } from '../skillCosts';
-import type { GearCostRow, PlanData } from './model';
+import { ascensionTable, echoFor, maxLevel, plainItemName, xpToLevel } from '../progression';
+import { RANKS, type GearCostRow, type PlanData } from './model';
 
-// Gear upgrade prices join the data pack later (data/gear_costs.json). The glob is empty until then,
-// so the page builds either way and shows gear costs as soon as the file lands.
+
+// Gear upgrade prices, sell, deactivate and destroy returns (data/gear_costs.json). Globbed so the page still builds
+// without the file; gear Gold and Memorium then show as "coming soon".
+interface Upgrade { rank: string; rarity: string; toLevel: number; gold?: number; memorium?: number }
+type ByRank<T> = Record<string, T>;
+interface GearSide {
+  upgrade?: Upgrade[];
+  sell?: ByRank<Record<string, { Gold?: number }>>;
+  deactivate?: ByRank<Record<string, { Gold?: number }>>;
+  destroy?: ByRank<{ Memorium?: number }>;
+}
+interface GearFile extends GearSide {
+  costs?: unknown;
+  gear?: GearSide;
+  accessories?: GearSide;
+}
 const gearFiles = import.meta.glob<{ default: unknown }>('../../../../data/gear_costs.json', { eager: true });
-const gearRows = Object.values(gearFiles)[0]?.default;
+const gearFile = Object.values(gearFiles)[0]?.default as GearFile | unknown[] | undefined;
+const gearSide: GearSide | undefined = Array.isArray(gearFile) ? { upgrade: gearFile as Upgrade[] } : (gearFile?.gear ?? gearFile);
 
-/** Sell and crush returns from data/gear_costs.json (`salvage`), or null until they exist. */
+const starsOf = (rank: unknown): number => (typeof rank === 'number' ? rank : RANKS.indexOf(String(rank)) + 1);
+
+/** Sell, deactivate and destroy returns per star and rarity (rarity '' = any), or null until they exist. */
 export interface SalvageRow {
   rarity: string;
   stars: number;
-  level: number;
   sellGold?: number;
-  crushMemorium?: number;
+  deactivateGold?: number;
 }
-export function gearSalvage(): SalvageRow[] | null {
-  const rows = (gearRows as { salvage?: unknown } | undefined)?.salvage;
-  if (!Array.isArray(rows)) return null;
-  const valid = rows.filter((r): r is SalvageRow => !!r && typeof r.rarity === 'string' && typeof r.stars === 'number' && typeof r.level === 'number');
-  return valid.length ? valid : null;
+export interface Salvage {
+  rows: SalvageRow[];
+  /** Memorium from destroying a piece, by stars (the same for every rarity). */
+  destroyMemorium: Record<number, number>;
+}
+export function gearSalvage(): Salvage | null {
+  const sell = gearSide?.sell;
+  if (!sell || typeof sell !== 'object') return null;
+  const rows: SalvageRow[] = [];
+  for (const [rank, byRarity] of Object.entries(sell)) {
+    for (const [rarity, v] of Object.entries(byRarity)) {
+      rows.push({ rarity, stars: starsOf(rank), sellGold: v?.Gold, deactivateGold: gearSide?.deactivate?.[rank]?.[rarity]?.Gold });
+    }
+  }
+  const destroyMemorium = Object.fromEntries(
+    Object.entries(gearSide?.destroy ?? {})
+      .filter(([, v]) => typeof v?.Memorium === 'number')
+      .map(([rank, v]) => [starsOf(rank), v.Memorium!]),
+  );
+  return rows.length ? { rows: rows.filter((r) => r.stars > 0), destroyMemorium } : null;
 }
 
-/** Upgrade price rows from data/gear_costs.json (a bare list, or under `costs` or `upgrade`), or null until it exists. */
+/** Upgrade price rows (gear; accessories cost the same), or null until they exist. */
 export function gearCosts(): GearCostRow[] | null {
-  const file = gearRows as { costs?: unknown; upgrade?: unknown } | undefined;
-  const rows = Array.isArray(gearRows) ? gearRows : (file?.upgrade ?? file?.costs);
-  if (!Array.isArray(rows)) return null;
-  const valid = rows.filter(
-    (r): r is GearCostRow => !!r && typeof r.rarity === 'string' && typeof r.stars === 'number' && typeof r.toLevel === 'number',
-  );
-  return valid.length ? valid : null;
+  const file = gearFile as GearFile | undefined;
+  const raw = gearSide?.upgrade ?? (Array.isArray(file?.costs) ? file.costs : undefined);
+  if (!Array.isArray(raw)) return null;
+  const rows = raw
+    .map((r) => (r && typeof r === 'object' ? { ...r, stars: starsOf((r as { stars?: number }).stars ?? r.rank) } : null))
+    .filter((r): r is Upgrade & { stars: number } => !!r && typeof r.rarity === 'string' && r.stars > 0 && typeof r.toLevel === 'number')
+    .map(({ rarity, stars, toLevel, gold, memorium }) => ({ rarity, stars, toLevel, gold, memorium }));
+  return rows.length ? rows : null;
+}
+
+/** XP and ascension facts for the planner's "Stars and level" card. */
+function levellingData(): PlanData['levelling'] {
+  return {
+    maxLevel,
+    xpTo: Array.from({ length: maxLevel + 1 }, (_, level) => (level ? xpToLevel(level) : 0)),
+    ascension: ascensionTable.map((r) => ({ from: r.from, count: r.count, echo: plainItemName(echoFor(r.from)), gold: r.gold })),
+  };
 }
 
 export function plannerData(): PlanData {
@@ -44,6 +86,7 @@ export function plannerData(): PlanData {
       calculatorData().map((r) => [r.rarity, Object.fromEntries(r.skills.map((s) => [s.id, s.schedule]))]),
     ),
     gear,
+    levelling: levellingData(),
     heroes: Object.fromEntries(
       Object.entries(heroRefsByConfigId).map(([configId, r]) => [
         configId,
