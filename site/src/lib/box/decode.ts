@@ -3,6 +3,7 @@
 // Files live in %USERPROFILE%\AppData\LocalLow\Hit_Zone\Invokers\aggregate_snapshots\.
 import { ENUMS } from './enums';
 import { Reader, bool, f64, i32, i64, nullableI32, uint } from './memorypack';
+import type { BoxTrophy } from './trophies';
 
 export interface StatRoll {
   id: number;
@@ -59,11 +60,15 @@ export const BOX_FILES = {
   heroes: 'PlayerHeroesModel.dat',
   gear: 'PlayerRelicsModel.dat',
   accessories: 'PlayerAccessoriesModel.dat',
+  trophies: 'PlayerArenaModel.dat',
 } as const;
 export type BoxPart = keyof typeof BOX_FILES;
 
 /** Format byte each decoder was written against (game 0.61.1516). */
-export const KNOWN_FORMAT: Record<BoxPart, number> = { heroes: 2, gear: 4, accessories: 5 };
+export const KNOWN_FORMAT: Record<BoxPart, number> = { heroes: 2, gear: 4, accessories: 5, trophies: 9 };
+
+/** Trophy Room element ids. */
+const ELEMENTS: Record<number, string> = { 1: 'Fire', 2: 'Earth', 3: 'Wind', 4: 'Water', 5: 'Light', 6: 'Dark' };
 
 const enumName = (kind: string, value: number): string => ENUMS[kind]?.[String(value)] ?? String(value);
 
@@ -178,6 +183,17 @@ export function decodeHeroes(data: Uint8Array): Snapshot<BoxHero> {
       skin: m[18]?.length ? enumName('CharacterSkin', i32(m[18])) : null,
     });
   }
+  return { ...meta, items };
+}
+
+export function decodeTrophies(data: Uint8Array): Snapshot<BoxTrophy> {
+  // PlayerArenaModel: ONLY member 8 is read, the Trophy Room: a list of {Element, Stat (CharacterStatBonus), Level}.
+  // The other members hold Arena opponents (other players' names, ids and teams), the defense team and shop state;
+  // they are never decoded.
+  const { model, ...meta } = readSnapshot(data);
+  const items = list(model[8], (r) => r.requiredObject())
+    .map((m) => ({ element: ELEMENTS[i32(m[0])] ?? String(i32(m[0])), stat: enumName('CharacterStatBonus', i32(m[1])), level: i32(m[2]) }))
+    .filter((t) => t.level > 0);
   return { ...meta, items };
 }
 

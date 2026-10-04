@@ -1,6 +1,6 @@
 // Client side of the My box page: import, backup, delete, and the invokers / gear / accessories views.
 import { avatar } from '../avatar';
-import type { BoxAccessory, BoxGear, BoxHero, StatRoll } from './decode';
+import { BOX_FILES, type BoxAccessory, type BoxGear, type BoxHero, type StatRoll } from './decode';
 import { ImportError, importBackup, importSnapshots, partFor } from './importer';
 import { clearBox, loadBox, onBoxChange, saveBox, type BoxDoc } from './store';
 import { TROPHY_ROOMS, roomLevels, trophyBonuses } from './trophies';
@@ -134,8 +134,10 @@ export function start(): void {
       await saveBox(doc);
       box = doc;
       const missing = (['heroes', 'gear', 'accessories'] as const).filter((p) => !updated.includes(p) && !doc.files[p]);
-      const parts = [`Imported ${updated.map((p) => (p === 'heroes' ? 'invokers' : p)).join(', ')}.`, ...notes];
+      const label = (p: string) => (p === 'heroes' ? 'invokers' : p === 'trophies' ? 'Trophy Room' : p);
+      const parts = [`Imported ${updated.map(label).join(', ')}.`, ...notes];
       if (missing.length) parts.push(`Still missing: ${missing.join(', ')}.`);
+      if (!doc.files.trophies) parts.push(`Add ${BOX_FILES.trophies} to include your Trophy Room.`);
       message(parts.join(' '));
       renderAll();
     } catch (e) {

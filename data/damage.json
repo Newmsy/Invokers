@@ -1,7 +1,7 @@
 {
  "gameVersion": "0.61.1516",
  "extractedAt": "2026-10-04",
- "source": "The game's own RpgStateUtils.DefenseRatingToFactor, called in game (LootDump F11 damage probe) at DEF 0-50,000.",
+ "source": "The game's own battle code: RpgStateUtils (DEF curve, resist roll), ElementExtensions (element rules), DamageUtils; constants read from the disassembly or called in game.",
  "defense": {
   "formula": "damageMultiplier = 0.15 + 0.85 * exp(-DEF / 5000)",
   "floor": 0.15,
@@ -48,7 +48,42 @@
   ]
  },
  "unconfirmed": [
-  "How ignore-DEF, element advantage, crit, damage-taken effects and tolerance combine with this multiplier: the in-game probe of the full damage function did not return usable values yet (issue #123).",
-  "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config."
- ]
+  "The 0.15 floor and 5000 scale are fitted to the game's outputs (exact to 6 decimals at every sample), not read from config.",
+  "How crit, ignore-DEF, damage-taken and Tolerance combine with the DEF multiplier (DamageUtils.CalculateSourceDamage / CalculateMitigatedDamage are not decoded yet).",
+  "debuffLanding: which stat feeds the target 'resist bonus' and attacker 'accuracy bonus' terms (two F64 fields on the battle state), and the exact corruption types (read as type 11 on the target and Mindfog on the attacker).",
+  "Whether the in-skill cast chance ('20% chance to cast') is rolled before and separately from this resist roll (it is a separate script block, so most likely yes)."
+ ],
+ "elements": {
+  "damageMultiplier": {
+   "advantage": 1.3,
+   "disadvantage": 0.7,
+   "neutral": 1.0,
+   "lightDark": "Light/Dark attacker vs a non-Light/Dark target: x1.15 if the player-advantage flag is positive, else x1.0. Non-Light/Dark attacker vs a Light/Dark target: x0.85 if that flag is negative, else x1.0.",
+   "source": "ElementExtensions.GetDamageCoefByElements: 1 + sign x 0.3 (sign from GetBasicAdvantageSign)"
+  },
+  "critChanceDelta": {
+   "advantage": 0,
+   "disadvantage": -50,
+   "neutral": 0,
+   "lightDark": "-25 when a non-Light/Dark attacker hits a Light/Dark target with a negative player-advantage flag",
+   "source": "ElementExtensions.GetCritChanceDeltaByElements (percentage points)"
+  },
+  "debuffApplicationChance": {
+   "advantage": 20,
+   "disadvantage": -50,
+   "neutral": 0,
+   "lightDark": "+10 for a Light/Dark attacker vs a non-Light/Dark target with a positive player-advantage flag; -25 for the reverse case with a negative flag",
+   "source": "ElementExtensions.GetDebuffApplicationChanceByElements (percentage points, subtracted from the resist chance)"
+  },
+  "ignoreElementAdvantage": "Effects with ignoreElement get none of these modifiers.",
+  "pvp": "In PvP, Light and Dark counter each other (in-game PvP hint); GetBasicAdvantageSign handles the pairing."
+ },
+ "debuffLanding": {
+  "rule": "resisted if resistChance > random(0..100); otherwise the debuff lands",
+  "resistChance": "curve(target RES - attacker ACC) + target resist bonus - attacker accuracy bonus - elements.debuffApplicationChance - corruption(target, type 11) + corruption(attacker, Mindfog)",
+  "curve": "stat_curves.json ResistChance_ResMinusAcc (index = RES - ACC + 1500): 0 at equal, 50 at +50, 89.6 at +100, 129 at +200, 244 at +1500; negative when ACC is higher",
+  "floorCap": "No floor or cap in the roll itself: resistChance <= 0 always lands, >= 100 is always resisted.",
+  "skipped": "Allies' effects are never resisted (same team). Effects marked Unresistable / CanBeResisted = false (skill_mechanics.json) skip the roll.",
+  "source": "RpgStateUtils.RollResistance (read from the game code)"
+ }
 }

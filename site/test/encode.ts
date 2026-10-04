@@ -102,3 +102,10 @@ export function encodeHeroes(s: { formatVersion: number; revision: number; items
   const body = concat([i32(s.items.length), ...s.items.flatMap((h, n) => [i32(h.id), hero(h, n)])]);
   return snapshot(s.formatVersion, BigInt(s.revision), object([i32(99999), body]));
 }
+
+/** Arena snapshot: only member 8 (Trophy Room) is real; the rest stand in for opponent lists etc. */
+export function encodeTrophies(s: { formatVersion: number; revision: number; items: any[] }, elementIds: Record<string, number>): Bytes {
+  const members: Bytes[] = Array.from({ length: 12 }, (_, n) => new Uint8Array(n === 3 ? 300 : 0).fill(0xff));
+  members[8] = list(s.items, (t) => object([i32(elementIds[t.element]), i32(code('CharacterStatBonus', t.stat)), i32(t.level)]));
+  return snapshot(s.formatVersion, BigInt(s.revision), object(members));
+}
