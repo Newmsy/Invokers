@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import curvesJson from '../../../data/stat_curves.json';
+import damageJson from '../../../data/damage.json';
 
 interface Curve { id: string; stat: string; meaning: string; values: number[] }
 const curves = (curvesJson as unknown as { curves: Curve[] }).curves;
@@ -40,6 +41,8 @@ const defense = byId('DefenseFactor');
 const resist = byId('ResistChance_ResMinusAcc');
 const offset = resist ? (resist.values.length - 1) / 2 : 0;
 const diffs = [-1000, -500, -300, -200, -150, -100, -75, -50, -25, 0, 25, 50, 75, 100, 150, 200, 300, 500, 1000];
+// Element advantage moves the resist chance (points taken off it when the attacker has the edge).
+const elementShift = (damageJson as { elements?: { debuffApplicationChance?: { advantage: number; disadvantage: number } } }).elements?.debuffApplicationChance;
 const resistAt = (pct: number) => (resist ? resist.values.findIndex((x) => x >= pct) - offset : 0);
 const pctSigned = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${n(Math.abs(v))}%`;
 const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).toLocaleString('en-GB')}`;
@@ -109,6 +112,13 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
       <ul class="notes">
         <li>Each point of gap is worth <strong>1%</strong> up to a gap of 50 either way; after that each point is worth less.</li>
         <li>A gap of <strong>+{resistAt(100)}</strong> already gives a resist chance of 100%.</li>
+        {elementShift && (
+          <li>
+            Elements shift it: when the attacker has element advantage your resist chance is <strong>{elementShift.advantage} points lower</strong>;
+            when you have the advantage it is <strong>{-elementShift.disadvantage} points higher</strong>.
+          </li>
+        )}
+        <li>At 0% or below the effect always lands; at 100% or above it is always resisted. Effects that can't be resisted skip the roll.</li>
       </ul>
       <div class="table-wrap narrow">
         <table class="grid">
