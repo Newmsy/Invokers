@@ -10,20 +10,24 @@ import { gearSets } from '../lib/gear';
 import { tierLists, tierRows } from '../lib/tierData';
 import { hasNews, inGroup, menus } from '../lib/nav';
 import { allGuides } from '../lib/guides';
+import { artRef } from '../lib/markdown-art';
 
 // News entries (src/content/news) when they exist, then articles, newest first.
 interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date }
 const newsFiles = import.meta.glob<{ frontmatter: Record<string, unknown> }>('../content/news/*.md', { eager: true });
+// Labels match newsKinds in lib/news.ts (the News pages' own module).
+const newsLabels: Record<string, string> = { spotlight: 'Chase hero spotlight', patch: 'Patch notes', event: 'Event', announcement: 'Announcement' };
+const list = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
+const hasArt = (ref: string) => { try { return !!artRef(ref); } catch { return false; } };
 const news: Story[] = hasNews
   ? Object.entries(newsFiles).map(([file, m]) => {
       const f = m.frontmatter;
-      const art = f.image ?? f.art;
       return {
         path: `news/${file.split('/').pop()!.replace(/\.md$/, '')}`,
         title: String(f.title),
-        blurb: String(f.summary ?? f.description ?? ''),
-        art: Array.isArray(art) ? art.map(String) : art ? [String(art)] : [],
-        tag: String(f.tag ?? 'News'),
+        blurb: String(f.description ?? ''),
+        art: [...list(f.heroes).map((h) => `hero:${h}`), ...list(f.art)].filter(hasArt),
+        tag: newsLabels[String(f.kind)] ?? 'News',
         date: new Date(String(f.date)),
       };
     })
