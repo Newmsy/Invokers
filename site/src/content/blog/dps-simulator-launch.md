@@ -51,7 +51,7 @@ Pick an Invoker from your box and a **Best gear from your box** section appears.
 
 All numbers are **estimated**. Each fight assumes:
 
-- one target and no buffs,
+- one target, with the buffs an Invoker casts on itself (or on allies around it) but none from other Invokers,
 - debuffs that land don't change damage (except Burn and Bleed),
 - average crits rather than lucky ones,
 - Burn and Bleed at their per-tick limit.
