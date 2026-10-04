@@ -28,6 +28,8 @@ const news = defineCollection({
     date: z.coerce.date(),
     /** Last day, for things that ran over a stretch (a chase). */
     until: z.coerce.date().optional(),
+    /** True when the dates are our best evidence rather than announced. */
+    datesEstimated: z.boolean().default(false),
     kind: z.enum(['spotlight', 'patch', 'event', 'announcement']),
     gameVersion: z.string(),
     heroes: z.array(z.string()).default([]),

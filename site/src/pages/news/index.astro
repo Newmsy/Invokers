@@ -5,11 +5,13 @@ import Base from '../../layouts/Base.astro';
 import ArtStrip from '../../components/ArtStrip.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { href } from '../../lib/data';
-import { newsKinds } from '../../lib/news';
+import { heroByName, newsDate, newsKinds } from '../../lib/news';
+import { chaseBanner } from '../../lib/art';
 
 const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const kinds = Object.entries(newsKinds).filter(([k]) => entries.some((e) => e.data.kind === k));
+const banner = (e: (typeof entries)[number]) =>
+  e.data.kind === 'spotlight' && e.data.heroes[0] ? chaseBanner(heroByName(e.data.heroes[0]).id) : undefined;
 const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero:${n}`), ...e.data.art].slice(0, 3);
 ---
 <Base title="News">
@@ -27,11 +29,11 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     {entries.map((e) => (
       <li data-kind={e.data.kind}>
         <a href={href(`news/${e.id}`)}>
-          <div class="art"><ArtStrip refs={refs(e)} size="small" /></div>
+          {banner(e) ? <img class="banner" src={banner(e)} alt="" loading="lazy" /> : <div class="art"><ArtStrip refs={refs(e)} size="small" /></div>}
           <span class="kind">{newsKinds[e.data.kind]}</span>
           <h2>{e.data.title}</h2>
           <p>{e.data.description}</p>
-          <span class="meta">{fmt(e.data.date)}{e.data.until && ` – ${fmt(e.data.until)}`}</span>
+          <span class="meta">{newsDate(e.data)}</span>
         </a>
       </li>
     ))}
@@ -79,6 +81,7 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
     color: var(--text);
   }
   .entries a:hover { border-color: var(--accent); }
+  .banner { display: block; width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px; }
   .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
   .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
   .entries h2 { margin: 4px 0 6px; font-size: 20px; }

@@ -5,7 +5,8 @@ import ArtStrip from '../../components/ArtStrip.astro';
 import HeroNumbers from '../../components/HeroNumbers.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { heroSlug, href, pack } from '../../lib/data';
-import { heroByName, newsKinds } from '../../lib/news';
+import { heroByName, newsDate, newsKinds } from '../../lib/news';
+import { chaseBanner } from '../../lib/art';
 
 export async function getStaticPaths() {
   const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -22,20 +23,21 @@ export async function getStaticPaths() {
 const { entry, more } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
-const fmt = (x: Date) => x.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const heroLinks = d.heroes.map((n) => {
   const h = heroByName(n);
   return { path: `heroes/${heroSlug(h.id)}`, label: h.name };
 });
+const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.heroes[0]).id) : undefined;
 ---
 <Base title={d.title}>
   <article>
     <a class="back" href={href('news')}>← News</a>
+    {banner && <img class="banner" src={banner} alt={`${d.heroes[0]} chase`} loading="lazy" />}
     <div class="cover"><ArtStrip refs={[...d.heroes.map((n) => `hero:${n}`), ...d.art]} /></div>
     <p class="kind">{newsKinds[d.kind]}</p>
     <h1>{d.title}</h1>
     <p class="meta">
-      {fmt(d.date)}{d.until && ` – ${fmt(d.until)}`} · game version {d.gameVersion}
+      {newsDate(d, 'long')} · game version {d.gameVersion}
       {d.gameVersion !== pack.gameVersion && <span class="older"> (the site's data is now {pack.gameVersion})</span>}
       {d.official && <> · <a href={d.official} rel="noopener">Official announcement</a></>}
     </p>
@@ -55,6 +57,7 @@ const heroLinks = d.heroes.map((n) => {
   .meta { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
   .older { color: var(--soft); }
   .cover:not(:empty) { margin-top: 20px; }
+  .banner { display: block; width: 100%; height: auto; margin-top: 16px; border-radius: 16px; border: 1px solid var(--line); }
   .body { font-size: 17px; color: var(--text); }
   .body :global(h2) { font-size: 23px; margin: 32px 0 12px; }
   .body :global(p), .body :global(li) { color: var(--soft); }

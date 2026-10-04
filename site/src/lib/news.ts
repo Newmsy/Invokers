@@ -73,3 +73,10 @@ export function heroFacts(name: string): HeroFacts {
     similar: similarTo(hero, 4),
   };
 }
+
+/** "7 Sep 2026 – 28 Sep 2026", or just the month when only a rough date is known ("Aug 2026 (estimated)"). */
+export function newsDate(d: { date: Date; until?: Date; datesEstimated?: boolean }, month: 'short' | 'long' = 'short'): string {
+  const day = (x: Date) => x.toLocaleDateString('en-GB', { day: 'numeric', month, year: 'numeric', timeZone: 'UTC' });
+  if (d.datesEstimated && !d.until) return `${d.date.toLocaleDateString('en-GB', { month, year: 'numeric', timeZone: 'UTC' })} (estimated)`;
+  return `${day(d.date)}${d.until ? ` – ${day(d.until)}` : ''}${d.datesEstimated ? ' (estimated)' : ''}`;
+}
