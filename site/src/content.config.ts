@@ -18,4 +18,23 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// News: a short report of something that happened in the game, then our numbers on it. `heroes` names the
+// Invokers it covers; each gets a "by the numbers" box (components/HeroNumbers).
+const news = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/news' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    /** Last day, for things that ran over a stretch (a chase). */
+    until: z.coerce.date().optional(),
+    kind: z.enum(['spotlight', 'patch', 'event', 'announcement']),
+    gameVersion: z.string(),
+    heroes: z.array(z.string()).default([]),
+    art: z.array(z.string()).default([]),
+    /** The official announcement, when there is one. */
+    official: z.url().optional(),
+  }),
+});
+
+export const collections = { blog, news };

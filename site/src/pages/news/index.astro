@@ -1,0 +1,91 @@
+---
+// News, newest first: what happened in the game, each with our numbers on it.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArtStrip from '../../components/ArtStrip.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import { href } from '../../lib/data';
+import { newsKinds } from '../../lib/news';
+
+const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const kinds = Object.entries(newsKinds).filter(([k]) => entries.some((e) => e.data.kind === k));
+const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero:${n}`), ...e.data.art].slice(0, 3);
+---
+<Base title="News">
+  <h1>News</h1>
+  <p class="lede">What's happening in Invokers, with the numbers that matter for your box.</p>
+
+  {kinds.length > 1 && (
+    <div class="filters" role="group" aria-label="Show">
+      <button class="chip" aria-pressed="true" data-kind="">All</button>
+      {kinds.map(([k, label]) => <button class="chip" aria-pressed="false" data-kind={k}>{label}</button>)}
+    </div>
+  )}
+
+  <ul class="entries">
+    {entries.map((e) => (
+      <li data-kind={e.data.kind}>
+        <a href={href(`news/${e.id}`)}>
+          <div class="art"><ArtStrip refs={refs(e)} size="small" /></div>
+          <span class="kind">{newsKinds[e.data.kind]}</span>
+          <h2>{e.data.title}</h2>
+          <p>{e.data.description}</p>
+          <span class="meta">{fmt(e.data.date)}{e.data.until && ` – ${fmt(e.data.until)}`}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <SeeAlso links={[{ path: 'updates', label: 'Game updates' }, { path: 'events', label: 'Events' }, { path: 'summons', label: 'Summons' }, { path: 'blog', label: 'Blog' }]} />
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filters button');
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      document.querySelectorAll<HTMLElement>('.entries li').forEach((li) => {
+        li.hidden = !!b.dataset.kind && li.dataset.kind !== b.dataset.kind;
+      });
+    }),
+  );
+</script>
+
+<style>
+  .lede { color: var(--soft); margin-top: -8px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--soft);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .filters button[aria-pressed='true'] { border-color: var(--accent); color: var(--text); }
+  .entries { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; max-width: 760px; }
+  .entries a {
+    display: block;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    color: var(--text);
+  }
+  .entries a:hover { border-color: var(--accent); }
+  .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
+  .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
+  .entries h2 { margin: 4px 0 6px; font-size: 20px; }
+  .entries p { margin: 0 0 10px; color: var(--soft); }
+  .meta { font-size: 13px; color: var(--muted); }
+  @media (max-width: 720px) {
+    .entries a { padding: 16px; }
+    .entries h2 { font-size: 18px; }
+  }
+</style>

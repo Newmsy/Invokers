@@ -1,0 +1,107 @@
+---
+// "By the numbers" box for an Invoker named in a news entry: maxed stats with where they rank, tier
+// placings and stand-ins, all worked out from the same data as the hero pages.
+import { heroFacts } from '../lib/news';
+import { heroArt, elementIcon, classIcon } from '../lib/art';
+import { heroHref, href } from '../lib/data';
+import { className, rarityColor, tierColor } from '../lib/format';
+
+interface Props {
+  name: string;
+}
+const f = heroFacts(Astro.props.name);
+const h = f.hero;
+const cls = className(String(h.class));
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const ord = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
+const plural = h.rarity === 'Legendary' ? 'Legendaries' : `${h.rarity}s`;
+const art = heroArt(h.id);
+const el = elementIcon(h.element);
+const ci = classIcon(String(h.class));
+---
+<section class="numbers" aria-label={`${h.name} by the numbers`}>
+  <header>
+    {art && <img class="face" src={art} alt="" width="72" height="72" loading="lazy" />}
+    <div>
+      <p class="kicker">By the numbers</p>
+      <h3><a href={heroHref(h.id)}>{h.name}</a></h3>
+      <p class="meta">
+        <span style={`color:${rarityColor[h.rarity]}`}>{h.rarity}</span>
+        · {el && <img src={el} alt="" width="16" height="16" />}{h.element} {ci && <img src={ci} alt="" width="16" height="16" />}{cls}
+        · {h.faction}
+        · {f.summonable ? 'Also in the summon pool' : 'Not in the summon pool'}
+      </p>
+    </div>
+  </header>
+
+  <table>
+    <caption class="visually-hidden">{h.name} stats and where they rank</caption>
+    <thead>
+      <tr><th>Stat</th><th>{f.awakened ? 'Fully awakened' : '6★ Lv 60'}</th><th>Among {plural}</th><th>Among {h.rarity} {cls}</th></tr>
+    </thead>
+    <tbody>
+      {f.ranks.map((r) => (
+        <tr><td>{r.label}</td><td>{fmt(r.value)}</td><td>{ord(r.legendary)} of {r.legendaryOf}</td><td>{ord(r.cls)} of {r.clsOf}</td></tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="hint">6★, level 60{f.awakened ? ', every Awakening node' : ''}, without gear.</p>
+
+  {f.tiers.length > 0 && (
+    <>
+      <p class="sub">Tier placings · S on {f.topTiers} of {f.tiers.length} lists</p>
+      <ul class="tiers">
+        {f.tiers.slice(0, 8).map((t) => (
+          <li><a href={href(`tiers/invokers/${t.id}`)}><b style={`background:${tierColor[t.tier]}`}>{t.tier}</b>{t.label}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  <p class="sub">Closest stand-ins</p>
+  <ul class="similar">
+    {f.similar.map((s) => (
+      <li>
+        <a href={heroHref(s.id)}>
+          {heroArt(s.id) && <img src={heroArt(s.id)} alt="" width="36" height="36" loading="lazy" />}
+          <span>{s.name}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .numbers {
+    margin: 28px 0;
+    padding: 20px 22px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 16px;
+  }
+  header { display: flex; gap: 16px; align-items: center; }
+  .face { border-radius: 14px; object-fit: cover; object-position: top center; background: var(--bg); flex: none; }
+  .kicker { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
+  h3 { margin: 2px 0 4px; font-size: 21px; }
+  h3 a { color: var(--text); }
+  .meta { margin: 0; font-size: 14px; color: var(--soft); }
+  .meta img { vertical-align: -3px; margin-right: 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 4px; font-size: 15px; }
+  th, td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-family: var(--display); font-weight: 600; color: var(--text); font-size: 13px; }
+  td { color: var(--soft); }
+  .hint { margin: 0; font-size: 13px; color: var(--muted); }
+  .sub { margin: 18px 0 8px; font-size: 14px; font-family: var(--display); font-weight: 600; color: var(--text); }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tiers a { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--soft); }
+  .tiers b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #0c0b1d; font-size: 12px; }
+  .similar a { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; color: var(--text); }
+  .similar img { border-radius: 8px; object-fit: cover; object-position: top center; }
+  a:hover { border-color: var(--accent); }
+  @media (max-width: 720px) {
+    .numbers { padding: 16px; }
+    table { display: block; overflow-x: auto; }
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArtStrip from '../../components/ArtStrip.astro';
+import HeroNumbers from '../../components/HeroNumbers.astro';
+import SeeAlso from '../../components/SeeAlso.astro';
+import { heroSlug, href, pack } from '../../lib/data';
+import { heroByName, newsKinds } from '../../lib/news';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return entries.map((entry) => {
+    // Other entries of the same kind, newest first.
+    const more = entries
+      .filter((e) => e.id !== entry.id && e.data.kind === entry.data.kind)
+      .slice(0, 3)
+      .map((e) => ({ path: `news/${e.id}`, label: e.data.title }));
+    return { params: { id: entry.id }, props: { entry, more } };
+  });
+}
+
+const { entry, more } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const fmt = (x: Date) => x.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const heroLinks = d.heroes.map((n) => {
+  const h = heroByName(n);
+  return { path: `heroes/${heroSlug(h.id)}`, label: h.name };
+});
+---
+<Base title={d.title}>
+  <article>
+    <a class="back" href={href('news')}>← News</a>
+    <div class="cover"><ArtStrip refs={[...d.heroes.map((n) => `hero:${n}`), ...d.art]} /></div>
+    <p class="kind">{newsKinds[d.kind]}</p>
+    <h1>{d.title}</h1>
+    <p class="meta">
+      {fmt(d.date)}{d.until && ` – ${fmt(d.until)}`} · game version {d.gameVersion}
+      {d.gameVersion !== pack.gameVersion && <span class="older"> (the site's data is now {pack.gameVersion})</span>}
+      {d.official && <> · <a href={d.official} rel="noopener">Official announcement</a></>}
+    </p>
+    <div class="body">
+      <Content />
+    </div>
+    {d.heroes.map((n) => <HeroNumbers name={n} />)}
+    <SeeAlso links={[...heroLinks, ...more, { path: 'news', label: 'All news' }]} />
+  </article>
+</Base>
+
+<style>
+  article { max-width: 760px; }
+  .back { font-size: 14px; }
+  .kind { margin: 16px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
+  h1 { font-size: 34px; margin: 6px 0 8px; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+  .older { color: var(--soft); }
+  .cover:not(:empty) { margin-top: 20px; }
+  .body { font-size: 17px; color: var(--text); }
+  .body :global(h2) { font-size: 23px; margin: 32px 0 12px; }
+  .body :global(p), .body :global(li) { color: var(--soft); }
+  .body :global(strong) { color: var(--text); }
+  .body :global(table) { display: block; overflow-x: auto; border-collapse: collapse; margin: 16px 0 24px; font-size: 15px; }
+  .body :global(th), .body :global(td) { padding: 8px 14px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  .body :global(th:first-child), .body :global(td:first-child) { text-align: left; }
+  .body :global(th) { color: var(--text); font-family: var(--display); font-weight: 600; background: var(--surface); }
+  .body :global(a.art-chip span) { color: var(--text); }
+  .body :global(a.art-chip:hover span) { color: var(--accent); }
+  .body :global(blockquote) { margin: 20px 0; padding: 12px 18px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; }
+  .body :global(blockquote p) { margin: 0; }
+  @media (max-width: 720px) {
+    h1 { font-size: 26px; }
+    .body { font-size: 16px; }
+  }
+</style>
