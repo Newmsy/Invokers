@@ -21,6 +21,9 @@ Portraits are capped at 600 px on the long side, icons at 128 px. Game version: 
 | `rewards/` | 3 | `S_NewPlayerRewardsPart<n>Illustration` | new-player reward art |
 | `bosses/` | 16 | `S_BOSS_OGR049_Large` (Ulgorim), `S_NEC009_Large` (Althar), `S_BOSS091_Large` (Sakiel), `S_BOSS031_Large` (Sorgott), `S_BOSS008_Large` (Pentiax), `S_BRD001_Large` (Hyxxis), `S_VOL012_Large` (Galvos), `S_GIA043_Large` (Yskara), `S_TRO012_Large` (Koltmos), `S_BOSS001_<Element>_Large` (Omnissi; Space = Astral) | boss `id` in `data/bosses.json`; native size (~250 px) |
 | `bosses/large/` | 16 | copies of `events/` key art: each relic boss's Relic Hunt, Sorgott, Pentiax; the shared Essence event art for every Omnissi and the shared Medals event art for the four Crest bosses | boss `id` |
+| `gear/` | 248 | `S_<set id>_<Slot>` | `<set id>_<Slot>.webp`, every set x every gear slot (Weapon ... Boots) |
+| `gear/` | 45 | `S_<faction code>_<Slot>` (BST, CAM, ELD, FRB, IRN, LTS, MAG, NOC, STN/STO) | `accessory_<Slot>_<Faction>.webp`, 9 factions x Amulet/Earrings/Banner/Talisman/Flasks |
+| `gear/` | 13 | `S_RelicSlot_<Slot>`, `S_RelicSlot_Accessory_<1-5>` | `slot_<Slot>.webp`: the empty-slot outlines |
 | `cards/faction/` | 9 | `S_HeroIndexFactionCard_<faction>` | faction card (tall card with character art, not a small emblem) |
 | `cards/rarity/` | 6 | `S_HeroCardRarityBackground_<rarity>` | hero card background per rarity |
 

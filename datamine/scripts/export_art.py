@@ -23,6 +23,9 @@ Sprite names -> output:
   S_HeroIndexFactionCard_<faction>    cards/faction/<faction>.webp (faction card with character art)
   S_HeroCardRarityBackground_<rarity> cards/rarity/<rarity>.webp (hero card background per rarity)
   S_DailyRewardsIllustration_<n>, S_NewPlayerRewardsPart<n>Illustration   rewards/
+  S_<set id>_<gear slot>              gear/<set id>_<Slot>.webp (issue #154)
+  S_<faction code>_<accessory slot>   gear/accessory_<Slot>_<faction>.webp (FACTION_CODES; Flask -> Flasks)
+  S_RelicSlot_<slot>, S_RelicSlot_Accessory_<n>   gear/slot_<Slot>.webp (empty-slot outlines)
   boss portraits (BOSS_SPRITES below)  bosses/<region id>.webp, the ids in data/bosses.json
 
 Set ART_ONLY_FILES (a file with one bundle path per line) to scan only those bundles.
@@ -60,6 +63,11 @@ BOSS_SPRITES = {
     "S_BOSS001_Dark_Large": "DungeonEssenceDark",
 }
 
+GEAR_SLOTS = ["Weapon", "Shield", "Helmet", "Pauldrons", "Gauntlets", "Chestplate", "Belt", "Boots"]
+ACCESSORY_SLOTS = ["Amulet", "Earrings", "Banner", "Talisman", "Flasks"]  # AccessorySlot enum 1-5
+FACTION_CODES = {"BST": "Beastbloods", "CAM": "Cambion", "ELD": "Eldrin", "FRB": "Freeborn", "IRN": "Ironbands",
+                 "LTS": "Lightseekers", "MAG": "Magi", "NOC": "Nocturna", "STN": "Stonehearts", "STO": "Stonehearts"}
+
 RESOURCE_IDS_FILE = Path(__file__).resolve().parent / "resource_type_ids.json"
 
 
@@ -72,6 +80,19 @@ def targets():
     resource_ids = {str(v): k for k, v in json.loads(RESOURCE_IDS_FILE.read_text(encoding="utf-8")).items() if k in items}
 
     def plan(name):
+        m = re.fullmatch(r"S_(\w+?)_(" + "|".join(GEAR_SLOTS) + ")", name)
+        if m and m.group(1) in sets:
+            return f"gear/{m.group(1)}_{m.group(2)}.webp", ICON
+        m = re.fullmatch(r"S_([A-Z]{3})_(Amulet|Earrings|Banner|Talisman|Flasks?)", name)
+        if m and m.group(1) in FACTION_CODES:
+            slot = "Flasks" if m.group(2).startswith("Flask") else m.group(2)
+            return f"gear/accessory_{slot}_{FACTION_CODES[m.group(1)]}.webp", ICON
+        m = re.fullmatch(r"S_RelicSlot_(" + "|".join(GEAR_SLOTS) + r")", name)
+        if m:
+            return f"gear/slot_{m.group(1)}.webp", ICON
+        m = re.fullmatch(r"S_RelicSlot_Accessory_([1-5])", name)
+        if m:
+            return f"gear/slot_{ACCESSORY_SLOTS[int(m.group(1)) - 1]}.webp", ICON
         if name in BOSS_SPRITES:
             return f"bosses/{BOSS_SPRITES[name]}.webp", PORTRAIT
         m = re.fullmatch(r"S_([A-Z]{3}\d{3}|ANIM[A-Z]{3}\d{3})_(Large|Skill_\d|Skill_Ultimate|Passive_1)", name)
