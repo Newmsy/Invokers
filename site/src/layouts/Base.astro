@@ -1,7 +1,7 @@
 ---
 import { pack, href } from '../lib/data';
 import NavIcon from '../components/NavIcon.astro';
-import { headerNav, myBox, nav, tabs } from '../lib/nav';
+import { headerNav, inGroup, menus, myBox, nav, tabs } from '../lib/nav';
 import Account from '../components/Account.astro';
 import SectionArt from '../components/SectionArt.astro';
 import { accountsEnabled } from '../lib/account/config';
@@ -17,6 +17,17 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
 // A section's own page (not its sub-pages) shows the section picture beside its heading.
 const pagePath = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/^\/|\/$/g, '');
 const section = nav.find((n) => n.path === pagePath);
+// Breadcrumbs: Home › menu › section › this page (when it is a sub-page of a section).
+const owner = nav.find((n) => n.path === pagePath) ?? nav.find((n) => n.path === current);
+const menu = menus.find((m) => m.group === owner?.group);
+const crumbs = pagePath && owner
+  ? [
+      { label: 'Home', path: '/' },
+      ...(menu ? [{ label: menu.label, path: '' }] : []),
+      { label: owner.label, path: owner.path },
+      ...(owner.path !== pagePath ? [{ label: title, path: '' }] : []),
+    ]
+  : [];
 ---
 <!doctype html>
 <html lang="en">
@@ -41,13 +52,37 @@ const section = nav.find((n) => n.path === pagePath);
     <header class="top">
       <a class="brand" href={href('/')}>Invokers <span>Companion</span></a>
       <nav class="top-nav" aria-label="Main">
-        {headerNav.map((n) => (
+        {headerNav.filter((n) => n.path === 'news').map((n) => (
+          <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
+        ))}
+        {menus.map((m) => (
+          <div class="menu">
+            <a class="menu-top" href={href(m.path)} aria-current={owner?.group === m.group ? 'true' : undefined} aria-haspopup="true">
+              {m.label}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </a>
+            <div class="panel">
+              {inGroup(m.group).map((n) => (
+                <a href={href(n.path)} aria-current={pagePath === n.path ? 'page' : undefined}>
+                  <SectionArt art={n.art} size={36} />
+                  <span class="label">{n.label}</span>
+                  <span class="blurb">{n.blurb}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+        {headerNav.filter((n) => n.path !== 'news').map((n) => (
           <a href={href(n.path)} aria-current={current === n.path ? 'page' : undefined}>{n.label}</a>
         ))}
       </nav>
+      <form class="header-search" role="search" action={href('search')} method="get">
+        <NavIcon icon="search" size={18} />
+        <input type="search" name="q" placeholder="Search" aria-label="Search the site" autocomplete="off" spellcheck="false" enterkeyhint="search" />
+        <kbd>/</kbd>
+      </form>
       <a class="search-link" href={href('search')} aria-label="Search" title="Search (press /)" aria-current={current === 'search' ? 'page' : undefined}>
         <NavIcon icon="search" size={20} />
-        <span>Search</span>
       </a>
       <a class="box-button" href={href(myBox.path)} aria-current={current === myBox.path ? 'page' : undefined}>
         <NavIcon icon={myBox.icon} size={18} />
@@ -55,14 +90,33 @@ const section = nav.find((n) => n.path === pagePath);
       </a>
       {accountsEnabled && <Account />}
     </header>
-    <main>
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          {crumbs.map((c, i) => (
+            <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.label}</span> : c.path ? <a href={href(c.path)}>{c.label}</a> : <span>{c.label}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    <main class:list={{ 'has-crumbs': crumbs.length > 0 }}>
       {section?.art && <SectionArt art={section.art} size={88} class="page-art" />}
       <slot />
     </main>
     <footer>
-      <a href={href('updates')}>Game version {pack.gameVersion}</a> · updated {updated}
-      <br />
-      Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
+      <div class="footer-links">
+        {[...menus, { group: 'site' as const, label: 'Site', path: 'about' }].map((m) => (
+          <div>
+            <h2>{m.label}</h2>
+            <ul>{inGroup(m.group).map((n) => <li><a href={href(n.path)}>{n.label}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p>
+        <a href={href('updates')}>Game version {pack.gameVersion}</a> · updated {updated}
+        <br />
+        Unofficial fan site, not affiliated with the game's developer. <a href={href('privacy')}>Privacy</a>
+      </p>
     </footer>
     <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabs.length}`}>
       {tabs.map((n) => {
@@ -87,7 +141,8 @@ const section = nav.find((n) => n.path === pagePath);
         if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
         const el = e.target as HTMLElement;
         if (el.closest('input, textarea, select, [contenteditable="true"]')) return;
-        const box = document.getElementById('search-input') as HTMLInputElement | null;
+        const box = (document.getElementById('search-input') ??
+          (getComputedStyle(document.querySelector('.header-search')!).display !== 'none' ? document.querySelector('.header-search input') : null)) as HTMLInputElement | null;
         e.preventDefault();
         if (box) box.focus();
         else location.href = (document.querySelector('a.search-link') as HTMLAnchorElement).href;
@@ -169,12 +224,79 @@ const section = nav.find((n) => n.path === pagePath);
   .brand span { color: var(--accent); }
   .top-nav { display: flex; gap: 2px; font-weight: 500; min-width: 0; overflow-x: auto; scrollbar-width: none; }
   .top-nav a { white-space: nowrap; }
-  .top-nav a {
+  .top-nav { overflow: visible; align-items: center; }
+  .top-nav > a, .menu-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     color: var(--soft);
     padding: 10px 12px;
     border-radius: 22px;
   }
-  .top-nav a[aria-current='page'] { color: var(--bg); background: var(--accent); }
+  .top-nav > a:hover, .menu:hover .menu-top { color: var(--text); background: var(--surface); }
+  .top-nav > a[aria-current='page'], .menu-top[aria-current] { color: var(--bg); background: var(--accent); }
+  .menu-top svg { opacity: 0.7; }
+  /* Database / Guides / Tools: a panel of sections with pictures, opened on hover or keyboard focus. */
+  .menu { position: relative; }
+  .menu .panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 20;
+    width: 560px;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 6px;
+    padding: 10px;
+    border-radius: 16px;
+    background: var(--surface-3);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.45);
+  }
+  .menu .panel::before { content: ''; position: absolute; left: 0; right: 0; top: -8px; height: 8px; }
+  .menu:hover .panel, .menu:focus-within .panel { display: grid; }
+  .panel a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: var(--text);
+    white-space: normal;
+  }
+  .panel a:hover, .panel a[aria-current='page'] { background: var(--surface-2); }
+  .panel .section-art { grid-row: span 2; }
+  .panel .label { font-weight: 600; font-size: 14px; }
+  .panel .blurb { color: var(--muted); font-size: 12.5px; line-height: 1.35; }
+  .header-search {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 220px;
+    height: 40px;
+    padding: 0 10px 0 12px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    flex: none;
+  }
+  .header-search:focus-within { border-color: var(--accent); }
+  .header-search input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; color: var(--text); font: inherit; font-size: 14px; }
+  .header-search input::-webkit-search-cancel-button { display: none; }
+  .header-search kbd { font: inherit; font-size: 12px; padding: 0 6px; border: 1px solid var(--line); border-radius: 6px; }
+  .search-link { display: none !important; }
+  .crumbs { max-width: 1280px; margin: 0 auto; padding: 0 48px; font-size: 13px; }
+  .crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 0; padding: 8px 0 0; list-style: none; color: var(--muted); }
+  .crumbs li + li::before { content: '›'; margin-right: 8px; color: var(--line); }
+  .crumbs a { color: var(--soft); }
+  .crumbs a:hover { color: var(--accent); }
+  .crumbs [aria-current] { color: var(--muted); }
+  /* The breadcrumb replaces each page's own back link. */
+  main.has-crumbs a.back { display: none; }
   .search-link {
     margin-left: auto;
     display: inline-flex;
@@ -208,9 +330,16 @@ const section = nav.find((n) => n.path === pagePath);
   footer {
     color: var(--muted);
     font-size: 13px;
-    padding-top: 16px;
+    padding-top: 24px;
     padding-bottom: 24px;
+    border-top: 1px solid var(--line);
   }
+  .footer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+  .footer-links h2 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); }
+  .footer-links ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+  .footer-links a { color: var(--muted); }
+  .footer-links a:hover { color: var(--accent); }
+  footer p { margin: 0; }
   .tab-bar { display: none; }
 
   .brand { white-space: nowrap; }
@@ -223,15 +352,15 @@ const section = nav.find((n) => n.path === pagePath);
   /* Seven sections plus Search and My box: drop the Search label before the links run out of room. */
   @media (max-width: 1320px) {
     header.top { gap: 16px; padding-left: 32px; padding-right: 32px; }
-    .search-link { padding: 0 10px; min-width: 44px; justify-content: center; }
-    .search-link span { display: none; }
+    .header-search { width: 150px; }
+    .header-search kbd { display: none; }
   }
 
   /* Below this width the header links don't fit, so the bottom tab bar takes over. */
   @media (max-width: 1140px) {
-    .top-nav, .box-button { display: none; }
-    .search-link { padding: 0 10px; min-width: 44px; justify-content: center; }
-    .search-link span { display: none; }
+    .top-nav, .box-button, .header-search { display: none; }
+    .search-link { display: inline-flex !important; margin-left: auto; padding: 0 10px; min-width: 44px; justify-content: center; }
+    .crumbs { padding: 0 32px; }
     footer { padding-bottom: 92px; }
     .tab-bar {
       display: grid;
@@ -259,7 +388,8 @@ const section = nav.find((n) => n.path === pagePath);
   }
 
   @media (max-width: 720px) {
-    header.top, main, footer { padding-left: 16px; padding-right: 16px; }
+    header.top, main, footer, .crumbs { padding-left: 16px; padding-right: 16px; }
+    .footer-links { grid-template-columns: 1fr 1fr; }
     header.top { height: 60px; }
     .brand { font-size: 19px; }
     main { padding-top: 4px; }

@@ -1,0 +1,108 @@
+---
+// Guides hub: every guide page and article on the site, by topic.
+import Base from '../layouts/Base.astro';
+import SectionArt from '../components/SectionArt.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import { bosses, bossLabel, bossSlug, href } from '../lib/data';
+import { bossArt } from '../lib/art';
+import { allGuides, topics } from '../lib/guides';
+import { slugify } from '../lib/slugs';
+
+const guides = await allGuides();
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const latest = guides.filter((g) => g.date).slice(0, 3);
+---
+<Base title="Guides">
+  <h1>Guides</h1>
+  <p class="lede">{guides.length} guides, tools and articles, sorted by topic.</p>
+
+  <nav class="jump" aria-label="Topics">
+    {topics.map((t) => (
+      <a href={`#${slugify(t.name)}`}><SectionArt art={t.art} size={28} />{t.name}</a>
+    ))}
+  </nav>
+
+  <section class="latest">
+    <h2>Newest</h2>
+    <ul class="cards wide">
+      {latest.map((g) => (
+        <li>
+          <a href={href(g.path)}>
+            <span class="pics">{g.art.slice(0, 3).map((a) => <SectionArt art={a} size={44} />)}</span>
+            <span class="kind">{g.kind} · {fmt(g.date!)}</span>
+            <strong>{g.title}</strong>
+            <span class="blurb">{g.blurb}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {topics.map((t) => {
+    const list = guides.filter((g) => g.topic === t.name);
+    return list.length > 0 && (
+      <section id={slugify(t.name)}>
+        <h2><SectionArt art={t.art} size={40} />{t.name}<small>{t.blurb}</small></h2>
+        <ul class="cards">
+          {list.map((g) => (
+            <li>
+              <a href={href(g.path)}>
+                <SectionArt art={g.art[0]} size={44} class="card-pic" />
+                <span class="kind">{g.kind}{g.date && ` · ${fmt(g.date)}`}</span>
+                <strong>{g.title}</strong>
+                <span class="blurb">{g.blurb}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {t.name === 'Bosses and events' && (
+          <ul class="bosses" aria-label="Boss guides">
+            {bosses.map((b) => (
+              <li><a href={href(`bosses/${bossSlug(b)}`)}>{bossArt(b.id) && <img src={bossArt(b.id)} alt="" width="24" height="24" loading="lazy" />}{bossLabel(b)}</a></li>
+            ))}
+          </ul>
+        )}
+      </section>
+    );
+  })}
+
+  <SeeAlso links={[{ path: 'tiers', label: 'Tier lists' }, { path: 'heroes', label: 'Invokers' }, { path: 'blog', label: 'Blog' }, { path: 'updates', label: 'Game updates' }]} />
+</Base>
+
+<style>
+  h1 { margin: 16px 0 4px; font-size: 28px; }
+  .lede { color: var(--soft); margin: 0 0 16px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .jump a { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-size: 14px; font-weight: 500; }
+  .jump a:hover { border-color: var(--accent); }
+  section { margin-bottom: 32px; scroll-margin-top: 16px; }
+  h2 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; font-size: 21px; margin: 0 0 12px; }
+  h2 small { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; font-size: 14px; color: var(--muted); }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .cards.wide { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .cards a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    align-content: start;
+    height: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .cards a:hover { border-color: var(--accent); }
+  .cards .card-pic { grid-row: span 3; }
+  .cards .kind, .cards strong, .cards .blurb { grid-column: 2; }
+  .wide a { grid-template-columns: 1fr; }
+  .wide .kind, .wide strong, .wide .blurb { grid-column: 1; }
+  .pics { display: flex; gap: 6px; margin-bottom: 10px; }
+  .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; }
+  strong { font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.3; margin: 2px 0 4px; }
+  .blurb { color: var(--muted); font-size: 14px; }
+  .bosses { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .bosses a { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 16px; background: var(--surface-3); border: 1px solid var(--line); color: var(--soft); font-size: 13px; }
+  .bosses a:hover { color: var(--text); border-color: var(--accent); }
+  .bosses img { border-radius: 6px; object-fit: cover; }
+</style>
