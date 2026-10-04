@@ -33,6 +33,18 @@ export function pullsFor(p: number, q: number): number {
   return Math.ceil(Math.log(1 - q) / Math.log(1 - p));
 }
 
+/** Chance a mercy count of n is reached: n - 1 pulls in a row without a natural hit, since a hit resets it. */
+export function mercyReach(p: number, n: number): number {
+  if (n <= 1 || p >= 1) return n <= 1 ? 1 : 0;
+  return (1 - p) ** (n - 1);
+}
+
+/** Long-run chance per pull once a resetting mercy count of n is counted in. */
+export function mercyRate(p: number, n: number): number {
+  if (p <= 0) return 1 / n;
+  return p / (1 - (1 - p) ** n);
+}
+
 /** Bonus items earned from n uses of an item (bonus items themselves not counted). */
 export function bonusFrom(itemId: string, n: number): { item: string; count: number }[] {
   return summons.bonus
