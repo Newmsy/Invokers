@@ -6,6 +6,7 @@ import { itemIcon } from '../lib/art';
 import { rarityColor, rarityOrder } from '../lib/format';
 import { gearCosts, gearSalvage } from '../lib/planner/data';
 import snapshot from '../data/gear-upgrade-brackets.json';
+import { maxVip } from '../lib/vip';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
@@ -248,7 +249,7 @@ const sameVersion = !!perLevel || snapshot.gameVersion === pack.gameVersion;
       <li><strong>Campaign battles.</strong> Memorium drops from Campaign fights.</li>
       <li><strong>Spires.</strong> Clearing Spire floors gives Memorium among the rewards.</li>
       <li><strong>Destroying gear</strong> you don't need, as above.</li>
-      <li><strong>VIP.</strong> The VIP bonus multiplies the Memorium you win from battles.</li>
+      <li><strong>VIP.</strong> The VIP bonus adds up to +{Math.round(maxVip.memorium * 100)}% Memorium from battles. <a href={href('blog/vip-levels')}>Every VIP level</a>.</li>
     </ul>
     <p>The best stages per Energy, Spire floor rewards and Memorium packs: <a href={href('farming#memorium')}>Where to farm Memorium</a>.</p>
   </section>
