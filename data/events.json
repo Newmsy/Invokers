@@ -1,1 +1,10263 @@
-[]
+[
+ {
+  "id": "626",
+  "tournamentId": 626,
+  "type": "ClanBoss1",
+  "format": "Common",
+  "name": "Sorgott Accessory Hunt",
+  "shortName": "Sorgott Accessory Hunt",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Be Part of a Clan</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Defeat Sorgott</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Win Accessories</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "ClanBoss1",
+  "icon": "ClanBoss1",
+  "teaserStart": "2026-09-24T12:00:00Z",
+  "start": "2026-09-28T12:00:00Z",
+  "registrationEnd": "2026-10-01T12:00:00Z",
+  "end": "2026-10-05T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-06T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 500,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "GearDropScoringRule",
+     "acceptedRegions": [
+      "ClanBoss1"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 500,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 1500,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 5000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 9000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 16000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 30000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 35000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 51000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 153000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 255000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 510000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "611",
+  "tournamentId": 611,
+  "type": "GearUpgrade",
+  "format": "Common",
+  "name": "Gear Up",
+  "shortName": "Gear Up",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Upgrade Relics or Accessories</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboard</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "UpgradeRelics",
+  "icon": "UpgradeRelics",
+  "teaserStart": "2026-09-27T12:00:00Z",
+  "start": "2026-10-01T12:00:00Z",
+  "registrationEnd": "2026-10-04T12:00:00Z",
+  "end": "2026-10-04T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-05T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 200,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "GearUpgradeScoringRule",
+     "entries": [
+      {
+       "rank": "One",
+       "levelMilestone": 5,
+       "points": 3
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 5,
+       "points": 6
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 5,
+       "points": 9
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 5,
+       "points": 19
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 5,
+       "points": 22
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 5,
+       "points": 40
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 10,
+       "points": 9
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 10,
+       "points": 15
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 10,
+       "points": 25
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 10,
+       "points": 51
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 10,
+       "points": 58
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 10,
+       "points": 104
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 15,
+       "points": 21
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 15,
+       "points": 34
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 15,
+       "points": 54
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 15,
+       "points": 97
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 15,
+       "points": 200
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 15,
+       "points": 355
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 20,
+       "points": 73
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 20,
+       "points": 110
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 20,
+       "points": 170
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 20,
+       "points": 242
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 20,
+       "points": 420
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 20,
+       "points": 686
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 200,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 400,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 1200,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 2000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 4000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 6000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 300000
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 8000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 10000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 36000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 60000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 120000,
+    "reward": [
+     {
+      "itemId": "Prism_Epic",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 20
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 125
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "606",
+  "tournamentId": 606,
+  "type": "ArenaMedals",
+  "format": "Common",
+  "name": "Arena Rush",
+  "shortName": "Arena Rush",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Win Arena Offense Battles</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "WinArenaMedals",
+  "icon": "WinArenaMedals",
+  "teaserStart": "2026-09-28T12:00:00Z",
+  "start": "2026-10-02T12:00:00Z",
+  "registrationEnd": "2026-10-05T12:00:00Z",
+  "end": "2026-10-05T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-06T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 400,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "ArenaBattleScoringRule",
+     "entries": [
+      {
+       "league": "Bronze1",
+       "result": "Victory",
+       "points": 40
+      },
+      {
+       "league": "Bronze1",
+       "result": "Defeat",
+       "points": 20
+      },
+      {
+       "league": "Bronze2",
+       "result": "Victory",
+       "points": 50
+      },
+      {
+       "league": "Bronze2",
+       "result": "Defeat",
+       "points": 20
+      },
+      {
+       "league": "Bronze3",
+       "result": "Victory",
+       "points": 60
+      },
+      {
+       "league": "Bronze3",
+       "result": "Defeat",
+       "points": 30
+      },
+      {
+       "league": "Bronze4",
+       "result": "Victory",
+       "points": 70
+      },
+      {
+       "league": "Bronze4",
+       "result": "Defeat",
+       "points": 30
+      },
+      {
+       "league": "Silver1",
+       "result": "Victory",
+       "points": 80
+      },
+      {
+       "league": "Silver1",
+       "result": "Defeat",
+       "points": 40
+      },
+      {
+       "league": "Silver2",
+       "result": "Victory",
+       "points": 90
+      },
+      {
+       "league": "Silver2",
+       "result": "Defeat",
+       "points": 40
+      },
+      {
+       "league": "Silver3",
+       "result": "Victory",
+       "points": 100
+      },
+      {
+       "league": "Silver3",
+       "result": "Defeat",
+       "points": 50
+      },
+      {
+       "league": "Silver4",
+       "result": "Victory",
+       "points": 110
+      },
+      {
+       "league": "Silver4",
+       "result": "Defeat",
+       "points": 50
+      },
+      {
+       "league": "Gold1",
+       "result": "Victory",
+       "points": 120
+      },
+      {
+       "league": "Gold1",
+       "result": "Defeat",
+       "points": 60
+      },
+      {
+       "league": "Gold2",
+       "result": "Victory",
+       "points": 130
+      },
+      {
+       "league": "Gold2",
+       "result": "Defeat",
+       "points": 60
+      },
+      {
+       "league": "Gold3",
+       "result": "Victory",
+       "points": 140
+      },
+      {
+       "league": "Gold3",
+       "result": "Defeat",
+       "points": 70
+      },
+      {
+       "league": "Gold4",
+       "result": "Victory",
+       "points": 150
+      },
+      {
+       "league": "Gold4",
+       "result": "Defeat",
+       "points": 70
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 400,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 1000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 2100,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 3600,
+    "reward": [
+     {
+      "itemId": "SI_FateStar",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 5500,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 7000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 9000,
+    "reward": [
+     {
+      "itemId": "Prism_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 11000,
+    "reward": [
+     {
+      "itemId": "SIP_DestinyStarPiece",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 14000,
+    "reward": [
+     {
+      "itemId": "SIP_WonderOrbPiece",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 18000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 54000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 100000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 90000,
+    "reward": [
+     {
+      "itemId": "Arena_Token",
+      "amount": 5
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 180000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "615",
+  "tournamentId": 615,
+  "type": "RelicBossAlthar",
+  "format": "Common",
+  "name": "Althar Relic Hunt",
+  "shortName": "Althar Relic Hunt",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Beat Althar on Boss Mode</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Win Relics</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "CollectDungeonRelics2",
+  "icon": "CollectDungeonRelics2",
+  "teaserStart": "2026-09-28T12:00:00Z",
+  "start": "2026-10-02T12:00:00Z",
+  "registrationEnd": "2026-10-05T12:00:00Z",
+  "end": "2026-10-05T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-06T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 500,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "RelicDropScoringRule",
+     "acceptedRegions": [
+      "DungeonRelics2"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 500,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 1500,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 5000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 9000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 16000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 30000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 35000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 51000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 153000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 255000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 510000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "618",
+  "tournamentId": 618,
+  "type": "SummonHero",
+  "format": "Common",
+  "name": "Invoker Summon Surge",
+  "shortName": "Invoker Summon Surge",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Summon Invokers from Stars</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "SummonInvoker",
+  "icon": "SummonInvoker",
+  "teaserStart": "2026-09-29T12:00:00Z",
+  "start": "2026-10-03T12:00:00Z",
+  "registrationEnd": "2026-10-06T12:00:00Z",
+  "end": "2026-10-07T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-08T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 13000,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "HeroSummonScoringRule",
+     "resourceSpendEntries": [
+      {
+       "resourceId": "SI_WildStar",
+       "points": 10
+      },
+      {
+       "resourceId": "SI_FateStar",
+       "points": 500
+      },
+      {
+       "resourceId": "SI_DestinyStar",
+       "points": 1000
+      },
+      {
+       "resourceId": "SI_RadiantStar",
+       "points": 5000
+      },
+      {
+       "resourceId": "SI_DivineStar",
+       "points": 10000
+      }
+     ],
+     "heroEntriesNonLightDark": [
+      {
+       "rarity": "Common",
+       "points": 10
+      },
+      {
+       "rarity": "Uncommon",
+       "points": 20
+      },
+      {
+       "rarity": "Rare",
+       "points": 1000
+      },
+      {
+       "rarity": "Epic",
+       "points": 5000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 10000
+      }
+     ],
+     "heroEntriesLightDark": [
+      {
+       "rarity": "Uncommon",
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "points": 1500
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      }
+     ],
+     "heroEntriesChromaNonLightDark": [
+      {
+       "rarity": "Common",
+       "points": 20
+      },
+      {
+       "rarity": "Uncommon",
+       "points": 40
+      },
+      {
+       "rarity": "Rare",
+       "points": 2000
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      }
+     ],
+     "heroEntriesChromaLightDark": [
+      {
+       "rarity": "Uncommon",
+       "points": 200
+      },
+      {
+       "rarity": "Rare",
+       "points": 3000
+      },
+      {
+       "rarity": "Epic",
+       "points": 20000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 40000
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 13000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 25000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 30000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 45000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 60000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 80000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 100000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 130000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 160000,
+    "reward": [
+     {
+      "itemId": "Prism_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 200000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 600000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 1000000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 2000000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 250
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 240
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 230
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 220
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 210
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 3
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 500
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 490
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 480
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 460
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 450
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 300
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 440
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 290
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 430
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 280
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 420
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 270
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 410
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 260
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 400
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 250
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 390
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 240
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 380
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 230
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 370
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 220
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 360
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 210
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 350
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 340
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 330
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 320
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 310
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "614",
+  "tournamentId": 614,
+  "type": "HeroUpgrade",
+  "format": "Common",
+  "name": "Invoker Power Up",
+  "shortName": "Invoker Power Up",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Level Up, Ascend, Awaken Invokers</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Upgrade Invoker Skills</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "UpgradeInvoker",
+  "icon": "UpgradeInvoker",
+  "teaserStart": "2026-10-01T12:00:00Z",
+  "start": "2026-10-05T12:00:00Z",
+  "registrationEnd": "2026-10-08T12:00:00Z",
+  "end": "2026-10-09T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-10T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 3000,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "HeroLevelUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 7
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 23
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 68
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 146
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 334
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 2
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 8
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 27
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 78
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 168
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 386
+      }
+     ]
+    },
+    {
+     "ruleType": "HeroRankUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Common",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Common",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Common",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Common",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Two",
+       "points": 26
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Three",
+       "points": 39
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Four",
+       "points": 130
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Five",
+       "points": 910
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Six",
+       "points": 1950
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Two",
+       "points": 30
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Three",
+       "points": 45
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Four",
+       "points": 150
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Five",
+       "points": 1050
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Six",
+       "points": 2250
+      }
+     ]
+    },
+    {
+     "ruleType": "HeroAwakenScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 1,
+       "points": 50
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 2,
+       "points": 100
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 3,
+       "points": 150
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 4,
+       "points": 200
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 5,
+       "points": 250
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 6,
+       "points": 300
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 1,
+       "points": 75
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 2,
+       "points": 150
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 3,
+       "points": 225
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 4,
+       "points": 300
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 5,
+       "points": 375
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 6,
+       "points": 450
+      }
+     ]
+    },
+    {
+     "ruleType": "HeroSkillUpScoringRule",
+     "entries": [
+      {
+       "resourceId": "Codex_Rare",
+       "points": 50
+      },
+      {
+       "resourceId": "Codex_Epic",
+       "points": 200
+      },
+      {
+       "resourceId": "Codex_Legendary",
+       "points": 500
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 6000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 9000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 18000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 24000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 30000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 48000,
+    "reward": [
+     {
+      "itemId": "SIP_DestinyStarPiece",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 72000,
+    "reward": [
+     {
+      "itemId": "SIP_WonderOrbPiece",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 90000,
+    "reward": [
+     {
+      "itemId": "SI_RadiantStar",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 270000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 450000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 900000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 175
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 125
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 250
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 225
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 175
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 125
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "627",
+  "tournamentId": 627,
+  "type": "ClanBoss1",
+  "format": "Common",
+  "name": "Sorgott Accessory Hunt",
+  "shortName": "Sorgott Accessory Hunt",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Be Part of a Clan</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Defeat Sorgott</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Win Accessories</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "ClanBoss1",
+  "icon": "ClanBoss1",
+  "teaserStart": "2026-10-01T12:00:00Z",
+  "start": "2026-10-05T12:00:00Z",
+  "registrationEnd": "2026-10-08T12:00:00Z",
+  "end": "2026-10-12T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-13T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 500,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "GearDropScoringRule",
+     "acceptedRegions": [
+      "ClanBoss1"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 500,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 1500,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 5000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 9000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 16000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 30000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 35000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 51000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 153000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 255000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 510000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "608",
+  "tournamentId": 608,
+  "type": "Campaign",
+  "format": "Common",
+  "name": "Campaign Rush",
+  "shortName": "Campaign Rush",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Clear Campaign Levels In Any Chapter</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Higher Campaign Difficulty = More Tournament Points</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "CampaignProgression",
+  "icon": "CampaignProgression",
+  "teaserStart": "2026-10-02T12:00:00Z",
+  "start": "2026-10-06T12:00:00Z",
+  "registrationEnd": "2026-10-09T12:00:00Z",
+  "end": "2026-10-10T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-11T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 600,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "CampaignBattleScoringRule",
+     "entries": [
+      {
+       "difficulty": "Normal",
+       "points": 60
+      },
+      {
+       "difficulty": "Hard",
+       "points": 100
+      },
+      {
+       "difficulty": "Brutal",
+       "points": 160
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 600,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 1200,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 1800,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 4000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 6000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 8000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 14500,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 18000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 21000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 24000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 72000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 120000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 240000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "612",
+  "tournamentId": 612,
+  "type": "GearUpgrade",
+  "format": "Common",
+  "name": "Gear Up",
+  "shortName": "Gear Up",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Upgrade Relics or Accessories</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboard</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "UpgradeRelics",
+  "icon": "UpgradeRelics",
+  "teaserStart": "2026-10-03T12:00:00Z",
+  "start": "2026-10-07T12:00:00Z",
+  "registrationEnd": "2026-10-10T12:00:00Z",
+  "end": "2026-10-10T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-11T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 200,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "GearUpgradeScoringRule",
+     "entries": [
+      {
+       "rank": "One",
+       "levelMilestone": 5,
+       "points": 3
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 5,
+       "points": 6
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 5,
+       "points": 9
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 5,
+       "points": 19
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 5,
+       "points": 22
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 5,
+       "points": 40
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 10,
+       "points": 9
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 10,
+       "points": 15
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 10,
+       "points": 25
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 10,
+       "points": 51
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 10,
+       "points": 58
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 10,
+       "points": 104
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 15,
+       "points": 21
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 15,
+       "points": 34
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 15,
+       "points": 54
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 15,
+       "points": 97
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 15,
+       "points": 200
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 15,
+       "points": 355
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 20,
+       "points": 73
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 20,
+       "points": 110
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 20,
+       "points": 170
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 20,
+       "points": 242
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 20,
+       "points": 420
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 20,
+       "points": 686
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 200,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 400,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 1200,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 2000,
+    "reward": [
+     {
+      "itemId": "AE_ManaTier3",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 3000,
+    "reward": [
+     {
+      "itemId": "Token_MultiBattle",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 4000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 6000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 300000
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 8000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 10000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 12000,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 36000,
+    "reward": [
+     {
+      "itemId": "Memorium",
+      "amount": 1000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 60000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 120000,
+    "reward": [
+     {
+      "itemId": "Prism_Epic",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 65
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 60
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 55
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 45
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 40
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 35
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 30
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 25
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 20
+     },
+     {
+      "itemId": "SI_DreamOrb",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 290
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 280
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 260
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "SI_DestinyStar",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 250
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 150
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 240
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 230
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 130
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 220
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 125
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 210
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 200
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 115
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 190
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 180
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 105
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 170
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 160
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 95
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 150
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 140
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 85
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 130
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 120
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 75
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 110
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "SI_WonderOrb",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 100
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ },
+ {
+  "id": "617",
+  "tournamentId": 617,
+  "type": "SummonAnima",
+  "format": "Common",
+  "name": "Titan Summon Surge",
+  "shortName": "Titan Summon Surge",
+  "description": "<sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Summon Titans from Orbs</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Earn Tournament Points & Climb the Leaderboards</indent><br><sprite name=\"TMP_TextIcons_Atlas_71\"><indent=50>Unlock Huge Rewards</indent>",
+  "advice": [
+   "Check Rules for the full Points breakdown!"
+  ],
+  "division": "Veteran",
+  "art": "SummonTitan",
+  "icon": "SummonTitan",
+  "teaserStart": "2026-10-04T12:00:00Z",
+  "start": "2026-10-08T12:00:00Z",
+  "registrationEnd": "2026-10-11T12:00:00Z",
+  "end": "2026-10-12T12:00:00Z",
+  "rewardPeriodEnd": "2026-10-13T12:00:00Z",
+  "playerLevels": [
+   {
+    "min": 1,
+    "max": 100
+   }
+  ],
+  "bracketSize": 50,
+  "entryPoints": 10000,
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "AnimaSummonScoringRule",
+     "resourceSpendEntries": [
+      {
+       "resourceId": "SI_DreamOrb",
+       "points": 1000
+      },
+      {
+       "resourceId": "SI_WonderOrb",
+       "points": 1500
+      },
+      {
+       "resourceId": "SI_MiracleOrb",
+       "points": 10000
+      }
+     ],
+     "animaEntries": [
+      {
+       "rarity": "Rare",
+       "points": 1000
+      },
+      {
+       "rarity": "Epic",
+       "points": 5000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 10000
+      },
+      {
+       "rarity": "Mythic",
+       "points": 30000
+      }
+     ],
+     "animaEntriesChroma": [
+      {
+       "rarity": "Rare",
+       "points": 2000
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      },
+      {
+       "rarity": "Mythic",
+       "points": 60000
+      }
+     ]
+    }
+   ]
+  },
+  "personalRewards": [
+   {
+    "rewardId": 1,
+    "requiredPoints": 10000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 200000
+     }
+    ]
+   },
+   {
+    "rewardId": 2,
+    "requiredPoints": 15000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 3,
+    "requiredPoints": 20000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 25000,
+    "reward": [
+     {
+      "itemId": "Prism_Rare",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "rewardId": 5,
+    "requiredPoints": 35000,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "rewardId": 6,
+    "requiredPoints": 40000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 200
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 50000,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 50
+     }
+    ]
+   },
+   {
+    "rewardId": 8,
+    "requiredPoints": 70000,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 9,
+    "requiredPoints": 80000,
+    "reward": [
+     {
+      "itemId": "Prism_Epic",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "rewardId": 10,
+    "requiredPoints": 90000,
+    "reward": [
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "milestoneRewards": [
+   {
+    "rewardId": 301,
+    "requiredPoints": 270000,
+    "reward": [
+     {
+      "itemId": "Gold",
+      "amount": 100000
+     }
+    ]
+   },
+   {
+    "rewardId": 302,
+    "requiredPoints": 450000,
+    "reward": [
+     {
+      "itemId": "Arena_Token",
+      "amount": 5
+     }
+    ]
+   },
+   {
+    "rewardId": 303,
+    "requiredPoints": 900000,
+    "reward": [
+     {
+      "itemId": "Prism_Legendary",
+      "amount": 1
+     }
+    ]
+   }
+  ],
+  "bracketRewards": [
+   {
+    "rewardId": 101,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 102,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 103,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 104,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 105,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 106,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 250
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 107,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 240
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 108,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 230
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 109,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 220
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 110,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 210
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 111,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 112,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 113,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 114,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 140
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 115,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 120
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 116,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 110
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 117,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 100
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 118,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 90
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 119,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 80
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 120,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 70
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     }
+    ],
+    "randomReward": null
+   }
+  ],
+  "globalRewards": [
+   {
+    "rewardId": 201,
+    "fromRank": 1,
+    "toRank": 1,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 3
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 2
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 500
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 202,
+    "fromRank": 2,
+    "toRank": 2,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 2
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 490
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 203,
+    "fromRank": 3,
+    "toRank": 3,
+    "reward": [
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Legendary",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 480
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 204,
+    "fromRank": 4,
+    "toRank": 4,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 460
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 205,
+    "fromRank": 5,
+    "toRank": 5,
+    "reward": [
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "Codex_Epic",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 450
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 206,
+    "fromRank": 6,
+    "toRank": 6,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 300
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 440
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 207,
+    "fromRank": 7,
+    "toRank": 7,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 290
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 430
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 208,
+    "fromRank": 8,
+    "toRank": 8,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 280
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 420
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 209,
+    "fromRank": 9,
+    "toRank": 9,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 270
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 410
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 210,
+    "fromRank": 10,
+    "toRank": 10,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 260
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 400
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 211,
+    "fromRank": 11,
+    "toRank": 11,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 250
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 390
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 212,
+    "fromRank": 12,
+    "toRank": 12,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 240
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 380
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 213,
+    "fromRank": 13,
+    "toRank": 13,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 230
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 370
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 214,
+    "fromRank": 14,
+    "toRank": 14,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 220
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 360
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 215,
+    "fromRank": 15,
+    "toRank": 15,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 210
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 350
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 216,
+    "fromRank": 16,
+    "toRank": 16,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 200
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 340
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 217,
+    "fromRank": 17,
+    "toRank": 17,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 190
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 330
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 218,
+    "fromRank": 18,
+    "toRank": 18,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 180
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 320
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 219,
+    "fromRank": 19,
+    "toRank": 19,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 170
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 310
+     }
+    ],
+    "randomReward": null
+   },
+   {
+    "rewardId": 220,
+    "fromRank": 20,
+    "toRank": 20,
+    "reward": [
+     {
+      "itemId": "Gem",
+      "amount": 160
+     },
+     {
+      "itemId": "Codex_Rare",
+      "amount": 1
+     },
+     {
+      "itemId": "VipPoints",
+      "amount": 300
+     }
+    ],
+    "randomReward": null
+   }
+  ]
+ }
+]
