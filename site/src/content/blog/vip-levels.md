@@ -2,7 +2,7 @@
 title: "What each VIP level gets you"
 description: "Points, cost and login days for every VIP level, plus each level's boosts and what the free daily VIP chest adds."
 date: 2026-10-04
-gameVersion: "0.61.1514"
+gameVersion: "0.61.1516"
 art: ["item:Memorium", "item:Gold", "item:Legendary Codex", "item:Gems"]
 tags: [vip, chests, odds]
 ---

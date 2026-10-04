@@ -1,10 +1,11 @@
 // Build-time data for the DPS simulator, served as one JSON file (pages/dps-data.json.ts) that the page fetches.
 import awakeningJson from '../../../../data/awakening.json';
 import curvesJson from '../../../../data/stat_curves.json';
+import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { COMBO_SPEED_CURVE } from './constants';
+import { COMBO_SPEED_CURVE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -32,7 +33,7 @@ function curve(id: string): number[] {
 }
 
 /** One entry per skill level 1..max. Some skills skip levels; a skipped level uses the last listed one below it. */
-function byLevel<L extends { level: number }>(listed: L[]): L[] {
+function fillLevels<L extends { level: number }>(listed: L[]): L[] {
   const out: L[] = [];
   const max = listed.at(-1)?.level ?? 0;
   for (let n = 1, i = 0; n <= max; n++) {
@@ -40,6 +41,17 @@ function byLevel<L extends { level: number }>(listed: L[]): L[] {
     out.push(listed[i]);
   }
   return out;
+}
+
+/** First roll of each stat on 5★ gear at the normal quality; flat stats round to a whole number per roll. */
+function normalRoll(): DpsData['normalRoll'] {
+  const rows = gearRollsJson.gear.subStats.filter((r) => r.rank === NORMAL_ROLL_RANK);
+  return NORMAL_ROLL_STATS.flatMap((stat) => {
+    const row = rows.find((r) => r.stat === stat);
+    if (!row) return [];
+    const raw = row.baseByRoll[0] * NORMAL_ROLL_QUALITY;
+    return [{ stat, value: stat.endsWith('Flat') ? Math.round(raw) : Math.round(raw * 1e6) / 1e6 }];
+  });
 }
 
 export function dpsData(): DpsData {
@@ -51,7 +63,7 @@ export function dpsData(): DpsData {
     const skills: DpsHero['skills'] = {};
     let combo: DpsHero['combo'] = [];
     for (const s of skillsFor(h.id)) {
-      const levels = byLevel(s.levels ?? []);
+      const levels = fillLevels(s.levels ?? []);
       if (s.type === 'Combo') combo = levels.map((l) => parseComboText(l.text).map((step) => step.map(toHitT)));
       else if ((ACTIVE_SLOTS as readonly string[]).includes(s.type) && typeof s.cooldown === 'number') {
         const skill: DpsSkill = { cooldown: s.cooldown, levels: levels.map((l) => compact(parseSkillText(l.text))) };
@@ -119,5 +131,6 @@ export function dpsData(): DpsData {
       resist: curve('ResistChance_ResMinusAcc'),
     },
     stages,
+    normalRoll: normalRoll(),
   };
 }

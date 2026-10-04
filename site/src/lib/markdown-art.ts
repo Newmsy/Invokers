@@ -2,7 +2,7 @@
 // next to its name:
 //   ![Ironblade Darus](hero:)   portrait, linked to the hero page
 //   ![Destiny Star](item:)      item icon
-//   ![Fire](element:) ![Tank](class:) ![Goros](titan:)
+//   ![Fire](element:) ![Tank](class:) ![Goros](titan:) ![Vampire](set:) ![Magi](faction:)
 // The name to look up is the alt text, or whatever follows the colon (![Melee](class:melee)); an empty
 // alt gives the icon alone (![](item:gold)).
 // A name with no art fails the build, so a post never ships a broken image.
@@ -10,8 +10,8 @@ import { defineMdastPlugin } from 'satteri';
 import { artRoutes } from './art';
 import { slugify } from './slugs';
 
-const folders: Record<string, string> = { hero: 'heroes', titan: 'titans', item: 'items', element: 'icons', class: 'icons' };
-const ref = /^(hero|titan|item|element|class):(.*)$/;
+const folders: Record<string, string> = { hero: 'heroes', titan: 'titans', item: 'items', element: 'icons', class: 'icons', set: 'sets', faction: 'factions' };
+const ref = /^(hero|titan|item|element|class|set|faction):(.*)$/;
 
 const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -29,7 +29,7 @@ export function artRef(ref: string): { path: string; name: string; portrait: boo
   const name = rest.join(':');
   const path = artRefPath(kind, name);
   if (!path) throw new Error(`No ${kind} art for "${name}"`);
-  return { path, name, portrait: kind === 'hero' || kind === 'titan' };
+  return { path, name, portrait: kind === 'hero' || kind === 'titan' || kind === 'faction' };
 }
 
 /** Sätteri plugin: swaps each art reference for its chip. */

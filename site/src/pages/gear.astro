@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import { bossLabel, bossSlug, href } from '../lib/data';
 import { richText } from '../lib/format';
 import { gearGroups, gearSets } from '../lib/gear';
+import { setIcon } from '../lib/art';
 
 const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.group === g.id) })).filter((g) => g.sets.length);
 ---
@@ -37,7 +38,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
       <ul class="grid">
         {g.sets.map((s) => (
           <li class="card" id={`set-${s.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
-            <h3>{s.name}</h3>
+            <h3>{setIcon(s.id) && <img class="set-icon" src={setIcon(s.id)} alt="" width="40" height="44" loading="lazy" />}{s.name}</h3>
             <dl class="bonuses">
               {s.bonuses.map((b) => (
                 <div>
@@ -100,7 +101,8 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
     gap: 12px;
     scroll-margin-top: 80px;
   }
-  h3 { margin: 0; font-family: var(--display); font-size: 17px; font-weight: 600; }
+  h3 { margin: 0; font-family: var(--display); font-size: 17px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .set-icon { width: 40px; height: 44px; object-fit: contain; flex: none; }
   .bonuses { margin: 0; display: grid; gap: 8px; }
   .bonuses div { display: grid; grid-template-columns: 72px 1fr; gap: 8px; }
   dt { color: var(--muted); font-size: 13px; padding-top: 2px; }

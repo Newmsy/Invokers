@@ -134,6 +134,15 @@ describe('fight', () => {
     );
   });
 
+  it('uses the B-grade first roll of 5★ gear as the normal roll', () => {
+    const roll = Object.fromEntries(data.normalRoll.map((r) => [r.stat, r.value]));
+    expect(roll.AttackPercent).toBeCloseTo(0.0216, 6);
+    expect(roll.CriticalDamagePercent).toBeCloseTo(0.0304, 6);
+    expect(roll.SkillSpeedFlat).toBe(7);
+    expect(roll.AccuracyFlat).toBe(14);
+    expect(data.normalRoll).toHaveLength(10);
+  });
+
   it('values every damage stat above zero', () => {
     const { values } = statValues(data, fight('Ironblade Darus'));
     const gain = Object.fromEntries(values.map((v) => [v.stat, v.gain]));
