@@ -2,7 +2,7 @@
 // readable names (img/heroes/<hero-slug>.webp, img/skills/<hero-slug>-skill-1.webp, ...) through
 // pages/img/[...path].ts, and the build drops public/art from dist so no code appears in an image URL.
 // The glob only lists files; nothing is imported.
-import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, skillsFor, titans, type HeroRef } from './data';
+import { bosses, bossSlug, heroRefsByConfigId, heroes, heroSlug, href, itemName, setNames, skillsFor, titans, type HeroRef } from './data';
 
 const sourceFiles = new Set(
   Object.keys(import.meta.glob('../../public/art/**/*.webp')).map((p) => p.replace(/^.*\/public\/art\//, '')),
@@ -23,6 +23,7 @@ const heroSplashPath = new Map<string, string>();
 const titanSplashPath = new Map<string, string>();
 const bossArtPath = new Map<string, string>();
 const chaseBannerPath = new Map<string, string>();
+const setIconPath = new Map<string, string>();
 
 function add(served: string, source: string, index: Map<string, string>, key: string) {
   if (!sourceFiles.has(source) || routes.has(served)) return;
@@ -63,6 +64,8 @@ for (const source of sourceFiles) {
     if (!/_/.test(name) || /\s/.test(name)) add(`items/${slugify(name)}.webp`, source, itemIconPath, code);
   }
 }
+// Gear set icons, by set id, served under the set's name.
+for (const [id, name] of Object.entries(setNames)) add(`sets/${slugify(name)}.webp`, `sets/${id}.webp`, setIconPath, id);
 // Every element icon, including Astral (shown on Omnissi), which no Invoker has.
 const iconElements = [...sourceFiles].filter((f) => f.startsWith('icons/element/')).map((f) => f.replace(/^.*\/|\.webp$/g, ''));
 for (const el of new Set([...heroes.map((h) => h.element), ...iconElements])) {
@@ -103,6 +106,7 @@ export const skillIcon = (heroId: string, type: string) => url(skillIconPath.get
 export const itemIcon = (itemId: string) => url(itemIconPath.get(itemId));
 export const elementIcon = (element: string) => url(elementIconPath.get(element));
 export const classIcon = (cls: string) => url(classIconPath.get(cls));
+export const setIcon = (setId: string) => url(setIconPath.get(setId));
 /** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
 export const bannerArt = (name: string) => url(bannerPath.get(name));
 /** Tall mode art by page name ("spires"). */

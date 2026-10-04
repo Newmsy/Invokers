@@ -37,6 +37,16 @@ export async function start(): Promise<void> {
   const root = $('dps');
   const labels = JSON.parse(root.dataset.labels ?? '{}') as Record<string, string>;
   const setNames = JSON.parse(root.dataset.sets ?? '{}') as Record<string, string>;
+  const setIcons = JSON.parse(root.dataset.setIcons ?? '{}') as Record<string, string>;
+  const setImg = (id: string) => {
+    if (!setIcons[id]) return null;
+    const img = document.createElement('img');
+    img.src = setIcons[id];
+    img.alt = '';
+    img.className = 'set-icon';
+    img.loading = 'lazy';
+    return img;
+  };
   const others = $<HTMLInputElement>('o-others');
   /** The chosen Invoker: "box:<id>" or "any:<slug>". */
   const heroSel = { value: '' };
@@ -251,7 +261,11 @@ export async function start(): Promise<void> {
       return td;
     }
     const set = 'set' in p ? (setNames[p.set] ?? p.set) : '';
-    wrap.append(el('span', [`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · ')));
+    const head = el('span', undefined, 'piece-head');
+    const icon = 'set' in p ? setImg(p.set) : null;
+    if (icon) head.append(icon);
+    head.append([`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · '));
+    wrap.append(head);
     const stats = [p.mainStat, ...p.subStats].filter((s) => !!s).map((s) => statText(s!.stat, s!.value));
     wrap.append(el('small', stats.join(', ')));
     if (p.equippedHeroId !== null && p.equippedHeroId !== ownerId && box) {
@@ -273,14 +287,20 @@ export async function start(): Promise<void> {
     const r = optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked });
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
-    const setLine = (l: Loadout) =>
-      activeSets(data, l)
-        .map((s) => `${setNames[s.set] ?? s.set} ${s.pieces} pieces (${s.tiers.map((n) => `${n}-piece`).join(' + ')} bonus)`)
-        .join(', ') || 'none';
-    $('o-sets').replaceChildren(
-      el('li', `Set bonuses now: ${setLine(r.current)}`),
-      el('li', `Set bonuses with the best gear: ${setLine(r.best)}`),
-    );
+    const setLine = (label: string, l: Loadout) => {
+      const li = el('li', label);
+      const sets = activeSets(data, l);
+      if (!sets.length) li.append(' none');
+      sets.forEach((s, i) => {
+        const chip = el('span', undefined, 'set-chip');
+        const icon = setImg(s.set);
+        if (icon) chip.append(icon);
+        chip.append(`${setNames[s.set] ?? s.set} ${s.pieces} pieces (${s.tiers.map((n) => `${n}-piece`).join(' + ')} bonus)${i < sets.length - 1 ? ',' : ''}`);
+        li.append(chip);
+      });
+      return li;
+    };
+    $('o-sets').replaceChildren(setLine('Set bonuses now:', r.current), setLine('Set bonuses with the best gear:', r.best));
     $('o-summary').textContent = r.changed.length
       ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes estimated DPS from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
       : 'This Invoker already wears the best gear your box has for it.';
