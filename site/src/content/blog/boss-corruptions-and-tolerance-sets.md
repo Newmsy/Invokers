@@ -1,7 +1,7 @@
 ---
 title: "Which Tolerance set to build first"
 description: "Every boss's two corruptions in one table, which Tolerance sets cover the most bosses, and two places where the game's own text is wrong."
-date: 2026-10-01
+date: 2026-09-15
 gameVersion: "0.61.1516"
 art: ["class:Tank", "class:Melee", "class:Ranged", "class:Support"]
 tags: [bosses, gear, sets]

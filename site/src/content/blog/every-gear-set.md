@@ -1,7 +1,7 @@
 ---
 title: "Every gear set, by the numbers"
 description: "All 31 sets and what they really give. Twelve Tolerance sets hide the same +20% HP, ATK and DEF, and Vampire heals more than it says."
-date: 2026-10-01
+date: 2026-09-11
 gameVersion: "0.61.1516"
 tags: [gear, sets]
 ---

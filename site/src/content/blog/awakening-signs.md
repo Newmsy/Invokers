@@ -1,7 +1,7 @@
 ---
 title: "What each Awakening Sign gives"
 description: "Every Invoker awakens along one of eight Signs. Full Awakening adds 8 to 29% ATK, 11 to 26% HP and 9 to 23% DEF at level 60, depending on the Sign."
-date: 2026-10-04
+date: 2026-10-01
 gameVersion: "0.61.1516"
 art: ["hero:Duchess Kanraku", "hero:Skoloss the Tomb Baron", "hero:Crestelle Moonveil"]
 tags: [invokers, stats, awakening]

@@ -1,7 +1,7 @@
 ---
 title: "Chroma odds, item by item"
 description: "How rare a chroma really is from each summon item: a chroma Legendary is about 1 in 750 Divine Stars and 1 in 9,400 Destiny Stars."
-date: 2026-10-03
+date: 2026-09-28
 gameVersion: "0.61.1514"
 art: ["item:Divine Star", "item:Destiny Star", "item:Miracle Orb", "item:Fate Star"]
 tags: [summons, odds, chroma]

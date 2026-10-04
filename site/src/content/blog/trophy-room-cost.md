@@ -1,7 +1,7 @@
 ---
 title: "What a maxed Trophy Room costs"
 description: "One trophy to level 15 costs 330 Bronze, 960 Silver and 1,700 Gold Trophies. A full element room is twelve times that."
-date: 2026-10-03
+date: 2026-09-29
 gameVersion: "0.61.1516"
 art: ["item:Bronze Trophy", "item:Silver Trophy", "item:Gold Trophy", "element:Fire"]
 tags: [trophies, arena, stats]

@@ -1,7 +1,7 @@
 ---
 title: "What's in clan, arena and VIP chests"
 description: "The odds for every clan activity, clan boss, weekly arena and VIP chest, and which ones are worth climbing for."
-date: 2026-10-02
+date: 2026-09-24
 gameVersion: "0.61.1516"
 art: ["item:Legendary Codex", "item:Memorium", "item:Divine Star", "item:Gold"]
 tags: [odds, chests, clan, arena]

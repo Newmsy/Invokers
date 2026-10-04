@@ -1,7 +1,7 @@
 ---
 title: "What 130 Destiny Stars really buy you"
 description: "Every summon item's rates, our best estimate of the mercy rules, and the chance of a Legendary in N pulls."
-date: 2026-10-01
+date: 2026-09-18
 gameVersion: "0.61.1514"
 art: ["item:Destiny Star", "item:Radiant Star", "item:Divine Star", "item:Miracle Orb"]
 tags: [summons, odds]
