@@ -7,7 +7,7 @@ import gearRollsJson from '../../../../data/gear_rolls.json';
 import setsJson from '../../../../data/sets.json';
 import { heroArt } from '../art';
 import { bosses, heroRefsByConfigId, heroes, pack, skillsFor } from '../data';
-import { COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
+import { BOSS_MANA_X2_BELOW_STAGE, COMBO_SPEED_CURVE, MANA_MODE, NORMAL_ROLL_QUALITY, NORMAL_ROLL_RANK, NORMAL_ROLL_STATS, TOUGH_ROLL_STATS } from './constants';
 import { toHitT, type DpsData, type DpsHero, type DpsSkill, type SkillLevelT, type StatPairs } from './model';
 import { parseComboText, parseSkillText, type ParsedSkill } from './parse';
 
@@ -54,6 +54,17 @@ function normalRoll(stats: readonly string[]): DpsData['normalRoll'] {
     const raw = row.baseByRoll[0] * NORMAL_ROLL_QUALITY;
     return [{ stat, value: stat.endsWith('Flat') ? Math.round(raw) : Math.round(raw * 1e6) / 1e6 }];
   });
+}
+
+function elementRules(): DpsData['elements'] {
+  const e = damageJson.elements;
+  const rule = (k: 'advantage' | 'disadvantage' | 'neutral') => ({
+    damage: e.damageMultiplier[k],
+    crit: e.critChanceDelta[k] / 100,
+    debuff: e.debuffApplicationChance[k],
+  });
+  // Light/Dark Invoker vs a basic element (player side): x1.15 damage and +10 to landing debuffs (damage.json lightDark notes).
+  return { advantage: rule('advantage'), disadvantage: rule('disadvantage'), neutral: rule('neutral'), lightDark: { damage: 1.15, crit: 0, debuff: 10 } };
 }
 
 export function dpsData(): DpsData {
@@ -116,7 +127,7 @@ export function dpsData(): DpsData {
   const boss = bosses.find((b) => b.name === BOSS);
   const stages = (boss?.stages ?? [])
     .filter((s) => STAGES.includes(s.stage) && s.hp && s.def)
-    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0 }));
+    .map((s) => ({ stage: s.stage, level: s.level ?? 0, element: s.element ?? '', hp: s.hp!, def: s.def!, res: s.resistance ?? 0, atk: s.atk ?? 0, ...(s.stage < BOSS_MANA_X2_BELOW_STAGE ? { mana: 2 } : {}) }));
 
   return {
     gameVersion: pack.gameVersion,
@@ -133,6 +144,7 @@ export function dpsData(): DpsData {
     },
     stages,
     defense: { floor: damageJson.defense.floor, scale: damageJson.defense.scale },
+    elements: elementRules(),
     mana: {
       perSec: manaJson.ultimatePerSecond,
       multiplier: { pve: manaJson.modeMultipliers[MANA_MODE.pve].ultimate, arena: manaJson.modeMultipliers[MANA_MODE.arena].ultimate },

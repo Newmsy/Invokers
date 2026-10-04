@@ -5,10 +5,16 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { finalStat, simulate, skillGains, statValues, type DpsData, type Mode, type SkillSlot } from './model';
+import { finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
 import { toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
+const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = {
+  advantage: (m, e) => `${m} beats ${e}: +30% damage, and debuffs land more often.`,
+  disadvantage: (m, e) => `${m} is weak against ${e}: −30% damage, −50% Crit Rate, and debuffs land far less often.`,
+  lightDark: (m, e) => `${m} against ${e}: +15% damage.`,
+  neutral: () => 'No element advantage.',
+};
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB');
 const pct = (n: number, digits = 1) => `${(n * 100).toFixed(digits)}%`;
@@ -223,6 +229,7 @@ export async function start(): Promise<void> {
     $('d-out').hidden = false;
     $('d-dps').textContent = fmt(base.dps);
     $('d-total').textContent = `${fmt(base.total)} damage in a ${base.seconds}-second fight against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
+    $('d-total').append(' ', EDGE_TEXT[base.edge](build.hero.element, stage.element));
 
     const t = build.totals;
     const stats: [string, string][] = [
