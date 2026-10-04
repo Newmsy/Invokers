@@ -6,7 +6,7 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { defenseFactor, finalStat, landChance, simulate, statValues, type FightInput } from '../src/lib/dps/model';
+import { defenseFactor, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { parseComboText, parseDebuffs, parseHit, parseSkillText } from '../src/lib/dps/parse';
 
@@ -86,7 +86,21 @@ describe('stats', () => {
     const b = boxBuild(data, doc, owned)!;
     expect(b.pieces).toBeGreaterThan(0);
     expect(b.totals.flat.atk).toBeGreaterThanOrEqual(188);
-    expect(b.skillLevels.ActiveSkill1).toBe(5);
+    // Box stores upgrades: 5 upgrades = level 6.
+    expect(b.skillLevels.ActiveSkill1).toBe(6);
+  });
+
+  it('treats 10 box upgrades as a maxed skill', () => {
+    const hero = data.heroes.find((h) => h.name === 'Devi of the Six')!;
+    const skillLevels = { ActiveSkill1: 11, ActiveSkill2: 11, ActiveSkill3: 11, Ultimate: 11, Combo: 11 };
+    const totals = bareBuild(data, hero).totals;
+    expect(skillGains(data, { hero, totals, skillLevels, mode: 'pve', stage: stage(16) })).toEqual([]);
+  });
+
+  it('fills skipped skill levels with the level below', () => {
+    for (const h of data.heroes) for (const s of Object.values(h.skills)) expect(s.levels.every(Boolean)).toBe(true);
+    const long = data.heroes.flatMap((h) => Object.values(h.skills)).filter((s) => s.levels.length === 11);
+    expect(long.length).toBeGreaterThan(data.heroes.length * 3);
   });
 });
 
