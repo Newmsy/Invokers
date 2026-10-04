@@ -14,8 +14,8 @@ export interface GuideEntry {
 }
 
 export const topics: { name: string; blurb: string; art: string; tags: string[]; pages: string[] }[] = [
-  { name: 'Invokers and teams', blurb: 'Who to build and how stats work', art: 'hero:Admiral Gladstone', tags: ['invokers', 'roster', 'stats'], pages: ['tiers', 'team'] },
-  { name: 'Progression', blurb: 'Levels, stars, awakening and skills', art: 'item:5 star Echo', tags: ['levelling', 'awakening', 'skills', 'codex', 'trophies'], pages: ['ascension', 'skill-costs', 'trophies'] },
+  { name: 'Invokers and teams', blurb: 'Who to build and how stats work', art: 'hero:Admiral Gladstone', tags: ['invokers', 'roster', 'stats'], pages: ['tiers', 'team', 'tactics', 'stats'] },
+  { name: 'Progression', blurb: 'Levels, stars, awakening and skills', art: 'item:5 star Echo', tags: ['levelling', 'awakening', 'skills', 'codex', 'trophies'], pages: ['ascension', 'farming', 'skill-costs', 'trophies'] },
   { name: 'Gear', blurb: 'Sets, upgrades and where the gold goes', art: 'item:Gear Swap Pass', tags: ['gear', 'sets'], pages: ['gear', 'gear-upgrades'] },
   { name: 'Bosses and events', blurb: 'Boss mechanics, scaling and event targets', art: 'item:Elder Titanheart', tags: ['bosses', 'stages', 'clan', 'arena'], pages: ['bosses', 'events'] },
   { name: 'Summons and value', blurb: 'Odds, chests and which packs are worth it', art: 'item:Destiny Star', tags: ['summons', 'odds', 'chests', 'chroma'], pages: ['summons', 'packs'] },

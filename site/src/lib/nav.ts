@@ -32,6 +32,8 @@ export const nav: NavItem[] = [
   { path: 'bosses', label: 'Bosses', icon: 'skull', group: 'database', art: 'item:Elder Titanheart', blurb: "How to beat each boss, with its dos and don'ts" },
   { path: 'effects', label: 'Status effects', icon: 'book', group: 'database', art: 'item:Rare Codex', blurb: 'Every buff, debuff and control effect, and who brings it' },
   { path: 'gear', label: 'Gear sets', icon: 'shield', group: 'database', art: 'item:Gear Swap Pass', blurb: 'Every gear set and who should wear it' },
+  { path: 'tactics', label: 'Tactics', icon: 'grid', group: 'database', art: 'item:Standard Playbook', blurb: 'Every Tactic, its line bonuses and level-up cost' },
+  { path: 'stats', label: 'What stats do', icon: 'book', group: 'database', art: 'class:Tank', blurb: 'What each stat rating does, from 0 to 3,000' },
   { path: 'updates', label: 'Game updates', icon: 'refresh', group: 'database', art: 'item:Historic Playbook', blurb: 'What changed in each game update' },
   // Guides
   { path: 'guides', label: 'All guides', icon: 'book', group: 'guides', art: 'item:Legendary Codex', blurb: 'Every guide and article, by topic' },
@@ -39,6 +41,7 @@ export const nav: NavItem[] = [
   { path: 'ascension', label: 'Ascension and Awakening', icon: 'book', group: 'guides', art: 'item:5 star Echo', blurb: 'Star-up and awakening costs, and where materials drop' },
   { path: 'skill-costs', label: 'Skill costs', icon: 'book', group: 'guides', art: 'item:Rare Codex', blurb: 'What it costs to level skills, by rarity' },
   { path: 'gear-upgrades', label: 'Gear upgrades and Memorium', icon: 'book', group: 'guides', art: 'item:Memorium', blurb: 'Gear upgrade gold, Memorium and selling' },
+  { path: 'farming', label: 'Where to farm', icon: 'book', group: 'guides', art: 'item:Ancient Eldrin Rune', blurb: 'Best stages per Energy for Memorium, Runes, Essences and more' },
   { path: 'blog', label: 'Blog', icon: 'book', header: true, group: 'guides', art: 'item:Heroic Playbook', blurb: 'The numbers behind the game, in plain language' },
   // Tools
   { path: 'events', label: 'Events', icon: 'calendar', tab: true, group: 'tools', art: 'item:Energy', blurb: 'Event targets, energy planner and Arena Rush' },

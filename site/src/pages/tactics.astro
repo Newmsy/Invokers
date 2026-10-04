@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import { itemIcon, classIcon } from '../lib/art';
+import { className } from '../lib/format';
+import { plainItemName } from '../lib/progression';
+import { bonusName, bonusValue, levelUpPrices, lines, maxTacticLevel, samePrices, tactics, type Tactic } from '../lib/tactics';
+
+const n = (v: number) => v.toLocaleString('en-GB');
+const bySize = (size: number) =>
+  tactics.filter((t) => t.slots.length === size).sort((a, b) => a.requiredPlayerLevel - b.requiredPlayerLevel || a.name.localeCompare(b.name));
+const groups = [
+  { id: 'five', title: '5-Invoker Tactics', list: bySize(5) },
+  { id: 'four', title: '4-Invoker Tactics', list: bySize(4) },
+  { id: 'single', title: 'Single-Invoker Tactics', note: 'For modes with one Invoker.', list: bySize(1) },
+];
+const unlock = (t: Tactic) => (t.requiredPlayerLevel <= 1 ? 'From the start' : `Player level ${t.requiredPlayerLevel}`);
+const lineCount = (t: Tactic, line: string) => t.slots.filter((s) => s.line === line).length;
+const usedLines = (t: Tactic) => lines.filter((l) => lineCount(t, l) > 0);
+
+// Level-up price: one row per level gained, with running totals.
+const price = levelUpPrices.fiveSlot;
+const priceItems = [...new Set(price.flatMap((p) => Object.keys(p)))];
+const totals = Object.fromEntries(priceItems.map((id) => [id, price.reduce((a, p) => a + (p[id] ?? 0), 0)]));
+const playbooks = priceItems.filter((id) => id !== 'Gold');
+const icon = (id: string) => itemIcon(id);
+const firstPlaybook = itemIcon('FT_General1');
+---
+<Base title="Tactics">
+  <h1>Tactics</h1>
+  <p class="lead">Every Tactic, the line bonuses it gives at level 1 and level {maxTacticLevel}, and what levelling costs.</p>
+  <nav class="jump" aria-label="On this page">
+    {groups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+    <a href="#cost">Level-up cost</a>
+  </nav>
+
+  {groups.map((g) => (
+    <section id={g.id} aria-labelledby={`${g.id}-title`}>
+      <h2 id={`${g.id}-title`}>{firstPlaybook && <img class="h-icon" src={firstPlaybook} alt="" width="28" height="28" />}{g.title}</h2>
+      {g.note && <p class="hint">{g.note}</p>}
+      <ul class="cards">
+        {g.list.map((t) => (
+          <li class="card" id={`tactic-${t.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
+            <div class="head">
+              <h3>{t.name}</h3>
+              <span class="unlock">{unlock(t)}</span>
+            </div>
+            <div class="formation" role="img" aria-label={`${usedLines(t).map((l) => `${lineCount(t, l)} ${l.toLowerCase()}`).join(', ')}`}>
+              {usedLines(t).map((l) => (
+                <div class={`line ${l.toLowerCase()}`}>
+                  <span class="dots">{Array.from({ length: lineCount(t, l) }, () => <span class="dot" />)}</span>
+                  <span class="line-name">{l}</span>
+                </div>
+              ))}
+              <span class="enemy" aria-hidden="true">Enemy →</span>
+            </div>
+            <table>
+              <thead><tr><th scope="col">Line</th><th scope="col">Bonus</th><th scope="col" class="num">Lv 1</th><th scope="col" class="num">Lv {maxTacticLevel}</th></tr></thead>
+              <tbody>
+                {t.bonuses.map((b) => (
+                  <tr>
+                    <th scope="row">{b.line}</th>
+                    <td>
+                      {bonusName(b)}
+                      {b.class && (
+                        <span class="who">
+                          {b.class.map((c) => (
+                            <span class="cls">{classIcon(c) && <img src={classIcon(c)} alt="" width="16" height="16" loading="lazy" />}{className(c)}</span>
+                          ))}
+                          only
+                        </span>
+                      )}
+                    </td>
+                    <td class="num">{bonusValue(b, b.valuesByLevel[0])}</td>
+                    <td class="num strong">{bonusValue(b, b.valuesByLevel[b.valuesByLevel.length - 1])}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <section id="cost" aria-labelledby="cost-title">
+    <h2 id="cost-title">{icon('Gold') && <img class="h-icon" src={icon('Gold')} alt="" width="28" height="28" />}Level-up cost</h2>
+    <p class="hint">Per level, {samePrices ? 'the same for 4- and 5-Invoker Tactics' : 'for 5-Invoker Tactics'}. Level 1 to {maxTacticLevel} costs {n(totals.Gold)} Gold and {playbooks.map((id) => `${n(totals[id])} ${plainItemName(id)}s`).join(', ')}.</p>
+    <div class="table-wrap">
+      <table class="cost">
+        <thead>
+          <tr>
+            <th scope="col">Level</th>
+            {priceItems.map((id) => (
+              <th scope="col" class="num"><span class="item">{icon(id) && <img src={icon(id)} alt="" width="20" height="20" loading="lazy" />}{plainItemName(id)}</span></th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {price.map((p, i) => (
+            <tr>
+              <th scope="row">{i + 1} → {i + 2}</th>
+              {priceItems.map((id) => <td class="num">{p[id] ? n(p[id]) : '–'}</td>)}
+            </tr>
+          ))}
+          <tr class="total">
+            <th scope="row">Total</th>
+            {priceItems.map((id) => <td class="num">{n(totals[id])}</td>)}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <SeeAlso links={[
+    { path: 'team', label: 'Team builder' },
+    { path: 'stats', label: 'What stats do' },
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'heroes', label: 'All Invokers' },
+  ]} />
+</Base>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 40px 0 8px; scroll-margin-top: 80px; }
+  .h-icon { border-radius: 6px; }
+  p { max-width: 70ch; }
+  .lead { color: var(--soft); margin: 0; }
+  .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .jump a { padding: 6px 14px; border-radius: 18px; border: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 12px 14px; scroll-margin-top: 80px; min-width: 0; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  h3 { margin: 0; font-size: 17px; font-weight: 600; }
+  .unlock { color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .formation {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 10px;
+    background: var(--surface-2);
+  }
+  .line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .dots { display: flex; flex-direction: column; gap: 4px; min-height: 44px; justify-content: center; }
+  .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); opacity: 0.85; }
+  .back .dot { opacity: 0.45; }
+  .mid .dot { opacity: 0.65; }
+  .line-name { font-size: 12px; color: var(--muted); }
+  .enemy { align-self: center; font-size: 12px; color: var(--muted); white-space: nowrap; padding-left: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  tbody th { color: var(--soft); font-weight: 500; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.strong { font-weight: 600; color: var(--text); }
+  .who { display: block; color: var(--muted); font-size: 12px; }
+  .cls { display: inline-flex; align-items: center; gap: 3px; margin-right: 6px; }
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); max-width: 720px; }
+  .cost thead th { background: var(--surface-3); }
+  .cost th, .cost td { padding: 7px 12px; white-space: nowrap; }
+  .item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .item img { border-radius: 4px; }
+  tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
+
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

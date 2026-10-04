@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
-import { pack } from '../lib/data';
+import { href, pack } from '../lib/data';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
 import { gearCosts, gearSalvage } from '../lib/planner/data';
@@ -177,10 +177,11 @@ const sameVersion = brackets.gameVersion === pack.gameVersion;
       <li><strong>Crushing gear</strong> you don't need, as above.</li>
       <li><strong>VIP.</strong> The VIP bonus multiplies the Memorium you win from battles.</li>
     </ul>
-    <p class="gap">Memorium per Campaign stage, and the best stages to farm it, aren't on the site yet.</p>
+    <p>The best stages per Energy, Spire floor rewards and Memorium packs: <a href={href('farming#memorium')}>Where to farm Memorium</a>.</p>
   </section>
 
   <SeeAlso links={[
+    { path: 'farming#memorium', label: 'Where to farm Memorium' },
     { path: 'gear', label: 'Gear sets' },
     { path: 'planner', label: 'Planner' },
     { path: 'blog/where-your-gear-gold-goes', label: 'Where your gold goes on gear' },
