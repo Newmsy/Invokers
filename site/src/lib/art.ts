@@ -76,10 +76,11 @@ for (const c of new Set(heroes.map((h) => String(h.class)))) {
 // Wide key art (event backgrounds, shop banners, the loading screen) for page banners and story cards,
 // served under readable names. Art whose name carries a hero code is left out.
 const bannerPath = new Map<string, string>();
+const bannerName = (key: string) => key.replace(/_/g, '').replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
 for (const source of sourceFiles) {
   const m = source.match(/^(?:events|splash\/other)\/(?:Shop_ExclusivePack_)?([A-Za-z0-9_]+)\.webp$/) ?? (source === 'loading/loading-screen.webp' ? [source, 'LoadingScreen'] : null);
   if (!m || /[A-Z]{3}\d{3}/.test(m[1])) continue;
-  const name = m[1].replace(/_/g, '').replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
+  const name = bannerName(m[1]);
   add(`banners/${name}.webp`, source, bannerPath, name);
 }
 
@@ -139,6 +140,8 @@ export const modeArt = (mode: string) => url(modeArtPath.get(mode));
 /** A wide banner by name (e.g. "summon-invoker", "clan-boss1", "loading-screen"), or undefined when missing. */
 export const bannerArt = (name: string) => url(bannerPath.get(name));
 export const bannerNames = () => [...bannerPath.keys()];
+/** An event's wide art by its `art` key (e.g. "ClanBoss1"), or undefined when there is no such picture. */
+export const eventBanner = (key: string) => (key && !/[A-Z]{3}\d{3}/.test(key) ? url(bannerPath.get(bannerName(key))) : undefined);
 
 /** heroRefsByConfigId with each hero's portrait URL, for the box, share and planner pages. */
 export function heroRefsWithArt(): Record<string, HeroRef> {

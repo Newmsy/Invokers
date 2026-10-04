@@ -4,6 +4,7 @@ import manifest from '../../../data/manifest.json';
 import heroesJson from '../../../data/heroes.json';
 import skillsJson from '../../../data/skills.json';
 import eventsJson from '../../../data/events.json';
+import eventsMeta from '../../../data/events_meta.json';
 import bossesJson from '../../../data/bosses.json';
 import trophiesJson from '../../../data/trophies.json';
 import itemsJson from '../../../data/items.json';
@@ -159,15 +160,92 @@ export interface Item {
   description?: string;
 }
 
+/** One reward line of an event: an item and how many. */
+export interface EventRewardItem {
+  itemId: string;
+  amount: number;
+}
+
+/** A points threshold (personal or milestone) and what it pays. */
+export interface EventPointsReward {
+  rewardId: number;
+  requiredPoints: number;
+  reward: EventRewardItem[];
+}
+
+/** A leaderboard band (bracket or overall), ranks fromRank to toRank inclusive. */
+export interface EventRankReward {
+  rewardId: number;
+  fromRank: number;
+  toRank: number;
+  reward: EventRewardItem[];
+  randomReward?: unknown;
+}
+
+/** Star rank as the game names it. */
+export type RankName = 'One' | 'Two' | 'Three' | 'Four' | 'Five' | 'Six';
+
+/** Points for one action. The fields depend on `ruleType`. */
+export type EventScoringRule =
+  | { ruleType: 'GearDropScoringRule' | 'RelicDropScoringRule'; acceptedRegions?: string[]; entries: { rank: RankName; rarity: string; points: number }[] }
+  | { ruleType: 'GearUpgradeScoringRule'; entries: { rank: RankName; levelMilestone: number; points: number }[] }
+  | { ruleType: 'ArenaBattleScoringRule'; entries: { league: string; result: string; points: number }[] }
+  | { ruleType: 'HeroLevelUpScoringRule'; entries: { rarity: string; minLevelInclusive: number; maxLevelInclusive: number; pointsPerLevel: number }[] }
+  | { ruleType: 'HeroRankUpScoringRule'; entries: { rarity: string; rank: RankName; points: number }[] }
+  | { ruleType: 'HeroAwakenScoringRule'; entries: { rarity: string; awakeLevel: number; points: number }[] }
+  | { ruleType: 'HeroSkillUpScoringRule'; entries: { resourceId: string; points: number }[] }
+  | { ruleType: 'CampaignBattleScoringRule'; entries: { difficulty: string; points: number }[] }
+  | {
+      ruleType: 'HeroSummonScoringRule';
+      resourceSpendEntries: { resourceId: string; points: number }[];
+      heroEntriesNonLightDark: { rarity: string; points: number }[];
+      heroEntriesLightDark: { rarity: string; points: number }[];
+      heroEntriesChromaNonLightDark: { rarity: string; points: number }[];
+      heroEntriesChromaLightDark: { rarity: string; points: number }[];
+    }
+  | {
+      ruleType: 'AnimaSummonScoringRule';
+      resourceSpendEntries: { resourceId: string; points: number }[];
+      animaEntries: { rarity: string; points: number }[];
+      animaEntriesChroma: { rarity: string; points: number }[];
+    };
+
+/** A tournament from events.json. Times are UTC ISO strings. */
 export interface GameEvent {
   id: string;
+  tournamentId: number;
+  type: string;
+  format: string;
   name: string;
-  [key: string]: unknown;
+  shortName: string;
+  /** Game rich text (<sprite>, <indent>, <br>...). */
+  description: string;
+  advice: string[];
+  division: string;
+  /** Keys into public/art/events/ and public/art/events/icons/. */
+  art: string;
+  icon: string;
+  teaserStart: string;
+  start: string;
+  registrationEnd: string;
+  end: string;
+  rewardPeriodEnd: string;
+  playerLevels: { min: number; max: number }[];
+  bracketSize: number;
+  entryPoints: number;
+  scoring: { rules: EventScoringRule[] };
+  personalRewards: EventPointsReward[];
+  milestoneRewards: EventPointsReward[];
+  bracketRewards: EventRankReward[];
+  globalRewards: EventRankReward[];
+  progressRewards?: unknown[];
+  shopItems?: unknown[];
 }
 
 export const pack: Manifest = manifest;
 export const heroes: Hero[] = heroesJson as Hero[];
-export const events: GameEvent[] = eventsJson as GameEvent[];
+export const events: GameEvent[] = eventsJson as unknown as GameEvent[];
+export const eventsCapturedAt: string = eventsMeta.capturedAt;
 export const trophyRoom: TrophyRoom = trophiesJson as TrophyRoom;
 
 const itemsById = new Map((itemsJson as Item[]).map((i) => [i.id, i]));

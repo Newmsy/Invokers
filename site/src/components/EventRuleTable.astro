@@ -1,0 +1,80 @@
+---
+// One event scoring table (lib/eventCalendar ruleTables): rarity names in their colours, element and item icons.
+import { elementIcon, itemIcon } from '../lib/art';
+import { rarityColor } from '../lib/format';
+import type { Label, RuleTable } from '../lib/eventCalendar';
+
+interface Props {
+  table: RuleTable;
+}
+const { table } = Astro.props;
+const fmt = (n: number | null) => (n == null ? '–' : n.toLocaleString('en-GB'));
+const color = (r: string) => rarityColor[r] ?? 'var(--text)';
+const icons = (l: Label) =>
+  l.kind === 'element' ? (l.keys ?? []).map((k) => elementIcon(k)).filter(Boolean) : l.kind === 'item' && l.keys?.[0] ? [itemIcon(l.keys[0])].filter(Boolean) : [];
+---
+{(() => {
+  const render = (l: Label) =>
+    l.kind === 'rarity' ? (
+      <span class="rar">{(l.keys ?? [l.text]).map((r) => <span style={`color: ${color(r)}`}>{r}</span>)}</span>
+    ) : (
+      <span class="lab">{icons(l).length > 0 && <span class="icons">{icons(l).map((src) => <img src={src} alt="" width="16" height="16" loading="lazy" />)}</span>}<span>{l.text}</span></span>
+    );
+  const body = (
+    <div class="rt-wrap">
+      <table class="rt">
+        <thead>
+          <tr>
+            <th scope="col">{table.corner}</th>
+            {table.columns.map((c) => <th scope="col">{render(c)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((r) => (
+            <tr>
+              <th scope="row">{render(r.label)}</th>
+              {r.cells.map((v) => <td>{fmt(v)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+  const note = table.note && <p class="note">{table.note}</p>;
+  return table.collapse ? (
+    <details class="rt-fold">
+      <summary>{table.title}</summary>
+      {body}
+      {note}
+    </details>
+  ) : (
+    <>
+      <h4>{table.title}</h4>
+      {body}
+      {note}
+    </>
+  );
+})()}
+
+<style>
+  h4 { margin: 14px 0 6px; font-size: 14px; font-weight: 600; color: var(--soft); }
+  .rt-fold { margin: 12px 0 0; }
+  .rt-fold summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--soft); padding: 6px 0; }
+  .rt-wrap { max-width: 100%; width: fit-content; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  thead th { font-size: 11.5px; }
+  thead th:first-child, tbody th { text-align: left; }
+  tbody th { color: var(--soft); font-weight: 500; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  .note { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+  .rar { display: inline-flex; flex-direction: column; gap: 1px; }
+  thead .rar { align-items: flex-end; }
+  .lab { display: inline-flex; align-items: center; gap: 5px; }
+  .icons { display: inline-flex; gap: 2px; }
+  thead .lab { flex-direction: column; align-items: flex-end; gap: 2px; }
+  .lab img { width: 16px; height: 16px; object-fit: contain; flex: none; }
+  @media (max-width: 480px) {
+    th, td { padding: 6px 7px; }
+  }
+</style>
