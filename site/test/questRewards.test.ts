@@ -31,3 +31,17 @@ describe('quest reward totals', () => {
     expect(b.map((x) => [x.from, x.to, x.tasks, amountOf(x.totals, 'Gold')])).toEqual([[1, 10, 10, 10000], [11, 12, 2, 2000]]);
   });
 });
+
+describe('quest text', () => {
+  it('fills counts it knows, marks the rest and shows stars', async () => {
+    const { taskText, achievementGroups } = await import('../src/lib/questRewards');
+    expect(taskText('Earn {StarCount} Challenge Stars in Chapter {ChapterNumber} of the Campaign on Hard', 25)).toBe('Earn 25 Challenge Stars in Chapter # of the Campaign on Hard');
+    expect(taskText('Awakened to {AwakenRank}<sprite name="TMP_TextIcons_Atlas_1"> or higher', 1)).toBe('Awakened to #★ or higher');
+    const g = achievementGroups([
+      { section: 'Battle', group: 'Arena', order: 2, task: 'Win 45', rewards: [{ type: 'Resource', id: 'Gold', amount: 50000 }] },
+      { section: 'Battle', group: 'Arena', order: 1, task: 'Win 40', rewards: [{ type: 'Resource', id: 'Gold', amount: 50000 }] },
+    ]);
+    expect(g).toHaveLength(1);
+    expect([g[0].first, g[0].last, g[0].levels, g[0].totals[0].amount]).toEqual(['Win 40', 'Win 45', 2, 100000]);
+  });
+});
