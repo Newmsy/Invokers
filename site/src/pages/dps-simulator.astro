@@ -84,9 +84,10 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <h2>Best gear from your box</h2>
         <p class="hint" id="o-summary"></p>
         <ul class="hint sets" id="o-sets"></ul>
+        <p class="hint">Each swap's DPS gain is what that piece adds on top of the other suggested pieces, so set bonuses count.</p>
         <label class="check"><input type="checkbox" id="o-others" checked /> Use gear other Invokers are wearing</label>
         <table>
-          <thead><tr><th>Slot</th><th>Now</th><th>Best</th></tr></thead>
+          <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">DPS gain</th></tr></thead>
           <tbody id="o-rows"></tbody>
         </table>
       </section>
@@ -137,6 +138,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
+  :global(table.stack td.piece > div) { text-align: right; min-width: 0; }
   :global(td.piece .equipped) { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--soft); }
   :global(td.piece .equipped b) { padding: 1px 6px; margin-right: 2px; border-radius: 6px; background: var(--accent); color: #0c0b1d; font-weight: 700; }
   .sets { margin: 0 0 8px; padding-left: 18px; }

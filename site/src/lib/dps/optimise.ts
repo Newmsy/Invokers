@@ -38,6 +38,8 @@ export interface OptimiseResult {
   best: Loadout;
   /** Slots whose piece changes. */
   changed: string[];
+  /** Per changed slot: DPS gained by that swap, as best gear vs best gear with only that slot put back (fraction). */
+  gainBySlot: Record<string, number>;
 }
 
 const equipmentOf = (p: Piece): Equipment => ({
@@ -147,13 +149,14 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
     }
   }
 
-  return {
-    before: score(current),
-    after: bestScore,
-    current,
-    best,
-    changed: slots.filter((s) => current[s]?.id !== best[s]?.id || current[s]?.kind !== best[s]?.kind),
-  };
+  const changed = slots.filter((s) => current[s]?.id !== best[s]?.id || current[s]?.kind !== best[s]?.kind);
+  const gainBySlot = Object.fromEntries(
+    changed.map((s) => {
+      const without = score({ ...best, [s]: current[s] });
+      return [s, without > 0 ? bestScore / without - 1 : 0];
+    }),
+  );
+  return { before: score(current), after: bestScore, current, best, changed, gainBySlot };
 }
 
 /** Gear sets a loadout completes: set id, pieces worn and the bonus tiers (3, 5 …) that are active. */

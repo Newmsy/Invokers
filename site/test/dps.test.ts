@@ -162,6 +162,8 @@ describe('gear optimiser', () => {
       const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true });
       if (!r) continue;
       expect(r.after).toBeGreaterThanOrEqual(r.before);
+      expect(Object.keys(r.gainBySlot).sort()).toEqual([...r.changed].sort());
+      for (const g of Object.values(r.gainBySlot)) expect(g).toBeGreaterThanOrEqual(-1e-9);
       for (const [slot, p] of Object.entries(r.best)) if (p) expect(p.slot).toBe(slot);
     }
   });

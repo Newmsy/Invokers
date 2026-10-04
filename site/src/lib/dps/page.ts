@@ -159,20 +159,23 @@ export async function start(): Promise<void> {
 
   function pieceCell(p: Piece | undefined, ownerId: number): HTMLElement {
     const td = el('td', undefined, 'piece');
+    // One wrapper, so the phone card layout keeps the label on the left and the piece on the right.
+    const wrap = el('div');
+    td.append(wrap);
     if (!p) {
-      td.textContent = 'Empty';
+      wrap.textContent = 'Empty';
       return td;
     }
     const set = 'set' in p ? (setNames[p.set] ?? p.set) : '';
-    td.append(el('span', [`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · ')));
+    wrap.append(el('span', [`${p.rarity} ${RANK_STARS[p.rank] ?? '?'}★ +${p.level}`, set && `${set} set`].filter(Boolean).join(' · ')));
     const stats = [p.mainStat, ...p.subStats].filter((s) => !!s).map((s) => statText(s!.stat, s!.value));
-    td.append(el('small', stats.join(', ')));
+    wrap.append(el('small', stats.join(', ')));
     if (p.equippedHeroId !== null && p.equippedHeroId !== ownerId && box) {
       const wearer = box.heroes.find((h) => h.id === p.equippedHeroId);
       const name = wearer && data.heroes.find((d) => d.configId === wearer.configId)?.name;
       const badge = el('span', undefined, 'equipped');
       badge.append(el('b', 'Equipped'), ` by ${name ?? 'another Invoker'}`);
-      td.append(badge);
+      wrap.append(badge);
     }
     return td;
   }
@@ -202,7 +205,13 @@ export async function start(): Promise<void> {
       ...slots.map((slot) => {
         const tr = document.createElement('tr');
         if (!r.changed.includes(slot)) tr.className = 'same';
-        tr.append(el('td', slot), pieceCell(r.current[slot], owned.id), r.changed.includes(slot) ? pieceCell(r.best[slot], owned.id) : el('td', 'Keep'));
+        const g = r.gainBySlot[slot];
+        tr.append(
+          el('td', slot),
+          pieceCell(r.current[slot], owned.id),
+          r.changed.includes(slot) ? pieceCell(r.best[slot], owned.id) : el('td', 'Keep'),
+          g === undefined ? el('td', '', 'num') : el('td', g >= 0.0005 ? `+${pct(g, 1)}` : g <= -0.0005 ? `${pct(g, 1)}` : '+0.0%', g >= 0.0005 ? 'num pos' : 'num'),
+        );
         return tr;
       }),
     );
