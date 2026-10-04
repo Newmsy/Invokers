@@ -46,6 +46,6 @@ Added on top of the Invoker's own ratings:
 | Sign of Actia | +49 | | +40 Move SPD | +88 ACC, +60 RES, +40 Mana Gen |
 | Sign of Magnar | +56 | | +60 Combo SPD, +40 Move SPD | +72 RES |
 
-Full Awakening means all six levels with every node, before any accessories it unlocks. The HP, ATK and DEF gains are the same for every Invoker of a Sign to within a point. Crit figures are estimated.
+Full Awakening means all six levels with every node, before any accessories it unlocks. The HP, ATK and DEF gains are the same for every Invoker of a Sign to within a point.
 
 *Base stats without gear, game version 0.61.1516.*
