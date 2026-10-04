@@ -3,13 +3,27 @@
 import { heroes, heroHref, href, titans, titanHref } from './data';
 import { heroArt, itemIcon, titanArt } from './art';
 import { plainItemName } from './progression';
-import type { QuestsFile, Total } from './questRewards';
+import { taskText, type QuestsFile, type Total } from './questRewards';
 
 const files = import.meta.glob<{ default: unknown }>('../../../data/quests.json', { eager: true });
 export const quests = (Object.values(files)[0]?.default ?? {}) as QuestsFile;
 
-export const achievements = Array.isArray(quests.achievements) ? quests.achievements.filter((a) => a?.section && Array.isArray(a.rewards)) : [];
-export const progressPages = Array.isArray(quests.progressQuests) ? quests.progressQuests.filter((p) => p && Number.isFinite(p.page)) : [];
+// Entries with no title never show in game (page 41 lists 15 tasks; the 3 untitled ones aren't among them),
+// so they are left out of the lists and the totals.
+// Tabs as the game names them.
+const tabNames: Record<string, string> = { Account: 'General', Collection: 'Development' };
+
+export const achievements = (Array.isArray(quests.achievements) ? quests.achievements : [])
+  .filter((a) => a?.section && a.task && Array.isArray(a.rewards))
+  .map((a) => ({ ...a, section: tabNames[a.section] ?? a.section, task: taskText(a.task, a.required) }))
+  .sort((x, y) => (x.order ?? 0) - (y.order ?? 0));
+export const progressPages = (Array.isArray(quests.progressQuests) ? quests.progressQuests : [])
+  .filter((p) => p && Number.isFinite(p.page))
+  .map((p) => ({
+    ...p,
+    tasks: (p.tasks ?? []).filter((t) => t?.task && Array.isArray(t.rewards)).map((t) => ({ ...t, task: taskText(t.task, t.required) })),
+    completionReward: p.completionReward ?? [],
+  }));
 export const hasAchievements = achievements.length > 0;
 export const hasProgressQuests = progressPages.length > 0;
 

@@ -6,7 +6,7 @@ import SeeAlso from '../../components/SeeAlso.astro';
 import SectionArt from '../../components/SectionArt.astro';
 import RewardTotals from '../../components/RewardTotals.astro';
 import { achievements, hasAchievements, hasProgressQuests, progressPages } from '../../lib/questData';
-import { achievementSections, amountOf, biggest, pageBands, progressSummary, sumRewards, type QuestReward } from '../../lib/questRewards';
+import { achievementGroups, achievementSections, amountOf, biggest, pageBands, progressSummary, sumRewards, type QuestReward } from '../../lib/questRewards';
 import { artRefPath } from '../../lib/markdown-art';
 
 export function getStaticPaths() {
@@ -74,7 +74,7 @@ const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : pr
   </nav>
 
   <section id="total" aria-labelledby="total-title">
-    <h2 id="total-title"><SectionArt art="item:Gems" size={32} />Everything added up</h2>
+    <h2 id="total-title"><SectionArt art={amountOf(totals, 'Gem') > 0 ? 'item:Gems' : 'item:Gold'} size={32} />Everything added up</h2>
     <RewardTotals totals={totals} size="big" />
   </section>
 
@@ -110,10 +110,13 @@ const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : pr
         <h2 id="all-title"><SectionArt art="item:Legendary Codex" size={32} />Every achievement</h2>
         {sections.map((s) => (
           <details id={`tab-${slug(s.section)}`}>
-            <summary>{s.section} <small>{s.count}</small></summary>
+            <summary>{s.section} <small>{s.count} achievements</small></summary>
             <ul class="list">
-              {achievements.filter((a) => a.section === s.section).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((a) => (
-                <li><span class="task">{a.task}</span><RewardTotals totals={sumRewards(a.rewards)} /></li>
+              {achievementGroups(achievements.filter((a) => a.section === s.section)).map((g) => (
+                <li>
+                  <span class="task">{g.levels > 1 ? <>{g.first} <small>to</small> {g.last} <small>({g.levels} levels)</small></> : g.first}</span>
+                  <RewardTotals totals={g.totals} />
+                </li>
               ))}
             </ul>
           </details>
@@ -173,7 +176,7 @@ const headline = gemsAndGold(isAch ? achievements.flatMap((a) => a.rewards) : pr
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
   h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; margin: 36px 0 12px; scroll-margin-top: 80px; }
   h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; font-size: 16px; font-weight: 600; }
-  h3 small, summary small, .top small { color: var(--muted); font-weight: 400; font-size: 13px; }
+  h3 small, summary small, .top small, .task small { color: var(--muted); font-weight: 400; font-size: 13px; }
   p { max-width: 70ch; }
   .lead { color: var(--soft); margin: 0; }
   .hint { color: var(--muted); font-size: 14px; margin: 12px 0; }

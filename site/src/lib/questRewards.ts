@@ -8,8 +8,8 @@ export interface QuestReward {
   /** A random pick of this rarity (e.g. "Legendary"), shown as "a random Legendary". */
   random?: string;
 }
-export interface Achievement { section: string; order?: number; task: string; rewards: QuestReward[] }
-export interface QuestTask { task: string; rewards: QuestReward[] }
+export interface Achievement { section: string; group?: string; level?: number; order?: number; required?: number; task: string; rewards: QuestReward[] }
+export interface QuestTask { task: string; required?: number; rewards: QuestReward[] }
 export interface QuestPage { page: number; tasks: QuestTask[]; completionReward: QuestReward[] }
 export interface QuestsFile { gameVersion?: string; achievements?: Achievement[]; progressQuests?: QuestPage[] }
 
@@ -103,3 +103,33 @@ export function progressSummary(pages: QuestPage[]): QuestSummary {
 /** Short amounts for chips: 150,000 → 150K, 2,500,000 → 2.5M. */
 export const short = (n: number) =>
   n >= 1e6 ? `${+(n / 1e6).toFixed(2)}M` : n >= 10000 && n % 1000 === 0 ? `${n / 1000}K` : n.toLocaleString('en-GB');
+
+export interface AchievementGroup { key: string; first: string; last: string; levels: number; totals: Total[] }
+
+/** One row per chain of achievements (Win 40 … 4,900 Arena Battles), in game order, rewards added up. */
+export function achievementGroups(list: Achievement[]): AchievementGroup[] {
+  const byGroup = new Map<string, Achievement[]>();
+  for (const a of [...list].sort((x, y) => (x.order ?? 0) - (y.order ?? 0))) {
+    const key = a.group ?? a.task;
+    byGroup.set(key, [...(byGroup.get(key) ?? []), a]);
+  }
+  return [...byGroup].map(([key, items]) => ({
+    key,
+    first: items[0].task,
+    last: items[items.length - 1].task,
+    levels: items.length,
+    totals: sumRewards(items.flatMap((a) => a.rewards ?? [])),
+  }));
+}
+
+/** In-game task text: star icons as ★, and amounts the text doesn't carry as #. */
+export function taskText(task: string, required?: number): string {
+  return task
+    .replace(/\s*<sprite[^>]*>/g, '★')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\{(StarCount|RequiredAmount)\}/g, (m) => (required ? required.toLocaleString('en-GB') : m))
+    .replace(/\{[A-Za-z0-9]+\}/g, '#')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
