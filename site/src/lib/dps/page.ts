@@ -188,7 +188,7 @@ export async function start(): Promise<void> {
 
   const RARITY_RANK: Record<string, number> = { Legendary: 5, Epic: 4, Rare: 3, Uncommon: 2, Common: 1 };
 
-  function tileEl(t: Tile, small = false): HTMLElement {
+  function tileEl(t: Tile, small = false, score = true): HTMLElement {
     const chosen = pickFor === 'mate' ? t.key === heroSel.value || mates.some((m) => m.key === t.key) : t.key === heroSel.value;
     const card = el(small ? 'div' : 'button', undefined, `tile${chosen ? ' on' : ''}`);
     card.style.setProperty('--rarity', RARITY_COLOR[t.rarity] ?? 'var(--line)');
@@ -208,13 +208,13 @@ export async function start(): Promise<void> {
         update();
       });
     }
-    card.append(avatar(t.art, small ? 56 : 48));
+    card.append(avatar(t.art, !score ? 40 : small ? 56 : 48));
     const text = el('span', undefined, 'tile-text');
     text.append(el('strong', t.name));
     const bits = [`${t.stars}★ Lv ${t.level}`];
     if (t.key.startsWith('box:')) bits.push(t.awaken ? `Awakened ${t.awaken}` : 'Not awakened', `${t.pieces} gear`);
     text.append(el('small', bits.join(' · ')));
-    text.append(el('small', (sortSel.value === 'tough' || (sortSel.value !== 'dps' && tab === 'toughness')) ? `${fmt(t.ehp ?? 0)} effective HP` : `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
+    if (score) text.append(el('small', (sortSel.value === 'tough' || (sortSel.value !== 'dps' && tab === 'toughness')) ? `${fmt(t.ehp ?? 0)} effective HP` : `${fmt(t.dps ?? 0)} DPS`, 'tile-dps'));
     card.append(text);
     return card;
   }
@@ -236,30 +236,73 @@ export async function start(): Promise<void> {
     const current = tiles.find((t) => t.key === heroSel.value);
     $('d-current').replaceChildren(...(current ? [tileEl(current, true)] : []));
     $('d-browse').hidden = !pickerOpen;
-    $('d-change').textContent = pickerOpen ? 'Done' : 'Change Invoker';
+    $('d-browse-title').textContent = pickFor === 'mate' ? 'Choose a teammate' : 'Choose the Invoker to simulate';
+    $('d-browse-hint').hidden = pickFor !== 'mate';
+    $('d-change').textContent = pickerOpen && pickFor === 'main' ? 'Close' : 'Change';
     $('d-change').hidden = !current;
-    $('d-picking-mate').hidden = !(pickerOpen && pickFor === 'mate');
     renderMates();
   }
 
-  /** The teammate chips, with a remove button each, and the Add button while there's room. */
+  /** DPS each teammate's buffs add to the simulated Invoker, filled in by render(). */
+  let mateGain = new Map<string, number>();
+
+  /** Swaps a teammate with the simulated Invoker: the teammate is simulated, the old one becomes a teammate. */
+  function swapMain(m: Tile) {
+    const old = tiles.find((t) => t.key === heroSel.value);
+    const kind = m.key.startsWith('box:') ? 'box' : 'any';
+    if (sourceSel.value !== kind) {
+      sourceSel.value = kind;
+      buildTiles();
+    }
+    heroSel.value = m.key;
+    mates = mates.flatMap((x) => (x.key !== m.key ? [x] : old ? [old] : []));
+    pickerOpen = false;
+    pickFor = 'main';
+    refreshMates();
+    update();
+  }
+
+  /** The four teammate slots: filled ones with what they add, Simulate and Remove; empty ones open the picker. */
   function renderMates() {
-    $('d-mates').replaceChildren(
-      ...mates.map((m) => {
-        const li = el('li', undefined, 'mate');
-        const remove = el('button', '×', 'mate-remove') as HTMLButtonElement;
-        remove.type = 'button';
-        remove.setAttribute('aria-label', `Remove ${m.name}`);
-        remove.addEventListener('click', () => {
+    const mainName = tiles.find((t) => t.key === heroSel.value)?.name ?? 'the simulated Invoker';
+    const btn = (label: string, cls: string, aria: string, on: () => void) => {
+      const b = el('button', label, cls) as HTMLButtonElement;
+      b.type = 'button';
+      b.setAttribute('aria-label', aria);
+      b.addEventListener('click', on);
+      return b;
+    };
+    const filled = mates.map((m) => {
+      const li = el('li', undefined, 'mate');
+      const gain = mateGain.get(m.key);
+      li.append(tileEl(m, true, false));
+      li.append(el('small', gain === undefined ? 'Adds DPS through buffs' : gain > 0.5 ? `Adds ${fmt(gain)} DPS` : 'Adds no DPS', 'mate-gain'));
+      const acts = el('div', undefined, 'mate-acts');
+      acts.append(
+        btn('Simulate', 'mate-btn', `Simulate ${m.name} instead`, () => swapMain(m)),
+        btn('Remove', 'mate-btn', `Remove ${m.name}`, () => {
           mates = mates.filter((x) => x.key !== m.key);
           refreshMates();
           update();
-        });
-        li.append(tileEl(m, true), remove);
-        return li;
-      }),
-    );
-    $<HTMLButtonElement>('d-add-mate').hidden = mates.length >= TEAM_ALLIES;
+        }),
+      );
+      li.append(acts);
+      return li;
+    });
+    const empty = Array.from({ length: Math.max(0, TEAM_ALLIES - mates.length) }, () => {
+      const li = el('li', undefined, 'mate');
+      const add = btn('', 'mate-empty', 'Add teammate', () => {
+        pickFor = 'mate';
+        pickerOpen = true;
+        renderPicker();
+        $('d-browse').scrollIntoView({ block: 'nearest' });
+        searchInput.focus();
+      });
+      add.append(el('strong', '+ Add teammate'), el('small', `To buff ${mainName}`));
+      li.append(add);
+      return li;
+    });
+    $('d-mates').replaceChildren(...filled, ...empty);
   }
 
   /** Re-times every teammate's buffs for the current mode and stage, and re-scores the tiles with them. */
@@ -324,9 +367,11 @@ export async function start(): Promise<void> {
 
     // What each teammate's buffs add to this Invoker: DPS with every teammate vs without that one.
     $('d-mates-box').hidden = !mates.length;
+    const mateGains = new Map<string, number>();
     $('d-mates-out').replaceChildren(
       ...mates.map((m, i) => {
         const without = simulate(data, { ...input, ext: mateWindows.filter((_, j) => j !== i).flat() }).dps;
+        mateGains.set(m.key, base.dps - without);
         const names = [...new Set(mateWindows[i].map((w) => w.name))];
         return row(
           m.name,
@@ -336,6 +381,8 @@ export async function start(): Promise<void> {
         );
       }),
     );
+    mateGain = mateGains;
+    renderMates();
 
     const t = build.totals;
     const stats: [string, string][] = [
@@ -649,12 +696,10 @@ export async function start(): Promise<void> {
   if (mates.length) refreshMates();
   update();
   for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (refreshMates(), update()));
-  $('d-add-mate').addEventListener('click', () => {
-    pickFor = 'mate';
-    pickerOpen = true;
+  $('d-close').addEventListener('click', () => {
+    pickerOpen = false;
+    pickFor = 'main';
     renderPicker();
-    $('d-browse').scrollIntoView({ block: 'nearest' });
-    searchInput.focus();
   });
   for (const t of TABS) {
     $(`${OPT[t]}-others`).addEventListener('change', update);
@@ -677,7 +722,7 @@ export async function start(): Promise<void> {
     renderPicker();
   });
   $('d-change').addEventListener('click', () => {
-    pickerOpen = !pickerOpen;
+    pickerOpen = !(pickerOpen && pickFor === 'main');
     pickFor = 'main';
     renderPicker();
   });
