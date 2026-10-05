@@ -33,6 +33,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <button type="button" class="btn" id="d-change" hidden>Change Invoker</button>
       </div>
       <div id="d-browse">
+        <p class="picking" id="d-picking-mate" hidden>Pick a teammate. Its buffs, and its DEF Down or Weaken on the boss, will count for the Invoker above.</p>
         <div class="pick-bar">
           <input id="d-search" type="search" placeholder="Search Invokers" autocomplete="off" />
           <select id="d-source" aria-label="Which Invokers">
@@ -71,6 +72,11 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </label>
     </div>
     <label class="check" id="d-team-label"><input type="checkbox" id="d-team-on" /> Count buffs it gives the team</label>
+    <div class="team-row" id="d-team-row">
+      <span class="team-title">Teammates</span>
+      <ul class="mates" id="d-mates"></ul>
+      <button type="button" class="btn" id="d-add-mate">Add teammate</button>
+    </div>
 
     <section id="d-out" hidden>
       <div id="panel-dps" role="tabpanel" aria-labelledby="tab-dps">
@@ -129,6 +135,15 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         </table>
       </section>
 
+      <section id="d-mates-box" hidden>
+        <h2>What teammates add</h2>
+        <p class="hint">DPS each teammate's buffs and boss debuffs add to this Invoker, on top of the other teammates. Group buffs count by their chance to reach it.</p>
+        <table>
+          <thead><tr><th>Teammate</th><th>Buffs</th><th class="num">DPS added</th><th class="num">Gain</th></tr></thead>
+          <tbody id="d-mates-out"></tbody>
+        </table>
+      </section>
+
       <section id="d-fx-box" hidden>
         <h2>Cooldown cuts and bonus mana</h2>
         <p class="hint">What its skills give back to itself in the fight. Effects that need a crit count by Crit Rate.</p>
@@ -161,7 +176,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </section>
 
       <p class="hint note">
-        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count, and so do its own DEF Down and Weaken on the boss, but help from other Invokers doesn't (tick "Count buffs it gives the team" to add what this one gives them), average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
+        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count, and so do its own DEF Down and Weaken on the boss, help from other Invokers counts only for teammates you add (tick "Count buffs it gives the team" to add what this one gives them), average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
         Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
       </div>
@@ -234,7 +249,16 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   }
   .tabs [role='tab']:hover { color: var(--text); }
   .tabs [role='tab'][aria-selected='true'] { color: var(--text); border-bottom-color: var(--accent); }
-  #d-mode-label[hidden], #d-team-label[hidden] { display: none; }
+  #d-mode-label[hidden], #d-team-label[hidden], #d-team-row[hidden], #d-add-mate[hidden] { display: none; }
+  .team-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 0 0 16px; }
+  .team-title { color: var(--muted); font-size: 13px; }
+  .mates { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; min-width: 0; }
+  :global(.mate) { display: flex; align-items: stretch; min-width: 0; max-width: 100%; }
+  :global(.mate .tile) { min-width: 0; }
+  :global(.mate-remove) { border: 1px solid var(--line); border-left: 0; background: transparent; color: var(--soft); padding: 0 12px; font-size: 18px; cursor: pointer; }
+  :global(.mate-remove:hover), :global(.mate-remove:focus-visible) { color: var(--accent); background: var(--line); }
+  .picking { margin: 0 0 8px; padding: 8px 12px; border-left: 3px solid var(--accent); color: var(--soft); font-size: 14px; }
+  .picking[hidden] { display: none; }
   h2.first { margin-top: 16px; }
   h3 { font-size: 16px; font-weight: 600; margin: 20px 0 6px; }
   .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }

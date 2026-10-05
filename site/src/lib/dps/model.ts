@@ -271,7 +271,7 @@ export interface FightInput {
   skipBuff?: string;
   /** Add the damage its buffs and boss debuffs add for the other team members (see teamWindows). */
   team?: boolean;
-  /** Buffs and boss debuffs from a teammate, already timed (used to measure what a team buff is worth). */
+  /** Buffs and boss debuffs from teammates, already timed and weighted by their chance to reach this Invoker (see teamWindows). */
   ext?: BuffWindow[];
 }
 
@@ -615,8 +615,10 @@ function windowDps(events: Event[], mode: Mode, T: number): number {
 function allyGain(data: DpsData, input: FightInput, windows: BuffWindow[], T: number): { base: number; dps: number } {
   const stand = { ...input, noBuffs: true, team: false, skipBuff: undefined };
   const until = T + C.FIGHT_WINDOW_SEC[input.mode];
-  const base = windowDps(timeline(data, { ...stand, ext: [] }, until).events, input.mode, T);
-  const dps = windows.length ? windowDps(timeline(data, { ...stand, ext: windows }, until).events, input.mode, T) : base;
+  // Teammates picked on the page buff the stand-in too.
+  const others = input.ext ?? [];
+  const base = windowDps(timeline(data, { ...stand, ext: others }, until).events, input.mode, T);
+  const dps = windows.length ? windowDps(timeline(data, { ...stand, ext: [...others, ...windows] }, until).events, input.mode, T) : base;
   return { base, dps };
 }
 
@@ -769,4 +771,13 @@ export function selfDefence(data: DpsData, input: FightInput): { defUp: { pct: n
   const shieldAvg = inFight.reduce((n, s) => n + (s.amount * (Math.min(s.until, T) - s.from)) / T, 0);
   const shieldSize = inFight.length ? inFight.reduce((n, s) => n + s.amount, 0) / inFight.length : 0;
   return { defUp, shieldAvg, shieldCasts: inFight.length, shieldSize };
+}
+
+/**
+ * A teammate's buffs and boss debuffs as they reach one other Invoker: its own fight's buff windows, each weighted by
+ * the chance it reaches that Invoker. Pass them as `ext` to add the teammate to a fight.
+ */
+export function teamWindows(data: DpsData, mate: FightInput): BuffWindow[] {
+  const T = mate.seconds ?? C.FIGHT_SEC[mate.mode];
+  return perAlly(timeline(data, { ...mate, team: false, ext: [] }, T + C.FIGHT_WINDOW_SEC[mate.mode]).team);
 }

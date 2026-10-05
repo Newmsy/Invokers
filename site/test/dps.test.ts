@@ -8,7 +8,7 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { buffGains, selfDefence, teamGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, selfDefence, teamGains, teamWindows, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { buffedToughness, toughness, toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseBuffs, parseSelfBuffs, parseSelfShields, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
@@ -412,5 +412,20 @@ describe('own DEF Up and shields', () => {
     const b = buffedToughness(data, f)!;
     expect(b.ehp).toBeGreaterThan(toughness(data, f.totals, f.stage).ehp);
     expect(buffedToughness(data, fight('Ironblade Darus'))).toBeNull();
+  });
+});
+
+describe('teammates', () => {
+  it("adds a teammate's ATK Up to the simulated Invoker", () => {
+    const f = fight('Ironblade Darus');
+    const windows = teamWindows(data, fight('Custodian Plumia'));
+    expect(windows.map((w) => w.name)).toContain('ATK Up');
+    // Her ATK Up reaches the 9 lowest-HP allies, so every teammate.
+    expect(windows.find((w) => w.name === 'ATK Up')!.p).toBe(1);
+    const alone = simulate(data, f).dps;
+    const withMate = simulate(data, { ...f, ext: windows }).dps;
+    expect(withMate / alone - 1).toBeGreaterThan(0.1);
+    // A teammate with no team buffs changes nothing.
+    expect(simulate(data, { ...f, ext: teamWindows(data, fight('Ironblade Darus', { stage: stage(16) })).filter((w) => w.stat !== 'defDown') }).dps).toBeCloseTo(alone, 6);
   });
 });
