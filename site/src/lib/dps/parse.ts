@@ -28,10 +28,16 @@ export interface Debuff {
   chance: number;
   /** True when the text lists it under "Accuracy required for" (the target's RES can resist it). */
   acc: boolean;
+  /** Size for "[18% DEF Down]" style debuffs (0.18). */
+  pct?: number;
+  /** How long it lasts, from "lasting 14s". */
+  sec?: number;
 }
 
 /** Stats a self buff changes. Buffs multiply the final stat (Newms): ATK Up 40% = final ATK × 1.4. */
-export type BuffStat = 'atk' | 'critRate' | 'critDmg' | 'skillRecovery' | 'skillSpeed' | 'comboSpeed';
+export type BuffStat = 'atk' | 'critRate' | 'critDmg' | 'skillRecovery' | 'skillSpeed' | 'comboSpeed' | BossDebuffStat;
+/** Debuffs on the boss that raise the Invoker's own damage: DEF Down lowers the boss's DEF, Weaken raises damage taken. */
+export type BossDebuffStat = 'defDown' | 'weaken';
 
 /** A buff the skill casts on its own Invoker (directly, or on allies around it). */
 export interface SelfBuff {
@@ -111,12 +117,18 @@ export function parseDebuffs(text: string): Debuff[] {
   );
   const out: Debuff[] = [];
   const seen = new Set<string>();
-  for (const m of t.matchAll(/(?:Has an? ([\d.]+)% chance to casts? an? )?\[(?:[\d.]+% )?([^\]]+)\] debuff(?: on ([^,.\n]+))?/g)) {
-    const name = m[2].trim();
+  for (const m of t.matchAll(/(?:Has an? ([\d.]+)% chance to casts? an? )?\[(?:([\d.]+)% )?([^\]]+)\] debuffs?(?: on ([^,.\n]+))?/g)) {
+    const name = m[3].trim();
     seen.add(name);
     // "[Shock] debuff, lasting 6s, instead of the [Stun]" names no target: it goes where the skill's other debuff goes.
-    if (m[3] && !ENEMY_TARGET.test(m[3].trim())) continue;
-    out.push({ name, chance: m[1] ? Number(m[1]) / 100 : 1, acc: needAcc.has(name) });
+    if (m[4] && !ENEMY_TARGET.test(m[4].trim())) continue;
+    const d: Debuff = { name, chance: m[1] ? Number(m[1]) / 100 : 1, acc: needAcc.has(name) };
+    const lasting = /^[^.\n[]*?lasting ([\d.]+)s/.exec(t.slice(m.index! + m[0].length));
+    if (m[2] && lasting && (name === 'DEF Down' || name === 'Weaken')) {
+      d.pct = num(m[2]) / 100;
+      d.sec = num(lasting[1]);
+    }
+    out.push(d);
   }
   // Control effects that aren't bracketed (Launch, Pull, Buff Steal …) still need Accuracy to land.
   for (const name of needAcc) if (!seen.has(name)) out.push({ name, chance: 1, acc: true });

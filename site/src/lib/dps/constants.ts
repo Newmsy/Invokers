@@ -22,7 +22,7 @@ export const COMBO_SPEED_CURVE = 'SkillSpeedFactorPct';
  * (1 + Mana Generation %). PvE uses the 5-Invoker battle multiplier; Arena uses the PvP one.
  */
 export const MANA_MODE = { pve: 'fiveHeroes', arena: 'pvp' } as const;
-/** Skill Recovery also shortens the Ultimate's own cooldown (timing.json: CanCooldownBeReduced is true for Ultimates). */
+/** Skill Recovery also shortens the Ultimate's own cooldown (mana.json ultimateCooldown, timing.json canBeReduced). */
 export const RECOVERY_APPLIES_TO_ULTIMATE = true;
 
 /** PLACEHOLDER (#123): ATK % bonuses multiply the Invoker's own ATK (level + Awakening), flat ATK adds after. */

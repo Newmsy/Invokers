@@ -52,7 +52,7 @@ Pick an Invoker from your box and a **Best gear from your box** section appears.
 All numbers are **estimated**. Each fight assumes:
 
 - one target, with the buffs, cooldown cuts and Ultimate Mana an Invoker gives itself (or allies around it) but none from other Invokers,
-- debuffs that land don't change damage (except Burn and Bleed),
+- of its debuffs, only DEF Down, Weaken, Burn and Bleed change its damage,
 - average crits rather than lucky ones,
 - Burn and Bleed at their per-tick limit.
 
