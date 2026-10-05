@@ -1,5 +1,5 @@
 ---
-title: "New: the DPS simulator and best gear from your box"
+title: "New: the Simulator and best gear from your box"
 description: "Pick an Invoker, a mode and an Ulgorim stage to see its estimated damage per second, which substat is worth most, and the best gear you already own."
 date: 2026-10-04
 gameVersion: "0.61.1516"
@@ -8,11 +8,11 @@ art: ["hero:Ozmol the Vulcanist", "item:Gear Swap Pass", "item:Memorium"]
 tags: [gear, stats, bosses]
 ---
 
-**The [DPS simulator](/dps-simulator) is live.** It estimates how much damage per second an Invoker deals to [Ulgorim](/bosses/ulgorim), which substat would add the most, and which gear from your box gives the most damage.
+**The [Simulator](/simulator) is live.** It estimates how much damage per second an Invoker deals to [Ulgorim](/bosses/ulgorim), which substat would add the most, and which gear from your box gives the most damage.
 
 Find it under **Tools** in the menu, or press **Simulate DPS** on any Invoker's page.
 
-![The DPS simulator's Invoker picker, sorted by highest DPS](/blog/dps-simulator-picker.jpg)
+![The Simulator's Invoker picker, sorted by highest DPS](/blog/dps-simulator-picker.jpg)
 
 ## How to use it
 

@@ -13,4 +13,4 @@ art: ["item:Multi-Battle Tokens"]
 
 **Multi-Battles** let you farm several battles in a row with one tap, and progress got easier across the board: easier bosses, more XP drops, 4x Runes and better Relics.
 
-**Tanks' stats were rebalanced.** To see how much damage a Tank takes and which stats help most, try the Toughness tab of the [DPS simulator](/dps-simulator?tab=toughness).
+**Tanks' stats were rebalanced.** To see how much damage a Tank takes and which stats help most, try the Toughness tab of the [Simulator](/simulator?tab=toughness).

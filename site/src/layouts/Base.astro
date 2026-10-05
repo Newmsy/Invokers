@@ -1,7 +1,7 @@
 ---
 import { pack, href } from '../lib/data';
 import NavIcon from '../components/NavIcon.astro';
-import { BOX_GATE, headerNav, inGroup, menus, myBox, nav, tabs, tabSlots } from '../lib/nav';
+import { BOX_GATE, headerNav, inGroup, inMenu, menus, myBox, nav, tabs, tabSlots } from '../lib/nav';
 import Account from '../components/Account.astro';
 import SectionArt from '../components/SectionArt.astro';
 import Tooltips from '../components/Tooltips.astro';
@@ -81,7 +81,7 @@ const crumbs = pagePath && owner
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
             </a>
             <div class="panel">
-              {inGroup(m.group).map((n) => (
+              {inMenu(m.group).map((n) => (
                 <a href={href(n.path)} aria-current={pagePath === n.path ? 'page' : undefined}>
                   <SectionArt art={n.art} size={36} />
                   <span class="label">{n.label}</span>

@@ -1,4 +1,4 @@
-// Everything the DPS simulator needs (parsed skills, base stats, Awakening, sets, curves, Ulgorim stages), fetched
+// Everything the Simulator needs (parsed skills, base stats, Awakening, sets, curves, Ulgorim stages), fetched
 // by the page once.
 import { dpsData } from '../lib/dps/data';
 
