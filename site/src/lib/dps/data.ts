@@ -22,7 +22,7 @@ const compact = (p: ParsedSkill): SkillLevelT => ({
 });
 
 const ACTIVE_SLOTS = ['ActiveSkill1', 'ActiveSkill2', 'ActiveSkill3', 'Ultimate'] as const;
-const FIXED = ['critRate', 'critDmg', 'acc', 'comboSpeed', 'skillSpeed', 'skillRecovery', 'manaGen', 'instinct'] as const;
+const FIXED = ['critRate', 'critDmg', 'acc', 'res', 'comboSpeed', 'skillSpeed', 'skillRecovery', 'manaGen', 'instinct'] as const;
 /** The Ulgorim stages players can pick. */
 export const STAGES = [1, 4, 7, 10, 13, 16, 20];
 export const BOSS = 'Ulgorim';
