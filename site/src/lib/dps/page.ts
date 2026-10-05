@@ -122,26 +122,41 @@ export async function start(): Promise<void> {
   /** Their buffs as they reach the simulated Invoker, per teammate, for the current mode and stage. */
   let mateWindows: BuffWindow[][] = [];
 
+  function ownedTile(h: BoxHero): Tile {
+    const d = data.heroes.find((x) => x.configId === h.configId)!;
+    const build = box ? boxBuild(data, box, h) : null;
+    return {
+      key: `box:${h.id}`, name: d.name, art: d.art, rarity: d.rarity, element: d.element,
+      stars: RANK_STARS[h.rank] ?? 0, level: h.level, awaken: h.awakenLevel ?? 0, pieces: build?.pieces ?? 0, build,
+    };
+  }
+  const anyTile = (d: DpsData['heroes'][number]): Tile => ({
+    key: `any:${d.slug}`, name: d.name, art: d.art, rarity: d.rarity, element: d.element,
+    stars: 6, level: 60, awaken: 6, pieces: 0, build: bareBuild(data, d),
+  });
+
+  /** Teammates from the link (?mates=a,b from the team builder): the box's own copy when there is one. */
+  function matesFromUrl() {
+    const slugs = (new URLSearchParams(location.search).get('mates') ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+    const mainSlug = heroSel.value.startsWith('any:') ? heroSel.value.slice(4) : '';
+    for (const slug of slugs) {
+      if (mates.length >= TEAM_ALLIES) break;
+      const d = data.heroes.find((x) => x.slug === slug);
+      if (!d) continue;
+      const owned = box?.heroes.find((h) => h.configId === d.configId && `box:${h.id}` !== heroSel.value);
+      const tile = owned ? ownedTile(owned) : anyTile(d);
+      if (slug === mainSlug || tile.key === heroSel.value || mates.some((m) => m.key === tile.key)) continue;
+      mates.push(tile);
+    }
+  }
+
   function buildTiles() {
     const owned = (box?.heroes ?? []).filter((h) => data.heroes.some((d) => d.configId === h.configId));
     $('d-nobox').hidden = owned.length > 0;
     sourceSel.querySelector<HTMLOptionElement>('option[value="box"]')!.disabled = !owned.length;
     if (!owned.length) sourceSel.value = 'any';
     else if (!heroSel.value && !wanted) sourceSel.value = 'box';
-    tiles =
-      sourceSel.value === 'box'
-        ? owned.map((h) => {
-            const d = data.heroes.find((x) => x.configId === h.configId)!;
-            const build = box ? boxBuild(data, box, h) : null;
-            return {
-              key: `box:${h.id}`, name: d.name, art: d.art, rarity: d.rarity, element: d.element,
-              stars: RANK_STARS[h.rank] ?? 0, level: h.level, awaken: h.awakenLevel ?? 0, pieces: build?.pieces ?? 0, build,
-            };
-          })
-        : data.heroes.map((d) => ({
-            key: `any:${d.slug}`, name: d.name, art: d.art, rarity: d.rarity, element: d.element,
-            stars: 6, level: 60, awaken: 6, pieces: 0, build: bareBuild(data, d),
-          }));
+    tiles = sourceSel.value === 'box' ? owned.map(ownedTile) : data.heroes.map(anyTile);
     scoreTiles();
   }
 
@@ -602,6 +617,8 @@ export async function start(): Promise<void> {
   if (tab === 'toughness' && sortSel.value === 'dps') sortSel.value = 'tough';
   box = await loadBox();
   fillHeroes();
+  matesFromUrl();
+  if (mates.length) refreshMates();
   update();
   for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (refreshMates(), update()));
   $('d-add-mate').addEventListener('click', () => {
