@@ -43,6 +43,14 @@ describe('tiers.json', () => {
       }
     });
   }
+
+  it('keeps Rare and lower Invokers out of S', () => {
+    const slugs = makeHeroSlugs(heroes as HeroLike[]);
+    const low = new Set((heroes as (HeroLike & { rarity: string })[]).filter((h) => !['Epic', 'Legendary'].includes(h.rarity)).map((h) => slugs.get(h.id)));
+    for (const [id, list] of Object.entries(file.invokers)) {
+      expect((list.S ?? []).filter((s) => low.has(s)), `invokers/${id}: Rare or lower in S`).toEqual([]);
+    }
+  });
 });
 
 describe('toTiers', () => {
