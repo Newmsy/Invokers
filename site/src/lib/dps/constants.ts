@@ -32,7 +32,7 @@ export const CRIT_RATE_CAP = 1;
 /** Burn and Bleed skip DEF (damage.json hit.mitigation.bleedAndBurn); ticks don't crit. */
 export const DOT_USES_DEF = false;
 
-/** Set bonuses: the 5-piece bonus adds on top of the 3-piece one. */
+/** Set bonuses: the 5-piece bonus adds on top of the 3-piece one (Newms: a 5-piece Accuracy set gives 50 + 75 = 125 ACC). */
 export const SET_BONUSES_STACK = true;
 
 /**

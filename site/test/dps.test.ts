@@ -8,7 +8,7 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { buffGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { toughness, toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseSelfBuffs, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
@@ -347,5 +347,16 @@ describe('own debuffs', () => {
     expect(gains.map((g) => g.name)).toContain('DEF Down');
     expect(gains[0].gain).toBeGreaterThan(0);
     expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, skipBuff: 'Ultimate|DEF Down' }).dps);
+  });
+});
+
+describe('set bonuses', () => {
+  it('adds the 3-piece and 5-piece bonuses together (5-piece Accuracy set = +125 ACC)', () => {
+    const h = hero('Ironblade Darus');
+    const bare = totalsFor(data, h, 'Six', 60, [], []);
+    const five = totalsFor(data, h, 'Six', 60, [], Array.from({ length: 5 }, () => ({ stats: [], set: 'Accuracy' })));
+    expect(five.acc - bare.acc).toBe(125);
+    const three = totalsFor(data, h, 'Six', 60, [], Array.from({ length: 3 }, () => ({ stats: [], set: 'Accuracy' })));
+    expect(three.acc - bare.acc).toBe(50);
   });
 });
