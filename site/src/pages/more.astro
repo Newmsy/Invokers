@@ -5,12 +5,14 @@ import NavIcon from '../components/NavIcon.astro';
 import SectionArt from '../components/SectionArt.astro';
 import SearchForm from '../components/SearchForm.astro';
 import { href } from '../lib/data';
-import { inGroup, menus, nav } from '../lib/nav';
+import { inMenu, menus, nav, topLevel } from '../lib/nav';
 
+// Top-level pages (the Simulator) come first, then News and the menus.
 const groups = [
+  ...(topLevel.length ? [{ label: '', items: topLevel }] : []),
   ...(nav[0].path === 'news' ? [{ label: 'News', items: [nav[0]] }] : []),
-  ...menus.map((m) => ({ label: m.label, items: inGroup(m.group) })),
-  { label: 'Site', items: inGroup('site') },
+  ...menus.map((m) => ({ label: m.label, items: inMenu(m.group) })),
+  { label: 'Site', items: inMenu('site') },
 ];
 ---
 <Base title="More">
@@ -25,7 +27,7 @@ const groups = [
     <button type="button" id="install-button" hidden>Install</button>
   </section>
   {groups.map((g) => (<>
-  <h2>{g.label}</h2>
+  {g.label && <h2>{g.label}</h2>}
   <ul class="list">
     {g.items.map((n) => (
       <li class:list={{ 'box-only': n.boxOnly }}>

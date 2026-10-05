@@ -21,6 +21,8 @@ export interface NavItem {
   boxOnly?: boolean;
   /** Bottom-bar tab shown only on phones and tablets, in the slot box-only tabs leave. */
   mobileOnly?: boolean;
+  /** A top-level header link only: left out of its group's dropdown menu, and first on the phone More page. */
+  topLevel?: boolean;
 }
 
 import { heroes } from './data';
@@ -33,6 +35,7 @@ export const nav: NavItem[] = [
   ...(hasNews
     ? [{ path: 'news', banner: 'campaign-progression', label: 'News', icon: 'refresh', header: true, art: 'item:Historic Playbook', blurb: 'Updates, events and Invoker spotlights' } satisfies NavItem]
     : []),
+  { path: 'simulator', banner: 'collect-dungeon-relics-2', label: 'Simulator', icon: 'gauge', header: true, topLevel: true, group: 'tools', art: 'item:Master Melee Attacker Crest', blurb: 'Estimated DPS and toughness, best gear from your box, and what teammates add' },
   // Database
   { path: 'heroes', banner: 'loading-screen', label: 'Invokers', icon: 'grid', tab: true, group: 'database', art: 'hero:Admiral Gladstone', blurb: `All ${heroes.length} Invokers with skills, stats and ratings` },
   { path: 'titans', banner: 'upgrade-titan', label: 'Titans', icon: 'grid', group: 'database', art: 'titan:Visciant', blurb: 'Every Titan, its Empowerment bonuses and skills' },
@@ -65,7 +68,6 @@ export const nav: NavItem[] = [
   { path: 'packs', banner: 'gems', label: 'Pack value', icon: 'star', group: 'tools', art: 'item:Gems', blurb: 'Which paid packs give the most per £' },
   { path: 'trophies', banner: 'gold', label: 'Trophies', icon: 'trophy', group: 'tools', art: 'item:Gold Trophy', blurb: 'Trophy Room costs, bonuses and an upgrade planner' },
   { path: 'planner', boxOnly: true, banner: 'collect-dungeon-relics-1', label: 'Planner', icon: 'list', group: 'tools', art: 'item:Legendary Codex', blurb: 'Plan skill and gear upgrades for your own box' },
-  { path: 'dps-simulator', banner: 'collect-dungeon-relics-2', label: 'DPS simulator', icon: 'grid', group: 'tools', art: 'item:Master Melee Attacker Crest', blurb: 'Estimated damage per second and what each substat is worth' },
   { path: 'team', banner: 'clan-boss-1', label: 'Team builder', icon: 'grid', group: 'tools', art: 'titan:Vulkoz', blurb: 'Build a team and check its stats and mix' },
   { path: 'heroes/compare', banner: 'novice-tournament-2', label: 'Compare Invokers', icon: 'grid', group: 'tools', art: 'hero:Ironblade Darus', blurb: 'Put up to 4 Invokers side by side' },
   // Site
@@ -80,6 +82,9 @@ export const menus: { group: NavGroup; label: string; path: string }[] = [
   { group: 'tools', label: 'Tools', path: 'events' },
 ];
 export const inGroup = (g: NavGroup) => nav.filter((n) => n.group === g);
+/** A group's dropdown menu: its pages minus the ones with their own top-level link. */
+export const inMenu = (g: NavGroup) => inGroup(g).filter((n) => !n.topLevel);
+export const topLevel = nav.filter((n) => n.topLevel);
 export const headerNav = nav.filter((n) => n.header);
 export const myBox = nav.find((n) => n.path === 'my-box')!;
 // Phones get Tier lists in the bottom bar where My box sits on desktop-sized windows.

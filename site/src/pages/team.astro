@@ -38,7 +38,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
       <button type="button" class="btn ghost" id="copy">Copy link</button>
       <button type="button" class="btn ghost" id="share" hidden>Share</button>
       <a class="btn ghost" id="compare" href={href('heroes/compare')}>Compare</a>
-      <a class="btn ghost" id="simulate" href={href('dps-simulator')}>Simulate DPS</a>
+      <a class="btn ghost" id="simulate" href={href('simulator')}>Simulate DPS</a>
       <button type="button" class="btn ghost" id="clear">Clear</button>
       <span class="status" id="status" aria-live="polite"></span>
     </div>
@@ -136,7 +136,7 @@ const slots = Array.from({ length: TEAM_SIZE }, (_, i) => i);
     compareLink.href = `${base}/heroes/compare${slugs ? `?h=${members().slice(0, 4).map((h) => h.slug).join(',')}` : ''}`;
     // The Lead is simulated; the rest join as teammates whose buffs count for it.
     const [lead, ...rest] = members().map((h) => h.slug);
-    simulateLink.href = `${base}/dps-simulator${lead ? `?hero=${lead}${rest.length ? `&mates=${rest.join(',')}` : ''}` : ''}`;
+    simulateLink.href = `${base}/simulator${lead ? `?hero=${lead}${rest.length ? `&mates=${rest.join(',')}` : ''}` : ''}`;
   }
 
   function renderSlots() {
