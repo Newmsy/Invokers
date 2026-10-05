@@ -7,17 +7,10 @@ gameVersion: "0.61.1516"
 art: ["item:Multi-Battle Tokens"]
 ---
 
-## What happened
+**Update 0.53 brought Sakiel the Fallen Angel and a new faction on 22 January 2026** (iOS followed the next morning). See the [Sakiel guide](/bosses/sakiel) and the [Sakiel tier list](/tiers/invokers/sakiel).
 
-- **New boss:** Sakiel the Fallen Angel.
-- **New faction: the Stonehearts**, Deepcast Dwarves first teased in December. 6 of the 11 new Invokers are Stonehearts.
-- **Multi-Battles:** farm several battles in a row with one tap.
-- **Tank rebalance:** Tanks' stats were rebalanced.
-- **4 new Titans**, including 2 Magi Titans.
-- **Easier progress:** easier bosses, more XP drops, 4x Runes and better Relics.
-- Android got it on 22 January, iOS the next morning.
+**The Stonehearts**, Deepcast Dwarves first teased in December, made up 6 of the 11 new Invokers. 4 new Titans came too, including 2 Magi Titans.
 
-## Our take
+**Multi-Battles** let you farm several battles in a row with one tap, and progress got easier across the board: easier bosses, more XP drops, 4x Runes and better Relics.
 
-- **Sakiel today:** see the [Sakiel guide](/bosses/sakiel) and the [Sakiel tier list](/tiers/invokers/sakiel).
-- **Tanks:** to see how much damage a Tank takes and which stats help most, try the Toughness tab of the [DPS simulator](/dps-simulator?tab=toughness).
+**Tanks' stats were rebalanced.** To see how much damage a Tank takes and which stats help most, try the Toughness tab of the [DPS simulator](/dps-simulator?tab=toughness).

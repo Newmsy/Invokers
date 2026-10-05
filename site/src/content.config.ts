@@ -20,8 +20,10 @@ const blog = defineCollection({
   }),
 });
 
-// News: a short report of something that happened in the game, then our numbers on it. `heroes` names the
-// Invokers it covers; each gets a "by the numbers" box (components/HeroNumbers).
+// News: a short report of something that happened in the game, with our numbers and advice woven into the
+// story right after the change they belong to (no separate "What happened" / "Our take" sections). Use ###
+// subheadings only to split a multipart post. `heroes` names the Invokers it covers; each gets a "by the
+// numbers" box (components/HeroNumbers).
 const news = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/news' }),
   schema: z.object({

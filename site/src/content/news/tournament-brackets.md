@@ -7,9 +7,7 @@ gameVersion: "0.61.1516"
 art: ["item:Crown", "item:Gold", "item:Gems", "item:Legendary Codex"]
 ---
 
-## What happened
-
-**31 August: brackets explained.** Your level puts you in one of three brackets:
+**Tournaments put you in one of three brackets by level**, as the game explained on 31 August 2026:
 
 | Bracket | Levels | What changes |
 |---|---|---|
@@ -17,31 +15,28 @@ art: ["item:Crown", "item:Gold", "item:Gems", "item:Legendary Codex"]
 | Intermediate | 31–45 | In between |
 | Veteran | 46+ | Full difficulty |
 
-Each bracket has its own point targets and slightly different Personal Rewards, but **the same ![Crown](item:) Crowns**.
+Each bracket has its own point targets and slightly different Personal Rewards, but **the same ![](item:Crown) Crowns**. Our [Event calendar](/event-calendar) shows Veteran targets.
 
-**3 August: points rescaled.** From the Ardell Chase on, point targets and points per action were scaled up together, so the difficulty didn't change. Arena Rush got easier and the Relic Hunts a little harder.
+Points were rescaled earlier, on 3 August: from the Ardell Chase on, point targets and points per action went up together, so the difficulty didn't change. Arena Rush got easier and the Relic Hunts a little harder.
 
-**17 July: a month of Personal Rewards.** Finishing the Personal Rewards track of every Tournament in an average month pays:
+### What a month of Tournaments pays
+
+On 17 July the game listed what finishing the Personal Rewards track of every Tournament in an average month pays:
 
 | Reward | Total |
 |---|---|
-| ![Gold](item:) Gold | 4,500,000 |
-| ![Gems](item:) Gems | 1,330 |
+| ![](item:Gold) Gold | 4,500,000 |
+| ![](item:Gems) Gems | 1,330 |
 | Energy | 2,400 |
 | Memorium | 6,000 |
 | Multi-Battle Tokens | 600 |
 | Titan Sparks | 200 |
 | Raw and Refined Astral Essence | 45 each |
-| Codexes: Rare, Epic, ![Legendary Codex](item:) Legendary | 44, 13, 13 |
+| Codexes: Rare, Epic, ![](item:Legendary%20Codex) Legendary | 44, 13, 13 |
 | Prisms: Rare, Epic | 10, 13 |
 | Fate, Destiny, Radiant Stars | 4, 8, 3 |
 | Destiny Star Fragments | 350 |
 | Dream Orbs | 4 |
 | Wonder Orb Fragments | 350 |
 
-That's before Event Shop purchases and leaderboard rewards.
-
-## Our take
-
-- **Energy:** the tracks give back 2,400 Energy a month. What a whole chase costs from the stages you clear is on the [Events planner](/events).
-- **Our calendar shows Veteran targets.** See what's on now on the [Event calendar](/event-calendar).
+That's before Event Shop purchases and leaderboard rewards. What a whole chase costs in Energy, from the stages you clear, is on the [Events planner](/events).

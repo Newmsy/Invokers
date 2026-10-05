@@ -7,15 +7,6 @@ gameVersion: "0.61.1516"
 art: ["item:Legendary Codex"]
 ---
 
-## What happened
+**Update 0.51 added Titan Skill Upgrades and 5 new Invokers on 3 December 2025.** Skill upgrades got a new screen for Invokers and Titans alike: what every level of every skill costs is on [Skill costs](/skill-costs), and whether maxing one is worth it is in *What it costs to max a skill* on the [Blog](/blog). Every Titan and its skills are on [Titans](/titans).
 
-- **5 new Invokers.**
-- **Titan Skill Upgrades**, and a new Skill Upgrade screen for Invokers and Titans.
-- **Chapter 8, Level 1** opened in the Campaign.
-- **Spanish and Ukrainian** joined the languages.
-- Smoother summoning and collection screens, plus stability fixes.
-
-## Our take
-
-- **Upgrading skills:** what every level of every skill costs is on [Skill costs](/skill-costs), and whether maxing one is worth it is in *What it costs to max a skill* on the [Blog](/blog).
-- **Titans:** see [Titans](/titans) for every Titan and its skills.
+Chapter 8, Level 1 opened in the Campaign, Spanish and Ukrainian joined the languages, and summoning and the collection screens got smoother.

@@ -7,13 +7,8 @@ gameVersion: "0.61.1516"
 art: ["item:Crown"]
 ---
 
-## What happened
+**Android dropped its beta label on 2 October 2026.** iOS never had one, so nothing changes there. This still isn't the launch: that comes later, with launch events and gifts for everyone who played during beta. A free gift went out to every player on the day.
 
-- **Android is out of beta.** iOS never had the label, so nothing changes there. This isn't the launch: that comes later with launch events and gifts for beta players.
-- **A free gift** was sent to everyone in game.
-- **Next chase from 12 October**, with a suitably scary Invoker for spooky season.
-- **Tournaments until then** include an Althar Relic Hunt, two Arena Rushes, both Summon Surges, Invoker Power Up, Sorgott Accessory Hunt, Campaign Rush, Gear Up and Pentiax Spark Hunt.
+**The next chase starts on 12 October**, with a suitably scary Invoker for spooky season. Every chase so far has run for 3 weeks, so it's worth saving Energy now: the [Events planner](/events) works out how much a whole chase takes.
 
-## Our take
-
-- **Save for the chase.** Every chase so far has lasted 3 weeks. Plan the Energy on the [Events planner](/events), and see dates, points and rewards on the [Event calendar](/event-calendar).
+The week before it is packed: an Althar Relic Hunt, two Arena Rushes, both Summon Surges, Invoker Power Up, a Sorgott Accessory Hunt, Campaign Rush, Gear Up and a Pentiax Spark Hunt. Dates, points and rewards for each are on the [Event calendar](/event-calendar).
