@@ -8,7 +8,7 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { buffGains, selfDefence, teamGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, selfDefence, teamWindows, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
 import { buffedToughness, toughness, toughValues } from '../src/lib/dps/tank';
 import { parseComboText, parseDebuffs, parseHit, parseBuffs, parseSelfBuffs, parseSelfShields, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
@@ -374,26 +374,12 @@ describe('team buffs', () => {
     expect(parseBuffs('Casts a [20% ATK Up] buff on X, lasting 10s.', 'X').team).toEqual([]);
   });
 
-  it('adds nothing unless the team toggle is on', () => {
-    const f = fight('Custodian Plumia');
-    const off = simulate(data, f);
-    const on = simulate(data, { ...f, team: true });
-    expect(off.teamDps).toBe(0);
-    expect(on.teamDps).toBeGreaterThan(0);
-    expect(on.dps).toBeCloseTo(off.dps + on.teamDps, 6);
-    const [atk] = teamGains(data, f);
-    expect(atk).toMatchObject({ slot: 'ActiveSkill2', name: 'ATK Up', allies: 4 });
-    // 40% ATK Up for about 60% of the fight: a bit under +25% for each ally.
-    expect(atk.allyGain).toBeGreaterThan(0.15);
-    expect(atk.allyGain).toBeLessThan(0.4);
-    expect(atk.teamDps).toBeCloseTo(on.teamDps, 0);
-  });
-
-  it('counts DEF Down on the boss for the whole team', () => {
-    const f = fight('Ironblade Darus', { stage: stage(1) });
-    const g = teamGains(data, f).find((x) => x.name === 'DEF Down')!;
-    expect(g.allies).toBe(4);
-    expect(g.teamDps).toBeGreaterThan(0);
+  it("counts a teammate's DEF Down on the boss for the simulated Invoker", () => {
+    const w = teamWindows(data, fight('Ironblade Darus', { stage: stage(1) })).filter((x) => x.name === 'DEF Down');
+    expect(w.length).toBeGreaterThan(0);
+    expect(w[0].allies).toBe(4);
+    const f = fight('Custodian Plumia', { stage: stage(1) });
+    expect(simulate(data, { ...f, ext: w }).dps).toBeGreaterThan(simulate(data, f).dps);
   });
 });
 
@@ -412,5 +398,20 @@ describe('own DEF Up and shields', () => {
     const b = buffedToughness(data, f)!;
     expect(b.ehp).toBeGreaterThan(toughness(data, f.totals, f.stage).ehp);
     expect(buffedToughness(data, fight('Ironblade Darus'))).toBeNull();
+  });
+});
+
+describe('teammates', () => {
+  it("adds a teammate's ATK Up to the simulated Invoker", () => {
+    const f = fight('Ironblade Darus');
+    const windows = teamWindows(data, fight('Custodian Plumia'));
+    expect(windows.map((w) => w.name)).toContain('ATK Up');
+    // Her ATK Up reaches the 9 lowest-HP allies, so every teammate.
+    expect(windows.find((w) => w.name === 'ATK Up')!.p).toBe(1);
+    const alone = simulate(data, f).dps;
+    const withMate = simulate(data, { ...f, ext: windows }).dps;
+    expect(withMate / alone - 1).toBeGreaterThan(0.1);
+    // A teammate with no team buffs changes nothing.
+    expect(simulate(data, { ...f, ext: teamWindows(data, fight('Ironblade Darus', { stage: stage(16) })).filter((w) => w.stat !== 'defDown') }).dps).toBeCloseTo(alone, 6);
   });
 });

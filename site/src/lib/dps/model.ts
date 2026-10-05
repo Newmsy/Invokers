@@ -269,9 +269,7 @@ export interface FightInput {
   noBuffs?: boolean;
   /** Leave out one self buff ("<slot>|<buff name>") or one skill's cooldown cuts or mana ("<slot>|cooldown", "<slot>|mana"). */
   skipBuff?: string;
-  /** Add the damage its buffs and boss debuffs add for the other team members (see teamWindows). */
-  team?: boolean;
-  /** Buffs and boss debuffs from a teammate, already timed (used to measure what a team buff is worth). */
+  /** Buffs and boss debuffs from teammates, already timed and weighted by their chance to reach this Invoker (see teamWindows). */
   ext?: BuffWindow[];
 }
 
@@ -318,8 +316,6 @@ export interface FightResult {
   accChance: number;
   /** The Invoker's element edge against this stage. */
   edge: ElementEdge;
-  /** DPS its buffs and boss debuffs add for the rest of the team (0 unless `team` is set; included in `dps`). */
-  teamDps: number;
 }
 
 
@@ -608,29 +604,12 @@ function windowDps(events: Event[], mode: Mode, T: number): number {
   return sum / count;
 }
 
-/**
- * DPS the given buff windows add to one teammate. The teammate stands in as an Invoker with this one's skills and
- * stats (and none of its own buffs), so crit buffs count by this build's Crit Rate.
- */
-function allyGain(data: DpsData, input: FightInput, windows: BuffWindow[], T: number): { base: number; dps: number } {
-  const stand = { ...input, noBuffs: true, team: false, skipBuff: undefined };
-  const until = T + C.FIGHT_WINDOW_SEC[input.mode];
-  const base = windowDps(timeline(data, { ...stand, ext: [] }, until).events, input.mode, T);
-  const dps = windows.length ? windowDps(timeline(data, { ...stand, ext: windows }, until).events, input.mode, T) : base;
-  return { base, dps };
-}
-
-/** The team windows weighted by how many of the other team members each reaches, so one stand-in counts for all of them. */
+/** Team windows weighted by the chance each reaches one given teammate (a group buff on N of the other four: N / 4). */
 const perAlly = (windows: BuffWindow[]) => windows.map((w) => ({ ...w, p: (w.p * w.allies) / (TEAM_SIZE - 1) }));
 
 export function simulate(data: DpsData, input: FightInput): FightResult {
   const T = input.seconds ?? C.FIGHT_SEC[input.mode];
-  const { events, team } = timeline(data, input, T + C.FIGHT_WINDOW_SEC[input.mode]);
-  let teamDps = 0;
-  if (input.team && team.length) {
-    const g = allyGain(data, input, perAlly(team), T);
-    teamDps = (TEAM_SIZE - 1) * (g.dps - g.base);
-  }
+  const { events } = timeline(data, input, T + C.FIGHT_WINDOW_SEC[input.mode]);
 
   const results = new Map<SkillSlot, SourceResult>();
   for (const e of events) {
@@ -655,7 +634,7 @@ export function simulate(data: DpsData, input: FightInput): FightResult {
       debuffs.set(key, r);
     }
   }
-  return { dps: windowDps(events, input.mode, T) + teamDps, teamDps, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance, edge };
+  return { dps: windowDps(events, input.mode, T), total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance, edge };
 }
 
 // ---- Stat value table ----
@@ -737,36 +716,22 @@ export function effectGains(data: DpsData, input: FightInput): (EffectTotal & { 
   });
 }
 
-/** What each buff or boss debuff it gives the team is worth: allies reached, uptime, damage it adds to one ally it reaches, and team DPS. */
-export function teamGains(data: DpsData, input: FightInput): { slot: SkillSlot; name: string; pct: number; allies: number; uptime: number; allyGain: number; teamDps: number }[] {
-  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
-  const { team } = timeline(data, { ...input, team: false }, T + C.FIGHT_WINDOW_SEC[input.mode]);
-  const keys = [...new Set(team.map((w) => w.key))];
-  return keys.map((key) => {
-    const ws = team.filter((w) => w.key === key);
-    const first = ws[0];
-    const up = ws.reduce((n, w) => n + w.p * Math.max(0, Math.min(w.until, T) - Math.min(w.from, T)), 0);
-    const one = allyGain(data, input, ws, T);
-    const all = allyGain(data, input, perAlly(ws), T);
-    return {
-      slot: first.slot,
-      name: first.name,
-      pct: first.pct,
-      allies: first.allies,
-      uptime: up / T,
-      allyGain: one.base > 0 ? one.dps / one.base - 1 : 0,
-      teamDps: (TEAM_SIZE - 1) * (all.dps - all.base),
-    };
-  });
-}
-
 /** Its own DEF Up and shields over a PvE fight: DEF Up uptime-weighted, and the average shield standing. */
 export function selfDefence(data: DpsData, input: FightInput): { defUp: { pct: number; uptime: number }[]; shieldAvg: number; shieldCasts: number; shieldSize: number } {
   const T = input.seconds ?? C.FIGHT_SEC[input.mode];
-  const { uptime, shields } = timeline(data, { ...input, team: false }, T);
+  const { uptime, shields } = timeline(data, input, T);
   const defUp = uptime.filter((u) => u.stat === 'def').map((u) => ({ pct: u.pct, uptime: u.seconds / T }));
   const inFight = shields.filter((s) => s.from < T);
   const shieldAvg = inFight.reduce((n, s) => n + (s.amount * (Math.min(s.until, T) - s.from)) / T, 0);
   const shieldSize = inFight.length ? inFight.reduce((n, s) => n + s.amount, 0) / inFight.length : 0;
   return { defUp, shieldAvg, shieldCasts: inFight.length, shieldSize };
+}
+
+/**
+ * A teammate's buffs and boss debuffs as they reach one other Invoker: its own fight's buff windows, each weighted by
+ * the chance it reaches that Invoker. Pass them as `ext` to add the teammate to a fight.
+ */
+export function teamWindows(data: DpsData, mate: FightInput): BuffWindow[] {
+  const T = mate.seconds ?? C.FIGHT_SEC[mate.mode];
+  return perAlly(timeline(data, { ...mate, ext: [] }, T + C.FIGHT_WINDOW_SEC[mate.mode]).team);
 }

@@ -6,7 +6,7 @@ import type { BoxAccessory, BoxGear, BoxHero } from '../box/decode';
 import type { BoxDoc } from '../box/store';
 import { trophyBonuses } from '../box/trophies';
 import { toughness } from './tank';
-import { simulate, totalsFor, type BossStage, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot } from './model';
+import { simulate, totalsFor, type BossStage, type BuffWindow, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot } from './model';
 
 export const GEAR_SLOTS = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'];
 /** Accessory slots and the Awakening level that opens each one. */
@@ -34,8 +34,8 @@ export interface OptimiseOptions {
   seconds?: number;
   /** What to maximise: estimated DPS (default) or effective HP against the stage. */
   goal?: 'dps' | 'toughness';
-  /** Count what its buffs add for the team (DPS goal only). */
-  team?: boolean;
+  /** Teammates' buffs on this Invoker (DPS goal only). */
+  ext?: BuffWindow[];
 }
 
 export interface OptimiseResult {
@@ -89,7 +89,7 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
       const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
       v = opts.goal === 'toughness'
         ? toughness(data, totals, opts.stage).ehp
-        : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds, team: opts.team }).dps;
+        : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds, ext: opts.ext }).dps;
       cache.set(key, v);
     }
     return v;

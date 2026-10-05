@@ -5,7 +5,7 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, teamGains, type DpsData, type ElementEdge, type FightInput, type Mode, type SkillSlot } from './model';
+import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type BuffWindow, type FightInput, type Mode, type SkillSlot, teamWindows } from './model';
 import { TEAM_SIZE } from './parse';
 import { buffedToughness, toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type OptimiseOptions, type Piece } from './optimise';
@@ -86,7 +86,6 @@ export async function start(): Promise<void> {
   const RARITY_COLOR = JSON.parse(root.dataset.rarity ?? '{}') as Record<string, string>;
   const modeSel = $<HTMLSelectElement>('d-mode');
   const stageSel = $<HTMLSelectElement>('d-stage');
-  const teamBox = $<HTMLInputElement>('d-team-on');
 
   let data: DpsData;
   try {
@@ -116,6 +115,12 @@ export async function start(): Promise<void> {
   }
   let tiles: Tile[] = [];
   let pickerOpen = !wanted;
+  /** What a tile click does: switch the simulated Invoker, or add a teammate. */
+  let pickFor: 'main' | 'mate' = 'main';
+  /** Teammates whose buffs reach the simulated Invoker (up to the four other team slots). */
+  let mates: Tile[] = [];
+  /** Their buffs as they reach the simulated Invoker, per teammate, for the current mode and stage. */
+  let mateWindows: BuffWindow[][] = [];
 
   function buildTiles() {
     const owned = (box?.heroes ?? []).filter((h) => data.heroes.some((d) => d.configId === h.configId));
@@ -145,7 +150,7 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value)) ?? data.stages[0];
     for (const t of tiles) {
       t.dps = t.build && stage
-        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked }).dps
+        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage, ext: mateWindows.filter((_, i) => mates[i]?.key !== t.key).flat() }).dps
         : 0;
       t.ehp = t.build && stage ? toughness(data, t.build.totals, stage).ehp : 0;
     }
@@ -154,14 +159,22 @@ export async function start(): Promise<void> {
   const RARITY_RANK: Record<string, number> = { Legendary: 5, Epic: 4, Rare: 3, Uncommon: 2, Common: 1 };
 
   function tileEl(t: Tile, small = false): HTMLElement {
-    const card = el(small ? 'div' : 'button', undefined, `tile${t.key === heroSel.value ? ' on' : ''}`);
+    const chosen = pickFor === 'mate' ? t.key === heroSel.value || mates.some((m) => m.key === t.key) : t.key === heroSel.value;
+    const card = el(small ? 'div' : 'button', undefined, `tile${chosen ? ' on' : ''}`);
     card.style.setProperty('--rarity', RARITY_COLOR[t.rarity] ?? 'var(--line)');
     if (!small) {
       (card as HTMLButtonElement).type = 'button';
-      card.setAttribute('aria-pressed', String(t.key === heroSel.value));
+      card.setAttribute('aria-pressed', String(chosen));
       card.addEventListener('click', () => {
-        heroSel.value = t.key;
+        if (pickFor === 'mate') {
+          if (!chosen && mates.length < TEAM_ALLIES) mates.push(t);
+          pickFor = 'main';
+        } else {
+          heroSel.value = t.key;
+          mates = mates.filter((m) => m.key !== t.key);
+        }
         pickerOpen = false;
+        refreshMates();
         update();
       });
     }
@@ -195,6 +208,38 @@ export async function start(): Promise<void> {
     $('d-browse').hidden = !pickerOpen;
     $('d-change').textContent = pickerOpen ? 'Done' : 'Change Invoker';
     $('d-change').hidden = !current;
+    $('d-picking-mate').hidden = !(pickerOpen && pickFor === 'mate');
+    renderMates();
+  }
+
+  /** The teammate chips, with a remove button each, and the Add button while there's room. */
+  function renderMates() {
+    $('d-mates').replaceChildren(
+      ...mates.map((m) => {
+        const li = el('li', undefined, 'mate');
+        const remove = el('button', '×', 'mate-remove') as HTMLButtonElement;
+        remove.type = 'button';
+        remove.setAttribute('aria-label', `Remove ${m.name}`);
+        remove.addEventListener('click', () => {
+          mates = mates.filter((x) => x.key !== m.key);
+          refreshMates();
+          update();
+        });
+        li.append(tileEl(m, true), remove);
+        return li;
+      }),
+    );
+    $<HTMLButtonElement>('d-add-mate').hidden = mates.length >= TEAM_ALLIES;
+  }
+
+  /** Re-times every teammate's buffs for the current mode and stage, and re-scores the tiles with them. */
+  function refreshMates() {
+    const stage = data.stages.find((s) => s.stage === Number(stageSel.value)) ?? data.stages[0];
+    mateWindows = mates.map((m) => {
+      const b = m.key.startsWith('box:') ? buildFor(m.key) ?? m.build : m.build;
+      return b && stage ? teamWindows(data, { hero: b.hero, totals: b.totals, skillLevels: b.skillLevels, mode: modeSel.value as Mode, stage }) : [];
+    });
+    scoreTiles();
   }
 
   function fillHeroes() {
@@ -212,7 +257,11 @@ export async function start(): Promise<void> {
   }
 
   function currentBuild(): Build | null {
-    const [kind, key] = heroSel.value.split(':');
+    return buildFor(heroSel.value);
+  }
+
+  function buildFor(tileKey: string): Build | null {
+    const [kind, key] = tileKey.split(':');
     if (kind === 'box' && box) {
       const owned = box.heroes.find((h: BoxHero) => String(h.id) === key);
       return owned ? boxBuild(data, box, owned) : null;
@@ -228,14 +277,35 @@ export async function start(): Promise<void> {
       $('d-out').hidden = true;
       return;
     }
-    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked };
+    const ext = mateWindows.flat();
+    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, ext };
     const { base, values } = statValues(data, input);
     $('d-out').hidden = false;
-    $('d-dps-label').textContent = input.team ? 'Estimated DPS, with team buffs' : 'Estimated DPS';
+    $('d-dps-label').textContent = 'Estimated DPS';
     $('d-dps').textContent = fmt(base.dps);
     $('d-total').textContent = `${fmt(base.total)} damage in a ${base.seconds}-second fight against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
     $('d-total').append(' ', EDGE_TEXT[base.edge](build.hero.element, stage.element));
-    if (input.team) $('d-total').append(` Its own ${fmt(base.dps - base.teamDps)} DPS plus ${fmt(base.teamDps)} it adds to ${TEAM_ALLIES} allies.`);
+
+    if (mates.length) {
+      const alone = simulate(data, { ...input, ext: [] }).dps;
+      $('d-dps-label').textContent = 'Estimated DPS, with teammates';
+      $('d-total').append(` Teammates' buffs add ${fmt(base.dps - alone)} DPS to it.`);
+    }
+
+    // What each teammate's buffs add to this Invoker: DPS with every teammate vs without that one.
+    $('d-mates-box').hidden = !mates.length;
+    $('d-mates-out').replaceChildren(
+      ...mates.map((m, i) => {
+        const without = simulate(data, { ...input, ext: mateWindows.filter((_, j) => j !== i).flat() }).dps;
+        const names = [...new Set(mateWindows[i].map((w) => w.name))];
+        return row(
+          m.name,
+          names.length ? names.join(', ') : 'No buffs that raise damage',
+          [names.length ? `+${fmt(base.dps - without)}` : '+0', 'num'],
+          [without > 0 ? `+${pct(base.dps / without - 1, 1)}` : '', 'num'],
+        );
+      }),
+    );
 
     const t = build.totals;
     const stats: [string, string][] = [
@@ -295,23 +365,6 @@ export async function start(): Promise<void> {
           e.kind === 'cooldown' ? 'Cuts its own cooldowns' : 'Ultimate Mana',
           [e.kind === 'cooldown' ? `${e.total.toFixed(e.total < 10 ? 1 : 0)}s cut` : `+${fmt(e.total)}`, 'num'],
           [`+${pct(e.gain, 1)}`, 'num'],
-        ),
-      ),
-    );
-
-    // What it gives the rest of the team (only with the team toggle on).
-    const team = input.team ? teamGains(data, input) : [];
-    $('d-team-box').hidden = !input.team;
-    $('d-team-none').hidden = team.length > 0;
-    $('d-team').replaceChildren(
-      ...team.map((g) =>
-        row(
-          SOURCE[g.slot],
-          `${pct(g.pct, 0)} ${g.name}`,
-          [g.allies.toFixed(g.allies % 1 ? 1 : 0), 'num'],
-          [pct(g.uptime, 0), 'num'],
-          [`+${pct(g.allyGain, 1)}`, 'num'],
-          [`+${fmt(g.teamDps)}`, 'num'],
         ),
       ),
     );
@@ -446,8 +499,8 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
     $(`${p}-box`).hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
-    const team = goal === 'dps' && teamBox.checked;
-    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, team].join('|');
+    const ext = goal === 'dps' ? mateWindows.flat() : [];
+    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, goal === 'dps' ? mates.map((m) => m.key).join(',') : ''].join('|');
     wantKey[goal] = memoKey;
     let memo = optimiseMemo.get(box);
     if (!memo) optimiseMemo.set(box, (memo = new Map()));
@@ -456,7 +509,7 @@ export async function start(): Promise<void> {
       $(`${p}-result`).hidden = true;
       const forBox = box;
       const store = memo;
-      search(owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, team }).then((r) => {
+      search(owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, ext }).then((r) => {
         store.set(memoKey, r);
         // Draw it only if the page still wants this answer.
         if (box === forBox && wantKey[goal] === memoKey && tab === goal) renderOptimiser(goal);
@@ -524,7 +577,7 @@ export async function start(): Promise<void> {
     }
     // Mode (PvE or Arena) only changes damage.
     $('d-mode-label').hidden = tab !== 'dps';
-    $('d-team-label').hidden = tab !== 'dps';
+    $('d-team-row').hidden = tab !== 'dps';
   }
 
   function setTab(next: Tab) {
@@ -550,7 +603,14 @@ export async function start(): Promise<void> {
   box = await loadBox();
   fillHeroes();
   update();
-  for (const s of [modeSel, stageSel, teamBox]) s.addEventListener('change', () => (scoreTiles(), update()));
+  for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (refreshMates(), update()));
+  $('d-add-mate').addEventListener('click', () => {
+    pickFor = 'mate';
+    pickerOpen = true;
+    renderPicker();
+    $('d-browse').scrollIntoView({ block: 'nearest' });
+    searchInput.focus();
+  });
   for (const t of TABS) {
     $(`${OPT[t]}-others`).addEventListener('change', update);
     $(`tab-${t}`).addEventListener('click', () => setTab(t));
@@ -573,10 +633,13 @@ export async function start(): Promise<void> {
   });
   $('d-change').addEventListener('click', () => {
     pickerOpen = !pickerOpen;
+    pickFor = 'main';
     renderPicker();
   });
   onBoxChange(async () => {
     box = await loadBox();
+    mates = mates.filter((m) => !m.key.startsWith('box:') || buildFor(m.key));
+    refreshMates();
     fillHeroes();
     update();
   });
