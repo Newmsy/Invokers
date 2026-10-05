@@ -6539,7 +6539,7 @@
   "personalRewards": [
    {
     "rewardId": 1,
-    "requiredPoints": 500,
+    "requiredPoints": 1000,
     "reward": [
      {
       "itemId": "Gold",
@@ -6549,11 +6549,11 @@
    },
    {
     "rewardId": 2,
-    "requiredPoints": 1500,
+    "requiredPoints": 2000,
     "reward": [
      {
-      "itemId": "AE_ManaTier2",
-      "amount": 3
+      "itemId": "Energy",
+      "amount": 100
      }
     ]
    },
@@ -6562,14 +6562,24 @@
     "requiredPoints": 3000,
     "reward": [
      {
+      "itemId": "AE_ManaTier2",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "rewardId": 4,
+    "requiredPoints": 6000,
+    "reward": [
+     {
       "itemId": "Gem",
       "amount": 50
      }
     ]
    },
    {
-    "rewardId": 4,
-    "requiredPoints": 5000,
+    "rewardId": 5,
+    "requiredPoints": 10000,
     "reward": [
      {
       "itemId": "AE_ManaTier3",
@@ -6578,8 +6588,18 @@
     ]
    },
    {
-    "rewardId": 5,
-    "requiredPoints": 9000,
+    "rewardId": 6,
+    "requiredPoints": 13000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 150
+     }
+    ]
+   },
+   {
+    "rewardId": 7,
+    "requiredPoints": 18000,
     "reward": [
      {
       "itemId": "Token_MultiBattle",
@@ -6588,8 +6608,8 @@
     ]
    },
    {
-    "rewardId": 6,
-    "requiredPoints": 12000,
+    "rewardId": 8,
+    "requiredPoints": 24000,
     "reward": [
      {
       "itemId": "Codex_Epic",
@@ -6598,8 +6618,8 @@
     ]
    },
    {
-    "rewardId": 7,
-    "requiredPoints": 16000,
+    "rewardId": 9,
+    "requiredPoints": 32000,
     "reward": [
      {
       "itemId": "Energy",
@@ -6608,8 +6628,8 @@
     ]
    },
    {
-    "rewardId": 8,
-    "requiredPoints": 30000,
+    "rewardId": 10,
+    "requiredPoints": 60000,
     "reward": [
      {
       "itemId": "Prism_Rare",
@@ -6618,8 +6638,8 @@
     ]
    },
    {
-    "rewardId": 9,
-    "requiredPoints": 35000,
+    "rewardId": 11,
+    "requiredPoints": 70000,
     "reward": [
      {
       "itemId": "Codex_Epic",
@@ -6628,8 +6648,18 @@
     ]
    },
    {
-    "rewardId": 10,
-    "requiredPoints": 51000,
+    "rewardId": 12,
+    "requiredPoints": 90000,
+    "reward": [
+     {
+      "itemId": "Energy",
+      "amount": 250
+     }
+    ]
+   },
+   {
+    "rewardId": 13,
+    "requiredPoints": 100000,
     "reward": [
      {
       "itemId": "Codex_Legendary",
