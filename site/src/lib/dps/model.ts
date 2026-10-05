@@ -370,8 +370,8 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
       atk: atk0 * mult('atk', now),
       critRate,
       critFactor: 1 + critRate * t.critDmg * mult('critDmg', now),
-      recovery: recovery0 * mult('skillRecovery', now),
-      // Speed buffs add to the speed % (timing.json speedFactors).
+      // Skill Recovery and speed buffs add to the stat's % (timing.json speedFactors).
+      recovery: recovery0 + add('skillRecovery', now),
       skillSpeed: skillSpeed0 + add('skillSpeed', now),
       comboSpeed: comboSpeed0 + add('comboSpeed', now),
     };
