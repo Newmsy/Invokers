@@ -256,12 +256,26 @@ export async function start(): Promise<void> {
     $('d-debuffs-box').hidden = !base.debuffs.length;
     $('d-acc').textContent =
       `Stage ${stage.stage} has ${fmt(stage.res)} RES. With ${fmt(t.acc)} ACC, a debuff that needs Accuracy lands ${pct(base.accChance, 0)} of the time.`;
-    $('d-debuffs').replaceChildren(
-      ...base.debuffs.map((d) => row(SOURCE[d.slot], d.name, [pct(d.chance, 0), 'num'], [`${d.landed.toFixed(1)} of ${fmt(d.tries)}`, 'num'])),
-    );
+
 
     // Self buffs: how long each is up and what it adds.
-    const buffs = buffGains(data, input);
+    const allBuffs = buffGains(data, input);
+    const buffs = allBuffs.filter((b) => !b.onBoss);
+    // DEF Down and Weaken also raise this Invoker's own damage: show how long they're up and what they add.
+    const onBoss = new Map(allBuffs.filter((b) => b.onBoss).map((b) => [`${b.slot}|${b.name}`, b]));
+    $('d-debuffs').replaceChildren(
+      ...base.debuffs.map((d) => {
+        const b = onBoss.get(`${d.slot}|${d.name}`);
+        return row(
+          SOURCE[d.slot],
+          b ? `${pct(b.pct, 0)} ${d.name}` : d.name,
+          [pct(d.chance, 0), 'num'],
+          [`${d.landed.toFixed(1)} of ${fmt(d.tries)}`, 'num'],
+          [b ? pct(b.uptime, 0) : '', 'num'],
+          [b ? `+${pct(b.gain, 1)}` : '', 'num'],
+        );
+      }),
+    );
     $('d-buffs-box').hidden = !buffs.length;
     $('d-buffs').replaceChildren(
       ...buffs.map((b) => row(SOURCE[b.slot], `${pct(b.pct, 0)} ${b.name}`, [pct(b.uptime, 0), 'num'], [`+${pct(b.gain, 1)}`, 'num'])),

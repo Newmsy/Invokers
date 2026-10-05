@@ -69,7 +69,7 @@ describe('skill text parser', () => {
   });
 
   it('lists the debuffs and control effects cast on enemies', () => {
-    expect(hero('Ironblade Darus').skills.Ultimate!.levels.at(-1)!.x).toEqual([{ name: 'DEF Down', chance: 1, acc: true }]);
+    expect(hero('Ironblade Darus').skills.Ultimate!.levels.at(-1)!.x).toEqual([{ name: 'DEF Down', chance: 1, acc: true, pct: 0.18, sec: 14 }]);
     expect(hero('Sanctus the Valiant').skills.ActiveSkill3!.levels.at(-1)!.x!.map((d) => d.name)).toEqual(['Stun', 'Launch']);
     // Brandis burns himself: not a debuff on the enemy.
     expect(hero('Brandis').skills.ActiveSkill1!.levels.at(-1)!.x).toBeUndefined();
@@ -331,5 +331,21 @@ describe('cooldown cuts and bonus mana', () => {
     expect(combo.total).toBeGreaterThan(5);
     expect(combo.gain).toBeGreaterThan(0);
     expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, noBuffs: true }).dps);
+  });
+});
+
+describe('own debuffs', () => {
+  it('reads DEF Down and Weaken sizes and lengths', () => {
+    const [weaken] = parseDebuffs('Casts a [5% Weaken] debuff on the target, lasting 12s, increasing all damage taken by 5%.');
+    expect(weaken).toMatchObject({ name: 'Weaken', pct: 0.05, sec: 12 });
+  });
+
+  it("raises the Invoker's own damage while DEF Down is on the boss", () => {
+    // Stage 1: low RES, so the debuff lands.
+    const f = fight('Ironblade Darus', { stage: stage(1) });
+    const gains = buffGains(data, f).filter((g) => g.onBoss);
+    expect(gains.map((g) => g.name)).toContain('DEF Down');
+    expect(gains[0].gain).toBeGreaterThan(0);
+    expect(simulate(data, f).dps).toBeGreaterThan(simulate(data, { ...f, skipBuff: 'Ultimate|DEF Down' }).dps);
   });
 });

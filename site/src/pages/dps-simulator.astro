@@ -104,7 +104,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         <h2>Debuffs on the boss</h2>
         <p class="hint" id="d-acc"></p>
         <table>
-          <thead><tr><th>Skill</th><th>Debuff</th><th class="num">Lands</th><th class="num">Landed in the fight</th></tr></thead>
+          <thead><tr><th>Skill</th><th>Debuff</th><th class="num">Lands</th><th class="num">Landed in the fight</th><th class="num">Up</th><th class="num">DPS gain</th></tr></thead>
           <tbody id="d-debuffs"></tbody>
         </table>
       </section>
@@ -147,7 +147,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </section>
 
       <p class="hint note">
-        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count but help from other Invokers doesn't, debuffs don't change damage, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
+        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count, and so do its own DEF Down and Weaken on the boss, but help from other Invokers doesn't, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
         Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
       </div>

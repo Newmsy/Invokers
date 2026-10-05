@@ -319,6 +319,8 @@ export interface BuffUptime {
   name: string;
   stat: BuffStat;
   pct: number;
+  /** A debuff on the boss (DEF Down, Weaken) rather than a buff on the Invoker. */
+  onBoss?: boolean;
   /** Seconds up, out of `until`. */
   seconds: number;
 }
@@ -364,12 +366,23 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     for (const b of active.values()) if (b.stat === stat && b.until > now) n += b.p * b.pct;
     return n;
   };
+  // DEF Down lowers the boss's DEF multiplier (defenseFactor = 1 - X%), Weaken raises damage taken (1 + X%); a debuff
+  // that may be resisted counts as a mix of landed and not (damage.json statusEffects).
+  const ignore = Math.max(0, Math.min(1, t.ignoreDef));
+  const defAt = (down: number) => defenseFactor(data.defense, stage.def * Math.max(0, 1 - down - ignore));
+  const defNow = (now: number) => {
+    let f = defFactor;
+    for (const b of active.values()) if (b.stat === 'defDown' && b.until > now) f *= (b.p * defAt(b.pct) + (1 - b.p) * defFactor) / defFactor;
+    return f;
+  };
   const stats = (now: number) => {
     const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate * mult('critRate', now) + el.crit));
     return {
       atk: atk0 * mult('atk', now),
       critRate,
       critFactor: 1 + critRate * t.critDmg * mult('critDmg', now),
+      def: defNow(now),
+      taken: 1 + add('weaken', now),
       // Skill Recovery and speed buffs add to the stat's % (timing.json speedFactors).
       recovery: recovery0 + add('skillRecovery', now),
       skillSpeed: skillSpeed0 + add('skillSpeed', now),
@@ -383,7 +396,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
 
   const events: Event[] = [];
   const startFactor = mode === 'arena' ? 0.5 : 0;
-  // Cooldowns count down in base seconds, faster while Skill Recovery is higher.
+  // Cooldowns tick down by time × recovery factor, so a cooldown lasts base / factor (timing.json skillRecovery).
   const cdLeft = new Map<SkillSlot, number>();
   for (const slot of ACTIVE) {
     const s = hero.skills[slot];
@@ -393,7 +406,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   if (ult?.levels.length) cdLeft.set('Ultimate', ult.cooldown * startFactor);
   const comboLevel = hero.combo.length ? hero.combo[levelOf(input, 'Combo', hero.combo.length)] : [];
   const comboFx = hero.comboFx?.[levelOf(input, 'Combo', hero.comboFx.length)];
-  // Ultimate mana fills with time spent acting (mana.json), faster with Mana Generation and in Arena; it starts empty.
+  // Ultimate mana fills with time spent acting (mana.json), faster with Mana Generation and in Arena; it starts empty (mana.json startingMana).
   const manaPerSec = data.mana.perSec * manaGain;
   let mana = 0;
   let step = 0;
@@ -445,10 +458,10 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   const cast = (slot: SkillSlot, s: DpsSkill, castSec: number) => {
     const level = s.levels[levelOf(input, slot, s.levels.length)];
     const st = stats(now);
-    const hitDamage = (h: HitT) => ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * defFactor * el.damage;
+    const hitDamage = (h: HitT) => ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage;
     events.push({ at: now, slot, damage: level.h.reduce((n, h) => n + hitDamage(h), 0), cast: true, debuffs: level.x });
     for (const d of level.d ?? []) {
-      const tick = Math.min(d.pct * stage.hp, d.capAtk * st.atk) * (C.DOT_USES_DEF ? defFactor : 1) * (d.acc ? accChance : 1);
+      const tick = Math.min(d.pct * stage.hp, d.capAtk * st.atk) * (C.DOT_USES_DEF ? st.def : 1) * st.taken * (d.acc ? accChance : 1);
       const ticks = Math.floor(d.durationSec / d.everySec);
       for (let i = 1; i <= ticks; i++) events.push({ at: now + i * d.everySec, slot, damage: tick, cast: false });
     }
@@ -460,6 +473,19 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
         if (old) closeBuff(key, old, now);
         if (!upFor.has(key)) upFor.set(key, { slot, name: b.name, stat: b.stat, pct: b.pct, seconds: 0 });
         active.set(key, { stat: b.stat, pct: b.pct, p: b.onCrit ? st.critRate : 1, from: now, until: now + b.sec });
+      }
+    }
+    // DEF Down and Weaken on the boss help every later hit while they last.
+    if (!input.noBuffs) {
+      for (const d of level.x ?? []) {
+        if (!d.pct || !d.sec || (d.name !== 'DEF Down' && d.name !== 'Weaken')) continue;
+        const key = `${slot}|${d.name}`;
+        if (input.skipBuff === key) continue;
+        const stat: BuffStat = d.name === 'DEF Down' ? 'defDown' : 'weaken';
+        const old = active.get(key);
+        if (old) closeBuff(key, old, now);
+        if (!upFor.has(key)) upFor.set(key, { slot, name: d.name, stat, pct: d.pct, seconds: 0, onBoss: true });
+        active.set(key, { stat, pct: d.pct, p: d.chance * (d.acc ? accChance : 1), from: now, until: now + d.sec });
       }
     }
     applyEffects(slot, level.e, level.h.length, st.critRate);
@@ -484,7 +510,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     if (comboLevel.length) {
       const st = stats(now);
       const hits = comboLevel[step % comboLevel.length];
-      const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * defFactor * el.damage, 0);
+      const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage, 0);
       events.push({ at: now, slot: 'Combo', damage, cast: true });
       applyEffects('Combo', comboFx?.[step % comboLevel.length], hits.length, st.critRate);
       step += 1;
