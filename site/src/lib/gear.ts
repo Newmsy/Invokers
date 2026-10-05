@@ -22,6 +22,8 @@ export interface GearSet {
   group: string;
   /** Piece count → bonus lines, e.g. 3 → ["+10% ATK"]. */
   bonuses: { pieces: number; lines: string[] }[];
+  /** What 5 pieces give in all when the 3- and 5-piece bonuses raise the same stat (they stack), else empty. */
+  fullSet: string[];
   /** The game's own description (rich text), without its boss list. */
   description: string;
   /** For tolerance sets: the corruption it reduces and the bosses that use it. */
@@ -83,6 +85,19 @@ function line(b: RawBonus): string {
   return `+${value} ${b.statName.replace(/ Tol\.$/, ' Tolerance')}`;
 }
 
+/** The 5-piece bonus adds to the 3-piece one, so a full set gives both. Lines only when a stat is in both. */
+export function fullSetLines(bonuses: Record<string, RawBonus[]>): string[] {
+  const three = bonuses['3'] ?? [];
+  const five = bonuses['5'] ?? [];
+  if (!three.some((a) => !special[a.stat] && five.some((b) => b.stat === a.stat))) return [];
+  const sum = new Map<string, RawBonus>();
+  for (const b of [...three, ...five]) {
+    const prev = sum.get(b.stat);
+    sum.set(b.stat, prev ? { ...prev, value: Math.round((prev.value + b.value) * 1000) / 1000 } : b);
+  }
+  return [...sum.values()].map(line);
+}
+
 const lc = (s: string) => s.toLowerCase().replace(/\s+/g, '');
 
 export const gearSets: GearSet[] = (setsJson as RawSet[]).map((s) => {
@@ -95,6 +110,7 @@ export const gearSets: GearSet[] = (setsJson as RawSet[]).map((s) => {
     bonuses: [3, 5, 8]
       .map((pieces) => ({ pieces, lines: [...(s.bonuses[pieces] ?? []).map(line), ...(extraLines[s.id]?.[pieces] ?? [])] }))
       .filter((b) => b.lines.length > 0),
+    fullSet: fullSetLines(s.bonuses),
     // Tolerance texts end with "The following Bosses have …"; the page lists the bosses itself.
     description: s.recommendation.replace(/(<br>)*\s*The following Bosses have[\s\S]*$/, '').trim(),
     corruption,
