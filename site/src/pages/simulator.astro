@@ -27,30 +27,44 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       <a class="btn primary" href={href('my-box')}>Import my box</a>
     </div>
 
-    <section class="picker-box" aria-label="Invoker">
-      <div class="current-row">
-        <div id="d-current"></div>
-        <button type="button" class="btn" id="d-change" hidden>Change Invoker</button>
-      </div>
-      <div id="d-browse">
-        <p class="picking" id="d-picking-mate" hidden>Pick a teammate. Its buffs, and its DEF Down or Weaken on the boss, will count for the Invoker above.</p>
-        <div class="pick-bar">
-          <input id="d-search" type="search" placeholder="Search Invokers" autocomplete="off" />
-          <select id="d-source" aria-label="Which Invokers">
-            <option value="box">My box (with gear)</option>
-            <option value="any">Any Invoker (6★, fully awakened, no gear)</option>
-          </select>
-          <select id="d-sort" aria-label="Sort">
-            <option value="dps">Highest DPS</option>
-            <option value="tough">Toughest (effective HP)</option>
-            <option value="stars">Stars and level</option>
-            <option value="rarity">Rarity</option>
-            <option value="name">Name</option>
-          </select>
+    <section class="lineup" aria-label="Who to simulate">
+      <div class="main-card">
+        <span class="slot-tag">Simulated Invoker</span>
+        <div class="main-row">
+          <div id="d-current"></div>
+          <button type="button" class="btn" id="d-change" hidden>Change</button>
         </div>
-        <ul class="pick-grid" id="d-grid"></ul>
-        <p class="hint" id="d-grid-empty" hidden>No Invokers match.</p>
+        <p class="team-note main-note">The DPS, toughness and best gear below are for this Invoker.</p>
       </div>
+      <div class="team-box" id="d-team-row">
+        <span class="slot-tag">Teammates</span>
+        <p class="team-note">Only their buffs, and their DEF Down or Weaken on the boss, count. Their own damage doesn't.</p>
+        <ul class="mates" id="d-mates"></ul>
+      </div>
+    </section>
+
+    <section class="browse" id="d-browse" aria-labelledby="d-browse-title">
+      <div class="browse-head">
+        <strong id="d-browse-title">Choose the Invoker to simulate</strong>
+        <button type="button" class="btn" id="d-close">Close</button>
+      </div>
+      <p class="hint" id="d-browse-hint" hidden>Its buffs, and its DEF Down or Weaken on the boss, count for the simulated Invoker.</p>
+      <div class="pick-bar">
+        <input id="d-search" type="search" placeholder="Search Invokers" autocomplete="off" />
+        <select id="d-source" aria-label="Which Invokers">
+          <option value="box">My box (with gear)</option>
+          <option value="any">Any Invoker (6★, fully awakened, no gear)</option>
+        </select>
+        <select id="d-sort" aria-label="Sort">
+          <option value="dps">Highest DPS</option>
+          <option value="tough">Toughest (effective HP)</option>
+          <option value="stars">Stars and level</option>
+          <option value="rarity">Rarity</option>
+          <option value="name">Name</option>
+        </select>
+      </div>
+      <ul class="pick-grid" id="d-grid"></ul>
+      <p class="hint" id="d-grid-empty" hidden>No Invokers match.</p>
     </section>
 
     <div class="tabs" role="tablist" aria-label="What to calculate">
@@ -70,11 +84,6 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
           {STAGES.map((s) => <option value={s} selected={s === 16}>Stage {s}</option>)}
         </select>
       </label>
-    </div>
-    <div class="team-row" id="d-team-row">
-      <span class="team-title">Teammates</span>
-      <ul class="mates" id="d-mates"></ul>
-      <button type="button" class="btn" id="d-add-mate">Add teammate</button>
     </div>
 
     <section id="d-out" hidden>
@@ -246,16 +255,37 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   }
   .tabs [role='tab']:hover { color: var(--text); }
   .tabs [role='tab'][aria-selected='true'] { color: var(--text); border-bottom-color: var(--accent); }
-  #d-mode-label[hidden], #d-team-row[hidden], #d-add-mate[hidden] { display: none; }
-  .team-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 0 0 16px; }
-  .team-title { color: var(--muted); font-size: 13px; }
-  .mates { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; min-width: 0; }
-  :global(.mate) { display: flex; align-items: stretch; min-width: 0; max-width: 100%; }
-  :global(.mate .tile) { min-width: 0; }
-  :global(.mate-remove) { border: 1px solid var(--line); border-left: 0; background: transparent; color: var(--soft); padding: 0 12px; font-size: 18px; cursor: pointer; }
-  :global(.mate-remove:hover), :global(.mate-remove:focus-visible) { color: var(--accent); background: var(--line); }
-  .picking { margin: 0 0 8px; padding: 8px 12px; border-left: 3px solid var(--accent); color: var(--soft); font-size: 14px; }
-  .picking[hidden] { display: none; }
+  #d-mode-label[hidden], #d-team-row[hidden], .browse[hidden] { display: none; }
+  .lineup { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(0, 3fr); gap: 12px; margin-bottom: 16px; }
+  .lineup > div { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .lineup .main-card { border: 2px solid var(--accent); }
+  .slot-tag { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .main-card .slot-tag { color: var(--accent); }
+  .main-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .main-row #d-current { flex: 1 1 200px; min-width: 0; }
+  .team-note.main-note { margin: 10px 0 0; }
+  .team-note { margin: -4px 0 10px; color: var(--soft); font-size: 13px; }
+  .mates { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; list-style: none; margin: 0; padding: 0; }
+  :global(.mate) { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  :global(.mate .tile) { min-width: 0; padding: 6px 8px; gap: 8px; }
+  :global(.mate .tile-text strong) { white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
+  :global(.mate-gain) { color: var(--soft); font-size: 13px; }
+  :global(.mate-acts) { display: flex; gap: 6px; }
+  :global(.mate-btn) { flex: 1; padding: 5px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: transparent; color: var(--soft); font: inherit; font-size: 13px; cursor: pointer; }
+  :global(.mate-btn:hover), :global(.mate-btn:focus-visible) { color: var(--text); border-color: var(--accent); }
+  :global(.mate-empty) {
+    display: grid; gap: 2px; place-content: center; text-align: center; width: 100%; min-height: 74px; padding: 8px;
+    border: 1px dashed var(--line); border-radius: var(--radius); background: transparent; color: var(--soft); font: inherit; cursor: pointer;
+  }
+  :global(.mate-empty:hover), :global(.mate-empty:focus-visible) { border-color: var(--accent); color: var(--text); }
+  :global(.mate-empty small) { color: var(--muted); font-size: 12px; }
+  .browse { margin: -4px 0 16px; padding: 12px; border: 1px solid var(--accent); border-radius: var(--radius); }
+  .browse-head { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .browse-head strong { font-size: 16px; }
+  .browse .hint { margin: 0 0 8px; }
+  .lineup:has(#d-team-row[hidden]) { grid-template-columns: 1fr; }
+  @media (max-width: 1100px) { .mates { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px) { .lineup { grid-template-columns: 1fr; } .mates { grid-template-columns: 1fr 1fr; } }
   h2.first { margin-top: 16px; }
   h3 { font-size: 16px; font-weight: 600; margin: 20px 0 6px; }
   .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }
@@ -268,9 +298,6 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
     background: var(--surface); color: var(--text); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 8px 10px; font: inherit; font-size: 15px; width: 100%; min-width: 0;
   }
-  .picker-box { margin-bottom: 16px; }
-  .current-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 12px; }
-  .current-row #d-current { flex: 1 1 260px; min-width: 0; }
   .btn { padding: 8px 14px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
   .btn:hover { border-color: var(--accent); }
   .btn.primary { background: var(--accent); color: #110E0A; border-color: var(--accent); font-weight: 700; text-decoration: none; white-space: nowrap; }
