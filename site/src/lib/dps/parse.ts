@@ -35,7 +35,7 @@ export interface Debuff {
 }
 
 /** Stats a self buff changes. Buffs multiply the final stat (Newms): ATK Up 40% = final ATK × 1.4. */
-export type BuffStat = 'atk' | 'critRate' | 'critDmg' | 'skillRecovery' | 'skillSpeed' | 'comboSpeed' | BossDebuffStat;
+export type BuffStat = 'atk' | 'def' | 'critRate' | 'critDmg' | 'skillRecovery' | 'skillSpeed' | 'comboSpeed' | BossDebuffStat;
 /** Debuffs on the boss that raise the Invoker's own damage: DEF Down lowers the boss's DEF, Weaken raises damage taken. */
 export type BossDebuffStat = 'defDown' | 'weaken';
 
@@ -49,6 +49,22 @@ export interface SelfBuff {
   sec: number;
   /** Only cast when the hit crits. */
   onCrit?: boolean;
+}
+
+/** A buff the skill casts on other Invokers in the team. */
+export interface TeamBuff extends SelfBuff {
+  /** Expected number of the other team members it reaches (0-4 in a team of 5). */
+  allies: number;
+}
+
+/** A shield the skill puts on its own Invoker, as fractions of its stats and of the skill's damage. */
+export interface Shield {
+  hp: number;
+  atk: number;
+  def: number;
+  /** Share of the damage this cast dealt. */
+  dealt: number;
+  sec: number;
 }
 
 /** Something a skill does for its own Invoker besides damage: cuts its own cooldowns or adds Ultimate Mana. */
@@ -71,6 +87,8 @@ export interface ParsedSkill {
   dots: Dot[];
   debuffs: Debuff[];
   buffs: SelfBuff[];
+  team: TeamBuff[];
+  shields: Shield[];
   effects: SelfEffect[];
 }
 
@@ -137,6 +155,7 @@ export function parseDebuffs(text: string): Debuff[] {
 
 const BUFF_STATS: Record<string, BuffStat> = {
   'ATK Up': 'atk',
+  'DEF Up': 'def',
   'Crit Rate Up': 'critRate',
   'Crit DMG Up': 'critDmg',
   'Skill Recovery Up': 'skillRecovery',
@@ -144,28 +163,99 @@ const BUFF_STATS: Record<string, BuffStat> = {
   'Combo SPD Up': 'comboSpeed',
 };
 const BUFF_RE = new RegExp(`\\[([\\d.]+)% (${Object.keys(BUFF_STATS).join('|')})\\] buff on (.+?),? lasting ([\\d.]+)s(.*)$`);
+const SHIELD_RE = /\[(?:[\d,]+ HP )?Shield\] buff on (.+?),? lasting ([\d.]+)s/;
+
+/** Team size the sim assumes (five Invokers, as in PvE). */
+export const TEAM_SIZE = 5;
 
 /**
- * Damage buffs that reach the caster: "[100% Crit DMG Up] buff on Devi of the Six, lasting 16s", or on a group of allies
- * around it ("10 allies in a 15m radius"; "the targets" in a later sentence means the same group). Buffs that need a
- * kill or go to a single other ally are left out; "if the hit lands as a critical hit" makes it crit-only.
+ * Who a buff reaches: the caster itself, and how many of the other team members on average. A group of N allies
+ * picked by HP or at random includes each team member with chance N / 5; "N allies in a radius" is everyone close
+ * by, the caster included; "the ally with …" is one other Invoker.
  */
-export function parseSelfBuffs(text: string, self: string): SelfBuff[] {
-  const out: SelfBuff[] = [];
-  let lastReachedSelf = false;
+function reachOf(target: string, self: string): { self: boolean; allies: number } {
+  if (self && target.startsWith(self)) return { self: true, allies: 0 };
+  if (!/\ballies\b/.test(target)) return /^(?:the ally|\d+ random ally)\b/.test(target) ? { self: false, allies: 1 } : { self: false, allies: 0 };
+  const n = Math.min(TEAM_SIZE, Number(/(\d+)(?: random)? allies/.exec(target)?.[1] ?? TEAM_SIZE));
+  const picked = /lowest|highest|random/.test(target);
+  return { self: true, allies: Math.min(TEAM_SIZE - 1, picked ? (n * (TEAM_SIZE - 1)) / TEAM_SIZE : n - 1) };
+}
+
+/**
+ * Damage buffs (and DEF Up) from "[100% Crit DMG Up] buff on Devi of the Six, lasting 16s", split into the ones that
+ * reach the caster and the ones that reach other team members ("10 allies in a 15m radius"; "the targets" in a later
+ * sentence means the same group). Buffs that need a kill are left out; "if the hit lands as a critical hit" makes it
+ * crit-only.
+ */
+export function parseBuffs(text: string, self: string): { buffs: SelfBuff[]; team: TeamBuff[] } {
+  const buffs: SelfBuff[] = [];
+  const team: TeamBuff[] = [];
+  let last = { self: false, allies: 0 };
   for (const sentence of plain(text).split(/(?<=\.)\s+|\n/)) {
     const m = BUFF_RE.exec(sentence);
     if (!m) continue;
     const target = m[3].trim();
-    const reaches: boolean =
-      target.startsWith(self) || (/\ballies\b/.test(target) && !/^the ally\b/.test(target)) || (/^the targets?\b/.test(target) && lastReachedSelf);
-    lastReachedSelf = reaches;
+    const reach = /^the targets?\b/.test(target) ? last : reachOf(target, self);
+    last = reach;
     const rest = sentence.slice(0, m.index) + ' ' + m[5];
-    if (!reaches || /kills|non-critical/.test(rest)) continue;
+    if (/kills|non-critical/.test(rest)) continue;
     const buff: SelfBuff = { name: m[2], stat: BUFF_STATS[m[2]], pct: num(m[1]) / 100, sec: num(m[4]) };
     if (/critical hit/.test(rest)) buff.onCrit = true;
-    out.push(buff);
+    if (reach.self) buffs.push(buff);
+    if (reach.allies > 0) team.push({ ...buff, allies: Math.round(reach.allies * 100) / 100 });
   }
+  return { buffs, team };
+}
+
+/** Buffs that reach the caster itself (see parseBuffs). */
+export function parseSelfBuffs(text: string, self: string): SelfBuff[] {
+  return parseBuffs(text, self).buffs;
+}
+
+/** "45% * Damage Dealt + 15% * MAX HP" → a shield's parts. Parts that depend on the target or on buff counts are left out. */
+function shieldParts(formula: string): Omit<Shield, 'sec'> | null {
+  const out = { hp: 0, atk: 0, def: 0, dealt: 0 };
+  let found = false;
+  const add = (v: number, what: string) => {
+    found = true;
+    if (what === 'MAX HP') out.hp += v;
+    else if (what === 'ATK') out.atk += v;
+    else if (what === 'DEF') out.def += v;
+    else out.dealt += v;
+  };
+  for (const m of formula.matchAll(/([\d.]+)(%?)\s*\*\s*(Target's MAX HP|Damage Dealt|MAX HP|ATK|DEF)(\s*\)?\s*per)?/g)) {
+    if (m[3] === "Target's MAX HP" || m[4]) continue;
+    add(num(m[1]) / (m[2] ? 100 : 1), m[3]);
+  }
+  for (const m of formula.matchAll(/MAX HP\s*\*\s*([\d.]+)%/g)) add(num(m[1]) / 100, 'MAX HP');
+  return found ? out : null;
+}
+
+/**
+ * Shields that reach the caster: "Casts a [Shield] buff on Kandra, lasting 12s. The [Shield] is equal to (50% * Damage
+ * Dealt)", or "[8 HP Shield] buff on Chaddeus" with its size on a "#2 Shield: 20% * MAX HP" line (in the same order as
+ * the shields in the text).
+ */
+export function parseSelfShields(text: string, self: string): Shield[] {
+  const t = plain(text);
+  const lines = [...t.matchAll(/^\s*#\d+\s+Shield:\s*(.+)$/gm)].map((m) => m[1]);
+  const sentences = t.split(/(?<=\.)\s+|\n/);
+  const out: Shield[] = [];
+  let index = 0;
+  let last = { self: false, allies: 0 };
+  sentences.forEach((sentence, i) => {
+    const m = SHIELD_RE.exec(sentence);
+    if (!m) return;
+    const line = lines[Math.min(index, lines.length - 1)];
+    index += 1;
+    const target = m[1].trim();
+    const reach = /^the targets?\b/.test(target) ? last : reachOf(target, self);
+    last = reach;
+    if (!reach.self) return;
+    const equal = /The \[Shield\] is equal to \((.+)\)/.exec(sentence + ' ' + (sentences[i + 1] ?? ''));
+    const parts = shieldParts(equal?.[1] ?? line ?? '');
+    if (parts) out.push({ ...parts, sec: num(m[2]) });
+  });
   return out;
 }
 
@@ -221,7 +311,8 @@ export function parseSkillText(text: string, self = ''): ParsedSkill {
       if (dot) dots.push(dot);
     }
   }
-  return { hits, dots, debuffs: parseDebuffs(text), buffs: self ? parseSelfBuffs(text, self) : [], effects: self ? parseSelfEffects(text, self) : [] };
+  const { buffs, team } = self ? parseBuffs(text, self) : { buffs: [], team: [] };
+  return { hits, dots, debuffs: parseDebuffs(text), buffs, team, shields: self ? parseSelfShields(text, self) : [], effects: self ? parseSelfEffects(text, self) : [] };
 }
 
 /** Combo text → the cooldown cuts and Ultimate Mana each step gives its own Invoker. */

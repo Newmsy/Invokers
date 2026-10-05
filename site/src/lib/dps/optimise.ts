@@ -34,6 +34,8 @@ export interface OptimiseOptions {
   seconds?: number;
   /** What to maximise: estimated DPS (default) or effective HP against the stage. */
   goal?: 'dps' | 'toughness';
+  /** Count what its buffs add for the team (DPS goal only). */
+  team?: boolean;
 }
 
 export interface OptimiseResult {
@@ -87,7 +89,7 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
       const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
       v = opts.goal === 'toughness'
         ? toughness(data, totals, opts.stage).ehp
-        : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds }).dps;
+        : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds, team: opts.team }).dps;
       cache.set(key, v);
     }
     return v;

@@ -5,8 +5,9 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type Mode, type SkillSlot } from './model';
-import { toughness, toughValues } from './tank';
+import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, teamGains, type DpsData, type ElementEdge, type FightInput, type Mode, type SkillSlot } from './model';
+import { TEAM_SIZE } from './parse';
+import { buffedToughness, toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
 
 const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = {
@@ -15,6 +16,7 @@ const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = 
   lightDark: (m, e) => `${m} against ${e}: +15% damage.`,
   neutral: () => 'No element advantage.',
 };
+const TEAM_ALLIES = TEAM_SIZE - 1;
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB');
 const pct = (n: number, digits = 1) => `${(n * 100).toFixed(digits)}%`;
@@ -83,6 +85,7 @@ export async function start(): Promise<void> {
   const RARITY_COLOR = JSON.parse(root.dataset.rarity ?? '{}') as Record<string, string>;
   const modeSel = $<HTMLSelectElement>('d-mode');
   const stageSel = $<HTMLSelectElement>('d-stage');
+  const teamBox = $<HTMLInputElement>('d-team-on');
 
   let data: DpsData;
   try {
@@ -141,7 +144,7 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value)) ?? data.stages[0];
     for (const t of tiles) {
       t.dps = t.build && stage
-        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage }).dps
+        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked }).dps
         : 0;
       t.ehp = t.build && stage ? toughness(data, t.build.totals, stage).ehp : 0;
     }
@@ -224,12 +227,14 @@ export async function start(): Promise<void> {
       $('d-out').hidden = true;
       return;
     }
-    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage };
+    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked };
     const { base, values } = statValues(data, input);
     $('d-out').hidden = false;
+    $('d-dps-label').textContent = input.team ? 'Estimated DPS, with team buffs' : 'Estimated DPS';
     $('d-dps').textContent = fmt(base.dps);
     $('d-total').textContent = `${fmt(base.total)} damage in a ${base.seconds}-second fight against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
     $('d-total').append(' ', EDGE_TEXT[base.edge](build.hero.element, stage.element));
+    if (input.team) $('d-total').append(` Its own ${fmt(base.dps - base.teamDps)} DPS plus ${fmt(base.teamDps)} it adds to ${TEAM_ALLIES} allies.`);
 
     const t = build.totals;
     const stats: [string, string][] = [
@@ -293,6 +298,23 @@ export async function start(): Promise<void> {
       ),
     );
 
+    // What it gives the rest of the team (only with the team toggle on).
+    const team = input.team ? teamGains(data, input) : [];
+    $('d-team-box').hidden = !input.team;
+    $('d-team-none').hidden = team.length > 0;
+    $('d-team').replaceChildren(
+      ...team.map((g) =>
+        row(
+          SOURCE[g.slot],
+          `${pct(g.pct, 0)} ${g.name}`,
+          [g.allies.toFixed(g.allies % 1 ? 1 : 0), 'num'],
+          [pct(g.uptime, 0), 'num'],
+          [`+${pct(g.allyGain, 1)}`, 'num'],
+          [`+${fmt(g.teamDps)}`, 'num'],
+        ),
+      ),
+    );
+
     // Skill upgrades (box Invokers whose skills aren't maxed).
     const gains = heroSel.value.startsWith('box:') ? skillGains(data, input) : [];
     $('d-skills-box').hidden = !gains.length;
@@ -310,10 +332,11 @@ export async function start(): Promise<void> {
         return row(`${roll} ${labels[v.stat] ?? v.stat}`, [gain, v.gain >= 0.0005 ? 'num pos' : 'num']);
       }),
     );
-    renderToughness(build.totals, stage);
+    renderToughness(input);
   }
 
-  function renderToughness(totals: Build['totals'], stage: (typeof data.stages)[number]) {
+  function renderToughness(input: FightInput) {
+    const { totals, stage } = input;
     const { base, values } = toughValues(data, totals, stage);
     $('t-ehp').textContent = fmt(base.ehp);
     $('t-line').textContent = `${fmt(base.hp)} HP and ${fmt(base.def)} DEF: ${pct(base.taken, 0)} of each hit gets through.`;
@@ -323,6 +346,17 @@ export async function start(): Promise<void> {
       ['One hit, estimated', fmt(base.bossHit)],
       ['Hits survived, estimated', base.hits.toFixed(1)],
     ];
+    // Its own DEF Up and shields, over a PvE fight.
+    const buffed = buffedToughness(data, input);
+    $('t-buffed').hidden = !buffed;
+    if (buffed) {
+      $('t-buffed-ehp').textContent = fmt(buffed.ehp);
+      const bits = [
+        ...buffed.defUp.map((d) => `${pct(d.pct, 0)} DEF Up, up ${pct(d.uptime, 0)} of the fight`),
+        ...(buffed.shieldCasts ? [`a ${fmt(buffed.shieldSize)} HP shield ${buffed.shieldCasts === 1 ? 'once' : `${buffed.shieldCasts} times`} a fight`] : []),
+      ];
+      $('t-buffed-line').textContent = `With its own ${bits.join(' and ')} (+${pct(base.ehp > 0 ? buffed.ehp / base.ehp - 1 : 0, 0)}).`;
+    }
     $('t-stats').replaceChildren(...stats.flatMap(([k, v]) => [el('dt', k), el('dd', v)]));
     $('t-values').replaceChildren(
       ...values.map((v) => {
@@ -377,10 +411,11 @@ export async function start(): Promise<void> {
     $(`${p}-box`).hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
     // The search is slow on big boxes, so each answer is kept until the box changes.
-    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked].join('|');
+    const team = goal === 'dps' && teamBox.checked;
+    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, team].join('|');
     let memo = optimiseMemo.get(box);
     if (!memo) optimiseMemo.set(box, (memo = new Map()));
-    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal }));
+    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, team }));
     const r = memo.get(memoKey);
     if (!r) return;
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
@@ -437,6 +472,7 @@ export async function start(): Promise<void> {
     }
     // Mode (PvE or Arena) only changes damage.
     $('d-mode-label').hidden = tab !== 'dps';
+    $('d-team-label').hidden = tab !== 'dps';
   }
 
   function setTab(next: Tab) {
@@ -462,7 +498,7 @@ export async function start(): Promise<void> {
   box = await loadBox();
   fillHeroes();
   update();
-  for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (scoreTiles(), update()));
+  for (const s of [modeSel, stageSel, teamBox]) s.addEventListener('change', () => (scoreTiles(), update()));
   for (const t of TABS) {
     $(`${OPT[t]}-others`).addEventListener('change', update);
     $(`tab-${t}`).addEventListener('click', () => setTab(t));

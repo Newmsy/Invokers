@@ -16,6 +16,8 @@ const compact = (p: ParsedSkill): SkillLevelT => ({
   ...(p.dots.length ? { d: p.dots } : {}),
   ...(p.debuffs.length ? { x: p.debuffs } : {}),
   ...(p.buffs.length ? { b: p.buffs } : {}),
+  ...(p.team.length ? { t: p.team } : {}),
+  ...(p.shields.length ? { s: p.shields } : {}),
   ...(p.effects.length ? { e: p.effects } : {}),
 });
 

@@ -3,7 +3,7 @@
 // full, otherwise the readiest skill (3, 2, 1), otherwise the next combo step. Damage uses expected crits.
 // Battle rules that aren't exported yet are in constants.ts.
 import * as C from './constants';
-import type { BuffStat, Debuff, Dot, Hit, SelfBuff, SelfEffect } from './parse';
+import { TEAM_SIZE, type BuffStat, type Debuff, type Dot, type Hit, type SelfBuff, type SelfEffect, type Shield, type TeamBuff } from './parse';
 
 // ---- Data shapes (built at build time by data.ts) ----
 
@@ -25,6 +25,10 @@ export interface SkillLevelT {
   x?: Debuff[];
   /** Buffs cast on the Invoker itself. */
   b?: SelfBuff[];
+  /** Buffs cast on other team members. */
+  t?: TeamBuff[];
+  /** Shields cast on the Invoker itself. */
+  s?: Shield[];
   /** Cooldown cuts and Ultimate Mana for the Invoker itself. */
   e?: SelfEffect[];
 }
@@ -265,6 +269,24 @@ export interface FightInput {
   noBuffs?: boolean;
   /** Leave out one self buff ("<slot>|<buff name>") or one skill's cooldown cuts or mana ("<slot>|cooldown", "<slot>|mana"). */
   skipBuff?: string;
+  /** Add the damage its buffs and boss debuffs add for the other team members (see teamWindows). */
+  team?: boolean;
+  /** Buffs and boss debuffs from a teammate, already timed (used to measure what a team buff is worth). */
+  ext?: BuffWindow[];
+}
+
+/** A buff or boss debuff that is up from `from` to `until`, counted with weight `p` (its chance of being up). */
+export interface BuffWindow {
+  key: string;
+  slot: SkillSlot;
+  name: string;
+  stat: BuffStat;
+  pct: number;
+  p: number;
+  /** Expected other team members it reaches (boss debuffs: all of them). */
+  allies: number;
+  from: number;
+  until: number;
 }
 
 export interface SourceResult {
@@ -296,6 +318,8 @@ export interface FightResult {
   accChance: number;
   /** The Invoker's element edge against this stage. */
   edge: ElementEdge;
+  /** DPS its buffs and boss debuffs add for the rest of the team (0 unless `team` is set; included in `dps`). */
+  teamDps: number;
 }
 
 
@@ -312,7 +336,6 @@ interface Event {
   cast: boolean;
 }
 
-/** Every damage event in a fight of `until` seconds. */
 /** Expected time a self buff was up in the fight (crit-only buffs weighted by the chance they were cast). */
 export interface BuffUptime {
   slot: SkillSlot;
@@ -335,10 +358,20 @@ export interface EffectTotal {
 }
 
 /** Every damage event in a fight of `until` seconds, plus how long each self buff was up. */
-function timeline(data: DpsData, input: FightInput, until: number): { events: Event[]; uptime: BuffUptime[]; effects: EffectTotal[] } {
+interface Timeline {
+  events: Event[];
+  uptime: BuffUptime[];
+  effects: EffectTotal[];
+  /** What it gives the rest of the team: buffs on allies and debuffs on the boss. */
+  team: BuffWindow[];
+  /** Shields on itself: size and how long each lasts. */
+  shields: { amount: number; from: number; until: number }[];
+}
+
+function timeline(data: DpsData, input: FightInput, until: number): Timeline {
   const { hero, totals: t, mode, stage } = input;
   const atk0 = finalStat(t, 'atk');
-  const def = finalStat(t, 'def');
+  const def0 = finalStat(t, 'def');
   const hp = finalStat(t, 'hp');
   const el = data.elements[elementEdge(hero.element, stage.element)];
   const defFactor = defenseFactor(data.defense, stage.def * Math.max(0, 1 - t.ignoreDef));
@@ -356,14 +389,19 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   // A crit-only buff counts with the chance the cast crit, so `p` is that chance.
   const active = new Map<string, { stat: BuffStat; pct: number; p: number; from: number; until: number }>();
   const upFor = new Map<string, BuffUptime>();
+  // A teammate's buffs (input.ext) count the same way while their windows are open.
+  const ext = input.ext ?? [];
+  const extUp = (now: number) => ext.filter((w) => w.from <= now && w.until > now);
   const mult = (stat: BuffStat, now: number) => {
     let m = 1;
     for (const b of active.values()) if (b.stat === stat && b.until > now) m *= 1 + b.p * b.pct;
+    for (const w of extUp(now)) if (w.stat === stat) m *= 1 + w.p * w.pct;
     return m;
   };
   const add = (stat: BuffStat, now: number) => {
     let n = 0;
     for (const b of active.values()) if (b.stat === stat && b.until > now) n += b.p * b.pct;
+    for (const w of extUp(now)) if (w.stat === stat) n += w.p * w.pct;
     return n;
   };
   // DEF Down lowers the boss's DEF multiplier (defenseFactor = 1 - X%), Weaken raises damage taken (1 + X%); a debuff
@@ -373,12 +411,14 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   const defNow = (now: number) => {
     let f = defFactor;
     for (const b of active.values()) if (b.stat === 'defDown' && b.until > now) f *= (b.p * defAt(b.pct) + (1 - b.p) * defFactor) / defFactor;
+    for (const w of extUp(now)) if (w.stat === 'defDown') f *= (w.p * defAt(w.pct) + (1 - w.p) * defFactor) / defFactor;
     return f;
   };
   const stats = (now: number) => {
     const critRate = Math.max(0, Math.min(C.CRIT_RATE_CAP, t.critRate * mult('critRate', now) + el.crit));
     return {
       atk: atk0 * mult('atk', now),
+      myDef: def0 * mult('def', now),
       critRate,
       critFactor: 1 + critRate * t.critDmg * mult('critDmg', now),
       def: defNow(now),
@@ -395,6 +435,16 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   };
 
   const events: Event[] = [];
+  const team: BuffWindow[] = [];
+  const shields: Timeline['shields'] = [];
+  // Recasting a team buff refreshes it, so the earlier window ends there.
+  const openTeam = new Map<string, BuffWindow>();
+  const giveTeam = (w: BuffWindow) => {
+    const old = openTeam.get(w.key);
+    if (old && old.until > w.from) old.until = w.from;
+    openTeam.set(w.key, w);
+    team.push(w);
+  };
   const startFactor = mode === 'arena' ? 0.5 : 0;
   // Cooldowns tick down by time × recovery factor, so a cooldown lasts base / factor (timing.json skillRecovery).
   const cdLeft = new Map<SkillSlot, number>();
@@ -458,8 +508,16 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
   const cast = (slot: SkillSlot, s: DpsSkill, castSec: number) => {
     const level = s.levels[levelOf(input, slot, s.levels.length)];
     const st = stats(now);
-    const hitDamage = (h: HitT) => ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage;
-    events.push({ at: now, slot, damage: level.h.reduce((n, h) => n + hitDamage(h), 0), cast: true, debuffs: level.x });
+    const hitDamage = (h: HitT) => ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * st.myDef + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage;
+    const dealt = level.h.reduce((n, h) => n + hitDamage(h), 0);
+    events.push({ at: now, slot, damage: dealt, cast: true, debuffs: level.x });
+    for (const sh of level.s ?? []) {
+      const amount = sh.hp * hp + sh.atk * st.atk + sh.def * st.myDef + sh.dealt * dealt;
+      if (amount > 0) shields.push({ amount, from: now, until: now + sh.sec });
+    }
+    for (const b of level.t ?? []) {
+      giveTeam({ key: `${slot}|${b.name}`, slot, name: b.name, stat: b.stat, pct: b.pct, p: b.onCrit ? st.critRate : 1, allies: b.allies, from: now, until: now + b.sec });
+    }
     for (const d of level.d ?? []) {
       const tick = Math.min(d.pct * stage.hp, d.capAtk * st.atk) * (C.DOT_USES_DEF ? st.def : 1) * st.taken * (d.acc ? accChance : 1);
       const ticks = Math.floor(d.durationSec / d.everySec);
@@ -488,6 +546,12 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
         active.set(key, { stat, pct: d.pct, p: d.chance * (d.acc ? accChance : 1), from: now, until: now + d.sec });
       }
     }
+    // Every teammate hits the debuffed boss too (counted whether or not its own damage includes them).
+    for (const d of level.x ?? []) {
+      if (!d.pct || !d.sec || (d.name !== 'DEF Down' && d.name !== 'Weaken')) continue;
+      const stat: BuffStat = d.name === 'DEF Down' ? 'defDown' : 'weaken';
+      giveTeam({ key: `${slot}|${d.name}`, slot, name: d.name, stat, pct: d.pct, p: d.chance * (d.acc ? accChance : 1), allies: TEAM_SIZE - 1, from: now, until: now + d.sec });
+    }
     applyEffects(slot, level.e, level.h.length, st.critRate);
     advance(castSec / st.skillSpeed, true);
     if (C.COMBO_RESETS_AFTER_SKILL) step = 0;
@@ -510,7 +574,7 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     if (comboLevel.length) {
       const st = stats(now);
       const hits = comboLevel[step % comboLevel.length];
-      const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * def + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage, 0);
+      const damage = hits.reduce((n, h) => n + ((h[0] ?? 0) * st.atk + (h[1] ?? 0) * st.myDef + (h[2] ?? 0) * hp) * st.critFactor * st.def * st.taken * el.damage, 0);
       events.push({ at: now, slot: 'Combo', damage, cast: true });
       applyEffects('Combo', comboFx?.[step % comboLevel.length], hits.length, st.critRate);
       step += 1;
@@ -527,21 +591,45 @@ function timeline(data: DpsData, input: FightInput, until: number): { events: Ev
     }
   }
   for (const [key, b] of active) closeBuff(key, b, until);
-  return { events, uptime: [...upFor.values()], effects: [...fxTotals.values()] };
+  return { events, uptime: [...upFor.values()], effects: [...fxTotals.values()], team, shields };
 }
 
-export function simulate(data: DpsData, input: FightInput): FightResult {
-  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
-  const WINDOW = C.FIGHT_WINDOW_SEC[input.mode];
+/** Average DPS over fights of FIGHT_WINDOW_SEC either side of T (smooths out cooldown timing). */
+function windowDps(events: Event[], mode: Mode, T: number): number {
+  const WINDOW = C.FIGHT_WINDOW_SEC[mode];
   const lo = Math.max(1, T - WINDOW);
-  const { events } = timeline(data, input, T + WINDOW);
   const damageBy = (until: number) => events.reduce((n, e) => (e.at < until ? n + e.damage : n), 0);
-
   let sum = 0;
   let count = 0;
   for (let len = lo; len <= T + WINDOW; len += 0.5) {
     sum += damageBy(len) / len;
     count += 1;
+  }
+  return sum / count;
+}
+
+/**
+ * DPS the given buff windows add to one teammate. The teammate stands in as an Invoker with this one's skills and
+ * stats (and none of its own buffs), so crit buffs count by this build's Crit Rate.
+ */
+function allyGain(data: DpsData, input: FightInput, windows: BuffWindow[], T: number): { base: number; dps: number } {
+  const stand = { ...input, noBuffs: true, team: false, skipBuff: undefined };
+  const until = T + C.FIGHT_WINDOW_SEC[input.mode];
+  const base = windowDps(timeline(data, { ...stand, ext: [] }, until).events, input.mode, T);
+  const dps = windows.length ? windowDps(timeline(data, { ...stand, ext: windows }, until).events, input.mode, T) : base;
+  return { base, dps };
+}
+
+/** The team windows weighted by how many of the other team members each reaches, so one stand-in counts for all of them. */
+const perAlly = (windows: BuffWindow[]) => windows.map((w) => ({ ...w, p: (w.p * w.allies) / (TEAM_SIZE - 1) }));
+
+export function simulate(data: DpsData, input: FightInput): FightResult {
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const { events, team } = timeline(data, input, T + C.FIGHT_WINDOW_SEC[input.mode]);
+  let teamDps = 0;
+  if (input.team && team.length) {
+    const g = allyGain(data, input, perAlly(team), T);
+    teamDps = (TEAM_SIZE - 1) * (g.dps - g.base);
   }
 
   const results = new Map<SkillSlot, SourceResult>();
@@ -567,7 +655,7 @@ export function simulate(data: DpsData, input: FightInput): FightResult {
       debuffs.set(key, r);
     }
   }
-  return { dps: sum / count, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance, edge };
+  return { dps: windowDps(events, input.mode, T) + teamDps, teamDps, total: sources.reduce((n, s) => n + s.damage, 0), seconds: T, sources, debuffs: [...debuffs.values()], accChance, edge };
 }
 
 // ---- Stat value table ----
@@ -647,4 +735,38 @@ export function effectGains(data: DpsData, input: FightInput): (EffectTotal & { 
     const without = simulate(data, { ...input, skipBuff: `${e.slot}|${e.kind}` }).dps;
     return { ...e, gain: without > 0 ? dps / without - 1 : 0 };
   });
+}
+
+/** What each buff or boss debuff it gives the team is worth: allies reached, uptime, damage it adds to one ally it reaches, and team DPS. */
+export function teamGains(data: DpsData, input: FightInput): { slot: SkillSlot; name: string; pct: number; allies: number; uptime: number; allyGain: number; teamDps: number }[] {
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const { team } = timeline(data, { ...input, team: false }, T + C.FIGHT_WINDOW_SEC[input.mode]);
+  const keys = [...new Set(team.map((w) => w.key))];
+  return keys.map((key) => {
+    const ws = team.filter((w) => w.key === key);
+    const first = ws[0];
+    const up = ws.reduce((n, w) => n + w.p * Math.max(0, Math.min(w.until, T) - Math.min(w.from, T)), 0);
+    const one = allyGain(data, input, ws, T);
+    const all = allyGain(data, input, perAlly(ws), T);
+    return {
+      slot: first.slot,
+      name: first.name,
+      pct: first.pct,
+      allies: first.allies,
+      uptime: up / T,
+      allyGain: one.base > 0 ? one.dps / one.base - 1 : 0,
+      teamDps: (TEAM_SIZE - 1) * (all.dps - all.base),
+    };
+  });
+}
+
+/** Its own DEF Up and shields over a PvE fight: DEF Up uptime-weighted, and the average shield standing. */
+export function selfDefence(data: DpsData, input: FightInput): { defUp: { pct: number; uptime: number }[]; shieldAvg: number; shieldCasts: number; shieldSize: number } {
+  const T = input.seconds ?? C.FIGHT_SEC[input.mode];
+  const { uptime, shields } = timeline(data, { ...input, team: false }, T);
+  const defUp = uptime.filter((u) => u.stat === 'def').map((u) => ({ pct: u.pct, uptime: u.seconds / T }));
+  const inFight = shields.filter((s) => s.from < T);
+  const shieldAvg = inFight.reduce((n, s) => n + (s.amount * (Math.min(s.until, T) - s.from)) / T, 0);
+  const shieldSize = inFight.length ? inFight.reduce((n, s) => n + s.amount, 0) / inFight.length : 0;
+  return { defUp, shieldAvg, shieldCasts: inFight.length, shieldSize };
 }

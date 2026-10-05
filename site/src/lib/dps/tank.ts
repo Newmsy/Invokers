@@ -1,7 +1,7 @@
 // Toughness against Ulgorim: effective HP (HP divided by the share of a hit that gets through DEF), how many of
 // Ulgorim's hits the Invoker survives, and how much one normal HP or DEF substat roll adds to it.
 import * as C from './constants';
-import { addStat, defenseFactor, finalStat, type BossStage, type DpsData, type Totals } from './model';
+import { addStat, defenseFactor, finalStat, selfDefence, type BossStage, type DpsData, type FightInput, type Totals } from './model';
 
 export interface Toughness {
   hp: number;
@@ -43,4 +43,29 @@ export function toughValues(data: DpsData, totals: Totals, stage: BossStage, rol
     return { stat, value, ehp, gain: base.ehp > 0 ? ehp / base.ehp - 1 : 0 };
   });
   return { base, values: values.sort((a, b) => b.gain - a.gain) };
+}
+
+export interface BuffedToughness {
+  /** Effective HP counting its own DEF Up (by uptime) and the shield it keeps up on average. */
+  ehp: number;
+  /** Share of a hit that gets through on average. */
+  taken: number;
+  defUp: { pct: number; uptime: number }[];
+  /** Shield HP standing on average over the fight, its size per cast, and casts per fight. */
+  shieldAvg: number;
+  shieldSize: number;
+  shieldCasts: number;
+}
+
+/** Toughness with the DEF Up and shields the Invoker casts on itself in a PvE fight (null when it casts neither). */
+export function buffedToughness(data: DpsData, input: FightInput): BuffedToughness | null {
+  const sd = selfDefence(data, { ...input, mode: 'pve' });
+  if (!sd.defUp.length && !sd.shieldCasts) return null;
+  const hp = finalStat(input.totals, 'hp');
+  const def = finalStat(input.totals, 'def');
+  // Several DEF Up buffs: counted as up together for the longest one's uptime (buffs multiply final DEF).
+  const up = Math.max(0, ...sd.defUp.map((d) => d.uptime));
+  const mult = sd.defUp.reduce((m, d) => m * (1 + d.pct), 1);
+  const taken = (1 - up) * defenseFactor(data.defense, def) + up * defenseFactor(data.defense, def * mult);
+  return { ehp: taken > 0 ? (hp + sd.shieldAvg) / taken : Infinity, taken, defUp: sd.defUp, shieldAvg: sd.shieldAvg, shieldSize: sd.shieldSize, shieldCasts: sd.shieldCasts };
 }

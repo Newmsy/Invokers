@@ -70,12 +70,13 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         </select>
       </label>
     </div>
+    <label class="check" id="d-team-label"><input type="checkbox" id="d-team-on" /> Count buffs it gives the team</label>
 
     <section id="d-out" hidden>
       <div id="panel-dps" role="tabpanel" aria-labelledby="tab-dps">
       <div class="summary">
         <div class="card">
-          <h2>Estimated DPS</h2>
+          <h2 id="d-dps-label">Estimated DPS</h2>
           <p class="big" id="d-dps"></p>
           <p class="hint" id="d-total"></p>
         </div>
@@ -118,6 +119,16 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         </table>
       </section>
 
+      <section id="d-team-box" hidden>
+        <h2>What it gives the team</h2>
+        <p class="hint">Buffs on allies and DEF Down or Weaken on the boss, in a team of five. Each ally is taken to have this Invoker's skills and stats, so team DPS is an estimate. Allies is how many of the other four each buff reaches on average.</p>
+        <p class="hint" id="d-team-none">This Invoker gives the team no damage buffs.</p>
+        <table>
+          <thead><tr><th>Skill</th><th>Buff</th><th class="num">Allies</th><th class="num">Up</th><th class="num">Each ally</th><th class="num">Team DPS</th></tr></thead>
+          <tbody id="d-team"></tbody>
+        </table>
+      </section>
+
       <section id="d-fx-box" hidden>
         <h2>Cooldown cuts and bonus mana</h2>
         <p class="hint">What its skills give back to itself in the fight. Effects that need a crit count by Crit Rate.</p>
@@ -147,7 +158,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
       </section>
 
       <p class="hint note">
-        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count, and so do its own DEF Down and Weaken on the boss, but help from other Invokers doesn't, average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
+        Estimates: one target, element advantage against each stage counts, buffs, cooldown cuts and mana it gives itself count, and so do its own DEF Down and Weaken on the boss, but help from other Invokers doesn't (tick "Count buffs it gives the team" to add what this one gives them), average crits, a {FIGHT_SEC.pve}-second fight in PvE and {FIGHT_SEC.arena} seconds in Arena (about how long a top-level Arena fight lasts).
         Burn and Bleed count at their per-tick limit and only when they land. The numbers will sharpen as the battle rules are confirmed.
       </p>
       </div>
@@ -159,6 +170,10 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
           <h2>Effective HP</h2>
           <p class="big" id="t-ehp"></p>
           <p class="hint" id="t-line"></p>
+          <div id="t-buffed" hidden>
+            <p class="hint">With its own buffs, on average: <strong id="t-buffed-ehp"></strong></p>
+            <p class="hint" id="t-buffed-line"></p>
+          </div>
         </div>
         <div class="card">
           <h2>Against this stage</h2>
@@ -184,7 +199,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
         </table>
       </section>
       <p class="hint note">
-        Toughness counts HP and DEF only (no shields, healing or Tolerances), and the hits line assumes each hit deals {BOSS}'s ATK.
+        Toughness counts HP, DEF and the DEF Up and shields it casts on itself (shields as the average standing in a fight, assuming none is broken early), but not healing, other Invokers' buffs or Tolerances, and the hits line assumes each hit deals {BOSS}'s ATK.
       </p>
       </div>
     </section>
@@ -213,7 +228,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   }
   .tabs [role='tab']:hover { color: var(--text); }
   .tabs [role='tab'][aria-selected='true'] { color: var(--text); border-bottom-color: var(--accent); }
-  #d-mode-label[hidden] { display: none; }
+  #d-mode-label[hidden], #d-team-label[hidden] { display: none; }
   h2.first { margin-top: 16px; }
   h3 { font-size: 16px; font-weight: 600; margin: 20px 0 6px; }
   .card h2 { margin: 0 0 8px; font-size: 15px; color: var(--soft); }
