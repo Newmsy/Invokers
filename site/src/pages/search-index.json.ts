@@ -25,6 +25,14 @@ export async function GET() {
     text: markdownText(p.body ?? ''),
     url: href(`blog/${p.id}`),
   }));
-  const docs = [...dataDocs(), ...guides, ...pageDocs()];
+  const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const news: SearchDoc[] = entries.map((e) => ({
+    kind: 'News',
+    title: e.data.title,
+    sub: e.data.description,
+    text: markdownText(e.body ?? ''),
+    url: href(`news/${e.id}`),
+  }));
+  const docs = [...dataDocs(), ...guides, ...news, ...pageDocs()];
   return new Response(JSON.stringify(docs), { headers: { 'Content-Type': 'application/json' } });
 }

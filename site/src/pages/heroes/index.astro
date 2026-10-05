@@ -1,4 +1,5 @@
 ---
+import SeeAlso from '../../components/SeeAlso.astro';
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
 import TierBadge from '../../components/TierBadge.astro';
@@ -103,6 +104,13 @@ const groups = [
     ))}
   </ul>
   <p class="empty" id="empty" hidden>No Invokers match these filters.</p>
+  <SeeAlso links={[
+    { path: 'tiers', label: 'Tier lists' },
+    { path: 'heroes/compare', label: 'Compare Invokers' },
+    { path: 'team', label: 'Team builder' },
+    { path: 'simulator', label: 'Simulator' },
+    { path: 'titans', label: 'Titans' },
+  ]} />
 </Base>
 
 <script>

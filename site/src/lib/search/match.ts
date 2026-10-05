@@ -1,7 +1,7 @@
 // Search matching, shared by the search page (in the browser) and the tests.
 // The index is small (a few hundred entries), so a plain scan is fast enough.
 
-export type SearchKind = 'Invoker' | 'Titan' | 'Skill' | 'Item' | 'Gear set' | 'Boss' | 'Trophy' | 'Guide' | 'Page';
+export type SearchKind = 'Invoker' | 'Titan' | 'Skill' | 'Item' | 'Gear set' | 'Boss' | 'Trophy' | 'Guide' | 'News' | 'Page';
 
 export interface SearchDoc {
   kind: SearchKind;
@@ -48,6 +48,7 @@ const kindRank: Record<SearchKind, number> = {
   Item: 4,
   Skill: 5,
   Guide: 6,
+  News: 6,
   Page: 7,
 };
 

@@ -1,11 +1,21 @@
 ---
 // What changed in each game update, newest first. The notes come from scripts/update-notes.ts.
+import SeeAlso from '../components/SeeAlso.astro';
 import Base from '../layouts/Base.astro';
 import { heroes, heroHref, href, pack, titans } from '../lib/data';
 import { heroArt, titanArt } from '../lib/art';
 import { rarityColor, skillTypeName } from '../lib/format';
 import { changeCount, type SkillChange, type ValueChange } from '../lib/updates/diff';
 import { updateAnchor, updates } from '../lib/updates/notes';
+import { getCollection } from 'astro:content';
+import { newsDate } from '../lib/news';
+
+// The patch notes for each update (News posts titled "Update 0.xx"), newest first.
+const patchNotes = (await getCollection('news'))
+  .filter((e) => e.data.kind === 'patch' && /^Update \d/.test(e.data.title))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+/** The patch notes for a version like 0.61.1516, matched on "Update 0.61". */
+const notesFor = (version: string) => patchNotes.find((e) => e.data.title.startsWith(`Update ${version.split('.').slice(0, 2).join('.')}:`));
 
 const heroIds = new Set(heroes.map((h) => h.id));
 const titanIds = new Set(titans.map((t) => t.id));
@@ -56,13 +66,24 @@ type Change = ValueChange;
 <Base title="Game updates">
   <h1>Game updates</h1>
   <p class="lead">
-    What changed in each game update: Invoker stats and skills, upgrade costs, gear sets, the Trophy Room and bosses.
-    Newest update first.
+    Patch notes for every game update, then the exact changes to Invoker stats and skills, upgrade costs, gear sets,
+    the Trophy Room and bosses. Newest first.
   </p>
+
+  {patchNotes.length > 0 && (
+    <section class="patch-notes" aria-labelledby="patch-notes-title">
+      <h2 id="patch-notes-title">Patch notes</h2>
+      <ul>
+        {patchNotes.map((e) => (
+          <li><a href={href(`news/${e.id}`)}>{e.data.title}</a> <span class="muted">{newsDate(e.data)}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   {sections.length === 0 && (
     <section class="card empty">
-      <h2>Notes start with version {pack.gameVersion}</h2>
+      <h2>Stat changes start with version {pack.gameVersion}</h2>
       <p>Everything on the site matches game version {pack.gameVersion}. When the next update arrives, its changes will be listed here.</p>
     </section>
   )}
@@ -76,7 +97,7 @@ type Change = ValueChange;
   {sections.map(({ notes: u, count, summary }) => (
     <section class="update" id={updateAnchor(u.to)} aria-labelledby={`${updateAnchor(u.to)}-title`}>
       <h2 id={`${updateAnchor(u.to)}-title`}>Version {u.to}</h2>
-      <p class="meta">Changes since {u.from} · {date(u.date)}</p>
+      <p class="meta">Changes since {u.from} · {date(u.date)}{notesFor(u.to) && <> · <a href={href(`news/${notesFor(u.to)!.id}`)}>Patch notes</a></>}</p>
       {count === 0 ? (
         <p class="hint">No changes to Invokers, skills, costs, gear sets, trophies or bosses in this update.</p>
       ) : (
@@ -220,6 +241,11 @@ type Change = ValueChange;
       )}
     </section>
   ))}
+  <SeeAlso links={[
+    { path: 'news', label: 'News' },
+    { path: 'event-calendar', label: 'Event calendar' },
+    { path: 'heroes', label: 'Invokers' },
+  ]} />
 </Base>
 
 <style>
@@ -238,6 +264,9 @@ type Change = ValueChange;
     background: var(--surface);
     border: 1px solid var(--line);
   }
+  .patch-notes { margin-top: 24px; }
+  .patch-notes ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 6px 24px; }
+  .patch-notes li { padding: 6px 0; border-bottom: 1px solid var(--line); }
   .empty { margin-top: 32px; }
   .empty p { color: var(--soft); margin: 0; }
   .card.small { padding: 12px 16px; border-radius: var(--radius); min-width: 0; }

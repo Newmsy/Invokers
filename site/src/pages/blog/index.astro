@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import SeeAlso from '../../components/SeeAlso.astro';
 import Base from '../../layouts/Base.astro';
 import ArtStrip from '../../components/ArtStrip.astro';
 import { href } from '../../lib/data';
@@ -22,6 +23,11 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
       </li>
     ))}
   </ul>
+  <SeeAlso links={[
+    { path: 'guides', label: 'All guides by topic' },
+    { path: 'news', label: 'News' },
+    { path: 'tiers', label: 'Tier lists' },
+  ]} />
 </Base>
 
 <style>

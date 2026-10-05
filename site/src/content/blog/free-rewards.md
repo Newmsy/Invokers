@@ -33,8 +33,8 @@ What the tokens would cost: 20 Multi-Battle Tokens are worth 50 Gems (100 Gems b
 ## One-off rewards
 
 - **Campaign stars:** up to 5 per stage, 50 per chapter, on Normal, Hard and Insane. Milestones give Stars, Orbs, Codexes and Echoes.
-- **Progress Quests:** about 500 quests over 40+ pages, with a bonus chest per page.
-- **Achievements:** first clear of every boss stage, then 10 and 20 clears, for Codexes and Prisms.
+- **[Progress Quests](/rewards/progress-quests):** 634 quests over 41 pages, with a completion reward per page and 5,810 Gems in all.
+- **[Achievements](/rewards/achievements):** first clear of every boss stage, then 10 and 20 clears, for Codexes and Prisms.
 
 ## Login Invokers
 
