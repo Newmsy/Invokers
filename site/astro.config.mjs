@@ -26,7 +26,7 @@ export default defineConfig({
   site: process.env.SITE || 'https://invokerscompanion.app',
   base,
   trailingSlash: 'ignore',
-  integrations: [dropSourceArt, sitemap({ filter: (page) => !/\/(share|offline)\//.test(page) })],
+  integrations: [dropSourceArt, sitemap({ filter: (page) => !/\/(share|offline|dps-simulator)\//.test(page) })],
   // Old blog URLs keep working. Astro doesn't add the base to a redirect's target, so it is added here.
   redirects: { '/blog/levels-not-stars': `${base.replace(/\/$/, '')}/blog/levelling-vs-awakening` },
   // ![Name](hero:) and friends in blog posts become icon chips (src/lib/markdown-art.ts); links to /pages get
