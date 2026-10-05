@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import ArtStrip from '../../components/ArtStrip.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import SectionArt from '../../components/SectionArt.astro';
+import ChartHover from '../../components/ChartHover.astro';
 import { pack, href } from '../../lib/data';
 import { bannerArt } from '../../lib/art';
 
@@ -44,6 +45,7 @@ const older = post.data.gameVersion !== pack.gameVersion;
     <div class="body">
       <Content />
     </div>
+    <ChartHover />
     <SeeAlso links={related} />
   </article>
   <aside class="rail" aria-label="In this post">

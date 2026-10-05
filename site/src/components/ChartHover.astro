@@ -1,0 +1,79 @@
+---
+// Styles and the hover readout for stat curve charts in posts (lib/statCharts.ts). Pointing at a chart shows a
+// line at that rating and each stat's value there.
+---
+<script>
+  type Series = { name: string; color: string; unit: string; plus: boolean; v: number[] };
+  const fmt = (s: Series, v: number) => {
+    if (v === 0) return `0${s.unit}`;
+    const dp = s.unit === '%' && !s.plus && Number.isInteger(v) ? 0 : 1;
+    return `${s.plus ? '+' : ''}${v.toLocaleString('en-GB', { minimumFractionDigits: dp, maximumFractionDigits: dp })}${s.unit}`;
+  };
+  for (const chart of document.querySelectorAll<HTMLElement>('.stat-chart')) {
+    const svg = chart.querySelector('svg');
+    const cross = chart.querySelector<SVGLineElement>('line.cross');
+    const tip = chart.querySelector<HTMLElement>('.chart-tip');
+    if (!svg || !cross || !tip) continue;
+    const series: Series[] = JSON.parse(chart.dataset.series ?? '[]');
+    const max = Number(chart.dataset.max);
+    const [padL, padR, width] = (chart.dataset.pad ?? '').split(',').map(Number);
+    const hide = () => { cross.setAttribute('visibility', 'hidden'); tip.hidden = true; };
+    svg.addEventListener('pointermove', (e) => {
+      const ctm = svg.getScreenCTM();
+      if (!ctm) return;
+      const pt = new DOMPoint(e.clientX, e.clientY).matrixTransform(ctm.inverse());
+      const share = (pt.x - padL) / (width - padL - padR);
+      if (share < -0.02 || share > 1.02) return hide();
+      const rating = Math.round((Math.min(1, Math.max(0, share)) * max) / 5) * 5;
+      const x = padL + (rating / max) * (width - padL - padR);
+      cross.setAttribute('x1', String(x));
+      cross.setAttribute('x2', String(x));
+      cross.setAttribute('visibility', 'visible');
+      tip.replaceChildren();
+      const head = document.createElement('b');
+      head.textContent = `Rating ${rating}`;
+      tip.append(head);
+      for (const s of series) {
+        const row = document.createElement('span');
+        if (s.color) {
+          const sw = document.createElement('i');
+          sw.style.background = s.color;
+          row.append(sw);
+        }
+        row.append(`${series.length > 1 ? `${s.name} ` : ''}${fmt(s, s.v[rating / 5])}`);
+        tip.append(row);
+      }
+      tip.hidden = false;
+      const box = chart.getBoundingClientRect();
+      const left = e.clientX - box.left;
+      tip.style.left = `${Math.min(left + 12, box.width - tip.offsetWidth - 4)}px`;
+      if (left + 12 + tip.offsetWidth > box.width) tip.style.left = `${Math.max(4, left - tip.offsetWidth - 12)}px`;
+    });
+    svg.addEventListener('pointerleave', hide);
+  }
+</script>
+
+<style is:global>
+  .stat-chart { position: relative; display: block; margin: 16px 0 24px; padding: 12px 12px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  .stat-chart svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
+  .stat-chart .grid { stroke: var(--line); stroke-width: 1; }
+  .stat-chart .tick { fill: var(--muted); font-size: 12px; font-family: var(--display); }
+  .stat-chart .line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .stat-chart .dot { stroke: var(--surface); stroke-width: 2; }
+  .stat-chart .mark { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+  .stat-chart .mark-label { fill: var(--soft); font-size: 13px; font-family: var(--display); font-weight: 600; }
+  .stat-chart .value { fill: var(--text); font-size: 13px; font-family: var(--display); font-weight: 600; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+  .stat-chart .cross { stroke: var(--soft); stroke-width: 1; }
+  .stat-chart .chart-caption { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .stat-chart .chart-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--soft); }
+  .stat-chart i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 2px; vertical-align: baseline; }
+  .stat-chart .chart-tip { position: absolute; top: 12px; z-index: 2; display: grid; gap: 2px; padding: 6px 10px; background: var(--surface-3); border: 1px solid var(--frame); border-radius: var(--radius); color: var(--text); font-size: 13px; white-space: nowrap; pointer-events: none; }
+  .stat-chart .chart-tip[hidden] { display: none; }
+  @media (max-width: 720px) {
+    .stat-chart { padding: 8px 6px 8px; }
+    .stat-chart .tick { font-size: 17px; }
+    .stat-chart .value { font-size: 19px; }
+    .stat-chart .mark-label { display: none; }
+  }
+  @media (min-width: 721px) { .stat-chart .mark-note { display: none; } }
+</style>
