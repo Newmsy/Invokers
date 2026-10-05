@@ -192,6 +192,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
 
   <script type="application/json" id="event-data" set:html={JSON.stringify(calc).replace(/</g, '\\u003c')} />
   <SeeAlso links={[
+    { path: 'event-calendar', label: 'Event calendar' },
+    { path: 'news', label: 'News' },
+    { path: 'farming', label: 'Where to farm' },
     { path: 'bosses', label: 'Boss guides' },
     { path: 'tiers/invokers/arena', label: 'Arena tier list' },
     { path: 'trophies', label: 'Trophy Room' },

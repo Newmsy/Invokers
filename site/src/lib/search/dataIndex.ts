@@ -8,6 +8,7 @@ import { heroArt, itemIcon, skillIcon, titanArt } from '../art';
 import { effects, heroesWith } from '../effects';
 import { className, skillTypeName } from '../format';
 import { bossesOf, floors, spires, spireSlug } from '../spires';
+import { nav } from '../nav';
 import type { SearchDoc } from './match';
 
 /** Game rich text to plain text. Star icons become ★. */
@@ -199,5 +200,8 @@ export function pageDocs(): SearchDoc[] {
     ['about', 'About', 'About this site'],
     ['privacy', 'Privacy', 'What this site stores and how to delete it'],
   ];
+  // Every other menu page too, from its menu line, so a new section is searchable as soon as it is in the menus.
+  const listed = new Set(pages.map(([path]) => path));
+  for (const n of nav) if (!listed.has(n.path)) pages.push([n.path, n.label, n.blurb ?? n.label]);
   return pages.map(([path, title, text]) => ({ kind: 'Page', title, text, url: href(path) }));
 }

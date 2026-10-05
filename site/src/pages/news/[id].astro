@@ -11,17 +11,20 @@ import { chaseBanner } from '../../lib/art';
 
 export async function getStaticPaths() {
   const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return entries.map((entry) => {
+  return entries.map((entry, i) => {
+    // Neighbours in date order, so every entry leads on to the next one.
+    const newer = entries[i - 1] && { path: `news/${entries[i - 1].id}`, title: entries[i - 1].data.title };
+    const older = entries[i + 1] && { path: `news/${entries[i + 1].id}`, title: entries[i + 1].data.title };
     // Other entries of the same kind, newest first.
     const more = entries
       .filter((e) => e.id !== entry.id && e.data.kind === entry.data.kind)
       .slice(0, 3)
       .map((e) => ({ path: `news/${e.id}`, label: e.data.title }));
-    return { params: { id: entry.id }, props: { entry, more } };
+    return { params: { id: entry.id }, props: { entry, more, newer, older } };
   });
 }
 
-const { entry, more } = Astro.props;
+const { entry, more, newer, older } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const heroLinks = d.heroes.map((n) => {
@@ -47,7 +50,13 @@ const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.
       <Content />
     </div>
     {d.heroes.map((n) => <HeroNumbers name={n} />)}
-    <SeeAlso links={[...heroLinks, ...more, { path: 'news', label: 'All news' }]} />
+    {(newer || older) && (
+      <nav class="pager" aria-label="More news">
+        {newer ? <a class="newer" href={href(newer.path)}><small>Newer</small>{newer.title}</a> : <span />}
+        {older && <a class="older-link" href={href(older.path)}><small>Older</small>{older.title}</a>}
+      </nav>
+    )}
+    <SeeAlso links={[...heroLinks, ...more, ...(d.kind === 'patch' ? [{ path: 'updates', label: 'All patch notes' }] : []), { path: 'news', label: 'All news' }]} />
   </article>
   <NewsSidebar current={entry.id} />
   </div>
@@ -67,14 +76,19 @@ const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.
   .body :global(h2) { font-size: 23px; margin: 32px 0 12px; }
   .body :global(p), .body :global(li) { color: var(--soft); }
   .body :global(strong) { color: var(--text); }
-  .body :global(table) { display: block; overflow-x: auto; border-collapse: collapse; margin: 16px 0 24px; font-size: 15px; }
-  .body :global(th), .body :global(td) { padding: 8px 14px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  .body :global(table) { border-collapse: collapse; margin: 16px 0 24px; font-size: 15px; }
+  .body :global(th), .body :global(td) { padding: 8px 14px; border-bottom: 1px solid var(--line); text-align: right; }
   .body :global(th:first-child), .body :global(td:first-child) { text-align: left; }
   .body :global(th) { color: var(--text); font-family: var(--display); font-weight: 600; background: var(--surface); }
   .body :global(a.art-chip span) { color: var(--text); }
   .body :global(a.art-chip:hover span) { color: var(--accent); }
   .body :global(blockquote) { margin: 20px 0; padding: 12px 18px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
   .body :global(blockquote p) { margin: 0; }
+  .pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+  .pager a { display: grid; gap: 2px; padding: 12px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--text); font-family: var(--display); font-weight: 600; line-height: 1.3; }
+  .pager a:hover { border-color: var(--accent); }
+  .pager small { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+  .pager .older-link { grid-column: 2; text-align: right; }
   @media (max-width: 1000px) {
     .columns { grid-template-columns: 1fr; }
   }

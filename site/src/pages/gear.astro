@@ -1,5 +1,6 @@
 ---
 import BossLink from '../components/BossLink.astro';
+import SeeAlso from '../components/SeeAlso.astro';
 import Base from '../layouts/Base.astro';
 import { heroes, href } from '../lib/data';
 import { richText } from '../lib/format';
@@ -111,6 +112,13 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
       </ul>
     </section>
   )}
+  <SeeAlso links={[
+    { path: 'gear-upgrades', label: 'Gear upgrades and Memorium' },
+    { path: 'simulator', label: 'Simulator' },
+    { path: 'blog/every-gear-set', label: 'Every gear set, ranked' },
+    { path: 'bosses', label: 'Boss guides' },
+    { path: 'farming', label: 'Where to farm' },
+  ]} />
 </Base>
 
 <style>
