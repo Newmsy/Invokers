@@ -11,7 +11,7 @@ const refs = { heroes: heroRefsWithArt(), stats: gearStatLabels, sets: setNames,
   <h1 id="share-heading">Shared link</h1>
   <p id="share-meta" class="meta">{accountsEnabled ? 'Loading…' : "Share links aren't switched on for this site yet."}</p>
   <div id="share-body"></div>
-  <p class="cta">Want your own? <a href={href('my-box')}>Import your box</a>, sign in, and press Share.</p>
+  <p class="cta box-only">Want your own? <a href={href('my-box')}>Import your box</a>, sign in, and press Share.</p>
   {accountsEnabled && <script id="share-refs" type="application/json" set:html={JSON.stringify(refs)} />}
 </Base>
 

@@ -48,6 +48,6 @@ A Legendary's active skill:
 - All five skills on one Legendary: **1,375,000 gold, 174 Rare, 128 Epic and 90 Legendary Codex**.
 - Epics: 137,500 gold per skill, at most 2 Legendary Codex per level. Rares never need Legendary Codex.
 
-Gold per 1% of damage climbs from about 830 at level 2 to over 4,000 at levels 10 and 11. To see what your own box still needs, use the [Planner](/planner).
+Gold per 1% of damage climbs from about 830 at level 2 to over 4,000 at levels 10 and 11. <span class="box-only">To see what your own box still needs, use the [Planner](/planner).</span>
 
 *Numbers for game version 0.61.1516.*

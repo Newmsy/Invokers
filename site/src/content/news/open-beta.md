@@ -11,4 +11,4 @@ art: ["item:Gems"]
 
 The day before, a fix made 10x summons score full points in the Invoker Summon Surge, and everyone at level 10 or higher got a Rare, Epic and Legendary Codex and 20 Crowns.
 
-New here? Start with *Starter Invokers* on the [Blog](/blog), import your collection into [My box](/my-box), and see what to farm on [Where to farm](/farming).
+New here? Start with *Starter Invokers* on the [Blog](/blog), <span class="box-only">import your collection into [My box](/my-box), </span>and see what to farm on [Where to farm](/farming).

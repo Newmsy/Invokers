@@ -15,7 +15,11 @@ const missingRarities = rarityOrder.filter((r) => Object.values(data.heroes).som
     want in your plan to see the total.
   </p>
 
-  <section id="p-empty" class="card empty">
+  <section class="card empty mobile-only">
+    <p>The Planner works from your imported box, and importing only works on a computer. Open this page there.</p>
+  </section>
+
+  <section id="p-empty" class="card empty box-only">
     <p>Import your box first, then come back here to see what's left to upgrade.</p>
     <a class="button primary" href={href('my-box')}>Go to My box</a>
   </section>

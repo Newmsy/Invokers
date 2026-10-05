@@ -14,12 +14,12 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   <h1>DPS simulator</h1>
   <p class="lead">
     Estimated damage per second for one Invoker against {BOSS}, and how much one normal 5★ substat roll of each stat
-    would add. Pick an Invoker from your box to use its own gear, or any Invoker at 6★ level 60, fully awakened, with
-    no gear.
+    would add. <span class="box-only">Pick an Invoker from your box to use its own gear, or any Invoker</span><span class="mobile-only">It uses any Invoker</span> at 6★ level 60,
+    fully awakened, with no gear.
   </p>
 
   <div id="dps" data-base={href('/')} data-boss={BOSS} data-box={href('my-box')} data-labels={JSON.stringify(labels)} data-sets={JSON.stringify(setNames)} data-set-icons={JSON.stringify(setIcons)} data-gear-icons={JSON.stringify(gearIcons())} data-rarity={JSON.stringify(rarityColor)}>
-    <div id="d-nobox" class="import-cta" hidden>
+    <div id="d-nobox" class="import-cta box-only" hidden>
       <div>
         <strong>See your own numbers</strong>
         <p>Import your box to simulate your Invokers with their real gear, skill levels and Awakening, and to get the best gear swaps from what you own.</p>
