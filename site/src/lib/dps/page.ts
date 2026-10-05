@@ -5,7 +5,7 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, teamGains, type DpsData, type ElementEdge, type BuffWindow, type FightInput, type Mode, type SkillSlot, teamWindows } from './model';
+import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type BuffWindow, type FightInput, type Mode, type SkillSlot, teamWindows } from './model';
 import { TEAM_SIZE } from './parse';
 import { buffedToughness, toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type OptimiseOptions, type Piece } from './optimise';
@@ -86,7 +86,6 @@ export async function start(): Promise<void> {
   const RARITY_COLOR = JSON.parse(root.dataset.rarity ?? '{}') as Record<string, string>;
   const modeSel = $<HTMLSelectElement>('d-mode');
   const stageSel = $<HTMLSelectElement>('d-stage');
-  const teamBox = $<HTMLInputElement>('d-team-on');
 
   let data: DpsData;
   try {
@@ -151,7 +150,7 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value)) ?? data.stages[0];
     for (const t of tiles) {
       t.dps = t.build && stage
-        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked, ext: mateWindows.filter((_, i) => mates[i]?.key !== t.key).flat() }).dps
+        ? simulate(data, { hero: t.build.hero, totals: t.build.totals, skillLevels: t.build.skillLevels, mode: modeSel.value as Mode, stage, ext: mateWindows.filter((_, i) => mates[i]?.key !== t.key).flat() }).dps
         : 0;
       t.ehp = t.build && stage ? toughness(data, t.build.totals, stage).ehp : 0;
     }
@@ -279,18 +278,17 @@ export async function start(): Promise<void> {
       return;
     }
     const ext = mateWindows.flat();
-    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, team: teamBox.checked, ext };
+    const input = { hero: build.hero, totals: build.totals, skillLevels: build.skillLevels, mode: modeSel.value as Mode, stage, ext };
     const { base, values } = statValues(data, input);
     $('d-out').hidden = false;
-    $('d-dps-label').textContent = input.team ? 'Estimated DPS, with team buffs' : 'Estimated DPS';
+    $('d-dps-label').textContent = 'Estimated DPS';
     $('d-dps').textContent = fmt(base.dps);
     $('d-total').textContent = `${fmt(base.total)} damage in a ${base.seconds}-second fight against stage ${stage.stage} (level ${stage.level}, ${stage.element}, ${fmt(stage.def)} DEF).`;
     $('d-total').append(' ', EDGE_TEXT[base.edge](build.hero.element, stage.element));
-    if (input.team) $('d-total').append(` Its own ${fmt(base.dps - base.teamDps)} DPS plus ${fmt(base.teamDps)} it adds to ${TEAM_ALLIES} allies.`);
 
     if (mates.length) {
       const alone = simulate(data, { ...input, ext: [] }).dps;
-      $('d-dps-label').textContent = input.team ? 'Estimated DPS, with teammates and team buffs' : 'Estimated DPS, with teammates';
+      $('d-dps-label').textContent = 'Estimated DPS, with teammates';
       $('d-total').append(` Teammates' buffs add ${fmt(base.dps - alone)} DPS to it.`);
     }
 
@@ -367,23 +365,6 @@ export async function start(): Promise<void> {
           e.kind === 'cooldown' ? 'Cuts its own cooldowns' : 'Ultimate Mana',
           [e.kind === 'cooldown' ? `${e.total.toFixed(e.total < 10 ? 1 : 0)}s cut` : `+${fmt(e.total)}`, 'num'],
           [`+${pct(e.gain, 1)}`, 'num'],
-        ),
-      ),
-    );
-
-    // What it gives the rest of the team (only with the team toggle on).
-    const team = input.team ? teamGains(data, input) : [];
-    $('d-team-box').hidden = !input.team;
-    $('d-team-none').hidden = team.length > 0;
-    $('d-team').replaceChildren(
-      ...team.map((g) =>
-        row(
-          SOURCE[g.slot],
-          `${pct(g.pct, 0)} ${g.name}`,
-          [g.allies.toFixed(g.allies % 1 ? 1 : 0), 'num'],
-          [pct(g.uptime, 0), 'num'],
-          [`+${pct(g.allyGain, 1)}`, 'num'],
-          [`+${fmt(g.teamDps)}`, 'num'],
         ),
       ),
     );
@@ -518,9 +499,8 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
     $(`${p}-box`).hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
-    const team = goal === 'dps' && teamBox.checked;
     const ext = goal === 'dps' ? mateWindows.flat() : [];
-    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, team, goal === 'dps' ? mates.map((m) => m.key).join(',') : ''].join('|');
+    const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, goal === 'dps' ? mates.map((m) => m.key).join(',') : ''].join('|');
     wantKey[goal] = memoKey;
     let memo = optimiseMemo.get(box);
     if (!memo) optimiseMemo.set(box, (memo = new Map()));
@@ -529,7 +509,7 @@ export async function start(): Promise<void> {
       $(`${p}-result`).hidden = true;
       const forBox = box;
       const store = memo;
-      search(owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, team, ext }).then((r) => {
+      search(owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, ext }).then((r) => {
         store.set(memoKey, r);
         // Draw it only if the page still wants this answer.
         if (box === forBox && wantKey[goal] === memoKey && tab === goal) renderOptimiser(goal);
@@ -597,7 +577,6 @@ export async function start(): Promise<void> {
     }
     // Mode (PvE or Arena) only changes damage.
     $('d-mode-label').hidden = tab !== 'dps';
-    $('d-team-label').hidden = tab !== 'dps';
     $('d-team-row').hidden = tab !== 'dps';
   }
 
@@ -625,7 +604,6 @@ export async function start(): Promise<void> {
   fillHeroes();
   update();
   for (const s of [modeSel, stageSel]) s.addEventListener('change', () => (refreshMates(), update()));
-  teamBox.addEventListener('change', () => (scoreTiles(), update()));
   $('d-add-mate').addEventListener('click', () => {
     pickFor = 'mate';
     pickerOpen = true;
