@@ -20,7 +20,7 @@ Find it under **Tools** in the menu, or press **Simulate DPS** on any Invoker's 
 2. **Pick a mode.** **PvE** starts with every skill ready over a one-minute fight. **Arena** starts skills at half cooldown, as real Arena battles do, over a 25-second fight (about how long a top-level Arena fight lasts).
 3. **Pick an Ulgorim stage:** 1, 4, 7, 10, 13, 16 or 20. Higher stages have more DEF and RES, so DPS drops and fewer debuffs land.
 
-No box yet? [Import it on My box](/my-box). It stays in your browser.
+<span class="box-only">No box yet? [Import it on My box](/my-box). It stays in your browser.</span>
 
 ## What it shows
 

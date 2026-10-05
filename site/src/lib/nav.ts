@@ -17,6 +17,10 @@ export interface NavItem {
   blurb?: string;
   /** Section picture as "kind:Name" (see lib/markdown-art), shown on the home cards, More and page headers. */
   art?: string;
+  /** Phones and tablets can't import a box, so links to this page are hidden there (see BOX_GATE). */
+  boxOnly?: boolean;
+  /** Bottom-bar tab shown only on phones and tablets, in the slot box-only tabs leave. */
+  mobileOnly?: boolean;
 }
 
 import { heroes } from './data';
@@ -60,12 +64,12 @@ export const nav: NavItem[] = [
   { path: 'summons', banner: 'summon-invoker', label: 'Summons', icon: 'star', tab: true, group: 'tools', art: 'item:Destiny Star', blurb: 'Summon rates and an odds calculator' },
   { path: 'packs', banner: 'gems', label: 'Pack value', icon: 'star', group: 'tools', art: 'item:Gems', blurb: 'Which paid packs give the most per £' },
   { path: 'trophies', banner: 'gold', label: 'Trophies', icon: 'trophy', group: 'tools', art: 'item:Gold Trophy', blurb: 'Trophy Room costs, bonuses and an upgrade planner' },
-  { path: 'planner', banner: 'collect-dungeon-relics-1', label: 'Planner', icon: 'list', group: 'tools', art: 'item:Legendary Codex', blurb: 'Plan skill and gear upgrades for your own box' },
+  { path: 'planner', boxOnly: true, banner: 'collect-dungeon-relics-1', label: 'Planner', icon: 'list', group: 'tools', art: 'item:Legendary Codex', blurb: 'Plan skill and gear upgrades for your own box' },
   { path: 'dps-simulator', banner: 'collect-dungeon-relics-2', label: 'DPS simulator', icon: 'grid', group: 'tools', art: 'item:Master Melee Attacker Crest', blurb: 'Estimated damage per second and what each substat is worth' },
   { path: 'team', banner: 'clan-boss-1', label: 'Team builder', icon: 'grid', group: 'tools', art: 'titan:Vulkoz', blurb: 'Build a team and check its stats and mix' },
   { path: 'heroes/compare', banner: 'novice-tournament-2', label: 'Compare Invokers', icon: 'grid', group: 'tools', art: 'hero:Ironblade Darus', blurb: 'Put up to 4 Invokers side by side' },
   // Site
-  { path: 'my-box', banner: 'stars', label: 'My box', icon: 'box', tab: true, group: 'site', art: 'item:Titanheart', blurb: 'Import your Invokers and gear, saved in your browser' },
+  { path: 'my-box', boxOnly: true, banner: 'stars', label: 'My box', icon: 'box', tab: true, group: 'site', art: 'item:Titanheart', blurb: 'Import your Invokers and gear, saved in your browser' },
   { path: 'about', label: 'About', icon: 'info', group: 'site' },
   { path: 'privacy', label: 'Privacy', icon: 'info', group: 'site' },
 ];
@@ -78,4 +82,15 @@ export const menus: { group: NavGroup; label: string; path: string }[] = [
 export const inGroup = (g: NavGroup) => nav.filter((n) => n.group === g);
 export const headerNav = nav.filter((n) => n.header);
 export const myBox = nav.find((n) => n.path === 'my-box')!;
-export const tabs: NavItem[] = [...nav.filter((n) => n.tab), { path: 'more', label: 'More', icon: 'menu' }];
+// Phones get Tier lists in the bottom bar where My box sits on desktop-sized windows.
+const tiersTab: NavItem = { ...nav.find((n) => n.path === 'tiers')!, mobileOnly: true };
+export const tabs: NavItem[] = [
+  ...nav.filter((n) => n.tab).flatMap((n) => (n.boxOnly ? [n, tiersTab] : [n])),
+  { path: 'more', label: 'More', icon: 'menu' },
+];
+/** Tabs visible at once: a box-only tab and its mobile stand-in share one slot. */
+export const tabSlots = tabs.filter((n) => !n.mobileOnly).length;
+
+// Box import needs the game files from a computer, so phones and tablets never have a box. This inline head
+// script marks them with html.no-box before first paint; CSS in Base then hides every box-only link and prompt.
+export const BOX_GATE = `(function(){var n=navigator,u=n.userAgent||'';if(/Android|iPhone|iPad|iPod/i.test(u)||(/Macintosh/.test(u)&&n.maxTouchPoints>1))document.documentElement.classList.add('no-box')})()`;

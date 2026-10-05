@@ -1,7 +1,7 @@
 ---
 import { pack, href } from '../lib/data';
 import NavIcon from '../components/NavIcon.astro';
-import { headerNav, inGroup, menus, myBox, nav, tabs } from '../lib/nav';
+import { BOX_GATE, headerNav, inGroup, menus, myBox, nav, tabs, tabSlots } from '../lib/nav';
 import Account from '../components/Account.astro';
 import SectionArt from '../components/SectionArt.astro';
 import Tooltips from '../components/Tooltips.astro';
@@ -41,6 +41,7 @@ const crumbs = pagePath && owner
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script is:inline set:html={BOX_GATE} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · Invokers Companion</title>
     <meta name="description" content={description} />
@@ -133,7 +134,7 @@ const crumbs = pagePath && owner
         {[...menus, { group: 'site' as const, label: 'Site', path: 'about' }].map((m) => (
           <div>
             <h2>{m.label}</h2>
-            <ul>{inGroup(m.group).map((n) => <li><a href={href(n.path)}>{n.label}</a></li>)}</ul>
+            <ul>{inGroup(m.group).map((n) => <li class:list={{ 'box-only': n.boxOnly }}><a href={href(n.path)}>{n.label}</a></li>)}</ul>
           </div>
         ))}
       </div>
@@ -145,11 +146,11 @@ const crumbs = pagePath && owner
     </footer>
     <Tooltips />
     <FitTables />
-    <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabs.length}`}>
+    <nav class="tab-bar" aria-label="Main" style={`--tabs: ${tabSlots}`}>
       {tabs.map((n) => {
         const here = n.path === 'more' ? !tabs.some((t) => t.path === current) && nav.some((t) => t.path === current) : current === n.path;
         return (
-          <a href={href(n.path)} aria-current={here ? 'page' : undefined}>
+          <a href={href(n.path)} class:list={{ 'mobile-only': n.mobileOnly }} aria-current={here ? 'page' : undefined}>
             <NavIcon icon={n.icon} />
             {n.label}
           </a>
@@ -407,6 +408,12 @@ const crumbs = pagePath && owner
   .footer-links a:hover { color: var(--accent); }
   footer p { margin: 0; }
   .tab-bar { display: none; }
+
+  /* Phones and tablets can't import a box (html.no-box, set in <head>): hide My box, the Planner and every prompt to import. */
+  html:not(.no-box) .mobile-only,
+  html.no-box .box-only,
+  html.no-box a[href$='/my-box'],
+  html.no-box a[href$='/planner'] { display: none !important; }
 
   .brand { white-space: nowrap; }
   .box-button { white-space: nowrap; flex: none; }

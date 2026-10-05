@@ -1,17 +1,19 @@
 ---
 // A short row of links to related pages, shown at the foot of a page.
 import { href } from '../lib/data';
+import { nav } from '../lib/nav';
 
 interface Props {
   links: { path: string; label: string }[];
 }
 const { links } = Astro.props;
+const boxOnly = new Set(nav.filter((n) => n.boxOnly).map((n) => n.path));
 ---
 {links.length > 0 && (
   <nav class="see-also" aria-label="See also">
     <span class="label">See also</span>
     <ul>
-      {links.map((l) => <li><a href={href(l.path)}>{l.label}</a></li>)}
+      {links.map((l) => <li class:list={{ 'box-only': boxOnly.has(l.path) }}><a href={href(l.path)}>{l.label}</a></li>)}
     </ul>
   </nav>
 )}

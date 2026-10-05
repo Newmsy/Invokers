@@ -28,7 +28,7 @@ const groups = [
   <h2>{g.label}</h2>
   <ul class="list">
     {g.items.map((n) => (
-      <li>
+      <li class:list={{ 'box-only': n.boxOnly }}>
         <a href={href(n.path)}>
           {n.art ? <SectionArt art={n.art} size={36} /> : <NavIcon icon={n.icon} />}
           <span>{n.label}</span>

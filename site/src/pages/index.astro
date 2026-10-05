@@ -156,7 +156,7 @@ const counts = [
         <h2>Tools</h2>
         <ul class="tools">
           {inGroup('tools').map((n) => (
-            <li><a href={href(n.path)}><SectionArt art={n.art} size={28} />{n.label}</a></li>
+            <li class:list={{ 'box-only': n.boxOnly }}><a href={href(n.path)}><SectionArt art={n.art} size={28} />{n.label}</a></li>
           ))}
         </ul>
       </section>
@@ -173,7 +173,7 @@ const counts = [
       <h2 class="bar"><span>{m.label}</span></h2>
       <ul class="grid">
         {inGroup(m.group).map((n) => (
-          <li>
+          <li class:list={{ 'box-only': n.boxOnly }}>
             <a href={href(n.path)}>
               <SectionArt art={n.art} size={52} class="card-art" />
               <span class="name">{n.label}</span>

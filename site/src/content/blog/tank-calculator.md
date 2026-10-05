@@ -20,7 +20,7 @@ The [DPS simulator](/dps-simulator?tab=toughness) now has a **Toughness** tab fo
 2. Pick an Ulgorim stage. Higher stages hit harder, so you survive fewer hits.
 3. Read **Effective HP** and the **HP or DEF** table. With a box imported, **Toughest gear from your box** suggests swaps.
 
-No box yet? [Import it on My box](/my-box) to see your own numbers.
+<span class="box-only">No box yet? [Import it on My box](/my-box) to see your own numbers.</span>
 
 ## What it shows
 

@@ -6,7 +6,7 @@ import { href } from '../lib/data';
 <Base title="Offline">
   <h1>You're offline</h1>
   <p class="lead">This page hasn't been saved on this device yet. Pages you've opened before still work without signal.</p>
-  <p><a href={href('/')}>Home</a> · <a href={href('heroes')}>Invokers</a> · <a href={href('my-box')}>My box</a></p>
+  <p><a href={href('/')}>Home</a> · <a href={href('heroes')}>Invokers</a><span class="box-only"> · <a href={href('my-box')}>My box</a></span></p>
 </Base>
 
 <style>
