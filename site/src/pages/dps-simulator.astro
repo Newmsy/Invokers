@@ -147,6 +147,8 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
 
       <section id="o-box" hidden>
         <h2>Best gear from your box</h2>
+        <p class="loading" id="o-loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Checking the gear in your box…</p>
+        <div id="o-result">
         <p class="hint" id="o-summary"></p>
         <ul class="hint sets" id="o-sets"></ul>
         <p class="hint">Each swap's DPS gain is what that piece adds on top of the other suggested pieces, so set bonuses count.</p>
@@ -155,6 +157,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
           <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">DPS gain</th></tr></thead>
           <tbody id="o-rows"></tbody>
         </table>
+      </div>
       </section>
 
       <p class="hint note">
@@ -189,6 +192,8 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
 
       <section id="t-o-box" hidden>
         <h2>Toughest gear from your box</h2>
+        <p class="loading" id="t-o-loading" role="status" hidden><span class="spinner" aria-hidden="true"></span>Checking the gear in your box…</p>
+        <div id="t-o-result">
         <p class="hint" id="t-o-summary"></p>
         <ul class="hint sets" id="t-o-sets"></ul>
         <p class="hint">Each swap's gain is the effective HP that piece adds on top of the other suggested pieces, so set bonuses count.</p>
@@ -197,6 +202,7 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
           <thead><tr><th>Slot</th><th>Now</th><th>Best</th><th class="num">Effective HP gain</th></tr></thead>
           <tbody id="t-o-rows"></tbody>
         </table>
+      </div>
       </section>
       <p class="hint note">
         Toughness counts HP, DEF and the DEF Up and shields it casts on itself (shields as the average standing in a fight, assuming none is broken early), but not healing, other Invokers' buffs or Tolerances, and the hits line assumes each hit deals {BOSS}'s ATK.
@@ -285,6 +291,11 @@ const labels = Object.fromEntries(Object.entries(gearStatLabels).map(([id, l]) =
   table { width: 100%; border-collapse: collapse; }
   th, :global(td) { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
   .num, :global(td.num) { text-align: right; font-variant-numeric: tabular-nums; }
+  .loading { display: flex; gap: 10px; align-items: center; color: var(--soft); font-size: 14px; margin: 12px 0; }
+  .loading[hidden] { display: none; }
+  .spinner { width: 16px; height: 16px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; flex: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } }
   .check { display: flex; gap: 8px; align-items: center; margin: 8px 0 12px; font-size: 14px; color: var(--soft); }
   :global(td.piece) { font-size: 14px; }
   :global(td.piece small) { display: block; color: var(--muted); }
