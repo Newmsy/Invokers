@@ -52,7 +52,7 @@ export interface DpsHero {
   sign?: string;
   /** rank → level → [hp, atk, def] at the levels the data lists (1, 10, 20 …). */
   base: Record<string, Record<string, [number, number, number]>>;
-  /** Stats that don't grow with level: critRate, critDmg, acc, comboSpeed, skillSpeed, skillRecovery, manaGen, instinct. */
+  /** Stats that don't grow with level: critRate, critDmg, acc, res, comboSpeed, skillSpeed, skillRecovery, manaGen, instinct. */
   fixed: Record<string, number>;
   skills: Partial<Record<'ActiveSkill1' | 'ActiveSkill2' | 'ActiveSkill3' | 'Ultimate', DpsSkill>>;
   /** Combo hits per step, index = skill level - 1. */
@@ -113,6 +113,7 @@ export interface Totals {
   critRate: number;
   critDmg: number;
   acc: number;
+  res: number;
   comboSpeed: number;
   skillSpeed: number;
   skillRecovery: number;
@@ -151,6 +152,7 @@ export function addStat(t: Totals, stat: string, value: number): void {
     case 'CriticalRatePercent': t.critRate += value; break;
     case 'CriticalDamagePercent': t.critDmg += value; break;
     case 'AccuracyFlat': t.acc += value; break;
+    case 'ResistanceFlat': t.res += value; break;
     case 'ComboSpeedFlat': t.comboSpeed += value; break;
     case 'SkillSpeedFlat': t.skillSpeed += value; break;
     case 'SkillRecoveryFlat': t.skillRecovery += value; break;
@@ -178,6 +180,7 @@ export function totalsFor(data: DpsData, hero: DpsHero, rank: string, level: num
     critRate: f.critRate ?? 0,
     critDmg: f.critDmg ?? 0,
     acc: f.acc ?? 0,
+    res: f.res ?? 0,
     comboSpeed: f.comboSpeed ?? 0,
     skillSpeed: f.skillSpeed ?? 0,
     skillRecovery: f.skillRecovery ?? 0,

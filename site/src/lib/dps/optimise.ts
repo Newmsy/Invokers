@@ -6,7 +6,7 @@ import type { BoxAccessory, BoxGear, BoxHero } from '../box/decode';
 import type { BoxDoc } from '../box/store';
 import { trophyBonuses } from '../box/trophies';
 import { toughness } from './tank';
-import { simulate, totalsFor, type BossStage, type BuffWindow, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot } from './model';
+import { simulate, totalsFor, type BossStage, type BuffWindow, type DpsData, type DpsHero, type Equipment, type Mode, type SkillSlot, type Totals } from './model';
 
 export const GEAR_SLOTS = ['Weapon', 'Shield', 'Helmet', 'Pauldrons', 'Gauntlets', 'Chestplate', 'Belt', 'Boots'];
 /** Accessory slots and the Awakening level that opens each one. */
@@ -47,6 +47,9 @@ export interface OptimiseResult {
   changed: string[];
   /** Per changed slot: score (DPS or effective HP) gained by that swap, as best gear vs best gear with only that slot put back (fraction). */
   gainBySlot: Record<string, number>;
+  /** The Invoker's stats (with set bonuses and Trophy Room) in the current gear and in the best gear. */
+  totalsBefore: Totals;
+  totalsAfter: Totals;
 }
 
 const equipmentOf = (p: Piece): Equipment => ({
@@ -81,12 +84,13 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
   // Trophy Room bonuses count like one more piece with no set.
   const trophies: Equipment = { stats: trophyBonuses(box.trophies, hero.element) };
   const cache = new Map<string, number>();
+  const totalsOf = (l: Loadout) =>
+    totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], [trophies, ...slots.flatMap((s) => (l[s] ? [equipmentOf(l[s]!)] : []))]);
   const score = (l: Loadout): number => {
     const key = slots.map((s) => l[s]?.id ?? '-').join(',');
     let v = cache.get(key);
     if (v === undefined) {
-      const equipment = [trophies, ...slots.flatMap((s) => (l[s] ? [equipmentOf(l[s]!)] : []))];
-      const totals = totalsFor(data, hero, owned.rank, owned.level, owned.awakenNodeIds ?? [], equipment);
+      const totals = totalsOf(l);
       v = opts.goal === 'toughness'
         ? toughness(data, totals, opts.stage).ehp
         : simulate(data, { hero, totals, skillLevels, mode: opts.mode, stage: opts.stage, seconds: opts.seconds, ext: opts.ext }).dps;
@@ -175,7 +179,7 @@ export function optimise(data: DpsData, box: BoxDoc, owned: BoxHero, opts: Optim
       return [s, without > 0 ? bestScore / without - 1 : 0];
     }),
   );
-  return { before: score(current), after: bestScore, current, best, changed, gainBySlot };
+  return { before: score(current), after: bestScore, current, best, changed, gainBySlot, totalsBefore: totalsOf(current), totalsAfter: totalsOf(best) };
 }
 
 /** Gear sets a loadout completes: set id, pieces worn and the bonus tiers (3, 5 …) that are active. */

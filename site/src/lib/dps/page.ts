@@ -5,7 +5,7 @@ import { avatar } from '../avatar';
 import { loadBox, onBoxChange, type BoxDoc } from '../box/store';
 import { bareBuild, boxBuild, type Build } from './box';
 import { CRIT_RATE_CAP } from './constants';
-import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type BuffWindow, type FightInput, type Mode, type SkillSlot, teamWindows } from './model';
+import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, type DpsData, type ElementEdge, type BuffWindow, type FightInput, type Mode, type SkillSlot, type Totals, teamWindows } from './model';
 import { TEAM_SIZE } from './parse';
 import { buffedToughness, toughness, toughValues } from './tank';
 import { activeSets, openSlots, optimise, type Loadout, type OptimiseOptions, type Piece } from './optimise';
@@ -18,6 +18,21 @@ const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = 
   neutral: () => 'No element advantage.',
 };
 const TEAM_ALLIES = TEAM_SIZE - 1;
+/** Stats shown in the gear swap's before → after list: label, value, and whether it's a percentage. */
+const STAT_ROWS: [string, (t: Totals) => number, boolean][] = [
+  ['ATK', (t) => finalStat(t, 'atk'), false],
+  ['DEF', (t) => finalStat(t, 'def'), false],
+  ['HP', (t) => finalStat(t, 'hp'), false],
+  ['Crit Rate', (t) => t.critRate, true],
+  ['Crit DMG', (t) => t.critDmg, true],
+  ['ACC', (t) => t.acc, false],
+  ['RES', (t) => t.res, false],
+  ['Skill SPD', (t) => t.skillSpeed, false],
+  ['Combo SPD', (t) => t.comboSpeed, false],
+  ['Skill RECOV', (t) => t.skillRecovery, false],
+  ['Mana Gen', (t) => t.manaGen, false],
+  ['Instinct', (t) => t.instinct, false],
+];
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const fmt = (n: number) => Math.round(n).toLocaleString('en-GB');
 const pct = (n: number, digits = 1) => `${(n * 100).toFixed(digits)}%`;
@@ -557,6 +572,19 @@ export async function start(): Promise<void> {
     $(`${p}-summary`).textContent = r.changed.length
       ? `Swapping ${r.changed.length} piece${r.changed.length === 1 ? '' : 's'} takes ${what} from ${fmt(r.before)} to ${fmt(r.after)} (+${pct(gain)}).`
       : `This Invoker already wears the gear from your box with the most ${what}.`;
+    // How the Invoker's own stats change with the full swap (only the ones that move).
+    const statDiff = STAT_ROWS.flatMap(([label, get, isPct]) => {
+      const a = get(r.totalsBefore);
+      const b = get(r.totalsAfter);
+      const d = b - a;
+      if (Math.abs(d) < (isPct ? 0.0005 : 0.5)) return [];
+      const show = (n: number) => (isPct ? pct(n) : fmt(n));
+      const li = el('li');
+      li.append(el('span', label, 'sd-label'), el('span', `${show(a)} → ${show(b)}`, 'sd-vals'), el('span', `${d > 0 ? '+' : '−'}${show(Math.abs(d))}`, d > 0 ? 'sd-delta pos' : 'sd-delta neg'));
+      return [li];
+    });
+    $(`${p}-stats-box`).hidden = !r.changed.length || !statDiff.length;
+    $(`${p}-stats`).replaceChildren(...statDiff);
     const slots = openSlots(owned);
     $(`${p}-rows`).replaceChildren(
       ...slots.map((slot) => {
