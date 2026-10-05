@@ -8,7 +8,8 @@ import { CRIT_RATE_CAP } from './constants';
 import { buffGains, effectGains, finalStat, simulate, skillGains, statValues, teamGains, type DpsData, type ElementEdge, type FightInput, type Mode, type SkillSlot } from './model';
 import { TEAM_SIZE } from './parse';
 import { buffedToughness, toughness, toughValues } from './tank';
-import { activeSets, openSlots, optimise, type Loadout, type Piece } from './optimise';
+import { activeSets, openSlots, optimise, type Loadout, type OptimiseOptions, type Piece } from './optimise';
+import type { WorkerReply, WorkerRequest } from './optimise.worker';
 
 const EDGE_TEXT: Record<ElementEdge, (mine: string, enemy: string) => string> = {
   advantage: (m, e) => `${m} beats ${e}: +30% damage, and debuffs land more often.`,
@@ -401,7 +402,42 @@ export async function start(): Promise<void> {
     return td;
   }
 
-  const optimiseMemo = new WeakMap<object, Map<string, ReturnType<typeof optimise>>>();
+  // The gear search is slow on big boxes, so it runs in a worker (or, if workers fail, after the page has drawn) and
+  // each answer is kept until the box changes. Until it arrives the section shows a loader.
+  type Result = ReturnType<typeof optimise>;
+  const optimiseMemo = new WeakMap<object, Map<string, Result>>();
+  const pending = new Map<number, (r: Result) => void>();
+  let nextId = 0;
+  let worker: Worker | null = null;
+  try {
+    worker = new Worker(new URL('./optimise.worker.ts', import.meta.url), { type: 'module' });
+    worker.postMessage({ type: 'data', data } satisfies WorkerRequest);
+    worker.onmessage = (e: MessageEvent<WorkerReply>) => {
+      pending.get(e.data.id)?.(e.data.result);
+      pending.delete(e.data.id);
+    };
+    worker.onerror = () => {
+      // Fall back to the page itself for this and every later search.
+      worker = null;
+      for (const done of pending.values()) done(undefined as unknown as Result);
+      pending.clear();
+    };
+  } catch {
+    worker = null;
+  }
+  const inPage = (owned: BoxHero, opts: OptimiseOptions) =>
+    new Promise<Result>((resolve) => setTimeout(() => resolve(box ? optimise(data, box, owned, opts) : null), 30));
+  const search = (owned: BoxHero, opts: OptimiseOptions): Promise<Result> => {
+    if (!worker || !box) return inPage(owned, opts);
+    const id = nextId++;
+    return new Promise<Result>((resolve) => {
+      pending.set(id, (r) => (r === undefined ? inPage(owned, opts).then(resolve) : resolve(r)));
+      worker!.postMessage({ type: 'run', id, box: box!, ownedId: owned.id, opts } satisfies WorkerRequest);
+    });
+  };
+  /** The search each section is showing or waiting for. */
+  const wantKey: Record<Tab, string> = { dps: '', toughness: '' };
+
   function renderOptimiser(goal: Tab) {
     const p = OPT[goal];
     const others = $<HTMLInputElement>(`${p}-others`);
@@ -410,14 +446,30 @@ export async function start(): Promise<void> {
     const stage = data.stages.find((s) => s.stage === Number(stageSel.value));
     $(`${p}-box`).hidden = !owned || !stage;
     if (!owned || !stage || !box) return;
-    // The search is slow on big boxes, so each answer is kept until the box changes.
     const team = goal === 'dps' && teamBox.checked;
     const memoKey = [goal, owned.id, goal === 'dps' ? modeSel.value : '', stage.stage, others.checked, team].join('|');
+    wantKey[goal] = memoKey;
     let memo = optimiseMemo.get(box);
     if (!memo) optimiseMemo.set(box, (memo = new Map()));
-    if (!memo.has(memoKey)) memo.set(memoKey, optimise(data, box, owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, team }));
+    if (!memo.has(memoKey)) {
+      $(`${p}-loading`).hidden = false;
+      $(`${p}-result`).hidden = true;
+      const forBox = box;
+      const store = memo;
+      search(owned, { mode: modeSel.value as Mode, stage, takeFromOthers: others.checked, goal, team }).then((r) => {
+        store.set(memoKey, r);
+        // Draw it only if the page still wants this answer.
+        if (box === forBox && wantKey[goal] === memoKey && tab === goal) renderOptimiser(goal);
+      });
+      return;
+    }
+    $(`${p}-loading`).hidden = true;
+    $(`${p}-result`).hidden = false;
     const r = memo.get(memoKey);
-    if (!r) return;
+    if (!r) {
+      $(`${p}-box`).hidden = true;
+      return;
+    }
     const gain = r.before > 0 ? r.after / r.before - 1 : 0;
     const setLine = (label: string, l: Loadout) => {
       const li = el('li', label);
