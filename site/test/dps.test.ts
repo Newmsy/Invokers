@@ -205,6 +205,17 @@ describe('gear optimiser', () => {
     }
   });
 
+  it("gives the Invoker's stats before and after the swap, matching its box build", () => {
+    for (const owned of doc.heroes) {
+      const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true });
+      if (!r) continue;
+      const now = boxBuild(data, doc, owned)!.totals;
+      expect(finalStat(r.totalsBefore, 'atk')).toBeCloseTo(finalStat(now, 'atk'), 6);
+      expect(r.totalsBefore.res).toBeCloseTo(now.res, 6);
+      expect(simulate(data, { hero: hero(data.heroes.find((h) => h.configId === owned.configId)!.name), totals: r.totalsAfter, skillLevels: boxBuild(data, doc, owned)!.skillLevels, mode: 'pve', stage: stage(16) }).dps).toBeCloseTo(r.after, 6);
+    }
+  });
+
   it('can pick gear for effective HP instead of DPS', () => {
     for (const owned of doc.heroes) {
       const r = optimise(data, doc, owned, { mode: 'pve', stage: stage(16), takeFromOthers: true, goal: 'toughness' });
