@@ -12,7 +12,8 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
 <Base title="Gear sets">
   <h1>Gear sets</h1>
   <p class="lead">
-    What every set gives at 3 and 5 pieces, and who should wear it. Tolerance sets link the bosses they counter.
+    What every set gives at 3 and 5 pieces, and who should wear it. The 5-piece bonus adds to the 3-piece one, so a
+    full Accuracy set gives +125 ACC. Tolerance sets link the bosses they counter.
   </p>
   <p class="links">
     <a href={href('my-box')}>See your own gear in My box</a>
@@ -65,6 +66,12 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
                   <dd>{b.lines.map((l) => <span>{l}</span>)}</dd>
                 </div>
               ))}
+              {s.fullSet.length > 0 && (
+                <div class="full">
+                  <dt>Full set</dt>
+                  <dd>{s.fullSet.map((l) => <span>{l}</span>)}</dd>
+                </div>
+              )}
             </dl>
             {s.bosses.length > 0 && (
               <div class="bosses">
@@ -152,6 +159,7 @@ const groups = gearGroups.map((g) => ({ ...g, sets: gearSets.filter((s) => s.gro
   .accessories h3 a:hover { color: var(--accent); }
   .bonuses { margin: 0; display: grid; gap: 8px; }
   .bonuses div { display: grid; grid-template-columns: 72px 1fr; gap: 8px; }
+  .bonuses .full { border-top: 1px solid var(--line); padding-top: 8px; }
   dt { color: var(--muted); font-size: 13px; padding-top: 2px; }
   dd { margin: 0; display: flex; flex-direction: column; gap: 2px; font-weight: 500; }
   .bosses .label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 4px; }

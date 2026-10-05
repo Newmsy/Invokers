@@ -69,7 +69,7 @@ Every boss uses the same RES and ACC per stage. "Always lands" assumes no modifi
 | 17 | 515 | 515 | 495 | 465 | 115 | 235 |
 | 20 | 635 | 635 | 615 | 585 | 175 | 295 |
 
-Where ACC comes from: the [Accuracy set](/gear) (+75 at 5 pieces), Chestplate and Flask main stats, [Awakening](/blog/awakening-signs) (Sign of Actia +88) and [Titans](/titans) like Myrmadir (+196 ACC in boss fights).
+Where ACC comes from: the [Accuracy set](/gear) (+50 at 3 pieces, +125 at 5), Chestplate and Flask main stats, [Awakening](/blog/awakening-signs) (Sign of Actia +88) and [Titans](/titans) like Myrmadir (+196 ACC in boss fights).
 
 ## Skills and mana
 
