@@ -7,16 +7,8 @@ gameVersion: "0.61.1516"
 art: ["item:Gold"]
 ---
 
-## What happened
+**Update 0.52 brought a new boss, Althar the Undead King, on 13 December 2025.** Althar is the fight at the end of Campaign Chapter 8. Stats for every stage are in the [Althar guide](/bosses/althar), and who to bring is on the [Althar tier list](/tiers/invokers/althar).
 
-- **New boss:** Althar the Undead King, the fight at the end of Campaign Chapter 8.
-- **Titan Awakening**, a new way to power up Titans.
-- **Invoker Dismissal:** swap unwanted Invokers for XP Potions. **Locks** stop you dismissing the ones you want to keep.
-- **Levelling costs much less XP**, with reworked Auto Level-Up and Ascension for Invokers and Titans.
-- **Campaign:** a guide to earning each Star, and new level info, team selection and reward screens.
-- **Same day:** a patch raised XP from every Hard Campaign level.
+**Levelling got much cheaper**, with reworked Auto Level-Up and Ascension for Invokers and Titans, and a same-day patch raised XP from every Hard Campaign level. Levelling 1 to 60 now takes 3,814,300 XP in total and no Gold; see [Ascension](/ascension).
 
-## Our take
-
-- **Althar today:** stats for every stage are in the [Althar guide](/bosses/althar), and who to bring is on the [Althar tier list](/tiers/invokers/althar).
-- **Levelling 1 to 60** now takes 3,814,300 XP in total and no Gold. See [Ascension](/ascension).
+Also new: **Titan Awakening**, **Invoker Dismissal** to swap unwanted Invokers for XP Potions (with locks to protect the ones you keep), and a guide to earning each Campaign Star with new level, team and reward screens.

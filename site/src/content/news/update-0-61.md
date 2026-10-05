@@ -8,15 +8,10 @@ art: ["item:Rare Prism"]
 official: "https://invokers.com/news/56/"
 ---
 
-## What happened
+**Update 0.61 brought Clans on 23 September 2026.** A Clan holds up to 50 members, costs 100 Gems to create from level 10, and has its own chat. Clan Activity Quests replace Bonus Quests.
 
-- **Clans:** up to 50 members, created at level 10 for 100 Gems, with clan chat. Clan Activity Quests replace Bonus Quests.
-- **First Clan Boss:** [Sorgott the Crypt King](/bosses/sorgott). Sorgott drops Rubies and the new **Accessories**: 5 slots, unlocked by Awakening, and locked to a faction.
-- **Also new:** 6★ Relics, longer boss stages, player profiles, a Sorgott Accessory Hunt event and 9 new Invokers.
-- ![Rare Prism](item:) **Rare Prism weekly limit: 5 → 7.**
+**The first Clan Boss is [Sorgott the Crypt King](/bosses/sorgott)**, who drops Rubies and the new **Accessories**: 5 slots, unlocked by Awakening and locked to a faction. Awakening now unlocks Accessory slots as well as stats, which makes it worth more; [Ascension and Awakening](/ascension) compares it with levelling. Who to bring is on the [Sorgott tier list](/tiers/invokers/sorgott).
 
-## Our take
+![Rare Prism](item:) **The Rare Prism weekly limit rose from 5 to 7**, which adds up to 104 more a year.
 
-- **Awakening now unlocks Accessory slots too**, which makes it worth more. To compare it with levelling, see [Ascension and Awakening](/ascension).
-- **Who to bring to Sorgott:** see the [Sorgott tier list](/tiers/invokers/sorgott) and the [boss guide](/bosses/sorgott) for every stage's stats.
-- **Two extra Rare Prisms a week** adds up to 104 more a year.
+Also new: 6★ Relics (see [6★ gear](/news/six-star-gear)), longer boss stages, player profiles, a Sorgott Accessory Hunt event and 9 new Invokers.

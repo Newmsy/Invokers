@@ -10,13 +10,9 @@ art: ["item:Crown"]
 official: "https://invokers.com/news/54/"
 ---
 
-## What happened
+**The Senhachi Chase ran from Monday 7 to Monday 28 September 2026 (12:00 UTC).** Nineteen tournaments ran inside it, each paying ![](item:Crown) Crowns at point milestones, and it debuted Campaign Rush and Pentiax Spark Hunt. Crowns bought ![Prime Force Senhachi](hero:) (Legendary Earth Ranged) and other rewards in the Event Shop.
 
-The **Senhachi Chase** ran from Monday 7 to Monday 28 September 2026 (12:00 UTC). Nineteen tournaments ran inside it, each paying ![Crown](item:) Crowns at point milestones. Crowns bought ![Prime Force Senhachi](hero:) (Legendary Earth Ranged) and other rewards in the Event Shop. It also debuted Campaign Rush and Pentiax Spark Hunt.
-
-## Our take
-
-**Senhachi cost 170 of the 200 Crowns**, so you had to clear almost every milestone and still had 30 Crowns left over.
+**Senhachi cost 170 of the 200 Crowns on offer**, so you had to clear almost every milestone:
 
 | Tournament | Milestones (points) | Crowns |
 |---|---|---|
@@ -33,15 +29,14 @@ The **Senhachi Chase** ran from Monday 7 to Monday 28 September 2026 (12:00 UTC)
 | Campaign Rush | 4,800 | 10 |
 | **Total** | | **200** |
 
-**Event Shop prices (Crowns, limit):** Senhachi 170 (1) · ![Divine Star](item:) 50 (1) · ![Miracle Orb](item:) 50 (1) · ![Legendary Codex](item:) 20 (2) · ![Legendary Prism](item:) 20 (2) · Epic Codex and Epic Prism 10 (4) · ![Destiny Star](item:) and Wonder Orb 10 (10) · Rare Codex and Rare Prism 5 (10).
+Gear Up had a hiccup: it didn't count Accessory upgrades, so on 25 September everyone got 10 Crowns, 500,000 Gold, 2,000 Memorium and 10 Multi-Battle Tokens. Gear Up counts Accessories from the next tournament on.
 
-- **Best use of the last 30 Crowns:** a Legendary Codex plus an Epic Codex or Prism. Three Destiny Stars give a 0.53% Legendary chance each, about 1.6% in total.
-- **Leftover Crowns** were spent for you after the chase and the items went to the Inbox. Any Crowns that couldn't be spent were lost.
-- **Glass cannon.** 3rd-highest ATK of all 58 Legendaries when fully awakened, but 52nd for HP and DEF.
-- **Crowd control everywhere.** Skill 3 launches up to 10 enemies for 4s with **50% ATK Down**. The Ultimate launches 4 times and adds **10s to every Skill cooldown** on each target it hits, then gives 150 Titan Mana.
-- **Single-target setup.** Skill 2 lands **45% DEF Down** and **25% Skill Recovery Down** for 15s.
-- **Where Senhachi shines:** S on Pentiax, Koltmos and Omnissi (Wind). Senhachi is also in the summon pool.
+**The other 30 Crowns** went furthest on a Legendary Codex plus an Epic Codex or Prism. Three Destiny Stars instead would give a 0.53% Legendary chance each, about 1.6% in total. Event Shop prices (Crowns, limit): Senhachi 170 (1) · ![Divine Star](item:) 50 (1) · ![Miracle Orb](item:) 50 (1) · ![Legendary Codex](item:) 20 (2) · ![Legendary Prism](item:) 20 (2) · Epic Codex and Epic Prism 10 (4) · ![Destiny Star](item:) and Wonder Orb 10 (10) · Rare Codex and Rare Prism 5 (10). Crowns left at the end were spent for you and the items went to the Inbox; any that couldn't be spent were lost.
 
-**25 September: Gear Up compensation.** The chase's Gear Up tournament didn't count Accessory upgrades, so everyone got 10 Crowns, 500,000 Gold, 2,000 Memorium and 10 Multi-Battle Tokens. Gear Up counts Accessories from the next tournament on.
+**Senhachi is a glass cannon:** 3rd-highest ATK of all 58 Legendaries when fully awakened, but 52nd for HP and DEF. The kit is crowd control everywhere:
 
-To plan the next chase, see [Events](/events).
+- Skill 3 launches up to 10 enemies for 4s with **50% ATK Down**.
+- The Ultimate launches 4 times and adds **10s to every Skill cooldown** on each target it hits, then gives 150 Titan Mana.
+- Skill 2 sets up a single target with **45% DEF Down** and **25% Skill Recovery Down** for 15s.
+
+Senhachi is an S pick on Pentiax, Koltmos and Omnissi (Wind), and is also in the summon pool. To plan the next chase, see [Events](/events).

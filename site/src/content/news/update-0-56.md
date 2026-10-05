@@ -7,14 +7,15 @@ gameVersion: "0.61.1516"
 art: ["item:Arena Coin", "item:Rare Codex"]
 ---
 
-## What happened
+**Update 0.56 brought Fusion on 8 April 2026.** You fuse Invokers into 2 Legendaries, a set of Light and Dark Invokers, and more, and 3 new Uncommon Light and Dark Invokers exist just for Fusion. Each Legendary can be fused once and each Epic twice (towards a Legendary Fusion); Rares have no limit.
 
-- **Fusion:** fuse Invokers into 2 Legendaries, a set of Light and Dark Invokers, and more. 3 new Uncommon Light and Dark Invokers are used in Fusion.
-- **Fusion limits:** each Legendary can be fused once and each Epic twice (towards a Legendary Fusion). Rares have no limit. An Invoker only needs to *reach* the Awakening star a Fusion asks for, not finish every node of it.
-- **Quick Ascension and Level-up**, and new Ascension achievements.
-- **Yskara rework** for shorter fights. Sakiel lost HP and ATK, with changes to his Passive and Fallen Blades.
+An Invoker only needs to *reach* the Awakening star a Fusion asks for, so don't over-build fodder: stop at the first node of that star.
 
-**13 April: more ![Arena Coin](item:) Arena Coins per offence win**
+Quick Ascension and Level-up arrived with new Ascension achievements. Yskara was reworked for shorter fights (see the [Yskara guide](/bosses/yskara) and [Yskara tier list](/tiers/invokers/yskara)), and Sakiel lost HP and ATK, with changes to his Passive and Fallen Blades.
+
+### More Arena Coins, 13 April
+
+A hotfix raised ![](item:Arena%20Coin) Arena Coins per offence win:
 
 | League | Before | After |
 |---|---|---|
@@ -31,10 +32,4 @@ art: ["item:Arena Coin", "item:Rare Codex"]
 | Gold III | 240 | 240 |
 | Gold IV | 320 | 320 |
 
-The same hotfix moved Player XP from early Boss Mode stages to the Campaign, and fixed Ivory the Beastseeker's stats.
-
-## Our take
-
-- **Don't over-build Fusion fodder.** Reaching the Awakening star is enough, so stop at the first node of that star.
-- **Spending Arena Coins:** Bazaar prices dropped again in June. See [June's Arena hotfixes](/news/june-arena-hotfixes).
-- **Yskara today:** the [Yskara guide](/bosses/yskara) and the [Yskara tier list](/tiers/invokers/yskara).
+Bazaar prices dropped again in June, so Coins go further still; see [June's Arena hotfixes](/news/june-arena-hotfixes). The same hotfix moved Player XP from early Boss Mode stages to the Campaign and fixed Ivory the Beastseeker's stats.

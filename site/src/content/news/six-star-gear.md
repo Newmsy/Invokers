@@ -8,13 +8,7 @@ art: ["item:Gear Swap Pass", "item:Memorium"]
 official: "https://invokers.com/news/56/"
 ---
 
-## What happened
-
-Update 0.61 added **6★ gear** alongside longer boss stages. It drops from the relic bosses (Ulgorim, Althar and Sakiel) and upgrades to +20 like 5★ gear.
-
-## Our take
-
-**6★ is a flat third better than 5★, and stage 20 is where to farm it.**
+**Update 0.61 added 6★ gear, a flat third better than 5★, and stage 20 is where to farm it.** It drops from the relic bosses (Ulgorim, Althar and Sakiel) alongside their longer boss stages, and upgrades to +20 like 5★ gear.
 
 ### Where it drops
 

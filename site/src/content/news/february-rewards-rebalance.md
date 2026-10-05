@@ -8,9 +8,9 @@ gameVersion: "0.61.1516"
 art: ["item:Destiny Star", "item:Fate Star", "item:Energy"]
 ---
 
-## What happened
+**Three February 2026 hotfixes changed where free Stars and Energy come from.**
 
-**17 February: Campaign Star rewards**
+### Campaign Stars, 17 February
 
 | Difficulty | Before | After |
 |---|---|---|
@@ -18,14 +18,9 @@ art: ["item:Destiny Star", "item:Fate Star", "item:Energy"]
 | Hard | 8 Destiny Stars | 12 Destiny Stars |
 | Insane | 12 Destiny Stars | 20 Destiny Stars |
 
-Players who had already claimed these rewards didn't get the difference.
+Players who had already claimed these rewards didn't get the difference. Daily quests got easier the same day: the three Relic quests went, Make a Summon needs 1 summon (was 3) and gives 15 Wonder Orb Fragments (was 10), and Win Campaign Battles needs 1 win (was 3). Every page of Progress Missions now gives at least 1 Destiny Star.
 
-**17 February: quests**
-
-- Daily quests: the three Relic quests went. Make a Summon needs 1 summon (was 3) and gives 15 Wonder Orb Fragments (was 10). Win Campaign Battles needs 1 win (was 3).
-- Every page of Progress Missions gives at least 1 Destiny Star.
-
-**20 February: ![Energy](item:) Energy**
+### Energy, 20 February
 
 | Source | Before | After |
 |---|---|---|
@@ -34,9 +29,6 @@ Players who had already claimed these rewards didn't get the difference.
 | Free Energy Pack | 100 | 50 |
 | Free Energy every 8 hours | 70 | 30 |
 
-Normal 9.1, Hard 9.1 and Hard 9.7 also got easier.
+Added up, that's +100 a day from the two quests, −50 from the free pack and −120 from the three 8-hour gifts. Finish both quests and you get **70 Energy a day less** than before; skip them and it's 170 less. Normal 9.1, Hard 9.1 and Hard 9.7 also got easier.
 
-## Our take
-
-- **Net change per day:** +100 from the two quests, −50 from the free pack and −120 from the three 8-hour gifts. Finish both quests and you get **70 Energy a day less** than before; skip them and it's 170 less.
-- **Free Stars and Energy, all in one place:** see *Free rewards* on the [Blog](/blog).
+Every free source of Stars and Energy is listed in *Free rewards* on the [Blog](/blog).
