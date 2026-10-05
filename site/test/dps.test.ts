@@ -8,10 +8,10 @@ import { fullyAwakened } from '../src/lib/awakening';
 import { heroes } from '../src/lib/data';
 import { bareBuild, boxBuild } from '../src/lib/dps/box';
 import { dpsData, STAGES } from '../src/lib/dps/data';
-import { buffGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
+import { buffGains, selfDefence, teamGains, defenseFactor, effectGains, elementEdge, finalStat, landChance, totalsFor, simulate, skillGains, statValues, type FightInput } from '../src/lib/dps/model';
 import { openSlots, optimise } from '../src/lib/dps/optimise';
-import { toughness, toughValues } from '../src/lib/dps/tank';
-import { parseComboText, parseDebuffs, parseHit, parseSelfBuffs, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
+import { buffedToughness, toughness, toughValues } from '../src/lib/dps/tank';
+import { parseComboText, parseDebuffs, parseHit, parseBuffs, parseSelfBuffs, parseSelfShields, parseSelfEffects, parseSkillText } from '../src/lib/dps/parse';
 
 const data = dpsData();
 const hero = (name: string) => data.heroes.find((h) => h.name === name)!;
@@ -65,7 +65,7 @@ describe('skill text parser', () => {
   });
 
   it('parses an Invoker with no "#N Damage" lines into nothing', () => {
-    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [], buffs: [], effects: [] });
+    expect(parseSkillText('Casts a buff.')).toEqual({ hits: [], dots: [], debuffs: [], buffs: [], team: [], shields: [], effects: [] });
   });
 
   it('lists the debuffs and control effects cast on enemies', () => {
@@ -358,5 +358,59 @@ describe('set bonuses', () => {
     expect(five.acc - bare.acc).toBe(125);
     const three = totalsFor(data, h, 'Six', 60, [], Array.from({ length: 3 }, () => ({ stats: [], set: 'Accuracy' })));
     expect(three.acc - bare.acc).toBe(50);
+  });
+});
+
+describe('team buffs', () => {
+  it('reads how many other team members a buff reaches', () => {
+    const { buffs, team } = parseBuffs('Casts a [55% ATK Up] buff on 10 random allies in a 15m radius, lasting 16s. Then, casts a [30% Skill Recovery Up] buff on the targets, lasting 16s.', 'Plaxi');
+    expect(buffs.map((b) => b.name)).toEqual(['ATK Up', 'Skill Recovery Up']);
+    expect(team).toMatchObject([{ name: 'ATK Up', allies: 4 }, { name: 'Skill Recovery Up', allies: 4 }]);
+    // Two of five picked by HP: each other Invoker has a 2 in 5 chance.
+    expect(parseBuffs('Casts a [20% ATK Up] buff on the 2 allies with the lowest current HP in a 15m radius, lasting 10s.', 'X').team[0].allies).toBe(1.6);
+    const one = parseBuffs('Casts a [20% ATK Up] buff on the ally with the highest MAX HP in a 15m radius, lasting 10s.', 'X');
+    expect(one.buffs).toEqual([]);
+    expect(one.team[0].allies).toBe(1);
+    expect(parseBuffs('Casts a [20% ATK Up] buff on X, lasting 10s.', 'X').team).toEqual([]);
+  });
+
+  it('adds nothing unless the team toggle is on', () => {
+    const f = fight('Custodian Plumia');
+    const off = simulate(data, f);
+    const on = simulate(data, { ...f, team: true });
+    expect(off.teamDps).toBe(0);
+    expect(on.teamDps).toBeGreaterThan(0);
+    expect(on.dps).toBeCloseTo(off.dps + on.teamDps, 6);
+    const [atk] = teamGains(data, f);
+    expect(atk).toMatchObject({ slot: 'ActiveSkill2', name: 'ATK Up', allies: 4 });
+    // 40% ATK Up for about 60% of the fight: a bit under +25% for each ally.
+    expect(atk.allyGain).toBeGreaterThan(0.15);
+    expect(atk.allyGain).toBeLessThan(0.4);
+    expect(atk.teamDps).toBeCloseTo(on.teamDps, 0);
+  });
+
+  it('counts DEF Down on the boss for the whole team', () => {
+    const f = fight('Ironblade Darus', { stage: stage(1) });
+    const g = teamGains(data, f).find((x) => x.name === 'DEF Down')!;
+    expect(g.allies).toBe(4);
+    expect(g.teamDps).toBeGreaterThan(0);
+  });
+});
+
+describe('own DEF Up and shields', () => {
+  it('reads shields that reach the caster', () => {
+    const text = 'Casts a [8 HP Shield] buff on Chaddeus, lasting 12s. Casts a [8 HP Shield] buff on the ally with the lowest current HP in a 12m radius, lasting 12s.<br><br>#1 Damage: 535% ATK<br>#2 Shield: 20% * MAX HP<br>#3 Shield: 30% * MAX HP';
+    expect(parseSelfShields(text, 'Chaddeus')).toEqual([{ hp: 0.2, atk: 0, def: 0, dealt: 0, sec: 12 }]);
+    const kandra = 'Casts a [Shield] buff on Kandra, lasting 12s. The [Shield] is equal to (50% * Damage Dealt + 10% * MAX HP).';
+    expect(parseSelfShields(kandra, 'Kandra')).toEqual([{ hp: 0.1, atk: 0, def: 0, dealt: 0.5, sec: 12 }]);
+  });
+
+  it('DEF Up raises DEF-scaling damage and effective HP', () => {
+    const f = fight('Admiral Gladstone');
+    const sd = selfDefence(data, f);
+    expect(sd.defUp.length).toBeGreaterThan(0);
+    const b = buffedToughness(data, f)!;
+    expect(b.ehp).toBeGreaterThan(toughness(data, f.totals, f.stage).ehp);
+    expect(buffedToughness(data, fight('Ironblade Darus'))).toBeNull();
   });
 });
