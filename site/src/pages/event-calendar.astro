@@ -7,7 +7,7 @@ import EventRuleTable from '../components/EventRuleTable.astro';
 import { bosses, bossSlug, events, eventsCapturedAt, href, itemName, type EventPointsReward, type EventRankReward } from '../lib/data';
 import { bossArt, eventBanner } from '../lib/art';
 import { slugify } from '../lib/slugs';
-import { descriptionLines, eventLinks, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
+import { descriptionLines, eventLinks, eventNotices, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const cleanName = (id: string) => itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '');
@@ -97,6 +97,9 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
               {c.tables.map((t) => <EventRuleTable table={t} />)}
 
               <h4 class="part">Rewards</h4>
+              {eventNotices[c.e.tournamentId] && (
+                <p class="ev-notice">{eventNotices[c.e.tournamentId].text} <a href={href(eventNotices[c.e.tournamentId].link)}>What changed</a></p>
+              )}
               {[
                 { title: 'Your points', rows: pointsRows(c.e.personalRewards), sub: `${c.e.personalRewards.length} rewards, up to ${fmt(top(c.e.personalRewards))} points` },
                 { title: 'Milestone rewards', rows: pointsRows(c.e.milestoneRewards), sub: `${c.e.milestoneRewards.length} rewards, up to ${fmt(top(c.e.milestoneRewards))} points` },
@@ -207,6 +210,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   .ev-facts, .ev-desc { margin: 10px 0 0; padding-left: 18px; color: var(--soft); font-size: 14px; }
   .ev-facts li, .ev-desc li { margin: 3px 0; }
   .ev-desc { color: var(--muted); }
+  .ev-notice { margin: 6px 0 10px; padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--surface); color: var(--soft); font-size: 14px; }
   .ev-links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; font-size: 14px; }
   .ev-links a { display: inline-flex; align-items: center; gap: 6px; }
   .ev-links img { width: 22px; height: 22px; object-fit: cover; border-radius: 50%; border: 1px solid var(--line); }

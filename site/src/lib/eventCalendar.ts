@@ -371,3 +371,11 @@ export function withLiveTargets<T extends { id: string; target: number; difficul
     };
   });
 }
+
+/** Announced changes the event list doesn't carry yet, by tournament id: shown above that event's rewards. */
+export const eventNotices: Record<number, { text: string; link: string }> = {
+  627: {
+    text: 'Point targets for this Hunt were raised on 5 October and more Energy was added to the rewards. The points and rewards below are from before the change.',
+    link: 'news/sorgott-accessory-hunt-changes',
+  },
+};
