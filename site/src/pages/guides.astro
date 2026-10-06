@@ -7,10 +7,12 @@ import { bosses, bossLabel, bossSlug, href } from '../lib/data';
 import { bannerArt, bossArt } from '../lib/art';
 import { allGuides, topics } from '../lib/guides';
 import { slugify } from '../lib/slugs';
+import { storyPictures } from '../lib/storyArt';
 
 const guides = await allGuides();
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
 const latest = guides.filter((g) => g.date).slice(0, 3);
+const pictures = await storyPictures();
 ---
 <Base title="Guides">
   <h1>Guides</h1>
@@ -28,7 +30,7 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
       {latest.map((g) => (
         <li>
           <a href={href(g.path)}>
-            <span class="pics">{g.art.slice(0, 3).map((a) => <SectionArt art={a} size={44} />)}</span>
+            {pictures.get(g.path) && <img class="pic" src={pictures.get(g.path)!.src} style={`object-position: ${pictures.get(g.path)!.position}`} alt="" loading="lazy" />}
             <span class="kind">{g.kind} · {fmt(g.date!)}</span>
             <strong>{g.title}</strong>
             <span class="blurb">{g.blurb}</span>
@@ -111,7 +113,9 @@ const latest = guides.filter((g) => g.date).slice(0, 3);
   .cards .kind, .cards strong, .cards .blurb { grid-column: 2; }
   .wide a { grid-template-columns: 1fr; }
   .wide .kind, .wide strong, .wide .blurb { grid-column: 1; }
-  .pics { display: flex; gap: 6px; margin-bottom: 10px; }
+  .wide a { padding: 0 0 14px; overflow: hidden; }
+  .wide a > :not(.pic) { padding: 0 14px; }
+  .wide .pic { display: block; width: 100%; aspect-ratio: 4 / 1; object-fit: cover; margin-bottom: 10px; border-bottom: 1px solid var(--line); }
   .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; }
   strong { font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.3; margin: 2px 0 4px; }
   .blurb { color: var(--muted); font-size: 14px; }

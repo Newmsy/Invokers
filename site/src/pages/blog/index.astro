@@ -2,8 +2,7 @@
 import { getCollection } from 'astro:content';
 import SeeAlso from '../../components/SeeAlso.astro';
 import Base from '../../layouts/Base.astro';
-import ArtStrip from '../../components/ArtStrip.astro';
-import { href } from '../../lib/data';
+import StoryCard from '../../components/StoryCard.astro';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -14,12 +13,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
   <ul class="posts">
     {posts.map((p) => (
       <li>
-        <a href={href(`blog/${p.id}`)}>
-          <div class="art"><ArtStrip refs={p.data.art.slice(0, 3)} size="small" /></div>
-          <h2>{p.data.title}</h2>
-          <p>{p.data.description}</p>
-          <span class="meta">{fmt(p.data.date)} · game version {p.data.gameVersion}</span>
-        </a>
+        <StoryCard path={`blog/${p.id}`} title={p.data.title} description={p.data.description} meta={`${fmt(p.data.date)} · game version ${p.data.gameVersion}`} />
       </li>
     ))}
   </ul>
@@ -32,23 +26,5 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 
 
 <style>
   .lede { color: var(--soft); margin-top: -8px; }
-  .posts { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; max-width: 760px; }
-  .posts a {
-    display: block;
-    padding: 20px 24px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    color: var(--text);
-  }
-  .posts a:hover { border-color: var(--accent); }
-  .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
-  .posts h2 { margin: 0 0 6px; font-size: 20px; }
-  .posts p { margin: 0 0 10px; color: var(--soft); }
-  .meta { font-size: 13px; color: var(--muted); }
-  @media (max-width: 720px) {
-    .posts a { padding: 16px; }
-    .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
-  .posts h2 { font-size: 18px; }
-  }
+  .posts { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr)); gap: 16px; }
 </style>
