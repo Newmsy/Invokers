@@ -2,18 +2,13 @@
 // News, newest first: what happened in the game, each with our numbers on it.
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import ArtStrip from '../../components/ArtStrip.astro';
+import StoryCard from '../../components/StoryCard.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
-import { href } from '../../lib/data';
-import { heroByName, newsDate, newsKinds } from '../../lib/news';
-import { chaseBanner } from '../../lib/art';
+import { newsDate, newsKinds } from '../../lib/news';
 import NewsSidebar from '../../components/NewsSidebar.astro';
 
 const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const kinds = Object.entries(newsKinds).filter(([k]) => entries.some((e) => e.data.kind === k));
-const banner = (e: (typeof entries)[number]) =>
-  e.data.kind === 'spotlight' && e.data.heroes[0] ? chaseBanner(heroByName(e.data.heroes[0]).id) : undefined;
-const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero:${n}`), ...e.data.art].slice(0, 3);
 ---
 <Base title="News">
   <h1>News</h1>
@@ -30,13 +25,7 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
   <ul class="entries">
     {entries.map((e) => (
       <li data-kind={e.data.kind}>
-        <a href={href(`news/${e.id}`)}>
-          {banner(e) ? <img class="banner" src={banner(e)} alt="" loading="lazy" /> : <div class="art"><ArtStrip refs={refs(e)} size="small" /></div>}
-          <span class="kind">{newsKinds[e.data.kind]}</span>
-          <h2>{e.data.title}</h2>
-          <p>{e.data.description}</p>
-          <span class="meta">{newsDate(e.data)}</span>
-        </a>
+        <StoryCard path={`news/${e.id}`} title={e.data.title} description={e.data.description} kind={newsKinds[e.data.kind]} meta={newsDate(e.data)} />
       </li>
     ))}
   </ul>
@@ -78,26 +67,7 @@ const refs = (e: (typeof entries)[number]) => [...e.data.heroes.map((n) => `hero
   .filters button[aria-pressed='true'] { border-color: var(--accent); color: var(--text); }
   .columns { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; margin-top: 24px; }
   .entries { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
-  .entries a {
-    display: block;
-    padding: 20px 24px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    color: var(--text);
-  }
-  .entries a:hover { border-color: var(--accent); }
-  .banner { display: block; width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 12px; }
-  .art:not(:empty) { float: right; margin: 0 0 8px 16px; }
-  .kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-family: var(--display); font-weight: 600; }
-  .entries h2 { margin: 4px 0 6px; font-size: 20px; }
-  .entries p { margin: 0 0 10px; color: var(--soft); }
-  .meta { font-size: 13px; color: var(--muted); }
   @media (max-width: 1000px) {
     .columns { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 720px) {
-    .entries a { padding: 16px; }
-    .entries h2 { font-size: 18px; }
   }
 </style>

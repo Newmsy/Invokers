@@ -4,20 +4,19 @@ import Base from '../layouts/Base.astro';
 import SectionArt from '../components/SectionArt.astro';
 import SearchForm from '../components/SearchForm.astro';
 import { bosses, heroes, href, pack, titans } from '../lib/data';
-import { bannerArt, heroSplash } from '../lib/art';
 import { effects } from '../lib/effects';
 import { gearSets } from '../lib/gear';
 import { tierLists, tierRows } from '../lib/tierData';
 import { hasNews, inGroup, menus } from '../lib/nav';
 import { allGuides } from '../lib/guides';
 import { artRef } from '../lib/markdown-art';
+import { storyPictures } from '../lib/storyArt';
 
 // News entries (src/content/news) when they exist, then articles, newest first.
-interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date; banner?: string }
+interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date }
 const newsFiles = import.meta.glob<{ frontmatter: Record<string, unknown> }>('../content/news/*.md', { eager: true });
 // Labels match newsKinds in lib/news.ts (the News pages' own module).
 const newsLabels: Record<string, string> = { spotlight: 'Chase hero spotlight', patch: 'Patch notes', event: 'Event', announcement: 'Announcement' };
-const newsBanners: Record<string, string> = { spotlight: 'summon-invoker', patch: 'campaign-progression', event: 'energy', announcement: 'stars' };
 const list = (v: unknown) => (Array.isArray(v) ? v.map(String) : []);
 const hasArt = (ref: string) => { try { return !!artRef(ref); } catch { return false; } };
 const news: Story[] = hasNews
@@ -30,14 +29,13 @@ const news: Story[] = hasNews
         art: [...list(f.heroes).map((h) => `hero:${h}`), ...list(f.art)].filter(hasArt),
         tag: newsLabels[String(f.kind)] ?? 'News',
         date: new Date(String(f.date)),
-        banner: newsBanners[String(f.kind)] ?? 'campaign-progression',
       };
     })
   : [];
 const guides = await allGuides();
 const articles: Story[] = guides
   .filter((g) => g.date)
-  .map((g) => ({ path: g.path, title: g.title, blurb: g.blurb, art: g.art, tag: g.topic, date: g.date!, banner: g.banner }));
+  .map((g) => ({ path: g.path, title: g.title, blurb: g.blurb, art: g.art, tag: g.topic, date: g.date! }));
 const stories = [...news, ...articles].sort((a, b) => b.date.valueOf() - a.date.valueOf());
 const [lead, ...rest] = stories;
 const side = rest.slice(0, 2);
@@ -48,11 +46,11 @@ const featured = guides.filter((g) => g.kind === 'Guide').slice(0, 6);
 
 const campaign = tierLists.find((l) => l.id === 'campaign') ?? tierLists[0];
 const topPicks = tierRows('invokers', campaign).flatMap((r) => r.picks).filter((p) => p.art).slice(0, 8);
-// Story pictures: full-size art of the story's first Invoker when there is some, else its topic's key art.
-const backdrop = (st: Story) => {
-  const hero = st.art.map((a) => a.match(/^hero:(.+)$/)?.[1]).map((n) => heroes.find((h) => h.name === n)).find(Boolean);
-  return (hero && heroSplash(hero.id)) || (st.banner ? bannerArt(st.banner) : undefined);
-};
+// Story pictures (lib/storyArt): key art of what the story is about, else a scene from its topic.
+const pictures = await storyPictures();
+const pic = (st: Story) => pictures.get(st.path);
+const backdrop = (st: Story) => pic(st)?.src;
+const backdropPos = (st: Story) => `object-position: ${pic(st)?.position ?? 'center 30%'}`;
 
 const counts = [
   { path: 'heroes', label: 'Invokers', n: heroes.length, art: 'hero:Admiral Gladstone' },
@@ -68,9 +66,8 @@ const counts = [
   {lead && (
     <section class="top-stories" aria-label="Latest">
       <a class="lead-story" href={href(lead.path)}>
-        {backdrop(lead) && <img class="backdrop" src={backdrop(lead)} alt="" fetchpriority="high" />}
+        {backdrop(lead) && <img class="backdrop" src={backdrop(lead)} style={backdropPos(lead)} alt="" fetchpriority="high" />}
         <span class="text">
-          <span class="pics">{lead.art.slice(0, 3).map((a) => <SectionArt art={a} size={44} />)}</span>
           <span class="tag">{lead.tag}</span>
           <strong>{lead.title}</strong>
           <span class="blurb">{lead.blurb}</span>
@@ -79,7 +76,7 @@ const counts = [
       </a>
       {side.map((st) => (
         <a class="side-story" href={href(st.path)}>
-          {backdrop(st) && <img class="backdrop" src={backdrop(st)} alt="" loading="lazy" />}
+          {backdrop(st) && <img class="backdrop" src={backdrop(st)} style={backdropPos(st)} alt="" loading="lazy" />}
           <span class="text">
             <span class="tag">{st.tag}</span>
             <strong>{st.title}</strong>
@@ -101,7 +98,7 @@ const counts = [
           {feed.map((s) => (
             <li>
               <a href={href(s.path)}>
-                <SectionArt art={s.art[0]} size={64} class="thumb" />
+                {backdrop(s) ? <img class="thumb crop" src={backdrop(s)} style={backdropPos(s)} alt="" loading="lazy" /> : <SectionArt art={s.art[0]} size={64} class="thumb" />}
                 <span class="tag">{s.tag}</span>
                 <strong>{s.title}</strong>
                 <span class="blurb">{s.blurb}</span>
@@ -209,7 +206,6 @@ const counts = [
   .lead-story strong { font-size: 30px; text-shadow: 0 2px 12px rgb(0 0 0 / 0.6); }
   .lead-story .blurb { font-size: 15px; color: var(--soft); max-width: 640px; }
   .side-story strong { font-size: 17px; text-shadow: 0 2px 10px rgb(0 0 0 / 0.6); }
-  .top-stories .pics { display: flex; gap: 6px; margin-bottom: 4px; }
 
   .columns { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
   h2.bar { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 19px; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
@@ -220,6 +216,7 @@ const counts = [
   .feed a { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; padding: 14px 8px; border-bottom: 1px solid var(--line); color: var(--text); }
   .feed a:hover { background: var(--surface); }
   .feed :global(.thumb) { grid-row: span 4; align-self: start; }
+  .feed .crop { width: 160px; height: 90px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
   .feed strong { font-size: 17px; margin: 2px 0 2px; }
 
   .guide-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
@@ -267,5 +264,6 @@ const counts = [
     .browse, .tools-box { display: none; }
     .feed a { column-gap: 12px; }
     .feed :global(.thumb) { --size: 48px !important; }
+    .feed .crop { width: 96px; height: 54px; }
   }
 </style>

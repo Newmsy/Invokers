@@ -1,12 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import ArtStrip from '../../components/ArtStrip.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import SectionArt from '../../components/SectionArt.astro';
 import ChartHover from '../../components/ChartHover.astro';
 import { pack, href } from '../../lib/data';
 import { bannerArt } from '../../lib/art';
+import { storyPicture } from '../../lib/storyArt';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -27,16 +27,16 @@ const { Content, headings } = await render(post);
 // Desktop side rail: the post's sections, for jumping around long data posts.
 const sections = headings.filter((h) => h.depth === 2);
 const date = post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-const banner = post.data.banner ? bannerArt(post.data.banner) : undefined;
-if (post.data.banner && !banner) throw new Error(`No banner art "${post.data.banner}" for blog/${post.id}`);
+if (post.data.banner && !bannerArt(post.data.banner)) throw new Error(`No banner art "${post.data.banner}" for blog/${post.id}`);
+// The post's picture (its own banner when it names one); see lib/storyArt.
+const pic = await storyPicture(`blog/${post.id}`);
 const older = post.data.gameVersion !== pack.gameVersion;
 ---
 <Base title={post.data.title}>
   <div class="post">
   <article>
     <a class="back" href={href('blog')}>← Blog</a>
-    {banner && <img class="banner" src={banner} alt="" />}
-    <div class="cover"><ArtStrip refs={post.data.art} /></div>
+    {pic && <img class="banner" src={pic.src} style={`object-position: ${pic.position}`} alt="" />}
     <h1>{post.data.title}</h1>
     <p class="meta">
       {date} · written for game version {post.data.gameVersion}
@@ -114,8 +114,7 @@ const older = post.data.gameVersion !== pack.gameVersion;
   }
   .body :global(th:first-child), .body :global(td:first-child) { text-align: left; }
   .body :global(th) { color: var(--text); font-family: var(--display); font-weight: 600; background: var(--surface); }
-  .cover:not(:empty) { margin-top: 20px; }
-  .banner { display: block; width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; margin-top: 16px; border-radius: var(--radius); border: 1px solid var(--line); }
+  .banner { display: block; width: 100%; height: auto; aspect-ratio: 16 / 5; object-fit: cover; margin-top: 16px; border-radius: var(--radius); border: 1px solid var(--line); }
   .body :global(p > img) { display: block; max-width: 100%; height: auto; margin: 16px 0; border-radius: var(--radius); border: 1px solid var(--line); }
   .body :global(a.art-chip span) { color: var(--text); }
   .body :global(a.art-chip:hover span) { color: var(--accent); }

@@ -1,13 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import ArtStrip from '../../components/ArtStrip.astro';
 import HeroNumbers from '../../components/HeroNumbers.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import NewsSidebar from '../../components/NewsSidebar.astro';
 import { heroSlug, href, pack } from '../../lib/data';
 import { heroByName, newsDate, newsKinds } from '../../lib/news';
-import { chaseBanner } from '../../lib/art';
+import { storyPicture } from '../../lib/storyArt';
 
 export async function getStaticPaths() {
   const entries = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -31,14 +30,13 @@ const heroLinks = d.heroes.map((n) => {
   const h = heroByName(n);
   return { path: `heroes/${heroSlug(h.id)}`, label: h.name };
 });
-const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.heroes[0]).id) : undefined;
+const pic = await storyPicture(`news/${entry.id}`);
 ---
 <Base title={d.title}>
   <div class="columns">
   <article>
     <a class="back" href={href('news')}>← News</a>
-    {banner && <img class="banner" src={banner} alt={`${d.heroes[0]} chase`} loading="lazy" />}
-    <div class="cover"><ArtStrip refs={[...d.heroes.map((n) => `hero:${n}`), ...d.art]} /></div>
+    {pic && <img class="banner" src={pic.src} style={`object-position: ${pic.position}`} alt="" />}
     <p class="kind">{newsKinds[d.kind]}</p>
     <h1>{d.title}</h1>
     <p class="meta">
@@ -70,8 +68,7 @@ const banner = d.kind === 'spotlight' && d.heroes[0] ? chaseBanner(heroByName(d.
   h1 { font-size: 34px; margin: 6px 0 8px; }
   .meta { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
   .older { color: var(--soft); }
-  .cover:not(:empty) { margin-top: 20px; }
-  .banner { display: block; width: 100%; height: auto; margin-top: 16px; border-radius: var(--radius); border: 1px solid var(--line); }
+  .banner { display: block; width: 100%; height: auto; aspect-ratio: 16 / 5; object-fit: cover; margin-top: 16px; border-radius: var(--radius); border: 1px solid var(--line); }
   .body { font-size: 17px; color: var(--text); }
   .body :global(h2) { font-size: 23px; margin: 32px 0 12px; }
   .body :global(p), .body :global(li) { color: var(--soft); }
