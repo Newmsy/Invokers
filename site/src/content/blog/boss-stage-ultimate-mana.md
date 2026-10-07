@@ -30,7 +30,7 @@ Times are seconds of attacking to fill an Ultimate from empty, with no Mana Gene
 
 - On stage 14 and up, lean on Invokers whose damage comes from Skills 1–3 and Combo, and don't count on an Ultimate to save a run.
 - If a team needs its Ultimates, put some Mana Generation on them. The first 50 points pay the most (+0.5% each). Sets: ![Mana](set:).
-- Compare stage 13 against stage 16 in the [Simulator](/simulator) to see how much DPS your Invoker loses.
+- Compare stage 10 against stage 16 in the [Simulator](/simulator) to see how much DPS your Invoker loses.
 - Check the boss's page on [Bosses](/bosses) for its HP walls before spending energy there.
 
 *Game version 0.61.1516.*
