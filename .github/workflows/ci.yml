@@ -40,7 +40,10 @@ jobs:
           PUBLIC_AUTH_PROVIDERS: ${{ vars.PUBLIC_AUTH_PROVIDERS }}
       # Every link between pages (and to an #anchor) must lead somewhere.
       - run: node scripts/check-links.ts
+      # Nothing downstream needs this copy of the build, so a full artifact quota mustn't fail CI.
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: site
           path: site/dist
+          retention-days: 3
