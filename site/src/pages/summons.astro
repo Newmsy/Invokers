@@ -282,6 +282,7 @@ const calc = {
   const first = $<HTMLInputElement>('c-first');
   const since = $<HTMLInputElement>('c-since');
   const ANY = '__any';
+  const ONE = '__one';
   const fmt = (n: number) => n.toLocaleString('en-GB');
   const pct = (p: number) => {
     if (p >= 1) return '100%';
@@ -301,9 +302,10 @@ const calc = {
     const pool = rarity.value === 'Legendary' ? data.pools[item.value] : undefined;
     $('c-hero-wrap').hidden = !pool;
     if (pool) {
+      // Every Legendary in a pool has the same odds, so naming one adds nothing.
       const keep = hero.value;
-      hero.replaceChildren(new Option('Any Legendary', ANY), ...pool.map((h) => new Option(h.name, h.id)));
-      hero.value = pool.some((h) => h.id === keep) ? keep : ANY;
+      hero.replaceChildren(new Option('Any Legendary', ANY), new Option('Specific Legendary', ONE));
+      hero.value = keep === ONE ? ONE : ANY;
     }
   }
 
@@ -339,7 +341,7 @@ const calc = {
       notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
     }
     if (r.guaranteedBy) notes.push(`With mercy, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
-    if (specific) notes.push(`One of ${pool!.length} equally likely Legendaries. Mercy and bonus summons aren't counted for one specific Invoker.`);
+    if (specific) notes.push(`Any one of the ${pool!.length} Legendaries in this pool; they all have the same odds. Mercy and bonus summons aren't counted for one specific Invoker.`);
     notes.push('The 50%, 90% and 99% pull counts use the rate per pull only.');
     $('r-note').textContent = notes.join(' ');
   }
