@@ -4,12 +4,20 @@
 export interface EnergyRow {
   name: string;
   energy: number;
+  /** Set when the energy comes once every this many days (e.g. a 30-day login calendar): it counts as energy ÷ days a day. */
+  everyDays?: number;
+}
+
+/** A daily row's energy per day. */
+export function perDay(r: EnergyRow): number {
+  const energy = Number.isFinite(r.energy) ? Math.max(0, r.energy) : 0;
+  return r.everyDays && r.everyDays > 0 ? energy / r.everyDays : energy;
 }
 
 /** Energy a day: the natural recharge (one per `rechargeMinutes`) plus every daily source. */
 export function dailyIncome(rows: EnergyRow[], rechargeMinutes: number): number {
   const recharge = rechargeMinutes > 0 ? Math.floor((24 * 60) / rechargeMinutes) : 0;
-  return recharge + rows.reduce((sum, r) => sum + (Number.isFinite(r.energy) ? Math.max(0, r.energy) : 0), 0);
+  return recharge + rows.reduce((sum, r) => sum + perDay(r), 0);
 }
 
 /** Energy over a period: daily income times days, plus one-off extras. */

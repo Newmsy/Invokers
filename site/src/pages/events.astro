@@ -7,7 +7,7 @@ import { withLiveTargets } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
 import { shop } from '../lib/packs';
-import { arena } from '../lib/events';
+import { arena, dailyIncome, perDay } from '../lib/events';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 // Targets and Campaign Rush points follow the newest listed event of each kind; the rest are from recent events.
@@ -52,8 +52,8 @@ const gemEnergy = shop.packs.find(
 );
 const gemPrice = gemEnergy ? { gems: gemEnergy.price.resources!.Gem, energy: gemEnergy.rewards![0].amount } : { gems: 150, energy: 100 };
 const income = { ...guide.income, energyPerGem: gemPrice.energy / gemPrice.gems };
-const dailyTotal = recharge + guide.income.daily.reduce((n, r) => n + r.energy, 0);
-const incomeTotal = dailyTotal * guide.chase.days + guide.income.extras.reduce((n, r) => n + r.energy, 0);
+const dailyTotal = dailyIncome(guide.income.daily, guide.income.rechargeMinutes);
+const incomeTotal = Math.round(dailyTotal * guide.chase.days + guide.income.extras.reduce((n, r) => n + r.energy, 0));
 const arenaRows = arenaLeagues.map((l) => {
   const r = arena({ battlesPerDay: guide.arena.battlesPerDay, winRate: 1, winPoints: l.win, lossPoints: l.loss, days: guide.chase.days, doubleDays: guide.arena.doubleDays, target: guide.arena.chaseTarget });
   return { league: l.league, perDay: r.perDay, total: r.total, days: arenaEvent.target / r.perDay, top: r.total >= guide.arena.chaseTarget };
@@ -123,9 +123,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
         <div class="rows">
           <div class="row fixed"><span>Natural recharge</span><span>{recharge}</span></div>
           {guide.income.daily.map((r) => (
-            <div class="row fixed"><span>{r.name}</span><span>{r.energy}</span></div>
+            <div class="row fixed"><span>{r.name}</span><span>{fmt(Math.round(perDay(r)))}</span></div>
           ))}
-          <div class="row total"><span>Per day</span><span>{fmt(dailyTotal)}</span></div>
+          <div class="row total"><span>Per day</span><span>{fmt(Math.round(dailyTotal))}</span></div>
         </div>
       </div>
       <div>
