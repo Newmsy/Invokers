@@ -5,8 +5,8 @@ import { arena, dailyIncome, expectedPointsPerRun, periodIncome, shortfall, toFi
 describe('event planners', () => {
   it('adds up the default energy income', () => {
     const daily = dailyIncome(guide.income.daily, guide.income.rechargeMinutes);
-    expect(daily).toBe(1078);
-    expect(periodIncome(daily, 21, guide.income.extras)).toBe(28338);
+    expect(daily).toBeCloseTo(1078 + 1400 / 30);
+    expect(periodIncome(daily, 21, guide.income.extras)).toBeCloseTo(28338 + 980);
   });
 
   it('works out runs and energy to finish', () => {

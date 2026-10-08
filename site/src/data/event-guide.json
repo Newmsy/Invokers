@@ -29,7 +29,8 @@
       { "name": "Arena Bazaar (300 tokens)", "energy": 100 },
       { "name": "Daily quest", "energy": 100 },
       { "name": "Daily shop energy", "energy": 50 },
-      { "name": "8-hour shop energy (3 a day)", "energy": 90 }
+      { "name": "8-hour shop energy (3 a day)", "energy": 90 },
+      { "name": "Login calendar (1,400 over 30 days)", "energy": 1400, "everyDays": 30 }
     ],
     "extras": [
       { "name": "Weekly quests", "energy": 1200 },
