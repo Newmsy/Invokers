@@ -4,7 +4,7 @@ import { heroHref } from '../lib/data';
 import SeeAlso from '../components/SeeAlso.astro';
 import { itemIcon } from '../lib/art';
 import { rarityColor } from '../lib/format';
-import { atLeastOne, bonusLabel, legendaryPool, mercyRate, mercyReach, pullableItems, pullsFor, summonRarities, summons } from '../lib/summons';
+import { atLeastOne, bonusLabel, legendaryPool, mercyRate, poolChoices, mercyReach, pullableItems, pullsFor, summonRarities, summons } from '../lib/summons';
 
 const colors: Record<string, string> = { ...rarityColor, Mythic: '#FF7A7A' };
 const pct = (p: number) => {
@@ -45,8 +45,9 @@ const pools = Object.fromEntries(summons.items.filter((i) => i.legendaryPool).ma
 
 // What the calculator needs in the browser; the maths itself is imported by the script below.
 const calc = {
-  items: pullableItems.map((i) => ({ id: i.id, name: i.name, rarities: summonRarities.filter((r) => i.rates[r]) })),
-  pools,
+  items: pullableItems.map((i) => ({ id: i.id, name: i.name, kind: i.kind, rarities: summonRarities.filter((r) => i.rates[r]) })),
+  // Item → rarity → the "specific one" choices.
+  choices: Object.fromEntries(pullableItems.map((i) => [i.id, Object.fromEntries(Object.keys(i.rates).map((r) => [r, poolChoices(i, r)]))])),
 };
 ---
 <Base title="Summons">
@@ -68,7 +69,7 @@ const calc = {
         <select id="c-rarity"></select>
       </label>
       <label id="c-hero-wrap" hidden>
-        <span>Invoker</span>
+        <span id="c-hero-label">Invoker</span>
         <select id="c-hero"></select>
       </label>
       <label>
@@ -268,8 +269,8 @@ const calc = {
   import { bonusLabel, odds, pullsFor, summonItem } from '../lib/summons/odds';
 
   interface Data {
-    items: { id: string; name: string; rarities: string[] }[];
-    pools: Record<string, { id: string; name: string }[]>;
+    items: { id: string; name: string; kind: string; rarities: string[] }[];
+    choices: Record<string, Record<string, { label: string; size: number; rate: number; noun: string }[]>>;
   }
   const data: Data = JSON.parse(document.getElementById('summon-data')!.textContent!);
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -282,7 +283,6 @@ const calc = {
   const first = $<HTMLInputElement>('c-first');
   const since = $<HTMLInputElement>('c-since');
   const ANY = '__any';
-  const ONE = '__one';
   const fmt = (n: number) => n.toLocaleString('en-GB');
   const pct = (p: number) => {
     if (p >= 1) return '100%';
@@ -298,20 +298,20 @@ const calc = {
     rarity.value = it.rarities.includes(keep) ? keep : it.rarities.includes('Legendary') ? 'Legendary' : it.rarities[it.rarities.length - 1];
     fillHeroes();
   }
+  // Everyone in a rarity has the same odds, so the choice is any one or one specific one.
+  const choicesFor = () => data.choices[item.value]?.[rarity.value] ?? [];
   function fillHeroes() {
-    const pool = rarity.value === 'Legendary' ? data.pools[item.value] : undefined;
-    $('c-hero-wrap').hidden = !pool;
-    if (pool) {
-      // Every Legendary in a pool has the same odds, so naming one adds nothing.
-      const keep = hero.value;
-      hero.replaceChildren(new Option('Any Legendary', ANY), new Option('Specific Legendary', ONE));
-      hero.value = keep === ONE ? ONE : ANY;
-    }
+    const choices = choicesFor();
+    $('c-hero-wrap').hidden = !choices.length;
+    $('c-hero-label').textContent = data.items.find((i) => i.id === item.value)!.kind === 'titan' ? 'Titan' : 'Invoker';
+    const keep = hero.value;
+    hero.replaceChildren(new Option(`Any ${rarity.value}`, ANY), ...choices.map((c, i) => new Option(c.label, String(i))));
+    hero.value = keep !== ANY && Number(keep) < choices.length ? keep : ANY;
   }
 
   function update() {
-    const pool = rarity.value === 'Legendary' ? data.pools[item.value] : undefined;
-    const specific = !!pool && hero.value !== ANY;
+    const choice = hero.value === ANY ? undefined : choicesFor()[Number(hero.value)];
+    const specific = !!choice;
     const def = summonItem(item.value)!;
     const hasMercy = !!def.mercy?.[rarity.value];
     const hasFirst = !!def.firstMercy?.[rarity.value];
@@ -325,7 +325,8 @@ const calc = {
       item: item.value,
       rarity: rarity.value,
       pulls: n,
-      poolSize: specific ? pool!.length : undefined,
+      poolSize: choice?.size,
+      poolRate: choice?.rate,
       bonus: bonus.checked,
       mercy: mercy.checked,
       firstTime: first.checked,
@@ -341,7 +342,7 @@ const calc = {
       notes.push(`Includes ${r.bonusItems.map((b) => `${b.count} bonus ${bonusLabel(b.item)}${b.count === 1 ? '' : 's'}`).join(' and ')}.`);
     }
     if (r.guaranteedBy) notes.push(`With mercy, one is guaranteed by pull ${fmt(r.guaranteedBy)}.`);
-    if (specific) notes.push(`Any one of the ${pool!.length} Legendaries in this pool; they all have the same odds. Mercy and bonus summons aren't counted for one specific Invoker.`);
+    if (choice) notes.push(`Any one of the ${choice.size} ${choice.noun} this item gives; they all have the same odds. Mercy and bonus summons aren't counted for one specific pick.`);
     notes.push('The 50%, 90% and 99% pull counts use the rate per pull only.');
     $('r-note').textContent = notes.join(' ');
   }

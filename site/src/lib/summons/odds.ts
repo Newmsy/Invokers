@@ -57,8 +57,10 @@ export interface OddsInput {
   item: string;
   rarity: string;
   pulls: number;
-  /** Size of the hero pool when asking for one specific hero (Legendary from Destiny or Radiant Stars). */
+  /** Size of the pool when asking for one specific hero or Titan. */
   poolSize?: number;
+  /** Chance per pull of the group the specific hero is in, when the item splits a rarity (else the rarity's rate). */
+  poolRate?: number;
   /** Apply the mercy counts. */
   mercy?: boolean;
   /** Pulls already made since the last pull of this rarity. */
@@ -88,7 +90,7 @@ export function odds(input: OddsInput): OddsResult {
   const n = Math.max(0, Math.floor(input.pulls));
   let perPull = item.rates[input.rarity] ?? 0;
   const specific = !!input.poolSize;
-  if (specific) perPull /= input.poolSize!;
+  if (specific) perPull = (input.poolRate ?? perPull) / input.poolSize!;
 
   let miss = n > 0 ? (1 - perPull) ** n : 1;
   let expected = n * perPull;
