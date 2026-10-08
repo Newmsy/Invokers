@@ -13,6 +13,10 @@ export interface SummonItem {
   firstMercy?: Record<string, number>;
   /** Which heroes a Legendary pull can give: Fire/Water/Earth/Wind, or Light/Dark. */
   legendaryPool?: 'elemental' | 'lightDark';
+  /** Which heroes any pull from this item can give; missing means every hero of the rarity. */
+  pool?: 'elemental' | 'lightDark';
+  /** Rarity → chance per pull split between Fire/Water/Earth/Wind and Light/Dark heroes (Wild Star Uncommon). */
+  split?: Record<string, Record<'elemental' | 'lightDark', number>>;
 }
 
 export interface BonusRule {
