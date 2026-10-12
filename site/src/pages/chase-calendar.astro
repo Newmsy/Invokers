@@ -7,8 +7,9 @@ import { events, eventsCapturedAt, heroes, heroHref, heroRefsByConfigId, href, i
 import { chaseBanner, elementIcon, heroArt, itemIcon } from '../lib/art';
 import { slugify } from '../lib/slugs';
 import { formatUtc } from '../lib/eventCalendar';
-import { allChases, chaseSchedule, dateRange, featuredChase, milestoneText, type Chase } from '../lib/chases';
+import { allChases, chaseSchedule, dateRange, featuredChase, milestoneText, plannedOnly, type Chase } from '../lib/chases';
 import stored from '../data/chases.json';
+import planned from '../data/planned-events.json';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const configIds = Object.entries(heroRefsByConfigId);
@@ -36,7 +37,7 @@ const stateText = { now: 'On now', next: 'Coming up', ended: 'Ended' };
 
 // The live chase: schedule, shop highlights and the event calendar entry each run links to.
 const live = current?.event;
-const schedule = live ? chaseSchedule(live, events) : undefined;
+const schedule = live ? chaseSchedule(live, [...events, ...plannedOnly(planned.events, events)]) : undefined;
 const calendarId = (name: string, start: string) => {
   const d = new Date(start);
   return `${slugify(name)}-${d.getUTCDate()}-${d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toLowerCase()}`;
@@ -109,7 +110,7 @@ const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? sched
   {schedule && live && (
     <section aria-labelledby="sched-title">
       <h2 id="sched-title">Day by day</h2>
-      <p class="muted small">Each bar is a tournament that pays into the chase; points in it count toward that row's milestones. Days run 12:00 to 12:00 UTC.</p>
+      <p class="muted small">Each bar is a tournament that pays into the chase; points in it count toward that row's milestones. Days run 12:00 to 12:00 UTC. Outlined bars are planned: their scoring and rewards show on the event calendar once they open.</p>
       <div class="sched" style={`--days:${schedule.days.length}`} data-days={JSON.stringify(schedule.days)}>
         <div class="row head" aria-hidden="true">
           <div class="label"></div>
@@ -132,7 +133,7 @@ const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? sched
             <div class="track">
               {schedule.days.map((_, i) => <span class:list={['cell', { later: i >= schedule.knownUntil, mon: new Date(schedule.days[i]).getUTCDay() === 1 }]} style={`grid-column:${i + 1}`}></span>)}
               {r.runs.map((x) => (
-                <a class="bar" style={`grid-column:${x.from + 1} / ${x.to + 1}`} href={href(`event-calendar#${calendarId(x.name, x.start)}`)} title={`${x.name}: ${formatUtc(x.start)} to ${formatUtc(x.end)}`}>
+                <a class:list={['bar', { planned: x.planned }]} style={`grid-column:${x.from + 1} / ${x.to + 1}`} href={href(x.planned ? 'event-calendar#planned' : `event-calendar#${calendarId(x.name, x.start)}`)} title={`${x.name}: ${formatUtc(x.start)} to ${formatUtc(x.end)}`}>
                   {dateRange(x.start, x.end)}
                 </a>
               ))}
@@ -244,6 +245,7 @@ const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? sched
     align-self: center; margin: 0 2px; padding: 3px 6px; background: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
     border: 1px solid var(--accent); color: var(--text); font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; z-index: 1;
   }
+  .bar.planned { background: transparent; border-style: dashed; color: var(--soft); }
   .bar:hover { background: color-mix(in srgb, var(--accent) 40%, var(--surface-2)); text-decoration: none; }
   .when { display: none; font-size: 12px; color: var(--accent); }
   .tbc { align-self: center; padding: 0 8px; font-size: 12px; color: var(--muted); font-style: italic; white-space: nowrap; overflow: hidden; z-index: 1; }

@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import eventsJson from '../../data/events.json';
 import stored from '../src/data/chases.json';
+import plannedJson from '../src/data/planned-events.json';
 import type { GameEvent } from '../src/lib/data';
-import { allChases, chaseSchedule, dateRange, featuredChase, milestoneText, type Chase } from '../src/lib/chases';
+import { allChases, chaseSchedule, dateRange, featuredChase, milestoneText, plannedOnly, type Chase } from '../src/lib/chases';
 
 const events = eventsJson as unknown as GameEvent[];
 // Grimnall's shop lists the hero by config id; map it for the test without the full hero pack.
@@ -45,5 +46,25 @@ describe('chase calendar', () => {
     expect(dateRange('2026-10-28T12:00:00Z', '2026-11-02T12:00:00Z')).toBe('28 Oct – 2 Nov');
     expect(milestoneText([{ points: 24000 }, { points: 48000 }])).toBe('24k / 48k');
     expect(milestoneText([{ points: 102000 }])).toBe('102,000');
+  });
+});
+
+describe('planned tournaments', () => {
+  const planned = (plannedJson as { events: { name: string; type: string; start: string; end: string }[] }).events;
+  const chase = events.find((e) => e.type === 'GetLegendary')!;
+
+  it('fill every day of the chase and every Pumpkin milestone count', () => {
+    const s = chaseSchedule(chase, [...events, ...plannedOnly(planned, events)]);
+    expect(s.knownUntil).toBe(s.days.length);
+    const runs = Object.fromEntries(s.rows.map((r) => [r.source, r.runs.length]));
+    // One run per milestone set: three Arena Rush and Gear Up, two Invoker Summon Surge, one of the rest.
+    expect(runs).toMatchObject({ ArenaMedals: 3, GearUpgrade: 3, SummonHero: 2, RelicBossSakiel: 1, Dragon: 1, ClanBoss1: 1 });
+    expect(s.rows.every((r) => r.runs.length > 0)).toBe(true);
+  });
+
+  it('drops a planned tournament once the live list has it', () => {
+    const live = [{ name: 'Gear Up', type: 'GearUpgrade', start: '2026-10-20T12:00:00Z', end: '2026-10-23T12:00:00Z' }];
+    expect(plannedOnly(planned, live).some((p) => p.type === 'GearUpgrade' && p.start.startsWith('2026-10-20'))).toBe(false);
+    expect(plannedOnly(planned, live).every((p) => p.planned)).toBe(true);
   });
 });
