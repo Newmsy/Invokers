@@ -12,8 +12,10 @@ import { bannerArt } from '../lib/art';
 interface Props {
   title: string;
   description?: string;
+  /** False on pages whose own content is the section's big art (Bosses), so the banner picture isn't repeated. */
+  pageBanner?: boolean;
 }
-const { title, description = 'Invokers, Titans, tier lists, events, summons and guides.' } = Astro.props;
+const { title, description = 'Invokers, Titans, tier lists, events, summons and guides.', pageBanner = true } = Astro.props;
 // Absolute URLs for search engines and link previews.
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const previewImage = new URL(href('icons/icon-512.png'), Astro.site);
@@ -24,7 +26,7 @@ const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$
 // A section's own page (not its sub-pages) shows the section picture beside its heading.
 const pagePath = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/^\/|\/$/g, '');
 const section = nav.find((n) => n.path === pagePath);
-const banner = section?.banner ? bannerArt(section.banner) : undefined;
+const banner = pageBanner && section?.banner ? bannerArt(section.banner) : undefined;
 // Breadcrumbs: Home › menu › section › this page (when it is a sub-page of a section).
 const owner = nav.find((n) => n.path === pagePath) ?? nav.find((n) => n.path === current);
 const menu = menus.find((m) => m.group === owner?.group);

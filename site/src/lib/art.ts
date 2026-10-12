@@ -78,9 +78,16 @@ for (const b of bosses) {
 }
 const modeName = (mode: string) => (mode === 'other' ? 'crest-bosses' : slugify(mode));
 const bossGroupSplashPath = new Map<string, string>();
+// A picture every boss of a mode shares (all seven Omnissi, all four Crest bosses), by mode.
+const modeSplashPath = new Map<string, string>();
 for (const group of splashBosses.values()) {
   const [first] = group;
   const source = `bosses/large/${first.id}.webp`;
+  if (group.length > 1 && group.every((b) => b.mode === first.mode) && group.length === bosses.filter((b) => b.mode === first.mode).length) {
+    const served = `splash/bosses/${modeName(first.mode)}.webp`;
+    if (!routes.has(served)) routes.set(served, source);
+    modeSplashPath.set(first.mode, served);
+  }
   if (group.length === 1) add(`splash/bosses/${bossSlug(first)}.webp`, source, bossSplashPath, first.id);
   else if (new Set(group.map((b) => b.name)).size === 1) for (const b of group) add(`splash/bosses/${bossSlug(b)}.webp`, source, bossSplashPath, b.id);
   else {
@@ -173,6 +180,8 @@ export const bossArt = (bossId: string) => url(bossArtPath.get(bossId));
 export const bossSplash = (bossId: string) => url(bossSplashPath.get(bossId));
 /** Wide art a whole mode shares (the Crest bosses), for that mode's section; undefined when the boss has its own. */
 export const bossGroupSplash = (bossId: string) => url(bossGroupSplashPath.get(bossId));
+/** Wide art shared by every boss of a mode, for that mode's section header; undefined when each boss has its own. */
+export const bossModeSplash = (mode: string) => url(modeSplashPath.get(mode));
 export const chaseBanner = (heroId: string) => url(chaseBannerPath.get(heroId));
 export const heroSplash = (heroId: string) => url(heroSplashPath.get(heroId));
 export const titanSplash = (titanId: string) => url(titanSplashPath.get(titanId));
