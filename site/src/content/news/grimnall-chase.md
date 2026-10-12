@@ -45,7 +45,7 @@ Compared with the Senhachi Chase, Crest Hunt now pays once instead of twice, the
 | Invoker Power Up | 16–20 Oct |
 | Invoker Summon Surge | 16–20 Oct |
 
-Invoker Power Up and Invoker Summon Surge overlap, so save summons and upgrades for 16 October. The rest of the schedule is on the [Event calendar](/event-calendar/).
+Invoker Power Up and Invoker Summon Surge overlap, so save summons and upgrades for 16 October. The whole chase day by day is on the [Chase calendar](/chase-calendar/).
 
 ### The Event Shop
 

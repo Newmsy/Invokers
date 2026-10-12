@@ -64,6 +64,7 @@ export const nav: NavItem[] = [
   // Tools
   { path: 'events', banner: 'energy', label: 'Events', icon: 'calendar', tab: true, group: 'tools', art: 'item:Energy', blurb: 'Event targets, energy planner and Arena Rush' },
   { path: 'event-calendar', banner: 'novice-tournament', label: 'Event calendar', icon: 'calendar', group: 'tools', art: 'item:Gold Trophy', blurb: 'What is on now and next, points per action and rewards' },
+  { path: 'chase-calendar', banner: 'novice-tournament-2', label: 'Chase calendar', icon: 'calendar', group: 'tools', art: 'item:Crown', blurb: 'Every chase, and the current one day by day' },
   { path: 'summons', banner: 'summon-invoker', label: 'Summons', icon: 'star', tab: true, group: 'tools', art: 'item:Destiny Star', blurb: 'Summon rates and an odds calculator' },
   { path: 'packs', banner: 'gems', label: 'Pack value', icon: 'star', group: 'tools', art: 'item:Gems', blurb: 'Which paid packs give the most per £' },
   { path: 'trophies', banner: 'gold', label: 'Trophies', icon: 'trophy', group: 'tools', art: 'item:Gold Trophy', blurb: 'Trophy Room costs, bonuses and an upgrade planner' },

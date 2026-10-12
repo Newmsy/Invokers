@@ -182,6 +182,7 @@ export function pageDocs(): SearchDoc[] {
     ['tiers', 'Tier lists', 'The best Invokers and Titans for the campaign, Spires, Arena and every boss'],
     ['events', 'Events', 'How events score, their targets, and energy and Arena Rush planners'],
     ['event-calendar', 'Event calendar', 'Live and upcoming events: dates, points per action, bracket and leaderboard rewards'],
+    ['chase-calendar', 'Chase calendar', 'Every chase with its dates, Invoker and currency, and the current chase day by day'],
     ['summons', 'Summons', 'Summon rates for every star and orb, and the odds of at least one Legendary in N pulls'],
     ['packs', 'Pack value', 'Every paid pack ranked by value per £, plus Bank gem bundles and Gem Shop prices'],
     ['gear', 'Gear sets', 'Every gear set, its 3 and 5 piece bonuses, and the bosses each tolerance set counters'],

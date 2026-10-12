@@ -23,6 +23,7 @@ const cards = events.map((e) => {
   const links = [
     ...eventBosses.map((b) => ({ path: `bosses/${bossSlug(b)}`, label: `${b.name} guide`, icon: bossArt(b.id) })),
     ...eventLinks(e.scoring.rules).map((l) => ({ ...l, icon: undefined as string | undefined })),
+    ...(e.type === 'GetLegendary' ? [{ path: 'chase-calendar', label: 'Chase calendar', icon: undefined as string | undefined }] : []),
   ];
   const tables = mergeSameTables(e.scoring.rules.flatMap((r) => ruleTables(r, cleanName, (ids) => bossesFor(ids).map((b) => b.name).join(', '))));
   const levels = e.playerLevels.map((l) => (l.min === l.max ? `${l.min}` : `${l.min}–${l.max}`)).join(', ');
@@ -177,6 +178,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   <p class="asof">Event list as of {asOf} UTC. Times are in UTC.</p>
 
   <SeeAlso links={[
+    { path: 'chase-calendar', label: 'Chase calendar' },
     { path: 'events', label: 'Event planner' },
     { path: 'summons', label: 'Summons' },
     { path: 'gear-upgrades', label: 'Gear upgrades' },
