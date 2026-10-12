@@ -223,9 +223,20 @@ const crumbs = pagePath && owner
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
+  /* The page background is a fixed gradient: dark at the top, slightly lighter at the bottom. It stays put
+     while the content scrolls over it (a fixed layer, since background-attachment: fixed fails on iPhones). */
+  html { background: var(--bg); }
+  html::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 35%, #1C1610 100%);
+  }
   body {
     margin: 0;
-    background: var(--bg);
+    background: transparent;
     color: var(--text);
     line-height: 1.5;
     font-variant-numeric: lining-nums;
@@ -293,7 +304,7 @@ const crumbs = pagePath && owner
   @media (max-width: 720px) { body::before { height: 60px; } }
   .top-nav { display: flex; gap: 2px; font-weight: 500; min-width: 0; overflow-x: auto; scrollbar-width: none; }
   .top-nav a { white-space: nowrap; }
-  .top-nav { overflow: visible; align-items: center; }
+  .top-nav { overflow: visible; align-items: center; flex: none; margin-right: 16px; }
   .top-nav > a, .menu-top {
     display: inline-flex;
     align-items: center;
@@ -344,14 +355,15 @@ const crumbs = pagePath && owner
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 220px;
+    /* Shrinks before the menu links do, so the last link never runs into it. */
+    flex: 0 1 220px;
+    min-width: 140px;
     height: 40px;
     padding: 0 10px 0 12px;
     border-radius: var(--radius);
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--muted);
-    flex: none;
   }
   .header-search:focus-within { border-color: var(--accent); }
   .header-search input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; color: var(--text); font: inherit; font-size: 14px; }
@@ -442,7 +454,7 @@ const crumbs = pagePath && owner
   /* Seven sections plus Search and My box: drop the Search label before the links run out of room. */
   @media (max-width: 1320px) {
     header.top { gap: 16px; padding-left: 32px; padding-right: 32px; }
-    .header-search { width: 150px; }
+    .header-search { flex-basis: 150px; }
     .header-search kbd { display: none; }
   }
 
