@@ -12,7 +12,9 @@ import { descriptionLines, eventLinks, mergeSameTables, eventNotices, formatUtc,
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const cleanName = (id: string) => itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '');
-const bossesFor = (ids: string[]) => ids.map((id) => bosses.find((b) => b.id === id)).filter((b) => !!b);
+// One entry per boss name: several region ids can point at the same boss.
+const bossesFor = (ids: string[]) =>
+  ids.map((id) => bosses.find((b) => b.id === id)).filter((b, i, all) => !!b && all.findIndex((o) => o?.name === b.name) === i).filter((b) => !!b);
 
 const now = Date.now();
 const cards = events.map((e) => {
