@@ -1,0 +1,34 @@
+{
+  "note": "Chases that have left the live event list: hero id, dates (UTC) and the currency their tournaments paid. The live event list adds or replaces entries by hero.",
+  "chases": [
+    {
+      "hero": "ELD036",
+      "start": "2026-07-13T12:00:00Z",
+      "end": "2026-08-02T12:00:00Z",
+      "currency": "GE_GoldCrown",
+      "story": "news/taranis-the-bolt-regent-chase",
+      "name": "Taranis Chase",
+      "short": "Taranis"
+    },
+    {
+      "hero": "ELD037",
+      "start": "2026-08-10T12:00:00Z",
+      "end": "2026-08-31T12:00:00Z",
+      "currency": "GE_GoldCrown",
+      "story": "news/ardell-the-torrent-chase",
+      "name": "Ardell Chase",
+      "short": "Ardell"
+    },
+    {
+      "hero": "CAM027",
+      "start": "2026-09-07T12:00:00Z",
+      "end": "2026-09-28T12:00:00Z",
+      "currency": "GE_GoldCrown",
+      "story": "news/prime-force-senhachi-chase",
+      "total": 200,
+      "heroPrice": 170,
+      "name": "Senhachi Chase",
+      "short": "Senhachi"
+    }
+  ]
+}

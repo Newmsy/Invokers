@@ -1,0 +1,291 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SeeAlso from '../components/SeeAlso.astro';
+import RewardChips from '../components/RewardChips.astro';
+import { events, eventsCapturedAt, heroes, heroHref, heroRefsByConfigId, href, itemName } from '../lib/data';
+import { chaseBanner, elementIcon, heroArt, itemIcon } from '../lib/art';
+import { slugify } from '../lib/slugs';
+import { formatUtc } from '../lib/eventCalendar';
+import { allChases, chaseSchedule, dateRange, featuredChase, milestoneText, type Chase } from '../lib/chases';
+import stored from '../data/chases.json';
+
+const fmt = (n: number) => n.toLocaleString('en-GB');
+const configIds = Object.entries(heroRefsByConfigId);
+const heroIdByConfigId = (configId: number) => configIds.find(([id]) => Number(id) === configId)?.[1].id;
+const heroById = (id: string) => heroes.find((h) => h.id === id);
+const currencyName = (id: string) => itemName(id);
+
+const now = Date.now();
+const chases = allChases(stored.chases as Chase[], events, heroIdByConfigId);
+const current = featuredChase(chases, now);
+const news = await getCollection('news');
+// A chase's own guide (kind "event", titled after the chase) and its hero spotlight.
+const storiesFor = (c: Chase) => {
+  const name = heroById(c.hero)?.name ?? '';
+  const guide = news.find((n) => n.data.kind === 'event' && n.data.title.startsWith(c.name));
+  const spotlight = news.find((n) => n.data.kind === 'spotlight' && n.data.heroes.includes(name));
+  return [
+    guide && { path: `news/${guide.id}`, label: 'Chase guide' },
+    spotlight && { path: `news/${spotlight.id}`, label: `${c.short} spotlight` },
+    !guide && !spotlight && c.story && { path: c.story, label: 'Chase story' },
+  ].filter((x): x is { path: string; label: string } => !!x);
+};
+const state = (c: Chase) => (now >= Date.parse(c.end) ? 'ended' : now >= Date.parse(c.start) ? 'now' : 'next');
+const stateText = { now: 'On now', next: 'Coming up', ended: 'Ended' };
+
+// The live chase: schedule, shop highlights and the event calendar entry each run links to.
+const live = current?.event;
+const schedule = live ? chaseSchedule(live, events) : undefined;
+const calendarId = (name: string, start: string) => {
+  const d = new Date(start);
+  return `${slugify(name)}-${d.getUTCDate()}-${d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toLowerCase()}`;
+};
+const highlights = (live?.shopItems ?? [])
+  .filter((s) => s.reward.every((r) => 'itemId' in r) && s.price >= 20)
+  .sort((a, b) => b.price - a.price)
+  .map((s) => ({ price: s.price, limit: s.maxQuantity, items: s.reward as { itemId: string; amount: number }[] }));
+const otherItems = (live?.shopItems?.length ?? 0) - highlights.length - 1;
+const dayLabel = (iso: string) => new Date(iso).getUTCDate();
+const weekday = (iso: string) => ['S', 'M', 'T', 'W', 'T', 'F', 'S'][new Date(iso).getUTCDay()];
+const monthStart = (iso: string, i: number) => i === 0 || new Date(iso).getUTCDate() === 1;
+const month = (iso: string) => new Date(iso).toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' });
+const hero = current && heroById(current.hero);
+const cName = current && currencyName(current.currency);
+const lead = current && hero
+  ? state(current) === 'now'
+    ? `The ${current.name} is on until ${formatUtc(current.end)}.${current.registrationEnd && now < Date.parse(current.registrationEnd) ? ` Sign up by ${formatUtc(current.registrationEnd)}.` : ''}`
+    : state(current) === 'next'
+      ? `The ${current.name} starts ${formatUtc(current.start)}.`
+      : 'No chase is on right now.'
+  : 'No chase is on right now.';
+const captured = new Date(eventsCapturedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? schedule.days[schedule.knownUntil] : undefined;
+---
+<Base title="Chase calendar" description="Every chase: dates, sign-up deadline, chase Invoker and currency, plus the day-by-day tournament schedule of the current chase.">
+  <h1>Chase calendar</h1>
+  <p class="lead">{lead} A chase lasts 3 weeks: tournaments inside it pay {cName ? `${cName}s` : 'chase currency'} at point milestones, and the Event Shop sells the chase Invoker for it.</p>
+
+  {current && hero && (
+    <section class="cur" aria-labelledby="cur-title">
+      {chaseBanner(current.hero) && <img class="cur-art" src={chaseBanner(current.hero)} alt="" width="1280" height="640" fetchpriority="high" />}
+      <div class="cur-grid">
+        <div>
+          <h2 id="cur-title">{current.name} <span class:list={['pill', state(current)]}>{stateText[state(current)]}</span></h2>
+          <p class="cur-hero">
+            <a href={heroHref(hero.id)}>{heroArt(hero.id) && <img src={heroArt(hero.id)} alt="" width="40" height="40" />}<span>{hero.name}</span></a>
+            <span class="muted">{elementIcon(hero.element) && <img class="el" src={elementIcon(hero.element)} alt="" width="18" height="18" />}{hero.element} {hero.rarity}</span>
+          </p>
+          <ul class="facts">
+            <li><span>Runs</span>{formatUtc(current.start)} to {formatUtc(current.end)}</li>
+            {current.registrationEnd && <li><span>Sign up by</span>{formatUtc(current.registrationEnd)}</li>}
+            {current.rewardPeriodEnd && <li><span>Leftovers spent</span>{formatUtc(current.rewardPeriodEnd)}, items to your Inbox</li>}
+            {current.total && current.heroPrice && (
+              <li><span>{cName}s</span>{itemIcon(current.currency) && <img class="cur-icon" src={itemIcon(current.currency)} alt="" width="20" height="20" />}{fmt(current.total)} on offer; {current.short} costs {fmt(current.heroPrice)}</li>
+            )}
+          </ul>
+          <p class="links">
+            {storiesFor(current).map((l) => <a href={href(l.path)}>{l.label}</a>)}
+            {live && <a href={href(`event-calendar#${calendarId(live.name, live.start)}`)}>Full shop and rewards</a>}
+          </p>
+        </div>
+        {highlights.length > 0 && (
+          <div>
+            <h3>Shop highlights</h3>
+            <table class="shop">
+              <thead><tr><th scope="col">Item</th><th scope="col" class="num">{cName}s</th><th scope="col" class="num">Limit</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><a class="shop-hero" href={heroHref(hero.id)}>{heroArt(hero.id) && <img src={heroArt(hero.id)} alt="" width="20" height="20" />}{hero.name} (5★)</a></th><td class="num">{fmt(current.heroPrice ?? 0)}</td><td class="num">1</td></tr>
+                {highlights.map((s) => <tr><th scope="row"><RewardChips rewards={s.items} /></th><td class="num">{fmt(s.price)}</td><td class="num">{fmt(s.limit)}</td></tr>)}
+              </tbody>
+            </table>
+            {otherItems > 0 && <p class="muted small">Plus {otherItems} cheaper items.</p>}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {schedule && live && (
+    <section aria-labelledby="sched-title">
+      <h2 id="sched-title">Day by day</h2>
+      <p class="muted small">Each bar is a tournament that pays into the chase; points in it count toward that row's milestones. Days run 12:00 to 12:00 UTC.</p>
+      <div class="sched" style={`--days:${schedule.days.length}`} data-days={JSON.stringify(schedule.days)}>
+        <div class="row head" aria-hidden="true">
+          <div class="label"></div>
+          <div class="track">
+            {schedule.days.map((d, i) => (
+              <span class:list={['day', { 'later': i >= schedule.knownUntil, 'mon': new Date(d).getUTCDay() === 1 }]} data-day={d}>
+                {monthStart(d, i) && <b>{month(d)}</b>}
+                <i>{weekday(d)}</i>{dayLabel(d)}
+              </span>
+            ))}
+          </div>
+        </div>
+        {schedule.rows.map((r) => (
+          <div class="row">
+            <div class="label">
+              <span class="name">{r.name}</span>
+              <span class="pay">{fmt(r.total)} {cName}s · {milestoneText(r.milestones)} pts</span>
+              {r.runs.length > 0 && <span class="when">{r.runs.map((x) => dateRange(x.start, x.end)).join(', ')}</span>}
+            </div>
+            <div class="track">
+              {schedule.days.map((_, i) => <span class:list={['cell', { later: i >= schedule.knownUntil, mon: new Date(schedule.days[i]).getUTCDay() === 1 }]} style={`grid-column:${i + 1}`}></span>)}
+              {r.runs.map((x) => (
+                <a class="bar" style={`grid-column:${x.from + 1} / ${x.to + 1}`} href={href(`event-calendar#${calendarId(x.name, x.start)}`)} title={`${x.name}: ${formatUtc(x.start)} to ${formatUtc(x.end)}`}>
+                  {dateRange(x.start, x.end)}
+                </a>
+              ))}
+              {!r.runs.length && <span class="tbc" style={`grid-column:${schedule.knownUntil + 1} / -1`}>Dates not out yet</span>}
+            </div>
+          </div>
+        ))}
+      </div>
+      {lastKnown && <p class="muted small">Shaded days: tournaments from {formatUtc(lastKnown).split(',')[0]} on aren't announced yet. Schedule as of {captured}.</p>}
+    </section>
+  )}
+
+  <section aria-labelledby="all-title">
+    <h2 id="all-title">Every chase</h2>
+    <table class="all">
+      <thead><tr><th scope="col">Chase</th><th scope="col">Invoker</th><th scope="col">Dates</th><th scope="col">Paid in</th><th scope="col">Read more</th></tr></thead>
+      <tbody>
+        {[...chases].reverse().map((c) => {
+          const h = heroById(c.hero);
+          return (
+            <tr class:list={{ current: c === current }}>
+              <th scope="row">{c.name}<span class:list={['pill', state(c)]}>{stateText[state(c)]}</span></th>
+              <td>{h && <a class="inv" href={heroHref(h.id)}>{heroArt(h.id) && <img src={heroArt(h.id)} alt="" width="28" height="28" loading="lazy" />}<span>{h.name}</span>{elementIcon(h.element) && <img class="el" src={elementIcon(h.element)} alt={h.element} width="16" height="16" loading="lazy" />}</a>}</td>
+              <td>{dateRange(c.start, c.end)} {new Date(c.end).getUTCFullYear()}</td>
+              <td><span class="cur-name">{itemIcon(c.currency) && <img src={itemIcon(c.currency)} alt="" width="20" height="20" loading="lazy" />}{currencyName(c.currency)}s</span></td>
+              <td class="reads">{storiesFor(c).map((l) => <a href={href(l.path)}>{l.label}</a>)}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </section>
+
+  <SeeAlso links={[
+    { path: 'event-calendar', label: 'Event calendar' },
+    { path: 'events', label: 'Event planner' },
+    { path: 'summons', label: 'Summons' },
+    { path: 'news', label: 'News' },
+  ]} />
+</Base>
+
+<script>
+  // Mark today's column; the page is built ahead of time.
+  const sched = document.querySelector<HTMLElement>('.sched');
+  if (sched) {
+    const days: string[] = JSON.parse(sched.dataset.days ?? '[]');
+    const now = Date.now();
+    const i = days.findIndex((d) => now >= Date.parse(d) && now < Date.parse(d) + 86_400_000);
+    if (i >= 0) {
+      sched.querySelectorAll('.head .day')[i]?.classList.add('today');
+      sched.querySelectorAll('.track').forEach((t) => t.querySelectorAll('.cell')[i]?.classList.add('today'));
+    }
+  }
+</script>
+
+<style>
+  h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
+  h2 { font-size: 20px; font-weight: 600; margin: 32px 0 10px; }
+  h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; margin: 0 0 6px; }
+  .lead { color: var(--soft); margin: 0; max-width: 80ch; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; margin: 6px 0; }
+  .num { text-align: right; }
+  table { border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  thead th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  tbody th { color: var(--soft); font-weight: 500; }
+  tbody tr:last-child > * { border-bottom: 0; }
+
+  .pill { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line); font-size: 12px; font-weight: 600; color: var(--muted); vertical-align: middle; }
+  .pill.now { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .pill.next { color: var(--accent); border-color: var(--accent); }
+
+  .cur { margin-top: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+  .cur-art { width: 100%; height: 240px; object-fit: cover; object-position: center 25%; display: block; border-bottom: 1px solid var(--line); }
+  .cur-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, auto); gap: 16px 32px; padding: 14px 18px 18px; }
+  .cur h2 { margin: 0 0 8px; font-size: 22px; }
+  .cur-hero { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 0 0 10px; }
+  .cur-hero a { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; }
+  .cur-hero a img { width: 40px; height: 40px; object-fit: cover; border: 1px solid var(--line); }
+  .cur-hero .muted { display: inline-flex; align-items: center; gap: 5px; font-size: 14px; }
+  .el { width: 18px; height: 18px; }
+  .facts { list-style: none; margin: 0; padding: 0; font-size: 14px; color: var(--soft); }
+  .facts li { display: grid; grid-template-columns: 130px minmax(0, 1fr); padding: 5px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .facts li:last-child { border-bottom: 0; }
+  .facts li > span:first-child { color: var(--muted); font-size: 13px; }
+  .cur-icon { width: 20px; height: 20px; vertical-align: -4px; margin-right: 4px; display: inline; }
+  .facts li:has(.cur-icon) { grid-template-columns: 130px auto minmax(0, 1fr); }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 12px 0 0; font-size: 14px; }
+  .shop { border: 1px solid var(--line); }
+  .shop-hero { display: inline-flex; align-items: center; gap: 6px; }
+  .shop-hero img { width: 20px; height: 20px; object-fit: cover; }
+
+  /* Day-by-day schedule: a label column, then one grid column per chase day. No sideways scrolling: the track
+     shares the width, and on phones the label sits above it. */
+  .sched { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .row { display: grid; grid-template-columns: 280px minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .label { padding: 6px 10px; display: flex; flex-direction: column; justify-content: center; min-width: 0; border-right: 1px solid var(--line); }
+  .name { font-size: 14px; font-weight: 600; color: var(--soft); }
+  .pay { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .track { display: grid; grid-template-columns: repeat(var(--days), minmax(0, 1fr)); grid-auto-flow: dense; position: relative; min-width: 0; }
+  .track > * { grid-row: 1; }
+  .cell { border-left: 1px solid color-mix(in srgb, var(--line) 50%, transparent); min-height: 40px; }
+  .cell.mon { border-left-color: var(--line); }
+  .cell.later, .day.later { background: repeating-linear-gradient(135deg, transparent 0 5px, color-mix(in srgb, var(--line) 45%, transparent) 5px 6px); }
+  .cell.today { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .bar {
+    align-self: center; margin: 0 2px; padding: 3px 6px; background: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+    border: 1px solid var(--accent); color: var(--text); font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; z-index: 1;
+  }
+  .bar:hover { background: color-mix(in srgb, var(--accent) 40%, var(--surface-2)); text-decoration: none; }
+  .when { display: none; font-size: 12px; color: var(--accent); }
+  .tbc { align-self: center; padding: 0 8px; font-size: 12px; color: var(--muted); font-style: italic; white-space: nowrap; overflow: hidden; z-index: 1; }
+  .head .label { border-right: 1px solid var(--line); }
+  .day { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 18px 0 4px; font-size: 12px; color: var(--soft); font-variant-numeric: tabular-nums; border-left: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
+  .day.mon { border-left-color: var(--line); }
+  .day i { font-style: normal; color: var(--muted); font-size: 11px; }
+  .day b { position: absolute; top: 2px; left: 3px; font-size: 11px; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+  .day.today { color: var(--bg); background: var(--accent); }
+  .day.today i, .day.today b { color: var(--bg); }
+
+  .all { width: 100%; }
+  .all tr.current > * { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .all th[scope='row'] { white-space: nowrap; }
+  .inv { display: inline-flex; align-items: center; gap: 8px; }
+  .inv img:first-child { width: 28px; height: 28px; object-fit: cover; border: 1px solid var(--line); }
+  .inv .el { width: 16px; height: 16px; }
+  .cur-name { display: inline-flex; align-items: center; gap: 6px; }
+  .cur-name img { width: 20px; height: 20px; }
+  .reads a + a { margin-left: 12px; }
+
+  @media (max-width: 900px) {
+    .cur-grid { grid-template-columns: minmax(0, 1fr); }
+    .cur-art { height: 160px; }
+  }
+  @media (max-width: 760px) {
+    h1 { font-size: 22px; }
+    .row { grid-template-columns: minmax(0, 1fr); }
+    .label { border-right: 0; padding-bottom: 2px; }
+    .head .label { display: none; }
+    .day { font-size: 10px; padding-top: 16px; }
+    .day i { font-size: 9px; }
+    .day b { font-size: 9px; left: 1px; }
+    .when { display: block; }
+    .bar { font-size: 0; min-height: 14px; padding: 0; margin: 0 1px; }
+    .cell { min-height: 28px; }
+    .facts li, .facts li:has(.cur-icon) { grid-template-columns: 110px minmax(0, 1fr); }
+    .facts li:has(.cur-icon) .cur-icon { display: none; }
+    /* The chase table becomes stacked rows. */
+    .all thead { display: none; }
+    .all, .all tbody, .all tr, .all th, .all td { display: block; width: 100%; }
+    .all tr { padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .all th, .all td { border: 0; padding: 2px 0; }
+  }
+</style>
