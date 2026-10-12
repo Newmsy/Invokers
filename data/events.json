@@ -3915,2037 +3915,6 @@
   ],
   "bracketSize": 50,
   "entryPoints": 1000,
-  "scoring": [
-   {
-    "sourceTypeId": "RelicBossUlgorim",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "RelicDropScoringRule",
-       "acceptedRegions": [
-        "DungeonRelics1"
-       ],
-       "entries": [
-        {
-         "rank": "Three",
-         "rarity": "Common",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Uncommon",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Rare",
-         "points": 40
-        },
-        {
-         "rank": "Three",
-         "rarity": "Epic",
-         "points": 50
-        },
-        {
-         "rank": "Three",
-         "rarity": "Legendary",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Common",
-         "points": 40
-        },
-        {
-         "rank": "Four",
-         "rarity": "Uncommon",
-         "points": 50
-        },
-        {
-         "rank": "Four",
-         "rarity": "Rare",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Epic",
-         "points": 70
-        },
-        {
-         "rank": "Four",
-         "rarity": "Legendary",
-         "points": 100
-        },
-        {
-         "rank": "Five",
-         "rarity": "Common",
-         "points": 230
-        },
-        {
-         "rank": "Five",
-         "rarity": "Uncommon",
-         "points": 250
-        },
-        {
-         "rank": "Five",
-         "rarity": "Rare",
-         "points": 300
-        },
-        {
-         "rank": "Five",
-         "rarity": "Epic",
-         "points": 400
-        },
-        {
-         "rank": "Five",
-         "rarity": "Legendary",
-         "points": 450
-        },
-        {
-         "rank": "Six",
-         "rarity": "Common",
-         "points": 800
-        },
-        {
-         "rank": "Six",
-         "rarity": "Uncommon",
-         "points": 1300
-        },
-        {
-         "rank": "Six",
-         "rarity": "Rare",
-         "points": 1900
-        },
-        {
-         "rank": "Six",
-         "rarity": "Epic",
-         "points": 2100
-        },
-        {
-         "rank": "Six",
-         "rarity": "Legendary",
-         "points": 2500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonRelics1",
-     "iconKey": "CollectDungeonRelics1",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonRelics1-title",
-      "description": "lo-tournament-CollectDungeonRelics1-description",
-      "shortName": "lo-tournament-CollectDungeonRelics1-short-name",
-      "advice1": "lo-tournament-CollectDungeonRelics1-advice-1"
-     },
-     "orderId": 30,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "RelicBossAlthar",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "RelicDropScoringRule",
-       "acceptedRegions": [
-        "DungeonRelics2"
-       ],
-       "entries": [
-        {
-         "rank": "Three",
-         "rarity": "Common",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Uncommon",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Rare",
-         "points": 40
-        },
-        {
-         "rank": "Three",
-         "rarity": "Epic",
-         "points": 50
-        },
-        {
-         "rank": "Three",
-         "rarity": "Legendary",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Common",
-         "points": 40
-        },
-        {
-         "rank": "Four",
-         "rarity": "Uncommon",
-         "points": 50
-        },
-        {
-         "rank": "Four",
-         "rarity": "Rare",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Epic",
-         "points": 70
-        },
-        {
-         "rank": "Four",
-         "rarity": "Legendary",
-         "points": 100
-        },
-        {
-         "rank": "Five",
-         "rarity": "Common",
-         "points": 230
-        },
-        {
-         "rank": "Five",
-         "rarity": "Uncommon",
-         "points": 250
-        },
-        {
-         "rank": "Five",
-         "rarity": "Rare",
-         "points": 300
-        },
-        {
-         "rank": "Five",
-         "rarity": "Epic",
-         "points": 400
-        },
-        {
-         "rank": "Five",
-         "rarity": "Legendary",
-         "points": 450
-        },
-        {
-         "rank": "Six",
-         "rarity": "Common",
-         "points": 800
-        },
-        {
-         "rank": "Six",
-         "rarity": "Uncommon",
-         "points": 1300
-        },
-        {
-         "rank": "Six",
-         "rarity": "Rare",
-         "points": 1900
-        },
-        {
-         "rank": "Six",
-         "rarity": "Epic",
-         "points": 2100
-        },
-        {
-         "rank": "Six",
-         "rarity": "Legendary",
-         "points": 2500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonRelics2",
-     "iconKey": "CollectDungeonRelics2",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonRelics2-title",
-      "description": "lo-tournament-CollectDungeonRelics2-description",
-      "shortName": "lo-tournament-CollectDungeonRelics2-short-name",
-      "advice1": "lo-tournament-CollectDungeonRelics2-advice-1"
-     },
-     "orderId": 40,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "RelicBossSakiel",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "RelicDropScoringRule",
-       "acceptedRegions": [
-        "DungeonRelics6"
-       ],
-       "entries": [
-        {
-         "rank": "Three",
-         "rarity": "Common",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Uncommon",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Rare",
-         "points": 40
-        },
-        {
-         "rank": "Three",
-         "rarity": "Epic",
-         "points": 50
-        },
-        {
-         "rank": "Three",
-         "rarity": "Legendary",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Common",
-         "points": 40
-        },
-        {
-         "rank": "Four",
-         "rarity": "Uncommon",
-         "points": 50
-        },
-        {
-         "rank": "Four",
-         "rarity": "Rare",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Epic",
-         "points": 70
-        },
-        {
-         "rank": "Four",
-         "rarity": "Legendary",
-         "points": 100
-        },
-        {
-         "rank": "Five",
-         "rarity": "Common",
-         "points": 230
-        },
-        {
-         "rank": "Five",
-         "rarity": "Uncommon",
-         "points": 250
-        },
-        {
-         "rank": "Five",
-         "rarity": "Rare",
-         "points": 300
-        },
-        {
-         "rank": "Five",
-         "rarity": "Epic",
-         "points": 400
-        },
-        {
-         "rank": "Five",
-         "rarity": "Legendary",
-         "points": 450
-        },
-        {
-         "rank": "Six",
-         "rarity": "Common",
-         "points": 800
-        },
-        {
-         "rank": "Six",
-         "rarity": "Uncommon",
-         "points": 1300
-        },
-        {
-         "rank": "Six",
-         "rarity": "Rare",
-         "points": 1900
-        },
-        {
-         "rank": "Six",
-         "rarity": "Epic",
-         "points": 2100
-        },
-        {
-         "rank": "Six",
-         "rarity": "Legendary",
-         "points": 2500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonRelics6",
-     "iconKey": "CollectDungeonRelics6",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonRelics6-title",
-      "description": "lo-tournament-CollectDungeonRelics6-description",
-      "shortName": "lo-tournament-CollectDungeonRelics6-short-name",
-      "advice1": "lo-tournament-CollectDungeonRelics6-advice-1"
-     },
-     "orderId": 50,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "GearUpgrade",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "GearUpgradeScoringRule",
-       "entries": [
-        {
-         "rank": "One",
-         "levelMilestone": 5,
-         "points": 3
-        },
-        {
-         "rank": "Two",
-         "levelMilestone": 5,
-         "points": 6
-        },
-        {
-         "rank": "Three",
-         "levelMilestone": 5,
-         "points": 9
-        },
-        {
-         "rank": "Four",
-         "levelMilestone": 5,
-         "points": 19
-        },
-        {
-         "rank": "Five",
-         "levelMilestone": 5,
-         "points": 22
-        },
-        {
-         "rank": "Six",
-         "levelMilestone": 5,
-         "points": 40
-        },
-        {
-         "rank": "One",
-         "levelMilestone": 10,
-         "points": 9
-        },
-        {
-         "rank": "Two",
-         "levelMilestone": 10,
-         "points": 15
-        },
-        {
-         "rank": "Three",
-         "levelMilestone": 10,
-         "points": 25
-        },
-        {
-         "rank": "Four",
-         "levelMilestone": 10,
-         "points": 51
-        },
-        {
-         "rank": "Five",
-         "levelMilestone": 10,
-         "points": 58
-        },
-        {
-         "rank": "Six",
-         "levelMilestone": 10,
-         "points": 104
-        },
-        {
-         "rank": "One",
-         "levelMilestone": 15,
-         "points": 21
-        },
-        {
-         "rank": "Two",
-         "levelMilestone": 15,
-         "points": 34
-        },
-        {
-         "rank": "Three",
-         "levelMilestone": 15,
-         "points": 54
-        },
-        {
-         "rank": "Four",
-         "levelMilestone": 15,
-         "points": 97
-        },
-        {
-         "rank": "Five",
-         "levelMilestone": 15,
-         "points": 200
-        },
-        {
-         "rank": "Six",
-         "levelMilestone": 15,
-         "points": 355
-        },
-        {
-         "rank": "One",
-         "levelMilestone": 20,
-         "points": 73
-        },
-        {
-         "rank": "Two",
-         "levelMilestone": 20,
-         "points": 110
-        },
-        {
-         "rank": "Three",
-         "levelMilestone": 20,
-         "points": 170
-        },
-        {
-         "rank": "Four",
-         "levelMilestone": 20,
-         "points": 242
-        },
-        {
-         "rank": "Five",
-         "levelMilestone": 20,
-         "points": 420
-        },
-        {
-         "rank": "Six",
-         "levelMilestone": 20,
-         "points": 686
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "UpgradeRelics",
-     "iconKey": "UpgradeRelics",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-UpgradeRelics-title",
-      "description": "lo-tournament-UpgradeRelics-description",
-      "shortName": "lo-tournament-UpgradeRelics-short-name",
-      "advice1": "lo-tournament-UpgradeRelics-advice-1"
-     },
-     "orderId": 60,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "ArenaMedals",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "ArenaBattleScoringRule",
-       "entries": [
-        {
-         "league": "Bronze1",
-         "result": "Victory",
-         "points": 40
-        },
-        {
-         "league": "Bronze1",
-         "result": "Defeat",
-         "points": 20
-        },
-        {
-         "league": "Bronze2",
-         "result": "Victory",
-         "points": 50
-        },
-        {
-         "league": "Bronze2",
-         "result": "Defeat",
-         "points": 20
-        },
-        {
-         "league": "Bronze3",
-         "result": "Victory",
-         "points": 60
-        },
-        {
-         "league": "Bronze3",
-         "result": "Defeat",
-         "points": 30
-        },
-        {
-         "league": "Bronze4",
-         "result": "Victory",
-         "points": 70
-        },
-        {
-         "league": "Bronze4",
-         "result": "Defeat",
-         "points": 30
-        },
-        {
-         "league": "Silver1",
-         "result": "Victory",
-         "points": 80
-        },
-        {
-         "league": "Silver1",
-         "result": "Defeat",
-         "points": 40
-        },
-        {
-         "league": "Silver2",
-         "result": "Victory",
-         "points": 90
-        },
-        {
-         "league": "Silver2",
-         "result": "Defeat",
-         "points": 40
-        },
-        {
-         "league": "Silver3",
-         "result": "Victory",
-         "points": 100
-        },
-        {
-         "league": "Silver3",
-         "result": "Defeat",
-         "points": 50
-        },
-        {
-         "league": "Silver4",
-         "result": "Victory",
-         "points": 110
-        },
-        {
-         "league": "Silver4",
-         "result": "Defeat",
-         "points": 50
-        },
-        {
-         "league": "Gold1",
-         "result": "Victory",
-         "points": 120
-        },
-        {
-         "league": "Gold1",
-         "result": "Defeat",
-         "points": 60
-        },
-        {
-         "league": "Gold2",
-         "result": "Victory",
-         "points": 130
-        },
-        {
-         "league": "Gold2",
-         "result": "Defeat",
-         "points": 60
-        },
-        {
-         "league": "Gold3",
-         "result": "Victory",
-         "points": 140
-        },
-        {
-         "league": "Gold3",
-         "result": "Defeat",
-         "points": 70
-        },
-        {
-         "league": "Gold4",
-         "result": "Victory",
-         "points": 150
-        },
-        {
-         "league": "Gold4",
-         "result": "Defeat",
-         "points": 70
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "WinArenaMedals",
-     "iconKey": "WinArenaMedals",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-WinArenaMedals-title",
-      "description": "lo-tournament-WinArenaMedals-description",
-      "shortName": "lo-tournament-WinArenaMedals-short-name",
-      "advice1": "lo-tournament-WinArenaMedals-advice-1"
-     },
-     "orderId": 70,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "SummonHero",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "HeroSummonScoringRule",
-       "resourceSpendEntries": [
-        {
-         "resourceId": "SI_WildStar",
-         "points": 10
-        },
-        {
-         "resourceId": "SI_FateStar",
-         "points": 500
-        },
-        {
-         "resourceId": "SI_DestinyStar",
-         "points": 1000
-        },
-        {
-         "resourceId": "SI_RadiantStar",
-         "points": 5000
-        },
-        {
-         "resourceId": "SI_DivineStar",
-         "points": 10000
-        }
-       ],
-       "heroEntriesNonLightDark": [
-        {
-         "rarity": "Common",
-         "points": 10
-        },
-        {
-         "rarity": "Uncommon",
-         "points": 20
-        },
-        {
-         "rarity": "Rare",
-         "points": 1000
-        },
-        {
-         "rarity": "Epic",
-         "points": 5000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 10000
-        }
-       ],
-       "heroEntriesLightDark": [
-        {
-         "rarity": "Uncommon",
-         "points": 100
-        },
-        {
-         "rarity": "Rare",
-         "points": 1500
-        },
-        {
-         "rarity": "Epic",
-         "points": 10000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 20000
-        }
-       ],
-       "heroEntriesChromaNonLightDark": [
-        {
-         "rarity": "Common",
-         "points": 20
-        },
-        {
-         "rarity": "Uncommon",
-         "points": 40
-        },
-        {
-         "rarity": "Rare",
-         "points": 2000
-        },
-        {
-         "rarity": "Epic",
-         "points": 10000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 20000
-        }
-       ],
-       "heroEntriesChromaLightDark": [
-        {
-         "rarity": "Uncommon",
-         "points": 200
-        },
-        {
-         "rarity": "Rare",
-         "points": 3000
-        },
-        {
-         "rarity": "Epic",
-         "points": 20000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 40000
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "SummonInvoker",
-     "iconKey": "SummonInvoker",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-SummonInvoker-title",
-      "description": "lo-tournament-SummonInvoker-description",
-      "shortName": "lo-tournament-SummonInvoker-short-name",
-      "advice1": "lo-tournament-SummonInvoker-advice-1"
-     },
-     "orderId": 80,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "SummonAnima",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "AnimaSummonScoringRule",
-       "resourceSpendEntries": [
-        {
-         "resourceId": "SI_DreamOrb",
-         "points": 1000
-        },
-        {
-         "resourceId": "SI_WonderOrb",
-         "points": 1500
-        },
-        {
-         "resourceId": "SI_MiracleOrb",
-         "points": 10000
-        }
-       ],
-       "animaEntries": [
-        {
-         "rarity": "Rare",
-         "points": 1000
-        },
-        {
-         "rarity": "Epic",
-         "points": 5000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 10000
-        },
-        {
-         "rarity": "Mythic",
-         "points": 30000
-        }
-       ],
-       "animaEntriesChroma": [
-        {
-         "rarity": "Rare",
-         "points": 2000
-        },
-        {
-         "rarity": "Epic",
-         "points": 10000
-        },
-        {
-         "rarity": "Legendary",
-         "points": 20000
-        },
-        {
-         "rarity": "Mythic",
-         "points": 60000
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "SummonTitan",
-     "iconKey": "SummonTitan",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-SummonTitan-title",
-      "description": "lo-tournament-SummonTitan-description",
-      "shortName": "lo-tournament-SummonTitan-short-name",
-      "advice1": "lo-tournament-SummonTitan-advice-1"
-     },
-     "orderId": 90,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "HeroUpgrade",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "HeroLevelUpScoringRule",
-       "entries": [
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 1
-        },
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 5
-        },
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 18
-        },
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 52
-        },
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 112
-        },
-        {
-         "rarity": "Common",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 257
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 1
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 5
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 18
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 52
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 112
-        },
-        {
-         "rarity": "Uncommon",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 257
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 1
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 5
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 18
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 52
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 112
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 257
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 1
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 7
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 23
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 68
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 146
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 334
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 2
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 8
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 27
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 78
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 168
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 386
-        }
-       ]
-      },
-      {
-       "ruleType": "HeroRankUpScoringRule",
-       "entries": [
-        {
-         "rarity": "Common",
-         "rank": "Two",
-         "points": 20
-        },
-        {
-         "rarity": "Common",
-         "rank": "Three",
-         "points": 30
-        },
-        {
-         "rarity": "Common",
-         "rank": "Four",
-         "points": 100
-        },
-        {
-         "rarity": "Common",
-         "rank": "Five",
-         "points": 700
-        },
-        {
-         "rarity": "Common",
-         "rank": "Six",
-         "points": 1500
-        },
-        {
-         "rarity": "Uncommon",
-         "rank": "Two",
-         "points": 20
-        },
-        {
-         "rarity": "Uncommon",
-         "rank": "Three",
-         "points": 30
-        },
-        {
-         "rarity": "Uncommon",
-         "rank": "Four",
-         "points": 100
-        },
-        {
-         "rarity": "Uncommon",
-         "rank": "Five",
-         "points": 700
-        },
-        {
-         "rarity": "Uncommon",
-         "rank": "Six",
-         "points": 1500
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Two",
-         "points": 20
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Three",
-         "points": 30
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Four",
-         "points": 100
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Five",
-         "points": 700
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Six",
-         "points": 1500
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Two",
-         "points": 26
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Three",
-         "points": 39
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Four",
-         "points": 130
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Five",
-         "points": 910
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Six",
-         "points": 1950
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Two",
-         "points": 30
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Three",
-         "points": 45
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Four",
-         "points": 150
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Five",
-         "points": 1050
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Six",
-         "points": 2250
-        }
-       ]
-      },
-      {
-       "ruleType": "HeroAwakenScoringRule",
-       "entries": [
-        {
-         "rarity": "Common",
-         "awakeLevel": 1,
-         "points": 25
-        },
-        {
-         "rarity": "Common",
-         "awakeLevel": 2,
-         "points": 50
-        },
-        {
-         "rarity": "Common",
-         "awakeLevel": 3,
-         "points": 75
-        },
-        {
-         "rarity": "Common",
-         "awakeLevel": 4,
-         "points": 100
-        },
-        {
-         "rarity": "Common",
-         "awakeLevel": 5,
-         "points": 125
-        },
-        {
-         "rarity": "Common",
-         "awakeLevel": 6,
-         "points": 150
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 1,
-         "points": 25
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 2,
-         "points": 50
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 3,
-         "points": 75
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 4,
-         "points": 100
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 5,
-         "points": 125
-        },
-        {
-         "rarity": "Uncommon",
-         "awakeLevel": 6,
-         "points": 150
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 1,
-         "points": 25
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 2,
-         "points": 50
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 3,
-         "points": 75
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 4,
-         "points": 100
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 5,
-         "points": 125
-        },
-        {
-         "rarity": "Rare",
-         "awakeLevel": 6,
-         "points": 150
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 1,
-         "points": 50
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 2,
-         "points": 100
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 3,
-         "points": 150
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 4,
-         "points": 200
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 5,
-         "points": 250
-        },
-        {
-         "rarity": "Epic",
-         "awakeLevel": 6,
-         "points": 300
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 1,
-         "points": 75
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 2,
-         "points": 150
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 3,
-         "points": 225
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 4,
-         "points": 300
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 5,
-         "points": 375
-        },
-        {
-         "rarity": "Legendary",
-         "awakeLevel": 6,
-         "points": 450
-        }
-       ]
-      },
-      {
-       "ruleType": "HeroSkillUpScoringRule",
-       "entries": [
-        {
-         "resourceId": "Codex_Rare",
-         "points": 50
-        },
-        {
-         "resourceId": "Codex_Epic",
-         "points": 200
-        },
-        {
-         "resourceId": "Codex_Legendary",
-         "points": 500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "UpgradeInvoker",
-     "iconKey": "UpgradeInvoker",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-UpgradeInvoker-title",
-      "description": "lo-tournament-UpgradeInvoker-description",
-      "shortName": "lo-tournament-UpgradeInvoker-short-name",
-      "advice1": "lo-tournament-UpgradeInvoker-advice-1"
-     },
-     "orderId": 100,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "AnimaUpgrade",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "AnimaLevelUpScoringRule",
-       "entries": [
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 2
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 10
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 36
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 104
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 224
-        },
-        {
-         "rarity": "Rare",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 514
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 3
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 13
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 47
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 135
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 291
-        },
-        {
-         "rarity": "Epic",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 668
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 3
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 14
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 50
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 146
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 314
-        },
-        {
-         "rarity": "Legendary",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 720
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 1,
-         "maxLevelInclusive": 10,
-         "pointsPerLevel": 3
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 11,
-         "maxLevelInclusive": 20,
-         "pointsPerLevel": 15
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 21,
-         "maxLevelInclusive": 30,
-         "pointsPerLevel": 54
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 31,
-         "maxLevelInclusive": 40,
-         "pointsPerLevel": 156
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 41,
-         "maxLevelInclusive": 50,
-         "pointsPerLevel": 336
-        },
-        {
-         "rarity": "Mythic",
-         "minLevelInclusive": 51,
-         "maxLevelInclusive": 60,
-         "pointsPerLevel": 771
-        }
-       ]
-      },
-      {
-       "ruleType": "AnimaRankUpScoringRule",
-       "entries": [
-        {
-         "rarity": "Rare",
-         "rank": "Four",
-         "points": 200
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Five",
-         "points": 1400
-        },
-        {
-         "rarity": "Rare",
-         "rank": "Six",
-         "points": 3000
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Five",
-         "points": 1820
-        },
-        {
-         "rarity": "Epic",
-         "rank": "Six",
-         "points": 3900
-        },
-        {
-         "rarity": "Legendary",
-         "rank": "Six",
-         "points": 4500
-        }
-       ]
-      },
-      {
-       "ruleType": "AnimaEmpowerScoringRule",
-       "entries": [
-        {
-         "rarity": "Rare",
-         "points": 100
-        },
-        {
-         "rarity": "Epic",
-         "points": 500
-        },
-        {
-         "rarity": "Legendary",
-         "points": 2000
-        },
-        {
-         "rarity": "Mythic",
-         "points": 4000
-        }
-       ]
-      },
-      {
-       "ruleType": "AnimaSkillUpScoringRule",
-       "entries": [
-        {
-         "resourceId": "Prism_Rare",
-         "points": 50
-        },
-        {
-         "resourceId": "Prism_Epic",
-         "points": 200
-        },
-        {
-         "resourceId": "Prism_Legendary",
-         "points": 500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "UpgradeTitan",
-     "iconKey": "UpgradeTitan",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-UpgradeTitan-title",
-      "description": "lo-tournament-UpgradeTitan-description",
-      "shortName": "lo-tournament-UpgradeTitan-short-name",
-      "advice1": "lo-tournament-UpgradeTitan-advice-1"
-     },
-     "orderId": 110,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "Garudas",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "BattleResourceScoringRule",
-       "acceptedRegions": [
-        "DungeonEssenceNeutral",
-        "DungeonEssenceFire",
-        "DungeonEssenceEarth",
-        "DungeonEssenceWind",
-        "DungeonEssenceWater",
-        "DungeonEssenceLight",
-        "DungeonEssenceDark"
-       ],
-       "resourceCollectEntries": [
-        {
-         "resourceId": "EE_Tier1Fire",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier1Wind",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier1Earth",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier1Water",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier1Light",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier1Dark",
-         "points": 1
-        },
-        {
-         "resourceId": "AE_ManaTier1",
-         "points": 1
-        },
-        {
-         "resourceId": "EE_Tier2Fire",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier2Wind",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier2Earth",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier2Water",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier2Light",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier2Dark",
-         "points": 10
-        },
-        {
-         "resourceId": "AE_ManaTier2",
-         "points": 10
-        },
-        {
-         "resourceId": "EE_Tier3Fire",
-         "points": 100
-        },
-        {
-         "resourceId": "EE_Tier3Wind",
-         "points": 100
-        },
-        {
-         "resourceId": "EE_Tier3Earth",
-         "points": 100
-        },
-        {
-         "resourceId": "EE_Tier3Water",
-         "points": 100
-        },
-        {
-         "resourceId": "EE_Tier3Light",
-         "points": 100
-        },
-        {
-         "resourceId": "EE_Tier3Dark",
-         "points": 100
-        },
-        {
-         "resourceId": "AE_ManaTier3",
-         "points": 100
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonEssence",
-     "iconKey": "CollectDungeonEssence",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonEssence-title",
-      "description": "lo-tournament-CollectDungeonEssence-description",
-      "shortName": "lo-tournament-CollectDungeonEssence-short-name",
-      "advice1": "lo-tournament-CollectDungeonEssence-advice-1"
-     },
-     "orderId": 120,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "RoleMedals",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "BattleResourceScoringRule",
-       "acceptedRegions": [
-        "DungeonMelee",
-        "DungeonSupport",
-        "DungeonTank",
-        "DungeonRanged"
-       ],
-       "resourceCollectEntries": [
-        {
-         "resourceId": "RM_Tier1Tank",
-         "points": 1
-        },
-        {
-         "resourceId": "RM_Tier1MeleeAttacker",
-         "points": 1
-        },
-        {
-         "resourceId": "RM_Tier1RangedAttacker",
-         "points": 1
-        },
-        {
-         "resourceId": "RM_Tier1Support",
-         "points": 1
-        },
-        {
-         "resourceId": "RM_Tier2Tank",
-         "points": 10
-        },
-        {
-         "resourceId": "RM_Tier2MeleeAttacker",
-         "points": 10
-        },
-        {
-         "resourceId": "RM_Tier2RangedAttacker",
-         "points": 10
-        },
-        {
-         "resourceId": "RM_Tier2Support",
-         "points": 10
-        },
-        {
-         "resourceId": "RM_Tier3Tank",
-         "points": 100
-        },
-        {
-         "resourceId": "RM_Tier3MeleeAttacker",
-         "points": 100
-        },
-        {
-         "resourceId": "RM_Tier3RangedAttacker",
-         "points": 100
-        },
-        {
-         "resourceId": "RM_Tier3Support",
-         "points": 100
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonMedals",
-     "iconKey": "CollectDungeonMedals",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonMedals-title",
-      "description": "lo-tournament-CollectDungeonMedals-description",
-      "shortName": "lo-tournament-CollectDungeonMedals-short-name",
-      "advice1": "lo-tournament-CollectDungeonMedals-advice-1"
-     },
-     "orderId": 130,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "Campaign",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "CampaignBattleScoringRule",
-       "entries": [
-        {
-         "difficulty": "Normal",
-         "points": 60
-        },
-        {
-         "difficulty": "Hard",
-         "points": 100
-        },
-        {
-         "difficulty": "Brutal",
-         "points": 160
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CampaignProgression",
-     "iconKey": "CampaignProgression",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CampaignProgression-title",
-      "description": "lo-tournament-CampaignProgression-description",
-      "shortName": "lo-tournament-CampaignProgression-short-name",
-      "advice1": "lo-tournament-CampaignProgression-advice-1"
-     },
-     "orderId": 140,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "Dragon",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "DragonResourceScoringRule",
-       "resourceCollectEntries": [
-        {
-         "resourceId": "EMP_AnimaSpark",
-         "resourceAmountPerPoint": 1,
-         "points": 1,
-         "minPoints": 1,
-         "roundingOffset": 0
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "CollectDungeonTitan",
-     "iconKey": "CollectDungeonTitan",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-CollectDungeonTitan-title",
-      "description": "lo-tournament-CollectDungeonTitan-description",
-      "shortName": "lo-tournament-CollectDungeonTitan-short-name",
-      "advice1": "lo-tournament-CollectDungeonTitan-advice-1"
-     },
-     "orderId": 150,
-     "division": "Veteran"
-    }
-   },
-   {
-    "sourceTypeId": "ClanBoss1",
-    "scoring": {
-     "rules": [
-      {
-       "ruleType": "GearDropScoringRule",
-       "acceptedRegions": [
-        "ClanBoss1"
-       ],
-       "entries": [
-        {
-         "rank": "Three",
-         "rarity": "Common",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Uncommon",
-         "points": 30
-        },
-        {
-         "rank": "Three",
-         "rarity": "Rare",
-         "points": 40
-        },
-        {
-         "rank": "Three",
-         "rarity": "Epic",
-         "points": 50
-        },
-        {
-         "rank": "Three",
-         "rarity": "Legendary",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Common",
-         "points": 40
-        },
-        {
-         "rank": "Four",
-         "rarity": "Uncommon",
-         "points": 50
-        },
-        {
-         "rank": "Four",
-         "rarity": "Rare",
-         "points": 60
-        },
-        {
-         "rank": "Four",
-         "rarity": "Epic",
-         "points": 70
-        },
-        {
-         "rank": "Four",
-         "rarity": "Legendary",
-         "points": 100
-        },
-        {
-         "rank": "Five",
-         "rarity": "Common",
-         "points": 230
-        },
-        {
-         "rank": "Five",
-         "rarity": "Uncommon",
-         "points": 250
-        },
-        {
-         "rank": "Five",
-         "rarity": "Rare",
-         "points": 300
-        },
-        {
-         "rank": "Five",
-         "rarity": "Epic",
-         "points": 400
-        },
-        {
-         "rank": "Five",
-         "rarity": "Legendary",
-         "points": 450
-        },
-        {
-         "rank": "Six",
-         "rarity": "Common",
-         "points": 800
-        },
-        {
-         "rank": "Six",
-         "rarity": "Uncommon",
-         "points": 1300
-        },
-        {
-         "rank": "Six",
-         "rarity": "Rare",
-         "points": 1900
-        },
-        {
-         "rank": "Six",
-         "rarity": "Epic",
-         "points": 2100
-        },
-        {
-         "rank": "Six",
-         "rarity": "Legendary",
-         "points": 2500
-        }
-       ]
-      }
-     ]
-    },
-    "activeParallelTournamentMultiplier": 2,
-    "visualSettings": {
-     "backgroundKey": "ClanBoss1",
-     "iconKey": "ClanBoss1",
-     "pointsResourceKey": "CommonTournament",
-     "localizationKeys": {
-      "longName": "lo-tournament-ClanBoss1-title",
-      "description": "lo-tournament-ClanBoss1-description",
-      "shortName": "lo-tournament-ClanBoss1-short-name",
-      "advice1": "lo-tournament-ClanBoss1-advice-1"
-     },
-     "orderId": 160,
-     "division": "Veteran"
-    }
-   }
-  ],
   "progressRewards": [
    {
     "rewardId": 1,
@@ -7123,6 +5092,1905 @@
       "itemId": "XpPotion_Big",
       "amount": 1
      }
+    ]
+   }
+  ],
+  "scoring": {
+   "rules": [
+    {
+     "ruleType": "RelicDropScoringRule",
+     "acceptedRegions": [
+      "DungeonRelics1"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ],
+     "source": "RelicBossUlgorim",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "RelicDropScoringRule",
+     "acceptedRegions": [
+      "DungeonRelics2"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ],
+     "source": "RelicBossAlthar",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "RelicDropScoringRule",
+     "acceptedRegions": [
+      "DungeonRelics6"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ],
+     "source": "RelicBossSakiel",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "GearUpgradeScoringRule",
+     "entries": [
+      {
+       "rank": "One",
+       "levelMilestone": 5,
+       "points": 3
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 5,
+       "points": 6
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 5,
+       "points": 9
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 5,
+       "points": 19
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 5,
+       "points": 22
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 5,
+       "points": 40
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 10,
+       "points": 9
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 10,
+       "points": 15
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 10,
+       "points": 25
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 10,
+       "points": 51
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 10,
+       "points": 58
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 10,
+       "points": 104
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 15,
+       "points": 21
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 15,
+       "points": 34
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 15,
+       "points": 54
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 15,
+       "points": 97
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 15,
+       "points": 200
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 15,
+       "points": 355
+      },
+      {
+       "rank": "One",
+       "levelMilestone": 20,
+       "points": 73
+      },
+      {
+       "rank": "Two",
+       "levelMilestone": 20,
+       "points": 110
+      },
+      {
+       "rank": "Three",
+       "levelMilestone": 20,
+       "points": 170
+      },
+      {
+       "rank": "Four",
+       "levelMilestone": 20,
+       "points": 242
+      },
+      {
+       "rank": "Five",
+       "levelMilestone": 20,
+       "points": 420
+      },
+      {
+       "rank": "Six",
+       "levelMilestone": 20,
+       "points": 686
+      }
+     ],
+     "source": "GearUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "ArenaBattleScoringRule",
+     "entries": [
+      {
+       "league": "Bronze1",
+       "result": "Victory",
+       "points": 40
+      },
+      {
+       "league": "Bronze1",
+       "result": "Defeat",
+       "points": 20
+      },
+      {
+       "league": "Bronze2",
+       "result": "Victory",
+       "points": 50
+      },
+      {
+       "league": "Bronze2",
+       "result": "Defeat",
+       "points": 20
+      },
+      {
+       "league": "Bronze3",
+       "result": "Victory",
+       "points": 60
+      },
+      {
+       "league": "Bronze3",
+       "result": "Defeat",
+       "points": 30
+      },
+      {
+       "league": "Bronze4",
+       "result": "Victory",
+       "points": 70
+      },
+      {
+       "league": "Bronze4",
+       "result": "Defeat",
+       "points": 30
+      },
+      {
+       "league": "Silver1",
+       "result": "Victory",
+       "points": 80
+      },
+      {
+       "league": "Silver1",
+       "result": "Defeat",
+       "points": 40
+      },
+      {
+       "league": "Silver2",
+       "result": "Victory",
+       "points": 90
+      },
+      {
+       "league": "Silver2",
+       "result": "Defeat",
+       "points": 40
+      },
+      {
+       "league": "Silver3",
+       "result": "Victory",
+       "points": 100
+      },
+      {
+       "league": "Silver3",
+       "result": "Defeat",
+       "points": 50
+      },
+      {
+       "league": "Silver4",
+       "result": "Victory",
+       "points": 110
+      },
+      {
+       "league": "Silver4",
+       "result": "Defeat",
+       "points": 50
+      },
+      {
+       "league": "Gold1",
+       "result": "Victory",
+       "points": 120
+      },
+      {
+       "league": "Gold1",
+       "result": "Defeat",
+       "points": 60
+      },
+      {
+       "league": "Gold2",
+       "result": "Victory",
+       "points": 130
+      },
+      {
+       "league": "Gold2",
+       "result": "Defeat",
+       "points": 60
+      },
+      {
+       "league": "Gold3",
+       "result": "Victory",
+       "points": 140
+      },
+      {
+       "league": "Gold3",
+       "result": "Defeat",
+       "points": 70
+      },
+      {
+       "league": "Gold4",
+       "result": "Victory",
+       "points": 150
+      },
+      {
+       "league": "Gold4",
+       "result": "Defeat",
+       "points": 70
+      }
+     ],
+     "source": "ArenaMedals",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "HeroSummonScoringRule",
+     "resourceSpendEntries": [
+      {
+       "resourceId": "SI_WildStar",
+       "points": 10
+      },
+      {
+       "resourceId": "SI_FateStar",
+       "points": 500
+      },
+      {
+       "resourceId": "SI_DestinyStar",
+       "points": 1000
+      },
+      {
+       "resourceId": "SI_RadiantStar",
+       "points": 5000
+      },
+      {
+       "resourceId": "SI_DivineStar",
+       "points": 10000
+      }
+     ],
+     "heroEntriesNonLightDark": [
+      {
+       "rarity": "Common",
+       "points": 10
+      },
+      {
+       "rarity": "Uncommon",
+       "points": 20
+      },
+      {
+       "rarity": "Rare",
+       "points": 1000
+      },
+      {
+       "rarity": "Epic",
+       "points": 5000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 10000
+      }
+     ],
+     "heroEntriesLightDark": [
+      {
+       "rarity": "Uncommon",
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "points": 1500
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      }
+     ],
+     "heroEntriesChromaNonLightDark": [
+      {
+       "rarity": "Common",
+       "points": 20
+      },
+      {
+       "rarity": "Uncommon",
+       "points": 40
+      },
+      {
+       "rarity": "Rare",
+       "points": 2000
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      }
+     ],
+     "heroEntriesChromaLightDark": [
+      {
+       "rarity": "Uncommon",
+       "points": 200
+      },
+      {
+       "rarity": "Rare",
+       "points": 3000
+      },
+      {
+       "rarity": "Epic",
+       "points": 20000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 40000
+      }
+     ],
+     "source": "SummonHero",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "AnimaSummonScoringRule",
+     "resourceSpendEntries": [
+      {
+       "resourceId": "SI_DreamOrb",
+       "points": 1000
+      },
+      {
+       "resourceId": "SI_WonderOrb",
+       "points": 1500
+      },
+      {
+       "resourceId": "SI_MiracleOrb",
+       "points": 10000
+      }
+     ],
+     "animaEntries": [
+      {
+       "rarity": "Rare",
+       "points": 1000
+      },
+      {
+       "rarity": "Epic",
+       "points": 5000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 10000
+      },
+      {
+       "rarity": "Mythic",
+       "points": 30000
+      }
+     ],
+     "animaEntriesChroma": [
+      {
+       "rarity": "Rare",
+       "points": 2000
+      },
+      {
+       "rarity": "Epic",
+       "points": 10000
+      },
+      {
+       "rarity": "Legendary",
+       "points": 20000
+      },
+      {
+       "rarity": "Mythic",
+       "points": 60000
+      }
+     ],
+     "source": "SummonAnima",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "HeroLevelUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Common",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Uncommon",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 5
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 18
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 52
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 112
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 257
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 1
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 7
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 23
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 68
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 146
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 334
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 2
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 8
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 27
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 78
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 168
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 386
+      }
+     ],
+     "source": "HeroUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "HeroRankUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Common",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Common",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Common",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Common",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Uncommon",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Two",
+       "points": 20
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Three",
+       "points": 30
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Four",
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Five",
+       "points": 700
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Six",
+       "points": 1500
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Two",
+       "points": 26
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Three",
+       "points": 39
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Four",
+       "points": 130
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Five",
+       "points": 910
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Six",
+       "points": 1950
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Two",
+       "points": 30
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Three",
+       "points": 45
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Four",
+       "points": 150
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Five",
+       "points": 1050
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Six",
+       "points": 2250
+      }
+     ],
+     "source": "HeroUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "HeroAwakenScoringRule",
+     "entries": [
+      {
+       "rarity": "Common",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Common",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Uncommon",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 1,
+       "points": 25
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 2,
+       "points": 50
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 3,
+       "points": 75
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 4,
+       "points": 100
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 5,
+       "points": 125
+      },
+      {
+       "rarity": "Rare",
+       "awakeLevel": 6,
+       "points": 150
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 1,
+       "points": 50
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 2,
+       "points": 100
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 3,
+       "points": 150
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 4,
+       "points": 200
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 5,
+       "points": 250
+      },
+      {
+       "rarity": "Epic",
+       "awakeLevel": 6,
+       "points": 300
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 1,
+       "points": 75
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 2,
+       "points": 150
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 3,
+       "points": 225
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 4,
+       "points": 300
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 5,
+       "points": 375
+      },
+      {
+       "rarity": "Legendary",
+       "awakeLevel": 6,
+       "points": 450
+      }
+     ],
+     "source": "HeroUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "HeroSkillUpScoringRule",
+     "entries": [
+      {
+       "resourceId": "Codex_Rare",
+       "points": 50
+      },
+      {
+       "resourceId": "Codex_Epic",
+       "points": 200
+      },
+      {
+       "resourceId": "Codex_Legendary",
+       "points": 500
+      }
+     ],
+     "source": "HeroUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "AnimaLevelUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 2
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 10
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 36
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 104
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 224
+      },
+      {
+       "rarity": "Rare",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 514
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 3
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 13
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 47
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 135
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 291
+      },
+      {
+       "rarity": "Epic",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 668
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 3
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 14
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 50
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 146
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 314
+      },
+      {
+       "rarity": "Legendary",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 720
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 1,
+       "maxLevelInclusive": 10,
+       "pointsPerLevel": 3
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 11,
+       "maxLevelInclusive": 20,
+       "pointsPerLevel": 15
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 21,
+       "maxLevelInclusive": 30,
+       "pointsPerLevel": 54
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 31,
+       "maxLevelInclusive": 40,
+       "pointsPerLevel": 156
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 41,
+       "maxLevelInclusive": 50,
+       "pointsPerLevel": 336
+      },
+      {
+       "rarity": "Mythic",
+       "minLevelInclusive": 51,
+       "maxLevelInclusive": 60,
+       "pointsPerLevel": 771
+      }
+     ],
+     "source": "AnimaUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "AnimaRankUpScoringRule",
+     "entries": [
+      {
+       "rarity": "Rare",
+       "rank": "Four",
+       "points": 200
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Five",
+       "points": 1400
+      },
+      {
+       "rarity": "Rare",
+       "rank": "Six",
+       "points": 3000
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Five",
+       "points": 1820
+      },
+      {
+       "rarity": "Epic",
+       "rank": "Six",
+       "points": 3900
+      },
+      {
+       "rarity": "Legendary",
+       "rank": "Six",
+       "points": 4500
+      }
+     ],
+     "source": "AnimaUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "AnimaEmpowerScoringRule",
+     "entries": [
+      {
+       "rarity": "Rare",
+       "points": 100
+      },
+      {
+       "rarity": "Epic",
+       "points": 500
+      },
+      {
+       "rarity": "Legendary",
+       "points": 2000
+      },
+      {
+       "rarity": "Mythic",
+       "points": 4000
+      }
+     ],
+     "source": "AnimaUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "AnimaSkillUpScoringRule",
+     "entries": [
+      {
+       "resourceId": "Prism_Rare",
+       "points": 50
+      },
+      {
+       "resourceId": "Prism_Epic",
+       "points": 200
+      },
+      {
+       "resourceId": "Prism_Legendary",
+       "points": 500
+      }
+     ],
+     "source": "AnimaUpgrade",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "BattleResourceScoringRule",
+     "acceptedRegions": [
+      "DungeonEssenceNeutral",
+      "DungeonEssenceFire",
+      "DungeonEssenceEarth",
+      "DungeonEssenceWind",
+      "DungeonEssenceWater",
+      "DungeonEssenceLight",
+      "DungeonEssenceDark"
+     ],
+     "resourceCollectEntries": [
+      {
+       "resourceId": "EE_Tier1Fire",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier1Wind",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier1Earth",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier1Water",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier1Light",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier1Dark",
+       "points": 1
+      },
+      {
+       "resourceId": "AE_ManaTier1",
+       "points": 1
+      },
+      {
+       "resourceId": "EE_Tier2Fire",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier2Wind",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier2Earth",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier2Water",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier2Light",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier2Dark",
+       "points": 10
+      },
+      {
+       "resourceId": "AE_ManaTier2",
+       "points": 10
+      },
+      {
+       "resourceId": "EE_Tier3Fire",
+       "points": 100
+      },
+      {
+       "resourceId": "EE_Tier3Wind",
+       "points": 100
+      },
+      {
+       "resourceId": "EE_Tier3Earth",
+       "points": 100
+      },
+      {
+       "resourceId": "EE_Tier3Water",
+       "points": 100
+      },
+      {
+       "resourceId": "EE_Tier3Light",
+       "points": 100
+      },
+      {
+       "resourceId": "EE_Tier3Dark",
+       "points": 100
+      },
+      {
+       "resourceId": "AE_ManaTier3",
+       "points": 100
+      }
+     ],
+     "source": "Garudas",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "BattleResourceScoringRule",
+     "acceptedRegions": [
+      "DungeonMelee",
+      "DungeonSupport",
+      "DungeonTank",
+      "DungeonRanged"
+     ],
+     "resourceCollectEntries": [
+      {
+       "resourceId": "RM_Tier1Tank",
+       "points": 1
+      },
+      {
+       "resourceId": "RM_Tier1MeleeAttacker",
+       "points": 1
+      },
+      {
+       "resourceId": "RM_Tier1RangedAttacker",
+       "points": 1
+      },
+      {
+       "resourceId": "RM_Tier1Support",
+       "points": 1
+      },
+      {
+       "resourceId": "RM_Tier2Tank",
+       "points": 10
+      },
+      {
+       "resourceId": "RM_Tier2MeleeAttacker",
+       "points": 10
+      },
+      {
+       "resourceId": "RM_Tier2RangedAttacker",
+       "points": 10
+      },
+      {
+       "resourceId": "RM_Tier2Support",
+       "points": 10
+      },
+      {
+       "resourceId": "RM_Tier3Tank",
+       "points": 100
+      },
+      {
+       "resourceId": "RM_Tier3MeleeAttacker",
+       "points": 100
+      },
+      {
+       "resourceId": "RM_Tier3RangedAttacker",
+       "points": 100
+      },
+      {
+       "resourceId": "RM_Tier3Support",
+       "points": 100
+      }
+     ],
+     "source": "RoleMedals",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "CampaignBattleScoringRule",
+     "entries": [
+      {
+       "difficulty": "Normal",
+       "points": 60
+      },
+      {
+       "difficulty": "Hard",
+       "points": 100
+      },
+      {
+       "difficulty": "Brutal",
+       "points": 160
+      }
+     ],
+     "source": "Campaign",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "DragonResourceScoringRule",
+     "resourceCollectEntries": [
+      {
+       "resourceId": "EMP_AnimaSpark",
+       "resourceAmountPerPoint": 1,
+       "points": 1,
+       "minPoints": 1,
+       "roundingOffset": 0
+      }
+     ],
+     "source": "Dragon",
+     "multiplier": 2
+    },
+    {
+     "ruleType": "GearDropScoringRule",
+     "acceptedRegions": [
+      "ClanBoss1"
+     ],
+     "entries": [
+      {
+       "rank": "Three",
+       "rarity": "Common",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Uncommon",
+       "points": 30
+      },
+      {
+       "rank": "Three",
+       "rarity": "Rare",
+       "points": 40
+      },
+      {
+       "rank": "Three",
+       "rarity": "Epic",
+       "points": 50
+      },
+      {
+       "rank": "Three",
+       "rarity": "Legendary",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Common",
+       "points": 40
+      },
+      {
+       "rank": "Four",
+       "rarity": "Uncommon",
+       "points": 50
+      },
+      {
+       "rank": "Four",
+       "rarity": "Rare",
+       "points": 60
+      },
+      {
+       "rank": "Four",
+       "rarity": "Epic",
+       "points": 70
+      },
+      {
+       "rank": "Four",
+       "rarity": "Legendary",
+       "points": 100
+      },
+      {
+       "rank": "Five",
+       "rarity": "Common",
+       "points": 230
+      },
+      {
+       "rank": "Five",
+       "rarity": "Uncommon",
+       "points": 250
+      },
+      {
+       "rank": "Five",
+       "rarity": "Rare",
+       "points": 300
+      },
+      {
+       "rank": "Five",
+       "rarity": "Epic",
+       "points": 400
+      },
+      {
+       "rank": "Five",
+       "rarity": "Legendary",
+       "points": 450
+      },
+      {
+       "rank": "Six",
+       "rarity": "Common",
+       "points": 800
+      },
+      {
+       "rank": "Six",
+       "rarity": "Uncommon",
+       "points": 1300
+      },
+      {
+       "rank": "Six",
+       "rarity": "Rare",
+       "points": 1900
+      },
+      {
+       "rank": "Six",
+       "rarity": "Epic",
+       "points": 2100
+      },
+      {
+       "rank": "Six",
+       "rarity": "Legendary",
+       "points": 2500
+      }
+     ],
+     "source": "ClanBoss1",
+     "multiplier": 2
+    }
+   ]
+  },
+  "activities": [
+   {
+    "source": "RelicBossUlgorim",
+    "name": "Ulgorim Relic Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "RelicDropScoringRule"
+    ]
+   },
+   {
+    "source": "RelicBossAlthar",
+    "name": "Althar Relic Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "RelicDropScoringRule"
+    ]
+   },
+   {
+    "source": "RelicBossSakiel",
+    "name": "Sakiel Relic Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "RelicDropScoringRule"
+    ]
+   },
+   {
+    "source": "GearUpgrade",
+    "name": "Gear Up",
+    "parallelMultiplier": 2,
+    "rules": [
+     "GearUpgradeScoringRule"
+    ]
+   },
+   {
+    "source": "ArenaMedals",
+    "name": "Arena Rush",
+    "parallelMultiplier": 2,
+    "rules": [
+     "ArenaBattleScoringRule"
+    ]
+   },
+   {
+    "source": "SummonHero",
+    "name": "Invoker Summon Surge",
+    "parallelMultiplier": 2,
+    "rules": [
+     "HeroSummonScoringRule"
+    ]
+   },
+   {
+    "source": "SummonAnima",
+    "name": "Titan Summon Surge",
+    "parallelMultiplier": 2,
+    "rules": [
+     "AnimaSummonScoringRule"
+    ]
+   },
+   {
+    "source": "HeroUpgrade",
+    "name": "Invoker Power Up",
+    "parallelMultiplier": 2,
+    "rules": [
+     "HeroLevelUpScoringRule",
+     "HeroRankUpScoringRule",
+     "HeroAwakenScoringRule",
+     "HeroSkillUpScoringRule"
+    ]
+   },
+   {
+    "source": "AnimaUpgrade",
+    "name": "Titan Power Up",
+    "parallelMultiplier": 2,
+    "rules": [
+     "AnimaLevelUpScoringRule",
+     "AnimaRankUpScoringRule",
+     "AnimaEmpowerScoringRule",
+     "AnimaSkillUpScoringRule"
+    ]
+   },
+   {
+    "source": "Garudas",
+    "name": "Omnissi Essence Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "BattleResourceScoringRule"
+    ]
+   },
+   {
+    "source": "RoleMedals",
+    "name": "Crest Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "BattleResourceScoringRule"
+    ]
+   },
+   {
+    "source": "Campaign",
+    "name": "Campaign Rush",
+    "parallelMultiplier": 2,
+    "rules": [
+     "CampaignBattleScoringRule"
+    ]
+   },
+   {
+    "source": "Dragon",
+    "name": "Pentiax Spark Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "DragonResourceScoringRule"
+    ]
+   },
+   {
+    "source": "ClanBoss1",
+    "name": "Sorgott Accessory Hunt",
+    "parallelMultiplier": 2,
+    "rules": [
+     "GearDropScoringRule"
     ]
    }
   ],

@@ -9,9 +9,9 @@ describe('summon odds', () => {
     expect(atLeastOne(0.0053, 130)).toBeCloseTo(0.499, 3);
     expect(atLeastOne(0.0667, 10)).toBeCloseTo(0.499, 3);
     expect(pullsFor(0.0053, 0.5)).toBe(131);
-    expect(legendaryPool(destiny)).toHaveLength(39);
+    expect(legendaryPool(destiny)).toHaveLength(41);
     expect(legendaryPool(radiant)).toHaveLength(19);
-    expect(Math.round(39 / 0.0053 / 10) * 10).toBe(7360);
+    expect(Math.round(41 / 0.0053 / 10) * 10).toBe(7740);
   });
 
   it('includes chase Legendaries, who join the Star summons when their chase starts', () => {
