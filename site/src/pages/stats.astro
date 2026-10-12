@@ -75,7 +75,7 @@ const signed = (v: number) => `${v > 0 ? '+' : v < 0 ? '−' : ''}${Math.abs(v).
         </thead>
         <tbody>
           {breakpoints.map((r) => (
-            <tr>
+            <tr id={`stat-${r.name.toLowerCase().replace(/ /g, '-')}`}>
               <th scope="row"><strong>{r.name}</strong><small>{r.what}</small></th>
               {r.at.map((x, i) => <td class="num" data-label={['Half', '75%', '90%'][i]}>{fmtRating(x)}</td>)}
               <td class="num" data-label="At 3,000">{r.fmt(r.top)}</td>

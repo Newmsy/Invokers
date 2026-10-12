@@ -2,6 +2,7 @@
 import BossLink from '../../components/BossLink.astro';
 import Base from '../../layouts/Base.astro';
 import HeroArt from '../../components/HeroArt.astro';
+import StatIcon from '../../components/StatIcon.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import { classIcon, elementIcon, factionCard, heroSplash, skillIcon, titanArt } from '../../lib/art';
 import { bosses, heroes, heroHref, heroRefsByConfigId, heroSlug, href, ratingFor, skillsFor, titanHref, type Hero } from '../../lib/data';
@@ -37,8 +38,23 @@ const skillAnchor = (type: string) => `skill-${type.replace(/^ActiveSkill/, '').
 const configId = Object.entries(heroRefsByConfigId).find(([, ref]) => ref.id === hero.id)?.[0] ?? '';
 const color = rarityColor[hero.rarity] ?? '#E2D7BF';
 
-const keyStats = statFields.slice(0, 6);
-const otherStats = statFields.slice(6);
+// Max stats in three equal groups; each stat links to its entry on What stats do where it has one.
+const statGroups = [
+  { name: 'Survival', keys: ['hp', 'def', 'res', 'instinct'] },
+  { name: 'Damage', keys: ['atk', 'critRate', 'critDmg', 'acc'] },
+  { name: 'Speed', keys: ['skillSpeed', 'comboSpeed', 'skillRecovery', 'manaGen', 'runSpeed'] },
+].map((g) => ({ ...g, fields: g.keys.map((k) => statFields.find((f) => f.key === k)!) }));
+const statAnchor: Partial<Record<string, string>> = {
+  def: 'stat-defense',
+  res: 'resist-title',
+  acc: 'resist-title',
+  instinct: 'stat-instinct',
+  skillSpeed: 'stat-skill-speed',
+  comboSpeed: 'stat-combo-speed',
+  skillRecovery: 'stat-skill-recovery',
+  manaGen: 'stat-mana-generation',
+  runSpeed: 'stat-move-speed',
+};
 
 // Stats tab: first day, 6★ level 60, and 6★ level 60 with every Awakening node.
 // Wide key art behind the header, for Invokers that have some.
@@ -155,22 +171,22 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   <section id="overview" class="panel" role="tabpanel" aria-labelledby="tab-overview">
     <h2>Max stats</h2>
     <p class="hint">{awakened ? '6★, level 60, fully awakened, without gear.' : '6★, level 60, without gear or awakening.'} Power <strong>{topPower}</strong> with max skills. <a href={href(`heroes/compare?h=${heroSlug(hero.id)}`)}>Compare with others</a></p>
-    <div class="stat-grid">
-      {keyStats.map((f) => (
-        <div class="stat">
-          <span class="stat-label">{f.short}</span>
-          <span class="stat-value">{formatStat(maxed[f.key], f.percent)}</span>
-        </div>
+    <div class="stat-groups">
+      {statGroups.map((g) => (
+        <dl class="stat-group">
+          <div class="stat-group-name">{g.name}</div>
+          {g.fields.map((f) => (
+            <div class:list={['stat-row', { zero: !maxed[f.key] }]}>
+              <dt>
+                <StatIcon stat={f.key} />
+                {statAnchor[f.key] ? <a href={href(`stats#${statAnchor[f.key]}`)}>{f.label}</a> : f.label}
+              </dt>
+              <dd>{formatStat(maxed[f.key], f.percent)}</dd>
+            </div>
+          ))}
+        </dl>
       ))}
     </div>
-    <dl class="stat-list">
-      {otherStats.map((f) => (
-        <div>
-          <dt>{f.label}</dt>
-          <dd>{formatStat(maxed[f.key], f.percent)}</dd>
-        </div>
-      ))}
-    </dl>
 
     {heroTols.length > 0 && (
       <>
@@ -622,32 +638,41 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
   .similar-meta { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-size: 12px; }
   .hint.more { margin: 10px 0 0; }
 
-  .stat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
-  .stat {
-    padding: 12px;
+  .stat-groups {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
   }
-  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-  .stat-value { font-family: var(--display); font-weight: 600; font-size: 20px; }
-  .stat-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0 24px;
-    margin: 12px 0 0;
+  .stat-group { margin: 0; }
+  .stat-group + .stat-group { border-left: 1px solid var(--line); }
+  .stat-group-name {
+    padding: 7px 12px;
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
-  .stat-list div {
+  .stat-row {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 8px 0;
+    gap: 8px;
+    padding: 7px 12px;
     border-bottom: 1px solid var(--line);
     font-size: 14px;
   }
-  .stat-list dt { color: var(--soft); }
-  .stat-list dd { margin: 0; font-weight: 600; }
+  .stat-row:last-child { border-bottom: 0; }
+  .stat-row dt { display: flex; align-items: center; gap: 8px; color: var(--soft); min-width: 0; }
+  .stat-row dt a { color: inherit; text-decoration: underline dotted var(--line); text-underline-offset: 3px; }
+  .stat-row dt a:hover { color: var(--accent); }
+  .stat-row :global(.stat-icon) { flex: none; color: var(--accent); }
+  .stat-row dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat-row.zero dd { color: var(--muted); font-weight: 400; }
 
   .skill-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
   .skill-list a {
@@ -713,8 +738,8 @@ const plain = (t: string) => t.replace(/<br\s*\/?>/g, ' ').replace(/<[^>]+>/g, '
     .hero { grid-template-columns: 1fr; gap: 16px; }
     .hero-art { height: 260px; }
     h1 { font-size: 28px; }
-    .stat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .stat-value { font-size: 17px; }
+    .stat-groups { grid-template-columns: 1fr; }
+    .stat-group + .stat-group { border-left: 0; border-top: 1px solid var(--line); }
     .skill-list a { grid-template-columns: 40px 1fr; }
     .skill-list .skill-icon { grid-row: span 3; align-self: start; }
     .skill-preview { grid-column: 2; }

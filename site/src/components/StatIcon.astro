@@ -1,0 +1,24 @@
+---
+// Line icon for a hero stat, drawn to match the nav icons (24px grid, stroked in currentColor).
+import type { HeroStats } from '../lib/data';
+
+interface Props { stat: keyof HeroStats; size?: number }
+const { stat, size = 18 } = Astro.props;
+
+const paths: Partial<Record<keyof HeroStats, string>> = {
+  hp: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  atk: '<path d="M14.5 4H20v5.5L9 20.5 3.5 15z"/><path d="M6 13l5 5"/><path d="M3 21l2.5-2.5"/>',
+  def: '<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/>',
+  critRate: '<path d="M12 3l2.2 5.8L20 9.5l-4.5 3.8L17 19l-5-3.2L7 19l1.5-5.7L4 9.5l5.8-.7z"/>',
+  critDmg: '<path d="M12 2v5M12 17v5M2 12h5M17 12h5M5 5l3.5 3.5M15.5 15.5L19 19M19 5l-3.5 3.5M8.5 15.5L5 19"/>',
+  acc: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5"/>',
+  res: '<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  instinct: '<path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/>',
+  comboSpeed: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+  skillSpeed: '<path d="M4 6l7 6-7 6z"/><path d="M13 6l7 6-7 6z"/>',
+  skillRecovery: '<path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M12 8v4l2.5 2"/>',
+  manaGen: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+  runSpeed: '<path d="M3 8h10M5 12h12M3 16h9"/><path d="M17 7l4 5-4 5"/>',
+};
+---
+<svg class="stat-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={paths[stat] ?? ''} />
