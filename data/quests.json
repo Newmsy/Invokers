@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Static game config (QuestData); English text from the localization table.",
  "notes": [
   "task = the game's title with {0} filled by the required amount. Named parameters like {HeroUpgradeLevel} are filled in game from the quest's conditions and are left in place here.",

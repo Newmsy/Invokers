@@ -188,15 +188,22 @@ export interface EventRankReward {
 /** Star rank as the game names it. */
 export type RankName = 'One' | 'Two' | 'Three' | 'Four' | 'Five' | 'Six';
 
-/** Points for one action. The fields depend on `ruleType`. */
-export type EventScoringRule =
+/** Points for one action. The fields depend on `ruleType`. In a chase event every rule also names its activity
+ * (`source`, an event type) and the points multiplier while that activity's own event runs alongside. */
+export type EventScoringRule = { source?: string; multiplier?: number } & (
   | { ruleType: 'GearDropScoringRule' | 'RelicDropScoringRule'; acceptedRegions?: string[]; entries: { rank: RankName; rarity: string; points: number }[] }
   | { ruleType: 'GearUpgradeScoringRule'; entries: { rank: RankName; levelMilestone: number; points: number }[] }
   | { ruleType: 'ArenaBattleScoringRule'; entries: { league: string; result: string; points: number }[] }
-  | { ruleType: 'HeroLevelUpScoringRule'; entries: { rarity: string; minLevelInclusive: number; maxLevelInclusive: number; pointsPerLevel: number }[] }
-  | { ruleType: 'HeroRankUpScoringRule'; entries: { rarity: string; rank: RankName; points: number }[] }
+  | { ruleType: 'HeroLevelUpScoringRule' | 'AnimaLevelUpScoringRule'; entries: { rarity: string; minLevelInclusive: number; maxLevelInclusive: number; pointsPerLevel: number }[] }
+  | { ruleType: 'HeroRankUpScoringRule' | 'AnimaRankUpScoringRule'; entries: { rarity: string; rank: RankName; points: number }[] }
   | { ruleType: 'HeroAwakenScoringRule'; entries: { rarity: string; awakeLevel: number; points: number }[] }
-  | { ruleType: 'HeroSkillUpScoringRule'; entries: { resourceId: string; points: number }[] }
+  | { ruleType: 'AnimaEmpowerScoringRule'; entries: { rarity: string; points: number }[] }
+  | { ruleType: 'BattleResourceScoringRule'; acceptedRegions?: string[]; resourceCollectEntries: { resourceId: string; points: number }[] }
+  | {
+      ruleType: 'DragonResourceScoringRule';
+      resourceCollectEntries: { resourceId: string; resourceAmountPerPoint: number; points: number; minPoints?: number; roundingOffset?: number }[];
+    }
+  | { ruleType: 'HeroSkillUpScoringRule' | 'AnimaSkillUpScoringRule'; entries: { resourceId: string; points: number }[] }
   | { ruleType: 'CampaignBattleScoringRule'; entries: { difficulty: string; points: number }[] }
   | {
       ruleType: 'HeroSummonScoringRule';
@@ -211,7 +218,8 @@ export type EventScoringRule =
       resourceSpendEntries: { resourceId: string; points: number }[];
       animaEntries: { rarity: string; points: number }[];
       animaEntriesChroma: { rarity: string; points: number }[];
-    };
+    }
+);
 
 /** A tournament from events.json. Times are UTC ISO strings. */
 export interface GameEvent {
@@ -237,11 +245,15 @@ export interface GameEvent {
   bracketSize: number;
   entryPoints: number;
   scoring: { rules: EventScoringRule[] };
-  personalRewards: EventPointsReward[];
-  milestoneRewards: EventPointsReward[];
+  /** Missing on chase events (GetLegendary), which use `progressRewards` instead. */
+  personalRewards?: EventPointsReward[];
+  milestoneRewards?: EventPointsReward[];
   bracketRewards: EventRankReward[];
   globalRewards: EventRankReward[];
-  progressRewards?: unknown[];
+  /** Chase events: rewards for points earned in one activity (`sourceTypeId`, an event type). */
+  progressRewards?: (EventPointsReward & { sourceTypeId?: string })[];
+  /** Chase events: the activities that score, with their names and parallel-event multiplier. */
+  activities?: { source: string; name?: string; parallelMultiplier?: number; rules: string[] }[];
   shopItems?: unknown[];
 }
 

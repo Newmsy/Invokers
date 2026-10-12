@@ -214,7 +214,8 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
       );
       return [t];
     }
-    case 'HeroLevelUpScoringRule': {
+    case 'HeroLevelUpScoringRule':
+    case 'AnimaLevelUpScoringRule': {
       const bands = uniq(rule.entries.map((e) => `${e.minLevelInclusive}-${e.maxLevelInclusive}`));
       const rarities = uniq(rule.entries.map((e) => e.rarity)).sort(byRarity);
       return [
@@ -229,7 +230,8 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
         ),
       ];
     }
-    case 'HeroRankUpScoringRule': {
+    case 'HeroRankUpScoringRule':
+    case 'AnimaRankUpScoringRule': {
       const ranks = uniq(rule.entries.map((e) => e.rank)).sort((a, b) => stars(a) - stars(b));
       const rarities = uniq(rule.entries.map((e) => e.rarity)).sort(byRarity);
       return [
@@ -259,7 +261,18 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
         ),
       ];
     }
+    case 'AnimaEmpowerScoringRule':
+      return [list('Points per Titan empowerment', 'Rarity', 'Points', rule.entries.map((e) => ({ label: rarityLabel(e.rarity), points: e.points })))];
+    case 'BattleResourceScoringRule': {
+      const from = rule.acceptedRegions?.length ? bossNames(rule.acceptedRegions) : '';
+      return [list(`Points per material collected${from ? ` from ${from}` : ''}`, 'Material', 'Points',
+        rule.resourceCollectEntries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
+    }
+    case 'DragonResourceScoringRule':
+      return [list('Points per item collected', 'Item', 'Points',
+        rule.resourceCollectEntries.map((e) => ({ label: item(e.resourceId), points: e.points / (e.resourceAmountPerPoint || 1) })))];
     case 'HeroSkillUpScoringRule':
+    case 'AnimaSkillUpScoringRule':
       return [list('Points per skill upgrade', 'Using', 'Points', rule.entries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
     case 'CampaignBattleScoringRule':
       return [list('Points per Campaign battle won', 'Difficulty', 'Points', rule.entries.map((e) => ({ label: { text: e.difficulty }, points: e.points })))];
@@ -322,6 +335,8 @@ export function eventLinks(rules: EventScoringRule[]): { path: string; label: st
       case 'RelicDropScoringRule':
       case 'ArenaBattleScoringRule':
       case 'CampaignBattleScoringRule':
+      case 'BattleResourceScoringRule':
+      case 'DragonResourceScoringRule':
         add('events', 'Event planner');
         break;
       case 'HeroSummonScoringRule':
@@ -338,6 +353,12 @@ export function eventLinks(rules: EventScoringRule[]): { path: string; label: st
         break;
       case 'HeroSkillUpScoringRule':
         add('skill-costs', 'Skill costs');
+        break;
+      case 'AnimaLevelUpScoringRule':
+      case 'AnimaRankUpScoringRule':
+      case 'AnimaEmpowerScoringRule':
+      case 'AnimaSkillUpScoringRule':
+        add('titans', 'Titans');
         break;
     }
   }

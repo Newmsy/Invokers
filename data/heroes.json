@@ -36937,6 +36937,553 @@
   ]
  },
  {
+  "id": "NOC044",
+  "configId": 17857780043827674,
+  "name": "Grimnall the Hollowed",
+  "rarity": "Legendary",
+  "faction": "Nocturna",
+  "element": "Earth",
+  "class": "RangedAttacker",
+  "baseRank": "Five",
+  "maxStats": {
+   "hp": 6188,
+   "atk": 1008,
+   "def": 779,
+   "critRate": 0.05000000074505806,
+   "critDmg": 0.5,
+   "acc": 0,
+   "res": 10,
+   "instinct": 5,
+   "comboSpeed": 0,
+   "skillSpeed": 7,
+   "skillRecovery": 0,
+   "manaGen": 6,
+   "runSpeed": 109
+  },
+  "statsByRank": {
+   "One": {
+    "1": {
+     "hp": 540,
+     "atk": 88,
+     "def": 68,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 826,
+     "atk": 135,
+     "def": 104,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   },
+   "Two": {
+    "1": {
+     "hp": 567,
+     "atk": 92,
+     "def": 71,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 869,
+     "atk": 142,
+     "def": 109,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "20": {
+     "hp": 1328,
+     "atk": 216,
+     "def": 167,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   },
+   "Three": {
+    "1": {
+     "hp": 594,
+     "atk": 97,
+     "def": 75,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 907,
+     "atk": 148,
+     "def": 114,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "20": {
+     "hp": 1404,
+     "atk": 229,
+     "def": 177,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "30": {
+     "hp": 2052,
+     "atk": 334,
+     "def": 258,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   },
+   "Four": {
+    "1": {
+     "hp": 621,
+     "atk": 101,
+     "def": 78,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 950,
+     "atk": 155,
+     "def": 120,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "20": {
+     "hp": 1480,
+     "atk": 241,
+     "def": 186,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "30": {
+     "hp": 2182,
+     "atk": 356,
+     "def": 275,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "40": {
+     "hp": 3056,
+     "atk": 498,
+     "def": 385,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   },
+   "Five": {
+    "1": {
+     "hp": 648,
+     "atk": 106,
+     "def": 82,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 988,
+     "atk": 161,
+     "def": 124,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "20": {
+     "hp": 1555,
+     "atk": 253,
+     "def": 196,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "30": {
+     "hp": 2311,
+     "atk": 377,
+     "def": 291,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "40": {
+     "hp": 3262,
+     "atk": 532,
+     "def": 411,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "50": {
+     "hp": 4412,
+     "atk": 719,
+     "def": 556,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   },
+   "Six": {
+    "1": {
+     "hp": 675,
+     "atk": 110,
+     "def": 85,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "10": {
+     "hp": 1031,
+     "atk": 168,
+     "def": 130,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "20": {
+     "hp": 1631,
+     "atk": 266,
+     "def": 205,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "30": {
+     "hp": 2446,
+     "atk": 399,
+     "def": 308,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "40": {
+     "hp": 3478,
+     "atk": 567,
+     "def": 438,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "50": {
+     "hp": 4725,
+     "atk": 770,
+     "def": 595,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    },
+    "60": {
+     "hp": 6188,
+     "atk": 1008,
+     "def": 779,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 0,
+     "skillSpeed": 7,
+     "skillRecovery": 0,
+     "manaGen": 6,
+     "runSpeed": 109
+    }
+   }
+  },
+  "soulSign": "Slayer",
+  "tolerances": [
+   {
+    "slot": "Tolerance1",
+    "stat": "ManaShockTolerance",
+    "byLevel": [
+     {
+      "level": 1,
+      "percent": 100
+     },
+     {
+      "level": 2,
+      "percent": 110
+     },
+     {
+      "level": 3,
+      "percent": 120
+     },
+     {
+      "level": 4,
+      "percent": 130
+     },
+     {
+      "level": 5,
+      "percent": 140
+     },
+     {
+      "level": 6,
+      "percent": 150
+     },
+     {
+      "level": 7,
+      "percent": 160
+     },
+     {
+      "level": 8,
+      "percent": 170
+     },
+     {
+      "level": 9,
+      "percent": 180
+     },
+     {
+      "level": 10,
+      "percent": 190
+     },
+     {
+      "level": 11,
+      "percent": 200
+     }
+    ]
+   },
+   {
+    "slot": "Tolerance2",
+    "stat": "BlightTolerance",
+    "byLevel": [
+     {
+      "level": 1,
+      "percent": 100
+     },
+     {
+      "level": 2,
+      "percent": 110
+     },
+     {
+      "level": 3,
+      "percent": 120
+     },
+     {
+      "level": 4,
+      "percent": 130
+     },
+     {
+      "level": 5,
+      "percent": 140
+     },
+     {
+      "level": 6,
+      "percent": 150
+     },
+     {
+      "level": 7,
+      "percent": 160
+     },
+     {
+      "level": 8,
+      "percent": 170
+     },
+     {
+      "level": 9,
+      "percent": 180
+     },
+     {
+      "level": 10,
+      "percent": 190
+     },
+     {
+      "level": 11,
+      "percent": 200
+     }
+    ]
+   }
+  ]
+ },
+ {
   "id": "ELD027",
   "configId": 17653732280459211,
   "name": "Grovewarden Sethisal",
@@ -118016,6 +118563,553 @@
      {
       "level": 11,
       "percent": 150
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "STN027",
+  "configId": 17858613350333228,
+  "name": "Wrakk the Harvester",
+  "rarity": "Legendary",
+  "faction": "Stonehearts",
+  "element": "Earth",
+  "class": "RangedAttacker",
+  "baseRank": "Five",
+  "maxStats": {
+   "hp": 7105,
+   "atk": 940,
+   "def": 756,
+   "critRate": 0.05000000074505806,
+   "critDmg": 0.5,
+   "acc": 0,
+   "res": 10,
+   "instinct": 5,
+   "comboSpeed": 8,
+   "skillSpeed": 0,
+   "skillRecovery": 7,
+   "manaGen": 0,
+   "runSpeed": 89
+  },
+  "statsByRank": {
+   "One": {
+    "1": {
+     "hp": 620,
+     "atk": 82,
+     "def": 66,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 949,
+     "atk": 125,
+     "def": 101,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   },
+   "Two": {
+    "1": {
+     "hp": 651,
+     "atk": 86,
+     "def": 69,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 998,
+     "atk": 132,
+     "def": 106,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "20": {
+     "hp": 1525,
+     "atk": 202,
+     "def": 162,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   },
+   "Three": {
+    "1": {
+     "hp": 682,
+     "atk": 90,
+     "def": 73,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 1042,
+     "atk": 138,
+     "def": 111,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "20": {
+     "hp": 1612,
+     "atk": 213,
+     "def": 172,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "30": {
+     "hp": 2356,
+     "atk": 312,
+     "def": 251,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   },
+   "Four": {
+    "1": {
+     "hp": 713,
+     "atk": 94,
+     "def": 76,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 1091,
+     "atk": 144,
+     "def": 116,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "20": {
+     "hp": 1699,
+     "atk": 225,
+     "def": 181,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "30": {
+     "hp": 2505,
+     "atk": 331,
+     "def": 267,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "40": {
+     "hp": 3509,
+     "atk": 464,
+     "def": 374,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   },
+   "Five": {
+    "1": {
+     "hp": 744,
+     "atk": 98,
+     "def": 79,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 1135,
+     "atk": 150,
+     "def": 121,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "20": {
+     "hp": 1786,
+     "atk": 236,
+     "def": 190,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "30": {
+     "hp": 2654,
+     "atk": 351,
+     "def": 282,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "40": {
+     "hp": 3745,
+     "atk": 495,
+     "def": 399,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "50": {
+     "hp": 5065,
+     "atk": 670,
+     "def": 539,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   },
+   "Six": {
+    "1": {
+     "hp": 775,
+     "atk": 103,
+     "def": 83,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "10": {
+     "hp": 1184,
+     "atk": 157,
+     "def": 126,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "20": {
+     "hp": 1872,
+     "atk": 248,
+     "def": 199,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "30": {
+     "hp": 2809,
+     "atk": 371,
+     "def": 299,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "40": {
+     "hp": 3993,
+     "atk": 528,
+     "def": 425,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "50": {
+     "hp": 5425,
+     "atk": 718,
+     "def": 578,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    },
+    "60": {
+     "hp": 7105,
+     "atk": 940,
+     "def": 756,
+     "critRate": 0.05000000074505806,
+     "critDmg": 0.5,
+     "acc": 0,
+     "res": 10,
+     "instinct": 5,
+     "comboSpeed": 8,
+     "skillSpeed": 0,
+     "skillRecovery": 7,
+     "manaGen": 0,
+     "runSpeed": 89
+    }
+   }
+  },
+  "soulSign": "BladeDancer",
+  "tolerances": [
+   {
+    "slot": "Tolerance1",
+    "stat": "DazeTolerance",
+    "byLevel": [
+     {
+      "level": 1,
+      "percent": 100
+     },
+     {
+      "level": 2,
+      "percent": 110
+     },
+     {
+      "level": 3,
+      "percent": 120
+     },
+     {
+      "level": 4,
+      "percent": 130
+     },
+     {
+      "level": 5,
+      "percent": 140
+     },
+     {
+      "level": 6,
+      "percent": 150
+     },
+     {
+      "level": 7,
+      "percent": 160
+     },
+     {
+      "level": 8,
+      "percent": 170
+     },
+     {
+      "level": 9,
+      "percent": 180
+     },
+     {
+      "level": 10,
+      "percent": 190
+     },
+     {
+      "level": 11,
+      "percent": 200
+     }
+    ]
+   },
+   {
+    "slot": "Tolerance2",
+    "stat": "AtrophyTolerance",
+    "byLevel": [
+     {
+      "level": 1,
+      "percent": 100
+     },
+     {
+      "level": 2,
+      "percent": 110
+     },
+     {
+      "level": 3,
+      "percent": 120
+     },
+     {
+      "level": 4,
+      "percent": 130
+     },
+     {
+      "level": 5,
+      "percent": 140
+     },
+     {
+      "level": 6,
+      "percent": 150
+     },
+     {
+      "level": 7,
+      "percent": 160
+     },
+     {
+      "level": 8,
+      "percent": 170
+     },
+     {
+      "level": 9,
+      "percent": 180
+     },
+     {
+      "level": 10,
+      "percent": 190
+     },
+     {
+      "level": 11,
+      "percent": 200
      }
     ]
    }

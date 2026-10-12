@@ -1,7 +1,7 @@
 {
- "gameVersion": "0.61.1516",
- "textVersion": "0.61.1",
- "extractedAt": "2026-10-02",
+ "gameVersion": "0.61.1523",
+ "textVersion": "0.61.2",
+ "extractedAt": "2026-10-12",
  "source": "Installed game files (localization table and UI asset bundles); nothing comes from the server.",
  "unconfirmed": [
   "Whether every loading hint can appear for every player (the database has no unlock fields this script reads).",
@@ -1642,7 +1642,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-01-2",
-   "text": "Watch out for the Bear's Push – it can disrupt your damage dealers.",
+   "text": "Beware the Ogryn Lumberhulk's Launch – it can scatter your team.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 1",
    "region": "Chapter1_ELD",
@@ -1650,7 +1650,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-01-3",
-   "text": "Be careful of the Ogryn Ripper's Accuracy reduction.",
+   "text": "Beware the Ogryn Ripper's ACC Down.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 1",
    "region": "Chapter1_ELD",
@@ -1658,7 +1658,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-02-1",
-   "text": "Clear out the Defense lowering Sabrewolves first.",
+   "text": "Clear out the Sabrewolves first – their RES Down weakens your team.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 2",
    "region": "Chapter1_ELD",
@@ -1666,7 +1666,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-02-2",
-   "text": "Watch out for the Ogryn Warchanter – they deal damage based on MAX HP.",
+   "text": "Hunt down the Ogryn Lumberhulk – beware its Launch!",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 2",
    "region": "Chapter1_ELD",
@@ -1674,7 +1674,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-02-3",
-   "text": "Take out the Bonecaster to stop their Burns.",
+   "text": "Take out the Ogryn Peltasts to stop their Bleeds.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 2",
    "region": "Chapter1_ELD",
@@ -1690,7 +1690,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-03-2",
-   "text": "Deal with support enemies before the elites.",
+   "text": "Watch out for the Ogryn Firebulk's charge – it targets your furthest Invoker.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 3",
    "region": "Chapter1_ELD",
@@ -1730,7 +1730,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-04-3",
-   "text": "Beware of the Ironskull pushing Invokers away.",
+   "text": "Take out the Wolf Riders before their Chains and Bleeds stack up.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 4",
    "region": "Chapter1_ELD",
@@ -1738,7 +1738,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-04-4",
-   "text": "Take out the Minehugger before it explodes!",
+   "text": "Beware the Ogryn Rippers' ACC Down – keep your Accuracy high.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 4",
    "region": "Chapter1_ELD",
@@ -1746,7 +1746,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-05-1",
-   "text": "Eliminate Dusk Knights fast – their Defense reduction's deadly.",
+   "text": "Eliminate Dusk Knights fast – their DEF Down is deadly.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 5",
    "region": "Chapter1_ELD",
@@ -1762,7 +1762,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-05-3",
-   "text": "Dispatch the mini-boss fast, so he cannot spawn reinforcements.",
+   "text": "Avoid the Spinning Saws in the corridor – they hit hard!",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 5",
    "region": "Chapter1_ELD",
@@ -1770,7 +1770,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-06-1",
-   "text": "Focus on the Ogryn Cannon – don't get stunned!",
+   "text": "Kill the Ogryn Linebreaker fast – he grants nearby allies ATK Up.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 6",
    "region": "Chapter1_ELD",
@@ -1778,7 +1778,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-06-2",
-   "text": "Dispatch the Archers before they can stack up Bleed.",
+   "text": "Watch out for the Steelwolves – their ATK Down hits your whole team.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 6",
    "region": "Chapter1_ELD",
@@ -1786,7 +1786,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-06-3",
-   "text": "Topple the Healing Totem to stop enemies healing.",
+   "text": "Expect wolf reinforcements as the Ogryn Linebreaker's HP drops.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 6",
    "region": "Chapter1_ELD",
@@ -1794,7 +1794,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-07-1",
-   "text": "Eliminate Dusk Knights fast – their Defense reduction's deadly.",
+   "text": "Stop the Ogryn Minehuggers before they reach you and cause Shock.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 7",
    "region": "Chapter1_ELD",
@@ -1818,7 +1818,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-07-4",
-   "text": "Focus on protecting the Liferoots.",
+   "text": "Focus on protecting the Liferoot.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 7",
    "region": "Chapter1_ELD",
@@ -1834,7 +1834,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-08-2",
-   "text": "Dispatch the fast firing Ogryn Peltasts quickly.",
+   "text": "Take out the Dusk Knights before their DEF Down stacks up.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 8",
    "region": "Chapter1_ELD",
@@ -1850,7 +1850,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-08-4",
-   "text": "Keep your distance when fighting the Ogryn Hatewitch.",
+   "text": "Spread out – the Ogryn Hatewitch's Burn spreads to nearby allies.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 8",
    "region": "Chapter1_ELD",
@@ -1858,7 +1858,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-09-1",
-   "text": "Deal with the Ogryn Firebulk first. He deals big AOE damage.",
+   "text": "Clear the minecart's path – destroy each Ogryn Roadblock before time runs out!",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 9",
    "region": "Chapter1_ELD",
@@ -1874,7 +1874,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-09-3",
-   "text": "Shatter the Healing Totem to stop enemies healing.",
+   "text": "Beware the Ironskull's charge – it casts DEF Down on your Invokers.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 9",
    "region": "Chapter1_ELD",
@@ -1882,7 +1882,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-09-4",
-   "text": "Focus on one Warhorn at a time – don't divide your damage.",
+   "text": "Watch out for Bears and Ironskulls – they Push Invokers away.",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 9",
    "region": "Chapter1_ELD",
@@ -1906,7 +1906,7 @@
   },
   {
    "key": "md-LevelHint-Chapter1_ELD-10-3",
-   "text": "Destroy Ulgorim's Healing Totems ASAP!",
+   "text": "Destroy Ulgorim's Heal Totems ASAP!",
    "context": "battle",
    "screen": "Campaign Chapter 1, stage 10",
    "region": "Chapter1_ELD",
@@ -1938,7 +1938,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-01-3",
-   "text": "Be careful of the Mistrider's pull!",
+   "text": "Beware the Gustfury's Blind – it makes your Combo Attacks miss!",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 1",
    "region": "Chapter2_MON",
@@ -1954,7 +1954,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-02-1",
-   "text": "Extinguish the Fire Elementals to stop their Burns.",
+   "text": "Destroy both Spirit Mortars to break through to the gate.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 2",
    "region": "Chapter2_MON",
@@ -1970,7 +1970,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-02-3",
-   "text": "Take out the Soulmask to stop its ATK reduction.",
+   "text": "Take out the Wisphags first to stop their Heal Reduction.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 2",
    "region": "Chapter2_MON",
@@ -1978,7 +1978,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-02-4",
-   "text": "Focus down the Demon Beacon to stop it buffing enemy Resistance.",
+   "text": "Take down the Gustfuries before they Blind and push your Invokers.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 2",
    "region": "Chapter2_MON",
@@ -1986,7 +1986,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-03-1",
-   "text": "Destroy the Spires to stop their buffs.",
+   "text": "Destroy the Demon Beacon to stop its RES Up buff.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 3",
    "region": "Chapter2_MON",
@@ -1994,7 +1994,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-03-2",
-   "text": "Stop the Wisphags! They can reduce your healing.",
+   "text": "Stop the Soulhusks! Their Heal Reduction weakens your healing.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 3",
    "region": "Chapter2_MON",
@@ -2002,7 +2002,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-03-3",
-   "text": "Have one Invoker focus the Spires, while others clear incoming waves.",
+   "text": "Defeat the Fire Elemental quickly to stop its Burns.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 3",
    "region": "Chapter2_MON",
@@ -2010,7 +2010,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-04-1",
-   "text": "Use AOE skills to take out Hexling swarms.",
+   "text": "Use AoE skills to take out Dire Hexling swarms.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 4",
    "region": "Chapter2_MON",
@@ -2018,7 +2018,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-04-2",
-   "text": "Prioritize the Hellflinger to stop its damage.",
+   "text": "Prioritize the Defilers – they teleport in and cast Burn.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 4",
    "region": "Chapter2_MON",
@@ -2026,7 +2026,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-04-3",
-   "text": "Use DEF Down to dispatch the Thunderbringer fast.",
+   "text": "Be careful of the Mistrider's pull and Stun!",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 4",
    "region": "Chapter2_MON",
@@ -2034,7 +2034,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-04-4",
-   "text": "Build Resistance to resist the Thunderbringer's Shock.",
+   "text": "Take down the Soulhusks to stop their Heal Reduction.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 4",
    "region": "Chapter2_MON",
@@ -2050,7 +2050,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-05-2",
-   "text": "Focus on the Demon Beacon when less enemies are nearby.",
+   "text": "Focus on the Soulmasks when fewer enemies are nearby.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 5",
    "region": "Chapter2_MON",
@@ -2058,7 +2058,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-05-3",
-   "text": "Deal with one Demon Beacon at a time.",
+   "text": "Deal with one Soulmask at a time.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 5",
    "region": "Chapter2_MON",
@@ -2066,7 +2066,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-05-4",
-   "text": "Hit the Demon Beacon and enemies all at once with AoE skills.",
+   "text": "Hit the Soulmasks and nearby enemies at once with AoE skills.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 5",
    "region": "Chapter2_MON",
@@ -2074,7 +2074,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-06-1",
-   "text": "Destroy the Spirit Mortar to stop it launching your Invokers.",
+   "text": "Take down the Soulhusk before its pushes scatter your team.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 6",
    "region": "Chapter2_MON",
@@ -2082,7 +2082,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-06-2",
-   "text": "Use AoE skills to hit both Totems at the same time.",
+   "text": "Use AoE skills to clear the Wisphags around the Sindrinker.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 6",
    "region": "Chapter2_MON",
@@ -2130,7 +2130,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-07-4",
-   "text": "Don't let enemies reach the Shrine.",
+   "text": "Don't let enemies reach the Sacred Bell.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 7",
    "region": "Chapter2_MON",
@@ -2146,7 +2146,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-08-2",
-   "text": "Focus your attention on one Soulmask at a time.",
+   "text": "Take out the Soulmask to stop its ATK Down.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 8",
    "region": "Chapter2_MON",
@@ -2178,7 +2178,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-09-2",
-   "text": "Use the fountains to heal your entire party.",
+   "text": "Destroy the Everlife Spire to stop its Unkillable buff on enemies.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 9",
    "region": "Chapter2_MON",
@@ -2186,7 +2186,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-09-3",
-   "text": "Demolish the Spirit Mortars first.",
+   "text": "Watch out for the Fire Elementals' Burns – bring a healer.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 9",
    "region": "Chapter2_MON",
@@ -2194,7 +2194,7 @@
   },
   {
    "key": "md-LevelHint-Chapter2_MON-09-4",
-   "text": "Use control debuffs to deal with the Vilegut waves.",
+   "text": "Use AoE skills to deal with the Hexling waves.",
    "context": "battle",
    "screen": "Campaign Chapter 2, stage 9",
    "region": "Chapter2_MON",

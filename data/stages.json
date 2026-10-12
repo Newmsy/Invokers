@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Static game config via the LootDump export (Levels.csv, LootDistribution.csv, ChestOdds.csv).",
  "lootDistribution": [
   {

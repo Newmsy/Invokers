@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Hero skill configs (base timings at Combo Speed rating 0).",
  "note": "In play, combo timing is the same for every Invoker (observed in game). These per-hero values are the raw skill config and are NOT real timing differences: preSec/castSec/endSec are animation lengths, and requiredSec (0.4-0.9 s in config) does not translate into faster or slower combos either. Do not rank or compare heroes by these numbers; keep them for reference only.",
  "unconfirmed": [
@@ -13878,6 +13878,73 @@
    "requiredSec": 2.3
   },
   {
+   "heroId": "NOC044",
+   "steps": [
+    {
+     "step": "ComboZero",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.5333,
+     "endSec": 0.0,
+     "requiredSec": 0.4,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo1",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.5,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo2",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.5,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo3",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.5,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo4",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.6,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo5",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6667,
+     "endSec": 0.0,
+     "requiredSec": 0.7,
+     "resetSec": 3.0,
+     "range": 9.0
+    }
+   ],
+   "animationSec": 8.1999,
+   "requiredSec": 2.8
+  },
+  {
    "heroId": "STN001",
    "steps": [
     {
@@ -15484,6 +15551,73 @@
    ],
    "animationSec": 8.1999,
    "requiredSec": 2.95
+  },
+  {
+   "heroId": "STN027",
+   "steps": [
+    {
+     "step": "ComboZero",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.5333,
+     "endSec": 0.0,
+     "requiredSec": 0.5,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo1",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.6,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo2",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.6,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo3",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.65,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo4",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6333,
+     "endSec": 0.0,
+     "requiredSec": 0.8,
+     "resetSec": 3.0,
+     "range": 9.0
+    },
+    {
+     "step": "Combo5",
+     "cooldown": 0.0,
+     "preSec": 0.0,
+     "castSec": 1.6667,
+     "endSec": 0.0,
+     "requiredSec": 0.9,
+     "resetSec": 3.0,
+     "range": 9.0
+    }
+   ],
+   "animationSec": 8.1999,
+   "requiredSec": 3.55
   }
  ]
 }

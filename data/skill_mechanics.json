@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Hero skill scripts (HeroData.HeroById[].Skills[].Script).",
  "damageByLevel": {
   "note": "Script multipliers are the level-11 (max) values. Damage at skill level L = multiplier x share[L-1]. Checked against the game's skill texts at every level.",
@@ -104596,6 +104596,482 @@
    ]
   },
   {
+   "heroId": "NOC044",
+   "skills": [
+    {
+     "type": "ActiveSkill1",
+     "cooldown": 10,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Custom",
+       "multipliers": {
+        "atk": 1.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Custom",
+       "multipliers": {
+        "atk": 1.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "ConditionalDamageOrHeal",
+       "damageType": null,
+       "mode": null,
+       "multipliers": {},
+       "ignoresSkillLevel": null
+      },
+      {
+       "block": "ConditionalDamageOrHeal",
+       "damageType": null,
+       "mode": null,
+       "multipliers": {},
+       "ignoresSkillLevel": null
+      },
+      {
+       "block": "ConditionalDamageOrHeal",
+       "damageType": null,
+       "mode": null,
+       "multipliers": {},
+       "ignoresSkillLevel": null
+      },
+      {
+       "block": "ConditionalDamageOrHeal",
+       "damageType": null,
+       "mode": null,
+       "multipliers": {},
+       "ignoresSkillLevel": null
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 1.35
+        },
+        {
+         "level": 1,
+         "value": 1.38
+        },
+        {
+         "level": 2,
+         "value": 1.41
+        },
+        {
+         "level": 3,
+         "value": 1.44
+        },
+        {
+         "level": 4,
+         "value": 1.47
+        },
+        {
+         "level": 5,
+         "value": 1.49
+        },
+        {
+         "level": 6,
+         "value": 1.51
+        },
+        {
+         "level": 7,
+         "value": 1.53
+        },
+        {
+         "level": 8,
+         "value": 1.55
+        },
+        {
+         "level": 9,
+         "value": 1.58
+        },
+        {
+         "level": 10,
+         "value": 1.6
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ActiveSkill2",
+     "cooldown": 25,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 6.1
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "mana": [
+      {
+       "to": "Ultimate",
+       "amount": 0,
+       "formula": "Flat"
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 15
+        },
+        {
+         "level": 1,
+         "value": 20
+        },
+        {
+         "level": 3,
+         "value": 24
+        },
+        {
+         "level": 5,
+         "value": 28
+        },
+        {
+         "level": 7,
+         "value": 32
+        },
+        {
+         "level": 9,
+         "value": 35
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ActiveSkill3",
+     "cooldown": 27,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3.2
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "mana": [
+      {
+       "to": "Anima",
+       "amount": 0,
+       "formula": "Flat"
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 25
+        },
+        {
+         "level": 1,
+         "value": 30
+        },
+        {
+         "level": 3,
+         "value": 35
+        },
+        {
+         "level": 5,
+         "value": 40
+        },
+        {
+         "level": 7,
+         "value": 45
+        },
+        {
+         "level": 9,
+         "value": 50
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "Ultimate",
+     "cooldown": 15,
+     "manaCost": 1100,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3.45
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3.45
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "mana": [
+      {
+       "to": "Anima",
+       "amount": 0,
+       "formula": "Flat"
+      },
+      {
+       "to": "Anima",
+       "amount": 0,
+       "formula": "Flat"
+      },
+      {
+       "to": "Anima",
+       "amount": 0,
+       "formula": "Flat"
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 35
+        },
+        {
+         "level": 1,
+         "value": 40
+        },
+        {
+         "level": 2,
+         "value": 45
+        },
+        {
+         "level": 3,
+         "value": 50
+        },
+        {
+         "level": 5,
+         "value": 56
+        },
+        {
+         "level": 6,
+         "value": 62
+        },
+        {
+         "level": 8,
+         "value": 68
+        },
+        {
+         "level": 9,
+         "value": 75
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "Combo1",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.47
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo2",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.75
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo3",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.01
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo4",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.3
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo5",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.65
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "statusEffects": [
+      {
+       "block": "IncreaseStatusEffectDuration",
+       "unresistable": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 1
+        },
+        {
+         "level": 1,
+         "value": 1.1
+        },
+        {
+         "level": 2,
+         "value": 1.2
+        },
+        {
+         "level": 3,
+         "value": 1.3
+        },
+        {
+         "level": 4,
+         "value": 1.4
+        },
+        {
+         "level": 5,
+         "value": 1.5
+        },
+        {
+         "level": 6,
+         "value": 1.6
+        },
+        {
+         "level": 7,
+         "value": 1.7
+        },
+        {
+         "level": 8,
+         "value": 1.8
+        },
+        {
+         "level": 9,
+         "value": 1.9
+        },
+        {
+         "level": 10,
+         "value": 2
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 1
+        },
+        {
+         "level": 10,
+         "value": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ComboZero",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.47
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    }
+   ]
+  },
+  {
    "heroId": "STN001",
    "skills": [
     {
@@ -115903,6 +116379,680 @@
        "mode": "Multipliers",
        "multipliers": {
         "atk": 0.51
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heroId": "STN027",
+   "skills": [
+    {
+     "type": "ActiveSkill1",
+     "cooldown": 10,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "statusEffects": [
+      {
+       "block": "BuffStat",
+       "effect": "DebuffResistance",
+       "unresistable": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 30
+        },
+        {
+         "level": 1,
+         "value": 33
+        },
+        {
+         "level": 2,
+         "value": 36
+        },
+        {
+         "level": 3,
+         "value": 39
+        },
+        {
+         "level": 4,
+         "value": 42
+        },
+        {
+         "level": 5,
+         "value": 45
+        },
+        {
+         "level": 6,
+         "value": 48
+        },
+        {
+         "level": 7,
+         "value": 51
+        },
+        {
+         "level": 8,
+         "value": 54
+        },
+        {
+         "level": 9,
+         "value": 57
+        },
+        {
+         "level": 10,
+         "value": 60
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 4
+        },
+        {
+         "level": 2,
+         "value": 4.5
+        },
+        {
+         "level": 4,
+         "value": 5
+        },
+        {
+         "level": 6,
+         "value": 5.5
+        },
+        {
+         "level": 8,
+         "value": 6
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ActiveSkill2",
+     "cooldown": 29,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 2.05
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 2.05
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 2.05
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "statusEffects": [
+      {
+       "block": "BuffStat",
+       "effect": "DebuffAttack",
+       "unresistable": false
+      },
+      {
+       "block": "BuffStat",
+       "effect": "DebuffAccuracy",
+       "unresistable": false
+      },
+      {
+       "block": "BuffStat",
+       "effect": "DebuffSkillRecoverySpeed",
+       "unresistable": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 25
+        },
+        {
+         "level": 1,
+         "value": 30
+        },
+        {
+         "level": 3,
+         "value": 35
+        },
+        {
+         "level": 5,
+         "value": 40
+        },
+        {
+         "level": 7,
+         "value": 45
+        },
+        {
+         "level": 10,
+         "value": 50
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 12
+        },
+        {
+         "level": 2,
+         "value": 13
+        },
+        {
+         "level": 4,
+         "value": 14
+        },
+        {
+         "level": 6,
+         "value": 15
+        },
+        {
+         "level": 8,
+         "value": 16
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 35
+        },
+        {
+         "level": 1,
+         "value": 42
+        },
+        {
+         "level": 3,
+         "value": 49
+        },
+        {
+         "level": 5,
+         "value": 56
+        },
+        {
+         "level": 7,
+         "value": 63
+        },
+        {
+         "level": 10,
+         "value": 70
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 12
+        },
+        {
+         "level": 2,
+         "value": 13
+        },
+        {
+         "level": 4,
+         "value": 14
+        },
+        {
+         "level": 6,
+         "value": 15
+        },
+        {
+         "level": 8,
+         "value": 16
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 15
+        },
+        {
+         "level": 1,
+         "value": 18
+        },
+        {
+         "level": 3,
+         "value": 21
+        },
+        {
+         "level": 5,
+         "value": 24
+        },
+        {
+         "level": 7,
+         "value": 27
+        },
+        {
+         "level": 9,
+         "value": 30
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 12
+        },
+        {
+         "level": 2,
+         "value": 13
+        },
+        {
+         "level": 4,
+         "value": 14
+        },
+        {
+         "level": 6,
+         "value": 15
+        },
+        {
+         "level": 8,
+         "value": 16
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ActiveSkill3",
+     "cooldown": 29,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 3.15
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "statusEffects": [
+      {
+       "block": "BuffStat",
+       "effect": "DebuffComboAccuracy",
+       "unresistable": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 15
+        },
+        {
+         "level": 1,
+         "value": 18
+        },
+        {
+         "level": 3,
+         "value": 21
+        },
+        {
+         "level": 5,
+         "value": 24
+        },
+        {
+         "level": 7,
+         "value": 27
+        },
+        {
+         "level": 9,
+         "value": 30
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 12
+        },
+        {
+         "level": 2,
+         "value": 13
+        },
+        {
+         "level": 4,
+         "value": 14
+        },
+        {
+         "level": 6,
+         "value": 15
+        },
+        {
+         "level": 8,
+         "value": 16
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "Ultimate",
+     "cooldown": 15,
+     "manaCost": 1100,
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 5.24
+       },
+       "ignoresSkillLevel": false
+      },
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 5.24
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 3
+        },
+        {
+         "level": 1,
+         "value": 3.3
+        },
+        {
+         "level": 2,
+         "value": 3.6
+        },
+        {
+         "level": 3,
+         "value": 3.9
+        },
+        {
+         "level": 4,
+         "value": 4.2
+        },
+        {
+         "level": 5,
+         "value": 4.5
+        },
+        {
+         "level": 6,
+         "value": 4.8
+        },
+        {
+         "level": 7,
+         "value": 5.1
+        },
+        {
+         "level": 8,
+         "value": 5.4
+        },
+        {
+         "level": 9,
+         "value": 5.7
+        },
+        {
+         "level": 10,
+         "value": 6
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 3
+        },
+        {
+         "level": 1,
+         "value": 3.3
+        },
+        {
+         "level": 2,
+         "value": 3.6
+        },
+        {
+         "level": 3,
+         "value": 3.9
+        },
+        {
+         "level": 4,
+         "value": 4.2
+        },
+        {
+         "level": 5,
+         "value": 4.5
+        },
+        {
+         "level": 6,
+         "value": 4.8
+        },
+        {
+         "level": 7,
+         "value": 5.1
+        },
+        {
+         "level": 8,
+         "value": 5.4
+        },
+        {
+         "level": 9,
+         "value": 5.7
+        },
+        {
+         "level": 10,
+         "value": 6
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "Combo1",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.48
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo2",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.77
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo3",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.03
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo4",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 1.3
+       },
+       "ignoresSkillLevel": false
+      }
+     ]
+    },
+    {
+     "type": "Combo5",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.8
+       },
+       "ignoresSkillLevel": false
+      }
+     ],
+     "statusEffects": [
+      {
+       "block": "IncreaseStatusEffectDuration",
+       "unresistable": false
+      }
+     ],
+     "byLevel": [
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 1
+        },
+        {
+         "level": 1,
+         "value": 1.1
+        },
+        {
+         "level": 2,
+         "value": 1.2
+        },
+        {
+         "level": 3,
+         "value": 1.3
+        },
+        {
+         "level": 4,
+         "value": 1.4
+        },
+        {
+         "level": 5,
+         "value": 1.5
+        },
+        {
+         "level": 6,
+         "value": 1.6
+        },
+        {
+         "level": 7,
+         "value": 1.7
+        },
+        {
+         "level": 8,
+         "value": 1.8
+        },
+        {
+         "level": 9,
+         "value": 1.9
+        },
+        {
+         "level": 10,
+         "value": 2
+        }
+       ]
+      },
+      {
+       "percent": false,
+       "values": [
+        {
+         "level": 0,
+         "value": 1
+        },
+        {
+         "level": 10,
+         "value": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "ComboZero",
+     "damage": [
+      {
+       "block": "DamageWithFormula",
+       "damageType": "Common",
+       "mode": "Multipliers",
+       "multipliers": {
+        "atk": 0.48
        },
        "ignoresSkillLevel": false
       }

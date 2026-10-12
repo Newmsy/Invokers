@@ -6,7 +6,7 @@ Newman's PC (it needs the game install, and sometimes the running game), by the 
 - Requests go in [`WISHLIST.md`](WISHLIST.md). The local session watches it and picks up changes.
 - Scripts are in `scripts/`. Raw output goes to `out/`, which is not committed (it is large and is the game's own
   text); only the finished, documented files go into `../data`.
-- Game version this reflects: **0.61.1516** (localization package `Prod_0.61.0_66`).
+- Game version this reflects: **0.61.1523** (localization package `Prod_0.61.2_10`).
 
 ## Status
 

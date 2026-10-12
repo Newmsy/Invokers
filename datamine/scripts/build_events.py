@@ -77,6 +77,17 @@ def main():
                       "GlobalRewards", "ShopItems"):
             if t.get(field):
                 e[field[0].lower() + field[1:]] = clean(t[field])
+        # Chase events (GetLegendary) score many activities, each with its own rules and a points multiplier while
+        # that activity's own event runs alongside. Keep the usual scoring.rules shape (every rule, tagged with its
+        # activity) and list the activities separately.
+        if isinstance(e.get("scoring"), list):
+            acts = e.pop("scoring")
+            e["scoring"] = {"rules": [{**r, "source": a.get("sourceTypeId"), "multiplier": a.get("activeParallelTournamentMultiplier")}
+                                      for a in acts for r in (a.get("scoring") or {}).get("rules") or []]}
+            e["activities"] = [{"source": a.get("sourceTypeId"),
+                                "name": text(((a.get("visualSettings") or {}).get("localizationKeys") or {}).get("longName")),
+                                "parallelMultiplier": a.get("activeParallelTournamentMultiplier"),
+                                "rules": [r.get("ruleType") for r in (a.get("scoring") or {}).get("rules") or []]} for a in acts]
         if t.get("ShopResourceId"):
             e["shopCurrency"] = t["ShopResourceId"]
         events.append({k: v for k, v in e.items() if v not in (None, [], {})})

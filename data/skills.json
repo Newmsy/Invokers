@@ -60174,6 +60174,530 @@
   ]
  },
  {
+  "heroId": "NOC044",
+  "kind": "hero",
+  "name": "Grimnall the Hollowed",
+  "skills": [
+   {
+    "type": "ActiveSkill1",
+    "title": "Pistols at Dawn",
+    "cooldown": 10,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 64 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>35%</color></b>.<br><i><br>#1 Damage: 72.5% ATK<br>#2 Damage: 72.5% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 68 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>38%</color></b>.<br><i><br>#1 Damage: 76.8% ATK<br>#2 Damage: 76.8% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 71 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>41%</color></b>.<br><i><br>#1 Damage: 81.2% ATK<br>#2 Damage: 81.2% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 78 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>44%</color></b>.<br><i><br>#1 Damage: 88.5% ATK<br>#2 Damage: 88.5% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 85 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>47%</color></b>.<br><i><br>#1 Damage: 97.2% ATK<br>#2 Damage: 97.2% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 92 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>49%</color></b>.<br><i><br>#1 Damage: 104.4% ATK<br>#2 Damage: 104.4% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 100 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>51%</color></b>.<br><i><br>#1 Damage: 113.1% ATK<br>#2 Damage: 113.1% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 106 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>53%</color></b>.<br><i><br>#1 Damage: 120.3% ATK<br>#2 Damage: 120.3% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 114 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>55%</color></b>.<br><i><br>#1 Damage: 129.1% ATK<br>#2 Damage: 129.1% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 120 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>58%</color></b>.<br><i><br>#1 Damage: 136.3% ATK<br>#2 Damage: 136.3% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 128 damage per hit. If <b><color=#FFE606>Grimnall the Hollowed</color></b>'s HP% is higher than Target's HP%, damage increases by <b><color=#5EEF2C>60%</color></b>.<br><i><br>#1 Damage: 145% ATK<br>#2 Damage: 145% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "ActiveSkill2",
+    "title": "Hallow Volley",
+    "cooldown": 25,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 268 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(15 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 305% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 285 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(20 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 323.3% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 301 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(20 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 341.6% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 327 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(24 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 372.1% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 360 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(24 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 408.7% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 386 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(28 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 439.2% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 419 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(28 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 475.8% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 446 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(32 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 506.3% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 478 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(32 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 542.9% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 505 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(35 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 573.4% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 537 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Ultimate Mana</color></b> <b><color=#2EB4FF>(35 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 610% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "ActiveSkill3",
+    "title": "Devilish Ricochet",
+    "cooldown": 27,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 141 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(25 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 160% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 149 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(30 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 169.6% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 158 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(30 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 179.2% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 172 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(35 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 195.2% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 189 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(35 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 214.4% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 203 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(40 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 230.4% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 220 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(40 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 249.6% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 234 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(45 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 265.6% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 251 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(45 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 284.8% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 265 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(50 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 300.8% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 15m radius, from a distance of 9m, dealing 282 damage. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(50 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b>.<br><i><br>#1 Damage: 320% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Ultimate",
+    "title": "Triple Trickshot",
+    "cooldown": 15,
+    "manaCost": 1100,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 152 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(35 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 172.5% ATK<br>#2 Damage: 172.5% ATK<br>#3 Damage: 172.5% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 161 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(40 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 182.8% ATK<br>#2 Damage: 182.8% ATK<br>#3 Damage: 182.8% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 170 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(45 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 193.2% ATK<br>#2 Damage: 193.2% ATK<br>#3 Damage: 193.2% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 185 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(50 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 210.5% ATK<br>#2 Damage: 210.5% ATK<br>#3 Damage: 210.5% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 203 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(50 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 231.2% ATK<br>#2 Damage: 231.2% ATK<br>#3 Damage: 231.2% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 219 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(56 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 248.4% ATK<br>#2 Damage: 248.4% ATK<br>#3 Damage: 248.4% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 237 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(62 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 269.1% ATK<br>#2 Damage: 269.1% ATK<br>#3 Damage: 269.1% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 252 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(62 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 286.4% ATK<br>#2 Damage: 286.4% ATK<br>#3 Damage: 286.4% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 270 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(68 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 307% ATK<br>#2 Damage: 307% ATK<br>#3 Damage: 307% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 285 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(75 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 324.3% ATK<br>#2 Damage: 324.3% ATK<br>#3 Damage: 324.3% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 304 damage per hit. <b><color=#FFE606>Grimnall the Hollowed</color></b> gains <b><color=#2EB4FF>Titan Mana</color></b> <b><color=#2EB4FF>(75 per buff on <b><color=#FFE606>Grimnall the Hollowed</color></b>)</color></b> on each hit.<br><i><br>#1 Damage: 345% ATK<br>#2 Damage: 345% ATK<br>#3 Damage: 345% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Combo",
+    "title": "Combo Attack",
+    "levels": [
+     {
+      "level": 1,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 21 damage.<i><br>Damage: 23.5% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 33 damage.<i><br>Damage: 37.5% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 44 damage.<i><br>Damage: 50.5% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 57 damage.<i><br>Damage: 65% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 73 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1s</color></b>.<i><br>Damage: 82.5% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 22 damage.<i><br>Damage: 24.9% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 35 damage.<i><br>Damage: 39.7% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 47 damage.<i><br>Damage: 53.5% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 61 damage.<i><br>Damage: 68.9% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 77 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.1s</color></b>.<i><br>Damage: 87.4% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 23 damage.<i><br>Damage: 26.3% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 37 damage.<i><br>Damage: 42% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 50 damage.<i><br>Damage: 56.6% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 64 damage.<i><br>Damage: 72.8% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 81 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.2s</color></b>.<i><br>Damage: 92.4% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 25 damage.<i><br>Damage: 28.7% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 40 damage.<i><br>Damage: 45.8% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 54 damage.<i><br>Damage: 61.6% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 70 damage.<i><br>Damage: 79.3% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 89 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.3s</color></b>.<i><br>Damage: 100.7% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 28 damage.<i><br>Damage: 31.5% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 44 damage.<i><br>Damage: 50.2% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 60 damage.<i><br>Damage: 67.7% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 77 damage.<i><br>Damage: 87.1% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 97 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.4s</color></b>.<i><br>Damage: 110.6% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 30 damage.<i><br>Damage: 33.8% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 48 damage.<i><br>Damage: 54% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 64 damage.<i><br>Damage: 72.7% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 82 damage.<i><br>Damage: 93.6% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 105 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.5s</color></b>.<i><br>Damage: 118.8% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 32 damage.<i><br>Damage: 36.7% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 51 damage.<i><br>Damage: 58.5% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 69 damage.<i><br>Damage: 78.8% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 89 damage.<i><br>Damage: 101.4% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 113 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.6s</color></b>.<i><br>Damage: 128.7% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 34 damage.<i><br>Damage: 39% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 55 damage.<i><br>Damage: 62.2% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 74 damage.<i><br>Damage: 83.8% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 95 damage.<i><br>Damage: 107.9% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 121 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.7s</color></b>.<i><br>Damage: 136.9% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 37 damage.<i><br>Damage: 41.8% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 59 damage.<i><br>Damage: 66.8% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 79 damage.<i><br>Damage: 89.9% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 102 damage.<i><br>Damage: 115.7% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 129 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.8s</color></b>.<i><br>Damage: 146.8% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 39 damage.<i><br>Damage: 44.2% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 62 damage.<i><br>Damage: 70.5% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 84 damage.<i><br>Damage: 94.9% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 108 damage.<i><br>Damage: 122.2% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 136 damage. <b><color=#2EB4FF>Extends</color></b> the duration of 1 random buff on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>1.9s</color></b>.<i><br>Damage: 155.1% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 41 damage.<i><br>Damage: 47% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 66 damage.<i><br>Damage: 75% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 89 damage.<i><br>Damage: 101% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 114 damage.<i><br>Damage: 130% ATK</i>\n\n#5 Attacks 1 enemy from a distance of 9m, dealing 145 damage. <b><color=#2EB4FF>Extends</color></b> the duration of up to 2 random buffs on <b><color=#FFE606>Grimnall the Hollowed</color></b> by <b><color=#FFE606>2s</color></b>.<i><br>Damage: 165% ATK</i>"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "heroId": "STN027",
+  "kind": "hero",
+  "name": "Wrakk the Harvester",
+  "skills": [
+   {
+    "type": "ActiveSkill1",
+    "title": "Buzz Blade",
+    "cooldown": 10,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 123 damage. Casts a <b><color=#FF3232>[30% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>4s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 150% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 130 damage. Casts a <b><color=#FF3232>[33% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>4s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 159% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 138 damage. Casts a <b><color=#FF3232>[36% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>4.5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 168% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 150 damage. Casts a <b><color=#FF3232>[39% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>4.5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 183% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 165 damage. Casts a <b><color=#FF3232>[42% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 201% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 177 damage. Casts a <b><color=#FF3232>[45% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 216% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 192 damage. Casts a <b><color=#FF3232>[48% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>5.5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 234% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 204 damage. Casts a <b><color=#FF3232>[51% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>5.5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 249% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 219 damage. Casts a <b><color=#FF3232>[54% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>6s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 267% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 231 damage. Casts a <b><color=#FF3232>[57% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>6s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 282% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, dealing 246 damage. Casts a <b><color=#FF3232>[60% RES Down]</color></b> debuff on the target, lasting <b><color=#FFE606>6s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>RES Down</color></b><br><i><br>#1 Damage: 300% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "ActiveSkill2",
+    "title": "Gourd Blaster",
+    "cooldown": 29,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 84 damage per hit. The first hit casts a <b><color=#FF3232>[25% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>. Then, casts a <b><color=#FF3232>[35% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[15% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 102.5% ATK<br>#2 Damage: 102.5% ATK<br>#3 Damage: 102.5% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 89 damage per hit. The first hit casts a <b><color=#FF3232>[30% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>. Then, casts a <b><color=#FF3232>[42% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[18% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>12s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 108.6% ATK<br>#2 Damage: 108.6% ATK<br>#3 Damage: 108.6% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 94 damage per hit. The first hit casts a <b><color=#FF3232>[30% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>. Then, casts a <b><color=#FF3232>[42% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[18% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 114.8% ATK<br>#2 Damage: 114.8% ATK<br>#3 Damage: 114.8% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 103 damage per hit. The first hit casts a <b><color=#FF3232>[35% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>. Then, casts a <b><color=#FF3232>[49% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[21% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>13s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 125.1% ATK<br>#2 Damage: 125.1% ATK<br>#3 Damage: 125.1% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 113 damage per hit. The first hit casts a <b><color=#FF3232>[35% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>. Then, casts a <b><color=#FF3232>[49% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[21% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 137.4% ATK<br>#2 Damage: 137.4% ATK<br>#3 Damage: 137.4% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 121 damage per hit. The first hit casts a <b><color=#FF3232>[40% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>. Then, casts a <b><color=#FF3232>[56% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[24% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>14s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 147.6% ATK<br>#2 Damage: 147.6% ATK<br>#3 Damage: 147.6% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 131 damage per hit. The first hit casts a <b><color=#FF3232>[40% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>. Then, casts a <b><color=#FF3232>[56% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[24% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 159.9% ATK<br>#2 Damage: 159.9% ATK<br>#3 Damage: 159.9% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 140 damage per hit. The first hit casts a <b><color=#FF3232>[45% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>. Then, casts a <b><color=#FF3232>[63% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[27% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>15s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 170.1% ATK<br>#2 Damage: 170.1% ATK<br>#3 Damage: 170.1% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 150 damage per hit. The first hit casts a <b><color=#FF3232>[45% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>. Then, casts a <b><color=#FF3232>[63% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[27% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 182.4% ATK<br>#2 Damage: 182.4% ATK<br>#3 Damage: 182.4% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 158 damage per hit. The first hit casts a <b><color=#FF3232>[45% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>. Then, casts a <b><color=#FF3232>[63% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[30% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 192.7% ATK<br>#2 Damage: 192.7% ATK<br>#3 Damage: 192.7% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, 3 times, dealing 168 damage per hit. The first hit casts a <b><color=#FF3232>[50% ATK Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>. Then, casts a <b><color=#FF3232>[70% ACC Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the second hit. Then, casts a <b><color=#FF3232>[30% Skill Recovery Down]</color></b> debuff on the target, lasting <b><color=#FFE606>16s</color></b>, on the third hit.<br><br>Accuracy required for: <b><color=#FF3232>ATK Down</color></b>, <b><color=#FF3232>ACC Down</color></b>, <b><color=#FF3232>Skill Recovery Down</color></b><br><i><br>#1 Damage: 205% ATK<br>#2 Damage: 205% ATK<br>#3 Damage: 205% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "ActiveSkill3",
+    "title": "Pumpkin Minefield",
+    "cooldown": 29,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 129 damage. Casts a <b><color=#FF3232>[15% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>12s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 157.5% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 137 damage. Casts a <b><color=#FF3232>[18% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>12s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 166.9% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 145 damage. Casts a <b><color=#FF3232>[18% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>13s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 176.4% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 158 damage. Casts a <b><color=#FF3232>[21% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>13s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 192.2% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 173 damage. Casts a <b><color=#FF3232>[21% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>14s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 211.1% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 186 damage. Casts a <b><color=#FF3232>[24% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>14s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 226.8% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 201 damage. Casts a <b><color=#FF3232>[24% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>15s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 245.7% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 214 damage. Casts a <b><color=#FF3232>[27% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>15s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 261.5% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 230 damage. Casts a <b><color=#FF3232>[27% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>16s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 280.4% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 243 damage. Casts a <b><color=#FF3232>[30% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>16s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 296.1% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 8m radius around the target, from a distance of 9m, dealing 258 damage. Casts a <b><color=#FF3232>[30% Blind]</color></b> debuff on the targets, lasting <b><color=#FFE606>16s</color></b>, increasing the recipient's chance to miss their Combo Attacks, and not deal any damage.<br><br>Accuracy required for: <b><color=#FF3232>Blind</color></b><br><i><br>#1 Damage: 315% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Ultimate",
+    "title": "Carve 'Em Up!",
+    "cooldown": 15,
+    "manaCost": 1100,
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 215 damage per hit, ignores <b><color=#5EEF2C>3% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 262% ATK<br>#2 Damage: 262% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 228 damage per hit, ignores <b><color=#5EEF2C>3.3% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 277.7% ATK<br>#2 Damage: 277.7% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 241 damage per hit, ignores <b><color=#5EEF2C>3.6% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 293.4% ATK<br>#2 Damage: 293.4% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 262 damage per hit, ignores <b><color=#5EEF2C>3.9% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 319.6% ATK<br>#2 Damage: 319.6% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 288 damage per hit, ignores <b><color=#5EEF2C>4.2% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 351.1% ATK<br>#2 Damage: 351.1% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 309 damage per hit, ignores <b><color=#5EEF2C>4.5% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 377.3% ATK<br>#2 Damage: 377.3% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 335 damage per hit, ignores <b><color=#5EEF2C>4.8% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 408.7% ATK<br>#2 Damage: 408.7% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 357 damage per hit, ignores <b><color=#5EEF2C>5.1% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 434.9% ATK<br>#2 Damage: 434.9% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 382 damage per hit, ignores <b><color=#5EEF2C>5.4% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 466.4% ATK<br>#2 Damage: 466.4% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 404 damage per hit, ignores <b><color=#5EEF2C>5.7% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 492.6% ATK<br>#2 Damage: 492.6% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy from a distance of 9m, 2 times, dealing 430 damage per hit, ignores <b><color=#5EEF2C>6% of the target's DEF per buff</color></b>.<br><i><br>#1 Damage: 524% ATK<br>#2 Damage: 524% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Combo",
+    "title": "Combo Attack",
+    "levels": [
+     {
+      "level": 1,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 20 damage.<i><br>Damage: 24% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 32 damage.<i><br>Damage: 38.5% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 42 damage.<i><br>Damage: 51.5% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 53 damage.<i><br>Damage: 65% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 33 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 40% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 21 damage.<i><br>Damage: 25.4% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 33 damage.<i><br>Damage: 40.8% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 45 damage.<i><br>Damage: 54.6% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 56 damage.<i><br>Damage: 68.9% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 35 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.1s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 42.4% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 22 damage.<i><br>Damage: 26.9% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 35 damage.<i><br>Damage: 43.1% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 47 damage.<i><br>Damage: 57.7% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 60 damage.<i><br>Damage: 72.8% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 37 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.2s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 44.8% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 24 damage.<i><br>Damage: 29.3% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 39 damage.<i><br>Damage: 47% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 52 damage.<i><br>Damage: 62.8% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 65 damage.<i><br>Damage: 79.3% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 40 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.3s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 48.8% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 26 damage.<i><br>Damage: 32.2% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 42 damage.<i><br>Damage: 51.6% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 57 damage.<i><br>Damage: 69% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 71 damage.<i><br>Damage: 87.1% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 44 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.4s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 53.6% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 28 damage.<i><br>Damage: 34.6% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 45 damage.<i><br>Damage: 55.4% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 61 damage.<i><br>Damage: 74.2% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 77 damage.<i><br>Damage: 93.6% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 47 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.5s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 57.6% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 31 damage.<i><br>Damage: 37.4% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 49 damage.<i><br>Damage: 60.1% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 66 damage.<i><br>Damage: 80.3% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 83 damage.<i><br>Damage: 101.4% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 51 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.6s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 62.4% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 33 damage.<i><br>Damage: 39.8% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 52 damage.<i><br>Damage: 63.9% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 70 damage.<i><br>Damage: 85.5% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 88 damage.<i><br>Damage: 107.9% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 54 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.7s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 66.4% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 35 damage.<i><br>Damage: 42.7% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 56 damage.<i><br>Damage: 68.5% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 75 damage.<i><br>Damage: 91.7% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 95 damage.<i><br>Damage: 115.7% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 58 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.8s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 71.2% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 37 damage.<i><br>Damage: 45.1% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 59 damage.<i><br>Damage: 72.4% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 79 damage.<i><br>Damage: 96.8% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 100 damage.<i><br>Damage: 122.2% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 62 damage. <b><color=#FF3232>Extends</color></b> the duration of 1 random debuff on the targets by <b><color=#FFE606>1.9s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 75.2% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "#1 Attacks 1 enemy from a distance of 9m, dealing 39 damage.<i><br>Damage: 48% ATK</i>\n\n#2 Attacks 1 enemy from a distance of 9m, dealing 63 damage.<i><br>Damage: 77% ATK</i>\n\n#3 Attacks 1 enemy from a distance of 9m, dealing 84 damage.<i><br>Damage: 103% ATK</i>\n\n#4 Attacks 1 enemy from a distance of 9m, dealing 107 damage.<i><br>Damage: 130% ATK</i>\n\n#5 Selects 1 enemy up to 14m away. Attacks the 10 enemies with the lowest current HP in a 3.5m radius around the target, from a distance of 9m, dealing 66 damage. <b><color=#FF3232>Extends</color></b> the duration of up to 2 random debuffs on the targets by <b><color=#FFE606>2s</color></b>.<br><br>Accuracy required for: <b><color=#FF3232>Debuff Duration Extension</color></b><br><i><br>Damage: 80% ATK</i>"
+     }
+    ]
+   }
+  ]
+ },
+ {
   "heroId": "ANIMLTS001",
   "kind": "titan",
   "name": "Visciant",
@@ -69326,6 +69850,247 @@
      {
       "empowerment": 6,
       "text": "Increases Bound Invoker's <color=#FFE606>ATK</color> in Boss Fights on Boss Mode by <color=#5EEF2C>56%</color>.\n\nIncreases Bound Invoker's <color=#FFE606>ATK</color> in all other areas by <color=#5EEF2C>32%</color>."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "heroId": "ANIMELD007",
+  "kind": "titan",
+  "name": "Hain",
+  "skills": [
+   {
+    "type": "ActiveSkill1",
+    "title": "Scarecrow Slammer",
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks 1 enemy 2 times, dealing 120 damage per hit. The first hit casts a <b><color=#2EB4FF>[30% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>. Then, casts a <b><color=#2EB4FF>[40% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>, on the second hit.<br><i><br>#1 Damage: 135% ATK<br>#2 Damage: 135% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks 1 enemy 2 times, dealing 127 damage per hit. The first hit casts a <b><color=#2EB4FF>[35% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>. Then, casts a <b><color=#2EB4FF>[40% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>, on the second hit.<br><i><br>#1 Damage: 143.1% ATK<br>#2 Damage: 143.1% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks 1 enemy 2 times, dealing 135 damage per hit. The first hit casts a <b><color=#2EB4FF>[35% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>. Then, casts a <b><color=#2EB4FF>[50% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>, on the second hit.<br><i><br>#1 Damage: 151.2% ATK<br>#2 Damage: 151.2% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks 1 enemy 2 times, dealing 147 damage per hit. The first hit casts a <b><color=#2EB4FF>[35% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>. Then, casts a <b><color=#2EB4FF>[50% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>, on the second hit.<br><i><br>#1 Damage: 164.7% ATK<br>#2 Damage: 164.7% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks 1 enemy 2 times, dealing 161 damage per hit. The first hit casts a <b><color=#2EB4FF>[40% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>. Then, casts a <b><color=#2EB4FF>[50% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>, on the second hit.<br><i><br>#1 Damage: 180.9% ATK<br>#2 Damage: 180.9% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks 1 enemy 2 times, dealing 173 damage per hit. The first hit casts a <b><color=#2EB4FF>[40% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>. Then, casts a <b><color=#2EB4FF>[60% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>, on the second hit.<br><i><br>#1 Damage: 194.4% ATK<br>#2 Damage: 194.4% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks 1 enemy 2 times, dealing 187 damage per hit. The first hit casts a <b><color=#2EB4FF>[40% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>. Then, casts a <b><color=#2EB4FF>[60% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>, on the second hit.<br><i><br>#1 Damage: 210.6% ATK<br>#2 Damage: 210.6% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks 1 enemy 2 times, dealing 199 damage per hit. The first hit casts a <b><color=#2EB4FF>[45% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>. Then, casts a <b><color=#2EB4FF>[60% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>, on the second hit.<br><i><br>#1 Damage: 224.1% ATK<br>#2 Damage: 224.1% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks 1 enemy 2 times, dealing 214 damage per hit. The first hit casts a <b><color=#2EB4FF>[45% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>. Then, casts a <b><color=#2EB4FF>[70% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>, on the second hit.<br><i><br>#1 Damage: 240.3% ATK<br>#2 Damage: 240.3% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks 1 enemy 2 times, dealing 226 damage per hit. The first hit casts a <b><color=#2EB4FF>[50% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>. Then, casts a <b><color=#2EB4FF>[70% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>, on the second hit.<br><i><br>#1 Damage: 253.8% ATK<br>#2 Damage: 253.8% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks 1 enemy 2 times, dealing 240 damage per hit. The first hit casts a <b><color=#2EB4FF>[50% Crit Rate Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>. Then, casts a <b><color=#2EB4FF>[80% Crit DMG Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>, on the second hit.<br><i><br>#1 Damage: 270% ATK<br>#2 Damage: 270% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "ActiveSkill2",
+    "title": "Harvest Moon",
+    "levels": [
+     {
+      "level": 1,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 125 damage. This hit has <b><color=#5EEF2C>+5% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 140% ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 132 damage. This hit has <b><color=#5EEF2C>+5.7% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 148.4% ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 140 damage. This hit has <b><color=#5EEF2C>+6.4% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 156.8% ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 152 damage. This hit has <b><color=#5EEF2C>+7.1% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 170.8% ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 167 damage. This hit has <b><color=#5EEF2C>+7.8% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 187.6% ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 179 damage. This hit has <b><color=#5EEF2C>+8.5% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 201.6% ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 194 damage. This hit has <b><color=#5EEF2C>+9.2% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 218.4% ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 207 damage. This hit has <b><color=#5EEF2C>+9.9% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 232.4% ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 222 damage. This hit has <b><color=#5EEF2C>+10.6% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 249.2% ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 234 damage. This hit has <b><color=#5EEF2C>+11.3% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 263.2% ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "Attacks the 10 enemies with the lowest current HP in a 7m radius around <b><color=#FFE606>Hain</color></b>, dealing 249 damage. This hit has <b><color=#5EEF2C>+12% extra Crit DMG per buff</color></b>.<br><i><br>#1 Damage: 280% ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Combo",
+    "title": "Combo Attack",
+    "levels": [
+     {
+      "level": 1,
+      "text": "#1 Attacks 1 enemy, dealing 118 damage.<i><br>Damage: 132.5% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>61</color></b> damage. Damage increases by <b><color=#5EEF2C>4%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 68% * ATK</i>"
+     },
+     {
+      "level": 2,
+      "text": "#1 Attacks 1 enemy, dealing 125 damage.<i><br>Damage: 140.4% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>64</color></b> damage. Damage increases by <b><color=#5EEF2C>4.4%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 72.1% * ATK</i>"
+     },
+     {
+      "level": 3,
+      "text": "#1 Attacks 1 enemy, dealing 132 damage.<i><br>Damage: 148.4% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>68</color></b> damage. Damage increases by <b><color=#5EEF2C>4.8%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 76.2% * ATK</i>"
+     },
+     {
+      "level": 4,
+      "text": "#1 Attacks 1 enemy, dealing 144 damage.<i><br>Damage: 161.7% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>74</color></b> damage. Damage increases by <b><color=#5EEF2C>5.2%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 83% * ATK</i>"
+     },
+     {
+      "level": 5,
+      "text": "#1 Attacks 1 enemy, dealing 158 damage.<i><br>Damage: 177.6% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>81</color></b> damage. Damage increases by <b><color=#5EEF2C>5.6%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 91.1% * ATK</i>"
+     },
+     {
+      "level": 6,
+      "text": "#1 Attacks 1 enemy, dealing 170 damage.<i><br>Damage: 190.8% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>87</color></b> damage. Damage increases by <b><color=#5EEF2C>6%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 97.9% * ATK</i>"
+     },
+     {
+      "level": 7,
+      "text": "#1 Attacks 1 enemy, dealing 184 damage.<i><br>Damage: 206.7% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>94</color></b> damage. Damage increases by <b><color=#5EEF2C>6.4%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 106.1% * ATK</i>"
+     },
+     {
+      "level": 8,
+      "text": "#1 Attacks 1 enemy, dealing 196 damage.<i><br>Damage: 219.9% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>100</color></b> damage. Damage increases by <b><color=#5EEF2C>6.8%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 112.9% * ATK</i>"
+     },
+     {
+      "level": 9,
+      "text": "#1 Attacks 1 enemy, dealing 210 damage.<i><br>Damage: 235.9% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>108</color></b> damage. Damage increases by <b><color=#5EEF2C>7.2%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 121% * ATK</i>"
+     },
+     {
+      "level": 10,
+      "text": "#1 Attacks 1 enemy, dealing 222 damage.<i><br>Damage: 249.1% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>114</color></b> damage. Damage increases by <b><color=#5EEF2C>7.6%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 127.8% * ATK</i>"
+     },
+     {
+      "level": 11,
+      "text": "#1 Attacks 1 enemy, dealing 236 damage.<i><br>Damage: 265% ATK</i>\n\n#2 Attacks the 10 enemies with the lowest current HP in a 8m semicircle in front of <b><color=#FFE606>Hain</color></b>, dealing <b><color=#5EEF2C>121</color></b> damage. Damage increases by <b><color=#5EEF2C>8%</color></b> per buff on <b><color=#FFE606>Hain</color></b>.<br><i><br>#1 Damage: 136% * ATK</i>"
+     }
+    ]
+   },
+   {
+    "type": "Invocation",
+    "title": null,
+    "levels": [
+     {
+      "level": 1,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 209 damage. Casts a <b><color=#2EB4FF>[15% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>.<br><i><br>#1 Damage: 235% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[15% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>."
+     },
+     {
+      "level": 2,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 222 damage. Casts a <b><color=#2EB4FF>[16% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>.<br><i><br>#1 Damage: 249.1% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[16% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>12s</color></b>."
+     },
+     {
+      "level": 3,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 234 damage. Casts a <b><color=#2EB4FF>[17% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>.<br><i><br>#1 Damage: 263.2% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[17% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>."
+     },
+     {
+      "level": 4,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 255 damage. Casts a <b><color=#2EB4FF>[18% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>.<br><i><br>#1 Damage: 286.7% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[18% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>13s</color></b>."
+     },
+     {
+      "level": 5,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 280 damage. Casts a <b><color=#2EB4FF>[20% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>.<br><i><br>#1 Damage: 314.9% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[20% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>."
+     },
+     {
+      "level": 6,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 301 damage. Casts a <b><color=#2EB4FF>[21% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>.<br><i><br>#1 Damage: 338.4% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[21% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>14s</color></b>."
+     },
+     {
+      "level": 7,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 326 damage. Casts a <b><color=#2EB4FF>[23% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>.<br><i><br>#1 Damage: 366.6% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[23% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>."
+     },
+     {
+      "level": 8,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 347 damage. Casts a <b><color=#2EB4FF>[24% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>.<br><i><br>#1 Damage: 390.1% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[24% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>15s</color></b>."
+     },
+     {
+      "level": 9,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 372 damage. Casts a <b><color=#2EB4FF>[26% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>.<br><i><br>#1 Damage: 418.3% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[26% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>."
+     },
+     {
+      "level": 10,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 393 damage. Casts a <b><color=#2EB4FF>[28% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>.<br><i><br>#1 Damage: 441.8% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[28% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>."
+     },
+     {
+      "level": 11,
+      "text": "<color=#FFE606>- INVOKATION -</color>\n\nAttacks the 10 enemies with the lowest current HP in a 15m radius, dealing 418 damage. Casts a <b><color=#2EB4FF>[30% Combo SPD Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>.<br><i><br>#1 Damage: 470% ATK</i>\n\n<color=#FFE606>- INVOKATION END -</color>\n\nCasts a <b><color=#2EB4FF>[30% Skill Recovery Up]</color></b> buff on <b><color=#FFE606>Hain</color></b>, lasting <b><color=#FFE606>16s</color></b>."
+     }
+    ]
+   },
+   {
+    "type": "PassiveBonus",
+    "title": null,
+    "empowerments": [
+     {
+      "empowerment": 0,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>35</color>."
+     },
+     {
+      "empowerment": 1,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>39</color>."
+     },
+     {
+      "empowerment": 2,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>42</color>."
+     },
+     {
+      "empowerment": 3,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>49</color>."
+     },
+     {
+      "empowerment": 4,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>56</color>."
+     },
+     {
+      "empowerment": 5,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>63</color>."
+     },
+     {
+      "empowerment": 6,
+      "text": "Increases Bound Invoker's <color=#FFE606>Combo SPD</color> by <color=#5EEF2C>70</color>."
      }
     ]
    }
