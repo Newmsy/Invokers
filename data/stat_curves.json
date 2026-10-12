@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "The game's own rating -> effect functions, evaluated at every rating 0..3000 (StatCurves.csv).",
  "unconfirmed": [
   "Combo Speed and Accuracy have no curve of their own in this export."
@@ -9036,7 +9036,7 @@
   {
    "id": "InstinctFactorPct01",
    "stat": "InstinctRatingFlat",
-   "meaning": "Instinct: chance (0-1) that an AI-controlled Invoker dodges a danger zone; no effect on damage or crit",
+   "meaning": "Instinct: the factor the game reads for Instinct (0-1 scale)",
    "ratingFrom": 0,
    "values": [
     0.3,

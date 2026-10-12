@@ -22,7 +22,7 @@ GAME = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(os.environ.get("APPDATA"
 LOOT = Path(sys.argv[2]) if len(sys.argv) > 2 else REPO.parent / "LootDump" / "output"
 DUMP = GAME / "UserData" / "datapack"
 
-GAME_VERSION = "0.61.1516"
+GAME_VERSION = "0.61.1523"
 MAX_SKILL_LEVEL = 11  # 10 upgrades per skill, every rarity (HeroData.SkillLevelUpPrices)
 RANKS = ["One", "Two", "Three", "Four", "Five", "Six"]
 

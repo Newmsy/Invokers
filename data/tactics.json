@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "BattleData.FormationTypes.",
  "unconfirmed": [
   "Team size: 4- and 5-slot Tactics exist (plus 1-slot ones used in special modes); which modes use which is not in this file."

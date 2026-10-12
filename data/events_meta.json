@@ -1,9 +1,6 @@
 {
- "capturedAt": "2026-10-04T18:36:32Z",
- "count": 10,
+ "capturedAt": "2026-10-12T18:18:03Z",
+ "count": 12,
  "source": "Live tournament catalog captured from the game client (LootDump F11).",
- "note": "Only the player's own division is sent by the server (division field).",
- "corrections": [
-  "Tournament 627 (Sorgott Accessory Hunt, 5-12 Oct): personalRewards replaced from in-game screenshots on 2026-10-05; the server raised the targets after this capture. Milestone and bracket rewards unchanged (not re-checked)."
- ]
+ "note": "Only the player's own division is sent by the server (division field)."
 }

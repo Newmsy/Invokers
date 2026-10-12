@@ -1,0 +1,41 @@
+{
+  "from": "0.61.1516",
+  "to": "0.61.1523",
+  "date": "2026-10-12",
+  "heroes": {
+    "added": [
+      {
+        "id": "NOC044",
+        "name": "Grimnall the Hollowed",
+        "rarity": "Legendary",
+        "element": "Earth"
+      },
+      {
+        "id": "STN027",
+        "name": "Wrakk the Harvester",
+        "rarity": "Legendary",
+        "element": "Earth"
+      }
+    ],
+    "removed": [],
+    "changed": []
+  },
+  "skills": [],
+  "skillCosts": [],
+  "sets": {
+    "added": [],
+    "removed": [],
+    "changed": []
+  },
+  "items": {
+    "added": [],
+    "removed": [],
+    "renamed": []
+  },
+  "trophies": [],
+  "bosses": {
+    "added": [],
+    "removed": [],
+    "changed": []
+  }
+}

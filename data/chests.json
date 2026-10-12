@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Static game config via the LootDump export (Levels.csv, LootDistribution.csv, ChestOdds.csv).",
  "rules": "Each chest gives `picks` rewards. A reward is picked by weight among groups; the same group is never picked twice. Within a group, the item and amount are picked by weight. groupChanceInPicks = chance that group is among the chest's rewards.",
  "unconfirmed": [

@@ -98,6 +98,20 @@
   "maxLevel": 50
  },
  {
+  "id": "ANIMELD007",
+  "configId": 17858448810485411,
+  "name": "Hain",
+  "rarity": "Legendary",
+  "rarityId": "Legendary",
+  "role": "Melee Attacker",
+  "roleId": "Damage",
+  "faction": "Eldrin",
+  "passiveBonus": "ComboSpeed",
+  "passiveBonusScope": "General",
+  "baseRank": "Five",
+  "maxLevel": 50
+ },
+ {
   "id": "ANIMELD005",
   "configId": 17762636735966063,
   "name": "Keltaur",

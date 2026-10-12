@@ -1,6 +1,6 @@
 {
- "gameVersion": "0.61.1516",
- "extractedAt": "2026-10-04",
+ "gameVersion": "0.61.1523",
+ "extractedAt": "2026-10-12",
  "source": "Loot tables (LootData), stage victory tables (Levels.csv) and event scoring rules from the captured event catalogs.",
  "howTo": "expected points per run = sum over drops of chance x (min+max)/2 x points[key]; chance is the expected number of that drop per run (rolls already included, so rollsPerRun is 1).",
  "unconfirmed": [
@@ -11,7 +11,7 @@
  "families": [
   {
    "id": "gear-DungeonRelics1",
-   "event": null,
+   "event": "RelicBossUlgorim",
    "modes": [
     "relic boss"
    ],
@@ -984,8 +984,7 @@
       }
      ]
     }
-   ],
-   "pointsFrom": "another relic boss event (no event for this boss was captured; all captured relic boss events use the same table)"
+   ]
   },
   {
    "id": "gear-DungeonRelics2",
@@ -16035,6 +16034,83 @@
   }
  ],
  "otherScoring": {
+  "SummonAnima/AnimaSummonScoringRule": {
+   "RuleType": "AnimaSummonScoringRule",
+   "ResourceSpendEntries": [
+    {
+     "$type": "ResourceSpendScoringEntry",
+     "_ResourceId_k__BackingField": "SI_DreamOrb",
+     "_Points_k__BackingField": 1000
+    },
+    {
+     "$type": "ResourceSpendScoringEntry",
+     "_ResourceId_k__BackingField": "SI_WonderOrb",
+     "_Points_k__BackingField": 1500
+    },
+    {
+     "$type": "ResourceSpendScoringEntry",
+     "_ResourceId_k__BackingField": "SI_MiracleOrb",
+     "_Points_k__BackingField": 10000
+    }
+   ],
+   "AnimaEntries": [
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Rare",
+     "_Points_k__BackingField": 1000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Epic",
+     "_Points_k__BackingField": 5000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Legendary",
+     "_Points_k__BackingField": 10000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Mythic",
+     "_Points_k__BackingField": 30000
+    }
+   ],
+   "AnimaEntriesChroma": [
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Rare",
+     "_Points_k__BackingField": 2000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Epic",
+     "_Points_k__BackingField": 10000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Legendary",
+     "_Points_k__BackingField": 20000
+    },
+    {
+     "$type": "AnimaRarityScoringEntry",
+     "_Rarity_k__BackingField": "Mythic",
+     "_Points_k__BackingField": 60000
+    }
+   ]
+  },
+  "Dragon/DragonResourceScoringRule": {
+   "RuleType": "DragonResourceScoringRule",
+   "ResourceCollectEntries": [
+    {
+     "$type": "RoundedResourceCollectScoringEntry",
+     "_ResourceId_k__BackingField": "EMP_AnimaSpark",
+     "_ResourceAmountPerPoint_k__BackingField": 1,
+     "_Points_k__BackingField": 1,
+     "_MinPoints_k__BackingField": 1,
+     "_RoundingOffset_k__BackingField": 0
+    }
+   ]
+  },
   "GearUpgrade/GearUpgradeScoringRule": {
    "RuleType": "GearUpgradeScoringRule",
    "Entries": [
@@ -16884,90 +16960,6 @@
      "$type": "ResourceSpendScoringEntry",
      "_ResourceId_k__BackingField": "Codex_Legendary",
      "_Points_k__BackingField": 500
-    }
-   ]
-  },
-  "Campaign/CampaignBattleScoringRule": {
-   "RuleType": "CampaignBattleScoringRule",
-   "Entries": [
-    {
-     "$type": "CampaignBattleScoringEntry",
-     "_Difficulty_k__BackingField": "Normal",
-     "_Points_k__BackingField": 60
-    },
-    {
-     "$type": "CampaignBattleScoringEntry",
-     "_Difficulty_k__BackingField": "Hard",
-     "_Points_k__BackingField": 100
-    },
-    {
-     "$type": "CampaignBattleScoringEntry",
-     "_Difficulty_k__BackingField": "Brutal",
-     "_Points_k__BackingField": 160
-    }
-   ]
-  },
-  "SummonAnima/AnimaSummonScoringRule": {
-   "RuleType": "AnimaSummonScoringRule",
-   "ResourceSpendEntries": [
-    {
-     "$type": "ResourceSpendScoringEntry",
-     "_ResourceId_k__BackingField": "SI_DreamOrb",
-     "_Points_k__BackingField": 1000
-    },
-    {
-     "$type": "ResourceSpendScoringEntry",
-     "_ResourceId_k__BackingField": "SI_WonderOrb",
-     "_Points_k__BackingField": 1500
-    },
-    {
-     "$type": "ResourceSpendScoringEntry",
-     "_ResourceId_k__BackingField": "SI_MiracleOrb",
-     "_Points_k__BackingField": 10000
-    }
-   ],
-   "AnimaEntries": [
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Rare",
-     "_Points_k__BackingField": 1000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Epic",
-     "_Points_k__BackingField": 5000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Legendary",
-     "_Points_k__BackingField": 10000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Mythic",
-     "_Points_k__BackingField": 30000
-    }
-   ],
-   "AnimaEntriesChroma": [
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Rare",
-     "_Points_k__BackingField": 2000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Epic",
-     "_Points_k__BackingField": 10000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Legendary",
-     "_Points_k__BackingField": 20000
-    },
-    {
-     "$type": "AnimaRarityScoringEntry",
-     "_Rarity_k__BackingField": "Mythic",
-     "_Points_k__BackingField": 60000
     }
    ]
   },
