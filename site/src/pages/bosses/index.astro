@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bosses, bossLabel, bossSlug, href } from '../../lib/data';
 import { elementColor } from '../../lib/format';
-import { bossArt, bossGroupSplash, bossSplash, elementIcon } from '../../lib/art';
+import { bannerArt, bossArt, bossModeSplash, bossSplash, elementIcon } from '../../lib/art';
 import { tierLists, tierRows } from '../../lib/tierData';
 
 // The first three S-tier Invokers for each boss, as small portraits on its card.
@@ -25,29 +25,63 @@ const groups = [
 const known = new Set(groups.map((g) => g.mode));
 const rest = bosses.filter((b) => !known.has(b.mode));
 if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest });
+
+// Each section opens on a wide picture: the one every boss of the mode shares, a lone boss's own art, or for
+// modes where every boss has its own art, a picture for the mode. A shared picture is shown once, in the
+// header, and the cards under it use each boss's portrait instead, so no picture repeats on the page.
+const modeBanner: Record<string, string> = { 'relic boss': 'upgrade-relics' };
+const sections = groups.map((g) => {
+  const shared = bossModeSplash(g.mode);
+  const solo = g.bosses.length === 1 ? g.bosses[0] : undefined;
+  const art = shared ?? (solo && bossSplash(solo.id)) ?? (modeBanner[g.mode] && bannerArt(modeBanner[g.mode]));
+  const id = `g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`;
+  return { ...g, id, art, solo, cardSplash: !shared };
+});
+const tint = (b: (typeof bosses)[number]) => (b.element ? `--tint: ${elementColor[b.element] ?? '#EBB84C'}` : undefined);
 ---
-<Base title="Boss guides">
+<Base title="Boss guides" pageBanner={false}>
   <h1>Boss guides</h1>
   <p class="lead">Each boss's own dos and don'ts from the game, the corruptions it uses, and the energy cost of each stage.</p>
 
-  {groups.map((g) => (
-    <section aria-labelledby={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>
-      <h2 id={`g-${g.mode.toLowerCase().replace(/\s+/g, '-')}`}>{g.title}</h2>
-      {g.bosses[0] && bossGroupSplash(g.bosses[0].id) && <img class="group-splash" src={bossGroupSplash(g.bosses[0].id)} alt="" width="1280" height="640" loading="lazy" />}
-      <ul class="grid">
-        {g.bosses.map((b) => (
-          <li>
-            <a class="card" href={href(`bosses/${bossSlug(b)}`)} style={b.element ? `--tint: ${elementColor[b.element] ?? '#EBB84C'}` : undefined}>
-              {bossSplash(b.id) && <img class="boss-splash" src={bossSplash(b.id)} alt="" width="1280" height="640" loading="lazy" />}
-              <span class="name">{bossArt(b.id) && <img class="boss-art" src={bossArt(b.id)} alt="" width="48" height="48" loading="lazy" />}{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
-              {b.title && <span class="title">{b.title}</span>}
-              <span class="corr">{b.corruptions.join(' · ')}</span>
-              {topArt(b).length > 0 && (
-                <span class="top" aria-hidden="true">{topArt(b).map((p) => <img src={p.art} alt="" width="32" height="32" loading="lazy" />)}</span>
-              )}
-            </a>
-          </li>
-        ))}
+  {sections.map((g) => g.solo ? (
+    <section class="sec solo" aria-labelledby={g.id}>
+      <a class="band" href={href(`bosses/${bossSlug(g.solo)}`)} style={tint(g.solo)}>
+        {g.art && <img class="band-art" src={g.art} alt="" width="1280" height="640" loading="lazy" />}
+        <span class="band-body">
+          <h2 id={g.id}>{g.title}</h2>
+          <span class="name">{bossArt(g.solo.id) && <img class="boss-art" src={bossArt(g.solo.id)} alt="" width="56" height="56" loading="lazy" />}{g.solo.element && elementIcon(g.solo.element) && <img src={elementIcon(g.solo.element)} alt="" width="22" height="22" />}{bossLabel(g.solo)}</span>
+          {g.solo.title && <span class="title">{g.solo.title}</span>}
+          <span class="corr">{g.solo.corruptions.join(' · ')}</span>
+          {topArt(g.solo).length > 0 && (
+            <span class="top" aria-hidden="true">{topArt(g.solo).map((p) => <img src={p.art} alt="" width="32" height="32" loading="lazy" />)}</span>
+          )}
+        </span>
+      </a>
+    </section>
+  ) : (
+    <section class="sec" aria-labelledby={g.id}>
+      <div class="band">
+        {g.art && <img class="band-art" src={g.art} alt="" width="1280" height="640" loading="lazy" />}
+        <span class="band-body"><h2 id={g.id}>{g.title}</h2><span class="count">{g.bosses.length} bosses</span></span>
+      </div>
+      <ul class:list={['grid', { 'lead-first': g.bosses.length % 4 === 3 && g.bosses.length > 3 }]}>
+        {g.bosses.map((b) => {
+          const splash = g.cardSplash ? bossSplash(b.id) : undefined;
+          const portrait = bossArt(b.id);
+          return (
+            <li>
+              <a class:list={['card', splash ? 'has-splash' : portrait && 'has-portrait']} href={href(`bosses/${bossSlug(b)}`)} style={tint(b)}>
+                {splash ? <img class="card-art" src={splash} alt="" width="1280" height="640" loading="lazy" /> : portrait && <img class="card-art" src={portrait} alt="" width="256" height="256" loading="lazy" />}
+                <span class="name">{splash && portrait && <img class="boss-art" src={portrait} alt="" width="48" height="48" loading="lazy" />}{b.element && elementIcon(b.element) && <img src={elementIcon(b.element)} alt="" width="22" height="22" />}{bossLabel(b)}</span>
+                {b.title && <span class="title">{b.title}</span>}
+                <span class="corr">{b.corruptions.join(' · ')}</span>
+                {topArt(b).length > 0 && (
+                  <span class="top" aria-hidden="true">{topArt(b).map((p) => <img src={p.art} alt="" width="32" height="32" loading="lazy" />)}</span>
+                )}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </section>
   ))}
@@ -61,42 +95,85 @@ if (rest.length) groups.push({ mode: 'rest', title: 'Other bosses', bosses: rest
 
 <style>
   h1 { margin: 16px 0 8px; font-size: 28px; font-weight: 700; }
-  h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
-  .lead { color: var(--soft); max-width: 70ch; margin: 0; }
+  .lead { color: var(--soft); max-width: 70ch; margin: 0 0 20px; }
+
+  /* A section is one framed block: the art band on top, its boss cards directly under it. */
+  .sec { margin: 0 0 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+  .band { position: relative; display: block; aspect-ratio: 5 / 1; min-height: 120px; overflow: hidden; background: var(--surface-2); color: var(--text); }
+  .band-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--surface) 0%, rgb(0 0 0 / 0.35) 45%, transparent 75%), linear-gradient(to right, rgb(0 0 0 / 0.55), transparent 55%); }
+  .band-body { position: absolute; left: 16px; right: 16px; bottom: 12px; z-index: 1; display: flex; align-items: baseline; gap: 12px; }
+  h2 { font-size: 22px; font-weight: 700; margin: 0; text-shadow: 0 2px 8px rgb(0 0 0 / 0.8); }
+  .count { color: var(--soft); font-size: 13px; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+
   .grid {
     list-style: none;
-    padding: 0;
+    padding: 0 12px 12px;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 12px;
   }
-  .group-splash { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; object-position: center 30%; border-radius: var(--radius); margin: 0 0 12px; }
-  .boss-splash { display: block; width: calc(100% + 32px); height: auto; aspect-ratio: 2 / 1; object-fit: cover; margin: -16px -16px 0; border-radius: var(--radius) var(--radius) 0 0; }
-  .boss-art { width: 48px; height: 48px; border-radius: 12px; object-fit: cover; border: 2px solid var(--line); background: var(--surface-2); }
-  .boss-splash + .name .boss-art { margin-top: -28px; box-shadow: 0 4px 12px rgb(0 0 0 / 0.5); }
   .card {
     --tint: var(--accent);
+    position: relative;
     overflow: hidden;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     gap: 2px;
     height: 100%;
-    padding: 16px;
+    min-height: 170px;
+    padding: 14px;
     border-radius: var(--radius);
-    background: var(--surface);
+    background: var(--surface-2, var(--bg));
     border: 1px solid var(--line);
     color: var(--text);
   }
   .card:hover { color: var(--text); border-color: var(--tint); }
+  .card-art { position: absolute; z-index: -1; pointer-events: none; }
+  /* Own wide art fills the card and fades to dark under the text. */
+  .has-splash .card-art { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  .has-splash::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(17 14 10 / 0.95) 0%, rgb(17 14 10 / 0.75) 45%, rgb(17 14 10 / 0.1) 100%); }
+  /* A portrait sits on the right, in the boss's element colour, fading into the card. */
+  .has-portrait { background: radial-gradient(circle at 85% 40%, color-mix(in srgb, var(--tint) 28%, transparent), transparent 60%), var(--surface-2, var(--bg)); }
+  .has-portrait .card-art { top: 0; right: 0; height: 100%; width: 55%; object-fit: cover; object-position: top center; }
+  .has-portrait::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to right, rgb(17 14 10 / 0.97) 50%, rgb(17 14 10 / 0.55) 75%, transparent 100%); }
+  /* Seven cards (Omnissi): the first, odd-one-out boss takes a double-width slot so both rows end flush. */
+  @media (min-width: 1000px) {
+    .lead-first { grid-template-columns: repeat(4, 1fr); }
+    .lead-first > li:first-child { grid-column: span 2; }
+    .lead-first > li:first-child .card-art { width: 45%; }
+  }
+
+  .boss-art { width: 48px; height: 48px; object-fit: cover; border: 2px solid var(--frame, var(--line)); border-radius: var(--radius); background: var(--surface-2); box-shadow: 0 4px 12px rgb(0 0 0 / 0.5); }
   .top { display: flex; gap: 4px; margin-top: 10px; }
-  .top img { width: 32px; height: 32px; border-radius: var(--radius); object-fit: cover; object-position: top center; }
-  .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; }
-  .title { color: var(--soft); font-size: 14px; }
-  .corr { margin-top: 8px; font-size: 13px; color: var(--tint); font-weight: 600; }
+  .top img { width: 32px; height: 32px; border-radius: var(--radius); object-fit: cover; object-position: top center; border: 1px solid rgb(0 0 0 / 0.5); }
+  .name { font-family: var(--display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+  .title { color: var(--soft); font-size: 14px; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+  .corr { margin-top: 6px; font-size: 13px; color: var(--tint); font-weight: 600; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+
+  /* A one-boss mode: the whole band is the boss's card, full width. */
+  .solo .band { aspect-ratio: 3 / 1; min-height: 240px; }
+  .solo .band { --tint: var(--accent); }
+  .solo .band:hover { color: var(--text); }
+  .solo { transition: border-color 0.15s; }
+  .solo:hover { border-color: var(--tint, var(--accent)); }
+  .solo .band::after { background: linear-gradient(to right, rgb(17 14 10 / 0.95) 0%, rgb(17 14 10 / 0.7) 35%, transparent 70%), linear-gradient(to top, rgb(17 14 10 / 0.6), transparent 50%); }
+  .solo .band-body { top: 0; bottom: 0; right: auto; max-width: 420px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px; }
+  .solo h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px; }
+  .solo .name { font-size: 24px; font-weight: 700; }
+  .solo .boss-art { width: 56px; height: 56px; }
 
   @media (max-width: 720px) {
     h1 { font-size: 22px; }
-    .grid { grid-template-columns: 1fr; }
+    .band { aspect-ratio: 5 / 2; }
+    .grid { grid-template-columns: 1fr; padding: 0 8px 8px; gap: 8px; }
+    .card { min-height: 140px; }
+    .solo .band { aspect-ratio: auto; min-height: 260px; }
+    .solo .band-art { object-position: 70% 30%; }
+    .solo .band::after { background: linear-gradient(to top, rgb(17 14 10 / 0.97) 0%, rgb(17 14 10 / 0.75) 50%, transparent 85%); }
+    .solo .band-body { top: auto; bottom: 14px; max-width: none; }
   }
 </style>
