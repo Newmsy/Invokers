@@ -8,6 +8,8 @@ import { bosses, bossSlug, events, eventsCapturedAt, heroHref, heroRefsByConfigI
 import { heroArt } from '../lib/art';
 import { bossArt, eventBanner } from '../lib/art';
 import { slugify } from '../lib/slugs';
+import { plannedOnly } from '../lib/chases';
+import plannedJson from '../data/planned-events.json';
 import { descriptionLines, eventLinks, mergeSameTables, eventNotices, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
@@ -41,6 +43,9 @@ const cards = events.map((e) => {
 });
 const groups = groupEvents(cards.map((c) => ({ ...c, start: c.e.start, end: c.e.end })), now);
 const lead = leadLine(events, now);
+// Tournaments on the chase schedule that haven't opened on the event list yet.
+const planned = plannedOnly(plannedJson.events, events).filter((p) => Date.parse(p.end) > now);
+const chaseOn = events.find((e) => e.type === 'GetLegendary' && Date.parse(e.end) > now);
 
 const sections: { key: EventStatus; title: string; art: string }[] = [
   { key: 'now', title: 'Now', art: 'item:Energy' },
@@ -75,9 +80,23 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   <p class="bracket-note">Points and rewards shown are for the Veteran bracket (level 46+). Beginner (levels 1–30) and Intermediate (31–45) need fewer points and earn the same Crowns.</p>
   <nav class="jump" aria-label="On this page">
     {sections.map((s) => <a href={`#${s.key}`} data-jump={s.key} hidden={!groups[s.key].length}>{s.title}</a>)}
+    {planned.length > 0 && <a href="#planned">Planned</a>}
   </nav>
 
   {sections.map((s) => (
+    <>
+    {s.key === 'ended' && planned.length > 0 && (
+    <section id="planned" class="group" aria-labelledby="planned-title">
+      <h2 id="planned-title"><SectionArt art="item:Crown" size={32} />Planned</h2>
+      <p class="bracket-note">Later in the {chaseOn ? <a href={href('chase-calendar')}>{chaseOn.name}</a> : 'chase'}. All start and end at 12:00 UTC; scoring and rewards show here once each one opens.</p>
+      <div class="rt-wrap planned">
+        <table>
+          <thead><tr><th scope="col">Tournament</th><th scope="col">Runs</th></tr></thead>
+          <tbody>{planned.map((p) => <tr data-end={p.end}><th scope="row">{p.name}</th><td>{formatUtc(p.start).split(',')[0]} to {formatUtc(p.end).split(',')[0]}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+  )}
     <section id={s.key} class={`group group-${s.key}`} aria-labelledby={`${s.key}-title`} hidden={!groups[s.key].length}>
       <h2 id={`${s.key}-title`}><SectionArt art={s.art} size={32} />{s.title}</h2>
       <div class="ev-list" data-group={s.key}>
@@ -173,6 +192,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
         ))}
       </div>
     </section>
+    </>
   ))}
 
   <p class="asof">Event list as of {asOf} UTC. Times are in UTC.</p>
@@ -216,6 +236,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
       if (count) count.textContent = statusText(c, now);
     }
     if (lead) lead.textContent = leadLine(cards, now);
+    for (const row of document.querySelectorAll<HTMLElement>('#planned tr[data-end]')) row.hidden = now >= Date.parse(row.dataset.end!);
   }
   update();
   setInterval(update, 60_000);
@@ -275,6 +296,7 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   .group-ended .ev { grid-template-columns: minmax(0, 1fr); }
   .group-ended .ev-body, .group-ended .ev-facts, .group-ended .ev-desc { display: none; }
   .group-ended .ev-art { height: 56px; }
+  .rt-wrap.planned { margin-top: 10px; }
   .asof { margin-top: 32px; color: var(--muted); font-size: 13px; }
 
   @media (max-width: 760px) {

@@ -73,8 +73,26 @@ export function featuredChase(chases: Chase[], now: number): Chase | undefined {
   );
 }
 
+/** A tournament as the schedule needs it. `planned` ones are on the schedule but not open on the event list yet. */
+export interface Tournament {
+  name: string;
+  type: string;
+  start: string;
+  end: string;
+  planned?: boolean;
+}
+
+/** Planned tournaments the live event list doesn't have yet (same type, same start day), marked as planned. */
+export function plannedOnly(planned: Omit<Tournament, 'planned'>[], live: Tournament[]): Tournament[] {
+  const day = (iso: string) => iso.slice(0, 10);
+  return planned
+    .filter((p) => !live.some((e) => e.type === p.type && day(e.start) === day(p.start)))
+    .map((p) => ({ ...p, planned: true }));
+}
+
 export interface ScheduleRun {
   name: string;
+  planned?: boolean;
   start: string;
   end: string;
   /** Day columns from the chase start, end exclusive, clipped to the chase. */
@@ -100,7 +118,7 @@ export interface Schedule {
 }
 
 /** The tournaments that pay into a chase, one row per activity, with each run placed on the chase's days. */
-export function chaseSchedule(chase: GameEvent, events: GameEvent[]): Schedule {
+export function chaseSchedule(chase: GameEvent, events: Tournament[]): Schedule {
   const t0 = Date.parse(chase.start);
   const t1 = Date.parse(chase.end);
   const count = Math.ceil((t1 - t0) / DAY);
@@ -115,7 +133,7 @@ export function chaseSchedule(chase: GameEvent, events: GameEvent[]): Schedule {
     const runs = events
       .filter((e) => e.type === source && Date.parse(e.end) > t0 && Date.parse(e.start) < t1)
       .sort((a, b) => Date.parse(a.start) - Date.parse(b.start))
-      .map((e) => ({ name: e.name, start: e.start, end: e.end, from: Math.floor(col(Date.parse(e.start))), to: Math.ceil(col(Date.parse(e.end))) }));
+      .map((e) => ({ name: e.name, planned: e.planned, start: e.start, end: e.end, from: Math.floor(col(Date.parse(e.start))), to: Math.ceil(col(Date.parse(e.end))) }));
     const name = chase.activities?.find((a) => a.source === source)?.name ?? runs[0]?.name ?? source;
     return { source, name, milestones, total: milestones.reduce((n, m) => n + m.amount, 0), runs };
   });

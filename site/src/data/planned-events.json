@@ -1,0 +1,77 @@
+{
+  "note": "Tournaments planned for the rest of the Grimnall Chase (Newms's schedule, 12 Oct 2026), not yet on the live event list. Times are 12:00 UTC. An entry is dropped automatically once the live list has a tournament of the same type starting the same day.",
+  "events": [
+    {
+      "name": "Sakiel Relic Hunt",
+      "type": "RelicBossSakiel",
+      "start": "2026-10-19T12:00:00Z",
+      "end": "2026-10-22T12:00:00Z"
+    },
+    {
+      "name": "Gear Up",
+      "type": "GearUpgrade",
+      "start": "2026-10-20T12:00:00Z",
+      "end": "2026-10-23T12:00:00Z"
+    },
+    {
+      "name": "Pentiax Spark Hunt",
+      "type": "Dragon",
+      "start": "2026-10-21T12:00:00Z",
+      "end": "2026-10-24T12:00:00Z"
+    },
+    {
+      "name": "Titan Summon Surge",
+      "type": "SummonAnima",
+      "start": "2026-10-22T12:00:00Z",
+      "end": "2026-10-26T12:00:00Z"
+    },
+    {
+      "name": "Titan Power Up",
+      "type": "AnimaUpgrade",
+      "start": "2026-10-22T12:00:00Z",
+      "end": "2026-10-26T12:00:00Z"
+    },
+    {
+      "name": "Arena Rush",
+      "type": "ArenaMedals",
+      "start": "2026-10-23T12:00:00Z",
+      "end": "2026-10-26T12:00:00Z"
+    },
+    {
+      "name": "Campaign Rush",
+      "type": "Campaign",
+      "start": "2026-10-24T12:00:00Z",
+      "end": "2026-10-28T12:00:00Z"
+    },
+    {
+      "name": "Omnissi Essence Hunt",
+      "type": "Garudas",
+      "start": "2026-10-26T12:00:00Z",
+      "end": "2026-10-29T12:00:00Z"
+    },
+    {
+      "name": "Sorgott Accessory Hunt",
+      "type": "ClanBoss1",
+      "start": "2026-10-28T12:00:00Z",
+      "end": "2026-10-31T12:00:00Z"
+    },
+    {
+      "name": "Gear Up",
+      "type": "GearUpgrade",
+      "start": "2026-10-29T12:00:00Z",
+      "end": "2026-11-01T12:00:00Z"
+    },
+    {
+      "name": "Arena Rush",
+      "type": "ArenaMedals",
+      "start": "2026-10-30T12:00:00Z",
+      "end": "2026-11-02T12:00:00Z"
+    },
+    {
+      "name": "Invoker Summon Surge",
+      "type": "SummonHero",
+      "start": "2026-10-30T12:00:00Z",
+      "end": "2026-11-02T12:00:00Z"
+    }
+  ]
+}
