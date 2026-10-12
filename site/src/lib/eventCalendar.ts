@@ -220,7 +220,7 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
       const rarities = uniq(rule.entries.map((e) => e.rarity)).sort(byRarity);
       return [
         grid(
-          'Points per level gained',
+          rule.ruleType === 'AnimaLevelUpScoringRule' ? 'Points per Titan level gained' : 'Points per level gained',
           'Levels',
           bands,
           rarities,
@@ -236,7 +236,7 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
       const rarities = uniq(rule.entries.map((e) => e.rarity)).sort(byRarity);
       return [
         grid(
-          'Points per ascension',
+          rule.ruleType === 'AnimaRankUpScoringRule' ? 'Points per Titan star' : 'Points per ascension',
           'To',
           ranks,
           rarities,
@@ -262,18 +262,17 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
       ];
     }
     case 'AnimaEmpowerScoringRule':
-      return [list('Points per Titan empowerment', 'Rarity', 'Points', rule.entries.map((e) => ({ label: rarityLabel(e.rarity), points: e.points })))];
+      return [list('Points per Titan Empowerment', 'Rarity', 'Points', rule.entries.map((e) => ({ label: rarityLabel(e.rarity), points: e.points })))];
     case 'BattleResourceScoringRule': {
       const from = rule.acceptedRegions?.length ? bossNames(rule.acceptedRegions) : '';
-      return [list(`Points per material collected${from ? ` from ${from}` : ''}`, 'Material', 'Points',
-        rule.resourceCollectEntries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
+      return [list(`Points per material collected${from ? ` from ${from}` : ''}`, 'Material', 'Points', sameScoreRows(rule.resourceCollectEntries, itemName))];
     }
     case 'DragonResourceScoringRule':
       return [list('Points per item collected', 'Item', 'Points',
         rule.resourceCollectEntries.map((e) => ({ label: item(e.resourceId), points: e.points / (e.resourceAmountPerPoint || 1) })))];
     case 'HeroSkillUpScoringRule':
     case 'AnimaSkillUpScoringRule':
-      return [list('Points per skill upgrade', 'Using', 'Points', rule.entries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
+      return [list(rule.ruleType === 'AnimaSkillUpScoringRule' ? 'Points per Titan skill upgrade' : 'Points per skill upgrade', 'Using', 'Points', rule.entries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
     case 'CampaignBattleScoringRule':
       return [list('Points per Campaign battle won', 'Difficulty', 'Points', rule.entries.map((e) => ({ label: { text: e.difficulty }, points: e.points })))];
     case 'HeroSummonScoringRule': {
@@ -301,6 +300,43 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
     default:
       return [];
   }
+}
+
+/**
+ * Items that score the same become one row, named by the words their names share:
+ * Raw Fire Essence ... Raw Astral Essence is "Raw Essence (any)".
+ */
+export function sameScoreRows(entries: { resourceId: string; points: number }[], itemName: (id: string) => string): { label: Label; points: number }[] {
+  const groups = new Map<number, string[]>();
+  for (const e of entries) groups.set(e.points, [...(groups.get(e.points) ?? []), e.resourceId]);
+  return [...groups].map(([points, ids]) => {
+    const names = ids.map((id) => itemName(id).split(' '));
+    const shared = names[0].filter((w) => names.every((n) => n.includes(w)));
+    const text = ids.length === 1 ? names[0].join(' ') : shared.length ? `${shared.join(' ')} (any)` : ids.map(itemName).join(', ');
+    return { label: { text, kind: 'item' as const, keys: ids }, points };
+  });
+}
+
+/**
+ * Tables with the same numbers are shown once. "Points per relic won from Ulgorim" and "... from Althar"
+ * become "Points per relic won from Ulgorim, Althar".
+ */
+export function mergeSameTables(tables: RuleTable[]): RuleTable[] {
+  const out: RuleTable[] = [];
+  const seen = new Map<string, RuleTable>();
+  for (const t of tables) {
+    const key = JSON.stringify([t.corner, t.columns, t.rows, t.note]);
+    const first = seen.get(key);
+    if (!first) {
+      const copy = { ...t };
+      seen.set(key, copy);
+      out.push(copy);
+      continue;
+    }
+    const at = first.title.lastIndexOf(' from ');
+    if (first.title !== t.title && at > 0 && t.title.startsWith(first.title.slice(0, at + 6))) first.title = `${first.title}, ${t.title.slice(at + 6)}`;
+  }
+  return out;
 }
 
 /** One column of a summon table; a Chroma column names the column it doubles (or not). */
