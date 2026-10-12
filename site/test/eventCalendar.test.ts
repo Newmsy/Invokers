@@ -6,6 +6,8 @@ import {
   withLiveTargets,
   descriptionLines,
   eventLinks,
+  mergeSameTables,
+  sameScoreRows,
   eventStatus,
   formatUtc,
   groupEvents,
@@ -134,5 +136,23 @@ describe('withLiveTargets', () => {
 
   it('keeps events with no listed match', () => {
     expect(crest).toEqual(planner[2]);
+  });
+});
+
+describe('items that score the same', () => {
+  it('merge into one row named by their shared words', () => {
+    const names: Record<string, string> = { a: 'Raw Fire Essence', b: 'Raw Astral Essence', c: 'Refined Fire Essence' };
+    const rows = sameScoreRows([{ resourceId: 'a', points: 1 }, { resourceId: 'b', points: 1 }, { resourceId: 'c', points: 10 }], (id) => names[id]);
+    expect(rows.map((r) => [r.label.text, r.points])).toEqual([['Raw Essence (any)', 1], ['Refined Fire Essence', 10]]);
+  });
+});
+
+describe('mergeSameTables', () => {
+  it('shows identical boss tables once, naming every boss', () => {
+    const t = (boss: string, n = 1) => ({ title: `Points per relic won from ${boss}`, corner: 'Rarity', columns: [], rows: [{ label: { text: 'Epic' }, cells: [n] }], collapse: false });
+    expect(mergeSameTables([t('Ulgorim'), t('Althar'), t('Sakiel', 2)]).map((x) => x.title)).toEqual([
+      'Points per relic won from Ulgorim, Althar',
+      'Points per relic won from Sakiel',
+    ]);
   });
 });

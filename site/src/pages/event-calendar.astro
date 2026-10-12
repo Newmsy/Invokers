@@ -4,10 +4,11 @@ import SeeAlso from '../components/SeeAlso.astro';
 import SectionArt from '../components/SectionArt.astro';
 import RewardChips from '../components/RewardChips.astro';
 import EventRuleTable from '../components/EventRuleTable.astro';
-import { bosses, bossSlug, events, eventsCapturedAt, href, itemName, type EventPointsReward, type EventRankReward } from '../lib/data';
+import { bosses, bossSlug, events, eventsCapturedAt, heroHref, heroRefsByConfigId, href, itemName, type EventPointsReward, type EventRankReward, type EventShopItem } from '../lib/data';
+import { heroArt } from '../lib/art';
 import { bossArt, eventBanner } from '../lib/art';
 import { slugify } from '../lib/slugs';
-import { descriptionLines, eventLinks, eventNotices, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
+import { descriptionLines, eventLinks, mergeSameTables, eventNotices, formatUtc, groupEvents, leadLine, rankRanges, ruleTables, statusText, type EventStatus } from '../lib/eventCalendar';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 const cleanName = (id: string) => itemName(id).replace(/<sprite[^>]*>\s*/g, '★ ').replace(/<[^>]+>/g, '');
@@ -21,7 +22,7 @@ const cards = events.map((e) => {
     ...eventBosses.map((b) => ({ path: `bosses/${bossSlug(b)}`, label: `${b.name} guide`, icon: bossArt(b.id) })),
     ...eventLinks(e.scoring.rules).map((l) => ({ ...l, icon: undefined as string | undefined })),
   ];
-  const tables = e.scoring.rules.flatMap((r) => ruleTables(r, cleanName, (ids) => bossesFor(ids).map((b) => b.name).join(', ')));
+  const tables = mergeSameTables(e.scoring.rules.flatMap((r) => ruleTables(r, cleanName, (ids) => bossesFor(ids).map((b) => b.name).join(', '))));
   const levels = e.playerLevels.map((l) => (l.min === l.max ? `${l.min}` : `${l.min}–${l.max}`)).join(', ');
   const day = new Date(e.start);
   return {
@@ -49,6 +50,16 @@ const top = (rows: EventPointsReward[] = []) => Math.max(0, ...rows.map((r) => r
 // Chase events: each progress reward belongs to one activity; label it with the activity's name.
 const activityRows = (e: { progressRewards?: (EventPointsReward & { sourceTypeId?: string })[]; activities?: { source: string; name?: string }[] }) =>
   (e.progressRewards ?? []).map((r) => ({ ...r, activity: e.activities?.find((a) => a.source === r.sourceTypeId)?.name ?? r.sourceTypeId }));
+// A shop Invoker reward names the hero by config id; the stars come with it.
+const starCount: Record<string, number> = { One: 1, Two: 2, Three: 3, Four: 4, Five: 5, Six: 6 };
+const shopHeroes = (r: EventShopItem['reward']) =>
+  r.flatMap((x) => {
+    if (!('kind' in x)) return [];
+    const d = x.details[0];
+    const ref = Object.entries(heroRefsByConfigId).find(([id]) => Number(id) === d?.configId)?.[1];
+    return ref ? [{ ...ref, stars: starCount[d.rank] ?? 0 }] : [];
+  });
+const shopItems = (r: EventShopItem['reward']) => r.filter((x): x is { itemId: string; amount: number } => 'itemId' in x);
 const rankRows = (rows: EventRankReward[]) => rankRanges(rows);
 const lastRank = (rows: EventRankReward[]) => Math.max(0, ...rows.map((r) => r.toRank));
 
@@ -118,8 +129,30 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
                   </div>
                 </details>
               ))}
+              {c.e.shopItems?.length ? (
+                <details class="fold">
+                  <summary><span>Event shop</span><span class="sub">{c.e.shopItems.length} items{c.e.shopCurrency ? `, paid in ${cleanName(c.e.shopCurrency)}s` : ''}</span></summary>
+                  <div class="rt-wrap">
+                    <table>
+                      <thead><tr><th scope="col">Reward</th><th scope="col" class="num">Cost</th><th scope="col" class="num">Limit</th></tr></thead>
+                      <tbody>{c.e.shopItems.map((x) => (
+                        <tr>
+                          <th scope="row">
+                            {shopHeroes(x.reward).map((h) => (
+                              <a class="shop-hero" href={heroHref(h.id)}>{heroArt(h.id) && <img src={heroArt(h.id)} alt="" width="20" height="20" loading="lazy" />}<span>{h.name} ({h.stars}★)</span></a>
+                            ))}
+                            {shopItems(x.reward).length > 0 && <RewardChips rewards={shopItems(x.reward)} />}
+                          </th>
+                          <td class="num">{fmt(x.price)}</td>
+                          <td class="num">{fmt(x.maxQuantity)}</td>
+                        </tr>
+                      ))}</tbody>
+                    </table>
+                  </div>
+                </details>
+              ) : null}
               {[
-                { title: 'Your bracket', rows: c.e.bracketRewards, sub: `top ${lastRank(c.e.bracketRewards)} of ${fmt(c.e.bracketSize)}` },
+                { title: 'Your bracket', rows: c.e.bracketRewards, sub: lastRank(c.e.bracketRewards) <= c.e.bracketSize ? `top ${lastRank(c.e.bracketRewards)} of ${fmt(c.e.bracketSize)}` : `top ${lastRank(c.e.bracketRewards)}` },
                 { title: 'Overall leaderboard', rows: c.e.globalRewards, sub: `top ${lastRank(c.e.globalRewards)}` },
               ].filter((r) => r.rows.length).map((r) => (
                 <details class="fold">
@@ -221,6 +254,9 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
   h4.part { margin: 12px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
   h4.part + :global(*) { margin-top: 6px; }
   .fold { margin-top: 8px; }
+  .num { text-align: right; }
+  .shop-hero { display: inline-flex; align-items: center; gap: 5px; margin-right: 12px; }
+  .shop-hero img { width: 20px; height: 20px; object-fit: cover; }
   .fold summary { cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 6px 0; font-size: 14px; font-weight: 600; color: var(--soft); }
   .fold summary::before { content: '▸'; color: var(--muted); }
   .fold[open] summary::before { content: '▾'; }

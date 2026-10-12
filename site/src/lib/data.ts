@@ -254,7 +254,16 @@ export interface GameEvent {
   progressRewards?: (EventPointsReward & { sourceTypeId?: string })[];
   /** Chase events: the activities that score, with their names and parallel-event multiplier. */
   activities?: { source: string; name?: string; parallelMultiplier?: number; rules: string[] }[];
-  shopItems?: unknown[];
+  shopItems?: EventShopItem[];
+  shopCurrency?: string;
+}
+
+/** One Chase shop line. A reward is items, or an Invoker by config id. */
+export interface EventShopItem {
+  shopItemId: number;
+  price: number;
+  maxQuantity: number;
+  reward: ({ itemId: string; amount: number } | { kind: 'heroes'; details: { configId: number; rank: RankName }[] })[];
 }
 
 export const pack: Manifest = manifest;
