@@ -44,8 +44,11 @@ const sections: { key: EventStatus; title: string; art: string }[] = [
   { key: 'ended', title: 'Ended', art: 'item:Historic Playbook' },
 ];
 
-const pointsRows = (rows: EventPointsReward[]) => [...rows].sort((a, b) => a.requiredPoints - b.requiredPoints);
-const top = (rows: EventPointsReward[]) => Math.max(0, ...rows.map((r) => r.requiredPoints));
+const pointsRows = (rows: EventPointsReward[] = []) => [...rows].sort((a, b) => a.requiredPoints - b.requiredPoints);
+const top = (rows: EventPointsReward[] = []) => Math.max(0, ...rows.map((r) => r.requiredPoints));
+// Chase events: each progress reward belongs to one activity; label it with the activity's name.
+const activityRows = (e: { progressRewards?: (EventPointsReward & { sourceTypeId?: string })[]; activities?: { source: string; name?: string }[] }) =>
+  (e.progressRewards ?? []).map((r) => ({ ...r, activity: e.activities?.find((a) => a.source === r.sourceTypeId)?.name ?? r.sourceTypeId }));
 const rankRows = (rows: EventRankReward[]) => rankRanges(rows);
 const lastRank = (rows: EventRankReward[]) => Math.max(0, ...rows.map((r) => r.toRank));
 
@@ -101,15 +104,16 @@ const asOf = `${captured.toLocaleDateString('en-GB', { day: 'numeric', month: 's
                 <p class="ev-notice">{eventNotices[c.e.tournamentId].text} <a href={href(eventNotices[c.e.tournamentId].link)}>What changed</a></p>
               )}
               {[
-                { title: 'Your points', rows: pointsRows(c.e.personalRewards), sub: `${c.e.personalRewards.length} rewards, up to ${fmt(top(c.e.personalRewards))} points` },
-                { title: 'Milestone rewards', rows: pointsRows(c.e.milestoneRewards), sub: `${c.e.milestoneRewards.length} rewards, up to ${fmt(top(c.e.milestoneRewards))} points` },
+                { title: 'Your points', rows: pointsRows(c.e.personalRewards), sub: `${c.e.personalRewards?.length ?? 0} rewards, up to ${fmt(top(c.e.personalRewards))} points` },
+                { title: 'Activity rewards', rows: activityRows(c.e), sub: `${c.e.progressRewards?.length ?? 0} rewards for points earned in each activity` },
+                { title: 'Milestone rewards', rows: pointsRows(c.e.milestoneRewards), sub: `${c.e.milestoneRewards?.length ?? 0} rewards, up to ${fmt(top(c.e.milestoneRewards))} points` },
               ].filter((r) => r.rows.length).map((r) => (
                 <details class="fold">
                   <summary><span>{r.title}</span><span class="sub">{r.sub}</span></summary>
                   <div class="rt-wrap">
                     <table>
                       <thead><tr><th scope="col">Points</th><th scope="col">Reward</th></tr></thead>
-                      <tbody>{r.rows.map((x) => <tr><th scope="row">{fmt(x.requiredPoints)}</th><td><RewardChips rewards={x.reward} /></td></tr>)}</tbody>
+                      <tbody>{r.rows.map((x) => <tr><th scope="row">{fmt(x.requiredPoints)}{'activity' in x && x.activity && <span class="sub"> in {x.activity}</span>}</th><td><RewardChips rewards={x.reward} /></td></tr>)}</tbody>
                     </table>
                   </div>
                 </details>

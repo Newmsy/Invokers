@@ -245,11 +245,15 @@ export interface GameEvent {
   bracketSize: number;
   entryPoints: number;
   scoring: { rules: EventScoringRule[] };
-  personalRewards: EventPointsReward[];
-  milestoneRewards: EventPointsReward[];
+  /** Missing on chase events (GetLegendary), which use `progressRewards` instead. */
+  personalRewards?: EventPointsReward[];
+  milestoneRewards?: EventPointsReward[];
   bracketRewards: EventRankReward[];
   globalRewards: EventRankReward[];
-  progressRewards?: unknown[];
+  /** Chase events: rewards for points earned in one activity (`sourceTypeId`, an event type). */
+  progressRewards?: (EventPointsReward & { sourceTypeId?: string })[];
+  /** Chase events: the activities that score, with their names and parallel-event multiplier. */
+  activities?: { source: string; name?: string; parallelMultiplier?: number; rules: string[] }[];
   shopItems?: unknown[];
 }
 
