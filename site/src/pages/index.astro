@@ -11,6 +11,7 @@ import { hasNews, inGroup, menus } from '../lib/nav';
 import { allGuides } from '../lib/guides';
 import { artRef } from '../lib/markdown-art';
 import { storyPictures } from '../lib/storyArt';
+import { tileStyles } from '../lib/tileArt';
 
 // News entries (src/content/news) when they exist, then articles, newest first.
 interface Story { path: string; title: string; blurb: string; art: string[]; tag: string; date: Date }
@@ -43,6 +44,8 @@ const feed = rest.slice(2, 10);
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 const featured = guides.filter((g) => g.kind === 'Guide').slice(0, 6);
+// Background art for the link tiles (lib/tileArt).
+const tiles = await tileStyles([...featured.map((g) => g.path), ...menus.flatMap((m) => inGroup(m.group).map((n) => n.path))]);
 
 const campaign = tierLists.find((l) => l.id === 'campaign') ?? tierLists[0];
 const topPicks = tierRows('invokers', campaign).flatMap((r) => r.picks).filter((p) => p.art).slice(0, 8);
@@ -114,7 +117,7 @@ const counts = [
         <ul class="guide-grid">
           {featured.map((g) => (
             <li>
-              <a href={href(g.path)}>
+              <a class="pic-tile" href={href(g.path)} style={tiles.get(g.path)}>
                 <SectionArt art={g.art[0]} size={44} />
                 <strong>{g.title}</strong>
                 <span class="blurb">{g.blurb}</span>
@@ -171,7 +174,7 @@ const counts = [
       <ul class="grid">
         {inGroup(m.group).map((n) => (
           <li class:list={{ 'box-only': n.boxOnly }}>
-            <a href={href(n.path)}>
+            <a class="pic-tile" href={href(n.path)} style={tiles.get(n.path)}>
               <SectionArt art={n.art} size={52} class="card-art" />
               <span class="name">{n.label}</span>
               <span class="blurb">{n.blurb}</span>

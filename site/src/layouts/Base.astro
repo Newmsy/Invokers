@@ -188,6 +188,22 @@ const crumbs = pagePath && owner
 </html>
 
 <style is:global>
+  /* A link tile with a picture behind it: the style attribute sets --pic (lib/tileArt). The picture fades to the
+     page colour on the left, where the text sits, so text keeps its contrast. */
+  .pic-tile[style*='--pic'] { position: relative; isolation: isolate; overflow: hidden; }
+  .pic-tile[style*='--pic']::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(17 14 10 / 0.9) 0%, rgb(17 14 10 / 0.72) 55%, rgb(17 14 10 / 0.3) 100%),
+      var(--pic) right 30% / cover;
+    transition: transform 0.4s ease;
+  }
+  .pic-tile[style*='--pic']:hover::before { transform: scale(1.05); }
+  .pic-tile[style*='--pic'] > * { text-shadow: 0 1px 3px rgb(0 0 0 / 0.9), 0 0 12px rgb(0 0 0 / 0.6); }
+  @media (prefers-reduced-motion: reduce) { .pic-tile[style*='--pic']::before { transition: none; } }
   :root {
     color-scheme: dark;
     --bg: #110E0A;
