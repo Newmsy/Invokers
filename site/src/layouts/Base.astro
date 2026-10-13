@@ -236,6 +236,17 @@ const crumbs = pagePath && owner
     pointer-events: none;
     background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 35%, #1C1610 100%);
   }
+  /* Faint rune circles and swirls over the gradient, fixed with it (drawn by scripts/draw-runes.ts). */
+  html::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: url('../assets/runes.svg') center / cover no-repeat;
+    opacity: 0.16;
+  }
+  @media (max-width: 700px) { html::after { opacity: 0.11; background-size: auto 100%; } }
   body {
     margin: 0;
     background: transparent;
