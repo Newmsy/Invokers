@@ -170,6 +170,8 @@ function flourish(ctrl: [number, number][], curl: number, runeEvery = 0 /* px be
 }
 
 const W = 1600, H = 1000;
+// A light blur over everything, so edges read soft rather than crisp.
+const BLUR = 1.2;
 const body = [
   // Left margin
   sigil(170, 720, 200, 'hexagram', undefined, 'braid'),
@@ -189,5 +191,5 @@ const body = [
   sparkle(560, 300, 12), sparkle(1080, 640, 10), sparkle(700, 960, 9), sparkle(1220, 380, 9),
 ].join('\n');
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#EBB84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">\n<defs><radialGradient id="glow"><stop offset="0" stop-color="#EBB84C" stop-opacity="0.35"/><stop offset="1" stop-color="#EBB84C" stop-opacity="0"/></radialGradient></defs>\n${body}\n</svg>\n`;
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#EBB84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">\n<defs><radialGradient id="glow"><stop offset="0" stop-color="#EBB84C" stop-opacity="0.35"/><stop offset="1" stop-color="#EBB84C" stop-opacity="0"/></radialGradient><filter id="soft" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="${BLUR}"/></filter></defs>\n<g filter="url(#soft)">\n${body}\n</g>\n</svg>\n`;
 writeFileSync(process.argv[2] ?? 'src/assets/runes.svg', svg);
