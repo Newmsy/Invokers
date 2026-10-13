@@ -61,6 +61,13 @@ const lead = current && hero
       : 'No chase is on right now.'
   : 'No chase is on right now.';
 const captured = new Date(eventsCapturedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+// First place in a tournament's bracket pays chase currency too: the amount from the open tournaments, times every run.
+const firstPlace = Math.max(0, ...events.filter((e) => e.type !== 'GetLegendary').map((e) =>
+  (e.bracketRewards.find((r) => r.fromRank === 1)?.reward ?? []).reduce((n, x) => n + ('itemId' in x && x.itemId === current?.currency ? x.amount : 0), 0)));
+const tournamentCount = schedule?.rows.reduce((n, r) => n + r.runs.length, 0) ?? 0;
+// Chase points count extra while the matching tournament runs.
+const multipliers = [...new Set((live?.activities ?? []).map((a) => a.parallelMultiplier ?? 1))];
+const boost = multipliers.length === 1 && multipliers[0] > 1 ? (multipliers[0] === 2 ? 'double' : `×${multipliers[0]}`) : undefined;
 const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? schedule.days[schedule.knownUntil] : undefined;
 ---
 <Base title="Chase calendar" description="Every chase: dates, sign-up deadline, chase Invoker and currency, plus the day-by-day tournament schedule of the current chase.">
@@ -82,7 +89,10 @@ const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? sched
             {current.registrationEnd && <li><span>Sign up by</span>{formatUtc(current.registrationEnd)}</li>}
             {current.rewardPeriodEnd && <li><span>Leftovers spent</span>{formatUtc(current.rewardPeriodEnd)}, items to your Inbox</li>}
             {current.total && current.heroPrice && (
-              <li><span>{cName}s</span>{itemIcon(current.currency) && <img class="cur-icon" src={itemIcon(current.currency)} alt="" width="20" height="20" />}{fmt(current.total)} on offer; {current.short} costs {fmt(current.heroPrice)}</li>
+              <li><span>{cName}s</span>{itemIcon(current.currency) && <img class="cur-icon" src={itemIcon(current.currency)} alt="" width="20" height="20" />}{fmt(current.total)} on offer; {current.short} costs {fmt(current.heroPrice)}{current.total > current.heroPrice ? `, so ${fmt(current.total - current.heroPrice)} can be missed` : ''}</li>
+            )}
+            {firstPlace > 0 && tournamentCount > 0 && state(current) !== 'ended' && (
+              <li><span>1st place</span>Each tournament's bracket winner gets {fmt(firstPlace)} more {cName}s (up to {fmt(firstPlace * tournamentCount)} over {tournamentCount} tournaments)</li>
             )}
           </ul>
           <p class="links">
@@ -110,7 +120,7 @@ const lastKnown = schedule && schedule.knownUntil < schedule.days.length ? sched
   {schedule && live && (
     <section aria-labelledby="sched-title">
       <h2 id="sched-title">Day by day</h2>
-      <p class="muted small">Each bar is a tournament that pays into the chase; points in it count toward that row's milestones. Days run 12:00 to 12:00 UTC. Outlined bars are planned: their scoring and rewards show on the event calendar once they open.</p>
+      <p class="muted small">Each bar is a tournament that pays into the chase; points in it count toward that row's milestones{boost ? `, ${boost} while the tournament runs and at the normal rate the rest of the chase` : ''}. Days run 12:00 to 12:00 UTC. Outlined bars are planned: their scoring and rewards show on the event calendar once they open.</p>
       <div class="sched" style={`--days:${schedule.days.length}`} data-days={JSON.stringify(schedule.days)}>
         <div class="row head" aria-hidden="true">
           <div class="label"></div>

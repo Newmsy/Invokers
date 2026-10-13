@@ -118,3 +118,73 @@ export function dropPoints(drop: StageDrop, points: Record<string, number>): num
 export function expectedPointsPerRun(family: Pick<ScoringFamily, 'rollsPerRun' | 'points'>, drops: StageDrop[]): number {
   return Math.max(0, family.rollsPerRun) * drops.reduce((sum, d) => sum + dropPoints(d, family.points), 0);
 }
+
+/** A way to buy Energy: what it costs and how many a day (no limit when `perDay` is left out). */
+export interface TopUp {
+  name: string;
+  energy: number;
+  /** Gems a buy, 0 for offers paid in another currency (e.g. Arena Coins). */
+  gems: number;
+  perDay?: number;
+}
+
+export interface PlanDay {
+  income: number;
+  spend: number;
+  /** Energy bought this day, and how many of each top-up (by name). */
+  bought: number;
+  gems: number;
+  buys: Record<string, number>;
+  /** Energy left at the end of the day. */
+  balance: number;
+}
+
+/** Spread each run's energy evenly over its days (day columns, end exclusive). */
+export function spreadRuns(days: number, runs: { from: number; to: number }[], energyPerRun: number): number[] {
+  const out = new Array<number>(days).fill(0);
+  for (const r of runs) {
+    const from = Math.max(0, r.from);
+    const to = Math.min(days, r.to);
+    if (to <= from) continue;
+    for (let d = from; d < to; d++) out[d] += energyPerRun / (to - from);
+  }
+  return out;
+}
+
+/**
+ * Day-by-day energy: free income in, event energy out, and the cheapest top-ups that keep the balance at zero or
+ * above. Spare energy carries over, so a shortfall can use a daily offer left unbought on that day or any earlier
+ * one; offers are tried cheapest first (gems per energy), and among days, the latest first.
+ */
+export function dayPlan(income: number[], spend: number[], topUps: TopUp[], start = 0): PlanDay[] {
+  const n = Math.max(income.length, spend.length);
+  const order = [...topUps].filter((t) => t.energy > 0).sort((a, b) => a.gems / a.energy - b.gems / b.energy);
+  const days: PlanDay[] = Array.from({ length: n }, (_, d) => ({ income: income[d] ?? 0, spend: spend[d] ?? 0, bought: 0, gems: 0, buys: {}, balance: 0 }));
+  const left = days.map(() => order.map((t) => t.perDay ?? Infinity));
+  const buy = (d: number, k: number, count: number) => {
+    const t = order[k];
+    const day = days[d];
+    day.bought += t.energy * count;
+    day.gems += t.gems * count;
+    day.buys[t.name] = (day.buys[t.name] ?? 0) + count;
+    left[d][k] -= count;
+  };
+  let balance = start;
+  for (let d = 0; d < n; d++) {
+    balance += days[d].income - days[d].spend;
+    for (let k = 0; k < order.length && balance < -1e-9; k++) {
+      for (let j = d; j >= 0 && balance < -1e-9; j--) {
+        const count = Math.min(left[j][k], Math.ceil(-balance / order[k].energy - 1e-9));
+        if (count <= 0) continue;
+        buy(j, k, count);
+        balance += order[k].energy * count;
+      }
+    }
+  }
+  let run = start;
+  for (const day of days) {
+    run += day.income - day.spend + day.bought;
+    day.balance = run;
+  }
+  return days;
+}
