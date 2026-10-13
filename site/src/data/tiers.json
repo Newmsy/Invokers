@@ -1,5 +1,5 @@
 {
-  "draft": true,
+  "draft": false,
   "invokers": {
     "campaign": {
       "S": ["akrila-the-oathpainter", "tassia-the-lost", "sanctus-the-valiant", "kolan-deepreef", "jutsubo", "kyoze-the-testament", "nirvelle-the-soulraiser", "kryxa-the-giantfeller", "virtus-the-heavensent", "valentu-the-devoted", "kollodon-the-summit", "skoloss-the-tomb-baron", "luxare-the-prismatic", "ruthos-the-enthralled", "asprill-the-enshrined", "sebastin-the-dreamweaver", "kosmi-the-voidsmith", "duchess-kanraku", "nautila-the-unfathomable", "shadek-the-soulreaper", "roxxi-gumm", "durlag-the-kingsbane", "crestelle-moonveil", "stade-the-shining", "gurgos-ironchain", "marilla-the-black-salvo"],
