@@ -1,12 +1,18 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
-import { href } from '../../lib/data';
-import { pools, tierLists, tierRows, tiersDraft, type PoolKind } from '../../lib/tierData';
+import { bossArt, elementIcon, modeArt } from '../../lib/art';
+import { bosses, bossSlug, href } from '../../lib/data';
+import { pools, tierLists, tiersDraft } from '../../lib/tierData';
 
-// The first two S-tier picks of a list, as small portraits on its link.
-const topArt = (kind: PoolKind, list: (typeof tierLists)[number]) =>
-  (tierRows(kind, list)[0]?.picks ?? []).filter((p) => p.art).slice(0, 2);
+// One picture per list: the boss's portrait (Omnissi with its element badge), or the mode's card.
+const bossByList = new Map(bosses.map((b) => [bossSlug(b), b]));
+const modeCard: Record<string, string> = { campaign: 'Campaign', spires: 'spires', arena: 'Arena' };
+const iconFor = (id: string) => {
+  const boss = bossByList.get(id);
+  if (boss) return { art: bossArt(boss.id), badge: boss.element ? elementIcon(boss.element === 'Astral' ? 'Neutral' : boss.element) : undefined, mode: false };
+  return { art: modeCard[id] ? modeArt(modeCard[id]) : undefined, badge: undefined, mode: true };
+};
 const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: g, lists: tierLists.filter((l) => l.group === g) }));
 ---
 <Base title="Tier lists">
@@ -23,10 +29,20 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
           <ul class="links">
             {g.lists.map((l) => (
               <li>
-                <a href={href(`tiers/${p.kind}/${l.id}`)}>
-                  <span class="faces" aria-hidden="true">{topArt(p.kind, l).map((t) => <img src={t.art} alt="" width="28" height="28" loading="lazy" />)}</span>
-                  {l.label}
-                </a>
+                {(() => {
+                  const icon = iconFor(l.id);
+                  return (
+                    <a href={href(`tiers/${p.kind}/${l.id}`)}>
+                      {icon.art && (
+                        <span class:list={['icon', { mode: icon.mode }]} aria-hidden="true">
+                          <img src={icon.art} alt="" width="36" height="36" loading="lazy" />
+                          {icon.badge && <img class="badge" src={icon.badge} alt="" width="16" height="16" loading="lazy" />}
+                        </span>
+                      )}
+                      {l.label}
+                    </a>
+                  );
+                })()}
               </li>
             ))}
           </ul>
@@ -68,11 +84,12 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
     font-weight: 600;
     font-size: 14px;
   }
-  .links a:has(.faces img) { padding-left: 6px; gap: 8px; }
-  .faces { display: inline-flex; }
-  .faces img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: top center; border: 2px solid var(--surface); }
-  .faces img + img { margin-left: -8px; }
-  .faces:empty { display: none; }
+  .links a:has(.icon) { padding-left: 4px; gap: 10px; min-height: 46px; }
+  .icon { position: relative; display: inline-flex; flex: none; }
+  .icon > img:first-child { width: 36px; height: 36px; object-fit: cover; border: 1px solid var(--line); background: var(--bg); }
+  /* Mode cards are tall: show the figure near the top. */
+  .icon.mode > img:first-child { object-position: center 22%; }
+  .icon .badge { position: absolute; right: -5px; bottom: -5px; width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
   .links a:hover { border-color: var(--accent); color: var(--text); }
   @media (max-width: 720px) { h1 { font-size: 22px; } }
 </style>
