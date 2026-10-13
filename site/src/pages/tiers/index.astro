@@ -3,15 +3,26 @@ import Base from '../../layouts/Base.astro';
 import SeeAlso from '../../components/SeeAlso.astro';
 import { bossArt, elementIcon, modeArt } from '../../lib/art';
 import { bosses, bossSlug, href } from '../../lib/data';
-import { pools, tierLists, tiersDraft } from '../../lib/tierData';
+import { elementColor } from '../../lib/format';
+import { listCorruptions, pools, tierLists, tiersDraft } from '../../lib/tierData';
 
-// One picture per list: the boss's portrait (Omnissi with its element badge), or the mode's card.
+// One tile per list: the boss's portrait on the right in its element colour (Omnissi with its element badge),
+// or the mode's card filling the tile, faded to dark under the name.
 const bossByList = new Map(bosses.map((b) => [bossSlug(b), b]));
 const modeCard: Record<string, string> = { campaign: 'Campaign', spires: 'spires', arena: 'Arena' };
-const iconFor = (id: string) => {
+const tileFor = (id: string) => {
   const boss = bossByList.get(id);
-  if (boss) return { art: bossArt(boss.id), badge: boss.element ? elementIcon(boss.element === 'Astral' ? 'Neutral' : boss.element) : undefined, mode: false };
-  return { art: modeCard[id] ? modeArt(modeCard[id]) : undefined, badge: undefined, mode: true };
+  if (boss) {
+    const el = boss.element === 'Astral' ? 'Neutral' : boss.element;
+    return {
+      art: bossArt(boss.id),
+      badge: el ? elementIcon(el) : undefined,
+      mode: false,
+      tint: boss.element ? `--tint: ${elementColor[boss.element] ?? '#EBB84C'}` : undefined,
+      sub: (listCorruptions.get(id) ?? []).join(' · '),
+    };
+  }
+  return { art: modeCard[id] ? modeArt(modeCard[id]) : undefined, badge: undefined, mode: true, tint: undefined, sub: '' };
 };
 const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: g, lists: tierLists.filter((l) => l.group === g) }));
 ---
@@ -26,25 +37,22 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
       {groups.map((g) => (
         <div class="group">
           <h3>{g.group}</h3>
-          <ul class="links">
-            {g.lists.map((l) => (
-              <li>
-                {(() => {
-                  const icon = iconFor(l.id);
-                  return (
-                    <a href={href(`tiers/${p.kind}/${l.id}`)}>
-                      {icon.art && (
-                        <span class:list={['icon', { mode: icon.mode }]} aria-hidden="true">
-                          <img src={icon.art} alt="" width="36" height="36" loading="lazy" />
-                          {icon.badge && <img class="badge" src={icon.badge} alt="" width="16" height="16" loading="lazy" />}
-                        </span>
-                      )}
-                      {l.label}
-                    </a>
-                  );
-                })()}
-              </li>
-            ))}
+          <ul class="tiles">
+            {g.lists.map((l) => {
+              const t = tileFor(l.id);
+              return (
+                <li>
+                  <a class:list={['tile', { mode: t.mode, portrait: !t.mode && t.art }]} href={href(`tiers/${p.kind}/${l.id}`)} style={t.tint}>
+                    {t.art && <img class="art" src={t.art} alt="" width="256" height="256" loading="lazy" />}
+                    <span class="name">
+                      {t.badge && <img src={t.badge} alt="" width="22" height="22" loading="lazy" />}
+                      {g.group === 'Omnissi' ? l.label.replace(/^Omnissi \((.+)\)$/, '$1') : l.label}
+                    </span>
+                    {t.sub && <span class="sub">{t.sub}</span>}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
@@ -71,25 +79,47 @@ const groups = [...new Set(tierLists.map((l) => l.group))].map((g) => ({ group: 
     color: var(--soft);
     font-size: 14px;
   }
-  .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 40px;
-    padding: 0 14px;
+  .tiles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+  }
+  .tile {
+    --tint: var(--accent);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2px;
+    height: 100%;
+    min-height: 120px;
+    padding: 12px 14px;
     border-radius: var(--radius);
-    background: var(--surface);
+    background: var(--surface-2, var(--bg));
     border: 1px solid var(--line);
     color: var(--text);
-    font-weight: 600;
-    font-size: 14px;
   }
-  .links a:has(.icon) { padding-left: 4px; gap: 10px; min-height: 46px; }
-  .icon { position: relative; display: inline-flex; flex: none; }
-  .icon > img:first-child { width: 36px; height: 36px; object-fit: cover; border: 1px solid var(--line); background: var(--bg); }
-  /* Mode cards are tall: show the figure near the top. */
-  .icon.mode > img:first-child { object-position: center 22%; }
-  .icon .badge { position: absolute; right: -5px; bottom: -5px; width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
-  .links a:hover { border-color: var(--accent); color: var(--text); }
-  @media (max-width: 720px) { h1 { font-size: 22px; } }
+  .tile:hover { color: var(--text); border-color: var(--tint); }
+  .art { position: absolute; z-index: -1; pointer-events: none; }
+  /* A boss portrait sits on the right in its element colour, fading into the tile. */
+  .portrait { background: radial-gradient(circle at 85% 40%, color-mix(in srgb, var(--tint) 28%, transparent), transparent 60%), var(--surface-2, var(--bg)); }
+  .portrait .art { top: 0; right: 0; height: 100%; width: 50%; object-fit: cover; object-position: top center; }
+  .portrait::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to right, rgb(17 14 10 / 0.97) 45%, rgb(17 14 10 / 0.5) 75%, transparent 100%); }
+  /* A mode card fills the tile and fades to dark under the name. */
+  .mode .art { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+  .mode::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgb(17 14 10 / 0.97) 0%, rgb(17 14 10 / 0.75) 45%, rgb(17 14 10 / 0.45) 100%); }
+  .portrait .name, .portrait .sub { max-width: 58%; }
+  .name { font-family: var(--display); font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+  .sub { font-size: 13px; color: var(--tint); font-weight: 600; text-shadow: 0 1px 4px rgb(0 0 0 / 0.8); }
+  @media (max-width: 720px) {
+    h1 { font-size: 22px; }
+    .tiles { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .tile { min-height: 96px; padding: 10px; }
+    .name { font-size: 15px; }
+  }
 </style>
