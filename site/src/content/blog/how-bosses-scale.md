@@ -58,7 +58,7 @@ The wall is the stage from 10 on where HP grows most over the stage before.
 
 ## What to do with it
 
-- Stages 1–9 give your Invokers a Tolerance bonus. From stage 10, bring the right Tolerance set: *Which Tolerance set to build first*.
+- Stages 1–9 give your Invokers a Tolerance bonus. From stage 10, bring the right Tolerance set: *Which Tolerance set to build first*. What it saves: [Tolerance and Corruption damage](/blog/tolerance-and-corruption-damage).
 - Expect a wall around stage 15. Check the boss's page for its exact jump before spending energy there.
 - Plan energy for the stages you clear on [Events](/events).
 

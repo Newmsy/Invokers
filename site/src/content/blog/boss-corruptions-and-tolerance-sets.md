@@ -60,7 +60,7 @@ Crush is also the nastiest on paper: it stuns and makes the target take double d
 | Legendary | 2 | 100% each | 200% each |
 
 - Control corruptions get shorter by your Tolerance; damage corruptions hit softer. At 100%, Daze can't purge buffs, and Paralysis and Nightmare can't add cooldowns.
-- Boss stages shift every Tolerance: **+75% on stage 1**, 0 from stage 10, **-100% on stages 19-20** (never below 0). Per stage: [How bosses scale](/blog/how-bosses-scale).
+- Boss stages shift every Tolerance: **+75% on stage 1**, 0 at stage 10, **-100% on stages 19-20**. Below 0, Corruption hits harder. How much damage that costs: [Tolerance and Corruption damage](/blog/tolerance-and-corruption-damage).
 - Fatigue (46 Invokers) and Crush (43) are the most common innate Tolerances; Paralysis is the rarest (17). Crush has the most Legendaries (22).
 
 ## Boss tips worth knowing
