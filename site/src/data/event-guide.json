@@ -24,18 +24,19 @@
     "rechargeMinutes": 5,
     "daily": [
       { "name": "Playtime reward", "energy": 100 },
-      { "name": "Bonus quest", "energy": 250 },
-      { "name": "Gem shop (50 gems)", "energy": 100 },
-      { "name": "Arena Bazaar (300 tokens)", "energy": 100 },
+      { "name": "Clan quests", "energy": 250 },
       { "name": "Daily quest", "energy": 100 },
-      { "name": "Daily shop energy", "energy": 50 },
+      { "name": "Web shop (free daily)", "energy": 50 },
       { "name": "8-hour shop energy (3 a day)", "energy": 90 },
       { "name": "Login calendar (1,400 over 30 days)", "energy": 1400, "everyDays": 30 }
+    ],
+    "topUps": [
+      { "name": "Arena Bazaar (300 Arena Coins)", "energy": 100, "gems": 0, "perDay": 1 }
     ],
     "extras": [
       { "name": "Weekly quests", "energy": 1200 },
       { "name": "Monthly quests", "energy": 1000 },
-      { "name": "Event rewards", "energy": 2400 },
+      { "name": "Event rewards", "energy": 2400, "fromTournaments": true },
       { "name": "Daily rewards", "energy": 1100 }
     ]
   },

@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import guide from '../src/data/event-guide.json';
-import { arena, chestAverage, dailyIncome, expectedPointsPerRun, periodIncome, shortfall, toFinish } from '../src/lib/events';
+import { arena, chestAverage, dailyIncome, dayPlan, expectedPointsPerRun, periodIncome, shortfall, spreadRuns, toFinish } from '../src/lib/events';
 
 describe('event planners', () => {
   it('adds up the default energy income', () => {
     const daily = dailyIncome(guide.income.daily, guide.income.rechargeMinutes);
-    expect(daily).toBeCloseTo(1078 + 1400 / 30);
-    expect(periodIncome(daily, 21, guide.income.extras)).toBeCloseTo(28338 + 980);
+    expect(daily).toBeCloseTo(878 + 1400 / 30);
+    expect(periodIncome(daily, 21, guide.income.extras)).toBeCloseTo(878 * 21 + 980 + 5700);
   });
 
   it('averages a chest reward over its odds', () => {
@@ -29,6 +29,34 @@ describe('event planners', () => {
     expect(shortfall(100, 200, 1.5)).toEqual({ energy: 0, gems: 0 });
     // Gem Shop: 100 energy for 150 gems.
     expect(shortfall(1662, 0, 100 / 150).gems).toBe(2493);
+  });
+
+  it('spreads each run over its days', () => {
+    expect(spreadRuns(5, [{ from: 1, to: 3 }], 600)).toEqual([0, 300, 300, 0, 0]);
+    // A run past the end of the chase is spent in the days the chase still has.
+    expect(spreadRuns(3, [{ from: 2, to: 5 }], 300)).toEqual([0, 0, 300]);
+  });
+
+  it('buys the cheapest top-ups, using earlier daily offers before paying more', () => {
+    const topUps = [
+      { name: 'Unlimited', energy: 100, gems: 150 },
+      { name: 'Coins', energy: 100, gems: 0, perDay: 1 },
+      { name: 'Cheap', energy: 100, gems: 50, perDay: 1 },
+    ];
+    // Day 0 has spare energy; day 1 is 450 short: two coin buys and two cheap buys (days 0 and 1), then one unlimited.
+    const plan = dayPlan([100, 100], [100, 550], topUps);
+    expect(plan[0].buys).toEqual({ Coins: 1, Cheap: 1 });
+    expect(plan[1].buys).toEqual({ Coins: 1, Cheap: 1, Unlimited: 1 });
+    expect(plan.reduce((n, d) => n + d.gems, 0)).toBe(250);
+    expect(plan[0].balance).toBe(200);
+    expect(plan[1].balance).toBe(50);
+    expect(plan.every((d) => d.balance >= 0)).toBe(true);
+  });
+
+  it('buys nothing when free energy covers every day', () => {
+    const plan = dayPlan([500, 500], [400, 600], [{ name: 'Coins', energy: 100, gems: 0, perDay: 1 }]);
+    expect(plan.map((d) => d.bought)).toEqual([0, 0]);
+    expect(plan[1].balance).toBe(0);
   });
 
   it('counts arena double days', () => {

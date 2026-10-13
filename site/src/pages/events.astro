@@ -7,8 +7,10 @@ import { difficultyName, withLiveTargets } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
 import { shop } from '../lib/packs';
-import { arena, chestAverage, dailyIncome, perDay } from '../lib/events';
+import { arena, chestAverage, dailyIncome, perDay, type TopUp } from '../lib/events';
 import chestsJson from '../../../data/chests.json';
+import { chaseSchedule, plannedOnly } from '../lib/chases';
+import planned from '../data/planned-events.json';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 // Targets and Campaign Rush points follow the newest listed event of each kind; the rest are from recent events.
@@ -19,6 +21,17 @@ const arenaIcon = itemIcon('Arena_Token');
 
 // Energy per stage for each farming event, from the boss list (every boss of a kind costs the same).
 // One row per farming event, or per boss where each relic boss has its own event: pick a stage, the rest is worked out.
+// The tournament type each farming event runs as, to place it on the chase's days (relic bosses: one type per boss).
+const eventTypes: Record<string, string> = { accessory: 'ClanBoss', crest: 'RoleMedals', omnissi: 'Garudas', pentiax: 'Dragon', campaign: 'Campaign' };
+
+// The chase on now (or next), with every tournament that pays into it placed on its days.
+const now = Date.now();
+const chase = events.filter((e) => e.type === 'GetLegendary' && Date.parse(e.end) > now).sort((a, b) => a.start.localeCompare(b.start))[0];
+const schedule = chase ? chaseSchedule(chase, [...events, ...plannedOnly(planned.events, events)]) : undefined;
+const chaseDays = schedule?.days.length ?? guide.chase.days;
+const runsOf = (type: string | undefined) =>
+  type && schedule ? schedule.rows.filter((r) => r.source.startsWith(type)).flatMap((r) => r.runs.map((x) => ({ from: x.from, to: x.to, name: x.name }))) : [];
+
 const farming = plannerEvents
   .filter((e) => e.bossMode || e.difficulties)
   .flatMap((e) => {
@@ -40,7 +53,10 @@ const farming = plannerEvents
         : stages;
       // The boss guide link: the event's own boss, or the boss list for groups (Crest, Omnissi).
       const link = r.boss && (perBoss || kinds.length === 1) ? href(`bosses/${bossSlug(r.boss)}`) : e.bossMode ? href('bosses') : undefined;
-      return { id: perBoss ? `${e.id}-${k}` : e.id, name: r.name, link, target: e.target, perChase: r.perChase, estimated: !e.difficulties, options };
+      const runs = runsOf(perBoss ? `RelicBoss${r.boss?.name ?? ''}` : eventTypes[e.id]);
+      // On the chase's schedule, the runs it holds set how many of this event there are.
+      const perChase = runs.length || r.perChase;
+      return { id: perBoss ? `${e.id}-${k}` : e.id, name: r.name, link, target: e.target, perChase, runs, estimated: !e.difficulties, options };
     });
   })
   .filter((e) => e.options.length);
@@ -52,22 +68,56 @@ const gemEnergy = shop.packs.find(
   (p) => p.tab === 'GemShop' && p.purchaseLimit === 'Unlimited' && p.price.resources?.Gem && p.rewards?.length === 1 && p.rewards[0].id === 'Energy',
 );
 const gemPrice = gemEnergy ? { gems: gemEnergy.price.resources!.Gem, energy: gemEnergy.rewards![0].amount } : { gems: 150, energy: 100 };
-const income = { ...guide.income, energyPerGem: gemPrice.energy / gemPrice.gems };
+// The Gem Shop's once-a-day energy offers: the free one is income, the cheap paid ones are bought before the unlimited one.
+const dailyOffers = shop.packs
+  .filter((p) => p.tab === 'GemShop' && p.purchaseLimit === 'PerDay' && p.rewards?.length === 1 && p.rewards[0].id === 'Energy')
+  .map((p) => ({ gems: p.price.resources?.Gem ?? 0, energy: p.rewards![0].amount, perDay: p.purchaseLimitCount || 1 }));
 // One clan activity chest a day (the quests are daily), counted at the Silver chest's average Energy.
 const clanChest = chestsJson.chests.find((c) => c.chest === 'Activity' && c.tier === 'Silver');
 const dailyRows = [
   ...guide.income.daily,
   ...(clanChest ? [{ name: 'Clan activity chest (Silver, average)', energy: chestAverage(clanChest.items, 'Energy') }] : []),
+  ...dailyOffers.filter((o) => !o.gems).map((o) => ({ name: 'Free daily shop', energy: o.energy * o.perDay })),
+];
+const topUps: TopUp[] = [
+  ...guide.income.topUps,
+  ...dailyOffers.filter((o) => o.gems).sort((a, b) => a.gems / a.energy - b.gems / b.energy).map((o) => ({ name: `Gem shop daily offer (${o.gems} gems)`, energy: o.energy, gems: o.gems, perDay: o.perDay })),
+  { name: `Gem shop (${gemPrice.gems} gems, no limit)`, energy: gemPrice.energy, gems: gemPrice.gems },
 ];
 const dailyTotal = dailyIncome(dailyRows, guide.income.rechargeMinutes);
-const incomeTotal = Math.round(dailyTotal * guide.chase.days + guide.income.extras.reduce((n, r) => n + r.energy, 0));
+
+// Energy from tournament rewards, on the day each tournament starts. A tournament not open yet counts the rewards of
+// the last one of its kind, or none if there hasn't been one.
+const rewardEnergy = (e: { personalRewards?: { reward: ({ itemId: string; amount: number } | object)[] }[] } | undefined) =>
+  (e?.personalRewards ?? []).reduce((n, r) => n + r.reward.reduce((m, x) => m + ('itemId' in x && x.itemId === 'Energy' ? x.amount : 0), 0), 0);
+const latestOf = (type: string) => events.filter((e) => e.type === type).sort((a, b) => b.start.localeCompare(a.start))[0];
+const tournamentEnergy = (schedule?.rows ?? []).flatMap((r) =>
+  r.runs.map((x) => ({ day: x.from, energy: rewardEnergy(events.find((e) => e.type === r.source && e.start === x.start) ?? latestOf(r.source)) })),
+).filter((t) => t.energy > 0 && t.day < chaseDays);
+const extras = guide.income.extras.map((r) =>
+  'fromTournaments' in r && schedule ? { name: 'Tournament rewards', energy: tournamentEnergy.reduce((n, t) => n + t.energy, 0), spread: false } : { name: r.name, energy: r.energy, spread: true },
+);
+// Free energy each day of the chase: the daily sources, the chase-long extras spread evenly, and tournament rewards.
+const spreadExtras = extras.filter((r) => r.spread).reduce((n, r) => n + r.energy, 0);
+const incomeByDay = Array.from({ length: chaseDays }, () => dailyTotal + spreadExtras / chaseDays);
+for (const t of tournamentEnergy) incomeByDay[t.day] += t.energy;
+const incomeTotal = Math.round(incomeByDay.reduce((n, x) => n + x, 0));
 const arenaRows = arenaLeagues.map((l) => {
   const r = arena({ battlesPerDay: guide.arena.battlesPerDay, winRate: 1, winPoints: l.win, lossPoints: l.loss, days: guide.chase.days, doubleDays: guide.arena.doubleDays, target: guide.arena.chaseTarget });
   return { league: l.league, perDay: r.perDay, total: r.total, days: arenaEvent.target / r.perDay, top: r.total >= guide.arena.chaseTarget };
 });
 
 
-const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTotal };
+// The day-by-day table: one row per chase day, with the energy events that run that day.
+const dayRows = schedule
+  ? schedule.days.map((d, i) => ({
+      date: d,
+      label: new Date(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }),
+      events: [...new Set(farming.flatMap((e) => e.runs.filter((x) => x.from <= i && i < x.to).map((x) => x.name)))],
+    }))
+  : [];
+
+const calc = { farming, topUps, incomeByDay, days: dayRows.map((d) => d.date) };
 ---
 <Base title="Events">
   <h1>Events</h1>
@@ -121,9 +171,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   <section class="card" aria-labelledby="plan-title">
     <h2 id="plan-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Energy you'll have</h2>
     <p class="hint">
-      Over the {guide.chase.days}-day chase, claiming every daily source. The recharge is {recharge} a day (one every
-      {' '}{guide.income.rechargeMinutes} minutes), and gems buy {gemPrice.energy} energy for {gemPrice.gems}.
-      The clan chest counts one Silver activity chest a day at its average energy.
+      Over the {chaseDays}-day chase, claiming every free source. The recharge is {recharge} a day (one every
+      {' '}{guide.income.rechargeMinutes} minutes), and the clan chest counts one Silver activity chest a day at its
+      average energy. When that runs short, the cheapest top-ups are bought first.
     </p>
     <div class="cols">
       <div>
@@ -139,21 +189,50 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
       <div>
         <h3>Over the chase</h3>
         <div class="rows">
-          {guide.income.extras.map((r) => (
+          {extras.map((r) => (
             <div class="row fixed"><span>{r.name}</span><span>{fmt(r.energy)}</span></div>
           ))}
-          <div class="row total"><span>Income</span><span>{fmt(incomeTotal)}</span></div>
+          <div class="row total"><span>Free energy</span><span>{fmt(incomeTotal)}</span></div>
+        </div>
+        <h3>Top-ups, cheapest first</h3>
+        <div class="rows">
+          {topUps.map((t, i) => (
+            <div class="row fixed"><span>{t.name}: {t.energy}{t.perDay ? `, ${t.perDay === 1 ? 'once' : `${t.perDay} times`} a day` : ''}</span><span data-topup={i}>–</span></div>
+          ))}
         </div>
       </div>
     </div>
 
     <div class="summary" aria-live="polite">
       <div><span class="label">You need</span><span class="value" id="s-need">–</span></div>
-      <div><span class="label">You'll have</span><span class="value">{fmt(incomeTotal)}</span></div>
-      <div><span class="label">Short by</span><span class="value" id="s-short">–</span></div>
+      <div><span class="label">Free energy</span><span class="value">{fmt(incomeTotal)}</span></div>
+      <div><span class="label">To buy</span><span class="value" id="s-short">–</span></div>
       <div><span class="label">{gemIcon && <img class="l-icon" src={gemIcon} alt="" width="16" height="16" />}Gems to cover it</span><span class="value" id="s-gems">–</span></div>
     </div>
   </section>
+
+  {chase && dayRows.length > 0 && (
+    <section class="card" aria-labelledby="days-title">
+      <h2 id="days-title">{energyIcon && <img class="h-icon" src={energyIcon} alt="" width="26" height="26" />}Day by day: {chase.name}</h2>
+      <p class="hint">
+        Each event's energy is spread evenly over its days, and spare energy carries over. Bought: the top-ups that day,
+        cheapest first, so you never run out. Days run 12:00 to 12:00 UTC. Dates are on the <a href={href('chase-calendar')}>chase calendar</a>.
+      </p>
+      <div class="table-wrap">
+        <table class="days">
+          <thead><tr><th scope="col">Day</th><th scope="col" class="num">In</th><th scope="col" class="num">Out</th><th scope="col" class="num">Bought</th><th scope="col" class="num">Left</th></tr></thead>
+          <tbody>
+            {dayRows.map((d, i) => (
+              <tr data-day={i}>
+                <th scope="row">{d.label}{d.events.length > 0 && <span class="ev">{d.events.join(', ')}</span>}</th>
+                <td class="num" data-in></td><td class="num" data-out></td><td class="num" data-bought></td><td class="num" data-left></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
 
   <section class="card" aria-labelledby="arena-title">
     <h2 id="arena-title">{arenaIcon && <img class="h-icon" src={arenaIcon} alt="" width="26" height="26" />}Arena Rush</h2>
@@ -211,14 +290,16 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
 </Base>
 
 <script>
-  import { shortfall, toFinish } from '../lib/events';
+  import { dayPlan, spreadRuns, toFinish, type TopUp } from '../lib/events';
 
   interface Line { key: string; perRun: number; amount: string; points: number }
   interface Option { label: string; energy: number; points: number; lines: Line[] }
   interface Data {
-    farming: { id: string; name: string; target: number; perChase: number; estimated: boolean; options: Option[] }[];
-    income: { energyPerGem: number };
-    incomeTotal: number;
+    farming: { id: string; name: string; target: number; perChase: number; runs: { from: number; to: number }[]; estimated: boolean; options: Option[] }[];
+    topUps: TopUp[];
+    incomeByDay: number[];
+    /** Start of each chase day, when there is a chase schedule. */
+    days: string[];
   }
 
   const data: Data = JSON.parse(document.getElementById('event-data')!.textContent!);
@@ -279,9 +360,15 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
     return wrap;
   }
 
-  // Every event at its chosen stage, times how many run in a chase; then the gems to cover any gap.
+  const dayEls = [...document.querySelectorAll<HTMLTableRowElement>('tr[data-day]')];
+  const today = data.days.findIndex((d) => Date.now() >= Date.parse(d) && Date.now() < Date.parse(d) + 86_400_000);
+  dayEls[today]?.classList.add('today');
+
+  // Every event at its chosen stage, times how many run in a chase; then the cheapest top-ups, day by day.
   function update() {
     let need = 0;
+    const n = data.incomeByDay.length;
+    const spend = new Array<number>(n).fill(0);
     const how: HTMLElement[] = [];
     const seen = new Set<string>();
     data.farming.forEach((e, i) => {
@@ -289,6 +376,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
       const one = toFinish(e.target, o.points, o.energy);
       const energy = one.energy * e.perChase;
       need += energy;
+      // Placed on the event's own days when the chase schedule has them, else spread over the whole chase.
+      const byDay = e.runs.length ? spreadRuns(n, e.runs, one.energy) : new Array<number>(n).fill(energy / n);
+      byDay.forEach((x, d) => (spend[d] += x));
       document.querySelector(`[data-meta="${i}"]`)!.textContent =
         `${fmt(o.points)} points a run${e.estimated ? ' (est.)' : ''} · ${fmt(one.runs)} runs to ${fmt(e.target)}${e.perChase > 1 ? ` · ×${e.perChase} a chase` : ''}`;
       document.querySelector(`[data-energy="${i}"]`)!.textContent = fmt(energy);
@@ -299,12 +389,33 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
         how.push(breakdown(`${e.name}, ${o.label.toLowerCase()}`, o));
       }
     });
-    const short = shortfall(need, data.incomeTotal, data.income.energyPerGem);
+    const plan = dayPlan(data.incomeByDay, spend, data.topUps);
+    const bought = plan.reduce((x, d) => x + d.bought, 0);
+    const gems = plan.reduce((x, d) => x + d.gems, 0);
     $('f-total').textContent = fmt(need);
     $('f-how').replaceChildren(...how);
     $('s-need').textContent = fmt(need);
-    $('s-short').textContent = short.energy ? fmt(short.energy) : 'Nothing';
-    $('s-gems').textContent = short.energy ? fmt(short.gems) : 'None';
+    $('s-short').textContent = bought ? fmt(bought) : 'Nothing';
+    $('s-gems').textContent = gems ? fmt(gems) : 'None';
+    data.topUps.forEach((t, i) => {
+      const count = plan.reduce((x, d) => x + (d.buys[t.name] ?? 0), 0);
+      document.querySelector(`[data-topup="${i}"]`)!.textContent = count ? `${fmt(count)}×` : '–';
+    });
+    dayEls.forEach((tr, i) => {
+      const d = plan[i];
+      if (!d) return;
+      tr.querySelector('[data-in]')!.textContent = fmt(d.income);
+      tr.querySelector('[data-out]')!.textContent = fmt(d.spend);
+      const cell = tr.querySelector('[data-bought]')!;
+      cell.textContent = d.bought ? fmt(d.bought) : '–';
+      if (d.gems) {
+        const sub = document.createElement('span');
+        sub.className = 'ev';
+        sub.textContent = `${fmt(d.gems)} gems`;
+        cell.append(sub);
+      }
+      tr.querySelector('[data-left]')!.textContent = fmt(d.balance);
+    });
     save();
   }
 
@@ -402,6 +513,9 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
   .row.fixed { min-height: 32px; }
   .how :global(h3) { margin: 16px 0 8px; }
   .arena-table { margin-top: 12px; }
+  .days :global(.ev) { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  .days tr.today > * { background: var(--surface-3); }
+  .days tr.today th { box-shadow: inset 3px 0 0 var(--accent); }
   .arena-table :global(tbody th), .arena-table :global(tbody td) { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; }
   .arena-table :global(tbody td) { text-align: right; font-variant-numeric: tabular-nums; }
   .arena-table :global(tbody tr:last-child > *) { border-bottom: 0; }
@@ -429,6 +543,10 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
     .plan :global(li) { grid-template-columns: 1fr auto; }
     .frow { grid-template-columns: 1fr auto; gap: 4px 12px; }
     .arena-table th, .arena-table :global(tbody th), .arena-table :global(tbody td) { padding: 8px 6px; font-size: 13px; }
+    .days th, .days td { padding: 6px 4px; font-size: 13px; }
+    .days th:first-child { padding-left: 8px; }
+    .days td:last-child, .days thead th:last-child { padding-right: 8px; }
+    .days :global(.ev) { font-size: 11px; }
     .frow select { grid-column: 1 / -1; grid-row: 2; }
     .frow .fmeta { grid-column: 1 / -1; grid-row: 3; }
     .frow .fenergy { grid-column: 2; grid-row: 1; }
