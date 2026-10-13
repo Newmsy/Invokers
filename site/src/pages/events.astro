@@ -7,7 +7,8 @@ import { difficultyName, withLiveTargets } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
 import { shop } from '../lib/packs';
-import { arena, dailyIncome, perDay } from '../lib/events';
+import { arena, chestAverage, dailyIncome, perDay } from '../lib/events';
+import chestsJson from '../../../data/chests.json';
 
 const fmt = (n: number) => n.toLocaleString('en-GB');
 // Targets and Campaign Rush points follow the newest listed event of each kind; the rest are from recent events.
@@ -52,7 +53,13 @@ const gemEnergy = shop.packs.find(
 );
 const gemPrice = gemEnergy ? { gems: gemEnergy.price.resources!.Gem, energy: gemEnergy.rewards![0].amount } : { gems: 150, energy: 100 };
 const income = { ...guide.income, energyPerGem: gemPrice.energy / gemPrice.gems };
-const dailyTotal = dailyIncome(guide.income.daily, guide.income.rechargeMinutes);
+// One clan activity chest a day (the quests are daily), counted at the Silver chest's average Energy.
+const clanChest = chestsJson.chests.find((c) => c.chest === 'Activity' && c.tier === 'Silver');
+const dailyRows = [
+  ...guide.income.daily,
+  ...(clanChest ? [{ name: 'Clan activity chest (Silver, average)', energy: chestAverage(clanChest.items, 'Energy') }] : []),
+];
+const dailyTotal = dailyIncome(dailyRows, guide.income.rechargeMinutes);
 const incomeTotal = Math.round(dailyTotal * guide.chase.days + guide.income.extras.reduce((n, r) => n + r.energy, 0));
 const arenaRows = arenaLeagues.map((l) => {
   const r = arena({ battlesPerDay: guide.arena.battlesPerDay, winRate: 1, winPoints: l.win, lossPoints: l.loss, days: guide.chase.days, doubleDays: guide.arena.doubleDays, target: guide.arena.chaseTarget });
@@ -116,13 +123,14 @@ const calc = { farming, income: { energyPerGem: income.energyPerGem }, incomeTot
     <p class="hint">
       Over the {guide.chase.days}-day chase, claiming every daily source. The recharge is {recharge} a day (one every
       {' '}{guide.income.rechargeMinutes} minutes), and gems buy {gemPrice.energy} energy for {gemPrice.gems}.
+      The clan chest counts one Silver activity chest a day at its average energy.
     </p>
     <div class="cols">
       <div>
         <h3>Every day</h3>
         <div class="rows">
           <div class="row fixed"><span>Natural recharge</span><span>{recharge}</span></div>
-          {guide.income.daily.map((r) => (
+          {dailyRows.map((r) => (
             <div class="row fixed"><span>{r.name}</span><span>{fmt(Math.round(perDay(r)))}</span></div>
           ))}
           <div class="row total"><span>Per day</span><span>{fmt(Math.round(dailyTotal))}</span></div>

@@ -1,12 +1,22 @@
 import { describe, expect, it } from 'vitest';
 import guide from '../src/data/event-guide.json';
-import { arena, dailyIncome, expectedPointsPerRun, periodIncome, shortfall, toFinish } from '../src/lib/events';
+import { arena, chestAverage, dailyIncome, expectedPointsPerRun, periodIncome, shortfall, toFinish } from '../src/lib/events';
 
 describe('event planners', () => {
   it('adds up the default energy income', () => {
     const daily = dailyIncome(guide.income.daily, guide.income.rechargeMinutes);
     expect(daily).toBeCloseTo(1078 + 1400 / 30);
     expect(periodIncome(daily, 21, guide.income.extras)).toBeCloseTo(28338 + 980);
+  });
+
+  it('averages a chest reward over its odds', () => {
+    const items = [
+      { group: 1, itemId: 'Energy', amount: 50, weight: 1, groupChanceInPicks: 0.5 },
+      { group: 1, itemId: 'Energy', amount: 150, weight: 1, groupChanceInPicks: 0.5 },
+      { group: 2, itemId: 'Gold', amount: 1000, weight: 1, groupChanceInPicks: 1 },
+    ];
+    expect(chestAverage(items, 'Energy')).toBe(50);
+    expect(chestAverage(items, 'Gem')).toBe(0);
   });
 
   it('works out runs and energy to finish', () => {

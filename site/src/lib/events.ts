@@ -20,6 +20,27 @@ export function dailyIncome(rows: EnergyRow[], rechargeMinutes: number): number 
   return recharge + rows.reduce((sum, r) => sum + perDay(r), 0);
 }
 
+export interface ChestItem {
+  group: number;
+  itemId: string;
+  amount: number;
+  weight: number;
+  groupChanceInPicks: number;
+}
+
+/** Average amount of one item per chest: each group's chance to be among the picks × its weighted average amount. */
+export function chestAverage(items: ChestItem[], itemId: string): number {
+  const groups = new Map<number, ChestItem[]>();
+  for (const i of items) groups.set(i.group, [...(groups.get(i.group) ?? []), i]);
+  let total = 0;
+  for (const rows of groups.values()) {
+    const weight = rows.reduce((n, r) => n + r.weight, 0);
+    if (weight <= 0) continue;
+    total += rows[0].groupChanceInPicks * rows.filter((r) => r.itemId === itemId).reduce((n, r) => n + r.weight * r.amount, 0) / weight;
+  }
+  return total;
+}
+
 /** Energy over a period: daily income times days, plus one-off extras. */
 export function periodIncome(daily: number, days: number, extras: EnergyRow[]): number {
   return daily * Math.max(0, days) + extras.reduce((sum, r) => sum + Math.max(0, r.energy || 0), 0);
