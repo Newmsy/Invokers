@@ -3,6 +3,7 @@ import eventsJson from '../../data/events.json';
 import type { EventScoringRule, GameEvent } from '../src/lib/data';
 import {
   countdown,
+  difficultyName,
   withLiveTargets,
   descriptionLines,
   eventLinks,
@@ -154,5 +155,12 @@ describe('mergeSameTables', () => {
       'Points per relic won from Ulgorim, Althar',
       'Points per relic won from Sakiel',
     ]);
+  });
+});
+
+describe('difficulty names', () => {
+  it('shows the top campaign difficulty as Insane', () => {
+    expect(difficultyName('Brutal')).toBe('Insane');
+    expect(difficultyName('Hard')).toBe('Hard');
   });
 });

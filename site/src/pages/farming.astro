@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { href } from '../lib/data';
+import { difficultyName } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { farmingFor, farmItems, stageList, type DropPart, type ShopRow } from '../lib/farming';
 import { gbp } from '../lib/packs';
@@ -35,7 +36,7 @@ const partText = (p: DropPart) =>
   p.kind === 'battle' ? `${p.amount} in ${p.where === 'enemies' ? 'enemy' : 'chest'} loot` : p.kind === 'win' ? `${p.amount} every win` : `${p.amount} at ${pct(p.chance ?? 0)}${(p.rolls ?? 1) > 1 ? ` ×${p.rolls}` : ''}`;
 const price = (s: ShopRow) => (s.price.usd ? `£${gbp(s.price.usd)}` : Object.entries(s.price.resources).map(([k, v]) => `${n(v)} ${k === 'Gem' ? 'Gems' : plainItemName(k)}`).join(' + '));
 const titleCase = (s: string) => (s === s.toUpperCase() ? s.toLowerCase().replace(/(^|[\s-])\S/g, (c) => c.toUpperCase()) : s);
-const diff = (d: string) => (d === 'None' ? '–' : d);
+const diff = (d: string) => (d === 'None' ? '–' : difficultyName(d));
 const gemIcon = itemIcon('Gem');
 ---
 <Base title="Where to farm">
@@ -62,7 +63,7 @@ const gemIcon = itemIcon('Gem');
               <span class="name">{it.icon && <img src={it.icon} alt="" width="28" height="28" loading="lazy" />}{it.name}</span>
               <span class="best">
                 {best
-                  ? <>Best: {best.place} {best.difficulty === 'Hard' || best.difficulty === 'Brutal' ? `${best.difficulty} ` : ''}{best.stages.length > 1 ? 'stages' : 'stage'} {stageList(best.stages)} · <strong>{avg(best.perEnergy)}</strong> per Energy{best.estimated && '*'}</>
+                  ? <>Best: {best.place} {best.difficulty === 'Hard' || best.difficulty === 'Brutal' ? `${diff(best.difficulty)} ` : ''}{best.stages.length > 1 ? 'stages' : 'stage'} {stageList(best.stages)} · <strong>{avg(best.perEnergy)}</strong> per Energy{best.estimated && '*'}</>
                   : it.spires.length ? 'Spire rewards' : it.shop.length ? 'Shop packs only' : 'No source listed'}
               </span>
             </summary>
@@ -83,7 +84,7 @@ const gemIcon = itemIcon('Gem');
                     <tbody class:list={{ more: part === 1 }} data-more={part === 1 ? '' : undefined}>
                       {rows.map((r) => (
                         <tr>
-                          <th scope="row">{r.path ? <a href={href(r.path)}>{r.place}</a> : r.place}{diff(r.difficulty) !== '–' && <small>{r.difficulty}</small>}</th>
+                          <th scope="row">{r.path ? <a href={href(r.path)}>{r.place}</a> : r.place}{diff(r.difficulty) !== '–' && <small>{diff(r.difficulty)}</small>}</th>
                           <td data-label="Stage">{stageList(r.stages)}</td>
                           <td class="num" data-label="Energy">{r.energy}</td>
                           <td class="num strong" data-label="Avg per Energy">{avg(r.perEnergy)}{r.estimated && '*'}</td>
