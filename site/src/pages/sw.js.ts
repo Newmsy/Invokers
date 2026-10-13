@@ -68,7 +68,7 @@ self.addEventListener('fetch', (e) => {
 
 export const GET: APIRoute = () => {
   const base = href('/');
-  return new Response(worker(base, href('offline'), [href('/'), href('offline'), href('icons/icon-192.png')]), {
+  return new Response(worker(base, href('offline'), [href('/'), href('offline'), href('icons/icon-192-v2.png')]), {
     headers: { 'Content-Type': 'text/javascript; charset=utf-8' },
   });
 };
