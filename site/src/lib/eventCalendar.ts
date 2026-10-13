@@ -2,6 +2,9 @@
 // page script stays small.
 import type { EventRankReward, EventRewardItem, EventScoringRule, RankName } from './data';
 
+/** A campaign difficulty as the game shows it: the top one is stored as "Brutal" but called Insane. */
+export const difficultyName = (d: string) => (d === 'Brutal' ? 'Insane' : d);
+
 export type EventStatus = 'now' | 'next' | 'ended';
 
 export interface Timed {
@@ -274,7 +277,7 @@ export function ruleTables(rule: EventScoringRule, itemName: (id: string) => str
     case 'AnimaSkillUpScoringRule':
       return [list(rule.ruleType === 'AnimaSkillUpScoringRule' ? 'Points per Titan skill upgrade' : 'Points per skill upgrade', 'Using', 'Points', rule.entries.map((e) => ({ label: item(e.resourceId), points: e.points })))];
     case 'CampaignBattleScoringRule':
-      return [list('Points per Campaign battle won', 'Difficulty', 'Points', rule.entries.map((e) => ({ label: { text: e.difficulty }, points: e.points })))];
+      return [list('Points per Campaign battle won', 'Difficulty', 'Points', rule.entries.map((e) => ({ label: { text: difficultyName(e.difficulty) }, points: e.points })))];
     case 'HeroSummonScoringRule': {
       const sets: PullSet[] = [
         ['std', rule.heroEntriesNonLightDark, { text: 'Other elements' }],

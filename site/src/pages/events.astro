@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import SeeAlso from '../components/SeeAlso.astro';
 import { bosses, bossSlug, events, href } from '../lib/data';
 import guide from '../data/event-guide.json';
-import { withLiveTargets } from '../lib/eventCalendar';
+import { difficultyName, withLiveTargets } from '../lib/eventCalendar';
 import { itemIcon } from '../lib/art';
 import { arenaLeagues, stageScore } from '../lib/eventScoring';
 import { shop } from '../lib/packs';
@@ -35,7 +35,7 @@ const farming = plannerEvents
           })
         : [];
       const options = e.difficulties
-        ? e.difficulties.map((d) => ({ label: d.name, energy: d.energy, points: d.points, lines: [] as (typeof stages)[number]['lines'] }))
+        ? e.difficulties.map((d) => ({ label: difficultyName(d.name), energy: d.energy, points: d.points, lines: [] as (typeof stages)[number]['lines'] }))
         : stages;
       // The boss guide link: the event's own boss, or the boss list for groups (Crest, Omnissi).
       const link = r.boss && (perBoss || kinds.length === 1) ? href(`bosses/${bossSlug(r.boss)}`) : e.bossMode ? href('bosses') : undefined;
