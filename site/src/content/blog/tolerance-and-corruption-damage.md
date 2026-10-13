@@ -73,20 +73,6 @@ Omnissi's damage Corruption by element: [Astral](/bosses/omnissi-astral) Atrophy
 
 The shares leave out stacking Corruption, percent-of-HP hits and multi-hit repeats, so real fights can run higher.
 
-## In a real fight
-
-Battle stats from a stage 17 fight, five Invokers:
-
-| Invoker | Damage taken | Corruption damage | Corruption share |
-|---|---|---|---|
-| 1 | 30.92K | 23.57K | 76% |
-| 2 | 37.37K | 27.47K | 74% |
-| 3 | 20.97K | 13.73K | 65% |
-| **4 (matching Tolerance)** | **17.06K** | **8.69K** | **51%** |
-| 5 | 14.37K | 11.6K | 81% |
-
-Only Invoker 4 had matching Tolerance. It halved its Corruption damage (Corruption Damage Decreased: 8.69K) and spent 18 seconds less under Corruption. The rest took two-thirds to four-fifths of their damage as Corruption.
-
 ## What to do
 
 - **Stage 11 and up:** give every Invoker matching Tolerance before more DEF.
