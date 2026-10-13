@@ -8,6 +8,7 @@ import { initials, rarityColor, richText, skillTypeName, tierColor } from '../..
 import { tierNames, titanTiers } from '../../lib/tierData';
 import { binders, bonusLabel, titanPassive, titanSkills } from '../../lib/titans';
 import { effectsFor, linkEffects } from '../../lib/effects';
+import { storiesAboutTitan } from '../../lib/mentions';
 import type { TitanInfo } from '../../lib/tiers/candidates';
 
 export function getStaticPaths() {
@@ -15,6 +16,8 @@ export function getStaticPaths() {
 }
 
 const { titan } = Astro.props as { titan: TitanInfo };
+const stories = await storiesAboutTitan(titan.name, titan.slug);
+const storyDate = (d: Date) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 const art = titanArt(titan.id);
 // Wide key art behind the header, for Titans that have some.
 const splash = titanSplash(titan.id);
@@ -170,6 +173,17 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
     </section>
   )}
 
+  {stories.length > 0 && (
+    <section>
+      <h2>News and articles</h2>
+      <ul class="stories">
+        {stories.slice(0, 6).map((st) => (
+          <li><a href={href(st.path)}><span class="story-kind">{st.kind}</span><strong>{st.title}</strong><span class="story-date">{storyDate(st.date)}</span></a></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <SeeAlso links={[
     { path: 'titans', label: 'All Titans' },
     { path: 'tiers/titans/campaign', label: 'Titan tier lists' },
@@ -195,6 +209,12 @@ const allBinders = titan.faction ? href(`heroes?faction=${encodeURIComponent(tit
 </script>
 
 <style>
+  .stories { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+  .stories a { display: grid; gap: 2px; height: 100%; padding: 10px 14px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--text); }
+  .stories a:hover { border-color: var(--accent); }
+  .stories strong { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.3; }
+  .story-kind { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; }
+  .story-date { font-size: 13px; color: var(--muted); }
   .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--soft); }
   .top { display: grid; grid-template-columns: 240px 1fr; gap: 32px; align-items: end; margin-bottom: 8px; }
   .art {
