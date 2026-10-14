@@ -253,7 +253,7 @@ const calc = {
   th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
   thead th { background: var(--surface-3); color: var(--muted); font-weight: 600; }
   thead th:first-child, tbody th { text-align: left; }
-  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); }
+  tbody th { color: var(--soft); font-weight: 500; position: sticky; left: 0; background: var(--bg); white-space: nowrap; }
   tbody tr:last-child > * { border-bottom: 0; }
   tr.total > * { font-weight: 600; color: var(--text); background: var(--surface-3); }
 
@@ -264,6 +264,8 @@ const calc = {
     .result { font-size: 17px; }
     .rarity:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
   }
-  .cur { display: inline-flex; align-items: center; gap: 6px; }
+  /* Icon sits on top of its own label, right-aligned over the numbers, so a wrapped label never leaves it beside the previous column. */
+  .cur { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
   .cur img { flex: none; }
+  thead th { vertical-align: bottom; }
 </style>
