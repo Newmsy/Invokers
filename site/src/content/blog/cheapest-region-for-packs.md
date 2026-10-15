@@ -1,13 +1,13 @@
 ---
 title: "Cheapest region for packs: is a VPN worth it?"
-description: "Exclusive Pack 30 costs about the same everywhere once tax is taken out. Canada's sticker price is 6% under the US, but its sales tax is added at checkout."
+description: "Exclusive Pack 30 costs about the same in most regions once tax is taken out. Canada's sticker price is 6% under the US, but its sales tax is added at checkout."
 date: 2026-10-15
 gameVersion: "0.61.1523"
 art: ["item:Gems"]
 tags: [packs, shop, vip]
 ---
 
-**It isn't worth it. Once tax is taken out, every region but Mexico charges within about 2% of the US price.** Canada has the lowest price on the page, CA$39.99 (about **$28.11**, 6% under the US), but Canadian sales tax of 5-15% is added at checkout, so you pay $29.52-$32.33. The cheapest all-in prices are Thailand and Brazil, about 1% under the US.
+**It isn't worth it. Once tax is taken out, every region but Mexico and Pakistan charges within about 2% of the US price.** Canada has the lowest price on the page, CA$39.99 (about **$28.11**, 6% under the US), but Canadian sales tax of 5-15% is added at checkout, so you pay $29.52-$32.33. The cheapest all-in prices are Pakistan (about 5% under the US) and Hong Kong (about 2% under).
 
 **Changing region with a VPN may break the game's terms of service and put your account at risk.** A 1-6% saving isn't worth losing an account over.
 
@@ -18,6 +18,8 @@ $29.99 in the US. Converted at mid-market rates on 15 October 2026.
 | Region | Price | In USD | vs US | Before tax |
 |---|---|---|---|---|
 | Canada | CA$39.99 | $28.11 | −6% | $28.11 (tax added at checkout) |
+| Pakistan | PKR 7,900 | $28.58 | −5% | $28.58 |
+| Hong Kong | HK$228 | $29.31 | −2% | $29.31 (no sales tax) |
 | Thailand | THB 999 | $29.71 | −1% | $27.76 |
 | Brazil | R$149.99 | $29.78 | −1% | $29.78 |
 | US | $29.99 | $29.99 | — | $29.99 |
@@ -30,6 +32,7 @@ $29.99 in the US. Converted at mid-market rates on 15 October 2026.
 | Eurozone | €31.99 | $35.77 | +19% | $29.80 |
 
 - **Prices are the US price plus local tax.** The UK and Eurozone pay most only because their VAT is highest.
+- **Pakistan is the one real discount:** about 5% under the US with no tax shown. Hong Kong has no sales tax, so its price is simply the US price, rounded down.
 - **Mexico is the odd one out:** +8% with no tax shown. Its 16% VAT is probably included without being itemised.
 
 ## Before you try it
