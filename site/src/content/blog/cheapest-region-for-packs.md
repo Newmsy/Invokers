@@ -25,6 +25,7 @@ $29.99 in the US. Converted at mid-market rates on 15 October 2026.
 | US | $29.99 | $29.99 | — | $29.99 |
 | Peru | PEN 104.99 | $30.52 | +2% | $30.52 |
 | Japan | ¥5,000 | $31.58 | +5% | $28.71 |
+| India | ₹2,999 | $31.60 | +5% | about $26.78 |
 | Mexico | MX$599 | $32.44 | +8% | $32.44 |
 | Australia | A$46.99 | $32.79 | +9% | $29.81 |
 | South Africa | ZAR 569.99 | $34.38 | +15% | $29.89 |
@@ -34,6 +35,7 @@ $29.99 in the US. Converted at mid-market rates on 15 October 2026.
 - **Prices are the US price plus local tax.** The UK and Eurozone pay most only because their VAT is highest.
 - **Pakistan is the one real discount:** about 5% under the US with no tax shown. Hong Kong has no sales tax, so its price is simply the US price, rounded down.
 - **Mexico is the odd one out:** +8% with no tax shown. Its 16% VAT is probably included without being itemised.
+- **India is cheap before tax but not after:** if its 18% GST is included, the pack is about 11% under the US before tax, but you still pay 5% more at checkout.
 
 ## Before you try it
 
