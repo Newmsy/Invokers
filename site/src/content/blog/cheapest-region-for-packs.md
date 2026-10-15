@@ -7,7 +7,7 @@ art: ["item:Gems"]
 tags: [packs, shop, vip]
 ---
 
-**It isn't worth it. Once tax is taken out, every region charges within about 1% of the US price.** Canada has the lowest price on the page, CA$39.99 (about **$28.11**, 6% under the US), but Canadian sales tax of 5-15% is added at checkout, so you pay $29.52-$32.33. The cheapest all-in prices are Thailand and Brazil, about 1% under the US.
+**It isn't worth it. Once tax is taken out, every region but Mexico charges within about 2% of the US price.** Canada has the lowest price on the page, CA$39.99 (about **$28.11**, 6% under the US), but Canadian sales tax of 5-15% is added at checkout, so you pay $29.52-$32.33. The cheapest all-in prices are Thailand and Brazil, about 1% under the US.
 
 **Changing region with a VPN may break the game's terms of service and put your account at risk.** A 1-6% saving isn't worth losing an account over.
 
